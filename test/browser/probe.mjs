@@ -147,7 +147,7 @@ export async function observe(page, { readPixels = false } = {}) {
   }, readPixels);
   return {
     requests,
-    async assertPrivate(origin) {
+    async assertPrivate(origin, { fontPaths = [] } = {}) {
       const probe = await page.evaluate(async () => {
         const { calls, violations, gpuErrors } = window.__visualProbe;
         return {
@@ -161,7 +161,8 @@ export async function observe(page, { readPixels = false } = {}) {
       for (const request of requests) {
         assert.equal(new URL(request.url).origin, origin);
         assert.equal(request.method, "GET");
-        assert.ok(["document", "stylesheet", "image", "script", "other"].includes(request.type), JSON.stringify(request));
+        const allowedFont = request.type === "font" && fontPaths.includes(new URL(request.url).pathname);
+        assert.ok(allowedFont || ["document", "stylesheet", "image", "script", "other"].includes(request.type), JSON.stringify(request));
         assert.doesNotMatch(new URL(request.url).pathname, /telemetry|analytics|collect/);
       }
     },

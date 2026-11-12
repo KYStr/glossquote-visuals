@@ -1,27 +1,27 @@
 import { initializeStandalone } from "../../shared/standalone.js";
 
 const channels = {
-  carrier: { field: "#1c214f", stripe: "#665776", angle: 55, cells: 14, density: 6, frequency: 2.65, wave: 8, position: 0.45 },
-  echo: { field: "#25204b", stripe: "#556a9a", angle: 105, cells: 22, density: 9, frequency: 3.6, wave: 31, position: 0.58 },
-  dawn: { field: "#382944", stripe: "#7b516b", angle: -25, cells: 10, density: 5, frequency: 1.7, wave: 351, position: 0.51 },
+  carrier: { glow: "#755f68", light: "#ffe696", trace: "#c0a75d", end: 0.31, rise: 0.12, frequency: 0.61, angle: 7 },
+  echo: { glow: "#45427f", light: "#c7c3ff", trace: "#8178cf", end: 0.43, rise: 0.18, frequency: 0.84, angle: 352 },
+  dawn: { glow: "#744051", light: "#ffd0aa", trace: "#f09080", end: 0.57, rise: 0.08, frequency: 0.42, angle: 12 },
 };
 
-function composition({ channel, intensity }) {
-  const { field, stripe, angle, cells, density, frequency, wave, position } = channels[channel];
-  const strength = intensity / 100;
+function composition({ channel }) {
+  const { glow, light, trace, end, rise, frequency, angle } = channels[channel];
   return [
-    { id: "field", type: "SolidColor", props: { color: field } },
-    { id: "grid", type: "Grid", props: { color: "#9caacb", cells, thickness: 1, softness: 0.28, opacity: 0.29 } },
-    { id: "stripes", type: "Stripes", props: {
-      colorA: stripe, colorB: field, angle, density, softness: 0.12, balance: 0.29, speed: 0, opacity: 0.52,
+    { id: "field", type: "SolidColor", props: { color: "#04050c" } },
+    { id: "beam", type: "Beam", props: {
+      startPosition: { x: 0.12, y: 0.76 }, endPosition: { x: 1, y: end },
+      startThickness: 0.004, endThickness: 0.049, startSoftness: 0.18, endSoftness: 0.72,
+      insideColor: glow, outsideColor: "#060611", opacity: 0.8,
     } },
-    { id: "echo", type: "SineWave", props: {
-      color: "#bc6c7e", amplitude: 0.07 + strength * 0.115, frequency, speed: 0.11, angle: wave,
-      position: { x: 0.5, y: position + 0.105 }, thickness: 0.047, softness: 0.25, opacity: 0.72,
+    { id: "afterglow", type: "SineWave", props: {
+      color: trace, amplitude: rise + 0.028, frequency, speed: 0.19, angle,
+      position: { x: 0.51, y: 0.54 }, thickness: 0.022, softness: 0.064, opacity: 0.52,
     } },
-    { id: "carrier", type: "SineWave", props: {
-      color: "#f5e3a4", amplitude: 0.065 + strength * 0.17, frequency, speed: 0.11, angle: wave,
-      position: { x: 0.5, y: position }, thickness: 0.068, softness: 0.23, opacity: 0.5 + strength * 0.43,
+    { id: "edge", type: "SineWave", props: {
+      color: light, amplitude: rise, frequency, speed: 0.19, angle,
+      position: { x: 0.5, y: 0.48 }, thickness: 0.011, softness: 0.012, opacity: 0.86,
     } },
   ];
 }

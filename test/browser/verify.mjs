@@ -9,6 +9,7 @@ import { verifyReleaseReceipt } from "../../scripts/release-proof.mjs";
 import { checkPaperCommercial } from "./paper-commercial.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
+import { checkSignal, signalFontPaths } from "./signal-commercial.mjs";
 
 const windows = process.platform === "win32" && process.env.RUNNER_OS === "Windows";
 const linux = process.platform === "linux" && process.env.RUNNER_OS === "Linux";
@@ -390,10 +391,10 @@ async function checkLive(browser) {
         const composite = await pixelEvidence(page, stage(page));
         assert.ok(composite.colors > 20, "The deployed shader did not appear on the page");
         await screenshot(page, `live-${releasedWork.slug}-${prefix ? "en" : "zh-Hant"}.png`);
-        await probe.assertPrivate(site.origin);
+        await probe.assertPrivate(site.origin, { fontPaths: releasedWork.slug === "night-signal" ? signalFontPaths : [] });
         await page.locator(".site-footer a").first().click();
         assert.equal(page.url(), url(prefix));
-        await probe.assertPrivate(site.origin);
+        await probe.assertPrivate(site.origin, { fontPaths: releasedWork.slug === "night-signal" ? signalFontPaths : [] });
       });
     }
   }
@@ -529,151 +530,6 @@ async function checkLiquid(browser) {
   evidence.checks.liquid = "PASS bilingual four widths/200%/touch, no-JS and no-GPU, three visible WebGPU objects, rotation, 20 switches on one device, pause/offscreen and privacy";
 }
 
-async function checkSignal(browser) {
-  const route = "works/night-signal/";
-  const channel = (page, id) => page.locator(`label:has([value="${id}"])`);
-  const intensity = (page) => page.locator("#signal-intensity");
-  async function selected(page, id) {
-    assert.equal(await stage(page).getAttribute("data-channel"), id);
-    assert.equal(await page.locator("[data-channel-summary]").textContent(), await page.locator(`#program-${id}`).getAttribute("data-summary"));
-    assert.equal(await channel(page, id).locator("span").evaluate((label) => getComputedStyle(label).textDecorationLine), "underline");
-  }
-
-  for (const width of [320, 390, 768, 1440]) {
-    for (const prefix of ["", "en/"]) {
-      await withPage(browser, { viewport: { width, height: 900 }, reducedMotion: "reduce", hasTouch: width === 390 }, async (page) => {
-        const probe = await observe(page);
-        await open(page, prefix);
-        await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
-        await phase(page, "reduced");
-        await layout(page);
-        const targets = await page.locator(".signal-choices span, .signal-motion button, .signal-side nav a, #signal-intensity")
-          .evaluateAll((nodes) => nodes.map((node) => [node.offsetWidth, node.offsetHeight]));
-        assert.ok(targets.every(([width, height]) => width >= 44 && height >= 44));
-        assert.equal(await textureCount(page), 0);
-        assert.equal(await page.evaluate(() => window.__visualProbe.devices), 0);
-        assert.ok(!probe.requests.some(({ url }) => /\/assets\/(?:shader|standalone)-/.test(url)));
-        if (width === 390) {
-          await channel(page, "echo").tap();
-          await selected(page, "echo");
-          assert.equal(await stage(page).evaluate((el) => getComputedStyle(el).getPropertyValue("--band-angle").trim()), "109deg");
-          await screenshot(page, `signal-${prefix ? "en" : "zh-Hant"}-390-still.png`);
-          await page.locator('a[href="#program-dawn"]').press("Enter");
-          assert.equal(new URL(page.url()).hash, "#program-dawn");
-          assert.equal(await page.locator("#program-dawn").evaluate((program) => program === document.activeElement), true);
-        }
-        await probe.assertPrivate(site.origin);
-      });
-    }
-  }
-  await withPage(browser, { javaScriptEnabled: false }, async (page) => {
-    await open(page, route);
-    assert.equal(await page.locator(".programs article").count(), 3);
-    assert.equal(await page.locator("audio, video, iframe").count(), 0);
-    assert.ok(await stage(page).locator("img").isVisible());
-    assert.ok(await page.locator("noscript p").isVisible());
-  });
-  await withPage(browser, {}, async (page) => {
-    await page.addInitScript(() => Object.defineProperty(navigator, "gpu", { value: undefined }));
-    const probe = await observe(page);
-    await open(page, "en/" + route);
-    await phase(page, "unavailable");
-    await page.locator('[value="carrier"]').focus();
-    await page.keyboard.press("ArrowRight");
-    await selected(page, "echo");
-    await intensity(page).press("Home");
-    await intensity(page).press("ArrowLeft");
-    assert.equal(await page.locator("output").textContent(), "15%");
-    await intensity(page).press("End");
-    await intensity(page).press("ArrowRight");
-    assert.equal(await page.locator("output").textContent(), "65%");
-    const opacity = await stage(page).evaluate((el) => Number(getComputedStyle(el).getPropertyValue("--stripe-opacity")));
-    assert.ok(Math.abs(opacity - 0.345) < 0.000001);
-    await probe.assertPrivate(site.origin);
-  });
-  await withPage(browser, { viewport: { width: 1440, height: 900 } }, async (page) => {
-    const probe = await observe(page, { readPixels: true });
-    await open(page, "en/" + route);
-    await phase(page, "running");
-    await checkContrast(page, [
-      ".signal-head h1", ".signal-head h1 span", ".signal-summary", ".signal-choices input:checked + span", ".signal-motion button", "output",
-    ], "signalMinCheckedContrast");
-    const captures = {};
-    async function nextFrame() {
-      await stage(page).scrollIntoViewIfNeeded();
-      const frames = await textureCount(page);
-      await page.waitForFunction((previous) => window.__visualProbe.textures > previous + 3, frames);
-    }
-    for (const id of ["carrier", "echo", "dawn"]) {
-      await channel(page, id).click();
-      await selected(page, id);
-      await nextFrame();
-      const texture = await page.evaluate(() => window.__visualProbe.readFrame());
-      const name = `signal-${id}-webgpu.png`;
-      const visible = await pixelEvidence(page, stage(page), resolve(evidenceDir, name));
-      assert.ok(texture.colors > 20 && visible.colors > 20, `Channel ${id} was not visible`);
-      evidence.screenshots.push(name);
-      captures[id] = { texture, visible };
-    }
-    assert.equal(new Set(Object.values(captures).map(({ visible }) => visible.average.join(","))).size, 3);
-    evidence.measurements.signalChannels = captures;
-    await intensity(page).press("Home");
-    await nextFrame();
-    const low = await pixelEvidence(page, stage(page), resolve(evidenceDir, "signal-intensity-15.png"));
-    await intensity(page).press("End");
-    assert.equal(await page.locator("output").textContent(), "65%");
-    await nextFrame();
-    const high = await pixelEvidence(page, stage(page), resolve(evidenceDir, "signal-intensity-65.png"));
-    assert.ok(high.average.reduce((sum, value) => sum + value, 0) > low.average.reduce((sum, value) => sum + value, 0));
-    evidence.screenshots.push("signal-intensity-15.png", "signal-intensity-65.png");
-    evidence.measurements.signalIntensity = { low, high };
-    const configurations = await page.evaluate(() => window.__visualProbe.configurations);
-    await page.evaluate(() => {
-      const controls = [...document.querySelectorAll('[name="channel"]')];
-      for (let i = 0; i < 18; i++) controls[i % controls.length].click();
-    });
-    await selected(page, "dawn");
-    await nextFrame();
-    assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
-    assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
-    assert.equal(await stage(page).locator("canvas").count(), 1);
-    const started = performance.now();
-    const frames = await textureCount(page);
-    await page.waitForTimeout(1200);
-    evidence.measurements.signalTextureAcquisitionsPerSecond = Number(((await textureCount(page) - frames) * 1000 / (performance.now() - started)).toFixed(2));
-    evidence.measurements.signalPixelRatio = await stage(page).locator("canvas").evaluate((canvas) => canvas.width / canvas.getBoundingClientRect().width);
-    await screenshot(page, "signal-en-1440-webgpu.png");
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    await quiet(page);
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await stage(page).scrollIntoViewIfNeeded();
-    await phase(page, "running");
-    await page.evaluate(() => {
-      Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
-    await phase(page, "still");
-    await quiet(page);
-    await page.evaluate(() => {
-      delete document.visibilityState;
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
-    await phase(page, "running");
-    await probe.assertPrivate(site.origin);
-    await page.setViewportSize({ width: 390, height: 580 });
-    await page.locator('header a[lang="zh-Hant"]').click();
-    assert.equal(page.url(), url(route));
-    await phase(page, "running");
-    await screenshot(page, "signal-zh-Hant-390-webgpu.png");
-    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
-    await phase(page, "still");
-    await quiet(page);
-    await probe.assertPrivate(site.origin);
-  });
-  evidence.checks.signal = "PASS bilingual program links, layout/200%, keyboard/touch, all three visible WebGPU channels, bounded intensity, 18 switches on one device, fallback, pause/visibility and privacy";
-}
-
 let browser;
 try {
   browser = await chromium.launch({
@@ -733,7 +589,9 @@ try {
     });
     await checkShader(browser);
     if (worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
-    if (worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser);
+    if (worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
+      evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
+    });
   }
   evidence.result = "PASS";
   console.log(JSON.stringify(evidence, null, 2));
