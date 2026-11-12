@@ -4,7 +4,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { chromium } from "playwright";
-import { base, root } from "../../scripts/site-map.mjs";
+import { base, origin, root } from "../../scripts/site-map.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 
@@ -23,7 +23,8 @@ const evidence = {
   display: windows ? "headless-d3d11-warp" : "headless-vulkan-swiftshader", browser: null,
   checks: {}, measurements: {}, screenshots: [],
 };
-const site = await serveDist();
+const live = process.argv[2] === "--live";
+const site = live ? { origin, close() {} } : await serveDist();
 const url = (path = "") => site.origin + base + path;
 const stage = (page) => page.locator("[data-stage]");
 const work = "works/paper-light/";
@@ -101,7 +102,7 @@ async function checkLayouts(browser) {
         assert.equal(await page.locator("main").evaluate((main) => main === document.activeElement), true);
         await layout(page);
         if (width === 1440) await screenshot(page, `gallery-${lang}-1440.png`);
-        await page.locator(".exhibition-card").click();
+        await page.locator(`.exhibition-card[href="${base}${locale}${work}"]`).click();
         assert.equal(page.url(), url(locale + work));
         await phase(page, "reduced");
         await layout(page);
@@ -272,6 +273,35 @@ async function checkShader(browser) {
   assert.ok(compositeOk, "The browser compositor did not present the changing WebGPU texture");
 }
 
+async function checkLive(browser) {
+  const receipt = await fetch(url(`release.json?sha=${commit}`), { signal: AbortSignal.timeout(15_000) });
+  assert.equal(receipt.status, 200);
+  const release = await receipt.json();
+  assert.equal(release.commit, commit);
+  const route = `works/${release.slug}/`;
+  for (const prefix of ["", "en/"]) {
+    await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
+      const probe = await observe(page);
+      await open(page, prefix);
+      await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
+      assert.equal(page.url(), url(prefix + route));
+      assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "index, follow");
+      assert.ok((await page.locator(".site-footer a").last().getAttribute("href")).endsWith(`/tree/${commit}`));
+      await phase(page, "running");
+      await page.waitForFunction(() => window.__visualProbe.textures > 3);
+      const composite = await pixelEvidence(page, stage(page));
+      assert.ok(composite.colors > 20, "The deployed shader did not appear on the page");
+      await screenshot(page, `live-${prefix ? "en" : "zh-Hant"}.png`);
+      await probe.assertPrivate(site.origin);
+      await page.locator(".site-footer a").first().click();
+      assert.equal(page.url(), url(prefix));
+      await probe.assertPrivate(site.origin);
+    });
+  }
+  evidence.checks.live = "PASS live HTTPS gallery, both localized works, visible WebGPU, source SHA, same-origin network and backlinks";
+  evidence.measurements.deployed = release;
+}
+
 let browser;
 try {
   browser = await chromium.launch({
@@ -295,34 +325,40 @@ try {
     assert.equal((await fetch(url(file))).status, 200, file);
   }
   assert.equal((await fetch(url("no-such-exhibition/"))).status, 404);
-  evidence.checks.http = "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact";
-  await checkLayouts(browser);
-  await checkFallback(browser);
-  await withPage(browser, {}, async (page) => {
-    await open(page, "404.html");
-    evidence.measurements.gpuBufferSmoke = await page.evaluate(async () => {
-      const adapter = await navigator.gpu?.requestAdapter();
-      if (!adapter) throw new Error("No isolated Vulkan WebGPU adapter");
-      const device = await adapter.requestDevice();
-      const upload = device.createBuffer({ size: 4, usage: GPUBufferUsage.COPY_SRC, mappedAtCreation: true });
-      const read = device.createBuffer({ size: 4, usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ });
-      try {
-        new Uint32Array(upload.getMappedRange())[0] = 0x1234abcd;
-        upload.unmap();
-        const encoder = device.createCommandEncoder();
-        encoder.copyBufferToBuffer(upload, 0, read, 0, 4);
-        device.queue.submit([encoder.finish()]);
-        await read.mapAsync(GPUMapMode.READ);
-        return { vendor: adapter.info.vendor, architecture: adapter.info.architecture, value: new Uint32Array(read.getMappedRange())[0] };
-      } finally {
-        upload.destroy();
-        read.destroy();
-        device.destroy();
-      }
+  evidence.checks.http = live
+    ? "PASS live HTTPS share image, notices, robots, sitemap and 404"
+    : "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact";
+  if (live) {
+    await checkLive(browser);
+  } else {
+    await checkLayouts(browser);
+    await checkFallback(browser);
+    await withPage(browser, {}, async (page) => {
+      await open(page, "404.html");
+      evidence.measurements.gpuBufferSmoke = await page.evaluate(async () => {
+        const adapter = await navigator.gpu?.requestAdapter();
+        if (!adapter) throw new Error("No isolated WebGPU adapter");
+        const device = await adapter.requestDevice();
+        const upload = device.createBuffer({ size: 4, usage: GPUBufferUsage.COPY_SRC, mappedAtCreation: true });
+        const read = device.createBuffer({ size: 4, usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ });
+        try {
+          new Uint32Array(upload.getMappedRange())[0] = 0x1234abcd;
+          upload.unmap();
+          const encoder = device.createCommandEncoder();
+          encoder.copyBufferToBuffer(upload, 0, read, 0, 4);
+          device.queue.submit([encoder.finish()]);
+          await read.mapAsync(GPUMapMode.READ);
+          return { vendor: adapter.info.vendor, architecture: adapter.info.architecture, value: new Uint32Array(read.getMappedRange())[0] };
+        } finally {
+          upload.destroy();
+          read.destroy();
+          device.destroy();
+        }
+      });
+      assert.equal(evidence.measurements.gpuBufferSmoke.value, 0x1234abcd);
     });
-    assert.equal(evidence.measurements.gpuBufferSmoke.value, 0x1234abcd);
-  });
-  await checkShader(browser);
+    await checkShader(browser);
+  }
   evidence.result = "PASS";
   console.log(JSON.stringify(evidence, null, 2));
 } catch (error) {

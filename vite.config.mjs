@@ -1,6 +1,6 @@
 import { resolve, relative } from "node:path";
 import { defineConfig } from "vite";
-import { base, catalog, isPublished, languages, origin, repository, root, routesFor, worksFor } from "./scripts/site-map.mjs";
+import { base, catalog, isPublished, isReleaseWork, languages, origin, repository, root, routesFor, worksFor } from "./scripts/site-map.mjs";
 import { shaderContentPolicy } from "./scripts/shaders-csp.mjs";
 
 const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
@@ -20,14 +20,14 @@ const policy = [
   "form-action 'none'",
 ].join("; ");
 
-function exhibitionIndex(lang, works) {
+function exhibitionIndex(lang, works, mode) {
   const labels = copy[lang];
   if (!works.length) return `<p>${labels.empty}</p>`;
   const cards = works.map((work) => {
     const entry = catalog[work.slug];
     const title = escape(entry[lang].title);
     const path = `${base}${languages[lang]}works/${work.slug}/`;
-    const published = isPublished(work);
+    const published = isPublished(work) || isReleaseWork(work, mode);
     return `<li><a class="exhibition-card" href="${path}">
       <img src="${base}${entry.image}" width="${entry.width}" height="${entry.height}" alt="">
       <div class="exhibition-copy">
@@ -60,10 +60,11 @@ export default defineConfig(({ mode, command }) => {
           const work = works.find(({ slug }) => slug === page?.slug);
           const robots = isRelease && page ? "index, follow" : "noindex, nofollow";
           const csp = command === "build" ? `<meta http-equiv="Content-Security-Policy" content="${policy}">\n  ` : "";
-          const sourceRef = isPublished(work ?? {}) ? work.deployedCommit : work?.branch;
+          const sourceRef = isReleaseWork(work ?? {}, mode) ? process.env.GQ_RELEASE_SHA :
+            isPublished(work ?? {}) ? work.deployedCommit : work?.branch;
           return html
             .replace("<!-- discoverability -->", `${csp}<meta name="robots" content="${robots}">`)
-            .replace("<!-- exhibition-index -->", page ? exhibitionIndex(page.lang, works) : "")
+            .replace("<!-- exhibition-index -->", page ? exhibitionIndex(page.lang, works, mode) : "")
             .replace("<!-- work-source -->", sourceRef ? `${repository}/tree/${sourceRef}` : repository);
         },
       },

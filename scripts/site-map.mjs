@@ -16,9 +16,13 @@ export function isPublished(work) {
   return publishedStates.has(work.status) && Boolean(work.liveUrl && work.deployedCommit);
 }
 
+export function isReleaseWork(work, mode) {
+  return mode === "release" && work.status === "reviewed" && work.id === process.env.GQ_RELEASE_WORK;
+}
+
 export function worksFor(mode) {
   return registry.works.filter((work) => catalog[work.slug] &&
-    (isPublished(work) || (mode !== "release" && candidateStates.has(work.status))));
+    (isPublished(work) || isReleaseWork(work, mode) || (mode !== "release" && candidateStates.has(work.status))));
 }
 
 export function routesFor(mode) {

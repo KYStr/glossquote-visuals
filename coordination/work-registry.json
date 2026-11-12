@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 6,
+  "revision": 7,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.1-sol",
@@ -16,16 +16,17 @@
       "brief": "briefs/V001-paper-light.md",
       "status": "candidate",
       "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
-      "candidateCommit": "e5d90d71f7a7a69b8f8625afb69b04d3122745da",
+      "candidateCommit": "a6576e21c528e809f3560a334774df08b34f0ad3",
       "pr": "https://github.com/KYStr/glossquote-visuals/pull/1",
       "reviewEvidence": [
         "evidence/V001/6c5d753ec133c3359645497984512dc1f315c3a7/REVIEW.md",
         "evidence/V001/26d9bcf76155ccd64b31c5e30c03f726a0169b3d/REVIEW.md",
-        "evidence/V001/1ea5e21df352c204fefa9ae61098e3820b4586d2/REVIEW.md"
+        "evidence/V001/1ea5e21df352c204fefa9ae61098e3820b4586d2/REVIEW.md",
+        "evidence/V001/a6576e21c528e809f3560a334774df08b34f0ad3/REVIEW.md"
       ],
       "liveUrl": null,
       "deployedCommit": null,
-      "blockers": ["Nonuniform WebGPU output was read from the actual texture. The isolated Chromium compositor could not present it; visible motion acceptance remains pending."],
+      "blockers": ["Windows candidate acceptance passed. The release workflow and its exact source revision await independent verification."],
       "branch": "codex/v001-paper-light"
     },
     {

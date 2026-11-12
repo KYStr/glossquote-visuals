@@ -13,11 +13,7 @@ defaults:
 
 jobs:
   verify:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-24.04, windows-2025]
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-2025
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -32,10 +28,7 @@ jobs:
           npm run check
           npm test
           npm run build
-      - run: node node_modules/playwright/cli.js install --with-deps chromium --no-shell
-        if: runner.os == 'Linux'
       - run: node node_modules/playwright/cli.js install chromium --no-shell
-        if: runner.os == 'Windows'
       - name: Test WebGPU in the isolated VM
         env:
           DEBUG: pw:browser
