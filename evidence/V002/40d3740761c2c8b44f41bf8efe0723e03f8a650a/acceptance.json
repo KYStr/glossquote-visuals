@@ -1,0 +1,224 @@
+{
+  "work": "V002",
+  "date": "2026-11-13",
+  "commit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+  "author": "01a1d0b2-3cc2-7600-bf46-2cab8dda6039",
+  "reviewer": "/root/v001_review",
+  "runId": 43272957275,
+  "jobId": 131373875460,
+  "artifactId": 13969476687,
+  "artifactSha256": "sha256:372edbaaddbaf5fd476ae7778f457424d7f819da1f595e5c77a0c35b93999bd8",
+  "gates": {
+    "visual": "PASS",
+    "interaction": "PASS",
+    "shader": "PASS",
+    "lifecycle": "PASS",
+    "accessibility": "PASS",
+    "performance": "PASS",
+    "privacy": "PASS",
+    "seo": "PASS",
+    "reproducibility": "PASS"
+  },
+  "scores": {
+    "artDirection": 9.3,
+    "uiDesign": 9.2,
+    "commercialCompleteness": 9.3
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "FORME 物形的炭黑、冷灰與深青色一路延伸至系列與表單；以鋼環、煙燻木、灰泥和斜光建立可辨識的物件品牌。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "桌面全幅情境照以燭台和環狀落影平衡左側標題及主行動。390px 將圖文依序堆疊，保留燭火、鋼環與選品入口。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "Geist 在英文實際載入，中英文標題、產品規格、價格與按鈕有清楚的字級層次。英文首屏標題字距緊，部分次要中英標籤偏小。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-liquid-archive-en-composite-a1.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-liquid-archive-zh-Hant-composite-native-pause.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "鏡面沿鋼環有清楚的反射帶，拉絲的寬高光仍保留細紋與邊界；花器、書擋與工藝近照維持相同的暖灰光線。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-satin-composite.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/evidence/V002/COMMERCIAL.md"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "桌面一大兩小的系列構圖與手機直排都保有商品順序，工藝深色區後接較安靜的 FAQ 和清單。手機首屏、系列及設定區反覆出現同一鋼環，稍拉長選品動線。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-1440-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-390-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "系列、款式與表面設定、工藝、FAQ、詢問清單可依序掃讀。設定區把即時單價放在數量旁，詢問清單將小計與總額分開呈現。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-1440-inquiry.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "探索系列、選擇款式、加入、檢視清單、下載及返回選品都有明確入口，連結可用鍵盤。手機導覽與首屏的次要連結密度較高。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-390-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/test/browser/verify.mjs"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "觸控可選商品與表面，已選表面有邊框及底線。實測新增、合併、移除、無效數量、修正後重新啟用下載與空清單焦點回復。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-1440-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/test/browser/verify.mjs"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "中英四種寬度及 200% 文字尺寸均通過布局斷言；主要操作的 44 CSS px、鍵盤焦點、手機觸控、減少動態及無 JS 均有證據。次要資訊字級仍偏小。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-no-js.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-390-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/test/browser/verify.mjs"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "款式與表面同步更新選品照片、規格、價格及清單，首屏的 Halo 標籤跟著表面更新。首屏固定展示 Halo，切換花器或書擋後，仍須讀商品標籤才能理解兩區的角色差異。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-satin-composite.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/evidence/V002/COMMERCIAL.md"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "首屏定位為不鏽鋼家飾，三件商品對應餐桌、窗邊與書架，兩種表面各有外觀、情境和保養說明。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-1440-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/works/liquid-archive/index.html"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "三款均有材質、尺寸、用途與兩種表面價格。系列起價明示拉絲霧面，書擋以組計、每組兩件、尺寸為單件；卡片照片的表面辨識仍以替代文字及下一段的表面選擇補充。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-product.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-no-js.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-download.txt"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "中英頁尾標示概念品牌，商品價格皆為示意，清單及摘要明示不含運費，交付另待商家確認。完成提示與下載文件都限定為瀏覽器整理本地摘要。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-1440-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-download.txt",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/en/works/liquid-archive/index.html",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/evidence/V002/COMMERCIAL.md"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "由系列卡直達該款設定，選表面與數量後可合併、修改、移除並下載。雙語桌面實際摘要合計 NT$17,680，390px 觸控清單正確顯示書擋一組 NT$3,380。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-390-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-390-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-download.txt",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-download.txt",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "空清單與數量無效時停用下載，修正後可繼續。實際中英 UTF-8 文件可供留存。清單明示暫存在此頁，重新載入或換語前需先下載才能留存。",
+          "evidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-1440-inquiry.png",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-en-download.txt",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/liquid-forme-zh-Hant-download.txt",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/test/browser/verify.mjs",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/source/evidence/V002/COMMERCIAL.md"
+          ]
+        }
+      ]
+    }
+  },
+  "limitations": {
+    "physicalDevices": "NOT_RUN",
+    "fullScreenReaderFlow": "NOT_RUN",
+    "productionDeployment": "NOT_RUN",
+    "deliveryZip": "NOT_RUN",
+    "externalReview": "NOT_RUN"
+  }
+}

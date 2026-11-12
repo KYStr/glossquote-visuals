@@ -6,7 +6,7 @@ Three production chats requested as gpt-6.1-sol/high have implemented the Paper 
 
 Individual candidate verification uses an isolated GitHub-hosted Windows Server 2025 VM. WebGPU renders through SwiftShader; desktop composition uses WARP. These results do not establish physical GPU, battery, screen-reader or human conversion performance. Runtime assets and fonts are bundled locally; no order, payment or reservation is sent.
 
-The integrated M02 source is in candidate review. A complete release requires the same integrated commit's desktop/mobile render and interaction evidence, non-author art/UI/commercial scores each strictly >9/10, all technical gates, and post-deployment HTTPS/browser checks. M01 remains the public version until that release succeeds. The following M01 and bootstrap records are historical.
+The integrated M02 candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a passed all technical candidate gates and independent non-author review: Paper & Light 9.2/9.3/9.2, FORME 9.3/9.2/9.3, and Night Signal 9.2/9.3/9.5 (art/UI/commercial). The fixed-candidate reviews and acceptance records are under each work's matching commit directory. [Integration evidence](M02/40d3740761c2c8b44f41bf8efe0723e03f8a650a/INTEGRATION.md). M01 remains the public version until the separate release workflow and post-deployment HTTPS/browser checks succeed. The following M01 and bootstrap records are historical.
 
 ## V00 bootstrap status — 2026-11-12
 

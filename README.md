@@ -4,7 +4,15 @@
 
 Original brand websites for bespoke stationery, steel homeware and an electronic music event. Each brings its own art direction, material language and complete customer journey.
 
-**Status:** M02 commercial redesigns are in candidate review. The public URLs still serve M01 until the shared integration candidate passes all release gates. Paper & Light becomes a print studio, Liquid Archive becomes FORME Objects, and Night Signal becomes an electronic music event. All three need independent art direction, UI and commercial-completeness scores strictly above 9/10. See the work registry for current candidates and preserved M01 release history.
+**Status:** The M02 integration candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a` passed the complete isolated-browser suite and non-author design review. All nine category scores are strictly above 9/10. The public URLs remain M01 until the separate accepted-release workflow and live checks succeed. See the work registry for exact release status and preserved M01 history.
+
+| Website | Art direction | UI design | Commercial completeness | Fixed-candidate review |
+|---|---:|---:|---:|---|
+| Paper & Light | 9.2 | 9.3 | 9.2 | [V001](evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
+| FORME Objects | 9.3 | 9.2 | 9.3 | [V002](evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
+| Night Signal | 9.2 | 9.3 | 9.5 | [V003](evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
+
+These are evidence-backed design judgments for concept websites, not measured conversion rates or external certification. [Integrated verification and limitations](evidence/M02/40d3740761c2c8b44f41bf8efe0723e03f8a650a/INTEGRATION.md).
 
 [繁中畫廊](https://kystr.github.io/glossquote-visuals/) · [English gallery](https://kystr.github.io/glossquote-visuals/en/)
 
@@ -13,9 +21,7 @@ Original brand websites for bespoke stationery, steel homeware and an electronic
 - Continuing objective: [GOAL.md](GOAL.md)
 - Work status: [coordination/work-registry.json](coordination/work-registry.json)
 - Upstream skill and licenses: [docs/UPSTREAM.md](docs/UPSTREAM.md)
-- Paper & Light design and verification: [evidence/V001/DESIGN.md](evidence/V001/DESIGN.md)
-- Liquid Archive design and verification: [evidence/V002/DESIGN.md](evidence/V002/DESIGN.md)
-- Night Signal design and verification: [evidence/V003/DESIGN.md](evidence/V003/DESIGN.md)
+- Historical M01 design baselines: [Paper & Light](evidence/V001/DESIGN.md), [Liquid Archive](evidence/V002/DESIGN.md), [Night Signal](evidence/V003/DESIGN.md)
 
 Current works: **紙與光 / Paper & Light**, **物形 / FORME Objects**, **夜航訊號 / Night Signal**. These are original concept brands. Customer flows create local briefs or itineraries; they do not submit orders, collect payments or reserve tickets. Art direction and review criteria are in [docs/M02-ART-DIRECTION.md](docs/M02-ART-DIRECTION.md). Future directions in [docs/IDEAS.md](docs/IDEAS.md) are not counted as ready production.
 

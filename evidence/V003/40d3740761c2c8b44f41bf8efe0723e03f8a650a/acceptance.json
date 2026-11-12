@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "work": "V003",
+  "commit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+  "author": "01a1d0b2-414c-7452-ad32-445d958fb8a1",
+  "reviewer": "/root/signal_review",
+  "date": "2026-11-13",
+  "reviewScope": "integrated-candidate",
+  "status": "PASS_CANDIDATE",
+  "runId": 43272957275,
+  "jobId": 131373875460,
+  "artifact": {
+    "id": 13969476687,
+    "sha256": "372edbaaddbaf5fd476ae7778f457424d7f819da1f595e5c77a0c35b93999bd8",
+    "digestProvenance": "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json"
+  },
+  "gates": {
+    "visual": "PASS",
+    "interaction": "PASS",
+    "shader": "PASS",
+    "lifecycle": "PASS",
+    "accessibility": "PASS",
+    "performance": "PASS",
+    "privacy": "PASS",
+    "seo": "PASS",
+    "reproducibility": "PASS"
+  },
+  "gateEvidence": {
+    "visual": {
+      "reason": "本輪同SHA中英1440/390全頁、320/200%首屏及768畫面已直接檢視，沒有整合退化。V003的海報窄體、午夜藍/淡黃與訊號波形，在字體、色彩材質和構圖上與紙品及家飾作品有明顯區別。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-1440-webgpu.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-390-webgpu.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-webgpu.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-320-200-percent.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-768-still.png"
+      ]
+    },
+    "interaction": {
+      "reason": "signalBooking與signal專用檢查PASS；radio選取/保留場次、兩種票價、非法數量、焦點、完成/修改與真實下載都有同SHA證據。下載兩語內容已親讀。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-selection.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-selection.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-complete.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-complete.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/night-signal-2026-11-21-en.txt",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/night-signal-2026-11-21-zh-Hant.txt"
+      ]
+    },
+    "shader": {
+      "reason": "同SHA隔離Windows VM真實WebGPU texture非均勻、三頻道不同，無probe收集到的validation/runtime錯誤；新增原CSS合成A/A/B/A及原生暫停對照，並同時量測GPU texture，排除只由CSS換色造成控制效果的假陽性。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-composite-a0.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-composite-b.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-composite-native-pause.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-texture-a0.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-texture-b.png"
+      ]
+    },
+    "lifecycle": {
+      "reason": "signal測試完整執行初始化、拒絕adapter、無GPU、reduced-motion不初始化、暫停/繼續、18次切換共用一canvas/device、hidden/offscreen停止、實際device loss恢復及pagehide/pageshow重新配置與新frame。CI單元測試亦通過。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-zh-Hant-composite-native-pause.png"
+      ]
+    },
+    "accessibility": {
+      "reason": "signal專用雙語320/390/768/1440、200%文字、鍵盤/焦點、觸控與44px目標測試PASS；抽樣對比最低6:1，no-JS/reduced-motion內容可讀。真實讀屏測試另列NOT_RUN。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-320-200-percent.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-768-still.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-selection.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-still.png"
+      ]
+    },
+    "performance": {
+      "reason": "本輪signal實測27.03 texture acquisitions/s、有效DPR1、每頁一活動canvas，暫停/hidden/offscreen停止。CI build的每路由<=2MiB gzip（包含所追蹤lazy chunks）斷言通過。30fps是設計目標，不宣稱SDK有硬上限，也不把此量測等同真機流暢度或電池測試。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json"
+      ]
+    },
+    "privacy": {
+      "reason": "固定source createShader第三參數disableTelemetry:true，CI檢查原始及輸出bundle；signal各狀態和新合成頁的assertPrivate均通過，只允許同源靜態GET與列明本地字型，沒有fetch/XHR/beacon/socket、storage或CSP/runtime錯誤。CSP為meta，非HTTP response header。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json"
+      ]
+    },
+    "seo": {
+      "reason": "固定source與成功CI build檢查雙語HTML title/description/h1/canonical、互返hreflang/x-default、分享資產及Pages base；candidate robots/noindex、sitemap與404的HTTP檢查PASS。正式部署的index/sitemap與live GET尚待發布工作驗證。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+      ]
+    },
+    "reproducibility": {
+      "reason": "CI固定40d3740、lockfile clean install、source check、unit tests、build及隔離瀏覽器整批成功；run/job與artifact digest由CI.json記錄，與本輪來源/證據吻合。本gate只簽核候選可重現性；正式部署驗證及交付ZIP另列PENDING。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+      ]
+    }
+  },
+  "scores": {
+    "artDirection": 9.2,
+    "uiDesign": 9.3,
+    "commercialCompleteness": 9.5
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "label": "品牌辨識",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "午夜藍、淡黃、窄體英文與訊號標記貫穿首屏、節目及完成頁；新增脈衝標記把主視覺語言延續到節目列。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-complete.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "label": "首屏構圖",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "大字、日期地點與 CTA 主次清楚。波形焦點集中於右上亮脊，文字區與圖像區形成完整活動海報；390 保留主標、時間與行動。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-poster.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-poster.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "label": "字體排版",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "英文 Barlow Condensed 與中文大字各自保持層級；修改後英文主標字距清楚。中文正文與介面較保守，但沒有阻擋閱讀的擠壓或孤字。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-selection.png"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "label": "材質影像",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "細波形、集中亮脊與退後底格維持前輪改善，場地黃光與午夜藍延續品牌。新原CSS合成與原生暫停對照顯示實際shader貢獻，不以只看獨立canvas取代整頁美術判斷。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-poster.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-composite-a0.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-composite-b.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-en-composite-native-pause.png"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "label": "整頁與跨尺寸節奏",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "深淺區塊、時間表與場地大圖形成穩定節奏。手機已改標題→圖片→實用資訊，改善原本先讀長文的負擔。英文手機交通段仍略長，但沒有妨礙主要流程。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-768-still.png"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "label": "資訊層級",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "活動定位、節目與時間、場地、票種、FAQ 的決策順序清楚；選票摘要內的場次、單價、張數及總額可直接核對。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-selection.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "label": "導航與行動",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "首屏與頁內導覽能清楚進入選票，單場票標籤已明示場次；完成後下載與修改的主次分明。鍵盤焦點與 CTA 導向有同 SHA 測試支持。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-complete.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "label": "表單與狀態",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "票種、場次、數量、價格更新、未選與非法數量的恢復均有同 SHA 測試。原生欄位清楚實用，選擇及完成圖排版完整；artifact 未保留獨立錯誤畫面，錯誤視覺判斷不超出測試及來源所能支持的範圍。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-complete.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "label": "手機／鍵盤／縮放",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "雙語390與桌面畫面完整，768雙欄保留閱讀寬度，320／200%首屏自然改成單欄且文字與CTA沒有裁斷。同 SHA 測試涵蓋雙語四寬度、200%文字、44px目標、鍵盤與觸控；未聲稱完整輔具使用者測試。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-320-200-percent.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-768-still.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "label": "互動回饋與一致性",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "節目圓點單選、選中背景與脈衝標記一致；首次選單場票後場次保留。新A/A/B/A測試同時驗證原CSS合成與GPU texture的變化大於自然漂移，返回A及原生暫停行為成立。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-zh-Hant-composite-a0.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-night-signal-zh-Hant-composite-b.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "label": "定位與價值",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "首屏直接說出環境音、低頻現場與深夜DJ；節目描述及場地影像支撐港邊電子音樂夜的體驗，網站已有完整活動品牌而非特效展示。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-1440-webgpu.png"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "label": "產品決策資訊",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "日期、三場時間、曲風、NT$480/880、單場與全夜差異、開門與散場參考都有；場地改成入口、站席、休息及回程資訊。真實地址不存在且已披露，不能拿概念站當真實售票站。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "label": "內容信任與真實性",
+          "score": 2,
+          "status": "PASS",
+          "reason": "票價示意、概念場地、場地示意圖與作品頁尾皆有揭露；完成明確說尚未付款或保留席位，沒有虛構交易成功、客戶背書或可到場地址。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-webgpu.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-complete.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-complete.png"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "label": "主要顧客流程",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "從節目理解、票種與場次選擇、張數和總額核對到完成摘要的路徑連貫。預選與保留規則已揭露且通過測試，不再因重新瀏覽節目暗中改掉已選票的場次。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-selection.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-complete.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "label": "完成與錯誤恢復",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "完成頁與本輪保存的中英實際下載均已親讀：日期、地點、舞台、NT$880×3=NT$2,640、三場時間一致，且明示未付款與未保留席位。返回修改保留值、錯誤聚焦由同SHA遠端測試確認。",
+          "evidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-1440-complete.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-complete.png",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/night-signal-2026-11-21-en.txt",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/night-signal-2026-11-21-zh-Hant.txt",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        }
+      ]
+    }
+  },
+  "sourceComparison": {
+    "base": "82ba3063ec2e7bd2bddee2a6efe7307563d8a7bd",
+    "candidate": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+    "result": "No differences in V003 HTML/CSS/JS/shader/assets/fonts or shared runtime; signal-commercial.mjs unchanged. Generic browser probe/composite verification was strengthened.",
+    "checkedPaths": [
+      "src/works/night-signal",
+      "works/night-signal",
+      "en/works/night-signal",
+      "src/shared",
+      "public/media/night-wave-poster.svg",
+      "public/media/night-venue.webp",
+      "public/fonts/night-barlow-condensed-extrabold.ttf",
+      "test/browser/signal-commercial.mjs"
+    ],
+    "priorReviewedCandidate": "f761f27ddcaa730a3438b51381f63ee3f81299e9",
+    "interveningChange": "f761f27→82ba306 adds persistence of actual downloaded itineraries to evidence; product source unchanged."
+  },
+  "measurements": {
+    "environment": "GitHub-hosted Windows Server 2025 VM",
+    "browser": "158.0.8127.18",
+    "display": "headless-d3d11-warp",
+    "adapter": "SwiftShader fallback",
+    "signalMinCheckedContrast": 6,
+    "signalTextureAcquisitionsPerSecond": 27.03,
+    "signalPixelRatio": 1,
+    "composites": {
+      "zh-Hant": {
+        "compositeDriftMean": 0.2645138888888889,
+        "compositeControlMean": 6.134652777777778,
+        "compositeRestoredMean": 0.6284722222222222,
+        "textureDriftMean": 0.5956944444444444,
+        "textureControlMean": 10.324652777777779,
+        "nativePauseContributionMean": 4.894027777777778,
+        "nativePauseChangedPixels": 341
+      },
+      "en": {
+        "compositeDriftMean": 0.2648611111111111,
+        "compositeControlMean": 6.128819444444445,
+        "compositeRestoredMean": 0.6129861111111111,
+        "textureDriftMean": 0.6020833333333333,
+        "textureControlMean": 10.319027777777778,
+        "nativePauseContributionMean": 4.909375,
+        "nativePauseChangedPixels": 340
+      }
+    }
+  },
+  "manualChecks": {
+    "physicalGpuAndRealPhone": {
+      "status": "NOT_RUN",
+      "reason": "隔離VM軟體adapter可證明WebGPU程式及合成行為，不能代替真機熱量、電池或所有硬體效能。"
+    },
+    "screenReader": {
+      "status": "NOT_RUN",
+      "reason": "已有語意、鍵盤和焦點自動測試，尚未人工操作讀屏。"
+    }
+  },
+  "releaseVerification": {
+    "status": "PENDING",
+    "reason": "尚未正式部署；本報告不宣稱live HTTPS、正式站source SHA、live互動或最終ZIP已驗證。"
+  },
+  "limitations": [
+    "同SHA提供中英1440/390全頁、中文768全頁與英文320/200%首屏；其餘尺寸/語言組合的布局證據來自signal自動測試，沒有宣稱每個組合都有保留截圖。",
+    "未保存獨立表單錯誤畫面；錯誤顯示、aria-invalid、焦點及修正後提交依同SHA源碼與成功測試，並非人工讀屏觀察。",
+    "signal-*-webgpu.png三頻道獨立GPU證據會暫時隱藏poster並改canvas opacity/blend；美術及合成驗收採正常全頁/hero與candidate-night-signal-*-composite-*.png原CSS圖。",
+    "本輪評分維持9.2/9.3/9.5，因來源與同SHA畫面沒有造成需調分的改變。分數是固定commercial-v1規準的設計判斷，不是轉換率或市場認證。",
+    "只寫本目錄REVIEW.md與acceptance.json；未更動作品來源、未commit、未啟動本機瀏覽器或桌面。"
+  ],
+  "optionalFollowups": [
+    {
+      "issue": "英文390交通段略長，中文正文風格較保守。",
+      "instruction": "若日後精修，可把回程時間、站點與概念地址披露分成更短句；目前不構成候選阻擋，修改後需新SHA核對。",
+      "evidence": [
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-en-390-webgpu.png",
+        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/signal-zh-Hant-390-webgpu.png"
+      ]
+    }
+  ]
+}
+

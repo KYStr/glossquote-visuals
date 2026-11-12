@@ -1,0 +1,327 @@
+{
+  "commit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+  "work": "V001",
+  "author": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
+  "reviewer": "/root/commercial_review",
+  "reviewedAt": "2026-11-13",
+  "reviewScope": "final integrated candidate; not a live deployment review",
+  "runId": 43272957275,
+  "jobId": 131373875460,
+  "artifact": {
+    "id": 13969476687,
+    "sha256": "372edbaaddbaf5fd476ae7778f457424d7f819da1f595e5c77a0c35b93999bd8",
+    "downloadDigestMatched": true,
+    "provenance": "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json"
+  },
+  "gates": {
+    "visual": "PASS",
+    "interaction": "PASS",
+    "shader": "PASS",
+    "lifecycle": "PASS",
+    "accessibility": "PASS",
+    "performance": "PASS",
+    "privacy": "PASS",
+    "seo": "PASS",
+    "reproducibility": "PASS"
+  },
+  "scores": {
+    "artDirection": 9.2,
+    "uiDesign": 9.3,
+    "commercialCompleteness": 9.2
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "弧形壓紋、暖紙色與朱紅貫穿商品、紙樣及表單，維持首輪評價。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "桌面斜切紙面增加辨識度，文字與紙張曲線有明確主次；390 首屏仍容納完整商品主視覺。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-1440-webgpu-fold.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu-fold.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-webgpu-fold.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-390-webgpu-fold.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "英文主標與段落標題字距恢復清楚節奏；中文表單孤立「單。」已消失。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-390-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-Hant-768-still.png"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "新三紙樣能辨識棉紙纖維、平滑卡紙與再生斑點，影像真正支援選材。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "同 SHA 桌面與手機維持商品影像、紙樣及訂製表單的段落節奏；768 改回左右首屏，減少上一輪右側留白，商品規格直排且圖說不擠成窄欄。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-768-still.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-Hant-768-still.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-390-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-1440-webgpu.png"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "商品、規格、紙材比較、流程、摘要順序清楚；表單內補上尺寸及組成，減少來回查找。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "主 CTA、系列入口及頁內導覽清楚，維持首輪評價；同 SHA 測試涵蓋鍵盤進入訂製與各系列入口。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-390-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "推薦值、自訂保留、數量單位、錯誤焦點與修改流程均有同 SHA 實際瀏覽器測試證據。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "390 表單與摘要可讀；768 紙材／加工改為全寬欄位，英文選中值完整。遠端同 SHA 測試通過雙語四寬度、200% 文字、鍵盤焦點、觸控、44px 控制與 reduced motion。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-768-still.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-Hant-768-still.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "系列、表單、摘要及實際下載的尺寸、組成、單位與交期一致；自訂保留提示清楚。原始 CSS 的光角 A/A/B/A 差異顯著超過自然動畫漂移，復位後接近原設定。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-print-brief.txt",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-print-brief.txt",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-paper-light-en-composite-a1.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-paper-light-en-composite-b.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "紙品訂製工作室、三個用途與工藝價值清楚，維持首輪評價。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "三紙材差異、起印量、尺寸、組成及交期支援選擇；本輪親讀雙語下載，250 組／sets、禮盒腰封／吊牌／小卡與示意尺寸均保留。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-print-brief.txt",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-print-brief.txt"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "score": 1.7,
+          "status": "PASS",
+          "reason": "保留概念網站及不接單說明，沒有虛構客戶背書；仍屬示意品牌資訊，維持首輪評價。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "從商品或主 CTA 進入，選系列、調整需求、檢查及下載形成完整流程；同 SHA 測試涵蓋雙語操作。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "同 SHA 測試證明錯誤定位、返回修改及自訂保留；親讀雙語實際 TXT 與完成截圖，交期分行且明示尚未送出訂單，完整摘要可攜出頁面。",
+          "evidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-print-brief.txt",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-print-brief.txt",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+          ]
+        }
+      ]
+    }
+  },
+  "gateDetails": {
+    "visual": {
+      "reason": "已目視同 SHA 中英 1440/390/768 全頁、完成摘要與原始 CSS 合成圖；紙品品牌、斜切首屏、三紙樣、版式及平板修正成立。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-1440-webgpu.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-webgpu.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-webgpu.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-390-webgpu.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-Hant-768-still.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-768-still.png"
+      ]
+    },
+    "interaction": {
+      "reason": "paperCommercial PASS：雙語商品預填與建議、自訂保留、尺寸/組成/單位、數量及用途驗證、觸控、鍵盤、修改與實際下載逐字比對。兩份 TXT 已親讀。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-print-brief.txt",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-print-brief.txt",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-1440-brief-complete.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png"
+      ]
+    },
+    "shader": {
+      "reason": "WebGPU 真實初始化及非空 texture，首張 240 色且 GPU errors 為空；雙語原始 CSS 合成控制差異、GPU 讀回及原生暫停對照通過，未以強制 opacity 的獨立輸出取代可見性證據。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-texture-readback.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-paper-light-en-composite-a1.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-paper-light-en-composite-b.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-paper-light-en-composite-native-pause.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-paper-light-en-texture-a1.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/candidate-paper-light-en-texture-b.png"
+      ]
+    },
+    "lifecycle": {
+      "reason": "同 SHA pause/deviceRecovery/visibility/webgpu PASS：三次暫停恢復、無額外 device、hidden/offscreen 停止取 texture、注入 unknown loss 並實際銷毀 device 後重建、離開與返回。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json"
+      ]
+    },
+    "accessibility": {
+      "reason": "雙語 320/390/768/1440、200% 文字、鍵盤焦點、觸控、44px 控制、no-JS/no-GPU/reduced-motion 測試通過；抽測最低對比 6.83:1。完整讀屏體驗另列 NOT_RUN。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-768-still.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-Hant-768-still.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-en-390-webgpu.png",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/paper-zh-390-brief-complete.png"
+      ]
+    },
+    "performance": {
+      "reason": "單活動 canvas、實測 DPR 1、軟體環境 12.41 次 texture acquisition/s。固定 SHA 的成功 build 包含 checkDist 對每頁（含 lazy chunks）<=2 MiB gzip 的硬性斷言；未聲稱實體 GPU FPS 或不存在的硬性 frame cap。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json"
+      ]
+    },
+    "privacy": {
+      "reason": "固定來源 disableTelemetry:true；同 SHA Network/Storage 探針只見同源靜態 GET，無 fetch/XHR/beacon/socket、CSP/runtime/GPU errors、cookies 或 storage。CSP 為 meta，未聲稱 response-header CSP。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json"
+      ]
+    },
+    "seo": {
+      "reason": "同 SHA checkDist 在成功 build 中核對雙語 title/description/h1/canonical、互返 alternate、分享圖與資產、candidate noindex/robots/sitemap；候選 HTTP/404 檢查通過。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+      ]
+    },
+    "reproducibility": {
+      "reason": "同一 SHA Windows job 成功依序執行 npm ci --ignore-scripts、check、test、build、瀏覽器驗證。CI run/job/artifact 與候選相符，下載摘要核對記錄一致。此 PASS 限候選可重現性，正式部署及最終 ZIP 待驗。",
+      "evidence": [
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/CI.json",
+        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/results.json"
+      ]
+    }
+  },
+  "sourceComparison": {
+    "authorCandidate": "88ec74e0da4c4062c065b56c3bf781d504043c89",
+    "result": "NO_DIFF",
+    "scope": [
+      "src/works/paper-light",
+      "src/shared",
+      "works/paper-light",
+      "en/works/paper-light",
+      "paper product and stock assets",
+      "package.json",
+      "package-lock.json",
+      "test/browser/paper-commercial.mjs"
+    ],
+    "note": "The integrated candidate did not change the reviewed paper product behavior or assets."
+  },
+  "limitations": {
+    "physicalGPU": "NOT_RUN",
+    "screenReader": "NOT_RUN",
+    "realHandsetPowerThermals": "NOT_RUN",
+    "liveDeployment": "NOT_RUN",
+    "finalDeliveryZip": "NOT_RUN",
+    "realConversionStudy": "NOT_RUN"
+  },
+  "notes": [
+    "This reviewer did not author V001 product HTML/CSS/JS/assets. The reviewer contributed a shared composite-verification helper; the candidate engineering evidence and source comparison were additionally inspected read-only by /root/commercial_review/release_gate_audit.",
+    "Windows Server 2025 VM / Chromium 158.0.8127.18 / WARP compositor / SwiftShader fallback adapter. Texture acquisition rate is not displayed FPS.",
+    "results.json downloads index lists only the two night-signal files because the signal test reinitializes the array. Both paper TXT evidence files exist and the same-SHA paper test saved, reread and exactly compared them. This manifest omission does not negate the observed download result.",
+    "Exact per-page gzip byte totals and unit-test count are not retained here. The successful CI step and fixed-SHA checkDist source support the budget/assertion PASS without inventing those numbers.",
+    "The artifact contains candidate evidence only. checks.live is absent. Release receipt, formal deployed pages and final ZIP require later verification."
+  ]
+}
