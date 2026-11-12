@@ -446,6 +446,7 @@ async function checkLiquid(browser) {
         await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
         assert.equal(page.url(), url(prefix + route));
         await phase(page, "reduced");
+        await page.evaluate(() => document.fonts.ready.then(() => undefined));
         await layout(page);
         assert.equal(await textureCount(page), 0);
         assert.equal(await page.evaluate(() => window.__visualProbe.devices), 0);
@@ -667,6 +668,16 @@ async function checkLiquid(browser) {
     });
     assert.equal(coversPhoto, true, "The hero photograph covers its entire frame");
     assert.equal(await page.evaluate(() => scrollY), 0, "The WebGPU composition is visible on entry");
+    const theme = await page.evaluate(async () => {
+      await document.fonts.ready;
+      return {
+        background: getComputedStyle(document.documentElement).backgroundColor,
+        accent: getComputedStyle(document.querySelector(".section-intro .eyebrow")).color,
+        geist: [...document.fonts].some(face => face.family === "Geist" && face.status === "loaded"),
+      };
+    });
+    assert.deepEqual(theme, { background: "rgb(238, 240, 237)", accent: "rgb(39, 81, 90)", geist: true });
+    evidence.measurements.liquidTheme = theme;
     await checkContrast(page, [
       ".config-copy h2", ".hero .button", ".card-description", ".finish-choices input:checked + span",
     ], "liquidMinCheckedContrast");
