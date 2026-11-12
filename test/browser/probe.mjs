@@ -48,7 +48,7 @@ export async function observe(page, { readPixels = false } = {}) {
           return configure.call(this, { ...options, usage });
         };
         let capture;
-        probe.readFrame = () => new Promise((resolve, reject) => {
+        probe.readFrame = (includeImage = false) => new Promise((resolve, reject) => {
           const timeout = setTimeout(() => {
             capture = undefined;
             reject(new Error("No canvas texture submitted for readback"));
@@ -76,12 +76,31 @@ export async function observe(page, { readPixels = false } = {}) {
                   values.push([red, bytes[offset + 1], blue, bytes[offset + 3]]);
                 }
               }
-              resolve({
+              const stats = {
                 width, height, format,
                 colors: new Set(values.map((value) => value.join(","))).size,
                 average: values[0].map((_, i) => Math.round(values.reduce((sum, value) => sum + value[i], 0) / values.length)),
-              });
-            }, reject).finally(() => buffer.destroy());
+              };
+              if (includeImage) {
+                const pixels = new Uint8ClampedArray(width * height * 4);
+                for (let row = 0; row < height; row++) {
+                  pixels.set(bytes.subarray(row * bytesPerRow, row * bytesPerRow + width * 4), row * width * 4);
+                }
+                if (format === "bgra8unorm") {
+                  for (let offset = 0; offset < pixels.length; offset += 4) {
+                    const blue = pixels[offset];
+                    pixels[offset] = pixels[offset + 2];
+                    pixels[offset + 2] = blue;
+                  }
+                }
+                const output = document.createElement("canvas");
+                output.width = width;
+                output.height = height;
+                output.getContext("2d", { willReadFrequently: true }).putImageData(new ImageData(pixels, width, height), 0, 0);
+                stats.png = output.toDataURL("image/png").split(",")[1];
+              }
+              resolve(stats);
+            }).catch(reject).finally(() => buffer.destroy());
           };
         });
         const submit = GPUQueue.prototype.submit;

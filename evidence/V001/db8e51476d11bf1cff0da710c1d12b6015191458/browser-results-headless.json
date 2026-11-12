@@ -1,0 +1,106 @@
+{
+  "commit": "db8e51476d11bf1cff0da710c1d12b6015191458",
+  "environment": "GitHub-hosted Ubuntu 24.04 VM",
+  "display": "headless-vulkan-swiftshader",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion",
+    "fallback": "PASS no-JS HTML, unsupported WebGPU and rejected adapter with working CSS controls",
+    "shaderTexture": "PASS real WebGPU texture has nonuniform pixels",
+    "compositing": "FAIL compositor did not present the changing WebGPU texture"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "Google Inc. (Google)",
+        "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)"
+      }
+    ],
+    "gpuBufferSmoke": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "value": 305441741
+    },
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "fallback": true
+    },
+    "minCheckedContrast": 6.831676841568789,
+    "firstFrame": {
+      "screenshot": {
+        "colors": 1,
+        "average": [
+          225,
+          215,
+          197
+        ]
+      },
+      "gpuErrors": [],
+      "texture": {
+        "width": 804,
+        "height": 574,
+        "format": "rgba8unorm",
+        "colors": 237,
+        "average": [
+          221,
+          203,
+          179,
+          255
+        ]
+      }
+    },
+    "textureAcquisitionsPerSecond": 59.39,
+    "pixelRatio": {
+      "deviceScaleFactor": 1,
+      "canvas": 1
+    },
+    "pixelSamples": {
+      "dawn": {
+        "width": 804,
+        "height": 574,
+        "format": "rgba8unorm",
+        "colors": 237,
+        "average": [
+          221,
+          203,
+          179,
+          255
+        ]
+      },
+      "overcast": {
+        "width": 804,
+        "height": 574,
+        "format": "rgba8unorm",
+        "colors": 98,
+        "average": [
+          185,
+          200,
+          219,
+          255
+        ]
+      },
+      "overcastComposite": {
+        "colors": 1,
+        "average": [
+          225,
+          215,
+          197
+        ]
+      }
+    }
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png",
+    "paper-en-1440-webgpu.png",
+    "paper-en-webgpu-only.png",
+    "paper-en-390-webgpu.png",
+    "paper-zh-390-webgpu.png"
+  ],
+  "result": "FAIL",
+  "error": "page.waitForFunction: Timeout 35000ms exceeded.\n    at phase (/home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:31:40)\n    at /home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:255:11\n    at async withPage (/home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:83:5)\n    at async checkShader (/home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:162:3)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:314:3"
+}

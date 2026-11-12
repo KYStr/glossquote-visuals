@@ -14,13 +14,10 @@ if (process.platform !== "linux" || process.env.GITHUB_ACTIONS !== "true" || pro
 
 const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 assert.equal(commit, process.env.GITHUB_SHA);
-const xvfb = process.env.GQ_BROWSER_DISPLAY === "xvfb";
-if (xvfb) assert.match(process.env.DISPLAY ?? "", /^:\d+(?:\.\d+)?$/);
-const display = xvfb ? "xvfb" : "headless-vulkan-swiftshader";
-const evidenceDir = resolve(root, ".runs/browser-evidence", display);
+const evidenceDir = resolve(root, ".runs/browser-evidence");
 await mkdir(evidenceDir, { recursive: true });
 const evidence = {
-  commit, environment: "GitHub-hosted Ubuntu 24.04 VM", display, browser: null,
+  commit, environment: "GitHub-hosted Ubuntu 24.04 VM", display: "headless-software-compositor", browser: null,
   checks: {}, measurements: {}, screenshots: [],
 };
 const site = await serveDist();
@@ -179,8 +176,14 @@ async function checkShader(browser) {
     evidence.measurements.firstFrame = {
       screenshot: first,
       gpuErrors: await page.evaluate(() => window.__visualProbe.gpuErrors),
+      canvasCss: await stage(page).locator("canvas").evaluate((canvas) => {
+        const style = getComputedStyle(canvas);
+        return { opacity: style.opacity, visibility: style.visibility, display: style.display };
+      }),
     };
-    const firstTexture = await page.evaluate(() => window.__visualProbe.readFrame());
+    const { png, ...firstTexture } = await page.evaluate(() => window.__visualProbe.readFrame(true));
+    await writeFile(resolve(evidenceDir, "paper-en-texture-readback.png"), Buffer.from(png, "base64"));
+    evidence.screenshots.push("paper-en-texture-readback.png");
     evidence.measurements.firstFrame.texture = firstTexture;
     assert.ok(firstTexture.colors > 20, `WebGPU texture lacks structure: ${JSON.stringify(firstTexture)}`);
     evidence.checks.shaderTexture = "PASS real WebGPU texture has nonuniform pixels";
@@ -213,6 +216,7 @@ async function checkShader(browser) {
       await phase(page, "running");
     }
     assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
+    evidence.checks.pause = "PASS three pause/resume cycles without extra devices or texture acquisition while paused";
     await page.getByRole("button", { name: "Reset" }).click();
     assert.equal(await settings(page).inputValue(), "38");
     assert.equal(await stage(page).getAttribute("data-preset"), "dawn");
@@ -233,6 +237,7 @@ async function checkShader(browser) {
     await page.evaluate(() => window.__visualProbe.loseDevice());
     await page.waitForFunction((count) => window.__visualProbe.devices > count, deviceCount, { timeout: 35_000 });
     await phase(page, "running");
+    evidence.checks.deviceRecovery = "PASS new WebGPU device after injected unknown loss and actual old device destruction";
 
     await page.setViewportSize({ width: 390, height: 540 });
     await page.evaluate(() => window.scrollTo(0, 0));
@@ -244,6 +249,7 @@ async function checkShader(browser) {
     await page.evaluate(() => window.scrollTo(0, 0));
     await phase(page, "running");
     await probe.assertPrivate(site.origin);
+    evidence.checks.visibility = "PASS no frame acquisition during injected hidden state and actual offscreen scroll";
 
     await page.locator('header a[lang="zh-Hant"]').click();
     assert.equal(page.url(), url(work));
@@ -252,6 +258,8 @@ async function checkShader(browser) {
     await page.locator(".site-footer a").first().click();
     assert.equal(page.url(), url());
     await page.goBack({ waitUntil: "commit" });
+    assert.equal(page.url(), url(work));
+    await stage(page).scrollIntoViewIfNeeded();
     await phase(page, "running");
     await probe.assertPrivate(site.origin);
     evidence.measurements.requestPaths = [...new Set(probe.requests.map(({ url }) => new URL(url).pathname))].sort();
@@ -264,21 +272,19 @@ async function checkShader(browser) {
 let browser;
 try {
   browser = await chromium.launch({
-    channel: "chromium", headless: !xvfb,
+    channel: "chromium", headless: true,
+    ignoreDefaultArgs: ["--disable-back-forward-cache"],
     args: [
       "--enable-unsafe-webgpu", "--enable-unsafe-swiftshader", "--disable-gpu-watchdog",
-      // Chromium's WebGPU pixel tests select SwiftShader for Dawn and Vulkan
-      // compositing together. The Xvfb retry uses its VM's GL compositor.
-      ...(xvfb ? ["--use-vulkan", "--use-angle=gl"] : [
-        "--enable-features=Vulkan", "--use-angle=swiftshader", "--use-vulkan=swiftshader",
-        "--use-webgpu-adapter=swiftshader", "--disable-vulkan-surface",
-      ]),
+      "--use-angle=swiftshader", "--use-vulkan=swiftshader", "--use-webgpu-adapter=swiftshader",
+      "--disable-vulkan-surface", "--disable-gpu-compositing", "--disable-accelerated-2d-canvas",
     ],
   });
   evidence.browser = browser.version();
   const session = await browser.newBrowserCDPSession();
   const info = await session.send("SystemInfo.getInfo");
   evidence.measurements.renderer = info.gpu.devices.map(({ vendorString, deviceString }) => ({ vendorString, deviceString }));
+  evidence.measurements.browserFeatures = info.gpu.featureStatus;
   await session.detach();
   for (const file of ["robots.txt", "sitemap.xml", "media/paper-light-share.jpg", "licenses/NOTICES.txt"]) {
     assert.equal((await fetch(url(file))).status, 200, file);
