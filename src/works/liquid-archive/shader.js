@@ -1,42 +1,41 @@
 import { initializeStandalone } from "../../shared/standalone.js";
 
-const objects = {
-  ring: { shape: { type: "ringSDF", radius: 0.255, innerRatio: 0.077 }, tint: "#e6ebf2", waviness: 0.19 },
-  orb: { shape: { type: "circleSDF", radius: 0.33 }, tint: "#c8d9f1", waviness: 0.36 },
-  arc: { shape: { type: "crescentSDF", radius: 0.35, innerRatio: 0.84, offset: 0.18 }, tint: "#e9e3d9", waviness: 0.13 },
+const shape = JSON.stringify({ type: "circleSDF", radius: 0.58 });
+const finishes = {
+  polished: {
+    type: "Chrome",
+    tint: "#dcd3c6", warmColor: "#edccb1", coolColor: "#a3a9ad",
+    bevelWidth: 0.06, curvature: 0.78, waviness: 0.18,
+    dispersion: 0.025, spectral: 0.14, softness: 0.24, shadows: 0.78,
+  },
+  satin: {
+    type: "BrushedMetal",
+    lightColor: "#d8d0c2", darkColor: "#302b26",
+    brushAngle: 13, anisotropy: 0.7, grain: 0.5, roughness: 0.62,
+  },
 };
 
-function props(id, angle) {
-  const { shape, tint, waviness } = objects[id];
+function studioLight(angle) {
   return {
-    shape: JSON.stringify({ ...shape, rotation: angle - 28 }),
-    envRotation: angle,
-    tint,
-    waviness,
+    type: "auto-animate",
+    mode: "ping-pong",
+    outputMin: angle - 24,
+    outputMax: angle + 24,
+    speed: 0.23,
   };
 }
 
-export function applyLiquid(renderer, { object, angle }) {
-  for (const id of Object.keys(objects)) renderer.update(id, { visible: id === object });
-  renderer.update(object, props(object, angle));
+export function applyLiquid(renderer, { finish, angle }) {
+  for (const id of Object.keys(finishes)) renderer.update(id, { visible: id === finish });
+  renderer.update(finish, { envRotation: studioLight(angle) });
 }
 
 export function initializeLiquid(canvas, options) {
-  const { object, angle } = options.settings;
-  const metals = Object.keys(objects).map((id) => ({
-    id, type: "Chrome",
-    props: {
-      ...props(id, angle),
-      visible: id === object,
-      dispersion: 0.05,
-      spectral: 0.26,
-      speed: 0.13,
-      warmColor: "#ddd4c2",
-      coolColor: "#8b9ebd",
-    },
+  const { finish, angle } = options.settings;
+  const layers = Object.entries(finishes).map(([id, { type, ...surface }]) => ({
+    id,
+    type,
+    props: { ...surface, shape, envRotation: studioLight(angle), speed: 0.18, visible: id === finish },
   }));
-  return initializeStandalone(canvas, [
-    { type: "SolidColor", props: { color: "#13161d" } },
-    ...metals,
-  ], options);
+  return initializeStandalone(canvas, layers, options);
 }

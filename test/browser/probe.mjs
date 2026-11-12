@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 
-export async function observe(page, { readPixels = false } = {}) {
+export async function observe(page, { readPixels = false, localFont } = {}) {
   const requests = [];
   const errors = [];
   page.on("request", (request) => requests.push({ url: request.url(), type: request.resourceType(), method: request.method() }));
@@ -161,7 +161,8 @@ export async function observe(page, { readPixels = false } = {}) {
       for (const request of requests) {
         assert.equal(new URL(request.url).origin, origin);
         assert.equal(request.method, "GET");
-        assert.ok(["document", "stylesheet", "image", "script", "other"].includes(request.type), JSON.stringify(request));
+        const expectedFont = request.type === "font" && new URL(request.url).pathname === localFont;
+        assert.ok(expectedFont || ["document", "stylesheet", "image", "script", "other"].includes(request.type), JSON.stringify(request));
         assert.doesNotMatch(new URL(request.url).pathname, /telemetry|analytics|collect/);
       }
     },
