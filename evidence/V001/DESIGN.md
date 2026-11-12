@@ -11,7 +11,7 @@
 
 ## 建置與驗收
 
-執行 `npm ci --ignore-scripts`、`npm run check`、`npm test`、`npm run build`。候選 workflow 在 GitHub 託管 Ubuntu VM 對同一 SHA 執行 Chromium 驗收。它檢查 WebGPU 實際像素、鍵盤與觸控、fallback、尺寸與放大、動態生命週期、網路與儲存，以及 Pages 子路徑的本機 HTTP。
+執行 `npm ci --ignore-scripts`、`npm run check`、`npm test`、`npm run build`。候選 workflow 在 GitHub 託管 VM 對同一 SHA 執行 Chromium 驗收。它檢查 WebGPU 實際像素、鍵盤與觸控、fallback、尺寸與放大、動態生命週期、網路與儲存，以及 Pages 子路徑的本機 HTTP。
 
 固定版 Shaders 使用 `disableTelemetry: true`，以容器尺寸呼叫公開 resize。官方 API 沒有強制 DPR 或 FPS 的選項。軟體 WebGPU 的 texture acquisition 頻率與 canvas 像素比例屬該測試環境。真機更新率、發熱與耗電需另外驗證。meta CSP 作用於頁面資源，Pages response headers 與 frame-ancestors 另受託管環境限制。
 
@@ -19,6 +19,6 @@
 
 遠端測試對實際 WebGPU device 注入 unknown-loss 通知，再銷毀原 device 並驗證新 device 恢復。分頁隱藏以 visibility event 模擬，離開畫面則實際捲動。
 
-WebGPU texture 讀回與瀏覽器合成截圖各自驗收。歷史測試包括 [Chromium WebGPU pixel tests 的 Vulkan/SwiftShader 設定](https://chromium.googlesource.com/chromium/src/+/main/content/test/gpu/gpu_tests/pixel_test_pages.py) 和 [同一 GitHub VM 的 Playwright Xvfb 虛擬顯示器](https://playwright.dev/docs/ci#running-headed)。候選驗收將 Chromium 設為軟體合成，保留 WebGPU 走 SwiftShader 的 Vulkan 路徑。
+WebGPU texture 讀回與瀏覽器合成截圖各自驗收。Ubuntu VM 使用 [Chromium WebGPU pixel tests 的 Vulkan/SwiftShader 設定](https://chromium.googlesource.com/chromium/src/+/main/content/test/gpu/gpu_tests/pixel_test_pages.py)。另以 GitHub 託管 Windows VM 測試 [Chromium 的 D3D11 WARP](https://chromium.googlesource.com/chromium/src.git/+/cb1b55a689b912032d11b6c4b20fa29c6db38b2d)。歷史嘗試另有 Ubuntu 軟體合成和 [Playwright Xvfb](https://playwright.dev/docs/ci#running-headed)。
 
 見 [依賴 notices](../../public/licenses/NOTICES.txt)、[驗收矩陣](../../docs/ACCEPTANCE.md)、[狀態](../STATUS.md)。託管 VM 與隔離範圍參考 [GitHub 官方文件](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)。

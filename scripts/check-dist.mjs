@@ -80,8 +80,9 @@ export function checkDist(mode) {
     for (const chunk of chunks) {
       assert.ok(!/Function\(["'`]+return true["'`]+\)/.test(read(`assets/${chunk}`)), `JIT capability probe was emitted in ${chunk}`);
     }
+    console.log("PASS emitted telemetry opt-out and no JIT probe");
   }
   assert.ok(!read("index.html").includes("<canvas"));
   assert.ok(!read("en/index.html").includes("<canvas"));
-  console.log("PASS static routes, reciprocal metadata, share assets, CSP, gallery without canvas, and emitted telemetry opt-out");
+  console.log("PASS static routes, reciprocal metadata, share assets, CSP and gallery without canvas");
 }

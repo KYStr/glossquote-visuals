@@ -8,8 +8,10 @@ import { base, root } from "../../scripts/site-map.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 
-if (process.platform !== "linux" || process.env.GITHUB_ACTIONS !== "true" || process.env.RUNNER_ENVIRONMENT !== "github-hosted") {
-  throw new Error("NOT_RUN_USER_FOCUS_BOUNDARY: browser checks require a GitHub-hosted Linux runner");
+const windows = process.platform === "win32" && process.env.RUNNER_OS === "Windows";
+const linux = process.platform === "linux" && process.env.RUNNER_OS === "Linux";
+if ((!windows && !linux) || process.env.GITHUB_ACTIONS !== "true" || process.env.RUNNER_ENVIRONMENT !== "github-hosted") {
+  throw new Error("NOT_RUN_USER_FOCUS_BOUNDARY: browser checks require a GitHub-hosted VM");
 }
 
 const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
@@ -17,7 +19,8 @@ assert.equal(commit, process.env.GITHUB_SHA);
 const evidenceDir = resolve(root, ".runs/browser-evidence");
 await mkdir(evidenceDir, { recursive: true });
 const evidence = {
-  commit, environment: "GitHub-hosted Ubuntu 24.04 VM", display: "headless-software-compositor", browser: null,
+  commit, environment: windows ? "GitHub-hosted Windows Server 2025 VM" : "GitHub-hosted Ubuntu 24.04 VM",
+  display: windows ? "headless-d3d11-warp" : "headless-vulkan-swiftshader", browser: null,
   checks: {}, measurements: {}, screenshots: [],
 };
 const site = await serveDist();
@@ -275,9 +278,11 @@ try {
     channel: "chromium", headless: true,
     ignoreDefaultArgs: ["--disable-back-forward-cache"],
     args: [
-      "--enable-unsafe-webgpu", "--enable-unsafe-swiftshader", "--disable-gpu-watchdog",
-      "--use-angle=swiftshader", "--use-vulkan=swiftshader", "--use-webgpu-adapter=swiftshader",
-      "--disable-vulkan-surface", "--disable-gpu-compositing", "--disable-accelerated-2d-canvas",
+      "--enable-unsafe-webgpu", "--disable-gpu-watchdog",
+      ...(windows ? ["--enable-gpu", "--use-angle=d3d11-warp", "--use-webgpu-adapter=d3d11"] : [
+        "--enable-unsafe-swiftshader", "--enable-features=Vulkan", "--use-angle=swiftshader",
+        "--use-vulkan=swiftshader", "--use-webgpu-adapter=swiftshader", "--disable-vulkan-surface",
+      ]),
     ],
   });
   evidence.browser = browser.version();
