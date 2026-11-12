@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 3,
+  "revision": 4,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.1-sol",
@@ -16,12 +16,15 @@
       "brief": "briefs/V001-paper-light.md",
       "status": "candidate",
       "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
-      "candidateCommit": "6c5d753ec133c3359645497984512dc1f315c3a7",
+      "candidateCommit": "26d9bcf76155ccd64b31c5e30c03f726a0169b3d",
       "pr": "https://github.com/KYStr/glossquote-visuals/pull/1",
-      "reviewEvidence": ["evidence/V001/6c5d753ec133c3359645497984512dc1f315c3a7/REVIEW.md"],
+      "reviewEvidence": [
+        "evidence/V001/6c5d753ec133c3359645497984512dc1f315c3a7/REVIEW.md",
+        "evidence/V001/26d9bcf76155ccd64b31c5e30c03f726a0169b3d/REVIEW.md"
+      ],
       "liveUrl": null,
       "deployedCommit": null,
-      "blockers": ["Initial Chromium run found a blocked JIT capability probe. WebGPU acceptance must be rerun on the repaired commit."],
+      "blockers": ["SwiftShader initialized, but the isolated canvas capture did not show the shader pattern. Nonuniform WebGPU output and dynamic interaction remain pending."],
       "branch": "codex/v001-paper-light"
     },
     {

@@ -55,5 +55,5 @@ export function initializePaperLight(canvas, { width, height, settings, onReady,
         blendMode: "softLight",
       } },
     ],
-  }, { disableTelemetry: true, observeElement: false, onReady, onError });
+  }, { disableTelemetry: true, observeElement: false, colorSpace: "srgb", onReady, onError });
 }

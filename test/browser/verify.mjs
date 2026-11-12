@@ -156,7 +156,7 @@ async function checkFallback(browser) {
 
 async function checkShader(browser) {
   await withPage(browser, { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 }, async (page) => {
-    const probe = await observe(page);
+    const probe = await observe(page, { readPixels: true });
     await open(page, "en/" + work);
     const adapter = await page.evaluate(async () => {
       const gpu = await navigator.gpu?.requestAdapter();
@@ -167,10 +167,18 @@ async function checkShader(browser) {
     evidence.measurements.adapter = adapter;
     await phase(page, "running");
     await checkContrast(page);
+    await page.waitForFunction(() => window.__visualProbe.textures >= 5);
+    await screenshot(page, "paper-en-1440-webgpu.png");
+    const firstTexture = await page.evaluate(() => window.__visualProbe.readFrame());
     const img = resolve(evidenceDir, "paper-en-webgpu-only.png");
     const first = await pixelEvidence(page, stage(page), img);
     evidence.screenshots.push("paper-en-webgpu-only.png");
-    assert.ok(first.colors > 20, `WebGPU buffer has no visible structure: ${JSON.stringify(first)}`);
+    evidence.measurements.firstFrame = {
+      texture: firstTexture, screenshot: first,
+      gpuErrors: await page.evaluate(() => window.__visualProbe.gpuErrors),
+    };
+    assert.ok(firstTexture.colors > 20 && first.colors > 20,
+      `WebGPU output lacks structure: ${JSON.stringify(evidence.measurements.firstFrame)}`);
     const start = performance.now();
     const before = await textureCount(page);
     await page.waitForTimeout(1200);
@@ -179,12 +187,12 @@ async function checkShader(browser) {
     evidence.measurements.textureAcquisitionsPerSecond = Number((textures * 1000 / (performance.now() - start)).toFixed(2));
     evidence.measurements.canvasDprAtDsf2 = await stage(page).locator("canvas").evaluate((canvas) =>
       Number((canvas.width / canvas.getBoundingClientRect().width).toFixed(3)));
-    await screenshot(page, "paper-en-1440-webgpu.png");
     await settings(page).press("End");
     await page.locator('label:has([value="overcast"])').click();
     await page.waitForTimeout(200);
     const changed = await pixelEvidence(page, stage(page));
-    assert.ok(changed.colors > 20 && changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5));
+    const changedTexture = await page.evaluate(() => window.__visualProbe.readFrame());
+    assert.ok(changed.colors > 20 && changedTexture.colors > 20 && changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5));
     evidence.measurements.pixelSamples = { dawn: first, overcast: changed };
 
     for (let i = 0; i < 3; i++) {

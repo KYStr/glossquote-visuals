@@ -1,0 +1,33 @@
+{
+  "commit": "26d9bcf76155ccd64b31c5e30c03f726a0169b3d",
+  "environment": "GitHub-hosted Ubuntu 24.04 VM",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion",
+    "fallback": "PASS no-JS HTML, unsupported WebGPU and rejected adapter with working CSS controls"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "Google Inc. (Google)",
+        "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)"
+      }
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "fallback": true
+    },
+    "minCheckedContrast": 6.831676841568789
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png",
+    "paper-en-webgpu-only.png"
+  ],
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: WebGPU buffer has no visible structure: {\"colors\":1,\"average\":[255,255,255]}\n    at file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:173:12\n    at async withPage (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:80:5)\n    at async checkShader (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:158:3)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:263:3"
+}
