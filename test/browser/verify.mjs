@@ -709,7 +709,7 @@ try {
   } else {
     await checkLayouts(browser);
     await checkFallback(browser);
-    await checkPaperCommercial({ browser, withPage, open, screenshot, site, work });
+    evidence.downloads = await checkPaperCommercial({ browser, withPage, open, screenshot, site, work, evidenceDir });
     evidence.checks.paperCommercial = "PASS bilingual series prefill and suggestions, preserved custom choices, specifications, units, touch, validation, keyboard focus, edit, and exact local download with privacy";
     await withPage(browser, {}, async (page) => {
       await open(page, "404.html");
