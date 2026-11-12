@@ -66,4 +66,3 @@ GPU texture 的控制差異約 27.44、自然漂移約 0.006；同設定原生�
 - 現有公開證據沒有每頁精確 gzip bytes 或單元測試總數；只宣告成功 CI 與固定來源硬性斷言支持的結果。
 - Reviewer 未撰寫 V001 產品來源／美術素材；曾補強共用合成驗證 helper。工程證據與來源比對另經 `/root/commercial_review/release_gate_audit` 唯讀複核。
 - 本輪沒有啟動本機瀏覽器，沒有修改產品來源。`checks.live` 尚不存在，後續正式部署需獨立核對 receipt、同版本頁面與資產。
-
