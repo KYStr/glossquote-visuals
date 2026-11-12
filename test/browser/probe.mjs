@@ -11,7 +11,7 @@ export async function observe(page) {
   await page.addInitScript(() => {
     const probe = window.__visualProbe = { textures: 0, devices: 0, calls: [], violations: [], gpuErrors: [] };
     window.addEventListener("securitypolicyviolation", (event) => {
-      probe.violations.push({ directive: event.violatedDirective, blocked: event.blockedURI });
+      probe.violations.push({ directive: event.violatedDirective, blocked: event.blockedURI, source: event.sourceFile, line: event.lineNumber });
     });
     const observeCall = (object, method, label) => {
       const native = object[method];
@@ -23,7 +23,9 @@ export async function observe(page) {
     observeCall(window, "fetch", "fetch");
     observeCall(Navigator.prototype, "sendBeacon", "beacon");
     observeCall(XMLHttpRequest.prototype, "open", "XHR");
-    observeCall(Storage.prototype, "setItem", "storage");
+    for (const method of ["getItem", "setItem", "removeItem", "clear"]) {
+      observeCall(Storage.prototype, method, `storage.${method}`);
+    }
     window.WebSocket = new Proxy(window.WebSocket, {
       construct(target, args, newTarget) {
         probe.calls.push("WebSocket");
@@ -43,7 +45,15 @@ export async function observe(page) {
       GPUAdapter.prototype.requestDevice = async function (...args) {
         const device = await requestDevice.apply(this, args);
         probe.devices++;
-        probe.device = device;
+        const unknownLoss = Promise.withResolvers();
+        Object.defineProperty(device, "lost", { value: Promise.race([device.lost, unknownLoss.promise]) });
+        probe.loseDevice = async () => {
+          // The SDK intentionally ignores the "destroyed" reason. Deliver an
+          // unknown-loss notification and destroy the actual device afterwards.
+          unknownLoss.resolve({ reason: "unknown", message: "Injected isolated test loss" });
+          await new Promise((resolve) => setTimeout(resolve, 0));
+          device.destroy();
+        };
         device.addEventListener("uncapturederror", (event) => probe.gpuErrors.push(event.error.message));
         return device;
       };

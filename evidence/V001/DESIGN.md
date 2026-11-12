@@ -15,4 +15,8 @@
 
 固定版 Shaders 使用 `disableTelemetry: true`，以容器尺寸呼叫公開 resize。官方 API 沒有強制 DPR 或 FPS 的選項。軟體 WebGPU 的 texture acquisition 頻率與 canvas 像素比例屬該測試環境。真機更新率、發熱與耗電需另外驗證。meta CSP 作用於頁面資源，Pages response headers 與 frame-ancestors 另受託管環境限制。
 
+首次 Chromium 驗收捕捉到內嵌 TypeGPU 用 `new Function` 探測 JIT，觸發 CSP。建置在 `shaders/js` 實際匯入的模組 SHA-256 與唯一匹配通過時將這個探測固定為 false，保留通用非 JIT writer 與原有 CSP。公開 debug 設定停用 upstream 的 storage 旗標讀取。npm 套件與官方 skill 保留原內容。
+
+遠端測試對實際 WebGPU device 注入 unknown-loss 通知，再銷毀原 device 並驗證新 device 恢復。分頁隱藏以 visibility event 模擬，離開畫面則實際捲動。
+
 見 [依賴 notices](../../public/licenses/NOTICES.txt)、[驗收矩陣](../../docs/ACCEPTANCE.md)、[狀態](../STATUS.md)。託管 VM 與隔離範圍參考 [GitHub 官方文件](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)。

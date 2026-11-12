@@ -77,6 +77,9 @@ export function checkDist(mode) {
   if (works.length) {
     const chunks = readdirSync(file("assets")).filter((name) => name.endsWith(".js"));
     assert.ok(chunks.some((name) => /disableTelemetry:\s*(?:true|!0)\b/.test(read(`assets/${name}`))));
+    for (const chunk of chunks) {
+      assert.ok(!/Function\(["'`]+return true["'`]+\)/.test(read(`assets/${chunk}`)), `JIT capability probe was emitted in ${chunk}`);
+    }
   }
   assert.ok(!read("index.html").includes("<canvas"));
   assert.ok(!read("en/index.html").includes("<canvas"));

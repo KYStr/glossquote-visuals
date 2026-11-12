@@ -92,6 +92,10 @@ async function checkLayouts(browser) {
         await open(page, locale);
         assert.equal(await page.locator("html").getAttribute("lang"), lang);
         assert.equal(await page.locator("canvas").count(), 0);
+        await page.keyboard.press("Tab");
+        assert.equal(await page.locator(".skip").evaluate((link) => link === document.activeElement && getComputedStyle(link).clipPath === "none"), true);
+        await page.keyboard.press("Enter");
+        assert.equal(await page.locator("main").evaluate((main) => main === document.activeElement), true);
         await layout(page);
         if (width === 1440) await screenshot(page, `gallery-${lang}-1440.png`);
         await page.locator(".exhibition-card").click();
@@ -208,7 +212,7 @@ async function checkShader(browser) {
     await phase(page, "running");
 
     const deviceCount = await page.evaluate(() => window.__visualProbe.devices);
-    await page.evaluate(() => window.__visualProbe.device.destroy());
+    await page.evaluate(() => window.__visualProbe.loseDevice());
     await page.waitForFunction((count) => window.__visualProbe.devices > count, deviceCount, { timeout: 35_000 });
     await phase(page, "running");
 
@@ -234,7 +238,7 @@ async function checkShader(browser) {
     await probe.assertPrivate(site.origin);
     evidence.measurements.requestPaths = [...new Set(probe.requests.map(({ url }) => new URL(url).pathname))].sort();
   });
-  evidence.checks.webgpu = "PASS nonuniform rendered pixels, live input changes, native device destroy/recovery, pause/resume, hidden event, offscreen, return";
+  evidence.checks.webgpu = "PASS nonuniform WebGPU pixels, live input changes, recovery after injected unknown-loss signal and actual device destruction, pause/resume, hidden event, offscreen, return";
   evidence.checks.privacy = "PASS only static same-origin GETs, no fetch/XHR/beacon/socket, CSP violations, browser errors, cookies or storage";
 }
 

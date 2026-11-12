@@ -1,4 +1,4 @@
-import { createShader } from "shaders/js";
+import { createShader, setShadersDebug } from "shaders/js";
 
 const palettes = {
   dawn: { light: "#fff6df", shade: "#b79b82", edge: "#8f715a" },
@@ -30,6 +30,7 @@ export function applyPaperLight(renderer, settings) {
 
 export function initializePaperLight(canvas, { width, height, settings, onReady, onError }) {
   const { field, shaft } = lightLayers(settings);
+  setShadersDebug(false);
   canvas.style.width = `${width}px`;
   canvas.style.height = `${height}px`;
   return createShader(canvas, {

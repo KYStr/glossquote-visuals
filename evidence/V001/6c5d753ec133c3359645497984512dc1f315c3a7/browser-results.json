@@ -1,0 +1,25 @@
+{
+  "commit": "6c5d753ec133c3359645497984512dc1f315c3a7",
+  "environment": "GitHub-hosted Ubuntu 24.04 VM",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "Google Inc. (Google)",
+        "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)"
+      }
+    ]
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png"
+  ],
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    calls: [],\n    gpuErrors: [],\n    stored: 0,\n+   violations: [\n+     {\n+       blocked: 'eval',\n+       directive: 'script-src'\n+     }\n+   ]\n-   violations: []\n  }\n\n    at Object.assertPrivate (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/probe.mjs:63:14)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:147:7\n    at async withPage (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:80:5)\n    at async checkFallback (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:129:5)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:258:3"
+}
