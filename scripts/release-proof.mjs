@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { existsSync, lstatSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { registry, releaseWorkIds, root } from "./site-map.mjs";
+import { registry, releaseWorkIds, root, worksFor } from "./site-map.mjs";
 
 const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 const sha = /^[a-f0-9]{40}$/;
@@ -21,6 +21,7 @@ export async function releaseProof() {
   const ids = releaseWorkIds();
   assert.ok(ids.length > 0, "Select at least one reviewed work");
   assert.equal(new Set(ids).size, ids.length, "Release work IDs must be unique");
+  verifyReleaseSelection(ids, worksFor("release"));
   const works = [];
   for (const id of ids) {
     assert.match(id, /^V\d{3}$/);
@@ -80,28 +81,38 @@ export const designCriteria = {
   commercialCompleteness: ["positioningValue", "decisionInformation", "truthfulTrust", "customerJourney", "completionRecovery"],
 };
 
+export function verifyReleaseSelection(ids, outputWorks) {
+  assert.ok(ids.length > 0);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.deepEqual([...ids].sort(), outputWorks.map(({ id }) => id).sort(),
+    "Every work rebuilt into the Pages artifact needs this release's candidate review; include all output works");
+}
+
 export function verifyDesignScores(scores, review) {
   assert.equal(review?.rubricVersion, "commercial-v1");
   for (const [category, expected] of Object.entries(designCriteria)) {
     const score = scores?.[category];
     assert.ok(Number.isFinite(score) && score > 9 && score <= 10,
       `${category} requires an evidence-backed score strictly above 9/10`);
+    assert.ok(Number.isInteger(score * 10), "Category scores use 0.1-point increments");
     const criteria = review.categories?.[category];
     assert.ok(Array.isArray(criteria));
     assert.deepEqual(criteria.map((criterion) => criterion.id).sort(), [...expected].sort());
-    let sum = 0;
+    let tenths = 0;
     for (const criterion of criteria) {
       assert.equal(criterion.status, "PASS");
       assert.ok(Number.isFinite(criterion.score) && criterion.score >= 0 && criterion.score <= 2);
+      assert.ok(Number.isInteger(criterion.score * 10), "Criterion scores use 0.1-point increments");
       assert.ok(typeof criterion.reason === "string" && criterion.reason.trim().length > 0);
       assert.ok(Array.isArray(criterion.evidence) && criterion.evidence.length > 0);
       for (const path of criterion.evidence) {
         assert.ok(typeof path === "string" && path.startsWith("evidence/") && path.length > 9 &&
           !path.endsWith("/") && !path.includes("\\") && !path.split("/").includes(".."));
       }
-      sum += criterion.score;
+      tenths += criterion.score * 10;
     }
-    assert.ok(Math.abs(sum - score) < 0.001, `${category} total differs from its criteria`);
+    assert.ok(tenths > 90 && tenths <= 100, `${category} criteria must sum to strictly more than 9/10`);
+    assert.equal(tenths, score * 10, `${category} total differs from its criteria`);
   }
 }
 

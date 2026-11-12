@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { isReleaseWork, registry, releaseWorkIds } from "../scripts/site-map.mjs";
-import { designCriteria, verifyDesignScores, verifyReleaseReceipt } from "../scripts/release-proof.mjs";
+import { designCriteria, verifyDesignScores, verifyReleaseReceipt, verifyReleaseSelection } from "../scripts/release-proof.mjs";
 
 function designReview() {
   return {
@@ -41,6 +41,24 @@ test("each commercial design score must independently exceed nine", () => {
     change(review.categories.artDirection[0]);
     assert.throws(() => verifyDesignScores(passing, review));
   }
+});
+
+test("rounding cannot promote an actual nine to a passing design score", () => {
+  const review = designReview();
+  for (const criterion of review.categories.artDirection) criterion.score = 1.8;
+  assert.throws(() => verifyDesignScores({ artDirection: 9.0001, uiDesign: 9.5, commercialCompleteness: 9.5 }, review));
+  const fractional = designReview();
+  fractional.categories.artDirection[0].score = 1.90001;
+  assert.throws(() => verifyDesignScores({ artDirection: 9.5, uiDesign: 9.5, commercialCompleteness: 9.5 }, fractional));
+});
+
+test("a release cannot silently rebuild unreviewed existing works", () => {
+  const outputs = [{ id: "V001" }, { id: "V002" }, { id: "V003" }];
+  assert.doesNotThrow(() => verifyReleaseSelection(["V003", "V001", "V002"], outputs));
+  assert.throws(() => verifyReleaseSelection(["V001"], outputs));
+  assert.throws(() => verifyReleaseSelection(["V001", "V001", "V002", "V003"], outputs));
+  assert.throws(() => verifyReleaseSelection([], []));
+  assert.doesNotThrow(() => verifyReleaseSelection(["V001"], [{ id: "V001" }]));
 });
 
 test("live receipt must contain exactly the requested works and candidates", () => {
