@@ -4,17 +4,31 @@
 
 Original visual websites exploring typography, materials, light and interaction. Each work has its own composition and art direction; this is not a set of recolored templates.
 
-**Status:** Studio bootstrap. Three initial briefs are ready for implementation. No live website or GPU/browser acceptance is claimed yet.
+**Status:** M01 has buildable source for the bilingual gallery and Paper & Light. See the work registry for acceptance and release status.
 
 - Source: https://github.com/KYStr/glossquote-visuals
-- Planned free gallery URL: https://kystr.github.io/glossquote-visuals/ — **not live until verified in the release record**.
 - Start development: [START-HERE.md](START-HERE.md)
 - Continuing objective: [GOAL.md](GOAL.md)
 - Work status: [coordination/work-registry.json](coordination/work-registry.json)
 - Upstream skill and licenses: [docs/UPSTREAM.md](docs/UPSTREAM.md)
+- Paper & Light design and verification: [evidence/V001/DESIGN.md](evidence/V001/DESIGN.md)
 
 Initial works: **紙與光 / Paper & Light**, **流體檔案 / Liquid Archive**, **夜航訊號 / Night Signal**. Art directions and acceptance criteria are written before implementation. Future directions are in [docs/IDEAS.md](docs/IDEAS.md), not counted as ready production.
 
 Shaders are progressive enhancement. Essential content and navigation remain HTML; a designed static fallback is always available. No accounts, uploads, analytics or third-party runtime requests are intended. These promises must be checked before each release.
 
 Original source is made public for inspection; no blanket license is granted to original artworks at bootstrap. Vendored upstream material retains its own MIT license in `licenses/shaders-MIT.txt`. Record any future asset licenses individually.
+
+## Reproduce the candidate
+
+Use Node.js `24.14.0`. The candidate build uses the GitHub Pages project path and marks candidate HTML as noindex.
+
+```sh
+npm ci --ignore-scripts
+npm run check
+npm test
+npm run build
+npm run preview -- --host 127.0.0.1
+```
+
+The preview serves the bilingual gallery at `/glossquote-visuals/`. The browser verification command runs in the repository's GitHub-hosted Ubuntu workflow. Third-party notices for the emitted shader bundle are in [public/licenses/NOTICES.txt](public/licenses/NOTICES.txt).

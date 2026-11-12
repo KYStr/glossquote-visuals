@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>紙與光｜GlossQuote Visuals</title>
+  <meta name="description" content="一場關於紙張纖維與光線入射的概念展。調整角度和光色，觀察同一張紙的明暗。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/paper-light/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/paper-light/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/paper-light/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/paper-light/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="紙與光｜GlossQuote Visuals">
+  <meta property="og:description" content="改變光的方向與色溫，看一張紙如何顯露纖維、摺痕和陰影。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/paper-light/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/paper-light-share.jpg">
+  <meta property="og:image:alt" content="一束斜光擦過層疊的白色紙張">
+  <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/paper-light/page.css">
+  <script type="module" src="/src/works/paper-light/page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="site-header frame">
+    <a class="wordmark" href="%BASE_URL%">GlossQuote Visuals</a>
+    <nav aria-label="作品導覽">
+      <a href="%BASE_URL%">作品索引</a>
+      <a href="%BASE_URL%en/works/paper-light/" lang="en" hreflang="en">English</a>
+    </nav>
+  </header>
+  <main id="main" class="frame" tabindex="-1">
+    <div class="paper-hero">
+      <div class="paper-intro">
+        <p class="paper-type">原創概念展</p>
+        <h1>紙與光</h1>
+        <p class="paper-deck">把光壓低，摺痕就浮起來。</p>
+        <p>同一張紙，隨著光的方向，會露出不同的纖維與陰影。試著移動光源，看看哪一道細節先消失。</p>
+      </div>
+      <section class="light-study" aria-labelledby="plate-title">
+        <figure class="paper-plate">
+          <div class="paper-art" data-stage data-preset="dawn">
+            <img src="%BASE_URL%media/paper-light.svg" width="1120" height="800"
+              alt="暖白色紙張層疊成弧形，斜光沿著紙邊掠過">
+            <canvas aria-hidden="true"></canvas>
+          </div>
+          <figcaption id="plate-title">摺紙的入射光研究 <span>原創靜態構圖</span></figcaption>
+        </figure>
+        <fieldset class="light-controls" data-controls hidden>
+          <legend>調整光線</legend>
+          <div class="light-inputs">
+            <div class="light-range">
+              <div class="light-label">
+                <label for="light-angle">入射角度</label>
+                <output id="angle-output" for="light-angle">38°</output>
+              </div>
+              <input type="range" id="light-angle" min="0" max="180" step="1" value="38">
+            </div>
+            <fieldset class="light-presets">
+              <legend>光色</legend>
+              <div class="light-swatches">
+                <label><input type="radio" name="light-preset" value="dawn" checked><span>晨白</span></label>
+                <label><input type="radio" name="light-preset" value="honey"><span>蜜光</span></label>
+                <label><input type="radio" name="light-preset" value="overcast"><span>灰藍</span></label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="light-actions">
+            <button type="button" data-pause>暫停動態</button>
+            <button type="button" data-reset>重設</button>
+          </div>
+          <p class="motion-status" role="status" data-motion-status>顯示靜態紙面。</p>
+        </fieldset>
+        <noscript><p class="motion-status">目前顯示靜態紙面。啟用 JavaScript 後可調整光線。</p></noscript>
+      </section>
+    </div>
+    <div class="paper-reading">
+      <article>
+        <h2>表面</h2>
+        <p>從正面看，紙幾乎只有一種白。光從側面進來時，纖維便有了高低，原本平坦的地方也現出細小的起伏。這些起伏決定了字墨落下以前，紙本身的質地。</p>
+      </article>
+      <article>
+        <h2>入射</h2>
+        <p>轉動光線，先看摺線下方的暗部，再看亮部怎麼跨過紙邊。換成蜜光或灰藍，摺線還在原位，靠近它的白色卻變了。</p>
+      </article>
+      <aside aria-labelledby="material-title">
+        <h2 id="material-title">材料筆記</h2>
+        <p>紙纖維、摺面與投影由原創向量構圖繪成。動態光與微粒以 WebGPU 疊在紙面上，靜態版本也保留角度和光色調整。</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer frame">
+    <a href="%BASE_URL%">← 作品索引</a>
+    <a href="<!-- work-source -->">作品原始碼 <span aria-hidden="true">↗</span></a>
+  </footer>
+</body>
+</html>
