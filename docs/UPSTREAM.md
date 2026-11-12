@@ -24,3 +24,5 @@ Upstream build 會刪除法律註解；發佈時收集實際 lockfile 所含依�
 `onReady` 首個合成畫面後才顯示 canvas；`onError` 也可能表示可恢復 device loss，需看 `getFailureReason()`。重建後可能重新啟動 renderer，因此在新的 onReady 重套現在的 pause 與參數狀態。採 observeElement:false 時自行觀察外容器尺寸/visibility；resize 會寫 canvas inline尺寸，不能以canvas自己尺寸反推容器而循環擴大。pause 停連續動畫，但更新參數/resize仍可能單幀。dispose時destroy晚到的過期初始化，清除自有observer。這些都需要實作測試，不能把技術審查寫成runtime PASS。
 
 固定 source 參考：`packages/js/src/createShader.ts`、`packages/js/src/types.ts`、`packages/core/src/gpu/index.ts`、`packages/core/src/telemetry/`。首批不用 Text/ImageTexture/VideoTexture/WebcamTexture，避免帶出遠端字型/媒體來源。
+
+初始化前先判斷 reduced-motion/hidden/offscreen。createShader 是非同步且會自動啟動，尚未有 instance 時不能用 pause 取消初始化；途中失去資格要 invalidate generation 並 destroy 晚到結果。這可保證不持續渲染，但不應聲稱能完全防止底層在過期初始化完成時短暫啟動。固定版核心 DPR 預設手機1.5/桌機2，API無調整選項；文件中的節能目標不是已達成的性能宣告。
