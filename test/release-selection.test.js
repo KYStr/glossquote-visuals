@@ -32,6 +32,8 @@ test("each commercial design score must independently exceed nine", () => {
   for (const change of [
     (item) => { item.status = "NOT_RUN"; },
     (item) => { item.evidence = []; },
+    (item) => { item.evidence = ["evidence/"]; },
+    (item) => { item.evidence = ["evidence/..\\README.md"]; },
     (item) => { item.score = 1.8; },
     (item) => { item.id = "unknown"; },
   ]) {

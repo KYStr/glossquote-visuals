@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, lstatSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { registry, releaseWorkIds, root } from "./site-map.mjs";
 
@@ -46,7 +46,10 @@ async function verifyWork(work, head) {
   for (const criteria of Object.values(proof.designReview.categories)) {
     for (const criterion of criteria) {
       for (const evidence of criterion.evidence) {
-        assert.ok(existsSync(resolve(root, evidence)), `Missing design evidence: ${evidence}`);
+        assert.ok(evidence.startsWith(`evidence/${work.id}/${work.candidateCommit}/`),
+          "Design evidence must belong to this work and candidate");
+        const file = resolve(root, evidence);
+        assert.ok(existsSync(file) && lstatSync(file).isFile(), `Missing design evidence file: ${evidence}`);
       }
     }
   }
@@ -93,7 +96,8 @@ export function verifyDesignScores(scores, review) {
       assert.ok(typeof criterion.reason === "string" && criterion.reason.trim().length > 0);
       assert.ok(Array.isArray(criterion.evidence) && criterion.evidence.length > 0);
       for (const path of criterion.evidence) {
-        assert.ok(typeof path === "string" && path.startsWith("evidence/") && !path.split("/").includes(".."));
+        assert.ok(typeof path === "string" && path.startsWith("evidence/") && path.length > 9 &&
+          !path.endsWith("/") && !path.includes("\\") && !path.split("/").includes(".."));
       }
       sum += criterion.score;
     }
