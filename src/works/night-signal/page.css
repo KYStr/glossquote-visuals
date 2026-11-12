@@ -17,6 +17,8 @@
   padding-block: clamp(1.55rem, 5vw, 4.25rem) clamp(1.45rem, 3vw, 2.6rem);
 }
 .signal-head h1 {
+  min-inline-size: 0;
+  max-inline-size: 100%;
   margin: 0;
   font: 900 clamp(3.3rem, 10.6vw, 10rem)/.85 var(--display);
   letter-spacing: -.048em;
@@ -75,7 +77,7 @@
   color: var(--muted);
   font-size: .8rem;
 }
-.signal-side { grid-area: side; display: grid; align-content: start; gap: 1.7rem; }
+.signal-side { grid-area: side; display: grid; min-inline-size: 0; align-content: start; gap: 1.7rem; overflow-wrap: anywhere; }
 .signal-side nav { border-block: 1px solid var(--ink); }
 .signal-side nav h2 { margin: .7rem 0; font-size: 1rem; }
 .signal-side ol { list-style: none; padding: 0; margin: 0; }
@@ -102,9 +104,9 @@
   grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
   gap: .6rem 1.4rem;
 }
-.signal-controls legend { font-weight: 670; padding-inline-end: .65rem; }
+.signal-controls legend { max-inline-size: 100%; overflow-wrap: anywhere; font-weight: 670; padding-inline-end: .65rem; }
 .signal-choices { display: flex; flex-wrap: wrap; gap: .42rem; }
-.signal-choices label { cursor: pointer; position: relative; }
+.signal-choices label { cursor: pointer; position: relative; min-inline-size: 0; max-inline-size: 100%; overflow-wrap: anywhere; }
 .signal-choices input { position: absolute; opacity: 0; inline-size: 1px; block-size: 1px; }
 .signal-choices span, .signal-motion button {
   display: inline-flex;
@@ -145,11 +147,11 @@
 .program-echo .program-number, .program-dawn .program-number { color: var(--accent); }
 
 @media (max-width: 50rem) {
-  .broadcast { grid-template-columns: 1fr; grid-template-areas: "plate" "controls" "side"; }
+  .broadcast { grid-template-columns: minmax(0, 1fr); grid-template-areas: "plate" "controls" "side"; }
   .signal-side { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 1rem; }
 }
 @media (max-width: 35rem) {
-  .signal-side, .signal-controls, .programs { grid-template-columns: 1fr; }
+  .signal-side, .signal-controls, .programs { grid-template-columns: minmax(0, 1fr); }
   .programs > h2, .program { grid-column: 1; }
   .signal-head { align-items: flex-start; }
 }

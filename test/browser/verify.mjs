@@ -47,7 +47,14 @@ async function screenshot(page, name) {
 async function layout(page) {
   for (const size of ["", "200%"]) {
     await page.evaluate((fontSize) => { document.documentElement.style.fontSize = fontSize; }, size);
-    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Horizontal overflow at ${size || "100%"}: ${page.url()}`);
+    const overflow = await page.evaluate(() => {
+      const scrollWidth = document.documentElement.scrollWidth;
+      if (scrollWidth <= innerWidth + 1) return null;
+      const elements = [...document.querySelectorAll("body *")].filter((element) => element.getBoundingClientRect().right > innerWidth + 1)
+        .slice(0, 8).map((element) => ({ name: element.tagName, id: element.id, class: element.getAttribute("class") }));
+      return { viewport: innerWidth, scrollWidth, elements };
+    });
+    assert.equal(overflow, null, `Horizontal overflow at ${size || "100%"}: ${page.url()} ${JSON.stringify(overflow)}`);
   }
   await page.evaluate(() => { document.documentElement.style.removeProperty("font-size"); });
 }
@@ -469,6 +476,7 @@ async function checkSignal(browser) {
           await screenshot(page, `signal-${prefix ? "en" : "zh-Hant"}-390-still.png`);
           await page.locator('a[href="#program-dawn"]').press("Enter");
           assert.equal(new URL(page.url()).hash, "#program-dawn");
+          assert.equal(await page.locator("#program-dawn").evaluate((program) => program === document.activeElement), true);
         }
         await probe.assertPrivate(site.origin);
       });
