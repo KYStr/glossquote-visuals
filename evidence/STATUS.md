@@ -12,4 +12,4 @@ See [bootstrap-checks.json](bootstrap-checks.json) for actual bootstrap checks o
 
 ## M01 V001
 
-The bilingual gallery and Paper & Light are in [candidate PR #1](https://github.com/KYStr/glossquote-visuals/pull/1). The first review found a CSP violation in the pinned SDK's JIT probe. See [review of the first candidate](V001/6c5d753ec133c3359645497984512dc1f315c3a7/REVIEW.md). The registry carries the latest acceptance and release state.
+The bilingual gallery and Paper & Light passed the candidate acceptance matrix on a GitHub-hosted Windows VM. See [independent review of the exact candidate](V001/892fb52535585a3219cb8f4b9314e08398a660f3/REVIEW.md) and [PR #1](https://github.com/KYStr/glossquote-visuals/pull/1). Ubuntu software compositing failed in the earlier matrix. The registry carries the latest release state.
