@@ -12,4 +12,4 @@ See [bootstrap-checks.json](bootstrap-checks.json) for actual bootstrap checks o
 
 ## M01 V001
 
-The bilingual gallery and Paper & Light passed the candidate acceptance matrix on a GitHub-hosted Windows VM. See [independent review of the exact candidate](V001/892fb52535585a3219cb8f4b9314e08398a660f3/REVIEW.md) and [PR #1](https://github.com/KYStr/glossquote-visuals/pull/1). Ubuntu software compositing failed in the earlier matrix. The registry carries the latest release state.
+The bilingual gallery and Paper & Light are live. See [the deployment receipt and live tests](V001/f0af4882eeb13ed26386e877b9125c0877b50f0d/RELEASE.md), [independent review](V001/892fb52535585a3219cb8f4b9314e08398a660f3/REVIEW.md) and [PR #1](https://github.com/KYStr/glossquote-visuals/pull/1). The Ubuntu software compositor failure remains recorded. External acceptance is NOT_RUN.

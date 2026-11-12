@@ -4,7 +4,9 @@
 
 Original visual websites exploring typography, materials, light and interaction. Each work has its own composition and art direction; this is not a set of recolored templates.
 
-**Status:** M01 has buildable source for the bilingual gallery and Paper & Light. See the work registry for acceptance and release status.
+**Status:** The bilingual gallery and Paper & Light are live. See the work registry for acceptance and release status.
+
+[繁中畫廊](https://kystr.github.io/glossquote-visuals/) · [English gallery](https://kystr.github.io/glossquote-visuals/en/)
 
 - Source: https://github.com/KYStr/glossquote-visuals
 - Start development: [START-HERE.md](START-HERE.md)
