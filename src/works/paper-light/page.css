@@ -471,9 +471,16 @@ h3 { line-height: 1.25; }
   .paper-intro { padding: 2.2rem 1rem 2.2rem var(--gutter); }
   .paper-intro h1 { font-size: clamp(2.7rem, 7.3vw, 3.9rem); }
   [lang="zh-Hant"] .paper-intro h1 { font-size: clamp(2.1rem, 6.1vw, 3.1rem); }
+  .paper-plate { grid-template-columns: minmax(0, 1fr); }
   .paper-art { min-block-size: 25.5rem; }
   .paper-art::before { inline-size: clamp(1.25rem, 4vw, 2.5rem); }
   .paper-plate figcaption { padding-inline-start: 0.65rem; }
+  .light-controls {
+    grid-row: 3;
+    grid-column: 1;
+    justify-content: flex-start;
+  }
+  .light-controls .motion-status { text-align: start; padding-inline-start: 0.55rem; }
   .collections { gap: 1.5rem; }
   .collection dl div { display: block; }
   .stock-grid { gap: 1.8rem; }
@@ -490,16 +497,9 @@ h3 { line-height: 1.25; }
   .paper-deck { max-inline-size: 41ch; margin-block-end: 1.05rem; }
   .paper-art { min-block-size: 0; aspect-ratio: 1.15; }
   .paper-art::before { display: none; }
-  .paper-plate { grid-template-columns: minmax(0, 1fr); }
   .paper-plate figcaption { padding-block-end: 0; padding-inline-start: var(--gutter); }
-  .light-controls {
-    grid-row: 3;
-    grid-column: 1;
-    justify-content: flex-start;
-    padding-inline: calc(var(--gutter) - 0.55rem) 0.65rem;
-  }
+  .light-controls { padding-inline: calc(var(--gutter) - 0.55rem) 0.65rem; }
   .light-inputs { inset-inline: var(--gutter) auto; inline-size: min(20rem, calc(100vw - 2 * var(--gutter))); }
-  .light-controls .motion-status { text-align: start; padding-inline-start: 0.55rem; }
   .collections, .stock-grid, .steps, .faq, .quote-grid { grid-template-columns: minmax(0, 1fr); }
   .collections { row-gap: 2rem; }
   .collection:first-child img { aspect-ratio: 1.62; }

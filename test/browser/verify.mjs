@@ -179,6 +179,12 @@ async function checkLayouts(browser) {
         await probe.assertPrivate(site.origin);
         if (width === 390) await screenshot(page, `paper-${lang}-390-still.png`);
         if (width === 768) {
+          const captionLines = await page.locator(".paper-plate figcaption").evaluate((caption) => {
+            const style = getComputedStyle(caption);
+            const padding = parseFloat(style.paddingBlockStart) + parseFloat(style.paddingBlockEnd);
+            return (caption.getBoundingClientRect().height - padding) / parseFloat(style.lineHeight);
+          });
+          assert.ok(captionLines < 2.1, "The tablet photo caption should fit within two lines");
           const fits = await page.locator("#finish").evaluate((select) => {
             const style = getComputedStyle(select);
             const context = document.createElement("canvas").getContext("2d");
