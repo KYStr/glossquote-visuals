@@ -38,7 +38,7 @@
       <div class="paper-intro">
         <p class="paper-type">紙品訂製工作室</p>
         <h1 id="hero-title"><span>把心意</span><span>印在紙上。</span></h1>
-        <p class="paper-deck">為品牌、婚禮與送禮訂製紙品。從第一張試紙到最後一道壓印，讓手中的細節說話。</p>
+        <p class="paper-deck">為品牌、婚禮與送禮訂製紙品，從選紙、印刷到無墨盲壓。</p>
         <a class="primary" href="#quote">開始訂製 <span aria-hidden="true">↗</span></a>
       </div>
       <figure class="paper-plate">
@@ -91,7 +91,7 @@
           <div><dt>基本數量</dt><dd>50 張起</dd></div>
           <div><dt>參考交期</dt><dd>校稿後 7–10 個工作天</dd></div>
         </dl>
-        <a class="text-link" href="#quote" data-collection="cards">從這款開始 <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="#quote" data-collection="cards" aria-label="從這款開始 · 品牌名片">從這款開始 <span aria-hidden="true">↗</span></a>
       </article>
       <article class="collection">
         <img src="%BASE_URL%media/paper-invites.webp" width="720" height="700" loading="lazy" decoding="async" alt="搭配朱紅信封的米白婚禮邀請函">
@@ -103,7 +103,7 @@
           <div><dt>基本數量</dt><dd>25 組起</dd></div>
           <div><dt>參考交期</dt><dd>校稿後 10–15 個工作天</dd></div>
         </dl>
-        <a class="text-link" href="#quote" data-collection="invites">從這款開始 <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="#quote" data-collection="invites" aria-label="從這款開始 · 婚禮邀請">從這款開始 <span aria-hidden="true">↗</span></a>
       </article>
       <article class="collection">
         <img src="%BASE_URL%media/paper-gifts.webp" width="720" height="700" loading="lazy" decoding="async" alt="配有紙腰封和朱紅吊牌的禮盒">
@@ -115,7 +115,7 @@
           <div><dt>基本數量</dt><dd>30 組起</dd></div>
           <div><dt>參考交期</dt><dd>校稿後 10–15 個工作天</dd></div>
         </dl>
-        <a class="text-link" href="#quote" data-collection="gifts">從這款開始 <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="#quote" data-collection="gifts" aria-label="從這款開始 · 禮盒紙品">從這款開始 <span aria-hidden="true">↗</span></a>
       </article>
       </div>
       <p class="collection-note">上述交期以基本數量為基準。超過 200 件、雙面加工或異形裁切，需另留打樣與排程時間。</p>
@@ -124,8 +124,21 @@
     <section id="paper" class="stock-section" aria-labelledby="stock-title">
       <div class="stock-grid frame">
         <figure class="stock-figure">
-          <img src="%BASE_URL%media/paper-stock.webp" width="960" height="790" loading="lazy" decoding="async" alt="棉紙、平滑暖白卡和灰褐再生紙在朱紅色桌面上疊成扇形">
-          <figcaption>同一束側光下的三款紙樣</figcaption>
+          <div class="stock-samples">
+            <div class="stock-sample">
+              <img src="%BASE_URL%media/paper-stock-cotton.webp" width="480" height="760" loading="lazy" decoding="async" alt="象牙白棉紙的細纖維、盲壓弧線與帶纖維的直切邊">
+              <p>棉紙</p>
+            </div>
+            <div class="stock-sample">
+              <img src="%BASE_URL%media/paper-stock-smooth.webp" width="480" height="760" loading="lazy" decoding="async" alt="表面平滑的暖白卡紙，直角切邊旁印有一道朱紅細線">
+              <p>暖白卡紙</p>
+            </div>
+            <div class="stock-sample">
+              <img src="%BASE_URL%media/paper-stock-recycled.webp" width="480" height="760" loading="lazy" decoding="async" alt="灰褐色再生卡紙的深色纖維斑點與切邊">
+              <p>再生卡紙</p>
+            </div>
+          </div>
+          <figcaption>同一尺度與側光下的三款紙樣</figcaption>
         </figure>
         <div class="stock-copy">
           <p class="eyebrow">紙材與加工</p>
@@ -161,22 +174,48 @@
     </section>
 
     <section id="quote" class="quote-section" aria-labelledby="quote-title" data-quote
-      data-extra-lead="超過 200 件，需另確認工期。" data-both-lead="含印刷與盲壓，需另確認打樣時間。" data-approval="參考交期從校稿確認起算。" data-document-title="紙與光 | 訂製需求">
+      data-extra-lead="超過 200 件，需另確認工期。" data-both-lead="含印刷與盲壓，需另確認打樣時間。"
+      data-recommendation="建議 · {value}" data-customized="已保留自訂。" data-document-title="紙與光 | 訂製需求">
       <div class="quote-grid frame">
         <div class="quote-intro">
           <p class="eyebrow">訂製需求</p>
-          <h2 id="quote-title" tabindex="-1">把想法整理成一張單。</h2>
+          <h2 id="quote-title" tabindex="-1">把需求寫在紙上。</h2>
           <p>選擇紙品與加工，預覽後下載完整需求摘要。資料只留在這個頁面，請填寫用途與規格。</p>
         </div>
         <div class="quote-card">
           <noscript><p>需要啟用 JavaScript 才能填寫及下載需求摘要。上方的系列規格與訂製流程可直接閱讀。</p></noscript>
           <form novalidate hidden data-brief-form>
             <div class="quote-fields">
-              <label class="quote-wide" for="collection">紙品系列<select id="collection" name="collection" required><option value="cards" data-min="50" data-stock="cotton" data-finish="deboss" data-lead="校稿後 7–10 個工作天">品牌名片</option><option value="invites" data-min="25" data-stock="smooth" data-finish="ink" data-lead="校稿後 10–15 個工作天">婚禮邀請</option><option value="gifts" data-min="30" data-stock="recycled" data-finish="ink" data-lead="校稿後 10–15 個工作天">禮盒紙品</option></select></label>
-              <label for="stock">紙材<select id="stock" name="stock" required><option value="cotton">棉紙・350 g/m²</option><option value="smooth">暖白卡紙・300 g/m²</option><option value="recycled">再生卡紙・300 g/m²</option></select></label>
-              <label for="finish">加工<select id="finish" name="finish" required><option value="deboss">無墨盲壓</option><option value="ink">單色印刷</option><option value="both">單色印刷＋盲壓</option></select></label>
               <div class="quote-wide">
-                <label for="quantity">數量</label>
+                <label for="collection">紙品系列</label>
+                <select id="collection" name="collection" required aria-describedby="collection-specs">
+                  <option value="cards" data-min="50" data-unit="張"
+                    data-stock="cotton" data-finish="deboss"
+                    data-size="90 × 54 mm" data-parts="單張名片" data-lead="校稿後 7–10 個工作天">品牌名片</option>
+                  <option value="invites" data-min="25" data-unit="組"
+                    data-stock="smooth" data-finish="ink"
+                    data-size="A6・105 × 148 mm" data-parts="邀請卡、回覆卡、信封" data-lead="校稿後 10–15 個工作天">婚禮邀請</option>
+                  <option value="gifts" data-min="30" data-unit="組"
+                    data-stock="recycled" data-finish="ink"
+                    data-size="腰封寬 55 mm，可依盒身調整" data-parts="腰封、吊牌、小卡" data-lead="校稿後 10–15 個工作天">禮盒紙品</option>
+                </select>
+                <dl id="collection-specs" class="collection-specs">
+                  <div><dt>示意尺寸</dt><dd data-series-size></dd></div>
+                  <div><dt>組成</dt><dd data-series-parts></dd></div>
+                </dl>
+              </div>
+              <div>
+                <label for="stock">紙材</label>
+                <select id="stock" name="stock" required aria-describedby="stock-suggestion"><option value="cotton">棉紙・350 g/m²</option><option value="smooth">暖白卡紙・300 g/m²</option><option value="recycled">再生卡紙・300 g/m²</option></select>
+                <p class="field-hint" id="stock-suggestion"></p>
+              </div>
+              <div>
+                <label for="finish">加工</label>
+                <select id="finish" name="finish" required aria-describedby="finish-suggestion"><option value="deboss">無墨盲壓</option><option value="ink">單色印刷</option><option value="both">單色印刷＋盲壓</option></select>
+                <p class="field-hint" id="finish-suggestion"></p>
+              </div>
+              <div class="quote-wide">
+                <label for="quantity">數量 <span data-quantity-unit></span></label>
                 <input type="number" inputmode="numeric" id="quantity" name="quantity" min="50" max="10000" step="1" value="50" required aria-describedby="quantity-hint">
                 <p class="field-hint" id="quantity-hint">起印量 <strong data-quantity-min>50</strong></p>
                 <p class="field-error" id="quantity-error" hidden>請輸入符合此系列起印量的整數，最多 10,000 件。</p>
@@ -194,6 +233,8 @@
             <h3 id="summary-title" tabindex="-1">確認你的訂製需求</h3>
             <dl class="quote-summary">
               <div><dt>紙品系列</dt><dd data-value="collection"></dd></div>
+              <div><dt>示意尺寸</dt><dd data-value="size"></dd></div>
+              <div><dt>組成</dt><dd data-value="parts"></dd></div>
               <div><dt>紙材</dt><dd data-value="stock"></dd></div>
               <div><dt>加工</dt><dd data-value="finish"></dd></div>
               <div><dt>數量</dt><dd data-value="quantity"></dd></div>

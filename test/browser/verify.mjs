@@ -60,6 +60,38 @@ async function paperScreenshots(page, name) {
   await screenshot(page, name + ".png");
 }
 
+async function paperSurface(page, name) {
+  const png = await stage(page).screenshot({ path: resolve(evidenceDir, name) });
+  evidence.screenshots.push(name);
+  return png.toString("base64");
+}
+
+async function paperLightDifference(page, before, after) {
+  return page.evaluate(async (images) => {
+    const width = 36;
+    const height = 24;
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext("2d");
+    const frames = [];
+    for (const encoded of images) {
+      const data = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
+      const bitmap = await createImageBitmap(new Blob([data], { type: "image/png" }));
+      context.drawImage(bitmap, 0, 0, width, height);
+      bitmap.close();
+      frames.push(context.getImageData(0, 0, width, height).data);
+    }
+    let distance = 0;
+    for (let pixel = 0; pixel < frames[0].length; pixel += 4) {
+      for (let channel = 0; channel < 3; channel++) {
+        distance += Math.abs(frames[0][pixel + channel] - frames[1][pixel + channel]);
+      }
+    }
+    return distance / (width * height * 3);
+  }, [before, after]);
+}
+
 async function layout(page) {
   for (const size of ["", "200%"]) {
     await page.evaluate((fontSize) => { document.documentElement.style.fontSize = fontSize; }, size);
@@ -144,6 +176,10 @@ async function checkLayouts(browser) {
         await paperLightDetails(page).locator("summary").click();
         await probe.assertPrivate(site.origin);
         if (width === 390) await screenshot(page, `paper-${lang}-390-still.png`);
+        if (width === 768) {
+          await page.evaluate(() => window.scrollTo(0, 0));
+          await paperScreenshots(page, `paper-${lang}-768-still`);
+        }
       });
     }
   }
@@ -205,6 +241,7 @@ async function checkShader(browser) {
     await checkContrast(page);
     await page.waitForFunction(() => window.__visualProbe.textures >= 5);
     await paperScreenshots(page, "paper-en-1440-webgpu");
+    const paperBefore = await paperSurface(page, "paper-en-dawn-surface.png");
     const img = resolve(evidenceDir, "paper-en-webgpu-only.png");
     const first = await pixelEvidence(page, stage(page), img);
     evidence.screenshots.push("paper-en-webgpu-only.png");
@@ -235,6 +272,9 @@ async function checkShader(browser) {
     const art = await stage(page).boundingBox();
     await page.mouse.move(art.x + art.width * 0.8, art.y + art.height / 2);
     await page.waitForFunction(() => Number(document.querySelector("#light-angle").value) === 144);
+    const beforePointerFrames = await textureCount(page);
+    await page.waitForFunction((frames) => window.__visualProbe.textures >= frames + 2, beforePointerFrames);
+    const paperAtAngle = await paperSurface(page, "paper-en-angle-surface.png");
     await openPaperLightDetails(page);
     await settings(page).press("End");
     await page.locator('label:has([value="overcast"])').click();
@@ -246,8 +286,11 @@ async function checkShader(browser) {
       changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5);
     evidence.checks.compositing = compositeOk ? "PASS visible canvas changes with controls" : "FAIL compositor did not present the changing WebGPU texture";
     evidence.measurements.pixelSamples = { dawn: firstTexture, overcast: changedTexture, overcastComposite: changed };
-    await stage(page).screenshot({ path: resolve(evidenceDir, "paper-en-overcast-surface.png") });
-    evidence.screenshots.push("paper-en-overcast-surface.png");
+    const paperOvercast = await paperSurface(page, "paper-en-overcast-surface.png");
+    const pointerDifference = await paperLightDifference(page, paperBefore, paperAtAngle);
+    const presetDifference = await paperLightDifference(page, paperBefore, paperOvercast);
+    evidence.measurements.paperSurfaceDifference = { pointer: pointerDifference, preset: presetDifference };
+    assert.ok(pointerDifference > 1 && presetDifference > 3, "Actual paper composition did not change with angle and light preset");
     await paperLightDetails(page).locator("summary").click();
 
     for (let i = 0; i < 3; i++) {
@@ -659,7 +702,7 @@ try {
     await checkLayouts(browser);
     await checkFallback(browser);
     await checkPaperCommercial({ browser, withPage, open, screenshot, site, work });
-    evidence.checks.paperCommercial = "PASS bilingual series prefill, touch, validation, keyboard focus, review and edit, and exact local download with privacy";
+    evidence.checks.paperCommercial = "PASS bilingual series prefill and suggestions, preserved custom choices, specifications, units, touch, validation, keyboard focus, edit, and exact local download with privacy";
     await withPage(browser, {}, async (page) => {
       await open(page, "404.html");
       evidence.measurements.gpuBufferSmoke = await page.evaluate(async () => {

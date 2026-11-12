@@ -3,6 +3,11 @@ export function initializeBrief() {
   const form = section.querySelector("[data-brief-form]");
   const { collection, stock, finish, quantity, purpose } = form.elements;
   const minimum = form.querySelector("[data-quantity-min]");
+  const unit = form.querySelector("[data-quantity-unit]");
+  const size = form.querySelector("[data-series-size]");
+  const parts = form.querySelector("[data-series-parts]");
+  const recommendations = [stock, finish];
+  const customized = new Set();
   const summary = section.querySelector("[data-brief-summary]");
   const rows = [...summary.querySelectorAll("[data-value]")];
   const message = summary.querySelector("[data-complete]");
@@ -10,17 +15,29 @@ export function initializeBrief() {
   const title = section.querySelector("#quote-title");
   const numberFormat = new Intl.NumberFormat(document.documentElement.lang);
   let downloadText = "";
+  let quantityEdited = false;
 
   const selected = (input) => input.selectedOptions[0];
 
-  function refreshQuantity(prefill = false) {
-    const previousMinimum = Number(quantity.min);
-    const nextMinimum = Number(selected(collection).dataset.min);
-    if (quantity.valueAsNumber === previousMinimum || (prefill && !(quantity.valueAsNumber >= nextMinimum))) {
-      quantity.value = nextMinimum;
-    }
-    quantity.min = nextMinimum;
-    minimum.textContent = numberFormat.format(nextMinimum);
+  function showSuggestion(field) {
+    const value = selected(collection).dataset[field.name];
+    const recommended = [...field.options].find((option) => option.value === value);
+    if (!customized.has(field)) field.value = recommended.value;
+    const suggestion = section.dataset.recommendation.replace("{value}", recommended.textContent);
+    const hint = form.querySelector("#" + field.id + "-suggestion");
+    hint.textContent = customized.has(field) ? section.dataset.customized + " " + suggestion : suggestion;
+  }
+
+  function refreshCollection() {
+    const specs = selected(collection).dataset;
+    size.textContent = specs.size;
+    parts.textContent = specs.parts;
+    unit.textContent = "(" + specs.unit + ")";
+    if (!quantityEdited) quantity.value = specs.min;
+    quantity.min = specs.min;
+    minimum.textContent = numberFormat.format(Number(specs.min));
+    if (quantityEdited) showError(quantity, !quantity.validity.valid);
+    recommendations.forEach(showSuggestion);
   }
 
   function showError(field, invalid) {
@@ -39,11 +56,16 @@ export function initializeBrief() {
     focus.focus();
   }
 
-  collection.addEventListener("change", () => {
-    refreshQuantity();
-    if (quantity.hasAttribute("aria-invalid")) showError(quantity, !quantity.validity.valid);
+  collection.addEventListener("change", refreshCollection);
+  recommendations.forEach((field) => {
+    field.addEventListener("change", () => {
+      if (field.value === selected(collection).dataset[field.name]) customized.delete(field);
+      else customized.add(field);
+      showSuggestion(field);
+    });
   });
   quantity.addEventListener("input", () => {
+    quantityEdited = true;
     if (quantity.validity.valid) showError(quantity, false);
   });
   purpose.addEventListener("input", () => {
@@ -54,10 +76,7 @@ export function initializeBrief() {
     link.addEventListener("click", (event) => {
       if (event.defaultPrevented || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
       collection.value = link.dataset.collection;
-      stock.value = selected(collection).dataset.stock;
-      finish.value = selected(collection).dataset.finish;
-      refreshQuantity(true);
-      showError(quantity, false);
+      refreshCollection();
       edit(title);
     });
   });
@@ -74,24 +93,27 @@ export function initializeBrief() {
       return;
     }
 
-    const lead = [selected(collection).dataset.lead, section.dataset.approval];
+    const specs = selected(collection).dataset;
+    const lead = [specs.lead];
     if (count > 200) lead.push(section.dataset.extraLead);
     if (finish.value === "both") lead.push(section.dataset.bothLead);
 
     const values = {
       collection: selected(collection).textContent,
+      size: specs.size,
+      parts: specs.parts,
       stock: selected(stock).textContent,
       finish: selected(finish).textContent,
-      quantity: numberFormat.format(count),
+      quantity: numberFormat.format(count) + " " + specs.unit,
       purpose: use,
-      lead: lead.join(" "),
+      lead: lead.join("\n"),
     };
 
     const lines = rows.map((row) => {
       row.textContent = values[row.dataset.value];
       return row.previousElementSibling.textContent + " — " + row.textContent;
     });
-    downloadText = [section.dataset.documentTitle, "", ...lines, "", completion, ""].join("\r\n");
+    downloadText = [section.dataset.documentTitle, "", ...lines, "", completion, ""].join("\n").replace(/\r?\n/g, "\r\n");
     form.hidden = true;
     summary.hidden = false;
     summary.querySelector("h3").focus();
@@ -109,6 +131,6 @@ export function initializeBrief() {
     message.textContent = completion;
   });
 
-  refreshQuantity();
+  refreshCollection();
   form.hidden = false;
 }
