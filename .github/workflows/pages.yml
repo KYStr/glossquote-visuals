@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       work:
-        description: Reviewed work ID from the registry
+        description: Reviewed work IDs from the registry, comma-separated for a batch
         type: string
         required: true
       source_commit:

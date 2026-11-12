@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { registry, root } from "./site-map.mjs";
+import { registry, releaseWorkIds, root } from "./site-map.mjs";
 
 const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 const sha = /^[a-f0-9]{40}$/;
@@ -18,7 +18,20 @@ export async function releaseProof() {
   assert.equal(process.env.GITHUB_SHA, head);
   assert.equal(process.env.GQ_RELEASE_SHA, head);
 
-  const work = registry.works.find(({ id }) => id === process.env.GQ_RELEASE_WORK);
+  const ids = releaseWorkIds();
+  assert.ok(ids.length > 0, "Select at least one reviewed work");
+  assert.equal(new Set(ids).size, ids.length, "Release work IDs must be unique");
+  const works = [];
+  for (const id of ids) {
+    assert.match(id, /^V\d{3}$/);
+    const work = registry.works.find((entry) => entry.id === id);
+    await verifyWork(work, head);
+    works.push({ work: work.id, slug: work.slug, candidate: work.candidateCommit });
+  }
+  return { commit: head, ...works[0], works };
+}
+
+async function verifyWork(work, head) {
   assert.ok(work && work.status === "reviewed" && work.blockers.length === 0, "Work needs a passing candidate review");
   assert.match(work.candidateCommit, sha);
   assert.match(work.id, /^V\d{3}$/);
@@ -29,6 +42,7 @@ export async function releaseProof() {
   assert.equal(proof.author, work.owner);
   assert.ok(proof.reviewer && proof.reviewer !== proof.author);
   for (const gate of gates) assert.equal(proof.gates[gate], "PASS", gate);
+  if (registry.milestone === "M02") verifyDesignScores(proof.scores);
   assert.ok(Number.isSafeInteger(proof.jobId) && proof.jobId > 0);
   assert.ok(Number.isSafeInteger(proof.runId) && proof.runId > 0);
 
@@ -48,5 +62,12 @@ export async function releaseProof() {
   assert.equal(job.run_id, proof.runId);
   assert.equal(job.workflow_name, "Verify visual candidate");
   assert.ok(job.labels.includes("windows-2025"), "Acceptance requires the verified Windows renderer");
-  return { commit: head, work: work.id, slug: work.slug, candidate: work.candidateCommit };
+}
+
+export function verifyDesignScores(scores) {
+  for (const category of ["artDirection", "uiDesign", "commercialCompleteness"]) {
+    const score = scores?.[category];
+    assert.ok(Number.isFinite(score) && score > 9 && score <= 10,
+      `${category} requires an evidence-backed score strictly above 9/10`);
+  }
 }

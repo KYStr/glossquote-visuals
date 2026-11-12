@@ -6,7 +6,9 @@ This is the user's independent visual-web studio, authorized 2026-11-12. Create 
 
 Read START-HERE.md, docs/WORKFLOW.md, docs/ACCEPTANCE.md, the active brief, and `.agents/skills/shaders/SKILL.md` before implementation. Use the vendored official shaders skill, subject to the privacy and system boundaries below. This is a Visual Showcase surface: variation in typography, composition, palette and motion is intentional; do not copy the Labs worksheet UI into every piece.
 
-The dedicated chat owns ongoing creation and release; the commissioning primary reviews bootstrap and integration. Requested production model is **gpt-6.1-sol / max**; repairs may use medium. Record requested configuration separately from backend identity. Never claim a model switch from a written persona. No automatic recursive chat creation or 40-chat fan-out: that was an expired Labs round, not this project.
+The dedicated chat owns art direction, review, integration and release. As authorized 2026-11-13, three production chats execute V001–V003 commercial redesign briefs in separate clones. Requested production configuration is **gpt-6.1-sol / high**. Record requested configuration separately from backend identity. Never claim a model switch from a written persona. Further production chats require the user's requested scope; do not recursively create chats.
+
+The active M02 Goal requires complete bilingual commercial websites with a coherent brand, products/services, strong shader-led art direction and functioning customer flows. Art direction, UI design and commercial completeness must each score strictly above 9/10 for all three works using fixed-candidate rendered evidence and independent review. Preserve original M01 evidence as historical baseline. See docs/M02-ART-DIRECTION.md for the rubric.
 
 ## First run
 

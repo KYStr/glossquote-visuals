@@ -17,7 +17,11 @@ export function isPublished(work) {
 }
 
 export function isReleaseWork(work, mode) {
-  return mode === "release" && work.status === "reviewed" && work.id === process.env.GQ_RELEASE_WORK;
+  return mode === "release" && work.status === "reviewed" && releaseWorkIds().includes(work.id);
+}
+
+export function releaseWorkIds(value = process.env.GQ_RELEASE_WORK) {
+  return value ? value.split(",").map((id) => id.trim()) : [];
 }
 
 export function worksFor(mode) {

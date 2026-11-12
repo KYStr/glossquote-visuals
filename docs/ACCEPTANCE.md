@@ -2,6 +2,8 @@
 
 固定 candidate SHA、作者、reviewer、環境、日期與證據路徑。尚未進行寫 NOT_RUN，不得沿用不同 commit 的完整通過。
 
+M02 商業網站依使用者 Goal 加上美術、UI、商業完整度三項評分，每件每項嚴格 >9/10。詳見 docs/M02-ART-DIRECTION.md 的固定子項；每個子項需畫面或流程證據，缺證據標 NOT_RUN，主觀評分不可替代以下必要技術 gates。
+
 | 面向 | 必要檢查 |
 |---|---|
 | 視覺個性 | desktop/mobile 真實 render；與前件在構圖、字體、材質/色彩、動態至少三項不同；不是範例預設換標題 |

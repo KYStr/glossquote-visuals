@@ -285,33 +285,35 @@ async function checkLive(browser) {
   assert.equal(receipt.status, 200);
   const release = await receipt.json();
   assert.equal(release.commit, commit);
-  const route = `works/${release.slug}/`;
   for (const work of registry.works.filter(isPublished)) {
     for (const prefix of ["", "en/"]) {
       assert.equal((await fetch(url(`${prefix}works/${work.slug}/`))).status, 200);
     }
   }
-  for (const prefix of ["", "en/"]) {
-    await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
-      const probe = await observe(page);
-      await open(page, prefix);
-      await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
-      assert.equal(page.url(), url(prefix + route));
-      assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "index, follow");
-      assert.ok((await page.locator(".site-footer a").last().getAttribute("href")).endsWith(`/tree/${commit}`));
-      const shareImage = await page.locator('meta[property="og:image"]').getAttribute("content");
-      assert.ok(shareImage.startsWith(site.origin + base));
-      assert.equal((await fetch(shareImage)).status, 200);
-      await phase(page, "running");
-      await page.waitForFunction(() => window.__visualProbe.textures > 3);
-      const composite = await pixelEvidence(page, stage(page));
-      assert.ok(composite.colors > 20, "The deployed shader did not appear on the page");
-      await screenshot(page, `live-${prefix ? "en" : "zh-Hant"}.png`);
-      await probe.assertPrivate(site.origin);
-      await page.locator(".site-footer a").first().click();
-      assert.equal(page.url(), url(prefix));
-      await probe.assertPrivate(site.origin);
-    });
+  for (const releasedWork of release.works ?? [release]) {
+    const route = `works/${releasedWork.slug}/`;
+    for (const prefix of ["", "en/"]) {
+      await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
+        const probe = await observe(page);
+        await open(page, prefix);
+        await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
+        assert.equal(page.url(), url(prefix + route));
+        assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "index, follow");
+        assert.ok((await page.locator(".site-footer a").last().getAttribute("href")).endsWith(`/tree/${commit}`));
+        const shareImage = await page.locator('meta[property="og:image"]').getAttribute("content");
+        assert.ok(shareImage.startsWith(site.origin + base));
+        assert.equal((await fetch(shareImage)).status, 200);
+        await phase(page, "running");
+        await page.waitForFunction(() => window.__visualProbe.textures > 3);
+        const composite = await pixelEvidence(page, stage(page));
+        assert.ok(composite.colors > 20, "The deployed shader did not appear on the page");
+        await screenshot(page, `live-${releasedWork.slug}-${prefix ? "en" : "zh-Hant"}.png`);
+        await probe.assertPrivate(site.origin);
+        await page.locator(".site-footer a").first().click();
+        assert.equal(page.url(), url(prefix));
+        await probe.assertPrivate(site.origin);
+      });
+    }
   }
   evidence.checks.live = "PASS live HTTPS gallery, both localized works, visible WebGPU, source SHA, same-origin network and backlinks";
   evidence.measurements.deployed = release;
