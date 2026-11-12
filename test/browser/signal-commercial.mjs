@@ -170,6 +170,8 @@ export async function checkSignal(browser, {
     }
   }
 
+  evidence.checks.signalBooking = "PASS both locales: pass and set selection, empty/invalid quantity, pricing, keyboard review/edit, local UTF-8 itinerary download, no purchase or reservation";
+
   for (const prefix of ["", "en/"]) {
     await withPage(browser, { javaScriptEnabled: false, viewport: { width: 390, height: 844 } }, async (page) => {
       await open(page, prefix + route);
@@ -283,10 +285,12 @@ export async function checkSignal(browser, {
     await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide")));
     await phase(page, "still");
     await quiet(page);
-    const beforeReturn = await devices(page);
+    const configurationsBeforeReturn = await page.evaluate(() => window.__visualProbe.configurations);
     await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pageshow")));
     await nextFrame();
-    assert.equal(await devices(page), beforeReturn + 1);
+    // The pinned SDK can reuse its GPU device after destroying the previous renderer.
+    assert.ok(await page.evaluate(() => window.__visualProbe.configurations) > configurationsBeforeReturn,
+      "Returning to the page should reconfigure the canvas for a fresh renderer");
     await privateRequests(probe);
 
     await page.locator('header a[lang="zh-Hant"]').click();
@@ -308,5 +312,4 @@ export async function checkSignal(browser, {
     await privateRequests(probe);
   });
   evidence.checks.signal = "PASS bilingual 320/390/768/1440 and 200% text layout, keyboard/touch, three visible WebGPU programs, 18 switches on one device, lifecycle and recovery, no-GPU/no-JS/reduced motion and privacy";
-  evidence.checks.signalBooking = "PASS both locales: pass and set selection, empty/invalid quantity, pricing, keyboard review/edit, local UTF-8 itinerary download, no purchase or reservation";
 }

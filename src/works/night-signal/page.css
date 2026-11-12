@@ -87,7 +87,7 @@
 .hero h1 {
   margin-block: 0.015em 0.12em;
   font: 800 clamp(2.85rem, 18vw, 17rem)/0.84 var(--display);
-  letter-spacing: -0.045em;
+  letter-spacing: -0.035em;
 }
 :lang(zh-Hant) .hero h1 {
   display: flex;
@@ -354,7 +354,13 @@
 .ticket-complete { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.75fr); gap: 1.25rem 2rem; }
 .complete-event { margin-block: 1.05em 0.3em; }
 .complete-actions { display: grid; gap: 0.55rem; align-content: center; }
-.complete-actions p:empty { display: none; }
+.complete-actions p:empty {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .button-secondary { background: transparent; border-color: var(--night-rule); color: var(--night-copy); }
 .button-secondary:hover { background: #303049; color: var(--paper); }
 

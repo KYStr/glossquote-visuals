@@ -11,17 +11,17 @@ function composition({ channel }) {
   return [
     { id: "field", type: "SolidColor", props: { color: "#04050c" } },
     { id: "beam", type: "Beam", props: {
-      startPosition: { x: 0.12, y: 0.76 }, endPosition: { x: 0.92, y: end },
-      startThickness: 0.003, endThickness: 0.075, startSoftness: 0.18, endSoftness: 0.72,
+      startPosition: { x: 0.12, y: 0.76 }, endPosition: { x: 1, y: end },
+      startThickness: 0.004, endThickness: 0.049, startSoftness: 0.18, endSoftness: 0.72,
       insideColor: glow, outsideColor: "#060611", opacity: 0.8,
     } },
     { id: "afterglow", type: "SineWave", props: {
       color: trace, amplitude: rise + 0.028, frequency, speed: 0.19, angle,
-      position: { x: 0.51, y: 0.54 }, thickness: 0.043, softness: 0.17, opacity: 0.58,
+      position: { x: 0.51, y: 0.54 }, thickness: 0.022, softness: 0.064, opacity: 0.52,
     } },
     { id: "edge", type: "SineWave", props: {
       color: light, amplitude: rise, frequency, speed: 0.19, angle,
-      position: { x: 0.5, y: 0.48 }, thickness: 0.012, softness: 0.055, opacity: 0.77,
+      position: { x: 0.5, y: 0.48 }, thickness: 0.011, softness: 0.012, opacity: 0.86,
     } },
   ];
 }
