@@ -1,0 +1,51 @@
+{
+  "commit": "db8e51476d11bf1cff0da710c1d12b6015191458",
+  "environment": "GitHub-hosted Ubuntu 24.04 VM",
+  "display": "xvfb",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion",
+    "fallback": "PASS no-JS HTML, unsupported WebGPU and rejected adapter with working CSS controls"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "Google Inc. (Mesa)",
+        "deviceString": "ANGLE (Mesa, llvmpipe (LLVM 20.1.2 256 bits), OpenGL 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.4)"
+      }
+    ],
+    "gpuBufferSmoke": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "value": 305441741
+    },
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "fallback": true
+    },
+    "minCheckedContrast": 6.831676841568789,
+    "firstFrame": {
+      "screenshot": {
+        "colors": 1,
+        "average": [
+          225,
+          215,
+          197
+        ]
+      },
+      "gpuErrors": []
+    }
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png",
+    "paper-en-1440-webgpu.png",
+    "paper-en-webgpu-only.png"
+  ],
+  "result": "FAIL",
+  "error": "page.evaluate: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at capture (<anonymous>:59:20)\n    at GPUQueue.submit (<anonymous>:86:13)\n    at Vy.submit (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:197:21323)\n    at uy (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:197:13945)\n    at #n (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:197:35094)\n    at e.draw (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:197:35149)\n    at x (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:214:6961)\n    at Object.S [as render] (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:214:7086)\n    at Object.render (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:214:47168)\n    at JI (http://127.0.0.1:39291/glossquote-visuals/assets/shader-C1gTE4yR.js:204:519166)\n    at /home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:183:37\n    at async withPage (/home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:83:5)\n    at async checkShader (/home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:162:3)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:314:3"
+}

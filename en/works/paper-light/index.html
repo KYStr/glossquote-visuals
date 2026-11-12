@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>Paper &amp; Light | GlossQuote Visuals</title>
+  <meta name="description" content="A concept exhibition about paper fibers and incident light. Change the angle and the color and study how one sheet responds.">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/en/works/paper-light/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/paper-light/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/paper-light/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/paper-light/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paper &amp; Light | GlossQuote Visuals">
+  <meta property="og:description" content="Change the direction and color of the light to study fibers, creases and shadows on one sheet.">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/paper-light/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/paper-light-share.jpg">
+  <meta property="og:image:alt" content="A slant of light grazing layers of pale paper">
+  <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/paper-light/page.css">
+  <script type="module" src="/src/works/paper-light/page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header frame">
+    <a class="wordmark" href="%BASE_URL%en/">GlossQuote Visuals</a>
+    <nav aria-label="Exhibition navigation">
+      <a href="%BASE_URL%en/">Exhibition index</a>
+      <a href="%BASE_URL%works/paper-light/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+    </nav>
+  </header>
+  <main id="main" class="frame" tabindex="-1">
+    <div class="paper-hero">
+      <div class="paper-intro">
+        <p class="paper-type">An original concept exhibition</p>
+        <h1>Paper <span>&amp; Light</span></h1>
+        <p class="paper-deck">Lower the light and the fold rises.</p>
+        <p>One sheet reveals different fibers and shadows as the direction of the light changes. Move the light and see which detail disappears first.</p>
+      </div>
+      <section class="light-study" aria-labelledby="plate-title">
+        <figure class="paper-plate">
+          <div class="paper-art" data-stage data-preset="dawn">
+            <img src="%BASE_URL%media/paper-light.svg" width="1120" height="800"
+              alt="Warm white sheets curl in layers as slanting light catches their edges">
+            <canvas aria-hidden="true"></canvas>
+          </div>
+          <figcaption id="plate-title">A study in light on folded paper <span>Original still composition</span></figcaption>
+        </figure>
+        <fieldset class="light-controls" data-controls hidden>
+          <legend>Adjust the light</legend>
+          <div class="light-inputs">
+            <div class="light-range">
+              <div class="light-label">
+                <label for="light-angle">Angle of incidence</label>
+                <output id="angle-output" for="light-angle">38°</output>
+              </div>
+              <input type="range" id="light-angle" min="0" max="180" step="1" value="38">
+            </div>
+            <fieldset class="light-presets">
+              <legend>Light color</legend>
+              <div class="light-swatches">
+                <label><input type="radio" name="light-preset" value="dawn" checked><span>Dawn</span></label>
+                <label><input type="radio" name="light-preset" value="honey"><span>Honey</span></label>
+                <label><input type="radio" name="light-preset" value="overcast"><span>Overcast</span></label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="light-actions">
+            <button type="button" data-pause>Pause motion</button>
+            <button type="button" data-reset>Reset</button>
+          </div>
+          <p class="motion-status" role="status" data-motion-status>Showing the still paper study.</p>
+        </fieldset>
+        <noscript><p class="motion-status">The still paper study is shown here. Enable JavaScript to adjust the light.</p></noscript>
+      </section>
+    </div>
+    <div class="paper-reading">
+      <article>
+        <h2>Surface</h2>
+        <p>Head-on, the paper looks almost uniformly white. Light from the side picks out raised fibers and little dips in a surface that seemed flat. Those differences give the sheet its texture before any ink touches it.</p>
+      </article>
+      <article>
+        <h2>Incidence</h2>
+        <p>Turn the light. Look first at the shadow below the crease, then at the highlight as it crosses the edge. Try Honey or Overcast. The crease holds its place while the white around it changes.</p>
+      </article>
+      <aside aria-labelledby="material-title">
+        <h2 id="material-title">Material notes</h2>
+        <p>The fibers, folds and shadows are original vector artwork. WebGPU layers moving light and fine grain over the sheet. The still version retains the angle and color controls.</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer frame">
+    <a href="%BASE_URL%en/">← Exhibition index</a>
+    <a href="<!-- work-source -->">Exhibition source <span aria-hidden="true">↗</span></a>
+  </footer>
+</body>
+</html>

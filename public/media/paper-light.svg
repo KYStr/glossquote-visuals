@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 800">
+  <defs>
+    <linearGradient id="board" x2=".83" y2="1">
+      <stop stop-color="#f2e5cc"/>
+      <stop offset=".52" stop-color="#d5c6b4"/>
+      <stop offset="1" stop-color="#a59380"/>
+    </linearGradient>
+    <linearGradient id="face" x1=".18" y1=".1" x2=".8" y2=".94">
+      <stop stop-color="#f1e6d1"/>
+      <stop offset=".36" stop-color="#fffbed"/>
+      <stop offset=".69" stop-color="#f8f0dc"/>
+      <stop offset="1" stop-color="#d4c0aa"/>
+    </linearGradient>
+    <linearGradient id="turn" x1=".14" y1=".93" x2=".88" y2=".06">
+      <stop stop-color="#bda38a"/>
+      <stop offset=".31" stop-color="#f5e8cf"/>
+      <stop offset=".58" stop-color="#fffbf0"/>
+      <stop offset="1" stop-color="#cfb8a1"/>
+    </linearGradient>
+    <linearGradient id="under" x1=".04" y1=".08" x2=".91" y2=".95">
+      <stop stop-color="#a48a73"/>
+      <stop offset=".5" stop-color="#e0cdb3"/>
+      <stop offset="1" stop-color="#f5e9d1"/>
+    </linearGradient>
+    <linearGradient id="glare" x1=".01" y1=".08" x2=".8" y2=".78">
+      <stop stop-color="#fffbe3" stop-opacity=".8"/>
+      <stop offset=".46" stop-color="#fffbe3" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#a77958" stop-opacity=".18"/>
+    </linearGradient>
+    <filter id="shadow" x="-.2" y="-.3" width="1.4" height="1.6">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="fiber">
+      <feTurbulence type="fractalNoise" baseFrequency=".72 .48" numOctaves="3" seed="23"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <path id="sheet" d="M105 280C343 218 569 66 803 111C878 223 966 338 1066 417C894 395 755 491 567 587C433 656 314 694 202 658Z"/>
+  </defs>
+  <path fill="url(#board)" d="M0 0h1120v800H0z"/>
+  <path fill="#f7e9cb" opacity=".46" d="M0 0h637L268 800H0z"/>
+  <path fill="#ae967c" opacity=".33" d="M1120 251v549H455z"/>
+  <g filter="url(#shadow)" fill="#564333">
+    <path opacity=".28" d="M138 333 787 182 1081 471 451 769 171 693Z"/>
+    <path opacity=".49" d="M216 665C490 613 689 401 1078 444L870 619 484 729 223 707Z"/>
+  </g>
+  <path fill="url(#under)" stroke="#f5ebd9" stroke-width="1.5"
+    d="M96 331C315 289 560 173 783 163L1047 514C837 520 580 683 310 721L127 679Z"/>
+  <path d="M134 674C366 734 540 614 775 531C879 494 965 495 1047 514"
+    fill="none" stroke="#977d67" stroke-opacity=".42" stroke-width="2.2"/>
+  <use href="#sheet" fill="url(#face)" stroke="#fff6e2" stroke-width="1.5"/>
+  <path fill="url(#turn)"
+    d="M803 111C698 320 462 370 314 532C267 583 231 634 202 658C314 694 433 656 567 587C755 491 894 395 1066 417C966 338 878 223 803 111Z"/>
+  <path d="M803 111C698 320 462 370 314 532C267 583 231 634 202 658"
+    fill="none" stroke="#9d8068" stroke-width="2.6" stroke-opacity=".48"/>
+  <path d="M806 115C697 327 465 374 318 536C271 587 237 635 204 661"
+    fill="none" stroke="#fffdf2" stroke-width="2.4" stroke-opacity=".77"/>
+  <g fill="none" stroke="#8e7058" stroke-width="1.1" opacity=".22">
+    <path d="M622 475c121-77 207-115 300-119"/>
+    <path d="M608 486c118-76 205-114 305-120"/>
+    <path d="M591 497c124-79 216-121 317-126"/>
+    <path d="M573 510c126-81 221-125 324-133"/>
+    <path d="M185 365c55-9 120-32 177-57"/>
+    <path d="M189 371c52-9 108-29 158-51"/>
+  </g>
+  <path fill="url(#glare)" d="M0 0h1120v800H0z"/>
+  <path filter="url(#fiber)" fill="#aa9986" opacity=".15" d="M0 0h1120v800H0z"/>
+</svg>

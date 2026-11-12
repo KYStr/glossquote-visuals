@@ -9,3 +9,7 @@ Independent upstream reviewer: `visuals_upstream_review`, requested gpt-6.1-sol 
 M01 works: V001/V002/V003 are complete briefs, not implemented websites at bootstrap. Source publication, browser acceptance, hosting and external review remain separate states. No live claim.
 
 See [bootstrap-checks.json](bootstrap-checks.json) for actual bootstrap checks once generated. This file does not imply any shader was rendered.
+
+## M01 V001
+
+The bilingual gallery and Paper & Light passed the candidate acceptance matrix on a GitHub-hosted Windows VM. See [independent review of the exact candidate](V001/892fb52535585a3219cb8f4b9314e08398a660f3/REVIEW.md) and [PR #1](https://github.com/KYStr/glossquote-visuals/pull/1). Ubuntu software compositing failed in the earlier matrix. The registry carries the latest release state.

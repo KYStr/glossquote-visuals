@@ -1,0 +1,146 @@
+{
+  "commit": "a6576e21c528e809f3560a334774df08b34f0ad3",
+  "environment": "GitHub-hosted Ubuntu 24.04 VM",
+  "display": "headless-vulkan-swiftshader",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion",
+    "fallback": "PASS no-JS HTML, unsupported WebGPU and rejected adapter with working CSS controls",
+    "shaderTexture": "PASS real WebGPU texture has nonuniform pixels",
+    "compositing": "FAIL compositor did not present the changing WebGPU texture",
+    "pause": "PASS three pause/resume cycles without extra devices or texture acquisition while paused",
+    "deviceRecovery": "PASS new WebGPU device after injected unknown loss and actual old device destruction",
+    "visibility": "PASS no frame acquisition during injected hidden state and actual offscreen scroll",
+    "webgpu": "PASS nonuniform WebGPU pixels, live input changes, recovery after injected unknown-loss signal and actual device destruction, pause/resume, hidden event, offscreen, return",
+    "privacy": "PASS only static same-origin GETs, no fetch/XHR/beacon/socket, CSP violations, browser errors, cookies or storage"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "Google Inc. (Google)",
+        "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "disabled_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "disabled_software",
+      "vulkan": "enabled_on",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webgpu_on_vk_via_gl_interop": "disabled_off",
+      "webnn": "disabled_off"
+    },
+    "gpuBufferSmoke": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "value": 305441741
+    },
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "fallback": true
+    },
+    "minCheckedContrast": 6.831676841568789,
+    "firstFrame": {
+      "screenshot": {
+        "colors": 1,
+        "average": [
+          225,
+          215,
+          197
+        ]
+      },
+      "gpuErrors": [],
+      "canvasCss": {
+        "opacity": "0.52",
+        "visibility": "visible",
+        "display": "block"
+      },
+      "texture": {
+        "width": 804,
+        "height": 574,
+        "format": "rgba8unorm",
+        "colors": 236,
+        "average": [
+          221,
+          203,
+          179,
+          255
+        ]
+      }
+    },
+    "textureAcquisitionsPerSecond": 59.4,
+    "pixelRatio": {
+      "deviceScaleFactor": 1,
+      "canvas": 1
+    },
+    "pixelSamples": {
+      "dawn": {
+        "width": 804,
+        "height": 574,
+        "format": "rgba8unorm",
+        "colors": 236,
+        "average": [
+          221,
+          203,
+          179,
+          255
+        ]
+      },
+      "overcast": {
+        "width": 804,
+        "height": 574,
+        "format": "rgba8unorm",
+        "colors": 96,
+        "average": [
+          185,
+          200,
+          219,
+          255
+        ]
+      },
+      "overcastComposite": {
+        "colors": 1,
+        "average": [
+          225,
+          215,
+          197
+        ]
+      }
+    },
+    "requestPaths": [
+      "/glossquote-visuals/",
+      "/glossquote-visuals/assets/gallery-bkvRn6tI.css",
+      "/glossquote-visuals/assets/page-BN4vUWw2.js",
+      "/glossquote-visuals/assets/page-CgvfbSZ7.css",
+      "/glossquote-visuals/assets/shader-C1gTE4yR.js",
+      "/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "/glossquote-visuals/en/works/paper-light/",
+      "/glossquote-visuals/media/mark.svg",
+      "/glossquote-visuals/media/paper-light.svg",
+      "/glossquote-visuals/works/paper-light/"
+    ]
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png",
+    "paper-en-1440-webgpu.png",
+    "paper-en-webgpu-only.png",
+    "paper-en-texture-readback.png",
+    "paper-en-390-webgpu.png",
+    "paper-zh-390-webgpu.png"
+  ],
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: The browser compositor did not present the changing WebGPU texture\n    at checkShader (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:272:10)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:325:3"
+}

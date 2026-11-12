@@ -1,0 +1,62 @@
+{
+  "commit": "1ea5e21df352c204fefa9ae61098e3820b4586d2",
+  "environment": "GitHub-hosted Ubuntu 24.04 VM",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion",
+    "fallback": "PASS no-JS HTML, unsupported WebGPU and rejected adapter with working CSS controls"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "Google Inc. (Mesa)",
+        "deviceString": "ANGLE (Mesa, Vulkan 1.4.318 (llvmpipe (LLVM 20.1.2 256 bits) (0x00000000)), llvmpipe-25.2.8)"
+      }
+    ],
+    "gpuBufferSmoke": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "value": 305441741
+    },
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "fallback": true
+    },
+    "minCheckedContrast": 6.831676841568789,
+    "firstFrame": {
+      "screenshot": {
+        "colors": 1,
+        "average": [
+          225,
+          215,
+          197
+        ]
+      },
+      "gpuErrors": [],
+      "texture": {
+        "width": 804,
+        "height": 574,
+        "format": "rgba8unorm",
+        "colors": 236,
+        "average": [
+          221,
+          203,
+          179,
+          255
+        ]
+      }
+    }
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png",
+    "paper-en-1440-webgpu.png",
+    "paper-en-webgpu-only.png"
+  ],
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: WebGPU output lacks structure: {\"screenshot\":{\"colors\":1,\"average\":[225,215,197]},\"gpuErrors\":[],\"texture\":{\"width\":804,\"height\":574,\"format\":\"rgba8unorm\",\"colors\":236,\"average\":[221,203,179,255]}}\n    at file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:181:12\n    at async withPage (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:80:5)\n    at async checkShader (file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:158:3)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:298:3"
+}

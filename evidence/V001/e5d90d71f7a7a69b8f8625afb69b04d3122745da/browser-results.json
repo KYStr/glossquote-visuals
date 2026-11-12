@@ -1,0 +1,73 @@
+{
+  "commit": "e5d90d71f7a7a69b8f8625afb69b04d3122745da",
+  "environment": "GitHub-hosted Ubuntu 24.04 VM",
+  "display": "headless-software-compositor",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion",
+    "fallback": "PASS no-JS HTML, unsupported WebGPU and rejected adapter with working CSS controls"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "Google Inc. (Google)",
+        "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "disabled_software",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "disabled_software",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "disabled_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "disabled_software",
+      "vulkan": "disabled_off",
+      "webgl": "enabled_readback",
+      "webgpu": "unavailable_software",
+      "webgpu_on_vk_via_gl_interop": "disabled_off",
+      "webnn": "disabled_off"
+    },
+    "gpuBufferSmoke": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "value": 305441741
+    },
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "fallback": true
+    },
+    "minCheckedContrast": 6.831676841568789,
+    "firstFrame": {
+      "screenshot": {
+        "colors": 1,
+        "average": [
+          225,
+          215,
+          197
+        ]
+      },
+      "gpuErrors": [],
+      "canvasCss": {
+        "opacity": "0.52",
+        "visibility": "visible",
+        "display": "block"
+      }
+    }
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png",
+    "paper-en-1440-webgpu.png",
+    "paper-en-webgpu-only.png"
+  ],
+  "result": "FAIL",
+  "error": "page.evaluate: AbortError: Failed to execute 'mapAsync' on 'GPUBuffer': A valid external Instance reference no longer exists.\n    at capture (<anonymous>:59:20)\n    at GPUQueue.submit (<anonymous>:105:13)\n    at Vy.submit (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:197:21323)\n    at uy (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:197:13945)\n    at #n (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:197:35094)\n    at e.draw (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:197:35149)\n    at x (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:214:6961)\n    at Object.S [as render] (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:214:7086)\n    at Object.render (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:214:47168)\n    at JI (http://127.0.0.1:38613/glossquote-visuals/assets/shader-C1gTE4yR.js:204:519166)\n    at /home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:184:49\n    at async withPage (/home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:80:5)\n    at async checkShader (/home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:159:3)\n    at async file:///home/runner/work/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:320:3"
+}
