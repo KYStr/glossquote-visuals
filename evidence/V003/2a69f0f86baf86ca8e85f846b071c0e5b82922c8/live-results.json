@@ -1,0 +1,48 @@
+{
+  "commit": "2a69f0f86baf86ca8e85f846b071c0e5b82922c8",
+  "environment": "GitHub-hosted Windows Server 2025 VM",
+  "display": "headless-d3d11-warp",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS live HTTPS share image, notices, robots, sitemap and 404",
+    "live": "PASS live HTTPS gallery, both localized works, visible WebGPU, source SHA, same-origin network and backlinks"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "unavailable_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webnn": "disabled_off"
+    },
+    "deployed": {
+      "commit": "2a69f0f86baf86ca8e85f846b071c0e5b82922c8",
+      "work": "V003",
+      "slug": "night-signal",
+      "candidate": "dc8fc1481ef72f64c804dd38faf085e0edbe2297"
+    }
+  },
+  "screenshots": [
+    "live-zh-Hant.png",
+    "live-en.png"
+  ],
+  "result": "PASS"
+}

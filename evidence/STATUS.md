@@ -17,3 +17,9 @@ The bilingual gallery and Paper & Light are live. See [the deployment receipt an
 ## M01 V002
 
 Liquid Archive is live with the bilingual gallery and Paper & Light. See [deployment and live tests](V002/99ecae206a7d512fd9c271c5587000a5724c25a2/RELEASE.md), [independent review](V002/c7e45456cfd9b14299b4b7d7dbf976d1b4f34f69/REVIEW.md) and [PR #2](https://github.com/KYStr/glossquote-visuals/pull/2). External acceptance is NOT_RUN.
+
+## M01 V003 and integrated gallery
+
+All three bilingual exhibitions and the gallery are published on GitHub Pages at `2a69f0f86baf86ca8e85f846b071c0e5b82922c8`. The full release browser suite and live spot check passed on GitHub-hosted Windows. Eight localized routes and 16 static resources passed the final HTTPS check. See [deployment and live tests](V003/2a69f0f86baf86ca8e85f846b071c0e5b82922c8/RELEASE.md), [independent review](V003/dc8fc1481ef72f64c804dd38faf085e0edbe2297/REVIEW.md) and [PR #3](https://github.com/KYStr/glossquote-visuals/pull/3). External acceptance is NOT_RUN.
+
+The Windows persistent-environment and Git settings guard fingerprints matched their captures. The pinned Shaders skill and the V00 evidence match the bootstrap commit. Raw machine-local guard snapshots stay in the ignored run directory.
