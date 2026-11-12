@@ -14,6 +14,8 @@ const devices = (page) => page.evaluate(() => window.__visualProbe.devices);
 async function assertProgram(page, id, stage) {
   const row = page.locator(`[data-act="${id}"]`);
   assert.equal(await row.locator("input").isChecked(), true);
+  const selectedDot = await row.locator(".act-indicator").evaluate((dot) => getComputedStyle(dot, "::before").backgroundColor);
+  assert.notEqual(selectedDot, "rgba(0, 0, 0, 0)");
   assert.equal(await row.locator("[data-act-description]").isVisible(), true);
   assert.equal(await page.locator("[data-act-description]:visible").count(), 1);
   assert.equal(await stage(page).getAttribute("data-channel"), id);
@@ -61,7 +63,11 @@ async function booking(page, english, capture, layout) {
   assert.equal(await page.locator("[data-error=pass]").isVisible(), false);
   assert.equal(await set.isVisible(), true);
   assert.equal(await set.inputValue(), "echo");
+  await selectProgram(page, "carrier").click();
+  assert.equal(await set.inputValue(), "echo", "The preselected set is kept once a single-set pass is chosen");
   await set.selectOption("dawn");
+  await selectProgram(page, "echo").click();
+  assert.equal(await set.inputValue(), "dawn", "A manual ticket selection survives later lineup browsing");
   assert.equal(await page.locator("[data-unit]").textContent(), "NT$480");
   assert.equal(await page.locator("[data-sets] li").count(), 1);
   assert.match(await page.locator("[data-sets] li").textContent(), /21:45–23:30/);
@@ -149,7 +155,20 @@ export async function checkSignal(browser, {
         assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44), JSON.stringify(targets));
         const cta = await page.locator(".hero-cta").boundingBox();
         assert.ok(cta && cta.y + cta.height <= 580, `CTA below mobile fold at ${width}px`);
+        if (width === 320 && prefix) {
+          await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
+          await capture(page.locator(".hero"), "signal-en-320-200-percent.png");
+          await page.evaluate(() => document.documentElement.style.removeProperty("font-size"));
+        }
+        if (width === 768 && !prefix) await screenshot(page, "signal-zh-Hant-768-still.png");
         if (width === 390) {
+          const venue = await page.locator(".venue-inner").evaluate((element) => {
+            const heading = element.querySelector(".venue-heading").getBoundingClientRect();
+            const image = element.querySelector("figure").getBoundingClientRect();
+            const details = element.querySelector(".venue-details").getBoundingClientRect();
+            return heading.bottom <= image.top && image.bottom <= details.top;
+          });
+          assert.equal(venue, true, "Mobile should show the venue image before arrival details");
           await selectProgram(page, "echo").tap();
           await assertProgram(page, "echo", stage);
           assert.equal(await stage(page).locator("img").evaluate((image) => getComputedStyle(image).filter !== "none"), true);
@@ -170,7 +189,7 @@ export async function checkSignal(browser, {
     }
   }
 
-  evidence.checks.signalBooking = "PASS both locales: pass and set selection, empty/invalid quantity, pricing, keyboard review/edit, local UTF-8 itinerary download, no purchase or reservation";
+  evidence.checks.signalBooking = "PASS both locales: pass and set selection, empty/invalid quantity, pricing, retained set when browsing, keyboard review/edit, local UTF-8 itinerary download, no purchase or reservation";
 
   for (const prefix of ["", "en/"]) {
     await withPage(browser, { javaScriptEnabled: false, viewport: { width: 390, height: 844 } }, async (page) => {
@@ -178,6 +197,7 @@ export async function checkSignal(browser, {
       assert.equal(await page.locator(".act-description:visible").count(), 3);
       assert.equal(await page.locator(".pass-option:visible").count(), 2);
       assert.equal(await page.locator("[data-receipt]").isVisible(), false);
+      assert.equal(await page.locator("[data-program-hint]").isVisible(), false);
       assert.equal(await page.locator("audio, video, iframe").count(), 0);
       assert.ok(await stage(page).locator("img").isVisible());
       assert.ok(await page.locator("noscript p").isVisible());
@@ -291,6 +311,9 @@ export async function checkSignal(browser, {
     // The pinned SDK can reuse its GPU device after destroying the previous renderer.
     assert.ok(await page.evaluate(() => window.__visualProbe.configurations) > configurationsBeforeReturn,
       "Returning to the page should reconfigure the canvas for a fresh renderer");
+    assert.equal(await stage(page).locator("canvas").isVisible(), true);
+    const returnedTexture = await page.evaluate(() => window.__visualProbe.readFrame());
+    assert.ok(returnedTexture.colors > 20, "The reconfigured canvas should present a real shader frame");
     await privateRequests(probe);
 
     await page.locator('header a[lang="zh-Hant"]').click();

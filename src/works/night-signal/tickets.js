@@ -54,10 +54,10 @@ export function setupTickets(english) {
   const completeSets = complete.querySelector("[data-complete-sets]");
   const download = complete.querySelector("[data-download]");
   const downloadStatus = complete.querySelector("[data-download-status]");
-  let explicitSet = false;
   let downloadText = "";
 
   const selectedPass = () => options.find(({ radio }) => radio.checked);
+  let singleSetChosen = selectedPass()?.radio.value === "single";
   const selectedSets = (pass) => (pass.radio.value === "single"
     ? [...set.selectedOptions]
     : [...set.options]).map(textOf);
@@ -96,8 +96,10 @@ export function setupTickets(english) {
   }
 
   form.addEventListener("change", (event) => {
-    if (event.target.name === "pass") markPassError(false);
-    if (event.target === set) explicitSet = true;
+    if (event.target.name === "pass") {
+      markPassError(false);
+      if (event.target.value === "single") singleSetChosen = true;
+    }
     render();
   });
   quantity.addEventListener("input", () => {
@@ -178,7 +180,7 @@ export function setupTickets(english) {
 
   return {
     suggestSet(id) {
-      if (!explicitSet) {
+      if (!singleSetChosen) {
         set.value = id;
         render();
       }
