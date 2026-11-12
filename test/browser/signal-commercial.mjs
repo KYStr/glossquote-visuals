@@ -43,7 +43,7 @@ async function measureContrast(page) {
   return Number(Math.min(...ratios).toFixed(2));
 }
 
-async function booking(page, english, capture, layout) {
+async function booking(page, english, { capture, layout, evidenceDir }) {
   const empty = page.locator("[data-empty]");
   const first = page.locator("#pass-single");
   const full = page.locator("#pass-full");
@@ -108,8 +108,11 @@ async function booking(page, english, capture, layout) {
   await page.locator("[data-download]").click();
   const download = await pending;
   assert.equal(await download.failure(), null);
-  assert.equal(download.suggestedFilename(), `night-signal-2026-11-21-${english ? "en" : "zh-Hant"}.txt`);
-  const text = await readFile(await download.path(), "utf8");
+  const filename = download.suggestedFilename();
+  assert.equal(filename, `night-signal-2026-11-21-${english ? "en" : "zh-Hant"}.txt`);
+  const itinerary = resolve(evidenceDir, filename);
+  await download.saveAs(itinerary);
+  const text = await readFile(itinerary, "utf8");
   assert.match(text, /NT\$2,640/);
   assert.match(text, /NT\$880/);
   assert.match(text, /2026/);
@@ -120,11 +123,13 @@ async function booking(page, english, capture, layout) {
   await full.press("ArrowLeft");
   assert.equal(await set.inputValue(), "dawn");
   assert.equal(await total.textContent(), "NT$1,440");
+  return filename;
 }
 
 export async function checkSignal(browser, {
   evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
 }) {
+  evidence.downloads = [];
   const privateRequests = (probe) => probe.assertPrivate(site.origin, { fontPaths: signalFontPaths });
   const capture = async (locator, name) => {
     await locator.screenshot({ path: resolve(evidenceDir, name) });
@@ -181,7 +186,7 @@ export async function checkSignal(browser, {
           await page.locator(".hero-cta").press("Enter");
           assert.equal(new URL(page.url()).hash, "#passes");
           assert.equal(await active(page, "#passes"), true);
-          await booking(page, Boolean(prefix), capture, layout);
+          evidence.downloads.push(await booking(page, Boolean(prefix), { capture, layout, evidenceDir }));
         }
         assert.ok(probe.requests.some(({ type, url }) => type === "font" && new URL(url).pathname === signalFontPaths[0]));
         await privateRequests(probe);
