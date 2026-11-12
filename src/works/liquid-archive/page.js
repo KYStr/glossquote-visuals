@@ -9,12 +9,15 @@ const copy = en ? {
   starting: "Preparing the moving reflection.",
   running: "Adjust the light across the Halo Candleholder.",
   pause: "Pause motion", resume: "Resume motion", quantity: "Quantity", remove: "Remove",
-  brand: "FORME Objects", title: "Inquiry summary", unit: "Indicative unit price",
+  unitNames: { piece: ["piece", "pieces"], set: ["set", "sets"] },
+  quantityLabel: units => "Quantity (" + units[1] + ")",
+  unitLabel: units => "Indicative price per " + units[0],
+  brand: "FORME Objects", title: "Inquiry summary",
   line: "Line total", total: "Indicative product total",
   limit: "Enter a whole number from 1 to 99.",
   lineLimit: "The list already includes this finish. Keep each line at 99 or fewer.",
   edit: "Enter a quantity from 1 to 99 on each line before downloading.",
-  added: (name, finish, count) => `Added ${count} × ${name}, ${finish}.`,
+  added: (name, finish, units) => `Added ${name}, ${finish} (${units}).`,
   removed: (name, finish) => `Removed ${name}, ${finish}.`,
   complete: "Inquiry summary generated. Your browser handles the download.",
   localOnly: "Concept selection only. Prices are illustrative and exclude delivery. No inquiry or order has been sent.",
@@ -26,12 +29,15 @@ const copy = en ? {
   starting: "正在準備動態反光。",
   running: "調整光線，觀察折光燭台的反光。",
   pause: "暫停動態", resume: "繼續動態", quantity: "數量", remove: "移除",
-  brand: "FORME 物形", title: "詢問摘要", unit: "示意單價",
+  unitNames: { piece: ["件", "件"], set: ["組", "組"] },
+  quantityLabel: units => "數量（" + units[0] + "）",
+  unitLabel: units => "每" + units[0] + "示意價",
+  brand: "FORME 物形", title: "詢問摘要",
   line: "小計", total: "商品示意合計",
-  limit: "件數須為 1 至 99 的整數。",
-  lineLimit: "清單已有此表面，每列最多 99 件。",
-  edit: "請將每列件數改為 1 至 99 後再下載。",
-  added: (name, finish, count) => `已加入 ${count} 件${name}（${finish}）。`,
+  limit: "數量須為 1 至 99 的整數。",
+  lineLimit: "清單已有此表面，每列數量上限為 99。",
+  edit: "請將每列數量改為 1 至 99 後再下載。",
+  added: (name, finish, units) => `已加入 ${units} ${name}（${finish}）。`,
   removed: (name, finish) => `已移除${name}（${finish}）。`,
   complete: "已產生詢問摘要，請查看瀏覽器的下載項目。",
   localOnly: "本摘要為概念選品，售價為示意金額且未含運費，尚未送出詢問或訂單。",
@@ -39,13 +45,17 @@ const copy = en ? {
 
 const find = selector => document.querySelector(selector);
 const money = amount => "NT$" + amount.toLocaleString("en-US");
+const countLabel = (count, units) => count + " " + units[count === 1 ? 0 : 1];
 const catalog = new Map([...document.querySelectorAll("[data-product]")].map(card => {
   const read = selector => card.querySelector(selector).textContent;
   return [card.dataset.product, {
     name: read("[data-name]"),
     description: read("[data-description]"),
+    material: read("[data-material]"),
     size: read("[data-size]"),
     use: read("[data-use]"),
+    soldAsSet: card.dataset.unitKind === "set",
+    units: copy.unitNames[card.dataset.unitKind ?? "piece"],
     alt: card.querySelector("[data-card-photo]").dataset.photoAlt,
     prices: { polished: Number(card.dataset.polished), satin: Number(card.dataset.satin) },
   }];
@@ -117,9 +127,12 @@ function updateProduct() {
   configTitle.textContent = product.name;
   find("[data-caption]").textContent = `${product.name} · ${finishName}`;
   find("[data-object-note]").textContent = product.description;
+  find("[data-detail-material]").textContent = product.material;
   find("[data-detail-size]").textContent = product.size;
   find("[data-detail-use]").textContent = product.use;
   find("[data-unit]").textContent = money(product.prices[finish]);
+  find("[data-unit-label]").textContent = copy.unitLabel(product.units);
+  find("[data-quantity-label]").textContent = copy.quantityLabel(product.units);
   find("[data-finish-note]").textContent = finishInput.dataset.note;
   addFeedback.textContent = "";
   quantity.removeAttribute("aria-invalid");
@@ -139,16 +152,16 @@ function updateHero(finish, finishName) {
 }
 
 function updateSummary() {
-  let pieces = 0;
+  let units = 0;
   let amount = 0;
   let invalid = false;
   for (const line of lines.values()) {
-    pieces += line.count;
+    units += line.count;
     amount += line.count * line.unit;
     invalid ||= !line.input.validity.valid;
   }
   empty.hidden = lines.size > 0;
-  count.textContent = pieces;
+  count.textContent = units;
   total.textContent = invalid ? "—" : money(amount);
   download.disabled = !lines.size || invalid;
   inquiryFeedback.textContent = invalid ? copy.edit : "";
@@ -172,16 +185,17 @@ function setLineCount(line, value) {
 function addLine(key, product, finish, unit, initialCount) {
   const node = element("li", undefined, "inquiry-item");
   const label = element("div");
-  label.append(element("h3", product.name), element("p", `${finish} · ${copy.unit} ${money(unit)}`));
+  label.append(element("h3", product.name), element("p", `${finish} · ${copy.unitLabel(product.units)} ${money(unit)}`));
+  if (product.soldAsSet) label.append(element("p", product.use));
   const actions = element("div", undefined, "item-actions");
-  const quantityLabel = element("label", copy.quantity);
+  const quantityLabel = element("label", copy.quantityLabel(product.units));
   const input = element("input", undefined, "quantity");
   input.type = "number";
   input.min = "1";
   input.max = "99";
   input.step = "1";
   input.required = true;
-  input.setAttribute("aria-label", `${copy.quantity} · ${product.name} · ${finish}`);
+  input.setAttribute("aria-label", `${copy.quantityLabel(product.units)} · ${product.name} · ${finish}`);
   input.setAttribute("aria-describedby", "inquiry-feedback");
   quantityLabel.append(input);
   const subtotal = element("strong");
@@ -238,10 +252,10 @@ picker.addEventListener("submit", event => {
   const { finish } = settings;
   const product = catalog.get(object);
   const finishName = picker.querySelector("[name=finish]:checked + span").textContent;
-  const pieces = quantity.valueAsNumber;
+  const units = quantity.valueAsNumber;
   const key = `${object}-${finish}`;
   const previous = lines.get(key);
-  const nextCount = (previous?.count ?? 0) + pieces;
+  const nextCount = (previous?.count ?? 0) + units;
   if (previous && !previous.input.validity.valid) {
     addFeedback.textContent = copy.edit;
     previous.input.focus();
@@ -253,9 +267,9 @@ picker.addEventListener("submit", event => {
     return;
   }
   if (previous) setLineCount(previous, nextCount);
-  else addLine(key, product, finishName, product.prices[finish], pieces);
+  else addLine(key, product, finishName, product.prices[finish], nextCount);
   updateSummary();
-  addFeedback.textContent = copy.added(product.name, finishName, pieces);
+  addFeedback.textContent = copy.added(product.name, finishName, countLabel(units, product.units));
   viewList.hidden = false;
 });
 
@@ -280,7 +294,8 @@ download.addEventListener("click", () => {
   if (download.disabled) return;
   const summary = [copy.brand, copy.title, ""];
   for (const { product, finish, unit, count } of lines.values()) {
-    summary.push(`${product.name} · ${finish}`, product.size, `${copy.quantity} ${count} · ${copy.unit} ${money(unit)} · ${copy.line} ${money(count * unit)}`, "");
+    summary.push(`${product.name} · ${finish}`, `${product.material} · ${product.size}`, product.use);
+    summary.push(`${copy.quantity} ${countLabel(count, product.units)} · ${copy.unitLabel(product.units)} ${money(unit)} · ${copy.line} ${money(count * unit)}`, "");
   }
   summary.push(`${copy.total} ${money(amount)}`, "", copy.localOnly, "");
   const url = URL.createObjectURL(new Blob([summary.join("\n")], { type: "text/plain;charset=utf-8" }));

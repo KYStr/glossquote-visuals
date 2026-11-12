@@ -23,41 +23,43 @@
 </head>
 <body id="top">
   <a class="skip" href="#main">跳到主要內容</a>
-  <header class="site-header forme-header frame">
-    <a class="brand" href="#top">FORME <span>物形</span></a>
-    <nav aria-label="網站導覽">
-      <a href="#collection">系列</a>
-      <a href="#craft">工藝</a>
-      <a href="#inquiry">詢問清單<span class="inquiry-count" data-count hidden aria-hidden="true">0</span></a>
-      <a class="language" href="%BASE_URL%en/works/liquid-archive/" lang="en" hreflang="en">English</a>
-    </nav>
+  <header class="forme-header">
+    <div class="site-header frame">
+      <a class="brand" href="#top">FORME <span>物形</span></a>
+      <nav aria-label="網站導覽">
+        <a href="#collection">系列</a>
+        <a href="#craft">工藝</a>
+        <a href="#inquiry">詢問清單<span class="inquiry-count" data-count hidden aria-hidden="true">0</span></a>
+        <a class="language" href="%BASE_URL%en/works/liquid-archive/" lang="en" hreflang="en">English</a>
+      </nav>
+    </div>
   </header>
   <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="frame">
-        <div class="hero-grid">
+      <div class="hero-scene">
+        <figure class="hero-visual">
+          <div class="hero-surface">
+            <img data-hero-image src="%BASE_URL%media/liquid-forme-hero.webp" srcset="%BASE_URL%media/liquid-forme-hero-small.webp 900w, %BASE_URL%media/liquid-forme-hero.webp 1536w" sizes="100vw" alt="暖灰牆前的煙燻木架上，銀色環形燭台映出燭火與斜射日光。" width="1536" height="1024" fetchpriority="high">
+            <div class="hero-render" data-stage data-finish="polished" aria-hidden="true"><canvas></canvas></div>
+          </div>
+        </figure>
+        <div class="hero-content frame">
           <div class="hero-copy">
             <p class="eyebrow">FORME 物形 · 不鏽鋼家飾</p>
             <h1 id="hero-title"><span>給光一個</span> <span>形狀。</span></h1>
             <p>把光留在餐桌、窗邊與書架。三款不鏽鋼家飾，各有鏡面亮光與拉絲霧面。</p>
             <a class="button" href="#collection">探索系列 <span aria-hidden="true">↓</span></a>
           </div>
-          <figure class="hero-visual">
-            <div class="hero-surface">
-              <img data-hero-image src="%BASE_URL%media/liquid-forme-hero.webp" srcset="%BASE_URL%media/liquid-forme-hero-small.webp 900w, %BASE_URL%media/liquid-forme-hero.webp 1536w" sizes="(max-width: 704px) 92vw, 57vw" alt="暖灰牆前的煙燻木架上，銀色環形燭台映出燭火與斜射日光。" width="1536" height="1024" fetchpriority="high">
-              <div class="hero-render" data-stage data-finish="polished" aria-hidden="true"><canvas></canvas></div>
-            </div>
-          </figure>
-        </div>
-        <div class="hero-note">
           <div class="hero-credit"><p data-hero-caption data-hero-name="折光燭台">折光燭台 · 鏡面亮光</p><a href="#object-ring">查看折光燭台 <span aria-hidden="true">↗</span></a></div>
-          <div class="hero-light">
-            <div class="motion-tools" data-motion-tools hidden>
-              <label for="object-angle">光線角度 <input id="object-angle" type="range" min="0" max="180" step="1" value="28"> <output for="object-angle">28°</output></label>
-              <button type="button" data-pause>暫停動態</button>
-            </div>
-            <p class="motion-status" role="status" data-motion-status>顯示靜態反光。</p>
+        </div>
+      </div>
+      <div class="hero-note">
+        <div class="frame hero-light">
+          <div class="motion-tools" data-motion-tools hidden>
+            <label for="object-angle">光線角度 <input id="object-angle" type="range" min="0" max="180" step="1" value="28"> <output for="object-angle">28°</output></label>
+            <button type="button" data-pause>暫停動態</button>
           </div>
+          <p class="motion-status" role="status" data-motion-status>顯示靜態反光。</p>
         </div>
       </div>
     </section>
@@ -69,57 +71,66 @@
       </header>
       <div class="collection-grid">
         <article class="product-card" id="object-ring" data-product="ring" data-polished="2880" data-satin="2680">
-          <img src="%BASE_URL%media/liquid-forme-ring-polished.webp" width="508" height="508" alt="環形不鏽鋼燭台，平底座與象牙色細燭 · 鏡面亮光" loading="lazy" data-card-photo data-photo-alt="環形不鏽鋼燭台，平底座與象牙色細燭">
-          <div class="card-heading"><h3 data-name>折光燭台</h3><p>NT$2,680 起</p></div>
-          <p class="card-description" data-description>一圈厚實鋼面立在平底座上。燭火沿著內緣映出細亮的線，適合餐桌或矮櫃。</p>
-          <a class="text-link" data-select-product="ring" href="#configure" hidden>選擇款式與表面 <span aria-hidden="true">↗</span></a>
-          <details class="card-spec">
-            <summary>規格與保養</summary>
-            <dl>
-              <div><dt>材質</dt><dd >304 不鏽鋼</dd></div>
-              <div><dt>尺寸</dt><dd data-size>16 × 6 × 19 cm</dd></div>
-              <div><dt>商品</dt><dd data-use>適用直徑 22 mm 的細燭，蠟燭另備。</dd></div>
-              <div><dt>保養</dt><dd data-care>待燭台冷卻後以軟布清潔。點燃時請留人在旁。</dd></div>
-              <div><dt>鏡面亮光</dt><dd >NT$2,880</dd></div>
-              <div><dt>拉絲霧面</dt><dd >NT$2,680</dd></div>
-            </dl>
-          </details>
+          <img src="%BASE_URL%media/liquid-forme-ring-polished.webp" width="508" height="508" alt="環形不鏽鋼燭台，平底座與象牙色細燭 · 鏡面亮光" data-card-photo data-photo-alt="環形不鏽鋼燭台，平底座與象牙色細燭">
+          <div class="card-copy">
+            <div class="card-heading"><h3 data-name>折光燭台</h3></div>
+            <p class="card-price">NT$2,680 起 <span>· 拉絲霧面</span></p>
+            <p class="card-description" data-description>一圈厚實鋼面立在平底座上。燭火沿著內緣映出細亮的線，適合餐桌或矮櫃。</p>
+            <a class="text-link" data-select-product="ring" href="#configure" hidden>選擇款式與表面 <span aria-hidden="true">↗</span></a>
+            <details class="card-spec">
+              <summary>規格與保養</summary>
+              <dl>
+                <div><dt>材質</dt><dd data-material>304 不鏽鋼</dd></div>
+                <div><dt>尺寸</dt><dd data-size>16 × 6 × 19 cm</dd></div>
+                <div><dt>商品</dt><dd data-use>適用直徑 22 mm 的細燭，蠟燭另備。</dd></div>
+                <div><dt>保養</dt><dd data-care>待燭台冷卻後以軟布清潔。點燃時請留人在旁。</dd></div>
+                <div><dt>鏡面亮光</dt><dd>NT$2,880</dd></div>
+                <div><dt>拉絲霧面</dt><dd>NT$2,680</dd></div>
+              </dl>
+            </details>
+          </div>
         </article>
 
         <article class="product-card" id="object-orb" data-product="orb" data-polished="2480" data-satin="2280">
-          <img src="%BASE_URL%media/liquid-forme-orb-polished.webp" width="508" height="508" alt="有平底、短瓶頸及一枝葉材的球形花器 · 鏡面亮光" loading="lazy" data-card-photo data-photo-alt="有平底、短瓶頸及一枝葉材的球形花器">
-          <div class="card-heading"><h3 data-name>凝露花器</h3><p>NT$2,280 起</p></div>
-          <p class="card-description" data-description>球形瓶身留出飽滿的反光，窄口托住一枝花或細枝。平底適合玄關或窗邊。</p>
-          <a class="text-link" data-select-product="orb" href="#configure" hidden>選擇款式與表面 <span aria-hidden="true">↗</span></a>
-          <details class="card-spec">
-            <summary>規格與保養</summary>
-            <dl>
-              <div><dt>材質</dt><dd >304 不鏽鋼</dd></div>
-              <div><dt>尺寸</dt><dd data-size>Ø 12 × 15 cm</dd></div>
-              <div><dt>商品</dt><dd data-use>瓶口內徑 22 mm，適合單枝鮮花或乾枝。</dd></div>
-              <div><dt>保養</dt><dd data-care>換水後以清水沖洗瓶內，外側以軟布擦乾。</dd></div>
-              <div><dt>鏡面亮光</dt><dd >NT$2,480</dd></div>
-              <div><dt>拉絲霧面</dt><dd >NT$2,280</dd></div>
-            </dl>
-          </details>
+          <img src="%BASE_URL%media/liquid-forme-orb-polished.webp" width="508" height="508" alt="有平底、短瓶頸及一枝葉材的球形花器 · 鏡面亮光" data-card-photo data-photo-alt="有平底、短瓶頸及一枝葉材的球形花器">
+          <div class="card-copy">
+            <div class="card-heading"><h3 data-name>凝露花器</h3></div>
+            <p class="card-price">NT$2,280 起 <span>· 拉絲霧面</span></p>
+            <p class="card-description" data-description>球形瓶身留出飽滿的反光，窄口托住一枝花或細枝。平底適合玄關或窗邊。</p>
+            <a class="text-link" data-select-product="orb" href="#configure" hidden>選擇款式與表面 <span aria-hidden="true">↗</span></a>
+            <details class="card-spec">
+              <summary>規格與保養</summary>
+              <dl>
+                <div><dt>材質</dt><dd data-material>304 不鏽鋼</dd></div>
+                <div><dt>尺寸</dt><dd data-size>Ø 12 × 15 cm</dd></div>
+                <div><dt>商品</dt><dd data-use>瓶口內徑 22 mm，適合單枝鮮花或乾枝。</dd></div>
+                <div><dt>保養</dt><dd data-care>換水後以清水沖洗瓶內，外側以軟布擦乾。</dd></div>
+                <div><dt>鏡面亮光</dt><dd>NT$2,480</dd></div>
+                <div><dt>拉絲霧面</dt><dd>NT$2,280</dd></div>
+              </dl>
+            </details>
+          </div>
         </article>
 
-        <article class="product-card" id="object-arc" data-product="arc" data-polished="3680" data-satin="3380">
-          <img src="%BASE_URL%media/liquid-forme-arc-polished.webp" width="508" height="508" alt="一對弧形鋼製書擋，以平底座支撐中間的深色書冊 · 鏡面亮光" loading="lazy" data-card-photo data-photo-alt="一對弧形鋼製書擋，以平底座支撐中間的深色書冊">
-          <div class="card-heading"><h3 data-name>雙弧書擋</h3><p>NT$3,380 起</p></div>
-          <p class="card-description" data-description>兩道弧線從平底座抬起，把書收在中間。留在層架上時，開口仍透得進光。</p>
-          <a class="text-link" data-select-product="arc" href="#configure" hidden>選擇款式與表面 <span aria-hidden="true">↗</span></a>
-          <details class="card-spec">
-            <summary>規格與保養</summary>
-            <dl>
-              <div><dt>材質</dt><dd >304 不鏽鋼</dd></div>
-              <div><dt>尺寸</dt><dd data-size>12 × 8 × 16 cm</dd></div>
-              <div><dt>商品</dt><dd data-use>尺寸為單件，兩件一組。</dd></div>
-              <div><dt>保養</dt><dd data-care>以微濕軟布去除灰塵，隨即擦乾。</dd></div>
-              <div><dt>鏡面亮光</dt><dd >NT$3,680</dd></div>
-              <div><dt>拉絲霧面</dt><dd >NT$3,380</dd></div>
-            </dl>
-          </details>
+        <article class="product-card" id="object-arc" data-product="arc" data-unit-kind="set" data-polished="3680" data-satin="3380">
+          <img src="%BASE_URL%media/liquid-forme-arc-polished.webp" width="508" height="508" alt="一對弧形鋼製書擋，以平底座支撐中間的深色書冊 · 鏡面亮光" data-card-photo data-photo-alt="一對弧形鋼製書擋，以平底座支撐中間的深色書冊">
+          <div class="card-copy">
+            <div class="card-heading"><h3 data-name>雙弧書擋</h3></div>
+            <p class="card-price">每組 NT$3,380 起 <span>· 拉絲霧面</span></p>
+            <p class="card-description" data-description>兩道弧線從平底座抬起，把書收在中間。留在層架上時，開口仍透得進光。</p>
+            <a class="text-link" data-select-product="arc" href="#configure" hidden>選擇款式與表面 <span aria-hidden="true">↗</span></a>
+            <details class="card-spec">
+              <summary>規格與保養</summary>
+              <dl>
+                <div><dt>材質</dt><dd data-material>304 不鏽鋼</dd></div>
+                <div><dt>尺寸</dt><dd data-size>12 × 8 × 16 cm</dd></div>
+                <div><dt>商品</dt><dd data-use>每組 2 件，標示尺寸為單件。</dd></div>
+                <div><dt>保養</dt><dd data-care>以微濕軟布去除灰塵，隨即擦乾。</dd></div>
+                <div><dt>鏡面亮光</dt><dd>每組 NT$3,680</dd></div>
+                <div><dt>拉絲霧面</dt><dd>每組 NT$3,380</dd></div>
+              </dl>
+            </details>
+          </div>
         </article>
       </div>
     </section>
@@ -127,7 +138,7 @@
     <section class="section configuration" id="configure" aria-labelledby="config-title" hidden>
       <div class="frame config-grid">
         <figure class="product-photo">
-          <img src="%BASE_URL%media/liquid-forme-ring-polished.webp" width="508" height="508" alt="環形不鏽鋼燭台，平底座與象牙色細燭 · 鏡面亮光" loading="lazy" data-detail-image>
+          <img src="%BASE_URL%media/liquid-forme-ring-polished.webp" width="508" height="508" alt="環形不鏽鋼燭台，平底座與象牙色細燭 · 鏡面亮光" data-detail-image>
           <figcaption data-caption>折光燭台 · 鏡面亮光</figcaption>
         </figure>
         <div class="config-copy">
@@ -147,13 +158,13 @@
             </fieldset>
             <p class="finish-note" data-finish-note>清晰映出窗影與周圍色彩，適合想讓亮邊更醒目的位置。</p>
             <dl class="picker-specs">
-              <div><dt>材質</dt><dd >304 不鏽鋼</dd></div>
+              <div><dt>材質</dt><dd data-detail-material>304 不鏽鋼</dd></div>
               <div><dt>尺寸</dt><dd data-detail-size>16 × 6 × 19 cm</dd></div>
               <div><dt>使用</dt><dd data-detail-use>適用直徑 22 mm 的細燭，蠟燭另備。</dd></div>
             </dl>
             <div class="order-line">
-              <label for="quantity">數量<input id="quantity" class="quantity" type="number" min="1" max="99" step="1" value="1" required aria-describedby="add-feedback"></label>
-              <div><p class="finish-note">示意單價</p><p class="price" data-unit>NT$2,880</p></div>
+              <label for="quantity"><span data-quantity-label>數量（件）</span><input id="quantity" class="quantity" type="number" min="1" max="99" step="1" value="1" required aria-describedby="add-feedback"></label>
+              <div><p class="finish-note" data-unit-label>每件示意價</p><p class="price" data-unit>NT$2,880</p></div>
             </div>
             <button class="button add-button" type="submit">加入詢問清單 <span aria-hidden="true">+</span></button>
             <p class="feedback" id="add-feedback" role="status"></p>
@@ -171,7 +182,7 @@
           <p>日常以柔軟布料清潔。拉絲表面順著紋理擦拭，避免使用研磨清潔劑。</p>
         </div>
         <figure>
-          <img src="%BASE_URL%media/liquid-forme-craft.webp" width="1200" height="800" alt="近距離可見暖光下鋼材的平行拉絲和一道細窄的亮邊。" loading="lazy">
+          <img src="%BASE_URL%media/liquid-forme-craft.webp" width="1200" height="800" alt="近距離可見暖光下鋼材的平行拉絲和一道細窄的亮邊。">
           <figcaption>拉絲表面與拋光邊緣的材質近照</figcaption>
         </figure>
       </div>
@@ -196,7 +207,7 @@
           <p data-empty>清單目前是空的。</p>
           <ul data-items></ul>
           <div class="inquiry-end">
-            <p>商品示意合計<strong data-total>NT$0</strong></p>
+            <div><p>商品示意合計<strong data-total>NT$0</strong></p><p class="finish-note">未含運費。</p></div>
             <button class="button" type="button" data-download disabled>下載詢問摘要 <span aria-hidden="true">↓</span></button>
           </div>
           <a class="text-link" href="#collection" data-return>返回選品 <span aria-hidden="true">↑</span></a>

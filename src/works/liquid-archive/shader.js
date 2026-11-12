@@ -10,8 +10,8 @@ const finishes = {
   },
   satin: {
     type: "BrushedMetal",
-    lightColor: "#d8d0c2", darkColor: "#302b26",
-    brushAngle: 13, anisotropy: 0.7, grain: 0.5, roughness: 0.62,
+    lightColor: "#bdb2a5", darkColor: "#28241f",
+    brushAngle: 13, anisotropy: 0.7, grain: 0.56, roughness: 0.68,
   },
 };
 
