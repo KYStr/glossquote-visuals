@@ -1,4 +1,4 @@
-import { createShader, setShadersDebug } from "shaders/js";
+import { initializeStandalone } from "../../shared/standalone.js";
 
 const palettes = {
   dawn: { light: "#fff6df", shade: "#b79b82", edge: "#8f715a" },
@@ -28,13 +28,9 @@ export function applyPaperLight(renderer, settings) {
   renderer.update("shaft", shaft);
 }
 
-export function initializePaperLight(canvas, { width, height, settings, onReady, onError }) {
-  const { field, shaft } = lightLayers(settings);
-  setShadersDebug(false);
-  canvas.style.width = `${width}px`;
-  canvas.style.height = `${height}px`;
-  return createShader(canvas, {
-    components: [
+export function initializePaperLight(canvas, options) {
+  const { field, shaft } = lightLayers(options.settings);
+  return initializeStandalone(canvas, [
       { id: "field", type: "LinearGradient", props: { ...field, colorSpace: "oklab" } },
       { id: "shaft", type: "Beam", props: {
         ...shaft,
@@ -54,6 +50,5 @@ export function initializePaperLight(canvas, { width, height, settings, onReady,
         opacity: 0.13,
         blendMode: "softLight",
       } },
-    ],
-  }, { disableTelemetry: true, observeElement: false, colorSpace: "srgb", onReady, onError });
+  ], options);
 }

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+  <defs>
+    <radialGradient id="room" cx=".52" cy=".39" r=".66">
+      <stop stop-color="#262930"/><stop offset="1" stop-color="#0c0d11"/>
+    </radialGradient>
+    <linearGradient id="metal" x1=".14" y1=".13" x2=".87" y2=".9">
+      <stop stop-color="#626e7b"/><stop offset=".23" stop-color="#eef3f8"/>
+      <stop offset=".36" stop-color="#292d36"/><stop offset=".49" stop-color="#a9b2bd"/>
+      <stop offset=".61" stop-color="#f5f7f8"/><stop offset=".8" stop-color="#323b49"/>
+      <stop offset="1" stop-color="#11151c"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="960" height="720" fill="url(#room)"/>
+  <ellipse cx="480" cy="604" rx="217" ry="25" fill="#000" opacity=".69" filter="url(#blur)"/>
+  <g transform="rotate(-22 480 356)">
+    <path d="M715 403c-24 112-121 169-228 169-132 0-236-99-236-227 0-127 104-226 237-226 103 0 198 67 221 151l-79-33c-34-31-78-48-127-48-92 0-163 73-163 158 0 87 73 156 161 156 51 0 99-21 131-53Z"
+      fill="#667381" opacity=".64"/>
+    <path d="M701 380c-21 112-114 172-224 172-133 0-239-96-239-221 0-124 100-217 232-217 100 0 194 58 224 140-51-35-106-54-158-50-90 7-160 58-161 133-2 78 65 130 144 130 69 0 128-32 182-87Z"
+      fill="url(#metal)" stroke="#dbe5ed" stroke-opacity=".34"/>
+    <path d="M264 298c20-77 82-131 164-150 86-20 170 0 230 53M382 363c17 65 74 101 140 103 49 1 96-13 135-41"
+      fill="none" stroke="#fbfcfd" stroke-width="4" stroke-linecap="round" opacity=".52"/>
+    <path d="M259 413c45 82 135 126 242 114 72-8 126-44 159-83" fill="none" stroke="#8d9aab" stroke-width="2" opacity=".55"/>
+  </g>
+</svg>

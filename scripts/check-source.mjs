@@ -15,6 +15,8 @@ assert.equal(lock.packages["node_modules/shaders"].integrity,
   "sha512-v/EQv2U6TQccRuoWX0D5lhkJsIizigCRVadsavY8olKLwb4uhHFi+JlIREEMYD4pvywjLnwVpMNpTtJgzR/FwQ==");
 assert.equal(createHash("sha256").update(read("node_modules/shaders/dist/js/bundle.js")).digest("hex"),
   "2f88fd951debc56d84689d7567a1f382ec4d715d36bd1b2faf2c6de6cf32f37c");
+const standalone = read("src/shared/standalone.js").toString();
+assert.match(standalone, /createShader\(canvas, \{ components \}, \{\s*disableTelemetry: true,/);
 
 for (const [slug, entry] of Object.entries(catalog)) {
   assert.match(slug, /^[a-z]+(?:-[a-z]+)*$/);
@@ -24,8 +26,8 @@ for (const [slug, entry] of Object.entries(catalog)) {
     assert.ok(entry[locale].title && entry[locale].description);
   }
   const shader = read(`src/works/${slug}/shader.js`).toString();
-  assert.match(shader, /\}, \{ disableTelemetry: true,/);
-  assert.doesNotMatch(shader, /rendererSettings|createPreview\(/);
+  assert.match(shader, /initializeStandalone\(/);
+  assert.doesNotMatch(shader, /rendererSettings|createPreview\(|createShader\(/);
 }
 
 const notices = read("public/licenses/NOTICES.txt").toString();

@@ -4,7 +4,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { chromium } from "playwright";
-import { base, origin, root } from "../../scripts/site-map.mjs";
+import { base, isPublished, origin, registry, root, worksFor } from "../../scripts/site-map.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 
@@ -109,7 +109,7 @@ async function checkLayouts(browser) {
         assert.equal(await page.locator("canvas").count(), 1);
         assert.equal(await textureCount(page), 0);
         assert.equal(await page.evaluate(() => window.__visualProbe.devices), 0);
-        assert.ok(!probe.requests.some(({ url }) => url.includes("/assets/shader-")));
+        assert.ok(!probe.requests.some(({ url }) => /\/assets\/(?:shader|standalone)-/.test(url)));
         const targets = await page.locator(".light-actions button, .light-swatches span, #light-angle").evaluateAll((nodes) =>
           nodes.map((node) => [node.offsetWidth, node.offsetHeight]));
         assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44));
@@ -279,6 +279,11 @@ async function checkLive(browser) {
   const release = await receipt.json();
   assert.equal(release.commit, commit);
   const route = `works/${release.slug}/`;
+  for (const work of registry.works.filter(isPublished)) {
+    for (const prefix of ["", "en/"]) {
+      assert.equal((await fetch(url(`${prefix}works/${work.slug}/`))).status, 200);
+    }
+  }
   for (const prefix of ["", "en/"]) {
     await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
       const probe = await observe(page);
@@ -300,6 +305,112 @@ async function checkLive(browser) {
   }
   evidence.checks.live = "PASS live HTTPS gallery, both localized works, visible WebGPU, source SHA, same-origin network and backlinks";
   evidence.measurements.deployed = release;
+}
+
+async function checkLiquid(browser) {
+  const route = "works/liquid-archive/";
+  const selectObject = (page, id) => page.locator(`label:has([value="${id}"])`);
+  for (const width of [320, 390, 768, 1440]) {
+    for (const prefix of ["", "en/"]) {
+      await withPage(browser, { viewport: { width, height: 900 }, reducedMotion: "reduce", hasTouch: width === 390 }, async (page) => {
+        const probe = await observe(page);
+        await open(page, prefix);
+        await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
+        await phase(page, "reduced");
+        await layout(page);
+        assert.equal(await textureCount(page), 0);
+        assert.ok(!probe.requests.some(({ url }) => /\/assets\/(?:shader|standalone)-/.test(url)));
+        const targets = await page.locator(".archive-choices span, .archive-motion button, #object-angle").evaluateAll((nodes) =>
+          nodes.map((node) => [node.offsetWidth, node.offsetHeight]));
+        assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44));
+        if (width === 390) {
+          await selectObject(page, "arc").tap();
+          assert.equal(await stage(page).getAttribute("data-object"), "arc");
+          assert.match(await stage(page).locator("img").getAttribute("src"), /liquid-arc\.svg$/);
+          await screenshot(page, `liquid-${prefix ? "en" : "zh-Hant"}-390-still.png`);
+        }
+        await probe.assertPrivate(site.origin);
+      });
+    }
+  }
+  await withPage(browser, { javaScriptEnabled: false }, async (page) => {
+    await open(page, route);
+    assert.ok(await page.locator("noscript p").isVisible());
+    assert.ok(await stage(page).locator("img").isVisible());
+    assert.equal(await page.locator("[data-object-description]").count(), 3);
+  });
+  await withPage(browser, {}, async (page) => {
+    await page.addInitScript(() => Object.defineProperty(navigator, "gpu", { value: undefined }));
+    const probe = await observe(page);
+    await open(page, "en/" + route);
+    await phase(page, "unavailable");
+    await page.locator('[value="ring"]').focus();
+    await page.keyboard.press("ArrowRight");
+    assert.equal(await stage(page).getAttribute("data-object"), "orb");
+    assert.match(await stage(page).locator("img").getAttribute("src"), /liquid-orb\.svg$/);
+    assert.equal(await page.locator("[data-object-title]").textContent(), "Still orb");
+    await page.locator("#object-angle").press("End");
+    assert.equal(await page.locator("output").textContent(), "180°");
+    await probe.assertPrivate(site.origin);
+  });
+  await withPage(browser, { viewport: { width: 1440, height: 920 } }, async (page) => {
+    const probe = await observe(page, { readPixels: true });
+    await open(page, "en/" + route);
+    await phase(page, "running");
+    const objects = {};
+    for (const object of ["ring", "orb", "arc"]) {
+      await selectObject(page, object).click();
+      assert.equal(await stage(page).getAttribute("data-object"), object);
+      await stage(page).scrollIntoViewIfNeeded();
+      const previous = await textureCount(page);
+      await page.waitForFunction((count) => window.__visualProbe.textures > count + 4, previous);
+      const texture = await page.evaluate(() => window.__visualProbe.readFrame());
+      const visible = await pixelEvidence(page, stage(page), resolve(evidenceDir, `liquid-${object}-webgpu.png`));
+      objects[object] = { texture, visible };
+      evidence.screenshots.push(`liquid-${object}-webgpu.png`);
+      assert.ok(texture.colors > 20 && visible.colors > 20, `Object ${object} did not render`);
+    }
+    evidence.measurements.liquidObjects = objects;
+    assert.equal(new Set(Object.values(objects).map(({ texture }) => texture.average.join(","))).size, 3);
+    await page.locator("#object-angle").press("Home");
+    const start = await page.evaluate(() => window.__visualProbe.readFrame());
+    await page.locator("#object-angle").press("End");
+    assert.equal(await page.locator("output").textContent(), "180°");
+    const rotated = await page.evaluate(() => window.__visualProbe.readFrame());
+    assert.notDeepEqual(start.average, rotated.average);
+    const configurations = await page.evaluate(() => window.__visualProbe.configurations);
+    await page.evaluate(() => {
+      const controls = [...document.querySelectorAll('[name="object"]')];
+      for (let i = 0; i < 20; i++) controls[i % controls.length].click();
+    });
+    assert.equal(await stage(page).getAttribute("data-object"), "orb");
+    await stage(page).scrollIntoViewIfNeeded();
+    await phase(page, "running");
+    assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
+    assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
+    assert.equal(await stage(page).locator("canvas").count(), 1);
+    const before = await textureCount(page);
+    const started = performance.now();
+    await page.waitForTimeout(1200);
+    evidence.measurements.liquidTextureAcquisitionsPerSecond = Number(((await textureCount(page) - before) * 1000 / (performance.now() - started)).toFixed(2));
+    evidence.measurements.liquidPixelRatio = await stage(page).locator("canvas").evaluate((canvas) => canvas.width / canvas.getBoundingClientRect().width);
+    await screenshot(page, "liquid-en-1440-webgpu.png");
+    await page.getByRole("button", { name: "Pause motion" }).click();
+    await phase(page, "paused");
+    await quiet(page);
+    await page.getByRole("button", { name: "Resume motion" }).click();
+    await phase(page, "running");
+    await page.setViewportSize({ width: 390, height: 580 });
+    await page.locator('header a[lang="zh-Hant"]').click();
+    assert.equal(page.url(), url(route));
+    await phase(page, "running");
+    await screenshot(page, "liquid-zh-Hant-390-webgpu.png");
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await phase(page, "still");
+    await quiet(page);
+    await probe.assertPrivate(site.origin);
+  });
+  evidence.checks.liquid = "PASS bilingual four widths/200%/touch, no-JS and no-GPU, three visible WebGPU objects, rotation, 20 switches on one device, pause/offscreen and privacy";
 }
 
 let browser;
@@ -358,6 +469,7 @@ try {
       assert.equal(evidence.measurements.gpuBufferSmoke.value, 0x1234abcd);
     });
     await checkShader(browser);
+    if (worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
   }
   evidence.result = "PASS";
   console.log(JSON.stringify(evidence, null, 2));

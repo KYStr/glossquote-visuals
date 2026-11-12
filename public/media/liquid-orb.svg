@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+  <defs>
+    <radialGradient id="room" cx=".5" cy=".38" r=".68">
+      <stop stop-color="#242a36"/><stop offset="1" stop-color="#0c0d11"/>
+    </radialGradient>
+    <linearGradient id="metal" x1=".16" y1=".08" x2=".85" y2=".94">
+      <stop stop-color="#f0f4f9"/><stop offset=".24" stop-color="#738396"/>
+      <stop offset=".44" stop-color="#1b212b"/><stop offset=".59" stop-color="#d8e0e8"/>
+      <stop offset=".76" stop-color="#283442"/><stop offset="1" stop-color="#8492a5"/>
+    </linearGradient>
+    <radialGradient id="gloss" cx=".32" cy=".21" r=".56">
+      <stop stop-color="#fff" stop-opacity=".68"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="21"/></filter>
+    <clipPath id="drop"><path d="M701 349c0 118-94 211-224 211-121 0-221-81-221-199 0-129 89-224 211-229 125-4 234 91 234 217Z"/></clipPath>
+  </defs>
+  <rect width="960" height="720" fill="url(#room)"/>
+  <ellipse cx="478" cy="608" rx="216" ry="28" fill="#000" opacity=".72" filter="url(#blur)"/>
+  <g clip-path="url(#drop)">
+    <rect x="246" y="120" width="470" height="450" fill="url(#metal)"/>
+    <path d="M249 370c100 1 179-119 327-108 47 4 84 17 145 41l5 58c-94-29-131-36-178-34-122 6-203 83-302 101Z" fill="#111721" opacity=".67"/>
+    <path d="M243 410c106-11 174-101 301-117 72-9 137 13 178 34l2 11c-57-22-118-39-171-33-119 14-219 110-307 116Z" fill="#f4f8fc" opacity=".85"/>
+    <rect x="249" y="125" width="465" height="450" fill="url(#gloss)"/>
+    <path d="M290 459c112 41 289 14 383-66-35 91-116 143-219 145-68 2-128-28-164-79Z" fill="#121922" opacity=".42"/>
+  </g>
+</svg>

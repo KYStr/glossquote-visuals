@@ -21,7 +21,7 @@ function checkPage({ route, lang, slug }, release, manifest) {
   const path = route + "index.html";
   const html = read(path);
   const canonical = origin + base + route;
-  assert.ok(html.includes(`<html lang="${lang}">`));
+  assert.equal(html.match(/<html\b[^>]*\slang="([^"]+)"/)?.[1], lang);
   assert.equal([...html.matchAll(/<h1[ >]/g)].length, 1);
   assert.match(html, /<title>[^<]+<\/title>/);
   assert.match(html, /<meta name="description" content="[^"]+"/);

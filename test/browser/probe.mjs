@@ -9,7 +9,7 @@ export async function observe(page, { readPixels = false } = {}) {
     if (message.type() === "error" || /WebGPU validation|GPUValidationError/i.test(message.text())) errors.push(message.text());
   });
   await page.addInitScript((readPixels) => {
-    const probe = window.__visualProbe = { textures: 0, devices: 0, calls: [], violations: [], gpuErrors: [] };
+    const probe = window.__visualProbe = { textures: 0, devices: 0, configurations: 0, calls: [], violations: [], gpuErrors: [] };
     window.addEventListener("securitypolicyviolation", (event) => {
       probe.violations.push({ directive: event.violatedDirective, blocked: event.blockedURI, source: event.sourceFile, line: event.lineNumber });
     });
@@ -44,6 +44,7 @@ export async function observe(page, { readPixels = false } = {}) {
       if (readPixels) {
         const configure = GPUCanvasContext.prototype.configure;
         GPUCanvasContext.prototype.configure = function (options) {
+          probe.configurations++;
           const usage = (options.usage ?? GPUTextureUsage.RENDER_ATTACHMENT) | GPUTextureUsage.COPY_SRC;
           return configure.call(this, { ...options, usage });
         };
