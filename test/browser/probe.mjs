@@ -172,7 +172,8 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
 
 export async function pixelEvidence(page, stage, file) {
   await stage.evaluate((element) => {
-    element.querySelector("img").style.visibility = "hidden";
+    const image = element.querySelector("img");
+    if (image) image.style.visibility = "hidden";
     const canvas = element.querySelector("canvas");
     canvas.style.opacity = "1";
     canvas.style.mixBlendMode = "normal";
@@ -209,7 +210,7 @@ export async function pixelEvidence(page, stage, file) {
     }, png.toString("base64"));
   } finally {
     await stage.evaluate((element) => {
-      element.querySelector("img").style.removeProperty("visibility");
+      element.querySelector("img")?.style.removeProperty("visibility");
       const canvas = element.querySelector("canvas");
       canvas.style.removeProperty("opacity");
       canvas.style.removeProperty("mix-blend-mode");

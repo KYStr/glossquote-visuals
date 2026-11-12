@@ -376,6 +376,192 @@ async function checkShader(browser) {
   assert.ok(compositeOk, "The browser compositor did not present the changing WebGPU texture");
 }
 
+async function livePixelDifference(page, before, after) {
+  return page.evaluate(async ([before, after]) => {
+    const width = 80;
+    const height = 60;
+    const pixels = async (encoded) => {
+      const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
+      const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      context.drawImage(bitmap, 0, 0, width, height);
+      bitmap.close();
+      return context.getImageData(0, 0, width, height).data;
+    };
+    const a = await pixels(before);
+    const b = await pixels(after);
+    let total = 0;
+    let changedPixels = 0;
+    let peak = 0;
+    for (let pixel = 0; pixel < a.length; pixel += 4) {
+      const channels = [0, 1, 2].map((channel) => Math.abs(a[pixel + channel] - b[pixel + channel]));
+      const delta = Math.max(...channels);
+      total += channels.reduce((sum, channel) => sum + channel, 0);
+      if (delta > 10) changedPixels++;
+      peak = Math.max(peak, delta);
+    }
+    return { mean: total / (width * height * 3), changedPixels, peak, width, height };
+  }, [before.toString("base64"), after.toString("base64")]);
+}
+
+async function checkLiveComposite(page, slug, locale, isolatedOutput) {
+  const controls = {
+    "paper-light": { selector: "#light-angle", values: ["0", "180"], surface: "[data-stage]" },
+    "liquid-archive": { selector: "#object-angle", values: ["0", "180"], surface: ".hero-visual" },
+    // The commercial event site uses program radios, not the former amplitude slider.
+    "night-signal": { selector: 'input[name="program"]', values: ["carrier", "echo"], surface: "[data-stage]" },
+  };
+  const control = controls[slug];
+  assert.ok(control, `No live composite control defined for ${slug}`);
+  const stem = `${live ? "live" : "candidate"}-${slug}-${locale}`;
+  const surface = page.locator(control.surface);
+  const captured = {};
+  const files = {};
+  const measurement = { control: control.selector, values: control.values, intervalMs: 100,
+    sequence: ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
+  evidence.measurements.compositeControls ??= {};
+  evidence.measurements.compositeControls[stem] = measurement;
+  const capture = async (label) => {
+    // page.screenshot with an explicit clip needs no locator stability rAF while the clock is paused.
+    const clip = await surface.evaluate((element) => {
+      const rect = element.getBoundingClientRect();
+      return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+    });
+    const file = `${stem}-composite-${label}.png`;
+    const png = await page.screenshot({ path: resolve(evidenceDir, file), clip });
+    evidence.screenshots.push(file);
+    files[label] = file;
+    return png;
+  };
+  const setControl = async (value) => {
+    if (slug === "night-signal") {
+      await page.locator(`${control.selector}[value="${value}"]`).evaluate((input) => input.click());
+      assert.equal(await stage(page).getAttribute("data-channel"), value);
+      assert.equal(await page.locator(`${control.selector}[value="${value}"]`).isChecked(), true);
+    } else {
+      await page.locator(control.selector).evaluate((input, value) => {
+        input.value = value;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+      }, value);
+      assert.equal(await page.locator(control.selector).inputValue(), value);
+    }
+  };
+  const sample = async (label) => {
+    const before = await textureCount(page);
+    // Both the actual composite and independent GPU frame are recorded. The latter
+    // prevents a program's CSS background/filter change from impersonating shader control.
+    await page.evaluate(() => { window.__liveFrame = window.__visualProbe.readFrame(true); });
+    await page.clock.runFor(100);
+    assert.ok(await textureCount(page) > before, `${stem}: no frame during the controlled interval`);
+    // The probe's own timeout uses the paused page clock; retain a real-time
+    // deadline so failed GPU readback still writes results instead of hanging CI.
+    let readbackTimeout;
+    let frame;
+    try {
+      frame = await Promise.race([
+        page.evaluate(async () => {
+          const frame = await window.__liveFrame;
+          await window.__visualProbe.device.queue.onSubmittedWorkDone();
+          return frame;
+        }),
+        new Promise((_, reject) => {
+          readbackTimeout = setTimeout(() => reject(new Error(`${stem}: GPU readback timed out`)), 15_000);
+        }),
+      ]);
+    } finally {
+      clearTimeout(readbackTimeout);
+    }
+    const { png, ...texture } = frame;
+    assert.equal(await stage(page).getAttribute("data-motion"), "running");
+    const textureFile = `${stem}-texture-${label}.png`;
+    const texturePng = Buffer.from(png, "base64");
+    await writeFile(resolve(evidenceDir, textureFile), texturePng);
+    evidence.screenshots.push(textureFile);
+    files[`texture-${label}`] = textureFile;
+    measurement.textures[label] = { ...texture, framesDuringInterval: await textureCount(page) - before };
+    captured[label] = { composite: await capture(label), texture: texturePng, measurement: texture };
+    assert.ok(texture.colors > 20, `${stem}: ${label} lacks structured GPU output`);
+  };
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await phase(page, "running");
+  await surface.locator("img").evaluateAll((images) => Promise.all(images.map((image) => image.decode())));
+  await page.evaluate(() => document.fonts.ready.then(() => {}));
+  const canvasCss = await stage(page).locator("canvas").evaluate((canvas) => {
+    const style = getComputedStyle(canvas);
+    let ancestorsVisible = true;
+    for (let node = canvas; node; node = node.parentElement) {
+      const ancestor = getComputedStyle(node);
+      ancestorsVisible &&= ancestor.display !== "none" && ancestor.visibility === "visible" && Number(ancestor.opacity) > 0;
+    }
+    return { opacity: style.opacity, visibility: style.visibility, display: style.display,
+      blendMode: style.mixBlendMode, maskImage: style.maskImage, ancestorsVisible };
+  });
+  measurement.canvasCss = canvasCss;
+  assert.ok(canvasCss.ancestorsVisible, `${stem}: canvas is hidden in the real composition`);
+  // Freeze between snapshots, advancing equal intervals only. Shader time still
+  // advances during runFor, so A->A measures drift and A->B->A must exceed it.
+  await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
+  try {
+    await setControl(control.values[0]);
+    await sample("a0");
+    await sample("a1");
+    await setControl(control.values[1]);
+    await sample("b");
+    await setControl(control.values[0]);
+    await sample("a2");
+    const comparisons = measurement.comparisons;
+    for (const kind of ["composite", "texture"]) {
+      const difference = (a, b) => livePixelDifference(page, captured[a][kind], captured[b][kind]);
+      const drift = await difference("a0", "a1");
+      const forward = await difference("a1", "b");
+      const backward = await difference("b", "a2");
+      const restored = await difference("a1", "a2");
+      comparisons[kind] = { drift, forward, backward, restored };
+      for (const change of [forward, backward]) {
+        assert.ok(change.mean > Math.max(0.05, drift.mean * 3) &&
+          change.changedPixels > Math.max(12, drift.changedPixels * 3),
+        `${stem}: ${kind} control effect must exceed natural drift: ${JSON.stringify(comparisons[kind])}`);
+        assert.ok(restored.mean < change.mean / 2,
+          `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
+      }
+    }
+    // Native pause supplies a same-setting static reference without changing CSS.
+    // This is especially important for V003, whose program also changes the still poster.
+    await page.locator("[data-pause]").evaluate((button) => button.click());
+    assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+    const paused = await capture("native-pause");
+    const contribution = await livePixelDifference(page, captured.a2.composite, paused);
+    measurement.contribution = contribution;
+    assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
+      `${stem}: native pause shows no visible live contribution: ${JSON.stringify(contribution)}`);
+    return measurement;
+  } finally {
+    await page.clock.resume();
+  }
+}
+
+async function checkCandidateComposites(browser) {
+  for (const work of worksFor("candidate")) {
+    for (const prefix of ["", "en/"]) {
+      await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
+        await page.clock.install();
+        const probe = await observe(page, { readPixels: true });
+        await open(page, `${prefix}works/${work.slug}/`);
+        await phase(page, "running");
+        await page.waitForFunction(() => window.__visualProbe.textures > 3);
+        await checkLiveComposite(page, work.slug, prefix ? "en" : "zh-Hant");
+        const fontPaths = work.slug === "night-signal" ? signalFontPaths :
+          work.slug === "liquid-archive" ? [base + "fonts/liquid-geist.ttf"] : [];
+        await probe.assertPrivate(site.origin, { fontPaths });
+      });
+    }
+  }
+  evidence.checks.compositeControls = "PASS candidate original-CSS A/A/B/A composite and GPU output checks, measured animation drift and native-pause reference; this routine is also used by live verification";
+}
+
 async function checkLive(browser) {
   const receipt = await fetch(url(`release.json?sha=${commit}`), { signal: AbortSignal.timeout(15_000) });
   assert.equal(receipt.status, 200);
@@ -396,7 +582,8 @@ async function checkLive(browser) {
     const fontPaths = workFonts[releasedWork.slug] ?? [];
     for (const prefix of ["", "en/"]) {
       await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
-        const probe = await observe(page);
+        await page.clock.install();
+        const probe = await observe(page, { readPixels: true });
         await open(page, prefix);
         await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
         assert.equal(page.url(), url(prefix + route));
@@ -407,9 +594,15 @@ async function checkLive(browser) {
         assert.equal((await fetch(shareImage)).status, 200);
         await phase(page, "running");
         await page.waitForFunction(() => window.__visualProbe.textures > 3);
-        const composite = await pixelEvidence(page, stage(page));
-        assert.ok(composite.colors > 20, "The deployed shader did not appear on the page");
-        await screenshot(page, `live-${releasedWork.slug}-${prefix ? "en" : "zh-Hant"}.png`);
+        const locale = prefix ? "en" : "zh-Hant";
+        const isolatedFile = `live-${releasedWork.slug}-${locale}-isolated-output.png`;
+        const isolatedOutput = await pixelEvidence(page, stage(page), resolve(evidenceDir, isolatedFile));
+        evidence.screenshots.push(isolatedFile);
+        assert.ok(isolatedOutput.colors > 20, "The deployed shader has no structured independent output");
+        // The isolated check above deliberately changes CSS and is not a visibility pass.
+        // Save the unmodified page before measuring actual composite control effects.
+        await screenshot(page, `live-${releasedWork.slug}-${locale}.png`);
+        await checkLiveComposite(page, releasedWork.slug, locale, isolatedOutput);
         await probe.assertPrivate(site.origin, { fontPaths });
         await page.locator(".site-footer a").first().click();
         assert.equal(page.url(), url(prefix));
@@ -417,7 +610,7 @@ async function checkLive(browser) {
       });
     }
   }
-  evidence.checks.live = "PASS live HTTPS gallery, both localized works, visible WebGPU, source SHA, same-origin network and backlinks";
+  evidence.checks.live = "PASS live HTTPS gallery, both locales, independent WebGPU output and original-CSS composite control effects above measured animation drift, source SHA, same-origin network and backlinks";
   evidence.measurements.deployed = release;
 }
 
@@ -842,6 +1035,7 @@ try {
     if (worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
       evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
     });
+    await checkCandidateComposites(browser);
   }
   evidence.result = "PASS";
   console.log(JSON.stringify(evidence, null, 2));
