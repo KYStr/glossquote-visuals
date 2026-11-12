@@ -104,7 +104,6 @@ export function setupTickets(english) {
     if (!quantityError.hidden && quantity.validity.valid) markQuantityError(false);
     render();
   });
-  quantity.addEventListener("blur", () => markQuantityError(!quantity.validity.valid));
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();

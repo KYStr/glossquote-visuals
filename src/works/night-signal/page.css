@@ -141,7 +141,7 @@
   isolation: isolate;
   overflow: hidden;
   block-size: clamp(12rem, 29.17vw, 27rem);
-  background: #101125;
+  background: radial-gradient(ellipse at 64% 46%, #272341, #15162d 69%, #101125);
   border-block: 1px solid var(--night-rule);
 }
 .signal-art img, .signal-art canvas {
@@ -161,7 +161,9 @@
   opacity: 0.78;
 }
 .signal-art[data-motion="running"] canvas { visibility: visible; }
-.signal-art[data-channel="echo"] img { filter: hue-rotate(147deg) saturate(1.25); }
+.signal-art[data-channel="echo"] { background: radial-gradient(ellipse at 64% 46%, #292648, #16162f 72%, #101125); }
+.signal-art[data-channel="echo"] img { filter: hue-rotate(179deg) saturate(1.25); }
+.signal-art[data-channel="dawn"] { background: radial-gradient(ellipse at 64% 46%, #37243b, #20182f 69%, #101125); }
 .signal-art[data-channel="dawn"] img { filter: hue-rotate(-41deg) saturate(1.18); }
 .hero-strip { color: var(--night-copy); }
 .hero-strip-inner {
@@ -304,6 +306,7 @@
   margin: calc((44px - 1.18rem) / 2) 0 0;
 }
 .pass-option input:disabled { display: none; }
+.pass-option:has(:disabled) label { cursor: auto; }
 .pass-option label {
   grid-column: 2;
   display: flex;
