@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 700">
+  <defs>
+    <linearGradient id="space" x2="1" y2=".8">
+      <stop stop-color="#292a62"/><stop offset=".56" stop-color="#191b43"/><stop offset="1" stop-color="#0d1236"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M0 0h60M0 0v60" fill="none" stroke="#a2aad1" stroke-opacity=".46" stroke-width="1.4"/>
+    </pattern>
+    <linearGradient id="wave" x2="1" y2=".5">
+      <stop stop-color="#b9b291"/><stop offset=".45" stop-color="#ffe9a0"/><stop offset="1" stop-color="#efe5c1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1050" height="700" fill="url(#space)"/>
+  <path d="M0 144 258 0h114L0 214Zm0 162L529 0h44L0 336Zm0 335L1050 48v55L0 695Zm502 59 548-308v41L590 700Z" fill="#49486e" opacity=".46"/>
+  <path d="M727 0h43L0 438v-26ZM1050 540v23L814 700h-44Z" fill="#aa4d61" opacity=".7"/>
+  <rect x="42" y="43" width="966" height="614" fill="url(#grid)" opacity=".48"/>
+  <path d="M-28 439c159 0 214-213 354-214 110-1 161 196 275 194 99-2 158-168 278-168 61 0 135 54 191 91"
+    fill="none" stroke="#947b89" stroke-width="2"/>
+  <path d="M-24 425c158 0 201-234 351-234 128 0 174 229 282 225 97-4 167-203 287-203 62 0 133 68 171 106"
+    fill="none" stroke="#b35d69" stroke-width="12" opacity=".76"/>
+  <path d="M-33 403c156 0 209-236 354-236 126 0 172 228 282 228 102 0 166-207 291-207 66 0 139 72 177 110"
+    fill="none" stroke="url(#wave)" stroke-width="20" stroke-linecap="round"/>
+  <path d="M40 96v-52h52m866 0h52v52M40 604v52h52m866 0h52v-52" fill="none" stroke="#dfcc93" stroke-width="2"/>
+  <circle cx="320" cy="167" r="7" fill="#fce7a0"/>
+  <circle cx="603" cy="395" r="6" fill="#fce7a0"/>
+</svg>

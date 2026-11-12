@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" class="signal-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>Night Signal | GlossQuote Visuals</title>
+  <meta name="description" content="An imagined after-dark broadcast exhibition in three chapters, drawn in bands, waves and a grid.">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Night Signal | GlossQuote Visuals">
+  <meta property="og:description" content="An imagined after-dark broadcast exhibition in three chapters, drawn in bands, waves and a grid.">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/night-signal-share.jpg">
+  <meta property="og:image:alt" content="A long wave crosses the view beyond the breakwater.">
+  <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/night-signal/page.css">
+  <script type="module" src="/src/works/night-signal/page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header frame">
+    <a class="wordmark" href="%BASE_URL%en/">GlossQuote Visuals</a>
+    <nav aria-label="Exhibition index">
+      <a href="%BASE_URL%en/">Exhibition index</a>
+      <a href="%BASE_URL%works/night-signal/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+    </nav>
+  </header>
+  <main class="frame" id="main" tabindex="-1">
+    <header class="signal-head">
+      <h1>Night <span>Signal</span></h1>
+      <p>An imagined after-dark broadcast exhibition</p>
+    </header>
+    <section class="broadcast" aria-labelledby="plate-title">
+      <figure class="signal-plate">
+        <div class="signal-art" data-stage data-channel="carrier">
+          <img src="%BASE_URL%media/night-signal.svg" width="1050" height="700" alt="A long wave crosses the view beyond the breakwater.">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption id="plate-title">Signal plate <span>Original poster and procedural waves</span></figcaption>
+      </figure>
+      <aside class="signal-side">
+        <nav aria-label="Program index">
+          <h2>Program index</h2>
+          <ol>
+            <li><a href="#program-carrier"><span>01</span>Offshore Carrier</a></li>
+            <li><a href="#program-echo"><span>02</span>Blind-Sector Echo</a></li>
+            <li><a href="#program-dawn"><span>03</span>First Light Band</a></li>
+          </ol>
+        </nav>
+        <div class="signal-summary" aria-live="polite">
+          <h2 data-channel-title>Offshore Carrier</h2>
+          <p data-channel-summary>A long wave crosses the view beyond the breakwater.</p>
+        </div>
+      </aside>
+      <fieldset class="signal-controls" data-controls hidden>
+        <legend>Tune the channel</legend>
+        <div class="signal-choices">
+          <label><input type="radio" name="channel" value="carrier" checked><span>Offshore Carrier</span></label>
+          <label><input type="radio" name="channel" value="echo"><span>Blind-Sector Echo</span></label>
+          <label><input type="radio" name="channel" value="dawn"><span>First Light Band</span></label>
+        </div>
+        <div class="signal-intensity">
+          <div><label for="signal-intensity">Wave intensity</label><output for="signal-intensity">35%</output></div>
+          <input type="range" id="signal-intensity" min="15" max="65" step="1" value="35">
+        </div>
+        <div class="signal-motion">
+          <button type="button" data-pause>Pause motion</button>
+          <p role="status" data-motion-status>Showing the still poster.</p>
+        </div>
+      </fieldset>
+    </section>
+    <noscript><p>The Offshore Carrier poster is shown as a still. The three programs are available below.</p></noscript>
+    <section class="programs" aria-labelledby="programs-title">
+      <h2 id="programs-title">Three programs</h2>
+      <article class="program program-carrier" id="program-carrier" data-summary="A long wave crosses the view beyond the breakwater." tabindex="-1">
+        <p class="program-number">CH 01</p>
+        <h3>Offshore Carrier</h3>
+        <p>A slow line rises and falls. It could be a signal passing beyond the breakwater at night, joining two ends of a stretch of open water.</p>
+      </article>
+      <article class="program program-echo" id="program-echo" data-summary="Two paths bring the same outline back at different times." tabindex="-1">
+        <p class="program-number">CH 02</p>
+        <h3>Blind-Sector Echo</h3>
+        <p>A signal skirts a dark stretch before it reaches the receiver. The second line lands slightly lower, leaving a gap the chart has yet to name.</p>
+      </article>
+      <article class="program program-dawn" id="program-dawn" data-summary="The crest sinks and the grid beneath it comes into view." tabindex="-1">
+        <p class="program-number">CH 03</p>
+        <h3>First Light Band</h3>
+        <p>The final program lowers the waveform. As the grid passes through the band, a single readable edge remains, like the waterline before dawn.</p>
+      </article>
+    </section>
+  </main>
+  <footer class="site-footer frame">
+    <a href="%BASE_URL%en/">← Exhibition index</a>
+    <a href="<!-- work-source -->">Exhibition source <span aria-hidden="true">↗</span></a>
+  </footer>
+</body>
+</html>
