@@ -322,10 +322,7 @@ async function checkLiquid(browser) {
   const testFont = { localFont: base + "fonts/liquid-geist.ttf" };
   const fullLiquidScreenshot = async (page, name) => {
     await page.locator(".liquid-page img:visible").evaluateAll(images =>
-      Promise.all(images.map(image => {
-        image.loading = "eager";
-        return image.decode();
-      })));
+      Promise.all(images.map(image => image.decode())));
     await screenshot(page, name);
   };
   const control = (page) => page.locator("#product");
@@ -366,7 +363,12 @@ async function checkLiquid(browser) {
           assert.equal(await selectFinish(page, "satin").locator("span").evaluate(node =>
             getComputedStyle(node).textDecorationLine), "underline");
           await page.locator("[data-picker] button[type=submit]").tap();
+
           assert.equal(await page.locator("[data-total]").textContent(), "NT$3,380");
+          assert.match(await page.locator("[data-quantity-label]").textContent(), en ? /sets/ : /組/);
+          assert.match(await page.locator("#add-feedback").textContent(), en ? /1 set/ : /1 組/);
+          assert.match(await page.locator("[data-items]").textContent(), en ? /Each set contains 2 bookends/ : /每組 2 件/);
+          assert.match(await page.locator(".inquiry-end").textContent(), en ? /Shipping excluded/ : /未含運費/);
           await capture(page, page.locator("#inquiry"), `liquid-forme-${lang}-390-inquiry.png`);
           await layout(page);
         }
@@ -471,7 +473,15 @@ async function checkLiquid(browser) {
       assert.equal(await lines.count(), 2);
       assert.equal(await lines.nth(1).locator("button").evaluate(node => node === document.activeElement), true);
       assert.equal(await total.textContent(), "NT$10,920");
+
       assert.equal(await page.locator("[data-count]").textContent(), "4");
+      await page.locator('[data-select-product="arc"]').press("Enter");
+      await units.fill("2");
+      await add.press("Enter");
+      assert.match(await page.locator("#add-feedback").textContent(), en ? /2 sets/ : /2 組/);
+      assert.match(await lines.last().locator("input").getAttribute("aria-label"), en ? /sets/ : /組/);
+      assert.equal(await total.textContent(), "NT$17,680");
+      assert.equal(await page.locator("[data-count]").textContent(), "6");
 
       const pending = page.waitForEvent("download");
       await download.press("Enter");
@@ -480,15 +490,21 @@ async function checkLiquid(browser) {
       const summary = await readFile(await file.path(), "utf8");
       assert.match(summary, en ? /Halo Candleholder · Mirror polish/ : /折光燭台 · 鏡面亮光/);
       assert.match(summary, en ? /Dew Bud Vase · Brushed satin/ : /凝露花器 · 拉絲霧面/);
-      assert.match(summary, en ? /Quantity 3 · Indicative unit price NT\$2,880 · Line total NT\$8,640/ : /數量 3 · 示意單價 NT\$2,880 · 小計 NT\$8,640/);
-      assert.match(summary, en ? /Indicative product total NT\$10,920/ : /商品示意合計 NT\$10,920/);
+      assert.match(summary, en ? /Quantity 3 pieces · Indicative price per piece NT\$2,880 · Line total NT\$8,640/ : /數量 3 件 · 每件示意價 NT\$2,880 · 小計 NT\$8,640/);
+
+      assert.match(summary, en ? /Arc Bookends · Brushed satin/ : /雙弧書擋 · 拉絲霧面/);
+      assert.match(summary, en ? /Quantity 2 sets · Indicative price per set NT\$3,380 · Line total NT\$6,760/ : /數量 2 組 · 每組示意價 NT\$3,380 · 小計 NT\$6,760/);
+      assert.match(summary, en ? /Each set contains 2 bookends. The dimensions shown are for one bookend/ : /每組 2 件，標示尺寸為單件/);
+      assert.match(summary, en ? /304 stainless steel · 16 × 6 × 19 cm/ : /304 不鏽鋼 · 16 × 6 × 19 cm/);
+      assert.match(summary, en ? /Fits a 22 mm taper/ : /適用直徑 22 mm 的細燭/);
+      assert.match(summary, en ? /Indicative product total NT\$17,680/ : /商品示意合計 NT\$17,680/);
+      assert.match(summary, en ? /exclude delivery/ : /未含運費/);
       assert.match(summary, en ? /No inquiry or order has been sent/ : /尚未送出詢問或訂單/);
       assert.match(await page.locator("#inquiry-feedback").textContent(), en ? /summary generated/ : /已產生詢問摘要/);
       const lang = en ? "en" : "zh-Hant";
       await writeFile(resolve(evidenceDir, `liquid-forme-${lang}-download.txt`), summary);
       await capture(page, page.locator("#inquiry"), `liquid-forme-${lang}-1440-inquiry.png`);
-      await lines.nth(0).locator("button").press("Enter");
-      await lines.nth(0).locator("button").press("Enter");
+      for (let index = 0; index < 3; index++) await lines.first().locator("button").press("Enter");
       assert.equal(await download.isDisabled(), true);
       assert.equal(await total.textContent(), "NT$0");
       assert.equal(await page.locator("[data-return]").evaluate(node => node === document.activeElement), true);
@@ -548,8 +564,7 @@ async function checkLiquid(browser) {
     assert.equal(coversPhoto, true, "The hero photograph covers its entire frame");
     assert.equal(await page.evaluate(() => scrollY), 0, "The WebGPU composition is visible on entry");
     await checkContrast(page, [
-      ".hero h1", ".hero-copy > p:not(.eyebrow)", ".hero .button",
-      ".card-description", ".motion-status", ".finish-choices input:checked + span",
+      ".config-copy h2", ".hero .button", ".card-description", ".finish-choices input:checked + span",
     ], "liquidMinCheckedContrast");
     await fullLiquidScreenshot(page, "liquid-forme-en-1440-webgpu-full.png");
 
@@ -592,7 +607,16 @@ async function checkLiquid(browser) {
     assert.equal(await page.locator("canvas").count(), 1);
     assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
     assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
-    evidence.measurements.liquidHero = { polished: polished.texture, satin: satin.texture, angleChange, shaderContribution };
+
+    await page.getByRole("button", { name: "Pause motion" }).click();
+    await phase(page, "paused");
+    const satinStill = await photo.screenshot({ path: resolve(evidenceDir, "liquid-forme-en-satin-still-reference.png") });
+    evidence.screenshots.push("liquid-forme-en-satin-still-reference.png");
+    const satinContribution = await difference(satin.pixels, satinStill);
+    assert.ok(satinContribution.changed > 8, "Satin lighting should remain visible: " + JSON.stringify(satinContribution));
+    await page.getByRole("button", { name: "Resume motion" }).click();
+    await phase(page, "running");
+    evidence.measurements.liquidHero = { polished: polished.texture, satin: satin.texture, angleChange, shaderContribution, satinContribution };
 
     const before = await textureCount(page);
     const started = performance.now();
