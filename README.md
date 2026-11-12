@@ -4,7 +4,7 @@
 
 Original visual websites exploring typography, materials, light and interaction. Each work has its own composition and art direction; this is not a set of recolored templates.
 
-**Status:** The bilingual gallery and Paper & Light are live. See the work registry for acceptance and release status.
+**Status:** The bilingual gallery, Paper & Light and Liquid Archive are live. See the work registry for acceptance and release status.
 
 [繁中畫廊](https://kystr.github.io/glossquote-visuals/) · [English gallery](https://kystr.github.io/glossquote-visuals/en/)
 
@@ -14,6 +14,7 @@ Original visual websites exploring typography, materials, light and interaction.
 - Work status: [coordination/work-registry.json](coordination/work-registry.json)
 - Upstream skill and licenses: [docs/UPSTREAM.md](docs/UPSTREAM.md)
 - Paper & Light design and verification: [evidence/V001/DESIGN.md](evidence/V001/DESIGN.md)
+- Liquid Archive design and verification: [evidence/V002/DESIGN.md](evidence/V002/DESIGN.md)
 
 Initial works: **紙與光 / Paper & Light**, **流體檔案 / Liquid Archive**, **夜航訊號 / Night Signal**. Art directions and acceptance criteria are written before implementation. Future directions are in [docs/IDEAS.md](docs/IDEAS.md), not counted as ready production.
 

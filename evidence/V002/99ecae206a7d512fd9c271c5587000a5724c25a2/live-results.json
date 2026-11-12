@@ -1,0 +1,48 @@
+{
+  "commit": "99ecae206a7d512fd9c271c5587000a5724c25a2",
+  "environment": "GitHub-hosted Windows Server 2025 VM",
+  "display": "headless-d3d11-warp",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS live HTTPS share image, notices, robots, sitemap and 404",
+    "live": "PASS live HTTPS gallery, both localized works, visible WebGPU, source SHA, same-origin network and backlinks"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "unavailable_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webnn": "disabled_off"
+    },
+    "deployed": {
+      "commit": "99ecae206a7d512fd9c271c5587000a5724c25a2",
+      "work": "V002",
+      "slug": "liquid-archive",
+      "candidate": "c7e45456cfd9b14299b4b7d7dbf976d1b4f34f69"
+    }
+  },
+  "screenshots": [
+    "live-zh-Hant.png",
+    "live-en.png"
+  ],
+  "result": "PASS"
+}

@@ -13,3 +13,7 @@ See [bootstrap-checks.json](bootstrap-checks.json) for actual bootstrap checks o
 ## M01 V001
 
 The bilingual gallery and Paper & Light are live. See [the deployment receipt and live tests](V001/f0af4882eeb13ed26386e877b9125c0877b50f0d/RELEASE.md), [independent review](V001/892fb52535585a3219cb8f4b9314e08398a660f3/REVIEW.md) and [PR #1](https://github.com/KYStr/glossquote-visuals/pull/1). The Ubuntu software compositor failure remains recorded. External acceptance is NOT_RUN.
+
+## M01 V002
+
+Liquid Archive is live with the bilingual gallery and Paper & Light. See [deployment and live tests](V002/99ecae206a7d512fd9c271c5587000a5724c25a2/RELEASE.md), [independent review](V002/c7e45456cfd9b14299b4b7d7dbf976d1b4f34f69/REVIEW.md) and [PR #2](https://github.com/KYStr/glossquote-visuals/pull/2). External acceptance is NOT_RUN.
