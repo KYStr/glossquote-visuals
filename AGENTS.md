@@ -1,0 +1,33 @@
+# GlossQuote Visuals — working contract
+
+## Mission and authority
+
+This is the user's independent visual-web studio, authorized 2026-11-12. Create original, varied, polished visual websites and publish their source in **KYStr/glossquote-visuals**. This repository is deliberately separate from GlossQuote Labs functional tools. Do not change Labs sources, registry, hosting, or its expired five-hour goal.
+
+Read START-HERE.md, docs/WORKFLOW.md, docs/ACCEPTANCE.md, the active brief, and `.agents/skills/shaders/SKILL.md` before implementation. Use the vendored official shaders skill, subject to the privacy and system boundaries below. This is a Visual Showcase surface: variation in typography, composition, palette and motion is intentional; do not copy the Labs worksheet UI into every piece.
+
+The dedicated chat owns ongoing creation and release; the commissioning primary reviews bootstrap and integration. Requested production model is **gpt-6.1-sol / max**; repairs may use medium. Record requested configuration separately from backend identity. Never claim a model switch from a written persona. No automatic recursive chat creation or 40-chat fan-out: that was an expired Labs round, not this project.
+
+## First run
+
+Complete M01: gallery plus V001, V002 and V003, one work at a time. Their briefs are in `briefs/`. Read and claim the corresponding registry record before edits. Do not implement the idea-only backlog without first writing a full brief. In future runs, continue the same durable workflow using GOAL.md; do not invent a recurring automation or indefinite unattended runtime.
+
+## Safety boundaries
+
+- Do not control local desktop/native apps, keyboard, mouse, IME, clipboard, or native dialogs. Even hidden IAB tabs are not proven isolated. Only background CLI/HTTP and a **documented isolated remote browser** are allowed until isolation is established without experimenting on the user's input session. Do not launch a local browser for tests. Record missing browser/GPU evidence as NOT_RUN; a CSS fallback screenshot is not proof of a working GPU shader.
+- No secrets, telemetry, analytics, tracking, remote fonts, runtime CDN imports, third-party embedded media, webcam or microphone access. Bundle reviewed assets. `createShader` must receive `{ disableTelemetry: true }` as its third options argument. Check pinned API, emitted bundle and actual requests, including same-origin telemetry.
+- The official skill recommends `npx shaders connect` and Pro presets. For this project use the free standalone component API directly: **do not run connect, login, preview/open, install-mcp, mutable npx scripts, or paid preset installation**. No platform account, API key or subscription is necessary for the chosen architecture. Preserve the unchanged skill and its MIT license; record deviations in docs/UPSTREAM.md.
+- No global/system Git configuration or gh authentication changes. Never run `gh auth setup-git`, `gh auth login/refresh`, reset/clean/force-push. Existing opaque CLI auth may be used; never inspect credentials, token environment values or credential stores. Missing auth stops that operation.
+- No persistent Windows environment/registry/PATH/service changes. Temporary settings remain process-local. Before and after installs/long builds run the existing user environment guard at `~/.codex/check-persistent-environment.ps1` and compare fingerprints. On drift stop, preserve evidence, restore only exact proven task-caused changes.
+- Before/after source publication use `scripts/git-settings-guard.mjs` with task-specific `.runs/` evidence; any unexpected drift stops publication. Preserve user edits and task processes. Do not kill broad process names/ports.
+- New public source, candidate PRs and free static GitHub Pages publishing for this repo are within the requested workflow. No paid plan, new service installation, custom domain/DNS changes, permissions beyond this repo, or unrelated publication. No deployment until applicable release gates pass. Source publication and live deployment are separate.
+
+## Quality and coordination
+
+All public navigation, work descriptions, motion controls and fallback notices have Traditional Chinese and English versions. Every work must remain readable with JS/GPU unavailable, reduced motion, small screens, keyboard-only input and zoom. Animations must have a visible pause, stop while hidden/offscreen, dispose resources, and handle initialization failure/device loss without hiding readable content.
+
+Use pinned dependencies plus a lockfile. Default architecture is static multi-page HTML/CSS, vanilla `shaders/js`, Vite for local bundling. Approve no unrelated runtime packages. Read exact component props from the fixed package/source or official docs; no invented API. Favor original component compositions over cloned platform presets. At least three design dimensions must differ between successive works (layout, type, palette, material, motion, content).
+
+Separate planned, ready, building, candidate, reviewed, published and external-reviewed states. An author test is not independent acceptance. Lock reviews to a candidate commit, attach evidence and explicitly label unavailable checks. Never promote a planned URL, successful build or HTTP 200 to a visual pass. Publish source candidates even if rendering checks are blocked, retaining the block in README and the registry.
+
+Keep one active work per author; shared gallery, registry and releases have one writer. When collaborating, reread remote heads and registry before assigning or pushing. Do not duplicate a claimed work or rewrite another's ownership. Use `codex/` branches; preserve existing baseline. Report status in Traditional Chinese, concise meaningful progress at least every minute during ongoing work. Each delivery is one ZIP with START-HERE, source, exact versions, status and checksums; exclude secrets, dependencies and machine-local evidence.

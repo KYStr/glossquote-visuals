@@ -1,0 +1,26 @@
+# 官方 Shaders skill 與固定來源
+
+- Repo: https://github.com/shader-effects-inc/shaders
+- 固定 commit: `1f71d113ee17c23d77e95ee46a98c3f4fcbef75a`
+- Skill: `.agents/skills/shaders/SKILL.md`（由官方 skill-installer helper 的 download 模式安裝；未執行 upstream CLI）
+- Package: `shaders@4.0.7`，npm gitHead 對應上述 commit；實作時 lockfile 固定 integrity。
+- Docs: https://shaders.com/docs ，逐個 component 精確查 props，不憑名字猜 API。
+- Upstream license: MIT，見 licenses/shaders-MIT.txt。官方編輯器、Pro presets/sections 不當成 MIT 附贈；此作品庫僅自行組合免費元件。
+
+## 經評估的專案例外
+
+官方 skill 建議先 `npx shaders connect`，它會連遠端專案和登入；使用者不需要這些功能。我們直接用 `shaders/js` standalone API，遵循 skill 的層次組合、props、效能與 fallback 方法，保留原 skill 內容，**不執行登入/MCP配置/Pro安裝流程**。
+
+Upstream 預設遙測為開。每次 `createShader(canvas, tree, options)` 必須設第三參數 `disableTelemetry: true`。別把它放進 component props，或只靠 CSP 擋錯誤。`createPreview` 可能遠端取材，首批不用。先檢查固定版 lifecycle/types，包含初始化失敗回傳值、getFailureReason、renderer controls；不要只複製 README 的極簡範例。
+
+Skill 更新是獨立依賴變更，先讀差異/授權與新網路行為，重新驗證再更新 SHA。安裝到專案 `.agents/skills`；新 turn 可發現，若 tool catalog 尚未出現則新對話明確讀這個檔即可，不要求重啟使用者電腦。
+
+## 獨立技術覆核的具體發現
+
+`shaders@4.0.7` standalone `dist/js/bundle.js` 的 npm 原始產物為 2,594,656 bytes，SHA-256 `2f88fd951debc56d84689d7567a1f382ec4d715d36bd1b2faf2c6de6cf32f37c`。npm tar integrity：`sha512-v/EQv2U6TQccRuoWX0D5lhkJsIizigCRVadsavY8olKLwb4uhHFi+JlIREEMYD4pvywjLnwVpMNpTtJgzR/FwQ==`。若經 Vite 重打包，不能要求輸出同 hash；應保留原依賴 integrity 與新 build manifest。
+
+Upstream build 會刪除法律註解；發佈時收集實際 lockfile 所含依賴 license。此版 standalone bundle 內涉及 colorjs.io@0.5.2、typegpu@0.12.3、tinyest@0.3.2、typed-binary@4.3.3（MIT）及 tsover-runtime@0.0.7（Apache-2.0）。不要只複製頂層 LICENSE 就認為所有 bundled code 都有完整 notices。
+
+`onReady` 首個合成畫面後才顯示 canvas；`onError` 也可能表示可恢復 device loss，需看 `getFailureReason()`。重建後可能重新啟動 renderer，因此在新的 onReady 重套現在的 pause 與參數狀態。採 observeElement:false 時自行觀察外容器尺寸/visibility；resize 會寫 canvas inline尺寸，不能以canvas自己尺寸反推容器而循環擴大。pause 停連續動畫，但更新參數/resize仍可能單幀。dispose時destroy晚到的過期初始化，清除自有observer。這些都需要實作測試，不能把技術審查寫成runtime PASS。
+
+固定 source 參考：`packages/js/src/createShader.ts`、`packages/js/src/types.ts`、`packages/core/src/gpu/index.ts`、`packages/core/src/telemetry/`。首批不用 Text/ImageTexture/VideoTexture/WebcamTexture，避免帶出遠端字型/媒體來源。
