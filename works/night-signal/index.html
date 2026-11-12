@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hant" class="signal-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>夜航訊號 | GlossQuote Visuals</title>
+  <meta name="description" content="一場虛構的夜間訊號展。三段廣播章節以條紋、波形與網格留下各自的軌跡。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="夜航訊號 | GlossQuote Visuals">
+  <meta property="og:description" content="一場虛構的夜間訊號展。三段廣播章節以條紋、波形與網格留下各自的軌跡。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/night-signal/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/night-signal-share.jpg">
+  <meta property="og:image:alt" content="一列長波從防波堤外橫過視野。">
+  <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/night-signal/page.css">
+  <script type="module" src="/src/works/night-signal/page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="site-header frame">
+    <a class="wordmark" href="%BASE_URL%">GlossQuote Visuals</a>
+    <nav aria-label="作品索引">
+      <a href="%BASE_URL%">作品索引</a>
+      <a href="%BASE_URL%en/works/night-signal/" lang="en" hreflang="en">English</a>
+    </nav>
+  </header>
+  <main class="frame" id="main" tabindex="-1">
+    <header class="signal-head">
+      <h1>夜航訊號</h1>
+      <p>一場虛構的夜間訊號展</p>
+    </header>
+    <section class="broadcast" aria-labelledby="plate-title">
+      <figure class="signal-plate">
+        <div class="signal-art" data-stage data-channel="carrier">
+          <img src="%BASE_URL%media/night-signal.svg" width="1050" height="700" alt="一列長波從防波堤外橫過視野。">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption id="plate-title">訊號圖 <span>原創海報與程序波形</span></figcaption>
+      </figure>
+      <aside class="signal-side">
+        <nav aria-label="節目索引">
+          <h2>節目索引</h2>
+          <ol>
+            <li><a href="#program-carrier"><span>01</span>離岸載波</a></li>
+            <li><a href="#program-echo"><span>02</span>盲區回聲</a></li>
+            <li><a href="#program-dawn"><span>03</span>晨線</a></li>
+          </ol>
+        </nav>
+        <div class="signal-summary" aria-live="polite">
+          <h2 data-channel-title>離岸載波</h2>
+          <p data-channel-summary>一列長波從防波堤外橫過視野。</p>
+        </div>
+      </aside>
+      <fieldset class="signal-controls" data-controls hidden>
+        <legend>切換頻道</legend>
+        <div class="signal-choices">
+          <label><input type="radio" name="channel" value="carrier" checked><span>離岸載波</span></label>
+          <label><input type="radio" name="channel" value="echo"><span>盲區回聲</span></label>
+          <label><input type="radio" name="channel" value="dawn"><span>晨線</span></label>
+        </div>
+        <div class="signal-intensity">
+          <div><label for="signal-intensity">波形強度</label><output for="signal-intensity">35%</output></div>
+          <input type="range" id="signal-intensity" min="15" max="65" step="1" value="35">
+        </div>
+        <div class="signal-motion">
+          <button type="button" data-pause>暫停動態</button>
+          <p role="status" data-motion-status>顯示靜態海報。</p>
+        </div>
+      </fieldset>
+    </section>
+    <noscript><p>目前顯示離岸載波的靜態海報。三段節目可在下方閱讀。</p></noscript>
+    <section class="programs" aria-labelledby="programs-title">
+      <h2 id="programs-title">三段節目</h2>
+      <article class="program program-carrier" id="program-carrier" data-summary="一列長波從防波堤外橫過視野。" tabindex="-1">
+        <p class="program-number">CH 01</p>
+        <h3>離岸載波</h3>
+        <p>從一條緩慢起伏的線開始。它像夜裡從防波堤外掠過的訊號，在空曠處把兩端接起來。</p>
+      </article>
+      <article class="program program-echo" id="program-echo" data-summary="兩條不同路徑把同一個輪廓分成前後。" tabindex="-1">
+        <p class="program-number">CH 02</p>
+        <h3>盲區回聲</h3>
+        <p>一個訊號繞過暗處才回到接收端。第二條線的位置略低，留下地圖上尚未標明的空隙。</p>
+      </article>
+      <article class="program program-dawn" id="program-dawn" data-summary="波峰收低，底下的網格逐漸清楚。" tabindex="-1">
+        <p class="program-number">CH 03</p>
+        <h3>晨線</h3>
+        <p>最後一段把波形壓低。當底紋穿過光帶，畫面只留下一條能辨認的邊界，像天亮前的海面。</p>
+      </article>
+    </section>
+  </main>
+  <footer class="site-footer frame">
+    <a href="%BASE_URL%">← 作品索引</a>
+    <a href="<!-- work-source -->">作品原始碼 <span aria-hidden="true">↗</span></a>
+  </footer>
+</body>
+</html>

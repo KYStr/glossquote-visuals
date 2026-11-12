@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 13,
+  "revision": 16,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.1-sol",
@@ -53,15 +53,18 @@
       "id": "V003",
       "slug": "night-signal",
       "brief": "briefs/V003-night-signal.md",
-      "status": "ready",
-      "owner": null,
-      "candidateCommit": null,
-      "pr": null,
-      "reviewEvidence": [],
+      "status": "reviewed",
+      "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
+      "candidateCommit": "dc8fc1481ef72f64c804dd38faf085e0edbe2297",
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/3",
+      "reviewEvidence": [
+        "evidence/V003/60c9642ce11663cb7cf1c4fbcae0831283481525/REVIEW.md",
+        "evidence/V003/dc8fc1481ef72f64c804dd38faf085e0edbe2297/acceptance.json"
+      ],
       "liveUrl": null,
       "deployedCommit": null,
       "blockers": [],
-      "branch": null
+      "branch": "codex/v003-night-signal"
     }
   ]
 }
