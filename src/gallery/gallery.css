@@ -24,7 +24,7 @@
   padding: 0;
   margin: 0;
 }
-.exhibition-list > :first-child { grid-row: span 2; }
+.exhibition-list:has(> :nth-child(3)) > :first-child { grid-row: span 2; }
 .exhibition-list:has(> :only-child) { grid-template-columns: 1fr; }
 .exhibition-card {
   display: grid;

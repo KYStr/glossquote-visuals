@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant" class="liquid-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>流體檔案 | GlossQuote Visuals</title>
+  <meta name="description" content="三個液態金屬概念物件，研究輪廓轉動時的反射與邊緣。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/liquid-archive/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/liquid-archive/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/liquid-archive/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/liquid-archive/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="流體檔案 | GlossQuote Visuals">
+  <meta property="og:description" content="三個液態金屬概念物件，研究輪廓轉動時的反射與邊緣。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/liquid-archive/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/liquid-archive-share.jpg">
+  <meta property="og:image:alt" content="寬窄不一的環緣讓同一條亮線分成兩道。">
+  <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/liquid-archive/page.css">
+  <script type="module" src="/src/works/liquid-archive/page.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="site-header frame">
+    <a class="wordmark" href="%BASE_URL%">GlossQuote Visuals</a>
+    <nav aria-label="作品索引">
+      <a href="%BASE_URL%">作品索引</a>
+      <a href="%BASE_URL%en/works/liquid-archive/" lang="en" hreflang="en">English</a>
+    </nav>
+  </header>
+  <main id="main" class="frame" tabindex="-1">
+    <header class="archive-title">
+      <p>三個概念物件</p>
+      <h1>流體檔案</h1>
+    </header>
+    <section class="archive-display" aria-labelledby="plate-title">
+      <p class="archive-context">反射把一個輪廓分成數種材質。沿著邊緣轉動，觀察亮面在哪裡斷開。</p>
+      <figure class="archive-plate">
+        <div class="archive-art" data-stage data-object="ring">
+          <img src="%BASE_URL%media/liquid-ring.svg" width="960" height="720" alt="寬窄不一的環緣讓同一條亮線分成兩道。">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption id="plate-title">反射檢視 <span>原創輪廓與程序光場</span></figcaption>
+      </figure>
+      <div class="archive-specimen" aria-live="polite">
+        <h2 data-object-title>折光環</h2>
+        <p data-object-note>寬窄不一的環緣讓同一條亮線分成兩道。</p>
+      </div>
+      <fieldset class="archive-controls" data-controls hidden>
+        <legend>選擇物件與角度</legend>
+        <fieldset class="archive-objects">
+          <legend>物件</legend>
+          <div class="archive-choices">
+            <label><input type="radio" name="object" value="ring" checked><span>折光環</span></label>
+            <label><input type="radio" name="object" value="orb"><span>靜滴</span></label>
+            <label><input type="radio" name="object" value="arc"><span>開口弧</span></label>
+          </div>
+        </fieldset>
+        <div class="archive-angle">
+          <div><label for="object-angle">反射角度</label> <output for="object-angle">28°</output></div>
+          <input id="object-angle" type="range" min="0" max="180" step="1" value="28">
+        </div>
+        <div class="archive-motion">
+          <button type="button" data-pause>暫停動態</button>
+          <p role="status" data-motion-status>顯示靜態物件。</p>
+        </div>
+      </fieldset>
+    </section>
+    <noscript><p>目前顯示折光環的靜態圖。啟用 JavaScript 後可切換物件與角度。</p></noscript>
+    <section class="archive-notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">物件研究</h2>
+      <article id="object-ring" data-object-description data-summary="寬窄不一的環緣讓同一條亮線分成兩道。">
+        <h3>折光環</h3>
+        <p>環的正面有一條低弧面，內壁則收成窄面。轉動它，留意亮線從外緣移到內緣的時刻。</p>
+      </article>
+      <article id="object-orb" data-object-description data-summary="一條斜帶繞過銀色球面，讓平滑處有了方向。">
+        <h3>靜滴</h3>
+        <p>這個輪廓像落下前的液滴。圓面讓反射連續移動，反射的速度看起來比物件本身更快。</p>
+      </article>
+      <article id="object-arc" data-object-description data-summary="曲面的兩端切開，留下明暗交替的斷點。">
+        <h3>開口弧</h3>
+        <p>弧的兩端收細。轉動時，一端先變亮，另一端仍留在暗處，開口因而更清楚。</p>
+      </article>
+    </section>
+  </main>
+  <footer class="site-footer frame">
+    <a href="%BASE_URL%">← 作品索引</a>
+    <a href="<!-- work-source -->">作品原始碼 <span aria-hidden="true">↗</span></a>
+  </footer>
+</body>
+</html>

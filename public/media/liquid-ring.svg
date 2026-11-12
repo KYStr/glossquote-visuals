@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+  <defs>
+    <radialGradient id="room" cx=".52" cy=".42" r=".65">
+      <stop stop-color="#232832"/><stop offset="1" stop-color="#0c0d11"/>
+    </radialGradient>
+    <linearGradient id="metal" x1=".18" y1="0" x2=".86" y2=".92">
+      <stop stop-color="#f5f9fb"/><stop offset=".15" stop-color="#9da7b4"/>
+      <stop offset=".29" stop-color="#1d2330"/><stop offset=".42" stop-color="#c3cad1"/>
+      <stop offset=".53" stop-color="#f6f7f7"/><stop offset=".67" stop-color="#3e4652"/>
+      <stop offset=".86" stop-color="#14191f"/><stop offset="1" stop-color="#a6b1bf"/>
+    </linearGradient>
+    <linearGradient id="inner" x2=".8" y2="1">
+      <stop stop-color="#1b202a"/><stop offset=".29" stop-color="#686f7a"/>
+      <stop offset=".55" stop-color="#e4e9ee"/><stop offset="1" stop-color="#202a37"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="20"/></filter>
+  </defs>
+  <rect width="960" height="720" fill="url(#room)"/>
+  <ellipse cx="488" cy="596" rx="234" ry="27" fill="#000" opacity=".66" filter="url(#blur)"/>
+  <g transform="rotate(-19 480 343)">
+    <path fill="url(#inner)" fill-rule="evenodd" d="M722 363c0 110-106 202-240 202-139 0-247-89-247-202 0-119 110-208 247-208 134 0 240 89 240 208ZM616 360c0-54-58-97-134-97-77 0-138 43-138 97 0 53 61 96 138 96 76 0 134-43 134-96Z"/>
+    <path fill="url(#metal)" fill-rule="evenodd" stroke="#dbe5ed" stroke-opacity=".33"
+      d="M727 334c0 114-111 206-245 206-136 0-250-83-250-201 0-108 109-196 244-202 141-6 251 80 251 197ZM622 337c0-52-61-102-143-102-79 0-138 48-138 103 0 51 61 96 138 96 82 0 143-45 143-97Z"/>
+    <path d="M252 300c33-94 131-146 231-147 108-1 197 49 222 123M348 370c29 57 132 96 225 49"
+      fill="none" stroke="#f9fbfc" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+    <path d="M251 405c52 90 183 126 291 104 68-14 124-47 154-103" fill="none" stroke="#8f9dae" stroke-width="2" opacity=".58"/>
+  </g>
+</svg>

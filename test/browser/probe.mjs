@@ -9,7 +9,7 @@ export async function observe(page, { readPixels = false } = {}) {
     if (message.type() === "error" || /WebGPU validation|GPUValidationError/i.test(message.text())) errors.push(message.text());
   });
   await page.addInitScript((readPixels) => {
-    const probe = window.__visualProbe = { textures: 0, devices: 0, calls: [], violations: [], gpuErrors: [] };
+    const probe = window.__visualProbe = { textures: 0, devices: 0, configurations: 0, calls: [], violations: [], gpuErrors: [] };
     window.addEventListener("securitypolicyviolation", (event) => {
       probe.violations.push({ directive: event.violatedDirective, blocked: event.blockedURI, source: event.sourceFile, line: event.lineNumber });
     });
@@ -44,6 +44,7 @@ export async function observe(page, { readPixels = false } = {}) {
       if (readPixels) {
         const configure = GPUCanvasContext.prototype.configure;
         GPUCanvasContext.prototype.configure = function (options) {
+          probe.configurations++;
           const usage = (options.usage ?? GPUTextureUsage.RENDER_ATTACHMENT) | GPUTextureUsage.COPY_SRC;
           return configure.call(this, { ...options, usage });
         };
@@ -187,11 +188,22 @@ export async function pixelEvidence(page, stage, file) {
       const rgba = context.getImageData(0, 0, 24, 24).data;
       const colors = new Set();
       const total = [0, 0, 0];
+      const center = [0, 0];
+      let bright = 0;
       for (let i = 0; i < rgba.length; i += 4) {
         colors.add(`${rgba[i]},${rgba[i + 1]},${rgba[i + 2]}`);
         for (let channel = 0; channel < 3; channel++) total[channel] += rgba[i + channel];
+        if ((rgba[i] + rgba[i + 1] + rgba[i + 2]) / 3 > 64) {
+          center[0] += (i / 4) % 24;
+          center[1] += Math.floor(i / 96);
+          bright++;
+        }
       }
-      return { colors: colors.size, average: total.map((value) => Math.round(value / 576)) };
+      return {
+        colors: colors.size,
+        average: total.map((value) => Math.round(value / 576)),
+        brightCenter: bright ? center.map((value) => Number((value / bright).toFixed(2))) : null,
+      };
     }, png.toString("base64"));
   } finally {
     await stage.evaluate((element) => {
