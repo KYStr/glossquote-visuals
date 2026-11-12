@@ -267,7 +267,7 @@ picker.addEventListener("submit", event => {
     return;
   }
   if (previous) setLineCount(previous, nextCount);
-  else addLine(key, product, finishName, product.prices[finish], pieces);
+  else addLine(key, product, finishName, product.prices[finish], nextCount);
   updateSummary();
   addFeedback.textContent = copy.added(product.name, finishName, countLabel(units, product.units));
   viewList.hidden = false;
