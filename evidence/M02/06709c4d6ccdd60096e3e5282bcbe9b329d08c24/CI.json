@@ -1,0 +1,38 @@
+{
+  "commit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+  "runId": 43276174243,
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 131385087076,
+      "name": "build",
+      "conclusion": "success",
+      "head_sha": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+      "labels": [
+        "windows-2025"
+      ]
+    },
+    {
+      "id": 131386671006,
+      "name": "deploy",
+      "conclusion": "success",
+      "head_sha": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+      "labels": [
+        "ubuntu-24.04"
+      ]
+    },
+    {
+      "id": 131386842132,
+      "name": "live",
+      "conclusion": "success",
+      "head_sha": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+      "labels": [
+        "windows-2025"
+      ]
+    }
+  ],
+  "artifactId": 13970442424,
+  "artifactSha256": "93c88e6cebf35b426fa638bc2482499c82b4dfd6404037e944c6f97d281e7de2",
+  "downloadDigestMatched": true,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43276174243"
+}

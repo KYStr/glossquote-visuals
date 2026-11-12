@@ -4,7 +4,7 @@
 
 Original brand websites for bespoke stationery, steel homeware and an electronic music event. Each brings its own art direction, material language and complete customer journey.
 
-**Status:** The M02 integration candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a` passed the complete isolated-browser suite and non-author design review. All nine category scores are strictly above 9/10. The public URLs remain M01 until the separate accepted-release workflow and live checks succeed. See the work registry for exact release status and preserved M01 history.
+**Status:** The M02 integration candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a` passed the complete isolated-browser suite and non-author design review. All nine category scores are strictly above 9/10. M02 is live at deployment `06709c4d6ccdd60096e3e5282bcbe9b329d08c24`. The release build, Pages deployment and actual HTTPS/browser verification all passed. [Release evidence](evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md). See the work registry for exact release status and preserved M01 history.
 
 | Website | Art direction | UI design | Commercial completeness | Fixed-candidate review |
 |---|---:|---:|---:|---|
