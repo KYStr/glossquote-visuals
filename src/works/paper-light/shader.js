@@ -11,11 +11,12 @@ function lightLayers({ angle, preset }) {
   const radians = angle * Math.PI / 180;
   const x = Math.sin(radians) * 0.46;
   const y = Math.cos(radians) * 0.46;
+  const center = 0.36 + angle / 180 * 0.28;
   return {
     field: { colorA: shade, colorB: light, angle: (450 - angle) % 360 },
     shaft: {
-      startPosition: { x: 0.5 - x, y: 0.5 + y },
-      endPosition: { x: 0.5 + x, y: 0.5 - y },
+      startPosition: { x: center - x, y: 0.5 + y },
+      endPosition: { x: center + x, y: 0.5 - y },
       insideColor: light,
       outsideColor: edge,
     },

@@ -6,6 +6,7 @@ import { performance } from "node:perf_hooks";
 import { chromium } from "playwright";
 import { base, isPublished, origin, registry, releaseWorkIds, root, worksFor } from "../../scripts/site-map.mjs";
 import { verifyReleaseReceipt } from "../../scripts/release-proof.mjs";
+import { checkPaperCommercial } from "./paper-commercial.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 
@@ -30,6 +31,11 @@ const url = (path = "") => site.origin + base + path;
 const stage = (page) => page.locator("[data-stage]");
 const work = "works/paper-light/";
 const settings = (page) => page.locator("#light-angle");
+const paperLightDetails = (page) => page.locator("[data-controls] details");
+async function openPaperLightDetails(page) {
+  const details = paperLightDetails(page);
+  if (await details.getAttribute("open") === null) await details.locator("summary").click();
+}
 const phase = (page, expected) => page.waitForFunction((value) =>
   document.querySelector("[data-stage]")?.dataset.motion === value, expected, { timeout: 35_000 });
 const textureCount = (page) => page.evaluate(() => window.__visualProbe.textures);
@@ -43,6 +49,48 @@ async function open(page, path) {
 async function screenshot(page, name) {
   await page.screenshot({ path: resolve(evidenceDir, name), fullPage: true });
   evidence.screenshots.push(name);
+}
+
+async function paperScreenshots(page, name) {
+  await page.locator("main img").evaluateAll(async (images) => {
+    for (const image of images) image.loading = "eager";
+    await Promise.all(images.map((image) => image.decode()));
+  });
+  await page.screenshot({ path: resolve(evidenceDir, name + "-fold.png") });
+  evidence.screenshots.push(name + "-fold.png");
+  await screenshot(page, name + ".png");
+}
+
+async function paperSurface(page, name) {
+  const png = await stage(page).screenshot({ path: resolve(evidenceDir, name) });
+  evidence.screenshots.push(name);
+  return png.toString("base64");
+}
+
+async function paperLightDifference(page, before, after) {
+  return page.evaluate(async (images) => {
+    const width = 36;
+    const height = 24;
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const context = canvas.getContext("2d");
+    const frames = [];
+    for (const encoded of images) {
+      const data = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
+      const bitmap = await createImageBitmap(new Blob([data], { type: "image/png" }));
+      context.drawImage(bitmap, 0, 0, width, height);
+      bitmap.close();
+      frames.push(context.getImageData(0, 0, width, height).data);
+    }
+    let distance = 0;
+    for (let pixel = 0; pixel < frames[0].length; pixel += 4) {
+      for (let channel = 0; channel < 3; channel++) {
+        distance += Math.abs(frames[0][pixel + channel] - frames[1][pixel + channel]);
+      }
+    }
+    return distance / (width * height * 3);
+  }, [before, after]);
 }
 
 async function layout(page) {
@@ -118,15 +166,21 @@ async function checkLayouts(browser) {
         assert.equal(await textureCount(page), 0);
         assert.equal(await page.evaluate(() => window.__visualProbe.devices), 0);
         assert.ok(!probe.requests.some(({ url }) => /\/assets\/(?:shader|standalone)-/.test(url)));
-        const targets = await page.locator(".light-actions button, .light-swatches span, #light-angle").evaluateAll((nodes) =>
+        await openPaperLightDetails(page);
+        const targets = await page.locator(".light-actions button, .light-swatches span, #light-angle, [data-pause], [data-controls] summary").evaluateAll((nodes) =>
           nodes.map((node) => [node.offsetWidth, node.offsetHeight]));
         assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44));
         if (width === 390) {
           await page.locator('label:has([value="honey"])').tap();
           assert.equal(await stage(page).getAttribute("data-preset"), "honey");
         }
+        await paperLightDetails(page).locator("summary").click();
         await probe.assertPrivate(site.origin);
         if (width === 390) await screenshot(page, `paper-${lang}-390-still.png`);
+        if (width === 768) {
+          await page.evaluate(() => window.scrollTo(0, 0));
+          await paperScreenshots(page, `paper-${lang}-768-still`);
+        }
       });
     }
   }
@@ -136,10 +190,15 @@ async function checkLayouts(browser) {
 async function checkFallback(browser) {
   await withPage(browser, { javaScriptEnabled: false, viewport: { width: 390, height: 800 } }, async (page) => {
     await open(page, work);
-    assert.equal(await page.locator("noscript p").isVisible(), true);
+    assert.equal(await page.locator(".paper-plate noscript p").isVisible(), true);
+    assert.equal(await page.locator("#quote noscript p").isVisible(), true);
     assert.equal(await stage(page).locator("img").isVisible(), true);
     assert.equal(await page.locator("[data-controls]").isVisible(), false);
-    assert.equal(await page.locator(".paper-reading article").count(), 2);
+    assert.equal(await page.locator(".collections article").count(), 3);
+    assert.equal(await page.locator(".stock-list dt").count(), 3);
+    assert.equal(await page.locator(".steps li").count(), 3);
+    assert.equal(await page.locator(".faq-list details").count(), 4);
+    assert.equal(await page.locator("[data-brief-form]").isVisible(), false);
   });
   for (const variant of ["unsupported", "no-adapter"]) {
     await withPage(browser, { viewport: { width: 1000, height: 800 } }, async (page) => {
@@ -150,6 +209,7 @@ async function checkFallback(browser) {
       const probe = await observe(page);
       await open(page, "en/" + work);
       await phase(page, "unavailable");
+      await openPaperLightDetails(page);
       await settings(page).focus();
       await settings(page).press("Home");
       assert.equal(await page.locator("#angle-output").textContent(), "0°");
@@ -181,7 +241,8 @@ async function checkShader(browser) {
     await phase(page, "running");
     await checkContrast(page);
     await page.waitForFunction(() => window.__visualProbe.textures >= 5);
-    await screenshot(page, "paper-en-1440-webgpu.png");
+    await paperScreenshots(page, "paper-en-1440-webgpu");
+    const paperBefore = await paperSurface(page, "paper-en-dawn-surface.png");
     const img = resolve(evidenceDir, "paper-en-webgpu-only.png");
     const first = await pixelEvidence(page, stage(page), img);
     evidence.screenshots.push("paper-en-webgpu-only.png");
@@ -209,6 +270,13 @@ async function checkShader(browser) {
       deviceScaleFactor: window.devicePixelRatio,
       canvas: Number((canvas.width / canvas.getBoundingClientRect().width).toFixed(3)),
     }));
+    const art = await stage(page).boundingBox();
+    await page.mouse.move(art.x + art.width * 0.8, art.y + art.height / 2);
+    await page.waitForFunction(() => Number(document.querySelector("#light-angle").value) === 144);
+    const beforePointerFrames = await textureCount(page);
+    await page.waitForFunction((frames) => window.__visualProbe.textures >= frames + 2, beforePointerFrames);
+    const paperAtAngle = await paperSurface(page, "paper-en-angle-surface.png");
+    await openPaperLightDetails(page);
     await settings(page).press("End");
     await page.locator('label:has([value="overcast"])').click();
     await page.waitForTimeout(200);
@@ -219,6 +287,12 @@ async function checkShader(browser) {
       changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5);
     evidence.checks.compositing = compositeOk ? "PASS visible canvas changes with controls" : "FAIL compositor did not present the changing WebGPU texture";
     evidence.measurements.pixelSamples = { dawn: firstTexture, overcast: changedTexture, overcastComposite: changed };
+    const paperOvercast = await paperSurface(page, "paper-en-overcast-surface.png");
+    const pointerDifference = await paperLightDifference(page, paperBefore, paperAtAngle);
+    const presetDifference = await paperLightDifference(page, paperBefore, paperOvercast);
+    evidence.measurements.paperSurfaceDifference = { pointer: pointerDifference, preset: presetDifference };
+    assert.ok(pointerDifference > 1 && presetDifference > 3, "Actual paper composition did not change with angle and light preset");
+    await paperLightDetails(page).locator("summary").click();
 
     for (let i = 0; i < 3; i++) {
       await page.getByRole("button", { name: "Pause motion" }).click();
@@ -229,9 +303,11 @@ async function checkShader(browser) {
     }
     assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
     evidence.checks.pause = "PASS three pause/resume cycles without extra devices or texture acquisition while paused";
+    await openPaperLightDetails(page);
     await page.getByRole("button", { name: "Reset" }).click();
     assert.equal(await settings(page).inputValue(), "38");
     assert.equal(await stage(page).getAttribute("data-preset"), "dawn");
+    await paperLightDetails(page).locator("summary").click();
 
     await page.evaluate(() => {
       Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
@@ -251,10 +327,10 @@ async function checkShader(browser) {
     await phase(page, "running");
     evidence.checks.deviceRecovery = "PASS new WebGPU device after injected unknown loss and actual old device destruction";
 
-    await page.setViewportSize({ width: 390, height: 540 });
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.evaluate(() => window.scrollTo(0, 0));
     await phase(page, "running");
-    await screenshot(page, "paper-en-390-webgpu.png");
+    await paperScreenshots(page, "paper-en-390-webgpu");
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await phase(page, "still");
     await quiet(page);
@@ -266,7 +342,11 @@ async function checkShader(browser) {
     await page.locator('header a[lang="zh-Hant"]').click();
     assert.equal(page.url(), url(work));
     await phase(page, "running");
-    await screenshot(page, "paper-zh-390-webgpu.png");
+    await paperScreenshots(page, "paper-zh-390-webgpu");
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await phase(page, "running");
+    await paperScreenshots(page, "paper-zh-1440-webgpu");
     await page.locator(".site-footer a").first().click();
     assert.equal(page.url(), url());
     await page.goBack({ waitUntil: "commit" });
@@ -613,7 +693,7 @@ try {
   evidence.measurements.renderer = info.gpu.devices.map(({ vendorString, deviceString }) => ({ vendorString, deviceString }));
   evidence.measurements.browserFeatures = info.gpu.featureStatus;
   await session.detach();
-  for (const file of ["robots.txt", "sitemap.xml", "media/paper-light-share.jpg", "licenses/NOTICES.txt"]) {
+  for (const file of ["robots.txt", "sitemap.xml", "media/paper-light-share.jpg", "media/paper-commercial-share.jpg", "licenses/NOTICES.txt"]) {
     assert.equal((await fetch(url(file))).status, 200, file);
   }
   assert.equal((await fetch(url("no-such-exhibition/"))).status, 404);
@@ -625,6 +705,8 @@ try {
   } else {
     await checkLayouts(browser);
     await checkFallback(browser);
+    await checkPaperCommercial({ browser, withPage, open, screenshot, site, work });
+    evidence.checks.paperCommercial = "PASS bilingual series prefill and suggestions, preserved custom choices, specifications, units, touch, validation, keyboard focus, edit, and exact local download with privacy";
     await withPage(browser, {}, async (page) => {
       await open(page, "404.html");
       evidence.measurements.gpuBufferSmoke = await page.evaluate(async () => {

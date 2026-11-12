@@ -4,95 +4,262 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- discoverability -->
-  <title>Paper &amp; Light | GlossQuote Visuals</title>
-  <meta name="description" content="A concept exhibition about paper fibers and incident light. Change the angle and the color and study how one sheet responds.">
+  <title>Paper &amp; Light | Bespoke stationery studio</title>
+  <meta name="description" content="Paper &amp; Light makes bespoke business cards, wedding invitations and gift packaging. Explore paper stocks and finishes, then download a custom print brief.">
   <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/en/works/paper-light/">
   <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/paper-light/">
   <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/paper-light/">
   <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/paper-light/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Paper &amp; Light | GlossQuote Visuals">
-  <meta property="og:description" content="Change the direction and color of the light to study fibers, creases and shadows on one sheet.">
+  <meta property="og:title" content="Paper &amp; Light | Bespoke stationery studio">
+  <meta property="og:description" content="Paper &amp; Light makes bespoke business cards, wedding invitations and gift packaging. Explore paper stocks and finishes, then download a custom print brief.">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/paper-light/">
-  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/paper-light-share.jpg">
-  <meta property="og:image:alt" content="A slant of light grazing layers of pale paper">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/paper-commercial-share.jpg">
+  <meta property="og:image:alt" content="Ivory cotton paper with a blind-debossed arch and a terracotta edge">
   <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/paper-light/page.css">
   <script type="module" src="/src/works/paper-light/page.js"></script>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header frame">
-    <a class="wordmark" href="%BASE_URL%en/">GlossQuote Visuals</a>
-    <nav aria-label="Exhibition navigation">
-      <a href="%BASE_URL%en/">Exhibition index</a>
-      <a href="%BASE_URL%works/paper-light/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+<body id="top">
+  <a class="skip" href="#main">Skip to main content</a>
+  <header class="paper-header frame">
+    <a class="paper-brand" href="#top"><span class="brand-mark" aria-hidden="true"></span><span>Paper &amp; Light</span></a>
+    <nav class="paper-nav" aria-label="Bespoke stationery studio">
+      <a href="#collections">Collections</a>
+      <a href="#paper">Paper &amp; finishes</a>
+      <a href="#process">Process</a>
     </nav>
+    <a class="language" href="%BASE_URL%works/paper-light/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
   </header>
-  <main id="main" class="frame" tabindex="-1">
-    <div class="paper-hero">
+
+  <main id="main" tabindex="-1">
+    <section class="paper-hero" aria-labelledby="hero-title">
       <div class="paper-intro">
-        <p class="paper-type">An original concept exhibition</p>
-        <h1>Paper <span>&amp; Light</span></h1>
-        <p class="paper-deck">Lower the light and the fold rises.</p>
-        <p>One sheet reveals different fibers and shadows as the direction of the light changes. Move the light and see which detail disappears first.</p>
+        <p class="paper-type">Bespoke stationery studio</p>
+        <h1 id="hero-title"><span>Made to</span><span>be held.</span></h1>
+        <p class="paper-deck">Custom paper goods for brands, weddings and gifts. Choose the paper and finish for the way it should feel.</p>
+        <a class="primary" href="#quote">Start a project <span aria-hidden="true">↗</span></a>
       </div>
-      <section class="light-study" aria-labelledby="plate-title">
-        <figure class="paper-plate">
-          <div class="paper-art" data-stage data-preset="dawn">
-            <img src="%BASE_URL%media/paper-light.svg" width="1120" height="800"
-              alt="Warm white sheets curl in layers as slanting light catches their edges">
-            <canvas aria-hidden="true"></canvas>
-          </div>
-          <figcaption id="plate-title">A study in light on folded paper <span>Original still composition</span></figcaption>
-        </figure>
-        <fieldset class="light-controls" data-controls hidden>
-          <legend>Adjust the light</legend>
-          <div class="light-inputs">
-            <div class="light-range">
-              <div class="light-label">
-                <label for="light-angle">Angle of incidence</label>
-                <output id="angle-output" for="light-angle">38°</output>
+      <figure class="paper-plate">
+        <div class="paper-art" data-stage data-preset="dawn">
+          <img src="%BASE_URL%media/paper-hero.webp" width="1500" height="1000" fetchpriority="high" alt="Ivory cotton paper with a blind-debossed arch and a terracotta edge">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption>
+          <span>Cotton stock · blind deboss · raking light</span>
+        </figcaption>
+        <div class="light-controls" data-controls hidden>
+          <button class="quiet-button" type="button" data-pause>Pause motion</button>
+          <details>
+            <summary>Adjust the light</summary>
+            <div class="light-inputs">
+              <div class="light-range">
+                <div class="light-label">
+                  <label for="light-angle">Light angle</label>
+                  <output id="angle-output" for="light-angle">38°</output>
+                </div>
+                <input type="range" id="light-angle" min="0" max="180" step="1" value="38">
               </div>
-              <input type="range" id="light-angle" min="0" max="180" step="1" value="38">
-            </div>
-            <fieldset class="light-presets">
-              <legend>Light color</legend>
-              <div class="light-swatches">
+              <div class="light-swatches" role="group" aria-label="Light colour">
                 <label><input type="radio" name="light-preset" value="dawn" checked><span>Dawn</span></label>
                 <label><input type="radio" name="light-preset" value="honey"><span>Honey</span></label>
                 <label><input type="radio" name="light-preset" value="overcast"><span>Overcast</span></label>
               </div>
-            </fieldset>
-          </div>
-          <div class="light-actions">
-            <button type="button" data-pause>Pause motion</button>
-            <button type="button" data-reset>Reset</button>
-          </div>
-          <p class="motion-status" role="status" data-motion-status>Showing the still paper study.</p>
-        </fieldset>
-        <noscript><p class="motion-status">The still paper study is shown here. Enable JavaScript to adjust the light.</p></noscript>
-      </section>
-    </div>
-    <div class="paper-reading">
-      <article>
-        <h2>Surface</h2>
-        <p>Head-on, the paper looks almost uniformly white. Light from the side picks out raised fibers and little dips in a surface that seemed flat. Those differences give the sheet its texture before any ink touches it.</p>
+              <div class="light-actions"><button class="quiet-button" type="button" data-reset>Reset</button></div>
+            </div>
+          </details>
+          <p class="motion-status" role="status" data-motion-status>Showing the still paper surface.</p>
+        </div>
+        <noscript><p class="motion-status">The still paper surface is shown. Enable JavaScript to adjust the light.</p></noscript>
+      </figure>
+    </section>
+
+    <section id="collections" class="paper-section frame" aria-labelledby="collections-title">
+      <div class="section-head">
+        <div><p class="eyebrow">The collections</p><h2 id="collections-title">Paper worth keeping.</h2></div>
+        <p>From the first introduction to the last layer of a gift. Choose a collection to start with.</p>
+      </div>
+      <div class="collections">
+      <article class="collection">
+        <img src="%BASE_URL%media/paper-cards.webp" width="720" height="700" loading="lazy" decoding="async" alt="A stack of ivory cards with a blind-debossed arc and a rust-red mark">
+        <h3>Business cards</h3>
+        <p class="collection-method">Cotton stock + blind deboss</p>
+        <p>For introductions, trade shows and brand handoffs. Thick cotton stock gives the card substance and takes a blind-debossed mark.</p>
+        <dl>
+          <div><dt>Example size</dt><dd>90 × 54 mm</dd></div>
+          <div><dt>Starting quantity</dt><dd>From 50 cards</dd></div>
+          <div><dt>Typical lead time</dt><dd>7–10 business days after proof approval</dd></div>
+        </dl>
+        <a class="text-link" href="#quote" data-collection="cards" aria-label="Start with this · Business cards">Start with this <span aria-hidden="true">↗</span></a>
       </article>
-      <article>
-        <h2>Incidence</h2>
-        <p>Turn the light. Look first at the shadow below the crease, then at the highlight as it crosses the edge. Try Honey or Overcast. The crease holds its place while the white around it changes.</p>
+      <article class="collection">
+        <img src="%BASE_URL%media/paper-invites.webp" width="720" height="700" loading="lazy" decoding="async" alt="Ivory wedding invitation paired with a terracotta envelope">
+        <h3>Wedding invitations</h3>
+        <p class="collection-method">Warm-white stock + one-colour print</p>
+        <p>Pair the ceremony details and reply card with an envelope. Warm-white printed stock sits inside a terracotta sleeve.</p>
+        <dl>
+          <div><dt>Example size</dt><dd>A6 · 105 × 148 mm</dd></div>
+          <div><dt>Starting quantity</dt><dd>From 25 sets</dd></div>
+          <div><dt>Typical lead time</dt><dd>10–15 business days after proof approval</dd></div>
+        </dl>
+        <a class="text-link" href="#quote" data-collection="invites" aria-label="Start with this · Wedding invitations">Start with this <span aria-hidden="true">↗</span></a>
       </article>
-      <aside aria-labelledby="material-title">
-        <h2 id="material-title">Material notes</h2>
-        <p>The fibers, folds and shadows are original vector artwork. WebGPU layers moving light and fine grain over the sheet. The still version retains the angle and color controls.</p>
-      </aside>
-    </div>
+      <article class="collection">
+        <img src="%BASE_URL%media/paper-gifts.webp" width="720" height="700" loading="lazy" decoding="async" alt="A gift box with a paper band and a terracotta tag">
+        <h3>Gift packaging</h3>
+        <p class="collection-method">Recycled stock + one-colour print</p>
+        <p>Size a belly band, tag and note card to your gift box. Visible fibres in recycled stock complement simple one-colour artwork.</p>
+        <dl>
+          <div><dt>Example size</dt><dd>55 mm band width, sized to the box</dd></div>
+          <div><dt>Starting quantity</dt><dd>From 30 sets</dd></div>
+          <div><dt>Typical lead time</dt><dd>10–15 business days after proof approval</dd></div>
+        </dl>
+        <a class="text-link" href="#quote" data-collection="gifts" aria-label="Start with this · Gift packaging">Start with this <span aria-hidden="true">↗</span></a>
+      </article>
+      </div>
+      <p class="collection-note">Lead times are based on starting quantities. Runs over 200, double-sided finishes or custom cuts need extra proofing and scheduling time.</p>
+    </section>
+
+    <section id="paper" class="stock-section" aria-labelledby="stock-title">
+      <div class="stock-grid frame">
+        <figure class="stock-figure">
+          <div class="stock-samples">
+            <div class="stock-sample">
+              <img src="%BASE_URL%media/paper-stock-cotton.webp" width="480" height="760" loading="lazy" decoding="async" alt="Ivory cotton stock with a blind-debossed arc, soft fibres and a straight cut edge">
+              <p>Cotton</p>
+            </div>
+            <div class="stock-sample">
+              <img src="%BASE_URL%media/paper-stock-smooth.webp" width="480" height="760" loading="lazy" decoding="async" alt="Smooth warm-white stock with a sharp cut corner and a fine terracotta line">
+              <p>Warm-white</p>
+            </div>
+            <div class="stock-sample">
+              <img src="%BASE_URL%media/paper-stock-recycled.webp" width="480" height="760" loading="lazy" decoding="async" alt="Grey-brown recycled stock with dark fibre flecks and a visible cut edge">
+              <p>Recycled</p>
+            </div>
+          </div>
+          <figcaption>Three stocks at the same scale and light angle</figcaption>
+        </figure>
+        <div class="stock-copy">
+          <p class="eyebrow">Paper &amp; finishes</p>
+          <h2 id="stock-title">Details you can feel.</h2>
+          <p>Stock sets the feel of a piece. The finish decides where the light catches. Start with the way it should feel in someone’s hand.</p>
+          <dl class="stock-list">
+            <div><dt><span class="stock-chip cotton" aria-hidden="true"></span>Cotton stock · 350 g/m²</dt><dd>Soft, thick and receptive to blind debossing. A good fit for business cards and tactile impressions.</dd></div>
+            <div><dt><span class="stock-chip smooth" aria-hidden="true"></span>Warm-white stock · 300 g/m²</dt><dd>A smooth surface for fine text and one-colour linework. Suited to invitations and inserts.</dd></div>
+            <div><dt><span class="stock-chip recycled" aria-hidden="true"></span>Recycled stock · 300 g/m²</dt><dd>Natural variation in visible fibres and tone. Suited to belly bands, tags and small gift cards.</dd></div>
+          </dl>
+          <p class="finish-note">Blind debossing presses a design into the sheet without ink. Raking light reveals its depth. One-colour printing keeps text and details easy to read.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="paper-section process frame" aria-labelledby="process-title">
+      <p class="eyebrow">The process</p>
+      <h2 id="process-title">From stock to print.</h2>
+      <ol class="steps">
+        <li><span class="step-number" aria-hidden="true">01</span><h3>Prepare your brief</h3><p>Choose a collection, stock, finish and quantity. Describe the use and download the brief for a future enquiry.</p></li>
+        <li><span class="step-number" aria-hidden="true">02</span><h3>Review artwork and stock</h3><p>Confirm size, text, bleed and paper. Supply a separate vector layer or file for any blind-debossed artwork.</p></li>
+        <li><span class="step-number" aria-hidden="true">03</span><h3>Approve the proof</h3><p>Production time starts once the proof is approved. Confirm the schedule for large runs or special finishes.</p></li>
+      </ol>
+      <div class="faq">
+        <h3>Common questions</h3>
+        <div class="faq-list">
+          <details><summary>Can I start without artwork?</summary><p>Yes. Start with the collection, quantity and purpose. You can bring design references, dimensions and artwork to a future enquiry.</p></details>
+          <details><summary>How should I prepare print files?</summary><p>Supply a print-ready PDF. Keep text and artwork at least 3 mm inside the trim and add 3 mm of bleed to artwork that runs to the edge. Supply a separate vector layer or file for blind debossing.</p></details>
+          <details><summary>Can I request a different quantity, size or deadline?</summary><p>Yes. Each collection lists its typical starting quantity and lead time. Small runs, custom sizes, rush jobs and runs over 200 need a separate proofing and production estimate.</p></details>
+          <details><summary>Does downloading the brief place an order?</summary><p>The download creates a text file you can keep or share with a printer later. This studio concept does not take orders.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="quote" class="quote-section" aria-labelledby="quote-title" data-quote
+      data-extra-lead="Runs over 200 need a separate production estimate." data-both-lead="Combined printing and debossing require a separate proofing estimate."
+      data-recommendation="Suggested · {value}" data-customized="Your choice is kept." data-document-title="Paper &amp; Light | Your print brief">
+      <div class="quote-grid frame">
+        <div class="quote-intro">
+          <p class="eyebrow">Your print brief</p>
+          <h2 id="quote-title" tabindex="-1">Put it down on paper.</h2>
+          <p>Choose the paper and finish, then review and download your brief. Your choices stay on this page. Include the use and specifications only.</p>
+        </div>
+        <div class="quote-card">
+          <noscript><p>Enable JavaScript to fill in and download your print brief. Collection details and production information are available above.</p></noscript>
+          <form novalidate hidden data-brief-form>
+            <div class="quote-fields">
+              <div class="quote-wide">
+                <label for="collection">Collection</label>
+                <select id="collection" name="collection" required aria-describedby="collection-specs">
+                  <option value="cards" data-min="50" data-unit="cards"
+                    data-stock="cotton" data-finish="deboss"
+                    data-size="90 × 54 mm" data-parts="One business card" data-lead="7–10 business days after proof approval">Business cards</option>
+                  <option value="invites" data-min="25" data-unit="sets"
+                    data-stock="smooth" data-finish="ink"
+                    data-size="A6 · 105 × 148 mm" data-parts="Invitation, reply card and envelope" data-lead="10–15 business days after proof approval">Wedding invitations</option>
+                  <option value="gifts" data-min="30" data-unit="sets"
+                    data-stock="recycled" data-finish="ink"
+                    data-size="55 mm band width, sized to the box" data-parts="Belly band, tag and note card" data-lead="10–15 business days after proof approval">Gift packaging</option>
+                </select>
+                <dl id="collection-specs" class="collection-specs">
+                  <div><dt>Example size</dt><dd data-series-size></dd></div>
+                  <div><dt>Includes</dt><dd data-series-parts></dd></div>
+                </dl>
+              </div>
+              <div>
+                <label for="stock">Paper stock</label>
+                <select id="stock" name="stock" required aria-describedby="stock-suggestion"><option value="cotton">Cotton stock · 350 g/m²</option><option value="smooth">Warm-white stock · 300 g/m²</option><option value="recycled">Recycled stock · 300 g/m²</option></select>
+                <p class="field-hint" id="stock-suggestion"></p>
+              </div>
+              <div>
+                <label for="finish">Finish</label>
+                <select id="finish" name="finish" required aria-describedby="finish-suggestion"><option value="deboss">Blind deboss</option><option value="ink">One-colour print</option><option value="both">One-colour print + blind deboss</option></select>
+                <p class="field-hint" id="finish-suggestion"></p>
+              </div>
+              <div class="quote-wide">
+                <label for="quantity">Quantity <span data-quantity-unit></span></label>
+                <input type="number" inputmode="numeric" id="quantity" name="quantity" min="50" max="10000" step="1" value="50" required aria-describedby="quantity-hint">
+                <p class="field-hint" id="quantity-hint">Starting quantity <strong data-quantity-min>50</strong></p>
+                <p class="field-error" id="quantity-error" hidden>Enter a whole number at or above the starting quantity, up to 10,000.</p>
+              </div>
+              <div class="quote-wide">
+                <label for="purpose">What are you making?</label>
+                <p class="field-hint" id="purpose-hint">For example, invitations with reply cards, or gift boxes with handwritten note cards. Leave out contact details.</p>
+                <textarea name="purpose" id="purpose" rows="3" maxlength="300" required aria-describedby="purpose-hint"></textarea>
+                <p class="field-error" id="purpose-error" hidden>Enter a use for the paper goods.</p>
+              </div>
+            </div>
+            <button type="submit" class="primary">Review my brief <span aria-hidden="true">↗</span></button>
+          </form>
+          <section data-brief-summary aria-labelledby="summary-title" hidden>
+            <h3 id="summary-title" tabindex="-1">Review your print brief</h3>
+            <dl class="quote-summary">
+              <div><dt>Collection</dt><dd data-value="collection"></dd></div>
+              <div><dt>Example size</dt><dd data-value="size"></dd></div>
+              <div><dt>Includes</dt><dd data-value="parts"></dd></div>
+              <div><dt>Paper stock</dt><dd data-value="stock"></dd></div>
+              <div><dt>Finish</dt><dd data-value="finish"></dd></div>
+              <div><dt>Quantity</dt><dd data-value="quantity"></dd></div>
+              <div><dt>What are you making?</dt><dd data-value="purpose"></dd></div>
+              <div><dt>Typical production time</dt><dd data-value="lead"></dd></div>
+            </dl>
+            <div class="summary-actions">
+              <button type="button" class="primary" data-download>Download print brief <span aria-hidden="true">↓</span></button>
+              <button type="button" class="quiet-button" data-edit>Back to edit</button>
+            </div>
+            <p class="complete-message" data-complete role="status" aria-live="polite"></p>
+            <template data-complete-copy>Your print brief has been generated. No order has been placed.</template>
+          </section>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="site-footer frame">
-    <a href="%BASE_URL%en/">← Exhibition index</a>
-    <a href="<!-- work-source -->">Exhibition source <span aria-hidden="true">↗</span></a>
+
+  <footer class="site-footer paper-footer frame">
+    <div><p class="footer-brand">Paper &amp; Light</p><p>Original brand website concept</p></div>
+    <div class="footer-links">
+      <a href="%BASE_URL%en/">← Work index</a>
+      <a href="#top">Back to top ↑</a>
+      <a href="<!-- work-source -->">Source code <span aria-hidden="true">↗</span></a>
+    </div>
   </footer>
 </body>
 </html>
