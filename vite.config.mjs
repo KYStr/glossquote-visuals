@@ -6,7 +6,7 @@ import { shaderContentPolicy } from "./scripts/shaders-csp.mjs";
 const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
 const copy = {
   "zh-Hant": { preview: "候選", published: "已發布", open: "進入作品", try: "預覽作品", empty: "目前尚無正式展出作品。" },
-  en: { preview: "Candidate", published: "Published", open: "View exhibition", try: "Preview exhibition", empty: "There are no published exhibitions yet." },
+  en: { preview: "Candidate", published: "Published", open: "View website", try: "Preview website", empty: "There are no published websites yet." },
 };
 const policy = [
   "default-src 'none'",

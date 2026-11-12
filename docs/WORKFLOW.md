@@ -6,7 +6,7 @@
 
 狀態：idea（只構想）→ ready（完整 brief）→ building（承接中）→ candidate（已推來源）→ reviewed（必要驗收通過）→ published（正式站讀回驗證）→ external-reviewed（使用者/外部指定版本通過）。blocked 是明確原因與保存點，不能假裝釋放承接。狀態倒退保留歷史。
 
-此獨立 repo 不採用 Labs 的私有執行端和庫存政策。初期僅專屬對話一位 writer。增加作者前，先落實 GitHub PR/registry conditional update/readback，再派不衝突範圍；不得照抄不存在的 claim API。
+此獨立 repo 不採用 Labs 的私有執行端和庫存政策。M02 依使用者指示採三個獨立 clone 與製作對話（gpt-6.1-sol/high），每位作者承接一件作品與獨立 PR；主責是共享 gallery、registry 與 release 的唯一 writer。指派及整合前讀回遠端 head 和 registry，保留各自來源歷史；不得照抄不存在的 claim API。
 
 ## Brief 的完成條件
 
@@ -14,7 +14,7 @@
 
 ## 作者與 reviewer
 
-作者交 source diff、命令/結果、可用瀏覽器證據、限制、已知風險。reviewer 需非作者，讀同一 candidate 的實際程式與輸出，逐項記錄 PASS/FAIL/NOT_RUN；若評分，每個必要面向至少 90 且無未完成 release gate。缺少安全的 WebGPU 瀏覽器時繼續可做的來源與文件，不發布有「已驗證 shader」承諾的作品。
+作者交 source diff、命令/結果、可用瀏覽器證據、限制、已知風險。reviewer 需非作者，讀同一 candidate 的實際程式與輸出，逐項記錄 PASS/FAIL/NOT_RUN；M02 每件美術、UI、商業完整度各須嚴格 >9/10，且無未完成 release gate。缺少安全的 WebGPU 瀏覽器時繼續可做的來源與文件，不發布有「已驗證 shader」承諾的作品。
 
 作者先推 candidate 分支開 PR；reviewer 不應只對未上傳的本地稿給正式 acceptance。修正後只重跑受影響項。尚有必要 gate 失敗就不推 live，但來源/交接仍可公開供檢查。共享 gallery 更動需驗證已發布作品連結無回歸。
 

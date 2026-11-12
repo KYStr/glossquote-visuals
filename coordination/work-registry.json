@@ -2,70 +2,138 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 17,
+  "revision": 18,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.1-sol",
-  "requestedReasoning": "max",
+  "requestedReasoning": "high",
   "backendModelVerified": false,
-  "milestone": "M01",
+  "milestone": "M02",
   "works": [
     {
       "id": "V001",
       "slug": "paper-light",
-      "brief": "briefs/V001-paper-light.md",
-      "status": "published",
-      "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
-      "candidateCommit": "892fb52535585a3219cb8f4b9314e08398a660f3",
-      "pr": "https://github.com/KYStr/glossquote-visuals/pull/1",
-      "reviewEvidence": [
-        "evidence/V001/6c5d753ec133c3359645497984512dc1f315c3a7/REVIEW.md",
-        "evidence/V001/26d9bcf76155ccd64b31c5e30c03f726a0169b3d/REVIEW.md",
-        "evidence/V001/1ea5e21df352c204fefa9ae61098e3820b4586d2/REVIEW.md",
-        "evidence/V001/a6576e21c528e809f3560a334774df08b34f0ad3/REVIEW.md",
-        "evidence/V001/892fb52535585a3219cb8f4b9314e08398a660f3/acceptance.json"
-      ],
+      "brief": "briefs/V001-commercial.md",
+      "status": "candidate",
+      "owner": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
+      "candidateCommit": "aad3ae07df46cdcfb7b6efc2686e2bd6e61c51ae",
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/4",
+      "reviewEvidence": [],
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/paper-light/",
       "deployedCommit": "f0af4882eeb13ed26386e877b9125c0877b50f0d",
       "releaseEvidence": "evidence/V001/f0af4882eeb13ed26386e877b9125c0877b50f0d/RELEASE.md",
-      "blockers": [],
-      "branch": "codex/v001-paper-light"
+      "blockers": [
+        "M02 integrated candidate review and release pending; live URL still serves M01."
+      ],
+      "branch": "codex/v001-commercial"
     },
     {
       "id": "V002",
       "slug": "liquid-archive",
-      "brief": "briefs/V002-liquid-archive.md",
-      "status": "published",
-      "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
-      "candidateCommit": "c7e45456cfd9b14299b4b7d7dbf976d1b4f34f69",
-      "pr": "https://github.com/KYStr/glossquote-visuals/pull/2",
-      "reviewEvidence": [
-        "evidence/V002/4f318855697d625df63874a6ba7abc7ddc61c6ce/REVIEW.md",
-        "evidence/V002/c7e45456cfd9b14299b4b7d7dbf976d1b4f34f69/acceptance.json"
-      ],
+      "brief": "briefs/V002-commercial.md",
+      "status": "candidate",
+      "owner": "01a1d0b2-3cc2-7600-bf46-2cab8dda6039",
+      "candidateCommit": "a09cd00e233f4a8823d2bc39db5ffb021ea63ae7",
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/6",
+      "reviewEvidence": [],
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/liquid-archive/",
       "deployedCommit": "99ecae206a7d512fd9c271c5587000a5724c25a2",
       "releaseEvidence": "evidence/V002/99ecae206a7d512fd9c271c5587000a5724c25a2/RELEASE.md",
-      "blockers": [],
-      "branch": "codex/v002-liquid-archive"
+      "blockers": [
+        "M02 integrated candidate review and release pending; live URL still serves M01."
+      ],
+      "branch": "codex/v002-commercial"
     },
     {
       "id": "V003",
       "slug": "night-signal",
-      "brief": "briefs/V003-night-signal.md",
-      "status": "published",
-      "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
-      "candidateCommit": "dc8fc1481ef72f64c804dd38faf085e0edbe2297",
-      "pr": "https://github.com/KYStr/glossquote-visuals/pull/3",
-      "reviewEvidence": [
-        "evidence/V003/60c9642ce11663cb7cf1c4fbcae0831283481525/REVIEW.md",
-        "evidence/V003/dc8fc1481ef72f64c804dd38faf085e0edbe2297/acceptance.json"
-      ],
+      "brief": "briefs/V003-commercial.md",
+      "status": "candidate",
+      "owner": "01a1d0b2-414c-7452-ad32-445d958fb8a1",
+      "candidateCommit": "f761f27ddcaa730a3438b51381f63ee3f81299e9",
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/5",
+      "reviewEvidence": [],
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/night-signal/",
       "deployedCommit": "2a69f0f86baf86ca8e85f846b071c0e5b82922c8",
       "releaseEvidence": "evidence/V003/2a69f0f86baf86ca8e85f846b071c0e5b82922c8/RELEASE.md",
-      "blockers": [],
-      "branch": "codex/v003-night-signal"
+      "blockers": [
+        "M02 integrated candidate review and release pending; live URL still serves M01."
+      ],
+      "branch": "codex/v003-commercial"
     }
-  ]
+  ],
+  "releaseHistory": [
+    {
+      "milestone": "M01",
+      "revision": 17,
+      "works": [
+        {
+          "id": "V001",
+          "slug": "paper-light",
+          "brief": "briefs/V001-paper-light.md",
+          "status": "published",
+          "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
+          "candidateCommit": "892fb52535585a3219cb8f4b9314e08398a660f3",
+          "pr": "https://github.com/KYStr/glossquote-visuals/pull/1",
+          "reviewEvidence": [
+            "evidence/V001/6c5d753ec133c3359645497984512dc1f315c3a7/REVIEW.md",
+            "evidence/V001/26d9bcf76155ccd64b31c5e30c03f726a0169b3d/REVIEW.md",
+            "evidence/V001/1ea5e21df352c204fefa9ae61098e3820b4586d2/REVIEW.md",
+            "evidence/V001/a6576e21c528e809f3560a334774df08b34f0ad3/REVIEW.md",
+            "evidence/V001/892fb52535585a3219cb8f4b9314e08398a660f3/acceptance.json"
+          ],
+          "liveUrl": "https://kystr.github.io/glossquote-visuals/works/paper-light/",
+          "deployedCommit": "f0af4882eeb13ed26386e877b9125c0877b50f0d",
+          "releaseEvidence": "evidence/V001/f0af4882eeb13ed26386e877b9125c0877b50f0d/RELEASE.md",
+          "blockers": [],
+          "branch": "codex/v001-paper-light"
+        },
+        {
+          "id": "V002",
+          "slug": "liquid-archive",
+          "brief": "briefs/V002-liquid-archive.md",
+          "status": "published",
+          "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
+          "candidateCommit": "c7e45456cfd9b14299b4b7d7dbf976d1b4f34f69",
+          "pr": "https://github.com/KYStr/glossquote-visuals/pull/2",
+          "reviewEvidence": [
+            "evidence/V002/4f318855697d625df63874a6ba7abc7ddc61c6ce/REVIEW.md",
+            "evidence/V002/c7e45456cfd9b14299b4b7d7dbf976d1b4f34f69/acceptance.json"
+          ],
+          "liveUrl": "https://kystr.github.io/glossquote-visuals/works/liquid-archive/",
+          "deployedCommit": "99ecae206a7d512fd9c271c5587000a5724c25a2",
+          "releaseEvidence": "evidence/V002/99ecae206a7d512fd9c271c5587000a5724c25a2/RELEASE.md",
+          "blockers": [],
+          "branch": "codex/v002-liquid-archive"
+        },
+        {
+          "id": "V003",
+          "slug": "night-signal",
+          "brief": "briefs/V003-night-signal.md",
+          "status": "published",
+          "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
+          "candidateCommit": "dc8fc1481ef72f64c804dd38faf085e0edbe2297",
+          "pr": "https://github.com/KYStr/glossquote-visuals/pull/3",
+          "reviewEvidence": [
+            "evidence/V003/60c9642ce11663cb7cf1c4fbcae0831283481525/REVIEW.md",
+            "evidence/V003/dc8fc1481ef72f64c804dd38faf085e0edbe2297/acceptance.json"
+          ],
+          "liveUrl": "https://kystr.github.io/glossquote-visuals/works/night-signal/",
+          "deployedCommit": "2a69f0f86baf86ca8e85f846b071c0e5b82922c8",
+          "releaseEvidence": "evidence/V003/2a69f0f86baf86ca8e85f846b071c0e5b82922c8/RELEASE.md",
+          "blockers": [],
+          "branch": "codex/v003-night-signal"
+        }
+      ]
+    }
+  ],
+  "integration": {
+    "owner": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
+    "branch": "codex/v004-commercial-integration",
+    "status": "building",
+    "candidateCommit": null,
+    "blockers": [
+      "Shared integration render and same-commit independent reviews pending."
+    ]
+  }
 }
