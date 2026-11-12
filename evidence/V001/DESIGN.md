@@ -19,4 +19,6 @@
 
 遠端測試對實際 WebGPU device 注入 unknown-loss 通知，再銷毀原 device 並驗證新 device 恢復。分頁隱藏以 visibility event 模擬，離開畫面則實際捲動。
 
+WebGPU texture 讀回與瀏覽器合成截圖各自驗收。遠端使用 [Chromium WebGPU pixel tests 的 Vulkan/SwiftShader 設定](https://chromium.googlesource.com/chromium/src/+/main/content/test/gpu/gpu_tests/pixel_test_pages.py)，備援是 [同一 GitHub VM 的 Playwright Xvfb 虛擬顯示器](https://playwright.dev/docs/ci#running-headed)。
+
 見 [依賴 notices](../../public/licenses/NOTICES.txt)、[驗收矩陣](../../docs/ACCEPTANCE.md)、[狀態](../STATUS.md)。託管 VM 與隔離範圍參考 [GitHub 官方文件](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)。

@@ -25,15 +25,18 @@ jobs:
           npm test
           npm run build
       - run: node node_modules/playwright/cli.js install --with-deps chromium --no-shell
-      - name: Test with the isolated Mesa Vulkan adapter
+      - name: Test WebGPU in the isolated Linux VM
         run: |
-          if ! compgen -G '/usr/share/vulkan/icd.d/lvp*.json' >/dev/null; then
+          if DEBUG=pw:browser npm run test:browser; then
+            exit 0
+          fi
+          if ! compgen -G '/usr/share/vulkan/icd.d/lvp*.json' >/dev/null || ! command -v xvfb-run || ! command -v xauth; then
             sudo apt-get update -qq
-            sudo apt-get install -y --no-install-recommends mesa-vulkan-drivers
+            sudo apt-get install -y --no-install-recommends mesa-vulkan-drivers xvfb xauth
           fi
           drivers=(/usr/share/vulkan/icd.d/lvp*.json)
           test -f "${drivers[0]}"
-          VK_DRIVER_FILES="${drivers[0]}" DEBUG=pw:browser npm run test:browser
+          VK_DRIVER_FILES="${drivers[0]}" GQ_BROWSER_DISPLAY=xvfb DEBUG=pw:browser xvfb-run -a npm run test:browser
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:

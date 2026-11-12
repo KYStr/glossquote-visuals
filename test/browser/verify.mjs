@@ -14,10 +14,13 @@ if (process.platform !== "linux" || process.env.GITHUB_ACTIONS !== "true" || pro
 
 const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 assert.equal(commit, process.env.GITHUB_SHA);
-const evidenceDir = resolve(root, ".runs/browser-evidence");
+const xvfb = process.env.GQ_BROWSER_DISPLAY === "xvfb";
+if (xvfb) assert.match(process.env.DISPLAY ?? "", /^:\d+(?:\.\d+)?$/);
+const display = xvfb ? "xvfb" : "headless-vulkan-swiftshader";
+const evidenceDir = resolve(root, ".runs/browser-evidence", display);
 await mkdir(evidenceDir, { recursive: true });
 const evidence = {
-  commit, environment: "GitHub-hosted Ubuntu 24.04 VM", browser: null,
+  commit, environment: "GitHub-hosted Ubuntu 24.04 VM", display, browser: null,
   checks: {}, measurements: {}, screenshots: [],
 };
 const site = await serveDist();
@@ -155,6 +158,7 @@ async function checkFallback(browser) {
 }
 
 async function checkShader(browser) {
+  let compositeOk = false;
   await withPage(browser, { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 }, async (page) => {
     const probe = await observe(page, { readPixels: true });
     await open(page, "en/" + work);
@@ -178,8 +182,8 @@ async function checkShader(browser) {
     };
     const firstTexture = await page.evaluate(() => window.__visualProbe.readFrame());
     evidence.measurements.firstFrame.texture = firstTexture;
-    assert.ok(firstTexture.colors > 20 && first.colors > 20,
-      `WebGPU output lacks structure: ${JSON.stringify(evidence.measurements.firstFrame)}`);
+    assert.ok(firstTexture.colors > 20, `WebGPU texture lacks structure: ${JSON.stringify(firstTexture)}`);
+    evidence.checks.shaderTexture = "PASS real WebGPU texture has nonuniform pixels";
     const start = performance.now();
     const before = await textureCount(page);
     await page.waitForTimeout(1200);
@@ -195,8 +199,11 @@ async function checkShader(browser) {
     await page.waitForTimeout(200);
     const changed = await pixelEvidence(page, stage(page));
     const changedTexture = await page.evaluate(() => window.__visualProbe.readFrame());
-    assert.ok(changed.colors > 20 && changedTexture.colors > 20 && changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5));
-    evidence.measurements.pixelSamples = { dawn: first, overcast: changed };
+    assert.ok(changedTexture.colors > 20 && changedTexture.average.some((value, i) => Math.abs(value - firstTexture.average[i]) > 5));
+    compositeOk = first.colors > 20 && changed.colors > 20 &&
+      changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5);
+    evidence.checks.compositing = compositeOk ? "PASS visible canvas changes with controls" : "FAIL compositor did not present the changing WebGPU texture";
+    evidence.measurements.pixelSamples = { dawn: firstTexture, overcast: changedTexture, overcastComposite: changed };
 
     for (let i = 0; i < 3; i++) {
       await page.getByRole("button", { name: "Pause motion" }).click();
@@ -251,13 +258,22 @@ async function checkShader(browser) {
   });
   evidence.checks.webgpu = "PASS nonuniform WebGPU pixels, live input changes, recovery after injected unknown-loss signal and actual device destruction, pause/resume, hidden event, offscreen, return";
   evidence.checks.privacy = "PASS only static same-origin GETs, no fetch/XHR/beacon/socket, CSP violations, browser errors, cookies or storage";
+  assert.ok(compositeOk, "The browser compositor did not present the changing WebGPU texture");
 }
 
 let browser;
 try {
   browser = await chromium.launch({
-    channel: "chromium", headless: true,
-    args: ["--enable-unsafe-webgpu", "--use-angle=vulkan", "--enable-features=Vulkan", "--disable-vulkan-surface", "--disable-gpu-watchdog"],
+    channel: "chromium", headless: !xvfb,
+    args: [
+      "--enable-unsafe-webgpu", "--enable-unsafe-swiftshader", "--disable-gpu-watchdog",
+      // Chromium's WebGPU pixel tests select SwiftShader for Dawn and Vulkan
+      // compositing together. The Xvfb retry uses its VM's GL compositor.
+      ...(xvfb ? ["--use-vulkan", "--use-angle=gl"] : [
+        "--enable-features=Vulkan", "--use-angle=swiftshader", "--use-vulkan=swiftshader",
+        "--use-webgpu-adapter=swiftshader", "--disable-vulkan-surface",
+      ]),
+    ],
   });
   evidence.browser = browser.version();
   const session = await browser.newBrowserCDPSession();
