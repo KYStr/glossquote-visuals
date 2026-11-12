@@ -320,6 +320,14 @@ async function checkLive(browser) {
 async function checkLiquid(browser) {
   const route = "works/liquid-archive/";
   const testFont = { localFont: base + "fonts/liquid-geist.ttf" };
+  const fullLiquidScreenshot = async (page, name) => {
+    await page.locator(".liquid-page img:visible").evaluateAll(images =>
+      Promise.all(images.map(image => {
+        image.loading = "eager";
+        return image.decode();
+      })));
+    await screenshot(page, name);
+  };
   const control = (page) => page.locator("#product");
   const selectFinish = (page, finish) => page.locator('.finish-choices label:has([value="' + finish + '"])');
   const capture = async (page, locator, name) => {
@@ -345,7 +353,7 @@ async function checkLiquid(browser) {
           nodes.map(node => [node.offsetWidth, node.offsetHeight]));
         assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44), JSON.stringify(targets));
         if (width === 390 || width === 1440) {
-          await screenshot(page, `liquid-forme-${lang}-${width}-full.png`);
+          await fullLiquidScreenshot(page, `liquid-forme-${lang}-${width}-full.png`);
         }
         if (width === 390) {
           await page.locator('[data-select-product="arc"]').tap();
@@ -379,7 +387,7 @@ async function checkLiquid(browser) {
         assert.ok(await card.locator("[data-care]").isVisible());
         assert.equal((await card.textContent()).match(/NT\$/g).length, 2);
       }
-      if (!prefix) await screenshot(page, "liquid-forme-zh-Hant-390-no-js.png");
+      if (!prefix) await fullLiquidScreenshot(page, "liquid-forme-zh-Hant-390-no-js.png");
     });
   }
 
@@ -531,12 +539,19 @@ async function checkLiquid(browser) {
 
     await open(page, "en/" + route);
     const polished = await sample("en-1440-polished-composite");
+    const coversPhoto = await photo.evaluate(element => {
+      const viewport = element.getBoundingClientRect();
+      const image = element.querySelector("img").getBoundingClientRect();
+      return image.left <= viewport.left + 1 && image.right >= viewport.right - 1 &&
+        image.top <= viewport.top + 1 && image.bottom >= viewport.bottom - 1;
+    });
+    assert.equal(coversPhoto, true, "The hero photograph covers its entire frame");
     assert.equal(await page.evaluate(() => scrollY), 0, "The WebGPU composition is visible on entry");
     await checkContrast(page, [
       ".hero h1", ".hero-copy > p:not(.eyebrow)", ".hero .button",
       ".card-description", ".motion-status", ".finish-choices input:checked + span",
     ], "liquidMinCheckedContrast");
-    await screenshot(page, "liquid-forme-en-1440-webgpu-full.png");
+    await fullLiquidScreenshot(page, "liquid-forme-en-1440-webgpu-full.png");
 
     const angle = page.locator("#object-angle");
     await angle.press("Home");
@@ -611,7 +626,7 @@ async function checkLiquid(browser) {
     await page.locator('header a[lang="zh-Hant"]').click();
     assert.equal(page.url(), url(route));
     await sample("zh-Hant-390-polished-composite");
-    await screenshot(page, "liquid-forme-zh-Hant-390-webgpu-full.png");
+    await fullLiquidScreenshot(page, "liquid-forme-zh-Hant-390-webgpu-full.png");
     await capture(page, page.locator("#configure"), "liquid-forme-zh-Hant-390-product.png");
     await phase(page, "still");
     await quiet(page);

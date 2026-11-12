@@ -63,7 +63,7 @@
 .hero h1 span { display: block; }
 :lang(zh-Hant) .hero h1 { font-size: clamp(3.1rem, 5.8vw, 6.1rem); letter-spacing: -.07em; font-weight: 620; }
 .hero-copy > p:not(.eyebrow) { color: var(--muted); max-inline-size: 29ch; margin-block-end: 1.6rem; }
-.hero-visual { position: relative; isolation: isolate; min-block-size: clamp(26rem, 47vw, 42rem); background: #685d51; overflow: hidden; }
+.hero-visual { position: relative; isolation: isolate; block-size: clamp(26rem, 47vw, 42rem); background: #685d51; overflow: hidden; }
 .hero-surface { position: absolute; inset: 0; }
 .hero-visual img { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; object-position: 62% 52%; }
 .hero-note { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; color: var(--muted); border-block-end: 1px solid var(--rule); padding-block: .85rem; font-size: .82rem; }
@@ -90,8 +90,9 @@
     mask: url("/media/liquid-forme-steel-mask.png") center / 100% 100% no-repeat;
     mix-blend-mode: screen;
     pointer-events: none;
-    opacity: .74;
+    opacity: .62;
   }
+  .hero-render[data-finish="satin"] { opacity: .5; }
   .hero-render canvas { position: absolute; inset: 0; visibility: hidden; }
   .hero-render[data-motion="running"] canvas { visibility: visible; }
 }
@@ -209,6 +210,7 @@ summary { min-block-size: 44px; padding-block: .65em; cursor: pointer; }
   text-underline-offset: .2em;
   font-size: .82rem;
 }
+.remove-item { min-inline-size: 44px; text-align: start; }
 .motion-tools button:disabled { text-decoration: none; color: var(--muted); }
 .motion-status { font-size: .8rem; color: var(--muted); }
 .hero-light:has(.motion-tools[hidden]) { display: none; }
@@ -263,7 +265,7 @@ summary { min-block-size: 44px; padding-block: .65em; cursor: pointer; }
 @media (max-width: 44rem) {
   .hero-grid, .section-intro, .config-grid, .craft-grid, .faq-grid { grid-template-columns: minmax(0, 1fr); }
   .hero-copy { padding: 2.35rem 0 1.8rem; }
-  .hero-visual { min-block-size: 0; aspect-ratio: 1.14; }
+  .hero-visual { block-size: auto; aspect-ratio: 1.14; }
   .hero-visual img { object-position: 62% 52%; }
   .hero-light { inline-size: 100%; }
   .motion-tools { margin-block-start: 0; }
