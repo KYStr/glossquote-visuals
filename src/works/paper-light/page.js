@@ -1,4 +1,5 @@
 import { createMotion, observeMotion } from "../../shared/motion.js";
+import { initializeBrief } from "./brief.js";
 
 const stage = document.querySelector("[data-stage]");
 const canvas = stage.querySelector("canvas");
@@ -11,12 +12,12 @@ const status = controls.querySelector("[data-motion-status]");
 const preference = matchMedia("(prefers-reduced-motion: reduce)");
 const english = document.documentElement.lang === "en";
 const copy = english ? {
-  still: "Showing the still paper study.",
-  reduced: "Reduced motion is on. The light controls adjust the still study.",
-  unavailable: "Live rendering is unavailable. The light controls adjust the still study.",
-  paused: "Motion paused. The light controls adjust the still study.",
-  starting: "Preparing the live light study.",
-  running: "Live light study.",
+  still: "Showing the still paper surface.",
+  reduced: "Reduced motion is on. You can still adjust the light.",
+  unavailable: "The still paper surface is shown. You can adjust the light.",
+  paused: "Motion paused.",
+  starting: "Preparing the light.",
+  running: "Move across the paper to change the light.",
   pause: "Pause motion",
   resume: "Resume motion",
 } : {
@@ -25,7 +26,7 @@ const copy = english ? {
   unavailable: "目前無法即時渲染，仍可調整靜態紙面的光線。",
   paused: "動態已暫停，仍可調整靜態紙面的光線。",
   starting: "正在準備即時光線。",
-  running: "正在即時呈現光線。",
+  running: "在紙面上移動即可改變光線。",
   pause: "暫停動態",
   resume: "繼續動態",
 };
@@ -68,6 +69,25 @@ function setPause(next) {
   motion.update({ paused: manuallyPaused });
 }
 
+let pointerFrame = 0;
+let pointerX = 0;
+function moveLight(event) {
+  if (!event.isPrimary || (event.pointerType === "touch" && event.type === "pointermove" && !event.buttons)) return;
+  pointerX = event.clientX;
+  if (pointerFrame) return;
+  pointerFrame = requestAnimationFrame(() => {
+    pointerFrame = 0;
+    const bounds = stage.getBoundingClientRect();
+    if (!bounds.width) return;
+    const degrees = Math.max(0, Math.min(180, Math.round(180 * (pointerX - bounds.left) / bounds.width)));
+    if (settings.angle === degrees) return;
+    angle.value = degrees;
+    applyLight({ ...settings, angle: degrees });
+  });
+}
+
+stage.addEventListener("pointerdown", moveLight);
+stage.addEventListener("pointermove", moveLight);
 angle.addEventListener("input", () => applyLight({ ...settings, angle: angle.valueAsNumber }));
 controls.addEventListener("change", (event) => {
   if (event.target.name === "light-preset") applyLight({ ...settings, preset: event.target.value });
@@ -81,6 +101,7 @@ reset.addEventListener("click", () => {
 });
 
 controls.hidden = false;
+initializeBrief();
 if (hasObservers) {
   observeMotion(stage, motion, preference);
 } else {
