@@ -1,0 +1,228 @@
+{
+  "commit": "4f318855697d625df63874a6ba7abc7ddc61c6ce",
+  "environment": "GitHub-hosted Windows Server 2025 VM",
+  "display": "headless-d3d11-warp",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "responsive": "PASS zh-Hant/en at 320, 390, 768 and 1440 CSS px, 200% text size, touch and no shader in reduced motion",
+    "fallback": "PASS no-JS HTML, unsupported WebGPU and rejected adapter with working CSS controls",
+    "shaderTexture": "PASS real WebGPU texture has nonuniform pixels",
+    "compositing": "PASS visible canvas changes with controls",
+    "pause": "PASS three pause/resume cycles without extra devices or texture acquisition while paused",
+    "deviceRecovery": "PASS new WebGPU device after injected unknown loss and actual old device destruction",
+    "visibility": "PASS no frame acquisition during injected hidden state and actual offscreen scroll",
+    "webgpu": "PASS nonuniform WebGPU pixels, live input changes, recovery after injected unknown-loss signal and actual device destruction, pause/resume, hidden event, offscreen, return",
+    "privacy": "PASS only static same-origin GETs, no fetch/XHR/beacon/socket, CSP violations, browser errors, cookies or storage",
+    "liquid": "PASS bilingual four widths/200%/touch, no-JS and no-GPU, three visible WebGPU objects, rotation, 20 switches on one device, pause/offscreen and privacy"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "unavailable_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webnn": "disabled_off"
+    },
+    "gpuBufferSmoke": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "value": 305441741
+    },
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "fallback": true
+    },
+    "minCheckedContrast": 6.831676841568789,
+    "firstFrame": {
+      "screenshot": {
+        "colors": 264,
+        "average": [
+          221,
+          203,
+          179
+        ]
+      },
+      "gpuErrors": [],
+      "canvasCss": {
+        "opacity": "0.52",
+        "visibility": "visible",
+        "display": "block"
+      },
+      "texture": {
+        "width": 804,
+        "height": 574,
+        "format": "bgra8unorm",
+        "colors": 237,
+        "average": [
+          221,
+          203,
+          179,
+          255
+        ]
+      }
+    },
+    "textureAcquisitionsPerSecond": 13.53,
+    "pixelRatio": {
+      "deviceScaleFactor": 1,
+      "canvas": 1
+    },
+    "pixelSamples": {
+      "dawn": {
+        "width": 804,
+        "height": 574,
+        "format": "bgra8unorm",
+        "colors": 237,
+        "average": [
+          221,
+          203,
+          179,
+          255
+        ]
+      },
+      "overcast": {
+        "width": 804,
+        "height": 574,
+        "format": "bgra8unorm",
+        "colors": 108,
+        "average": [
+          186,
+          200,
+          219,
+          255
+        ]
+      },
+      "overcastComposite": {
+        "colors": 126,
+        "average": [
+          185,
+          200,
+          219
+        ]
+      }
+    },
+    "requestPaths": [
+      "/glossquote-visuals/",
+      "/glossquote-visuals/assets/gallery-BGlpcf81.css",
+      "/glossquote-visuals/assets/page-CgvfbSZ7.css",
+      "/glossquote-visuals/assets/page-QgESVOJH.js",
+      "/glossquote-visuals/assets/preload-helper-LyG4YFxS.js",
+      "/glossquote-visuals/assets/shader-BwQZ_MiS.js",
+      "/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "/glossquote-visuals/assets/standalone-tglGzXn9.js",
+      "/glossquote-visuals/en/works/paper-light/",
+      "/glossquote-visuals/media/liquid-ring.svg",
+      "/glossquote-visuals/media/mark.svg",
+      "/glossquote-visuals/media/paper-light.svg",
+      "/glossquote-visuals/works/paper-light/"
+    ],
+    "liquidObjects": {
+      "ring": {
+        "texture": {
+          "width": 839,
+          "height": 629,
+          "format": "bgra8unorm",
+          "colors": 74,
+          "average": [
+            43,
+            46,
+            54,
+            255
+          ]
+        },
+        "visible": {
+          "colors": 110,
+          "average": [
+            43,
+            46,
+            54
+          ]
+        }
+      },
+      "orb": {
+        "texture": {
+          "width": 839,
+          "height": 629,
+          "format": "bgra8unorm",
+          "colors": 104,
+          "average": [
+            50,
+            56,
+            66,
+            255
+          ]
+        },
+        "visible": {
+          "colors": 116,
+          "average": [
+            49,
+            55,
+            65
+          ]
+        }
+      },
+      "arc": {
+        "texture": {
+          "width": 839,
+          "height": 629,
+          "format": "bgra8unorm",
+          "colors": 69,
+          "average": [
+            31,
+            34,
+            39,
+            255
+          ]
+        },
+        "visible": {
+          "colors": 88,
+          "average": [
+            32,
+            34,
+            40
+          ]
+        }
+      }
+    },
+    "liquidTextureAcquisitionsPerSecond": 16.78,
+    "liquidPixelRatio": 1
+  },
+  "screenshots": [
+    "paper-zh-Hant-390-still.png",
+    "paper-en-390-still.png",
+    "gallery-zh-Hant-1440.png",
+    "gallery-en-1440.png",
+    "paper-en-1440-webgpu.png",
+    "paper-en-webgpu-only.png",
+    "paper-en-texture-readback.png",
+    "paper-en-390-webgpu.png",
+    "paper-zh-390-webgpu.png",
+    "liquid-zh-Hant-390-still.png",
+    "liquid-en-390-still.png",
+    "liquid-ring-webgpu.png",
+    "liquid-orb-webgpu.png",
+    "liquid-arc-webgpu.png",
+    "liquid-en-1440-webgpu.png",
+    "liquid-zh-Hant-390-webgpu.png"
+  ],
+  "result": "PASS"
+}

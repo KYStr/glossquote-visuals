@@ -52,22 +52,22 @@ async function layout(page) {
   await page.evaluate(() => { document.documentElement.style.removeProperty("font-size"); });
 }
 
-async function checkContrast(page) {
-  const ratios = await page.evaluate(() => {
+async function checkContrast(page, selectors = [".paper-intro h1", ".paper-intro .paper-type", ".motion-status", "#angle-output", "[data-pause]"], metric = "minCheckedContrast") {
+  const ratios = await page.evaluate((selectors) => {
     const luminance = (rgb) => rgb.match(/\d+/g).slice(0, 3).map(Number)
       .map((c) => c / 255)
       .map((c) => c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4)
       .reduce((sum, channel, i) => sum + channel * [0.2126, 0.7152, 0.0722][i], 0);
     const rootBg = getComputedStyle(document.documentElement).backgroundColor;
-    return [".paper-intro h1", ".paper-intro .paper-type", ".motion-status", "#angle-output", "[data-pause]"].map((selector) => {
+    return selectors.map((selector) => {
       const style = getComputedStyle(document.querySelector(selector));
       const bg = style.backgroundColor === "rgba(0, 0, 0, 0)" ? rootBg : style.backgroundColor;
       const pair = [luminance(bg), luminance(style.color)].sort((a, b) => b - a);
       return (pair[0] + 0.05) / (pair[1] + 0.05);
     });
-  });
+  }, selectors);
   assert.ok(ratios.every((ratio) => ratio >= 4.5), JSON.stringify(ratios));
-  evidence.measurements.minCheckedContrast = Math.min(...ratios);
+  evidence.measurements[metric] = Math.min(...ratios);
 }
 
 async function quiet(page) {
@@ -327,6 +327,8 @@ async function checkLiquid(browser) {
           await selectObject(page, "arc").tap();
           assert.equal(await stage(page).getAttribute("data-object"), "arc");
           assert.match(await stage(page).locator("img").getAttribute("src"), /liquid-arc\.svg$/);
+          assert.equal(await selectObject(page, "arc").locator("span").evaluate((label) =>
+            getComputedStyle(label).textDecorationLine), "underline");
           await screenshot(page, `liquid-${prefix ? "en" : "zh-Hant"}-390-still.png`);
         }
         await probe.assertPrivate(site.origin);
@@ -357,6 +359,9 @@ async function checkLiquid(browser) {
     const probe = await observe(page, { readPixels: true });
     await open(page, "en/" + route);
     await phase(page, "running");
+    await checkContrast(page, [
+      ".archive-title h1", ".archive-context", ".archive-motion p", ".archive-choices input:checked + span", ".archive-motion button", "output",
+    ], "liquidMinCheckedContrast");
     const objects = {};
     for (const object of ["ring", "orb", "arc"]) {
       await selectObject(page, object).click();
@@ -373,11 +378,21 @@ async function checkLiquid(browser) {
     evidence.measurements.liquidObjects = objects;
     assert.equal(new Set(Object.values(objects).map(({ texture }) => texture.average.join(","))).size, 3);
     await page.locator("#object-angle").press("Home");
-    const start = await page.evaluate(() => window.__visualProbe.readFrame());
+    await stage(page).scrollIntoViewIfNeeded();
+    const firstAngle = await textureCount(page);
+    await page.waitForFunction((count) => window.__visualProbe.textures > count + 3, firstAngle);
+    const start = await pixelEvidence(page, stage(page), resolve(evidenceDir, "liquid-arc-angle-0.png"));
     await page.locator("#object-angle").press("End");
     assert.equal(await page.locator("output").textContent(), "180°");
-    const rotated = await page.evaluate(() => window.__visualProbe.readFrame());
-    assert.notDeepEqual(start.average, rotated.average);
+    await stage(page).scrollIntoViewIfNeeded();
+    const finalAngle = await textureCount(page);
+    await page.waitForFunction((count) => window.__visualProbe.textures > count + 3, finalAngle);
+    const rotated = await pixelEvidence(page, stage(page), resolve(evidenceDir, "liquid-arc-angle-180.png"));
+    evidence.screenshots.push("liquid-arc-angle-0.png", "liquid-arc-angle-180.png");
+    evidence.measurements.liquidArcAngles = { start, rotated };
+    assert.ok(start.brightCenter && rotated.brightCenter, "Arc must be visible at both angles");
+    const shift = Math.hypot(...start.brightCenter.map((point, axis) => point - rotated.brightCenter[axis]));
+    assert.ok(shift >= 1.5, `The visible arc did not rotate across its center: ${shift}`);
     const configurations = await page.evaluate(() => window.__visualProbe.configurations);
     await page.evaluate(() => {
       const controls = [...document.querySelectorAll('[name="object"]')];
@@ -398,9 +413,16 @@ async function checkLiquid(browser) {
     await page.getByRole("button", { name: "Pause motion" }).click();
     await phase(page, "paused");
     await quiet(page);
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await phase(page, "running");
     await page.setViewportSize({ width: 390, height: 580 });
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await phase(page, "paused");
+    await stage(page).scrollIntoViewIfNeeded();
+    await phase(page, "paused");
+    await quiet(page);
+    await page.getByRole("button", { name: "Resume motion" }).click();
+    await stage(page).scrollIntoViewIfNeeded();
+    await phase(page, "running");
+    await probe.assertPrivate(site.origin);
     await page.locator('header a[lang="zh-Hant"]').click();
     assert.equal(page.url(), url(route));
     await phase(page, "running");
