@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { observe } from "./probe.mjs";
 
-export async function checkPaperCommercial({ browser, withPage, open, screenshot, site, work }) {
+export async function checkPaperCommercial({ browser, withPage, open, screenshot, site, work, evidenceDir }) {
+  const downloads = [];
   const cases = [
     { prefix: "", label: "zh", width: 390, touch: true, purpose: "品牌禮盒附手寫小卡\n<紙與光>", unit: "組" },
     { prefix: "en/", label: "en", width: 1440, touch: false, purpose: "A gift box with a handwritten note\n<Paper & Light>", unit: "sets" },
@@ -135,14 +137,19 @@ export async function checkPaperCommercial({ browser, withPage, open, screenshot
       ]);
       assert.equal(download.suggestedFilename(), "paper-and-light-print-brief.txt");
       assert.equal(await download.failure(), null);
-      const downloaded = await readFile(await download.path(), "utf8");
+      const artifact = `paper-${label}-print-brief.txt`;
+      const saved = resolve(evidenceDir, artifact);
+      await download.saveAs(saved);
+      const downloaded = await readFile(saved, "utf8");
       const headings = await summary.locator("dt").allTextContents();
       const title = await page.locator("[data-quote]").getAttribute("data-document-title");
       const complete = await summary.locator("[data-complete]").textContent();
       assert.match(complete, label === "zh" ? /尚未送出訂單/ : /No order has been placed/);
       assert.equal(downloaded, "\uFEFF" + [title, "", ...headings.map((heading, i) => heading + " — " + receipt[i]), "", complete, ""].join("\n").replace(/\n/g, "\r\n"));
+      downloads.push(artifact);
       await screenshot(page, `paper-${label}-${width}-brief-complete.png`);
       await probe.assertPrivate(site.origin);
     });
   }
+  return downloads;
 }
