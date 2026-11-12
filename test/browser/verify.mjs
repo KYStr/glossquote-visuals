@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { chromium } from "playwright";
@@ -368,6 +368,10 @@ async function checkLive(browser) {
   const release = await receipt.json();
   assert.equal(release.commit, commit);
   const releasedWorks = verifyReleaseReceipt(release, releaseWorkIds());
+  const workFonts = {
+    "night-signal": signalFontPaths,
+    "liquid-archive": [base + "fonts/liquid-geist.ttf"],
+  };
   for (const work of registry.works.filter(isPublished)) {
     for (const prefix of ["", "en/"]) {
       assert.equal((await fetch(url(`${prefix}works/${work.slug}/`))).status, 200);
@@ -375,6 +379,7 @@ async function checkLive(browser) {
   }
   for (const releasedWork of releasedWorks) {
     const route = `works/${releasedWork.slug}/`;
+    const fontPaths = workFonts[releasedWork.slug] ?? [];
     for (const prefix of ["", "en/"]) {
       await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
         const probe = await observe(page);
@@ -391,10 +396,10 @@ async function checkLive(browser) {
         const composite = await pixelEvidence(page, stage(page));
         assert.ok(composite.colors > 20, "The deployed shader did not appear on the page");
         await screenshot(page, `live-${releasedWork.slug}-${prefix ? "en" : "zh-Hant"}.png`);
-        await probe.assertPrivate(site.origin, { fontPaths: releasedWork.slug === "night-signal" ? signalFontPaths : [] });
+        await probe.assertPrivate(site.origin, { fontPaths });
         await page.locator(".site-footer a").first().click();
         assert.equal(page.url(), url(prefix));
-        await probe.assertPrivate(site.origin, { fontPaths: releasedWork.slug === "night-signal" ? signalFontPaths : [] });
+        await probe.assertPrivate(site.origin, { fontPaths });
       });
     }
   }
@@ -404,130 +409,326 @@ async function checkLive(browser) {
 
 async function checkLiquid(browser) {
   const route = "works/liquid-archive/";
-  const selectObject = (page, id) => page.locator(`label:has([value="${id}"])`);
+  const testFont = { localFont: base + "fonts/liquid-geist.ttf" };
+  const fullLiquidScreenshot = async (page, name) => {
+    await page.locator(".liquid-page img:visible").evaluateAll(images =>
+      Promise.all(images.map(image => {
+        image.loading = "eager";
+        return image.decode();
+      })));
+    await screenshot(page, name);
+  };
+  const control = (page) => page.locator("#product");
+  const selectFinish = (page, finish) => page.locator('.finish-choices label:has([value="' + finish + '"])');
+  const capture = async (page, locator, name) => {
+    await locator.screenshot({ path: resolve(evidenceDir, name) });
+    evidence.screenshots.push(name);
+  };
+
   for (const width of [320, 390, 768, 1440]) {
     for (const prefix of ["", "en/"]) {
+      const en = Boolean(prefix);
+      const lang = en ? "en" : "zh-Hant";
       await withPage(browser, { viewport: { width, height: 900 }, reducedMotion: "reduce", hasTouch: width === 390 }, async (page) => {
-        const probe = await observe(page);
+        const probe = await observe(page, testFont);
         await open(page, prefix);
         await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
+        assert.equal(page.url(), url(prefix + route));
         await phase(page, "reduced");
         await layout(page);
         assert.equal(await textureCount(page), 0);
+        assert.equal(await page.evaluate(() => window.__visualProbe.devices), 0);
         assert.ok(!probe.requests.some(({ url }) => /\/assets\/(?:shader|standalone)-/.test(url)));
-        const targets = await page.locator(".archive-choices span, .archive-motion button, #object-angle").evaluateAll((nodes) =>
-          nodes.map((node) => [node.offsetWidth, node.offsetHeight]));
-        assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44));
+        const targets = await page.locator(".finish-choices span, .picker select, .picker .quantity, .button, #object-angle, [data-pause]").evaluateAll(nodes =>
+          nodes.map(node => [node.offsetWidth, node.offsetHeight]));
+        assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44), JSON.stringify(targets));
+        if (width === 390 || width === 1440) {
+          await fullLiquidScreenshot(page, `liquid-forme-${lang}-${width}-full.png`);
+        }
         if (width === 390) {
-          await selectObject(page, "arc").tap();
-          assert.equal(await stage(page).getAttribute("data-object"), "arc");
-          assert.match(await stage(page).locator("img").getAttribute("src"), /liquid-arc\.svg$/);
-          assert.equal(await selectObject(page, "arc").locator("span").evaluate((label) =>
-            getComputedStyle(label).textDecorationLine), "underline");
-          await screenshot(page, `liquid-${prefix ? "en" : "zh-Hant"}-390-still.png`);
+          await page.locator('[data-select-product="arc"]').tap();
+          assert.equal(await control(page).inputValue(), "arc");
+          assert.equal(await page.locator("#config-title").evaluate(node => node === document.activeElement), true);
+          await selectFinish(page, "satin").tap();
+          assert.equal(await stage(page).getAttribute("data-finish"), "satin");
+          assert.match(await page.locator("[data-detail-image]").getAttribute("src"), /arc-satin\.webp$/);
+          assert.equal(await page.locator("[data-unit]").textContent(), "NT$3,380");
+          assert.equal(await selectFinish(page, "satin").locator("span").evaluate(node =>
+            getComputedStyle(node).textDecorationLine), "underline");
+          await page.locator("[data-picker] button[type=submit]").tap();
+          assert.equal(await page.locator("[data-total]").textContent(), "NT$3,380");
+          await capture(page, page.locator("#inquiry"), `liquid-forme-${lang}-390-inquiry.png`);
+          await layout(page);
         }
         await probe.assertPrivate(site.origin);
       });
     }
   }
-  await withPage(browser, { javaScriptEnabled: false }, async (page) => {
-    await open(page, route);
-    assert.ok(await page.locator("noscript p").isVisible());
-    assert.ok(await stage(page).locator("img").isVisible());
-    assert.equal(await page.locator("[data-object-description]").count(), 3);
-  });
-  await withPage(browser, {}, async (page) => {
-    await page.addInitScript(() => Object.defineProperty(navigator, "gpu", { value: undefined }));
-    const probe = await observe(page);
-    await open(page, "en/" + route);
-    await phase(page, "unavailable");
-    await page.locator('[value="ring"]').focus();
-    await page.keyboard.press("ArrowRight");
-    assert.equal(await stage(page).getAttribute("data-object"), "orb");
-    assert.match(await stage(page).locator("img").getAttribute("src"), /liquid-orb\.svg$/);
-    assert.equal(await page.locator("[data-object-title]").textContent(), "Still orb");
-    await page.locator("#object-angle").press("End");
-    assert.equal(await page.locator("output").textContent(), "180°");
-    await probe.assertPrivate(site.origin);
-  });
-  await withPage(browser, { viewport: { width: 1440, height: 920 } }, async (page) => {
-    const probe = await observe(page, { readPixels: true });
-    await open(page, "en/" + route);
-    await phase(page, "running");
-    await checkContrast(page, [
-      ".archive-title h1", ".archive-context", ".archive-motion p", ".archive-choices input:checked + span", ".archive-motion button", "output",
-    ], "liquidMinCheckedContrast");
-    const objects = {};
-    for (const object of ["ring", "orb", "arc"]) {
-      await selectObject(page, object).click();
-      assert.equal(await stage(page).getAttribute("data-object"), object);
+
+  for (const prefix of ["", "en/"]) {
+    await withPage(browser, { javaScriptEnabled: false, viewport: { width: 390, height: 800 } }, async (page) => {
+      await open(page, prefix + route);
+      assert.ok(await page.locator("noscript p").isVisible());
+      assert.ok(await page.locator(".hero-visual img").isVisible());
+      assert.equal(await page.locator("[data-product]").count(), 3);
+      assert.equal(await page.locator("[data-picker]").isVisible(), false);
+      for (const card of await page.locator(".card-spec").all()) {
+        await card.locator("summary").click();
+        assert.ok(await card.locator("[data-care]").isVisible());
+        assert.equal((await card.textContent()).match(/NT\$/g).length, 2);
+      }
+      if (!prefix) await fullLiquidScreenshot(page, "liquid-forme-zh-Hant-390-no-js.png");
+    });
+  }
+
+  for (const variant of ["unsupported", "no-adapter"]) {
+    await withPage(browser, {}, async (page) => {
+      await page.addInitScript((variant) => {
+        if (variant === "unsupported") Object.defineProperty(navigator, "gpu", { value: undefined });
+        else Object.defineProperty(navigator.gpu, "requestAdapter", { value: async () => null });
+      }, variant);
+      const probe = await observe(page, testFont);
+      await open(page, "en/" + route);
       await stage(page).scrollIntoViewIfNeeded();
+      await phase(page, "unavailable");
+      assert.ok(await page.locator("[data-hero-image]").isVisible());
+      assert.equal(await stage(page).locator("canvas").isVisible(), false);
+      assert.equal(await page.locator("#object-angle").isDisabled(), true);
+      await control(page).press("ArrowDown");
+      assert.equal(await page.locator("[data-object-title]").textContent(), "Dew Bud Vase");
+      await page.locator('[name=finish][value=polished]').focus();
+      await page.keyboard.press("ArrowRight");
+      assert.equal(await stage(page).getAttribute("data-finish"), "satin");
+      assert.match(await page.locator("[data-detail-image]").getAttribute("src"), /orb-satin\.webp$/);
+      assert.match(await page.locator("[data-hero-image]").getAttribute("src"), /hero-satin\.webp$/);
+      assert.equal(await page.evaluate(() => window.__visualProbe.devices), 0);
+      await probe.assertPrivate(site.origin);
+    });
+  }
+
+  for (const prefix of ["", "en/"]) {
+    await withPage(browser, { viewport: { width: 1440, height: 900 }, reducedMotion: "reduce", acceptDownloads: true }, async (page) => {
+      const en = Boolean(prefix);
+      const probe = await observe(page, testFont);
+      await open(page, prefix + route);
+      await page.keyboard.press("Tab");
+      assert.equal(await page.locator(".skip").evaluate(node => node === document.activeElement), true);
+      await page.keyboard.press("Enter");
+      assert.equal(await page.locator("main").evaluate(node => node === document.activeElement), true);
+      const choose = page.locator('[data-select-product="ring"]');
+      await choose.press("Enter");
+      assert.equal(await page.locator("#config-title").evaluate(node => node === document.activeElement), true);
+      const units = page.locator("#quantity");
+      const add = page.locator("[data-picker] button[type=submit]");
+      const lines = page.locator("[data-items] li");
+      const total = page.locator("[data-total]");
+      const download = page.locator("[data-download]");
+      assert.equal(await download.isDisabled(), true);
+      for (const invalid of ["", "0", "1.5", "100"]) {
+        await units.fill(invalid);
+        await add.press("Enter");
+        assert.equal(await units.getAttribute("aria-invalid"), "true");
+        assert.equal(await units.evaluate(node => node === document.activeElement), true);
+        assert.equal(await lines.count(), 0);
+      }
+      await units.fill("2");
+      await add.press("Enter");
+      await add.press("Enter");
+      assert.equal(await lines.count(), 1);
+      assert.equal(await total.textContent(), "NT$11,520");
+      await units.fill("99");
+      await add.press("Enter");
+      assert.equal(await total.textContent(), "NT$11,520");
+      await selectFinish(page, "satin").click();
+      await units.fill("2");
+      await add.press("Enter");
+      assert.equal(await lines.count(), 2);
+      await control(page).selectOption("orb");
+      await units.fill("1");
+      await add.press("Enter");
+      assert.equal(await lines.count(), 3);
+      assert.equal(await total.textContent(), "NT$19,160");
+      await page.locator("[data-view-list]").press("Enter");
+      assert.equal(await page.locator("#inquiry-title").evaluate(node => node === document.activeElement), true);
+      const first = lines.nth(0).locator("input");
+      await first.fill("0");
+      assert.equal(await first.getAttribute("aria-invalid"), "true");
+      assert.equal(await download.isDisabled(), true);
+      await first.fill("3");
+      assert.equal(await download.isEnabled(), true);
+      assert.equal(await total.textContent(), "NT$16,280");
+      await lines.nth(1).locator("button").press("Enter");
+      assert.equal(await lines.count(), 2);
+      assert.equal(await lines.nth(1).locator("button").evaluate(node => node === document.activeElement), true);
+      assert.equal(await total.textContent(), "NT$10,920");
+      assert.equal(await page.locator("[data-count]").textContent(), "4");
+
+      const pending = page.waitForEvent("download");
+      await download.press("Enter");
+      const file = await pending;
+      assert.equal(file.suggestedFilename(), "forme-inquiry.txt");
+      const summary = await readFile(await file.path(), "utf8");
+      assert.match(summary, en ? /Halo Candleholder · Mirror polish/ : /折光燭台 · 鏡面亮光/);
+      assert.match(summary, en ? /Dew Bud Vase · Brushed satin/ : /凝露花器 · 拉絲霧面/);
+      assert.match(summary, en ? /Quantity 3 · Indicative unit price NT\$2,880 · Line total NT\$8,640/ : /數量 3 · 示意單價 NT\$2,880 · 小計 NT\$8,640/);
+      assert.match(summary, en ? /Indicative product total NT\$10,920/ : /商品示意合計 NT\$10,920/);
+      assert.match(summary, en ? /No inquiry or order has been sent/ : /尚未送出詢問或訂單/);
+      assert.match(await page.locator("#inquiry-feedback").textContent(), en ? /summary generated/ : /已產生詢問摘要/);
+      const lang = en ? "en" : "zh-Hant";
+      await writeFile(resolve(evidenceDir, `liquid-forme-${lang}-download.txt`), summary);
+      await capture(page, page.locator("#inquiry"), `liquid-forme-${lang}-1440-inquiry.png`);
+      await lines.nth(0).locator("button").press("Enter");
+      await lines.nth(0).locator("button").press("Enter");
+      assert.equal(await download.isDisabled(), true);
+      assert.equal(await total.textContent(), "NT$0");
+      assert.equal(await page.locator("[data-return]").evaluate(node => node === document.activeElement), true);
+      await page.keyboard.press("Enter");
+      assert.equal(await page.evaluate(() => location.hash), "#collection");
+      await probe.assertPrivate(site.origin);
+    });
+  }
+
+  await withPage(browser, { viewport: { width: 1440, height: 920 }, deviceScaleFactor: 1 }, async (page) => {
+    const probe = await observe(page, { ...testFont, readPixels: true });
+    const photo = page.locator(".hero-visual");
+    const sample = async name => {
+      await phase(page, "running");
+      await page.locator("[data-hero-image]").evaluate(image => image.decode());
       const previous = await textureCount(page);
-      await page.waitForFunction((count) => window.__visualProbe.textures > count + 4, previous);
+      await page.waitForFunction(count => window.__visualProbe.textures > count + 3, previous);
       const texture = await page.evaluate(() => window.__visualProbe.readFrame());
-      const visible = await pixelEvidence(page, stage(page), resolve(evidenceDir, `liquid-${object}-webgpu.png`));
-      objects[object] = { texture, visible };
-      evidence.screenshots.push(`liquid-${object}-webgpu.png`);
-      assert.ok(texture.colors > 20 && visible.colors > 20, `Object ${object} did not render`);
-    }
-    evidence.measurements.liquidObjects = objects;
-    assert.equal(new Set(Object.values(objects).map(({ texture }) => texture.average.join(","))).size, 3);
-    await page.locator("#object-angle").press("Home");
-    await stage(page).scrollIntoViewIfNeeded();
-    const firstAngle = await textureCount(page);
-    await page.waitForFunction((count) => window.__visualProbe.textures > count + 3, firstAngle);
-    const start = await pixelEvidence(page, stage(page), resolve(evidenceDir, "liquid-arc-angle-0.png"));
-    await page.locator("#object-angle").press("End");
+      assert.ok(texture.colors > 20, JSON.stringify({ name, texture }));
+      const file = "liquid-forme-" + name + ".png";
+      const pixels = await photo.screenshot({ path: resolve(evidenceDir, file) });
+      evidence.screenshots.push(file);
+      return { texture, pixels };
+    };
+    const difference = (first, second) => page.evaluate(async ([first, second]) => {
+      const toPixels = async encoded => {
+        const bytes = Uint8Array.from(atob(encoded), char => char.charCodeAt(0));
+        const image = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
+        const canvas = document.createElement("canvas");
+        canvas.width = 80;
+        canvas.height = 60;
+        const context = canvas.getContext("2d", { willReadFrequently: true });
+        context.drawImage(image, 0, 0, 80, 60);
+        image.close();
+        return context.getImageData(0, 0, 80, 60).data;
+      };
+      const a = await toPixels(first);
+      const b = await toPixels(second);
+      let changed = 0;
+      let peak = 0;
+      for (let i = 0; i < a.length; i += 4) {
+        const diff = Math.max(...[0, 1, 2].map(c => Math.abs(a[i + c] - b[i + c])));
+        if (diff > 10) changed++;
+        peak = Math.max(peak, diff);
+      }
+      return { changed, peak };
+    }, [first.toString("base64"), second.toString("base64")]);
+
+    await open(page, "en/" + route);
+    const polished = await sample("en-1440-polished-composite");
+    const coversPhoto = await photo.evaluate(element => {
+      const viewport = element.getBoundingClientRect();
+      const image = element.querySelector("img").getBoundingClientRect();
+      return image.left <= viewport.left + 1 && image.right >= viewport.right - 1 &&
+        image.top <= viewport.top + 1 && image.bottom >= viewport.bottom - 1;
+    });
+    assert.equal(coversPhoto, true, "The hero photograph covers its entire frame");
+    assert.equal(await page.evaluate(() => scrollY), 0, "The WebGPU composition is visible on entry");
+    await checkContrast(page, [
+      ".hero h1", ".hero-copy > p:not(.eyebrow)", ".hero .button",
+      ".card-description", ".motion-status", ".finish-choices input:checked + span",
+    ], "liquidMinCheckedContrast");
+    await fullLiquidScreenshot(page, "liquid-forme-en-1440-webgpu-full.png");
+
+    const angle = page.locator("#object-angle");
+    await angle.press("Home");
+    assert.equal(await page.locator("output").textContent(), "0°");
+    const start = await sample("en-angle-0");
+    await angle.press("End");
     assert.equal(await page.locator("output").textContent(), "180°");
-    await stage(page).scrollIntoViewIfNeeded();
-    const finalAngle = await textureCount(page);
-    await page.waitForFunction((count) => window.__visualProbe.textures > count + 3, finalAngle);
-    const rotated = await pixelEvidence(page, stage(page), resolve(evidenceDir, "liquid-arc-angle-180.png"));
-    evidence.screenshots.push("liquid-arc-angle-0.png", "liquid-arc-angle-180.png");
-    evidence.measurements.liquidArcAngles = { start, rotated };
-    assert.ok(start.brightCenter && rotated.brightCenter, "Arc must be visible at both angles");
-    const shift = Math.hypot(...start.brightCenter.map((point, axis) => point - rotated.brightCenter[axis]));
-    assert.ok(shift >= 1.5, `The visible arc did not rotate across its center: ${shift}`);
+    const end = await sample("en-angle-180");
+    const angleChange = await difference(start.pixels, end.pixels);
+    assert.ok(angleChange.changed > 15, "Light angle must visibly change the photograph composition: " + JSON.stringify(angleChange));
+
+    await page.getByRole("button", { name: "Pause motion" }).click();
+    await phase(page, "paused");
+    await quiet(page);
+    const still = await photo.screenshot({ path: resolve(evidenceDir, "liquid-forme-en-still-reference.png") });
+    evidence.screenshots.push("liquid-forme-en-still-reference.png");
+    const shaderContribution = await difference(end.pixels, still);
+    assert.ok(shaderContribution.changed > 40, "The visible shader should change the steel surface: " + JSON.stringify(shaderContribution));
+    await page.getByRole("button", { name: "Resume motion" }).click();
+    await phase(page, "running");
+
     const configurations = await page.evaluate(() => window.__visualProbe.configurations);
     await page.evaluate(() => {
-      const controls = [...document.querySelectorAll('[name="object"]')];
-      for (let i = 0; i < 20; i++) controls[i % controls.length].click();
+      const products = document.querySelector("#product");
+      const finishes = [...document.querySelectorAll('[name="finish"]')];
+      for (let index = 0; index < 20; index++) {
+        products.selectedIndex = index % products.options.length;
+        products.dispatchEvent(new Event("change", { bubbles: true }));
+        finishes[index % finishes.length].click();
+      }
     });
-    assert.equal(await stage(page).getAttribute("data-object"), "orb");
-    await stage(page).scrollIntoViewIfNeeded();
-    await phase(page, "running");
+    assert.equal(await control(page).inputValue(), "orb");
+    assert.equal(await stage(page).getAttribute("data-finish"), "satin");
+    assert.match(await page.locator("[data-detail-image]").getAttribute("src"), /orb-satin\.webp$/);
+    assert.match(await page.locator("[data-hero-image]").getAttribute("src"), /hero-satin\.webp$/);
+    const satin = await sample("en-1440-satin-composite");
+    assert.notDeepEqual(satin.texture.average, polished.texture.average);
+    assert.equal(await page.locator("canvas").count(), 1);
     assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
     assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
-    assert.equal(await stage(page).locator("canvas").count(), 1);
+    evidence.measurements.liquidHero = { polished: polished.texture, satin: satin.texture, angleChange, shaderContribution };
+
     const before = await textureCount(page);
     const started = performance.now();
     await page.waitForTimeout(1200);
     evidence.measurements.liquidTextureAcquisitionsPerSecond = Number(((await textureCount(page) - before) * 1000 / (performance.now() - started)).toFixed(2));
-    evidence.measurements.liquidPixelRatio = await stage(page).locator("canvas").evaluate((canvas) => canvas.width / canvas.getBoundingClientRect().width);
-    await screenshot(page, "liquid-en-1440-webgpu.png");
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    await quiet(page);
-    await page.setViewportSize({ width: 390, height: 580 });
-    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
-    await phase(page, "paused");
-    await stage(page).scrollIntoViewIfNeeded();
-    await phase(page, "paused");
-    await quiet(page);
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await stage(page).scrollIntoViewIfNeeded();
-    await phase(page, "running");
-    await probe.assertPrivate(site.origin);
-    await page.locator('header a[lang="zh-Hant"]').click();
-    assert.equal(page.url(), url(route));
-    await phase(page, "running");
-    await screenshot(page, "liquid-zh-Hant-390-webgpu.png");
-    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    evidence.measurements.liquidPixelRatio = await stage(page).locator("canvas").evaluate(canvas => canvas.width / canvas.getBoundingClientRect().width);
+    await capture(page, page.locator("#configure"), "liquid-forme-en-1440-product.png");
     await phase(page, "still");
     await quiet(page);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await phase(page, "running");
+
+    await page.evaluate(() => {
+      Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    await phase(page, "still");
+    await quiet(page);
+    await page.evaluate(() => {
+      delete document.visibilityState;
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    await phase(page, "running");
+    await page.evaluate(() => window.__visualProbe.loseDevice());
+    await page.waitForFunction(() => window.__visualProbe.devices > 1, null, { timeout: 35_000 });
+    await phase(page, "running");
+    assert.equal(await stage(page).getAttribute("data-finish"), "satin");
+    await probe.assertPrivate(site.origin);
+
+    await page.setViewportSize({ width: 390, height: 800 });
+    await page.locator('header a[lang="zh-Hant"]').click();
+    assert.equal(page.url(), url(route));
+    await sample("zh-Hant-390-polished-composite");
+    await fullLiquidScreenshot(page, "liquid-forme-zh-Hant-390-webgpu-full.png");
+    await capture(page, page.locator("#configure"), "liquid-forme-zh-Hant-390-product.png");
+    await phase(page, "still");
+    await quiet(page);
+    await page.locator(".forme-footer a[href=\"" + base + "\"]").click();
+    assert.equal(page.url(), url());
+    await page.goBack({ waitUntil: "commit" });
+    assert.equal(page.url(), url(route));
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await phase(page, "running");
     await probe.assertPrivate(site.origin);
   });
-  evidence.checks.liquid = "PASS bilingual four widths/200%/touch, no-JS and no-GPU, three visible WebGPU objects, rotation, 20 switches on one device, pause/offscreen and privacy";
+  evidence.checks.liquid = "PASS bilingual inquiry and downloaded contents, four widths/200%, keyboard/touch, no-JS, no-GPU, visible WebGPU hero composite and light angle, rapid finish switches on one device, pause/visibility/recovery/back and privacy";
 }
 
 let browser;
