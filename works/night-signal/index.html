@@ -54,7 +54,7 @@
       </div>
       <div class="hero-strip">
         <div class="frame hero-strip-inner">
-          <p><span class="signal-dot" aria-hidden="true"></span> <span data-hero-program>離岸載波</span></p>
+          <p><span class="signal-pulse" aria-hidden="true"></span> <span data-hero-program>離岸載波</span></p>
           <div class="motion-controls" data-motion-controls hidden>
             <span role="status" class="visually-hidden" data-motion-status>顯示靜態海報。</span>
             <button type="button" data-pause>暫停動態</button>
@@ -65,7 +65,10 @@
     <section class="lineup frame" id="lineup" aria-labelledby="lineup-title">
       <div class="section-heading">
         <div><p class="eyebrow">節目</p><h2 id="lineup-title">今晚聽什麼</h2></div>
-        <p>在同一座舞台，從環境音走向低頻現場，最後以一段深夜 DJ 選曲收尾。</p>
+        <div class="section-intro">
+          <p>在同一座舞台，從環境音走向低頻現場，最後以一段深夜 DJ 選曲收尾。</p>
+          <p data-program-hint hidden>選取節目可看演出介紹，也會帶入第一次選單場票的場次。</p>
+        </div>
       </div>
       <div class="schedule-heading"><span>18:30 開門</span><span data-event-stage>北堤聲場主舞台</span></div>
       <fieldset class="schedule">
@@ -76,7 +79,7 @@
             <span class="act-genre">環境音現場</span>
             <label class="act-select" data-act-select hidden>
               <input type="radio" name="program" value="carrier" aria-label="鹽室 · 離岸載波" checked>
-              <span aria-hidden="true"></span>
+              <span class="act-indicator" aria-hidden="true"></span>
             </label>
             <p class="act-description" data-act-description>取樣自碼頭鋼索的震動、水聲與風聲。鹽室把這些聲音疊成緩慢起伏的合成器演出。</p>
           </article>
@@ -86,7 +89,7 @@
             <span class="act-genre">低頻現場</span>
             <label class="act-select" data-act-select hidden>
               <input type="radio" name="program" value="echo" aria-label="港脈 · 盲區回聲">
-              <span aria-hidden="true"></span>
+              <span class="act-indicator" aria-hidden="true"></span>
             </label>
             <p class="act-description" data-act-description>港脈用鼓機和類比合成器現場演奏，把斷拍推進成一段扎實的低頻節奏。</p>
           </article>
@@ -96,7 +99,7 @@
             <span class="act-genre">深夜 DJ set</span>
             <label class="act-select" data-act-select hidden>
               <input type="radio" name="program" value="dawn" aria-label="緩潮 · 晨線">
-              <span aria-hidden="true"></span>
+              <span class="act-indicator" aria-hidden="true"></span>
             </label>
             <p class="act-description" data-act-description>緩潮從 dub techno 的長尾回聲接到柔和的 breakbeat，讓最後一段留一點空間給腳步和呼吸。</p>
           </article>
@@ -104,13 +107,15 @@
     </section>
     <section class="venue" id="venue" aria-labelledby="venue-title">
       <div class="frame venue-inner">
+        <header class="venue-heading">
+          <p class="eyebrow">高雄 · 鹽埕港區</p>
+          <h2 id="venue-title">北堤聲場</h2>
+        </header>
         <figure>
           <img src="%BASE_URL%media/night-venue.webp" width="1280" height="853" alt="夜間倉庫內的空舞台，黃色光束照過水泥地面。" loading="lazy">
           <figcaption>北堤聲場 · 場地示意</figcaption>
         </figure>
-        <div class="venue-copy">
-          <p class="eyebrow">高雄 · 鹽埕港區</p>
-          <h2 id="venue-title">北堤聲場</h2>
+        <div class="venue-details">
           <p>入口和出口都在地面層。站席面向同一座舞台，想離喇叭遠一點，可以移到後方聆聽，也可以到室外休息。</p>
           <div class="transit">
             <h3>交通與散場</h3>
@@ -143,7 +148,7 @@
           </fieldset>
           <div class="booking-controls" data-booking-controls hidden>
             <div data-booking-set hidden>
-              <label for="booking-set">場次</label>
+              <label for="booking-set">單場票場次</label>
               <select name="set" id="booking-set">
                 <option value="carrier">19:00–20:00 · 鹽室 / 離岸載波</option>
                 <option value="echo">20:15–21:30 · 港脈 / 盲區回聲</option>

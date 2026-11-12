@@ -1,6 +1,6 @@
 # V003 夜航訊號商業候選
 
-設計依據見 [V003 商業 brief](../../../briefs/V003-commercial.md)。這是雙語原創電子音樂活動提案。高雄、2026 年 11 月 21 日、兩種票價與站席安排是本案採用的示意設定。交通連結只提供真實站點的區域參考。下載的 UTF-8 文字檔包含日期、場地、場次、單價、總額及概念提案揭露。
+設計依據見 [V003 商業 brief](../../../briefs/V003-commercial.md)。這是雙語原創電子音樂活動提案。高雄、2026 年 11 月 21 日、兩種票價與站席安排是本案採用的示意設定。交通連結只提供真實站點的區域參考。第一次選單場票時，節目表的選擇會帶入場次。之後以選票表單的場次為準。下載的 UTF-8 文字檔包含日期、場地、場次、單價、總額及概念提案揭露。
 
 ## 視覺與素材
 
@@ -18,6 +18,6 @@
 
 - 執行 `npm ci --ignore-scripts --no-audit --no-fund`、`npm run check`、`npm test` 和 `npm run build`。建置同時檢查候選禁止索引、雙語 metadata、CSP 與本地素材。主程式延後載入固定版本 WebGPU 套件。
 - 實際瀏覽器驗證由 `Verify visual candidate` 的 GitHub-hosted Windows Server 2025 runner 執行。PR 的 workflow run 連結可下載 `visual-candidate-<SHA>-Windows`。下載後以 `results.json` 的 `commit` 和 PR head SHA 核對版本。
-- `signal-*-1440-webgpu.png`、`signal-*-390-webgpu.png` 為全頁。另有首屏、三段節目 canvas 與 `signal-*-selection.png`、`signal-*-complete.png`。JSON 記錄支援 WebGPU 的實際 frame readback、互動及 fallback。
+- `signal-*-1440-webgpu.png`、`signal-*-390-webgpu.png` 為全頁。另有首屏、三段節目 canvas 與 `signal-*-selection.png`、`signal-*-complete.png`。另有 `signal-en-320-200-percent.png` 和 `signal-zh-Hant-768-still.png`。JSON 記錄支援 WebGPU 的實際 frame readback、互動及 fallback。
 - 測試使用 GitHub-hosted VM 的 D3D11 WARP 軟體渲染。實體手機、GPU 效能、讀屏器人工測試、獨立美術評分及正式站發布驗收交由後續作業。
 - 作品集卡片、registry、合併與發布由工作室主責處理。候選的作品集來源錨點仍依現有 registry 解析上一版已發布提交。PR 是這次候選的固定來源。

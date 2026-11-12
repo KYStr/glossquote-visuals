@@ -54,7 +54,7 @@
       </div>
       <div class="hero-strip">
         <div class="frame hero-strip-inner">
-          <p><span class="signal-dot" aria-hidden="true"></span> <span data-hero-program>Offshore Carrier</span></p>
+          <p><span class="signal-pulse" aria-hidden="true"></span> <span data-hero-program>Offshore Carrier</span></p>
           <div class="motion-controls" data-motion-controls hidden>
             <span role="status" class="visually-hidden" data-motion-status>Showing the still poster.</span>
             <button type="button" data-pause>Pause motion</button>
@@ -65,7 +65,10 @@
     <section class="lineup frame" id="lineup" aria-labelledby="lineup-title">
       <div class="section-heading">
         <div><p class="eyebrow">Lineup</p><h2 id="lineup-title">The lineup</h2></div>
-        <p>One stage, from a slow opening set to live low-end and a late DJ set.</p>
+        <div class="section-intro">
+          <p>One stage, from a slow opening set to live low-end and a late DJ set.</p>
+          <p data-program-hint hidden>Choose a set for details and to preselect it for your first single-set pass.</p>
+        </div>
       </div>
       <div class="schedule-heading"><span>Doors 18:30</span><span data-event-stage>North Pier Soundroom main stage</span></div>
       <fieldset class="schedule">
@@ -76,7 +79,7 @@
             <span class="act-genre">Ambient live</span>
             <label class="act-select" data-act-select hidden>
               <input type="radio" name="program" value="carrier" aria-label="Salt Chamber · Offshore Carrier" checked>
-              <span aria-hidden="true"></span>
+              <span class="act-indicator" aria-hidden="true"></span>
             </label>
             <p class="act-description" data-act-description>Salt Chamber layers recordings of steel cables, wind and water into a slowly shifting live synth set.</p>
           </article>
@@ -86,7 +89,7 @@
             <span class="act-genre">Bass live</span>
             <label class="act-select" data-act-select hidden>
               <input type="radio" name="program" value="echo" aria-label="Harbor Pulse · Blind Echo">
-              <span aria-hidden="true"></span>
+              <span class="act-indicator" aria-hidden="true"></span>
             </label>
             <p class="act-description" data-act-description>Drum machines and analog synths drive a live set from broken beats into a heavy low-end groove.</p>
           </article>
@@ -96,7 +99,7 @@
             <span class="act-genre">Late DJ set</span>
             <label class="act-select" data-act-select hidden>
               <input type="radio" name="program" value="dawn" aria-label="Slack Tide · Dawnline">
-              <span aria-hidden="true"></span>
+              <span class="act-indicator" aria-hidden="true"></span>
             </label>
             <p class="act-description" data-act-description>Slack Tide moves from the long echoes of dub techno into softer breakbeats, leaving the room space to move and breathe.</p>
           </article>
@@ -104,13 +107,15 @@
     </section>
     <section class="venue" id="venue" aria-labelledby="venue-title">
       <div class="frame venue-inner">
+        <header class="venue-heading">
+          <p class="eyebrow">Yancheng waterfront · Kaohsiung</p>
+          <h2 id="venue-title">North Pier Soundroom</h2>
+        </header>
         <figure>
           <img src="%BASE_URL%media/night-venue.webp" width="1280" height="853" alt="A yellow beam lights the concrete floor and empty stage of a warehouse at night." loading="lazy">
           <figcaption>North Pier Soundroom · Concept rendering</figcaption>
         </figure>
-        <div class="venue-copy">
-          <p class="eyebrow">Yancheng waterfront · Kaohsiung</p>
-          <h2 id="venue-title">North Pier Soundroom</h2>
+        <div class="venue-details">
           <p>The entrance and exit are at street level. The standing floor faces one stage. Move toward the back for more distance from the speakers, or step outside for a break.</p>
           <div class="transit">
             <h3>Getting there and back</h3>
@@ -143,7 +148,7 @@
           </fieldset>
           <div class="booking-controls" data-booking-controls hidden>
             <div data-booking-set hidden>
-              <label for="booking-set">Set</label>
+              <label for="booking-set">Single-set performance</label>
               <select name="set" id="booking-set">
                 <option value="carrier">19:00–20:00 · Salt Chamber / Offshore Carrier</option>
                 <option value="echo">20:15–21:30 · Harbor Pulse / Blind Echo</option>

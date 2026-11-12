@@ -77,6 +77,7 @@ for (const { control, radio } of programs) {
   radio.addEventListener("change", selectProgram);
 }
 selectProgram();
+document.querySelector("[data-program-hint]").hidden = false;
 
 pause.addEventListener("click", () => {
   paused = !paused;
