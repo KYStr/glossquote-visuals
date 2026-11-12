@@ -155,7 +155,7 @@ async function checkFallback(browser) {
 }
 
 async function checkShader(browser) {
-  await withPage(browser, { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 }, async (page) => {
+  await withPage(browser, { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 }, async (page) => {
     const probe = await observe(page, { readPixels: true });
     await open(page, "en/" + work);
     const adapter = await page.evaluate(async () => {
@@ -169,14 +169,15 @@ async function checkShader(browser) {
     await checkContrast(page);
     await page.waitForFunction(() => window.__visualProbe.textures >= 5);
     await screenshot(page, "paper-en-1440-webgpu.png");
-    const firstTexture = await page.evaluate(() => window.__visualProbe.readFrame());
     const img = resolve(evidenceDir, "paper-en-webgpu-only.png");
     const first = await pixelEvidence(page, stage(page), img);
     evidence.screenshots.push("paper-en-webgpu-only.png");
     evidence.measurements.firstFrame = {
-      texture: firstTexture, screenshot: first,
+      screenshot: first,
       gpuErrors: await page.evaluate(() => window.__visualProbe.gpuErrors),
     };
+    const firstTexture = await page.evaluate(() => window.__visualProbe.readFrame());
+    evidence.measurements.firstFrame.texture = firstTexture;
     assert.ok(firstTexture.colors > 20 && first.colors > 20,
       `WebGPU output lacks structure: ${JSON.stringify(evidence.measurements.firstFrame)}`);
     const start = performance.now();
@@ -185,8 +186,10 @@ async function checkShader(browser) {
     const textures = await textureCount(page) - before;
     assert.ok(textures > 1, "No continuing WebGPU frames");
     evidence.measurements.textureAcquisitionsPerSecond = Number((textures * 1000 / (performance.now() - start)).toFixed(2));
-    evidence.measurements.canvasDprAtDsf2 = await stage(page).locator("canvas").evaluate((canvas) =>
-      Number((canvas.width / canvas.getBoundingClientRect().width).toFixed(3)));
+    evidence.measurements.pixelRatio = await stage(page).locator("canvas").evaluate((canvas) => ({
+      deviceScaleFactor: window.devicePixelRatio,
+      canvas: Number((canvas.width / canvas.getBoundingClientRect().width).toFixed(3)),
+    }));
     await settings(page).press("End");
     await page.locator('label:has([value="overcast"])').click();
     await page.waitForTimeout(200);
@@ -254,7 +257,7 @@ let browser;
 try {
   browser = await chromium.launch({
     channel: "chromium", headless: true,
-    args: ["--enable-unsafe-webgpu", "--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--disable-vulkan-surface"],
+    args: ["--enable-unsafe-webgpu", "--use-angle=vulkan", "--enable-features=Vulkan", "--disable-vulkan-surface", "--disable-gpu-watchdog"],
   });
   evidence.browser = browser.version();
   const session = await browser.newBrowserCDPSession();
@@ -268,6 +271,30 @@ try {
   evidence.checks.http = "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact";
   await checkLayouts(browser);
   await checkFallback(browser);
+  await withPage(browser, {}, async (page) => {
+    await open(page, "404.html");
+    evidence.measurements.gpuBufferSmoke = await page.evaluate(async () => {
+      const adapter = await navigator.gpu?.requestAdapter();
+      if (!adapter) throw new Error("No isolated Vulkan WebGPU adapter");
+      const device = await adapter.requestDevice();
+      const upload = device.createBuffer({ size: 4, usage: GPUBufferUsage.COPY_SRC, mappedAtCreation: true });
+      const read = device.createBuffer({ size: 4, usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ });
+      try {
+        new Uint32Array(upload.getMappedRange())[0] = 0x1234abcd;
+        upload.unmap();
+        const encoder = device.createCommandEncoder();
+        encoder.copyBufferToBuffer(upload, 0, read, 0, 4);
+        device.queue.submit([encoder.finish()]);
+        await read.mapAsync(GPUMapMode.READ);
+        return { vendor: adapter.info.vendor, architecture: adapter.info.architecture, value: new Uint32Array(read.getMappedRange())[0] };
+      } finally {
+        upload.destroy();
+        read.destroy();
+        device.destroy();
+      }
+    });
+    assert.equal(evidence.measurements.gpuBufferSmoke.value, 0x1234abcd);
+  });
   await checkShader(browser);
   evidence.result = "PASS";
   console.log(JSON.stringify(evidence, null, 2));
