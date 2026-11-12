@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 
-export async function observe(page, { readPixels = false } = {}) {
+export async function observe(page, { readPixels = false, localFont } = {}) {
   const requests = [];
   const errors = [];
   page.on("request", (request) => requests.push({ url: request.url(), type: request.resourceType(), method: request.method() }));
@@ -147,7 +147,7 @@ export async function observe(page, { readPixels = false } = {}) {
   }, readPixels);
   return {
     requests,
-    async assertPrivate(origin) {
+    async assertPrivate(origin, { fontPaths = [] } = {}) {
       const probe = await page.evaluate(async () => {
         const { calls, violations, gpuErrors } = window.__visualProbe;
         return {
@@ -161,7 +161,9 @@ export async function observe(page, { readPixels = false } = {}) {
       for (const request of requests) {
         assert.equal(new URL(request.url).origin, origin);
         assert.equal(request.method, "GET");
-        assert.ok(["document", "stylesheet", "image", "script", "other"].includes(request.type), JSON.stringify(request));
+        const pathname = new URL(request.url).pathname;
+        const allowedFont = request.type === "font" && (fontPaths.includes(pathname) || pathname === localFont);
+        assert.ok(allowedFont || ["document", "stylesheet", "image", "script", "other"].includes(request.type), JSON.stringify(request));
         assert.doesNotMatch(new URL(request.url).pathname, /telemetry|analytics|collect/);
       }
     },
@@ -170,7 +172,8 @@ export async function observe(page, { readPixels = false } = {}) {
 
 export async function pixelEvidence(page, stage, file) {
   await stage.evaluate((element) => {
-    element.querySelector("img").style.visibility = "hidden";
+    const image = element.querySelector("img");
+    if (image) image.style.visibility = "hidden";
     const canvas = element.querySelector("canvas");
     canvas.style.opacity = "1";
     canvas.style.mixBlendMode = "normal";
@@ -207,7 +210,7 @@ export async function pixelEvidence(page, stage, file) {
     }, png.toString("base64"));
   } finally {
     await stage.evaluate((element) => {
-      element.querySelector("img").style.removeProperty("visibility");
+      element.querySelector("img")?.style.removeProperty("visibility");
       const canvas = element.querySelector("canvas");
       canvas.style.removeProperty("opacity");
       canvas.style.removeProperty("mix-blend-mode");

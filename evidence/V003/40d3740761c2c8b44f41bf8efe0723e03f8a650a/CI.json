@@ -1,0 +1,66 @@
+{
+  "commit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+  "runId": 43272957275,
+  "jobId": 131373875460,
+  "workflow": "Verify visual candidate",
+  "conclusion": "success",
+  "labels": [
+    "windows-2025"
+  ],
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run node node_modules/playwright/cli.js install chromium --no-shell",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Test WebGPU in the isolated VM",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifactId": 13969476687,
+  "artifactSha256": "sha256:372edbaaddbaf5fd476ae7778f457424d7f819da1f595e5c77a0c35b93999bd8",
+  "downloadDigestMatched": true,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43272957275"
+}

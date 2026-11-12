@@ -1,12 +1,12 @@
 # 接續入口
 
-這是獨立的 GlossQuote Visuals，不是 Labs 工具製作任務。先完成一個可驗收的作品，再擴充下一個。
+這是獨立的 GlossQuote Visuals，不是 Labs 工具製作任務。本輪 M02 將三件作品改為完整商業品牌網站；三個製作對話各持有一件作品，主責負責美術、整合、共享畫廊與發布。
 
 1. 讀 AGENTS.md、GOAL.md、docs/WORKFLOW.md、docs/ACCEPTANCE.md。
 2. 讀 `.agents/skills/shaders/SKILL.md` 和 docs/UPSTREAM.md；不要執行 skill 裡涉及登入、遠端專案或付費預設的命令。
 3. 讀 coordination/work-registry.json；如 remote 已存在，先讀回最新 default branch/PR head，保留本地修改，比對承接，不能重做別人正在做的工作。
-4. 本輪 M01 依序做 briefs/V001-paper-light.md、V002-liquid-archive.md、V003-night-signal.md，V001 同時建立畫廊與共通動態生命週期。畫廊沒有同時啟動多個 GPU canvas。
-5. 每件寫來源、設計說明、實測與限制，推候選 codex 分支/PR；使用非作者 reviewer。未通過項留 pending，不能把靜態檢查當畫面驗收。
+4. 本輪 M02 讀 briefs/V001-commercial.md、V002-commercial.md、V003-commercial.md 對應 brief。每位作者只修改自己承接的作品，使用者指定製作對話 gpt-6.1-sol/high。畫廊沒有同時啟動多個 GPU canvas。M01 brief 與發布紀錄保留為歷史。
+5. 每件寫來源、設計說明、實測與限制，推候選 codex 分支/PR；使用非作者 reviewer。美術、UI、商業完整度九項分數各須嚴格 >9/10，不能取平均或把 9.0 當通過。未通過項留 pending，不能把靜態檢查當畫面驗收。
 6. 通過後按 docs/RELEASE.md 免費發布，驗證中英文頁面、正式網址與來源 commit；更新畫廊、README、registry。一次交付一個 ZIP。
 
 建議來源結構：

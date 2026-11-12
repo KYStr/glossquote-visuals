@@ -4,99 +4,212 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- discoverability -->
-  <title>Night Signal | GlossQuote Visuals</title>
-  <meta name="description" content="An imagined after-dark broadcast exhibition in three chapters, drawn in bands, waves and a grid.">
+  <title>Night Signal | Kaohsiung electronic music night</title>
+  <meta name="description" content="Three sets of electronic music by the Kaohsiung waterfront. Explore ambient sound, live bass and a late DJ set, then build your night plan.">
   <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
   <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
   <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Night Signal | GlossQuote Visuals">
-  <meta property="og:description" content="An imagined after-dark broadcast exhibition in three chapters, drawn in bands, waves and a grid.">
+  <meta property="og:title" content="Night Signal">
+  <meta property="og:description" content="Three sets of electronic music by the Kaohsiung waterfront. Explore ambient sound, live bass and a late DJ set, then build your night plan.">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/night-signal-share.jpg">
-  <meta property="og:image:alt" content="A long wave crosses the view beyond the breakwater.">
-  <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
+  <meta property="og:image:alt" content="Pale yellow beams arc across a midnight-blue field.">
+  <link rel="icon" href="%BASE_URL%media/night-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/night-signal/page.css">
   <script type="module" src="/src/works/night-signal/page.js"></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header frame">
-    <a class="wordmark" href="%BASE_URL%en/">GlossQuote Visuals</a>
-    <nav aria-label="Exhibition index">
-      <a href="%BASE_URL%en/">Exhibition index</a>
-      <a href="%BASE_URL%works/night-signal/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
-    </nav>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header class="signal-header">
+    <div class="frame signal-header-inner">
+      <a class="brand" href="#main"><img src="%BASE_URL%media/night-mark.svg" width="32" height="32" alt="">Night Signal</a>
+      <nav aria-label="Event navigation">
+        <a href="#lineup">Lineup</a>
+        <a href="#venue">Venue</a>
+        <a href="#passes">Passes</a>
+        <a href="%BASE_URL%works/night-signal/" lang="zh-Hant" hreflang="zh-Hant">中文</a>
+      </nav>
+    </div>
   </header>
-  <main class="frame" id="main" tabindex="-1">
-    <header class="signal-head">
-      <h1>Night <span>Signal</span></h1>
-      <p>An imagined after-dark broadcast exhibition</p>
-    </header>
-    <section class="broadcast" aria-labelledby="plate-title">
-      <figure class="signal-plate">
-        <div class="signal-art" data-stage data-channel="carrier">
-          <img src="%BASE_URL%media/night-signal.svg" width="1050" height="700" alt="A long wave crosses the view beyond the breakwater.">
-          <canvas aria-hidden="true"></canvas>
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="event-title">
+      <div class="frame hero-content">
+        <p class="event-kicker">Electronic music on the Kaohsiung waterfront</p>
+        <h1 id="event-title">NIGHT SIGNAL</h1>
+        <div class="hero-meta">
+          <div class="event-details">
+            <p><time datetime="2026-11-21" data-event-date>SAT 21 NOV 2026</time> <span aria-hidden="true">/</span> 19:00–23:30</p>
+            <p data-event-venue>North Pier Soundroom · Kaohsiung</p>
+          </div>
+          <p class="hero-note">Ambient live, low-end and a late DJ set.</p>
+          <a class="button hero-cta" href="#passes">Explore passes <span aria-hidden="true">↘</span></a>
         </div>
-        <figcaption id="plate-title">Signal plate <span>Original poster and procedural waves</span></figcaption>
-      </figure>
-      <aside class="signal-side">
-        <nav aria-label="Program index">
-          <h2>Program index</h2>
-          <ol>
-            <li><a href="#program-carrier"><span>01</span>Offshore Carrier</a></li>
-            <li><a href="#program-echo"><span>02</span>Blind-Sector Echo</a></li>
-            <li><a href="#program-dawn"><span>03</span>First Light Band</a></li>
-          </ol>
-        </nav>
-        <div class="signal-summary" aria-live="polite">
-          <h2 data-channel-title>Offshore Carrier</h2>
-          <p data-channel-summary>A long wave crosses the view beyond the breakwater.</p>
+      </div>
+      <div class="signal-art" data-stage data-channel="carrier">
+        <img src="%BASE_URL%media/night-wave-poster.svg" width="1440" height="420" alt="">
+        <canvas aria-hidden="true"></canvas>
+      </div>
+      <div class="hero-strip">
+        <div class="frame hero-strip-inner">
+          <p><span class="signal-pulse" aria-hidden="true"></span> <span data-hero-program>Offshore Carrier</span></p>
+          <div class="motion-controls" data-motion-controls hidden>
+            <span role="status" class="visually-hidden" data-motion-status>Showing the still poster.</span>
+            <button type="button" data-pause>Pause motion</button>
+          </div>
         </div>
-      </aside>
-      <fieldset class="signal-controls" data-controls hidden>
-        <legend>Tune the channel</legend>
-        <div class="signal-choices">
-          <label><input type="radio" name="channel" value="carrier" checked><span>Offshore Carrier</span></label>
-          <label><input type="radio" name="channel" value="echo"><span>Blind-Sector Echo</span></label>
-          <label><input type="radio" name="channel" value="dawn"><span>First Light Band</span></label>
+      </div>
+    </section>
+    <section class="lineup frame" id="lineup" aria-labelledby="lineup-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Lineup</p><h2 id="lineup-title">The lineup</h2></div>
+        <div class="section-intro">
+          <p>One stage, from a slow opening set to live low-end and a late DJ set.</p>
+          <p data-program-hint hidden>Choose a set for details and to preselect it for your first single-set pass.</p>
         </div>
-        <div class="signal-intensity">
-          <div><label for="signal-intensity">Wave intensity</label><output for="signal-intensity">35%</output></div>
-          <input type="range" id="signal-intensity" min="15" max="65" step="1" value="35">
-        </div>
-        <div class="signal-motion">
-          <button type="button" data-pause>Pause motion</button>
-          <p role="status" data-motion-status>Showing the still poster.</p>
-        </div>
+      </div>
+      <div class="schedule-heading"><span>Doors 18:30</span><span data-event-stage>North Pier Soundroom main stage</span></div>
+      <fieldset class="schedule">
+        <legend class="visually-hidden">Choose a set to read about the performance</legend>
+          <article class="act" id="program-carrier" data-act="carrier" tabindex="-1">
+            <div class="act-time"><time datetime="19:00">19:00</time><span aria-hidden="true">—</span><time datetime="20:00">20:00</time></div>
+            <div class="act-name"><h3>Salt Chamber</h3><p data-act-title>Offshore Carrier</p></div>
+            <span class="act-genre">Ambient live</span>
+            <label class="act-select" data-act-select hidden>
+              <input type="radio" name="program" value="carrier" aria-label="Salt Chamber · Offshore Carrier" checked>
+              <span class="act-indicator" aria-hidden="true"></span>
+            </label>
+            <p class="act-description" data-act-description>Salt Chamber layers recordings of steel cables, wind and water into a slowly shifting live synth set.</p>
+          </article>
+          <article class="act" id="program-echo" data-act="echo" tabindex="-1">
+            <div class="act-time"><time datetime="20:15">20:15</time><span aria-hidden="true">—</span><time datetime="21:30">21:30</time></div>
+            <div class="act-name"><h3>Harbor Pulse</h3><p data-act-title>Blind Echo</p></div>
+            <span class="act-genre">Bass live</span>
+            <label class="act-select" data-act-select hidden>
+              <input type="radio" name="program" value="echo" aria-label="Harbor Pulse · Blind Echo">
+              <span class="act-indicator" aria-hidden="true"></span>
+            </label>
+            <p class="act-description" data-act-description>Drum machines and analog synths drive a live set from broken beats into a heavy low-end groove.</p>
+          </article>
+          <article class="act" id="program-dawn" data-act="dawn" tabindex="-1">
+            <div class="act-time"><time datetime="21:45">21:45</time><span aria-hidden="true">—</span><time datetime="23:30">23:30</time></div>
+            <div class="act-name"><h3>Slack Tide</h3><p data-act-title>Dawnline</p></div>
+            <span class="act-genre">Late DJ set</span>
+            <label class="act-select" data-act-select hidden>
+              <input type="radio" name="program" value="dawn" aria-label="Slack Tide · Dawnline">
+              <span class="act-indicator" aria-hidden="true"></span>
+            </label>
+            <p class="act-description" data-act-description>Slack Tide moves from the long echoes of dub techno into softer breakbeats, leaving the room space to move and breathe.</p>
+          </article>
       </fieldset>
     </section>
-    <noscript><p>The Offshore Carrier poster is shown as a still. The three programs are available below.</p></noscript>
-    <section class="programs" aria-labelledby="programs-title">
-      <h2 id="programs-title">Three programs</h2>
-      <article class="program program-carrier" id="program-carrier" data-summary="A long wave crosses the view beyond the breakwater." tabindex="-1">
-        <p class="program-number">CH 01</p>
-        <h3>Offshore Carrier</h3>
-        <p>A slow line rises and falls. It could be a signal passing beyond the breakwater at night, joining two ends of a stretch of open water.</p>
-      </article>
-      <article class="program program-echo" id="program-echo" data-summary="Two paths bring the same outline back at different times." tabindex="-1">
-        <p class="program-number">CH 02</p>
-        <h3>Blind-Sector Echo</h3>
-        <p>A signal skirts a dark stretch before it reaches the receiver. The second line lands slightly lower, leaving a gap the chart has yet to name.</p>
-      </article>
-      <article class="program program-dawn" id="program-dawn" data-summary="The crest sinks and the grid beneath it comes into view." tabindex="-1">
-        <p class="program-number">CH 03</p>
-        <h3>First Light Band</h3>
-        <p>The final program lowers the waveform. As the grid passes through the band, a single readable edge remains, like the waterline before dawn.</p>
-      </article>
+    <section class="venue" id="venue" aria-labelledby="venue-title">
+      <div class="frame venue-inner">
+        <header class="venue-heading">
+          <p class="eyebrow">Yancheng waterfront · Kaohsiung</p>
+          <h2 id="venue-title">North Pier Soundroom</h2>
+        </header>
+        <figure>
+          <img src="%BASE_URL%media/night-venue.webp" width="1280" height="853" alt="A yellow beam lights the concrete floor and empty stage of a warehouse at night." loading="lazy">
+          <figcaption>North Pier Soundroom · Concept rendering</figcaption>
+        </figure>
+        <div class="venue-details">
+          <p>The entrance and exit are at street level. The standing floor faces one stage. Move toward the back for more distance from the speakers, or step outside for a break.</p>
+          <div class="transit">
+            <h3>Getting there and back</h3>
+            <p>The final set ends at 23:30. Check the last train in your direction or arrange a taxi home. Kaohsiung Light Rail stop C13, Penglai Pier-2, is a reference point for the waterfront area. North Pier Soundroom is a concept venue without a street address.</p>
+            <a href="https://www.krtc.com.tw/eng/KLRT/first_and_last_train?KRTCStation=C13">Check light rail times <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="passes frame" id="passes" tabindex="-1" aria-labelledby="passes-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Passes</p><h2 id="passes-title">Find your pass</h2></div>
+        <p>Drop in for a set or stay for the full night. Prices and admission arrangements are illustrative.</p>
+      </div>
+      <form class="ticket-form" data-ticket-form novalidate>
+        <div class="ticket-editor">
+          <fieldset class="pass-options">
+            <legend class="visually-hidden">Pass type</legend>
+            <div class="pass-option" data-pass-option="single" data-price="480">
+              <input type="radio" name="pass" id="pass-single" value="single" aria-describedby="pass-single-description" required disabled>
+              <label for="pass-single"><span data-pass-name>Single set</span><strong>NT$480</strong></label>
+              <p id="pass-single-description">Choose one performance. Admission is for that set.</p>
+            </div>
+            <div class="pass-option" data-pass-option="full" data-price="880">
+              <input type="radio" name="pass" id="pass-full" value="full" aria-describedby="pass-full-description" required disabled>
+              <label for="pass-full"><span data-pass-name>Full night</span><strong>NT$880</strong></label>
+              <p id="pass-full-description">All three performances. Come in any time after doors at 18:30.</p>
+            </div>
+            <p class="field-error" id="pass-error" data-error="pass" hidden></p>
+          </fieldset>
+          <div class="booking-controls" data-booking-controls hidden>
+            <div data-booking-set hidden>
+              <label for="booking-set">Single-set performance</label>
+              <select name="set" id="booking-set">
+                <option value="carrier">19:00–20:00 · Salt Chamber / Offshore Carrier</option>
+                <option value="echo">20:15–21:30 · Harbor Pulse / Blind Echo</option>
+                <option value="dawn">21:45–23:30 · Slack Tide / Dawnline</option>
+              </select>
+            </div>
+            <div>
+              <label for="booking-quantity">Quantity</label>
+              <input id="booking-quantity" name="quantity" type="number" min="1" max="6" step="1" value="1" required aria-describedby="quantity-hint">
+              <p id="quantity-hint">Choose 1 to 6 passes.</p>
+              <p class="field-error" id="quantity-error" data-error="quantity" hidden></p>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-receipt" data-receipt hidden>
+          <h3>Your selection</h3>
+          <div aria-live="polite" aria-atomic="true" class="receipt-live">
+            <p data-empty>Choose a pass to see the included sets and total.</p>
+            <div data-ticket-values hidden>
+              <p class="receipt-pass" data-pass-display></p>
+              <ul class="receipt-programs" data-sets></ul>
+              <dl class="receipt-values">
+                <div><dt>Unit price</dt><dd data-unit></dd></div>
+                <div><dt>Quantity</dt><dd data-quantity-display></dd></div>
+                <div><dt>Estimated total</dt><dd data-total></dd></div>
+              </dl>
+            </div>
+          </div>
+          <button type="submit" class="button">Create selection summary <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <noscript><p>You can still compare passes and read the lineup. Enable JavaScript to create and download a summary.</p></noscript>
+      <section class="ticket-complete" data-complete aria-labelledby="complete-title" hidden>
+        <div>
+          <h3 id="complete-title" tabindex="-1">Selection summary created</h3>
+          <p data-complete-note>This is a summary for a concept event. No payment has been taken and no places are held.</p>
+          <p class="complete-event"><time datetime="2026-11-21">SAT 21 NOV 2026</time> · North Pier Soundroom · Kaohsiung</p>
+          <p data-complete-summary></p>
+          <ul class="receipt-programs" data-complete-sets></ul>
+        </div>
+        <div class="complete-actions">
+          <button type="button" class="button" data-download>Download itinerary <span aria-hidden="true">↓</span></button>
+          <button type="button" class="button button-secondary" data-edit>Edit selection</button>
+          <p role="status" data-download-status></p>
+        </div>
+      </section>
+    </section>
+    <section class="faq frame" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Before you go</h2>
+      <div>
+        <details><summary>When can I enter, and is there an age limit?</summary><p>Full-night admission starts at 18:30. Single-set admission starts 15 minutes before the selected set. The concept event is 18+. Any real edition would publish its own admission and ID requirements.</p></details>
+        <details><summary>What about seating, volume and lighting?</summary><p>The room is standing-only at ground level, with bass and stage beams. You can bring earplugs or take a break at the back. Accessibility facilities depend on the venue for any real edition.</p></details>
+        <details><summary>What if the event is cancelled or rescheduled?</summary><p>The proposed policy is a full refund for cancellation and a choice of transfer or refund for rescheduling. This page only creates an itinerary summary and has no transactions to refund.</p></details>
+      </div>
     </section>
   </main>
-  <footer class="site-footer frame">
-    <a href="%BASE_URL%en/">← Exhibition index</a>
-    <a href="<!-- work-source -->">Exhibition source <span aria-hidden="true">↗</span></a>
+  <footer class="signal-footer site-footer">
+    <div class="frame">
+      <div class="footer-main"><p class="footer-brand" lang="en">NIGHT SIGNAL</p><p>Night Signal is an original event concept by GlossQuote Visuals. Performers, date, venue, prices and admission rules are illustrative.</p></div>
+      <div class="footer-links"><a href="%BASE_URL%en/">← Back to the portfolio</a><a href="<!-- work-source -->">View source <span aria-hidden="true">↗</span></a></div>
+    </div>
   </footer>
 </body>
 </html>

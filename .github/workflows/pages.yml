@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       work:
-        description: Reviewed work ID from the registry
+        description: Reviewed work IDs from the registry, comma-separated for a batch
         type: string
         required: true
       source_commit:
@@ -74,6 +74,8 @@ jobs:
     needs: deploy
     runs-on: windows-2025
     timeout-minutes: 10
+    env:
+      GQ_RELEASE_WORK: ${{ inputs.work }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

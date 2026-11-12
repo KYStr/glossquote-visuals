@@ -1,10 +1,18 @@
 # GlossQuote Visuals
 
-原創視覺網頁作品集：研究排版、材質、光影與互動如何一起構成一個有個性的網站。
+原創品牌網站作品集：以紙品訂製、金屬家飾與音樂活動為主題，將材質、光影與完整顧客流程結合。
 
-Original visual websites exploring typography, materials, light and interaction. Each work has its own composition and art direction; this is not a set of recolored templates.
+Original brand websites for bespoke stationery, steel homeware and an electronic music event. Each brings its own art direction, material language and complete customer journey.
 
-**Status:** M01 is live with the bilingual gallery, Paper & Light, Liquid Archive and Night Signal. See the work registry for acceptance and release status.
+**Status:** The M02 integration candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a` passed the complete isolated-browser suite and non-author design review. All nine category scores are strictly above 9/10. The public URLs remain M01 until the separate accepted-release workflow and live checks succeed. See the work registry for exact release status and preserved M01 history.
+
+| Website | Art direction | UI design | Commercial completeness | Fixed-candidate review |
+|---|---:|---:|---:|---|
+| Paper & Light | 9.2 | 9.3 | 9.2 | [V001](evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
+| FORME Objects | 9.3 | 9.2 | 9.3 | [V002](evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
+| Night Signal | 9.2 | 9.3 | 9.5 | [V003](evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
+
+These are evidence-backed design judgments for concept websites, not measured conversion rates or external certification. [Integrated verification and limitations](evidence/M02/40d3740761c2c8b44f41bf8efe0723e03f8a650a/INTEGRATION.md).
 
 [繁中畫廊](https://kystr.github.io/glossquote-visuals/) · [English gallery](https://kystr.github.io/glossquote-visuals/en/)
 
@@ -13,11 +21,9 @@ Original visual websites exploring typography, materials, light and interaction.
 - Continuing objective: [GOAL.md](GOAL.md)
 - Work status: [coordination/work-registry.json](coordination/work-registry.json)
 - Upstream skill and licenses: [docs/UPSTREAM.md](docs/UPSTREAM.md)
-- Paper & Light design and verification: [evidence/V001/DESIGN.md](evidence/V001/DESIGN.md)
-- Liquid Archive design and verification: [evidence/V002/DESIGN.md](evidence/V002/DESIGN.md)
-- Night Signal design and verification: [evidence/V003/DESIGN.md](evidence/V003/DESIGN.md)
+- Historical M01 design baselines: [Paper & Light](evidence/V001/DESIGN.md), [Liquid Archive](evidence/V002/DESIGN.md), [Night Signal](evidence/V003/DESIGN.md)
 
-Initial works: **紙與光 / Paper & Light**, **流體檔案 / Liquid Archive**, **夜航訊號 / Night Signal**. Art directions and acceptance criteria are written before implementation. Future directions are in [docs/IDEAS.md](docs/IDEAS.md), not counted as ready production.
+Current works: **紙與光 / Paper & Light**, **物形 / FORME Objects**, **夜航訊號 / Night Signal**. These are original concept brands. Customer flows create local briefs or itineraries; they do not submit orders, collect payments or reserve tickets. Art direction and review criteria are in [docs/M02-ART-DIRECTION.md](docs/M02-ART-DIRECTION.md). Future directions in [docs/IDEAS.md](docs/IDEAS.md) are not counted as ready production.
 
 Shaders are progressive enhancement. Essential content and navigation remain HTML; a designed static fallback is always available. No accounts, uploads, analytics or third-party runtime requests are intended. These promises must be checked before each release.
 
