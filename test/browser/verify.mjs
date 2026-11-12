@@ -177,6 +177,14 @@ async function checkLayouts(browser) {
         await probe.assertPrivate(site.origin);
         if (width === 390) await screenshot(page, `paper-${lang}-390-still.png`);
         if (width === 768) {
+          const fits = await page.locator("#finish").evaluate((select) => {
+            const style = getComputedStyle(select);
+            const context = document.createElement("canvas").getContext("2d");
+            context.font = style.font;
+            const widest = Math.max(...[...select.options].map((option) => context.measureText(option.textContent).width));
+            return widest < select.clientWidth - parseFloat(style.paddingInlineStart) - parseFloat(style.paddingInlineEnd) - 20;
+          });
+          assert.ok(fits, "Paper finish labels are clipped at the tablet width");
           await page.evaluate(() => window.scrollTo(0, 0));
           await paperScreenshots(page, `paper-${lang}-768-still`);
         }
