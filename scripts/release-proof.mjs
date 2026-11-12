@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { registry, releaseWorkIds, root } from "./site-map.mjs";
 
@@ -42,7 +42,14 @@ async function verifyWork(work, head) {
   assert.equal(proof.author, work.owner);
   assert.ok(proof.reviewer && proof.reviewer !== proof.author);
   for (const gate of gates) assert.equal(proof.gates[gate], "PASS", gate);
-  if (registry.milestone === "M02") verifyDesignScores(proof.scores);
+  verifyDesignScores(proof.scores, proof.designReview);
+  for (const criteria of Object.values(proof.designReview.categories)) {
+    for (const criterion of criteria) {
+      for (const evidence of criterion.evidence) {
+        assert.ok(existsSync(resolve(root, evidence)), `Missing design evidence: ${evidence}`);
+      }
+    }
+  }
   assert.ok(Number.isSafeInteger(proof.jobId) && proof.jobId > 0);
   assert.ok(Number.isSafeInteger(proof.runId) && proof.runId > 0);
 
@@ -64,10 +71,48 @@ async function verifyWork(work, head) {
   assert.ok(job.labels.includes("windows-2025"), "Acceptance requires the verified Windows renderer");
 }
 
-export function verifyDesignScores(scores) {
-  for (const category of ["artDirection", "uiDesign", "commercialCompleteness"]) {
+export const designCriteria = {
+  artDirection: ["brandIdentity", "heroComposition", "typography", "materialImagery", "pageRhythm"],
+  uiDesign: ["informationHierarchy", "navigationActions", "formsStates", "responsiveAccessibility", "interactionConsistency"],
+  commercialCompleteness: ["positioningValue", "decisionInformation", "truthfulTrust", "customerJourney", "completionRecovery"],
+};
+
+export function verifyDesignScores(scores, review) {
+  assert.equal(review?.rubricVersion, "commercial-v1");
+  for (const [category, expected] of Object.entries(designCriteria)) {
     const score = scores?.[category];
     assert.ok(Number.isFinite(score) && score > 9 && score <= 10,
       `${category} requires an evidence-backed score strictly above 9/10`);
+    const criteria = review.categories?.[category];
+    assert.ok(Array.isArray(criteria));
+    assert.deepEqual(criteria.map((criterion) => criterion.id).sort(), [...expected].sort());
+    let sum = 0;
+    for (const criterion of criteria) {
+      assert.equal(criterion.status, "PASS");
+      assert.ok(Number.isFinite(criterion.score) && criterion.score >= 0 && criterion.score <= 2);
+      assert.ok(typeof criterion.reason === "string" && criterion.reason.trim().length > 0);
+      assert.ok(Array.isArray(criterion.evidence) && criterion.evidence.length > 0);
+      for (const path of criterion.evidence) {
+        assert.ok(typeof path === "string" && path.startsWith("evidence/") && !path.split("/").includes(".."));
+      }
+      sum += criterion.score;
+    }
+    assert.ok(Math.abs(sum - score) < 0.001, `${category} total differs from its criteria`);
   }
+}
+
+export function verifyReleaseReceipt(release, expectedIds) {
+  assert.ok(expectedIds.length > 0, "Live verification needs the requested work IDs");
+  const works = release.works ?? [release];
+  assert.ok(Array.isArray(works) && works.length > 0);
+  const ids = works.map((work) => work.work);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.deepEqual([...ids].sort(), [...expectedIds].sort());
+  for (const work of works) {
+    const expected = registry.works.find(({ id }) => id === work.work);
+    assert.ok(expected);
+    assert.equal(work.slug, expected.slug);
+    assert.equal(work.candidate, expected.candidateCommit);
+  }
+  return works;
 }

@@ -4,7 +4,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { chromium } from "playwright";
-import { base, isPublished, origin, registry, root, worksFor } from "../../scripts/site-map.mjs";
+import { base, isPublished, origin, registry, releaseWorkIds, root, worksFor } from "../../scripts/site-map.mjs";
+import { verifyReleaseReceipt } from "../../scripts/release-proof.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 
@@ -285,12 +286,13 @@ async function checkLive(browser) {
   assert.equal(receipt.status, 200);
   const release = await receipt.json();
   assert.equal(release.commit, commit);
+  const releasedWorks = verifyReleaseReceipt(release, releaseWorkIds());
   for (const work of registry.works.filter(isPublished)) {
     for (const prefix of ["", "en/"]) {
       assert.equal((await fetch(url(`${prefix}works/${work.slug}/`))).status, 200);
     }
   }
-  for (const releasedWork of release.works ?? [release]) {
+  for (const releasedWork of releasedWorks) {
     const route = `works/${releasedWork.slug}/`;
     for (const prefix of ["", "en/"]) {
       await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
