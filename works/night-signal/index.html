@@ -4,99 +4,207 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- discoverability -->
-  <title>夜航訊號 | GlossQuote Visuals</title>
-  <meta name="description" content="一場虛構的夜間訊號展。三段廣播章節以條紋、波形與網格留下各自的軌跡。">
+  <title>夜航訊號 | 高雄電子音樂夜</title>
+  <meta name="description" content="在高雄港邊聽三段電子聲響，從環境音、現場低頻到深夜 DJ 選曲。探索節目並規劃你的夜間行程。">
   <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/night-signal/">
   <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="夜航訊號 | GlossQuote Visuals">
-  <meta property="og:description" content="一場虛構的夜間訊號展。三段廣播章節以條紋、波形與網格留下各自的軌跡。">
+  <meta property="og:title" content="夜航訊號">
+  <meta property="og:description" content="在高雄港邊聽三段電子聲響，從環境音、現場低頻到深夜 DJ 選曲。探索節目並規劃你的夜間行程。">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/night-signal-share.jpg">
-  <meta property="og:image:alt" content="一列長波從防波堤外橫過視野。">
-  <link rel="icon" href="%BASE_URL%media/mark.svg" type="image/svg+xml">
+  <meta property="og:image:alt" content="暗藍底上，奶黃色的光束沿波峰延展。">
+  <link rel="icon" href="%BASE_URL%media/night-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/night-signal/page.css">
   <script type="module" src="/src/works/night-signal/page.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到主要內容</a>
-  <header class="site-header frame">
-    <a class="wordmark" href="%BASE_URL%">GlossQuote Visuals</a>
-    <nav aria-label="作品索引">
-      <a href="%BASE_URL%">作品索引</a>
-      <a href="%BASE_URL%en/works/night-signal/" lang="en" hreflang="en">English</a>
-    </nav>
+  <header class="signal-header">
+    <div class="frame signal-header-inner">
+      <a class="brand" href="#main"><img src="%BASE_URL%media/night-mark.svg" width="32" height="32" alt="">夜航訊號</a>
+      <nav aria-label="活動導覽">
+        <a href="#lineup">節目</a>
+        <a href="#venue">場地</a>
+        <a href="#passes">票種</a>
+        <a href="%BASE_URL%en/works/night-signal/" lang="en" hreflang="en">EN<span class="visually-hidden"> English</span></a>
+      </nav>
+    </div>
   </header>
-  <main class="frame" id="main" tabindex="-1">
-    <header class="signal-head">
-      <h1>夜航訊號</h1>
-      <p>一場虛構的夜間訊號展</p>
-    </header>
-    <section class="broadcast" aria-labelledby="plate-title">
-      <figure class="signal-plate">
-        <div class="signal-art" data-stage data-channel="carrier">
-          <img src="%BASE_URL%media/night-signal.svg" width="1050" height="700" alt="一列長波從防波堤外橫過視野。">
-          <canvas aria-hidden="true"></canvas>
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="event-title">
+      <div class="frame hero-content">
+        <p class="event-kicker">高雄港邊電子音樂夜</p>
+        <h1 id="event-title">夜航訊號 <span class="hero-english" lang="en">NIGHT SIGNAL</span></h1>
+        <div class="hero-meta">
+          <div class="event-details">
+            <p><time datetime="2026-11-21" data-event-date>2026.11.21 週六</time> <span aria-hidden="true">/</span> 19:00–23:30</p>
+            <p data-event-venue>高雄 · 北堤聲場</p>
+          </div>
+          <p class="hero-note">三段電子聲響，從港邊聽到深夜。</p>
+          <a class="button hero-cta" href="#passes">查看票種 <span aria-hidden="true">↘</span></a>
         </div>
-        <figcaption id="plate-title">訊號圖 <span>原創海報與程序波形</span></figcaption>
-      </figure>
-      <aside class="signal-side">
-        <nav aria-label="節目索引">
-          <h2>節目索引</h2>
-          <ol>
-            <li><a href="#program-carrier"><span>01</span>離岸載波</a></li>
-            <li><a href="#program-echo"><span>02</span>盲區回聲</a></li>
-            <li><a href="#program-dawn"><span>03</span>晨線</a></li>
-          </ol>
-        </nav>
-        <div class="signal-summary" aria-live="polite">
-          <h2 data-channel-title>離岸載波</h2>
-          <p data-channel-summary>一列長波從防波堤外橫過視野。</p>
+      </div>
+      <div class="signal-art" data-stage data-channel="carrier">
+        <img src="%BASE_URL%media/night-wave-poster.svg" width="1440" height="420" alt="">
+        <canvas aria-hidden="true"></canvas>
+      </div>
+      <div class="hero-strip">
+        <div class="frame hero-strip-inner">
+          <p><span class="signal-dot" aria-hidden="true"></span> <span data-hero-program>離岸載波</span></p>
+          <div class="motion-controls" data-motion-controls hidden>
+            <span role="status" class="visually-hidden" data-motion-status>顯示靜態海報。</span>
+            <button type="button" data-pause>暫停動態</button>
+          </div>
         </div>
-      </aside>
-      <fieldset class="signal-controls" data-controls hidden>
-        <legend>切換頻道</legend>
-        <div class="signal-choices">
-          <label><input type="radio" name="channel" value="carrier" checked><span>離岸載波</span></label>
-          <label><input type="radio" name="channel" value="echo"><span>盲區回聲</span></label>
-          <label><input type="radio" name="channel" value="dawn"><span>晨線</span></label>
-        </div>
-        <div class="signal-intensity">
-          <div><label for="signal-intensity">波形強度</label><output for="signal-intensity">35%</output></div>
-          <input type="range" id="signal-intensity" min="15" max="65" step="1" value="35">
-        </div>
-        <div class="signal-motion">
-          <button type="button" data-pause>暫停動態</button>
-          <p role="status" data-motion-status>顯示靜態海報。</p>
-        </div>
+      </div>
+    </section>
+    <section class="lineup frame" id="lineup" aria-labelledby="lineup-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">節目</p><h2 id="lineup-title">今晚聽什麼</h2></div>
+        <p>在同一座舞台，從環境音走向低頻現場，最後以一段深夜 DJ 選曲收尾。</p>
+      </div>
+      <div class="schedule-heading"><span>18:30 開門</span><span data-event-stage>北堤聲場主舞台</span></div>
+      <fieldset class="schedule">
+        <legend class="visually-hidden">選擇節目以查看演出介紹</legend>
+          <article class="act" id="program-carrier" data-act="carrier" tabindex="-1">
+            <div class="act-time"><time datetime="19:00">19:00</time><span aria-hidden="true">—</span><time datetime="20:00">20:00</time></div>
+            <div class="act-name"><h3>鹽室</h3><p data-act-title>離岸載波</p></div>
+            <span class="act-genre">環境音現場</span>
+            <label class="act-select" data-act-select hidden>
+              <input type="radio" name="program" value="carrier" aria-label="鹽室 · 離岸載波" checked>
+              <span aria-hidden="true"></span>
+            </label>
+            <p class="act-description" data-act-description>取樣自碼頭鋼索的震動、水聲與風聲。鹽室把這些聲音疊成緩慢起伏的合成器演出。</p>
+          </article>
+          <article class="act" id="program-echo" data-act="echo" tabindex="-1">
+            <div class="act-time"><time datetime="20:15">20:15</time><span aria-hidden="true">—</span><time datetime="21:30">21:30</time></div>
+            <div class="act-name"><h3>港脈</h3><p data-act-title>盲區回聲</p></div>
+            <span class="act-genre">低頻現場</span>
+            <label class="act-select" data-act-select hidden>
+              <input type="radio" name="program" value="echo" aria-label="港脈 · 盲區回聲">
+              <span aria-hidden="true"></span>
+            </label>
+            <p class="act-description" data-act-description>港脈用鼓機和類比合成器現場演奏，把斷拍推進成一段扎實的低頻節奏。</p>
+          </article>
+          <article class="act" id="program-dawn" data-act="dawn" tabindex="-1">
+            <div class="act-time"><time datetime="21:45">21:45</time><span aria-hidden="true">—</span><time datetime="23:30">23:30</time></div>
+            <div class="act-name"><h3>緩潮</h3><p data-act-title>晨線</p></div>
+            <span class="act-genre">深夜 DJ set</span>
+            <label class="act-select" data-act-select hidden>
+              <input type="radio" name="program" value="dawn" aria-label="緩潮 · 晨線">
+              <span aria-hidden="true"></span>
+            </label>
+            <p class="act-description" data-act-description>緩潮從 dub techno 的長尾回聲接到柔和的 breakbeat，讓最後一段留一點空間給腳步和呼吸。</p>
+          </article>
       </fieldset>
     </section>
-    <noscript><p>目前顯示離岸載波的靜態海報。三段節目可在下方閱讀。</p></noscript>
-    <section class="programs" aria-labelledby="programs-title">
-      <h2 id="programs-title">三段節目</h2>
-      <article class="program program-carrier" id="program-carrier" data-summary="一列長波從防波堤外橫過視野。" tabindex="-1">
-        <p class="program-number">CH 01</p>
-        <h3>離岸載波</h3>
-        <p>從一條緩慢起伏的線開始。它像夜裡從防波堤外掠過的訊號，在空曠處把兩端接起來。</p>
-      </article>
-      <article class="program program-echo" id="program-echo" data-summary="兩條不同路徑把同一個輪廓分成前後。" tabindex="-1">
-        <p class="program-number">CH 02</p>
-        <h3>盲區回聲</h3>
-        <p>一個訊號繞過暗處才回到接收端。第二條線的位置略低，留下地圖上尚未標明的空隙。</p>
-      </article>
-      <article class="program program-dawn" id="program-dawn" data-summary="波峰收低，底下的網格逐漸清楚。" tabindex="-1">
-        <p class="program-number">CH 03</p>
-        <h3>晨線</h3>
-        <p>最後一段把波形壓低。當底紋穿過光帶，畫面只留下一條能辨認的邊界，像天亮前的海面。</p>
-      </article>
+    <section class="venue" id="venue" aria-labelledby="venue-title">
+      <div class="frame venue-inner">
+        <figure>
+          <img src="%BASE_URL%media/night-venue.webp" width="1280" height="853" alt="夜間倉庫內的空舞台，黃色光束照過水泥地面。" loading="lazy">
+          <figcaption>北堤聲場 · 場地示意</figcaption>
+        </figure>
+        <div class="venue-copy">
+          <p class="eyebrow">高雄 · 鹽埕港區</p>
+          <h2 id="venue-title">北堤聲場</h2>
+          <p>想像把港邊倉庫的一樓留給一座舞台和一片站席。入場從地面層進出，音量敏感的觀眾可以在後方聆聽或短暫離場休息。</p>
+          <div class="transit">
+            <h3>交通與散場</h3>
+            <p>以高雄輕軌 C13 駁二蓬萊站作為區域參考。活動設定於 23:30 結束，請先查當日末班車，或安排散場後搭計程車。北堤聲場為虛構場地，無實際入口地址。</p>
+            <a href="https://www.krtc.com.tw/KLRT/first_and_last_train?KRTCStation=C13">查看高雄輕軌首末班車 <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="passes frame" id="passes" tabindex="-1" aria-labelledby="passes-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">票種</p><h2 id="passes-title">挑一張入場券</h2></div>
+        <p>選一段來聽，或把整個晚上留給夜航訊號。票價與入場安排為概念示意。</p>
+      </div>
+      <form class="ticket-form" data-ticket-form novalidate>
+        <div class="ticket-editor">
+          <fieldset class="pass-options">
+            <legend class="visually-hidden">票種</legend>
+            <div class="pass-option" data-pass-option="single" data-price="480">
+              <input type="radio" name="pass" id="pass-single" value="single" aria-describedby="pass-single-description" required disabled>
+              <label for="pass-single"><span data-pass-name>單場票</span><strong>NT$480</strong></label>
+              <p id="pass-single-description">任選一段節目，於所選時段入場。</p>
+            </div>
+            <div class="pass-option" data-pass-option="full" data-price="880">
+              <input type="radio" name="pass" id="pass-full" value="full" aria-describedby="pass-full-description" required disabled>
+              <label for="pass-full"><span data-pass-name>全夜通行票</span><strong>NT$880</strong></label>
+              <p id="pass-full-description">包含三段節目，可於 18:30 開門後入場。</p>
+            </div>
+            <p class="field-error" id="pass-error" data-error="pass" hidden></p>
+          </fieldset>
+          <div class="booking-controls" data-booking-controls hidden>
+            <div data-booking-set hidden>
+              <label for="booking-set">場次</label>
+              <select name="set" id="booking-set">
+                <option value="carrier">19:00–20:00 · 鹽室 / 離岸載波</option>
+                <option value="echo">20:15–21:30 · 港脈 / 盲區回聲</option>
+                <option value="dawn">21:45–23:30 · 緩潮 / 晨線</option>
+              </select>
+            </div>
+            <div>
+              <label for="booking-quantity">張數</label>
+              <input id="booking-quantity" name="quantity" type="number" min="1" max="6" step="1" value="1" required aria-describedby="quantity-hint">
+              <p id="quantity-hint">每次可選 1 至 6 張。</p>
+              <p class="field-error" id="quantity-error" data-error="quantity" hidden></p>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-receipt" data-receipt hidden>
+          <h3>你的選擇</h3>
+          <div aria-live="polite" aria-atomic="true" class="receipt-live">
+            <p data-empty>先選擇票種，再查看對應場次與總額。</p>
+            <div data-ticket-values hidden>
+              <p class="receipt-pass" data-pass-display></p>
+              <ul class="receipt-programs" data-sets></ul>
+              <dl class="receipt-values">
+                <div><dt>單價</dt><dd data-unit></dd></div>
+                <div><dt>張數</dt><dd data-quantity-display></dd></div>
+                <div><dt>預估總額</dt><dd data-total></dd></div>
+              </dl>
+            </div>
+          </div>
+          <button type="submit" class="button">產生選票摘要 <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <noscript><p>你仍可比較票種與閱讀時間表。啟用 JavaScript 後即可產生與下載摘要。</p></noscript>
+      <section class="ticket-complete" data-complete aria-labelledby="complete-title" hidden>
+        <div>
+          <h3 id="complete-title" tabindex="-1">已產生選票摘要</h3>
+          <p data-complete-note>這是概念活動的選票摘要，尚未付款或保留席位。</p>
+          <p class="complete-event"><time datetime="2026-11-21">2026.11.21 週六</time> · 高雄 · 北堤聲場</p>
+          <p data-complete-summary></p>
+          <ul class="receipt-programs" data-complete-sets></ul>
+        </div>
+        <div class="complete-actions">
+          <button type="button" class="button" data-download>下載行程摘要 <span aria-hidden="true">↓</span></button>
+          <button type="button" class="button button-secondary" data-edit>返回修改</button>
+          <p role="status" data-download-status></p>
+        </div>
+      </section>
+    </section>
+    <section class="faq frame" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">入場前先知道</h2>
+      <div>
+        <details><summary>幾點可以入場？有年齡限制嗎？</summary><p>全夜通行票可於 18:30 入場，單場票自該場開始前 15 分鐘起入場。示意規則為年滿 18 歲，實際活動若舉辦，入場證明與細節應以正式公告為準。</p></details>
+        <details><summary>站席、音量與燈光安排是什麼？</summary><p>企劃採地面層站席，會有低頻和舞台光束。可自備耳塞，並預留離場休息時間。此處為概念場地，無可驗證的現場無障礙設施。</p></details>
+        <details><summary>如果活動取消或改期呢？</summary><p>此提案的示意規則為取消可全額退款，改期可保留票券或申請退款。本頁只產生行程摘要，沒有交易或退款申請。</p></details>
+      </div>
     </section>
   </main>
-  <footer class="site-footer frame">
-    <a href="%BASE_URL%">← 作品索引</a>
-    <a href="<!-- work-source -->">作品原始碼 <span aria-hidden="true">↗</span></a>
+  <footer class="signal-footer site-footer">
+    <div class="frame">
+      <div class="footer-main"><p class="footer-brand" lang="en">NIGHT SIGNAL</p><p>夜航訊號為 GlossQuote Visuals 的原創活動概念。演出者、日期、場地、票價與入場規則皆為示意。</p></div>
+      <div class="footer-links"><a href="%BASE_URL%">← 返回作品集</a><a href="<!-- work-source -->">查看原始碼 <span aria-hidden="true">↗</span></a></div>
+    </div>
   </footer>
 </body>
 </html>
