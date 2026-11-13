@@ -990,7 +990,7 @@ async function checkLiquid(browser) {
           return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height, scale: 1 };
         });
         const { data } = await captureSession.send("Page.captureScreenshot", {
-          format: "png", fromSurface: true, captureBeyondViewport: true, clip,
+          format: "png", fromSurface: true, captureBeyondViewport: false, clip,
         });
         const png = Buffer.from(data, "base64");
         await writeFile(resolve(evidenceDir, name), png);
@@ -998,9 +998,14 @@ async function checkLiquid(browser) {
         return png;
       }
 
+      async function enterStudio() {
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await phase(page, "running");
+      }
+
       async function nextFrames(count = 2) {
         const start = await textureCount(page);
-        await page.waitForFunction(target => window.__visualProbe.textures >= target, start + count);
+        await page.waitForFunction(target => window.__visualProbe.textures >= target, start + count, { polling: 50 });
       }
 
       async function selectAngle(degrees) {
@@ -1085,6 +1090,7 @@ async function checkLiquid(browser) {
       }
 
       async function checkFinish(finish) {
+        await enterStudio();
         assert.equal(await stage(page).getAttribute("data-finish"), finish);
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
@@ -1132,9 +1138,7 @@ async function checkLiquid(browser) {
         const resumeDelta = await livePixelDifference(page, secondPaused, resumed);
         assert.ok(resumeDelta.mean > 0.07 && resumeDelta.changedPixels > 7, `${stem}: resumed scene did not move: ${JSON.stringify(resumeDelta)}`);
 
-        await sweep.evaluate(button => button.click());
-        assert.equal(await stage(page).getAttribute("data-light"), "auto");
-        await page.evaluate(() => window.scrollTo(0, 0));
+        await enterStudio();
         return { natural, cycle, angleDelta, pauseDelta, resumeDelta, texture: textureStats };
       }
 
@@ -1162,7 +1166,7 @@ async function checkLiquid(browser) {
       await checkContrast(page, [
         ".config-copy h2", ".hero .button", ".card-description", ".finish-choices input:checked + span",
       ], "liquidMinCheckedContrast");
-      await fullLiquidScreenshot(page, `${stem}-webgpu-full.png`);
+      await frame("first-render");
       const polished = await checkFinish("polished");
 
       const configurations = await page.evaluate(() => window.__visualProbe.configurations);
@@ -1193,6 +1197,8 @@ async function checkLiquid(browser) {
         pixelRatio: await canvas.evaluate(element => element.width / element.getBoundingClientRect().width),
       };
 
+      await enterStudio();
+      await fullLiquidScreenshot(page, `${stem}-webgpu-full.png`);
       await capture(page, page.locator("#configure"), `${stem}-product.png`);
       await phase(page, "still");
       await quiet(page);
