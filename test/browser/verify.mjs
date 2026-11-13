@@ -1162,15 +1162,18 @@ async function checkLiquid(browser) {
         await pauseButton.evaluate(button => button.click());
         await phase(page, "paused");
         await quiet(page);
+        await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
         assert.ok(await canvas.isVisible());
         assert.equal(await poster.isVisible(), false);
         const firstPaused = await frame(`${finish}-paused-a`);
         await page.waitForTimeout(600);
         const secondPaused = await frame(`${finish}-paused-b`);
-        assert.deepEqual(await livePixelDifference(page, firstPaused, secondPaused),
-          { mean: 0, changedPixels: 0, peak: 0, width: 80, height: 60 });
+        assert.ok(firstPaused.equals(secondPaused), stem + ": native pause changed original-resolution pixels");
         const pauseDelta = await livePixelDifference(page, before, firstPaused);
-        assert.ok(pauseDelta.mean < 2.5, `${stem}: pause switched the visible scene: ${JSON.stringify(pauseDelta)}`);
+        // These native-clock captures occur at different animation times. Keep
+        // their difference as a diagnostic, not a same-frame freeze assertion.
+        // The separate controlled context below verifies the action itself at
+        // original resolution for each finish without contaminating native RAF.
         assert.ok(await angle.isDisabled());
         await pauseButton.evaluate(button => button.click());
         await phase(page, "running");
@@ -1181,7 +1184,9 @@ async function checkLiquid(browser) {
         assert.ok(resumeDelta.mean > 0.07 && resumeDelta.changedPixels > 7, `${stem}: resumed scene did not move: ${JSON.stringify(resumeDelta)}`);
 
         await enterStudio();
-        return { natural, fixed: { readbackMs, submissions }, angleDelta, pauseDelta, resumeDelta, texture: textureStats };
+        return { natural, fixed: { readbackMs, submissions }, angleDelta, pauseDelta,
+          pauseDeltaBasis: "Unsynchronized native captures before and after the action; diagnostic only",
+          nativeHeldOriginalPngIdentical: true, resumeDelta, texture: textureStats };
       }
 
       await open(page, prefix + route);
@@ -1301,6 +1306,84 @@ async function checkLiquid(browser) {
         await new Promise(resolve => setTimeout(resolve, 150));
       }
       assert.equal(await stage(page).getAttribute("data-motion"), "running");
+      async function freezeCurrentFrame(finish) {
+        const canvas = stage(page).locator("canvas");
+        const clip = await page.locator(".hero-scene").evaluate(element => {
+          const rect = element.getBoundingClientRect();
+          return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+        });
+        const capture = async suffix => {
+          const file = `${stem}-${finish}-controlled-pause-${suffix}.png`;
+          const png = await page.screenshot({ path: resolve(evidenceDir, file), clip });
+          evidence.screenshots.push(file);
+          return { file, png };
+        };
+        const state = () => canvas.evaluate(element => ({
+          width: element.width, height: element.height,
+          textures: window.__visualProbe.textures, devices: window.__visualProbe.devices,
+          configurations: window.__visualProbe.configurations,
+        }));
+        await pending(page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone()));
+        const before = await capture("before");
+        const initial = await state();
+        await canvas.evaluate(element => {
+          const original = GPUQueue.prototype.submit;
+          const monitor = { original, submissions: 0, canvas: element };
+          monitor.wrapper = function (commands) {
+            const result = original.call(this, commands);
+            if (this === window.__visualProbe.device?.queue) monitor.submissions++;
+            return result;
+          };
+          window.__formePauseQueue = monitor;
+          GPUQueue.prototype.submit = monitor.wrapper;
+        });
+        let paused, held;
+        try {
+          await page.locator("[data-pause]").evaluate(button => button.click());
+          assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+          assert.equal(await stage(page).getAttribute("data-frame"), "present");
+          assert.equal(await canvas.isVisible(), true);
+          assert.equal(await page.locator(".hero-visual img").isVisible(), false);
+          paused = await capture("at-click");
+          assert.ok(before.png.equals(paused.png), stem + ": pause action changed the original composition");
+          await page.evaluate(() => window.dispatchEvent(new MouseEvent("mousemove", {
+            clientX: innerWidth * 0.7, clientY: innerHeight * 0.4, bubbles: true, view: window,
+          })));
+          const heldAt = await page.evaluate(() => performance.now());
+          await pending(page.clock.runFor(1000));
+          assert.equal(await page.evaluate(start => performance.now() - start, heldAt), 1000);
+          held = await capture("held");
+          assert.ok(paused.png.equals(held.png), stem + ": controlled pause changed original-resolution pixels");
+          assert.deepEqual(await state(), initial);
+          assert.equal(await canvas.evaluate(element => element === window.__formePauseQueue.canvas), true);
+          assert.equal(await page.evaluate(() => window.__formePauseQueue.submissions), 0);
+          assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+        } finally {
+          await page.evaluate(() => {
+            GPUQueue.prototype.submit = window.__formePauseQueue.original;
+            delete window.__formePauseQueue;
+          });
+        }
+        await page.locator("[data-pause]").evaluate(button => button.click());
+        assert.equal(await stage(page).getAttribute("data-motion"), "running");
+        // Resume's first callback rebuilds the active-time origin. Let it run
+        // before jumping forward, otherwise only the final 48ms would animate.
+        await pending(page.clock.runFor(48));
+        await page.clock.fastForward(1952);
+        await pending(page.clock.runFor(48));
+        await pending(page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone()));
+        const resumed = await capture("resumed");
+        const resumeDelta = await livePixelDifference(page, held.png, resumed.png);
+        assert.ok(resumeDelta.mean > 0.07 && resumeDelta.changedPixels > 7,
+          `${stem}: controlled resume did not move: ${JSON.stringify(resumeDelta)}`);
+        assert.ok(await textureCount(page) > initial.textures);
+        return {
+          timeBasis: "controlled-animation-clock", heldMilliseconds: 1000,
+          originalPngIdenticalAtClickAndHeld: true, queueSubmissions: 0,
+          sameCanvasAndDimensions: true, resumeDelta,
+          frames: { before: before.file, paused: paused.file, stillPaused: held.file, resumed: resumed.file },
+        };
+      }
       const timed = [0, 2, 4, 6, 8, 10, 12];
       for (const finish of ["polished", "satin"]) {
         console.log(stem + " " + finish + " controlled cycle (isolated clock)");
@@ -1331,6 +1414,7 @@ async function checkLiquid(browser) {
           timebase: "Separate paused Chromium clock with bounded callbacks and raw GPU readback",
           travel, closure, samples: samples.map(({ png, ...sample }) => sample),
         };
+        evidence.measurements.liquidStudios[stem][finish].sameFramePause = await freezeCurrentFrame(finish);
       }
       await probe.assertPrivate(site.origin);
     });
