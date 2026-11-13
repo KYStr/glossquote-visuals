@@ -270,10 +270,6 @@ export async function checkSignal(browser, {
     }
     assert.equal(new Set(Object.values(captures).map(({ texture }) => texture.average.join(","))).size, 3);
     evidence.measurements.signalChannels = captures;
-    for (const [from, to] of [["dawn", "carrier"], ["carrier", "echo"], ["echo", "dawn"]]) {
-      await motionEvidence.transition(page, from, to);
-      await assertProgram(page, to, stage);
-    }
 
     const configurations = await page.evaluate(() => window.__visualProbe.configurations);
     await page.evaluate(() => {
@@ -366,6 +362,16 @@ export async function checkSignal(browser, {
     assert.equal(new URL(page.url()).pathname, base + "en/" + route);
     await nextFrame();
     await screenshot(page, "signal-en-390-webgpu.png");
+    await privateRequests(probe);
+  });
+  await withPage(browser, { viewport: { width: 1440, height: 900 } }, async (page) => {
+    await page.clock.install();
+    const probe = await observe(page, { readPixels: true });
+    await open(page, "en/" + route);
+    await phase(page, "running");
+    await page.waitForFunction(() => window.__visualProbe.textures > 3);
+    await motionEvidence.transitions(page, stage(page), ["carrier", "echo", "dawn", "carrier"]);
+    await assertProgram(page, "carrier", stage);
     await privateRequests(probe);
   });
   evidence.checks.signalMotion = "PASS natural desktop and mobile cycles for all three programs, three in-place transitions, and stable original-resolution stage pixels and zero extra presentation frames during native pause on desktop and mobile";

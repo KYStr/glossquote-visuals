@@ -9,14 +9,12 @@ const schedule = (period) => [...new Set([0, 2, 4, 6, 8, ...Array.from({ length:
 
 export function signalMotionEvidence({ evidence, evidenceDir }) {
   const measurements = evidence.measurements.signalMotion = { cycles: {}, transitions: {}, freeze: {} };
-  async function raw(page, name) {
-    const before = performance.now();
-    const { png, ...texture } = await page.evaluate(() => window.__visualProbe.readFrame(true));
+  async function saveTexture(name, { png, ...texture }) {
     const bytes = Buffer.from(png, "base64");
     const file = name + "-texture.png";
     await writeFile(resolve(evidenceDir, file), bytes);
     evidence.screenshots.push(file);
-    return { ...texture, file, sha256: fingerprint(bytes), readbackMs: Math.round(performance.now() - before) };
+    return { ...texture, file, sha256: fingerprint(bytes) };
   }
 
   const difference = (page, first, second) => page.evaluate(async ([a, b]) => {
@@ -49,24 +47,25 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
     return { mean: sum / (first.width * first.height * 3), peak, changedPixels };
   }, [first.toString("base64"), second.toString("base64")]);
 
-  async function follow(page, stem, offsets, change) {
+  async function follow(page, stem, offsets) {
     const epoch = performance.now();
     const frames = [];
     for (const offset of offsets) {
       const wait = epoch + offset - performance.now();
       if (wait > 0) await page.waitForTimeout(wait);
       const start = performance.now();
-      if (offset === 0 && change) await change();
       const label = stem + "-" + String(offset).padStart(5, "0") + "ms";
-      const gpu = await raw(page, label);
-      frames.push({ targetMs: offset, captureStartedMs: Math.round(start - epoch), gpu });
+      const texture = await page.evaluate(() => window.__visualProbe.readFrame(true));
+      const gpu = await saveTexture(label, texture);
+      frames.push({
+        targetMs: offset, captureStartedMs: Math.round(start - epoch),
+        readbackMs: Math.round(performance.now() - start), gpu,
+      });
     }
     assert.ok(frames.every(({ gpu }) => gpu.colors > 20), JSON.stringify(frames));
     assert.equal(new Set(frames.map(({ gpu }) => gpu.sha256)).size, frames.length, stem + " did not change");
-    if (!change) {
-      assert.ok(frames.every(({ targetMs, captureStartedMs }) => Math.abs(captureStartedMs - targetMs) < 600),
-        stem + " missed real-time capture deadlines: " + JSON.stringify(frames.map(({ targetMs, captureStartedMs }) => [targetMs, captureStartedMs])));
-    }
+    assert.ok(frames.every(({ targetMs, captureStartedMs }) => Math.abs(captureStartedMs - targetMs) < 600),
+      stem + " missed real-time capture deadlines: " + JSON.stringify(frames.map(({ targetMs, captureStartedMs }) => [targetMs, captureStartedMs])));
     return frames;
   }
 
@@ -78,16 +77,72 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
         samples: await follow(page, stem, schedule(period).map((seconds) => seconds * 1000)),
       };
     },
-    async transition(page, from, to) {
-      const key = from + "-to-" + to;
-      const stem = "signal-transition-" + key;
-      const before = await raw(page, stem + "-before");
-      const samples = await follow(page, stem, [0, 350, 700, 1150], () => page.evaluate((value) => {
-        document.querySelector('input[name="program"][value="' + value + '"]').click();
-      }, to));
-      assert.notEqual(samples.at(-1).gpu.sha256, before.sha256);
-      measurements.transitions[key] = { before, samples };
+    async transitions(page, surface, sequence) {
+      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 100);
+      const clip = await surface.evaluate((element) => {
+        const rect = element.getBoundingClientRect();
+        return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+      });
+
+      try {
+        for (let index = 1; index < sequence.length; index++) {
+          const to = sequence[index];
+          const key = sequence[index - 1] + "-to-" + to;
+          const stem = "signal-transition-" + key;
+          const epoch = performance.now();
+          const start = await page.evaluate((value) => {
+            document.querySelector('input[name="program"][value="' + value + '"]').click();
+            return Date.now();
+          }, to);
+          const samples = [];
+          measurements.transitions[key] = { method: "paused Playwright clock with real GPU rendering", samples };
+          let elapsed = 0;
+          for (const targetMs of [0, 350, 700, 1080]) {
+            if (targetMs > 0) {
+              await page.clock.runFor(targetMs - elapsed - 34);
+              await page.evaluate(() => { window.__signalTransitionFrame = window.__visualProbe.readFrame(true); });
+              await page.clock.runFor(34);
+              elapsed = targetMs;
+            }
+            const { logicalMs, textures } = await page.evaluate(async (start) => {
+              await window.__visualProbe.device.queue.onSubmittedWorkDone();
+              return { logicalMs: Date.now() - start, textures: window.__visualProbe.textures };
+            }, start);
+            const label = stem + "-" + String(targetMs).padStart(5, "0") + "ms";
+            const file = label + "-composite.png";
+            const captureStartedWallMs = Math.round(performance.now() - epoch);
+            const composite = await page.screenshot({ path: resolve(evidenceDir, file), clip });
+            evidence.screenshots.push(file);
+            let gpu;
+            if (targetMs > 0) {
+              let timeout;
+              try {
+                const texture = await Promise.race([
+                  page.evaluate(() => window.__signalTransitionFrame),
+                  new Promise((_, reject) => {
+                    timeout = setTimeout(() => reject(new Error(label + " readback timed out")), 15_000);
+                  }),
+                ]);
+                gpu = await saveTexture(label, texture);
+              } finally {
+                clearTimeout(timeout);
+              }
+            }
+            assert.equal(logicalMs, targetMs);
+            samples.push({
+              targetMs, logicalMs, captureStartedWallMs, textures,
+              composite: { file, sha256: fingerprint(composite) }, gpu,
+            });
+          }
+          assert.equal(await surface.getAttribute("data-channel"), to);
+          assert.equal(new Set(samples.map(({ composite }) => composite.sha256)).size, samples.length);
+          assert.ok(samples.slice(1).every(({ gpu }) => gpu.colors > 20));
+        }
+      } finally {
+        await page.clock.resume();
+      }
     },
+
     async freeze(page, stem, surface, { pause, resume, quiet, nextFrame }) {
       const clip = await surface.evaluate((element) => {
         const rect = element.getBoundingClientRect();
