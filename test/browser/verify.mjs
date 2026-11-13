@@ -972,13 +972,18 @@ async function checkLiquid(browser) {
       const sweep = page.locator("[data-light-sweep]");
       const pauseButton = page.locator("[data-pause]");
 
+      const captureSession = await page.context().newCDPSession(page);
       async function frame(label) {
         const name = `${stem}-${label}.png`;
         const clip = await scene.evaluate(element => {
           const rect = element.getBoundingClientRect();
-          return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+          return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height, scale: 1 };
         });
-        const png = await page.screenshot({ path: resolve(evidenceDir, name), clip });
+        const { data } = await captureSession.send("Page.captureScreenshot", {
+          format: "png", fromSurface: true, captureBeyondViewport: true, clip,
+        });
+        const png = Buffer.from(data, "base64");
+        await writeFile(resolve(evidenceDir, name), png);
         evidence.screenshots.push(name);
         return png;
       }
@@ -1200,6 +1205,7 @@ async function checkLiquid(browser) {
       assert.equal(await stage(page).getAttribute("data-finish"), "satin");
       await probe.assertPrivate(site.origin);
 
+      await captureSession.detach();
       const nextLang = prefix ? "zh-Hant" : "en";
       await page.locator(`header a[lang="${nextLang}"]`).click();
       assert.equal(page.url(), url((prefix ? "" : "en/") + route));
