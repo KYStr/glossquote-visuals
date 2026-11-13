@@ -38,7 +38,7 @@
     <section class="hero" aria-labelledby="event-title">
       <div class="frame hero-content">
         <p class="event-kicker">Electronic music on the Kaohsiung waterfront</p>
-        <h1 id="event-title" aria-label="NIGHT SIGNAL"><span>Night</span><span>Signal</span></h1>
+        <h1 id="event-title" aria-label="NIGHT SIGNAL"><span>Night</span> <span>Signal</span></h1>
         <div class="hero-meta">
           <div class="event-details">
             <p><time datetime="2026-11-21" data-event-date>SAT 21 NOV 2026</time> <span aria-hidden="true">/</span> 19:00–23:30</p>
@@ -58,6 +58,11 @@
       <div class="hero-strip">
         <div class="frame hero-strip-inner">
           <p><span class="signal-pulse" aria-hidden="true"></span> <span data-hero-program>Offshore Carrier</span></p>
+          <div class="program-previews" role="group" aria-label="Preview a set" data-program-previews hidden>
+            <button type="button" data-preview="carrier" aria-pressed="true">Offshore Carrier</button>
+            <button type="button" data-preview="echo" aria-pressed="false">Blind Echo</button>
+            <button type="button" data-preview="dawn" aria-pressed="false">Dawnline</button>
+          </div>
           <div class="motion-controls" data-motion-controls hidden>
             <span role="status" class="visually-hidden" data-motion-status>Showing the still poster.</span>
             <button type="button" data-pause>Pause motion</button>
@@ -73,7 +78,7 @@
           <p data-program-hint hidden>Choose a set for details and to preselect it for your first single-set pass.</p>
         </div>
       </div>
-      <div class="schedule-heading"><span>Doors 18:30</span><span data-event-stage>North Pier Soundroom main stage</span></div>
+      <div class="schedule-heading"><span data-doors>Doors 18:30</span><span data-event-stage>North Pier Soundroom main stage</span></div>
       <fieldset class="schedule">
         <legend class="visually-hidden">Choose a set to read about the performance</legend>
           <article class="act" id="program-carrier" data-act="carrier" tabindex="-1">
@@ -153,9 +158,9 @@
             <div data-booking-set hidden>
               <label for="booking-set">Single-set performance</label>
               <select name="set" id="booking-set">
-                <option value="carrier">19:00–20:00 · Salt Chamber / Offshore Carrier</option>
-                <option value="echo">20:15–21:30 · Harbor Pulse / Blind Echo</option>
-                <option value="dawn">21:45–23:30 · Slack Tide / Dawnline</option>
+                <option value="carrier" data-admission="18:45">19:00–20:00 · Salt Chamber / Offshore Carrier</option>
+                <option value="echo" data-admission="20:00">20:15–21:30 · Harbor Pulse / Blind Echo</option>
+                <option value="dawn" data-admission="21:30">21:45–23:30 · Slack Tide / Dawnline</option>
               </select>
             </div>
             <div>
@@ -189,6 +194,7 @@
           <h3 id="complete-title" tabindex="-1">Selection summary created</h3>
           <p data-complete-note>This is a summary for a concept event. No payment has been taken and no places are held.</p>
           <p class="complete-event"><time datetime="2026-11-21">SAT 21 NOV 2026</time> · North Pier Soundroom · Kaohsiung</p>
+          <p data-complete-admission></p>
           <p data-complete-summary></p>
           <ul class="receipt-programs" data-complete-sets></ul>
         </div>

@@ -27,6 +27,8 @@ const labels = english ? {
 const stage = document.querySelector("[data-stage]");
 const canvas = stage.querySelector("canvas");
 const heroProgram = document.querySelector("[data-hero-program]");
+const previews = document.querySelector("[data-program-previews]");
+const previewButtons = [...previews.querySelectorAll("button")];
 const controls = document.querySelector("[data-motion-controls]");
 const pause = controls.querySelector("[data-pause]");
 const status = controls.querySelector("[data-motion-status]");
@@ -70,6 +72,7 @@ function selectProgram() {
   for (const program of programs) program.description.hidden = program !== active;
   stage.dataset.channel = active.id;
   heroProgram.textContent = active.title;
+  for (const button of previewButtons) button.setAttribute("aria-pressed", String(button.dataset.preview === active.id));
   motion.setSettings({ channel: active.id });
   tickets.suggestSet(active.id);
 }
@@ -78,7 +81,12 @@ for (const { control, radio } of programs) {
   control.hidden = false;
   radio.addEventListener("change", selectProgram);
 }
+for (const button of previewButtons) {
+  const program = programs.find(({ id }) => id === button.dataset.preview);
+  button.addEventListener("click", () => program.radio.click());
+}
 selectProgram();
+previews.hidden = false;
 document.querySelector("[data-program-hint]").hidden = false;
 
 pause.addEventListener("click", () => {
