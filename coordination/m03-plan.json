@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "milestone": "M03",
+  "status": "building",
+  "baseline": "14554ed2c9a229736eb73102ef6bc352fde98adc",
+  "deployedBaseline": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+  "director": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
+  "integrationBranch": "codex/visuals-m03-integration",
+  "requestedProductionModel": "gpt-6.1-sol",
+  "requestedReasoning": "high",
+  "backendIdentityIndependentlyVerified": false,
+  "brief": "briefs/M03-hero-direction.md",
+  "releasePolicy": "Keep M02 live until all five works pass fixed-candidate review including temporal material coherence. Runtime registry is updated only during integration.",
+  "works": [
+    {
+      "id": "V001",
+      "slug": "paper-light",
+      "owner": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
+      "branch": "codex/v001-material-hero",
+      "scope": "repair",
+      "status": "building",
+      "brief": "briefs/M03-hero-direction.md",
+      "candidateCommit": null,
+      "blockers": []
+    },
+    {
+      "id": "V002",
+      "slug": "liquid-archive",
+      "owner": "01a1d0b2-3cc2-7600-bf46-2cab8dda6039",
+      "branch": "codex/v002-material-hero",
+      "scope": "repair",
+      "status": "building",
+      "brief": "briefs/M03-hero-direction.md",
+      "candidateCommit": null,
+      "blockers": []
+    },
+    {
+      "id": "V003",
+      "slug": "night-signal",
+      "owner": "01a1d0b2-414c-7452-ad32-445d958fb8a1",
+      "branch": "codex/v003-signal-hero",
+      "scope": "upgrade",
+      "status": "building",
+      "brief": "briefs/M03-hero-direction.md",
+      "candidateCommit": null,
+      "blockers": []
+    },
+    {
+      "id": "V004",
+      "slug": "prism-materials",
+      "owner": "/root/prism_build",
+      "branch": "codex/v004-prism-materials",
+      "scope": "new",
+      "status": "ready",
+      "brief": "briefs/V004-prism-materials.md",
+      "candidateCommit": null,
+      "blockers": []
+    },
+    {
+      "id": "V005",
+      "slug": "aeriform",
+      "owner": "/root/aero_build",
+      "branch": "codex/v005-aeriform",
+      "scope": "new",
+      "status": "ready",
+      "brief": "briefs/V005-aeriform.md",
+      "candidateCommit": null,
+      "blockers": []
+    }
+  ]
+}
