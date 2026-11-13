@@ -15,6 +15,8 @@ These are non-author design reviews of individual production candidates. They do
 
 V002's earlier bright light-edge aliasing was reduced in `1db807b`. Its native-time sequences now run separately from the controlled-clock context, avoiding a fake-clock catch-up queue during native GPU readback. The focused author workflow passed. All five author-candidate design reviews now exceed 9; the shared integration SHA still needs its own passing checks and independent review.
 
+Integrated candidate `646a2c6` passed all eight technical lanes but was rejected for V004's 320px/200% sample-form reflow. Its UI score was reduced to 8.8; art and commercial scores remained 9.2 and 9.4. [Original images and rejection](646a2c675d4b4a2d947c4595bba1f5c10670ccd8/PRISM-REJECTION.md). This was a rendered UI defect that automated overflow checks did not catch. In addition, V003 and V005 need explicit controlled same-frame mobile pause evidence; a Chinese desktop capture must not be relabeled as a mobile view. Both gaps are addressed in the next integration candidate.
+
 ## Evidence boundaries
 
 - A natural sequence is sampled motion, not a continuous video or an FPS measurement. V003 logical transition time is the browser clock after the selection; the adjacent GPU texture and composite are not proven to be the same submitted frame.
