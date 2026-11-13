@@ -70,9 +70,18 @@ async function quietWithPointer(page) {
   await page.mouse.move(280, 175, { steps: 4 });
   await page.waitForTimeout(1000);
   assert.equal(await textures(page), before);
+  return before;
+}
+
+async function finishSubmittedFrame(page) {
+  await page.evaluate(async () => {
+    await window.__visualProbe.device.queue.onSubmittedWorkDone();
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  });
 }
 
 async function layout(page) {
+  const measurements = [];
   for (const zoom of ["100%", "200%"]) {
     const dimensions = await page.evaluate((zoom) => {
       document.documentElement.style.fontSize = zoom;
@@ -84,8 +93,10 @@ async function layout(page) {
       return { scroll, width: innerWidth, outliers };
     }, zoom);
     assert.ok(dimensions.scroll <= dimensions.width + 1, JSON.stringify({ zoom, ...dimensions }));
+    measurements.push({ zoom, ...dimensions });
   }
   await page.evaluate(() => document.documentElement.style.removeProperty("font-size"));
+  return measurements;
 }
 
 async function texture(page, label) {
@@ -104,11 +115,15 @@ async function responsiveAndBrief(browser) {
         const probe = await observe(page);
         await open(page, lang);
         await phase(page, "reduced");
-        await layout(page);
+        const emptyBrief = await layout(page);
         await page.keyboard.press("Tab");
         assert.equal(await page.locator(".skip").evaluate((node) => node === document.activeElement), true);
         await page.keyboard.press("Enter");
         assert.equal(await page.locator("main").evaluate((node) => node === document.activeElement), true);
+        await page.locator("select[name=service]").selectOption("motion");
+        const selectedBrief = await layout(page);
+        evidence.measurements[`layout-${lang}-${width}`] = { emptyBrief, selectedBrief };
+        await page.locator("select[name=service]").selectOption("");
         assert.equal(await devices(page), 0);
         assert.equal(await textures(page), 0);
         assert.equal(await page.locator("canvas").count(), 1);
@@ -123,6 +138,9 @@ async function responsiveAndBrief(browser) {
           assert.equal(await stage(page).locator('[data-still="digital"]').isVisible(), true);
           await page.locator('button[data-form="identity"]').tap();
           await snap(page, `aeriform-${lang}-390-reduced`, { fullPage: true });
+          const caseArt = page.locator(".work-image--radio");
+          await caseArt.scrollIntoViewIfNeeded();
+          await snap(page, `aeriform-${lang}-390-radio-applications`, { clip: await caseArt.boundingBox() });
           await brief(page, lang);
         }
         await probe.assertPrivate(site.origin, { fontPaths });
@@ -170,6 +188,7 @@ async function brief(page, lang) {
   assert.equal(await service.evaluate((input) => input === document.activeElement), true);
   await page.locator('[data-brief-service="motion"]').tap();
   assert.equal(await service.inputValue(), "motion");
+  assert.equal(await stage(page).getAttribute("data-form"), "motion");
   assert.equal(await form.locator('input[name="deliverable"]:visible').count(), 3);
   await form.locator('select[name="stage"]').selectOption("refresh");
   await form.locator('select[name="timing"]').selectOption("quarter");
@@ -199,6 +218,8 @@ async function brief(page, lang) {
     rows.map((row) => row.querySelector("dt").textContent + "\t" + row.querySelector("dd").textContent));
   for (const entry of entries) assert.ok(content.includes(entry), entry);
   assert.ok(content.includes(lang === "en" ? "Logo animation, Social templates" : "標誌動畫、社群範本"));
+  assert.ok(content.includes("NT$120,000–220,000"));
+  assert.ok(content.includes(lang === "en" ? "5–8 weeks" : "5–8 週"));
   assert.ok(content.includes(lang === "en" ? "This brief has not been sent" : "尚未聯絡工作室"));
   assert.equal(await review.locator("[role=status]").isVisible(), true);
   evidence.downloads.push({ name, bytes: bytes.length, entries });
@@ -234,7 +255,7 @@ async function gpu(browser, lang, width, inspect) {
     if (inspect) {
       const t0 = performance.now();
       const timing = [];
-      for (const second of [0, 2, 4, 6, 8, 10, 12, 14]) {
+      for (const second of [0, 2, 4, 6, 8, 10, 12, 14, 18, 22, 26]) {
         const remaining = second * 1000 - (performance.now() - t0);
         if (remaining > 0) await page.waitForTimeout(remaining);
         const time = performance.now() - t0;
@@ -256,9 +277,14 @@ async function gpu(browser, lang, width, inspect) {
       await pause.click();
       await phase(page, "paused");
       assert.equal(await stage(page).locator("canvas").isVisible(), true);
+      const pauseCount = await textures(page);
+      await finishSubmittedFrame(page);
       const frozen = await snap(page, stem + "-paused", { clip });
-      await quietWithPointer(page);
+      const heldCount = await quietWithPointer(page);
+      await finishSubmittedFrame(page);
       const held = await snap(page, stem + "-paused-held", { clip });
+      assert.equal(await textures(page), pauseCount);
+      evidence.measurements[stem + "-pause"] = { pauseCount, heldCount, frozen, held };
       assert.equal(held, frozen, "The presented paused artwork changed");
       await pause.click();
       await nextFrames(page, 12);
@@ -267,7 +293,9 @@ async function gpu(browser, lang, width, inspect) {
       for (const form of ["motion", "digital", "identity"]) {
         await page.locator(`button[data-form="${form}"]`).click();
         assert.equal(await stage(page).getAttribute("data-form"), form);
-        await nextFrames(page, 45);
+        await nextFrames(page, 14);
+        await snap(page, stem + "-transition-" + form, { clip });
+        await nextFrames(page, 65);
         await snap(page, stem + "-form-" + form, { clip });
         await texture(page, stem + "-form-" + form);
       }

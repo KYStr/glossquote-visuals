@@ -35,7 +35,7 @@ export function addParticleDepthLighting(source) {
 
   // The same particle position controls perspective, intensity and lighting.
   // Far points have less weight where they overlap brighter points near camera.
-  const depthEnergy = clamp(sum(number(0.57), scaled("pos", "z", 1.76), scaled("pos", "y", 0.54)), 0.09, 1.28);
+  const depthEnergy = clamp(sum(number(0.63), scaled("pos", "z", 1.54), scaled("pos", "y", 0.53)), 0.14, 1.25);
   const motionEnergy = binary(property("vel", "w"), "*", property("prm", "speedColorK"));
   energy[2] = binary(energy[2], "*", depthEnergy);
   tone[2] = clamp(sum(number(0.34), scaled("pos", "z", 1.43), scaled("pos", "y", 0.66),
@@ -46,7 +46,7 @@ export function addParticleDepthLighting(source) {
   let patched = replaceExactly(kernel, astSource, JSON.stringify(ast));
   patched = replaceExactly(patched,
     "const bright = __tsover_mul(__tsover_mul(__tsover_add(.7, __tsover_mul(.6, pos.w)), persp), persp);",
-    "const bright = (.7 + .6 * pos.w) * persp * persp * clamp$1(.57 + pos.z * 1.76 + pos.y * .54, .09, 1.28);");
+    "const bright = (.7 + .6 * pos.w) * persp * persp * clamp$1(.63 + pos.z * 1.54 + pos.y * .53, .14, 1.25);");
   patched = replaceExactly(patched,
     "const speedNorm = clamp$1(__tsover_mul(vel.w, prm.speedColorK), 0, 1);",
     "const speedNorm = clamp$1(.34 + pos.z * 1.43 + pos.y * .66 - pos.x * .18 + vel.w * prm.speedColorK * .42, 0, 1);");
