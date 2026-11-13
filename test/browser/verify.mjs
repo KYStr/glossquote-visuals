@@ -1066,7 +1066,7 @@ async function checkLiquid(browser) {
 
       async function captureCycle(finish) {
         const samples = [];
-        await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 250);
+        await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 5000);
         try {
           // Advancing Chromium one interval would queue ~120 WARP renders at once.
           // Skip unused callbacks and give the final callback a short render window.
@@ -1102,7 +1102,7 @@ async function checkLiquid(browser) {
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
         const fixed = {};
-        await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 200);
+        await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 5000);
         try {
           for (const degrees of [0, 45, 90, 135, 180, 0]) {
             await angle.evaluate((input, value) => {
@@ -1110,6 +1110,7 @@ async function checkLiquid(browser) {
               input.dispatchEvent(new Event("input", { bubbles: true }));
             }, degrees);
             assert.equal(await stage(page).getAttribute("data-light"), "manual");
+            assert.equal(await page.locator('output[for="object-angle"]').textContent(), degrees + "°");
             const key = degrees === 0 && fixed[0] ? "return-0" : degrees;
             fixed[key] = await saveTexture(finish + "-fixed-" + key + "deg-texture", await timedReadback(48));
             console.log(stem + " " + finish + " fixed " + key + "° texture");
@@ -1128,8 +1129,8 @@ async function checkLiquid(browser) {
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
         console.log(stem + " " + finish + " natural and controlled time");
-        const natural = await captureNatural(finish);
         const cycle = await captureCycle(finish);
+        const natural = await captureNatural(finish);
         console.log(stem + " " + finish + " native pause and resume");
         const before = await frame(`${finish}-pause-before`);
         await pauseButton.evaluate(button => button.click());
