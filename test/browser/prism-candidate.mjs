@@ -138,6 +138,30 @@ async function checkLayout(browser) {
         await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
         await assertLayout(page, `${locale}-${width}-200pct`);
         if (width === 320) {
+          const specs = await page.locator(".sample-spec").evaluate(element => {
+            const photo = element.querySelector("img").getBoundingClientRect();
+            const list = element.querySelector("dl").getBoundingClientRect();
+            const rows = [...element.querySelectorAll("dl div")].map(row => {
+              const label = row.querySelector("dt").getBoundingClientRect();
+              const value = row.querySelector("dd").getBoundingClientRect();
+              return value.top >= label.bottom && value.width >= list.width - 1;
+            });
+            return { imageAbove: photo.bottom <= list.top, fullWidth: list.width >= element.clientWidth - 1, rows };
+          });
+          assert.deepEqual(specs, { imageAbove: true, fullWidth: true, rows: [true, true, true] },
+            `${locale}: specifications are cramped at 320 px and 200% text`);
+          const select = await page.locator("#sample-finish").evaluate(element => {
+            const style = getComputedStyle(element);
+            const measure = document.createElement("canvas").getContext("2d");
+            measure.font = `${style.fontSize} ${style.fontFamily}`;
+            return {
+              // Reserve room for the native dropdown arrow.
+              available: element.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight) - 24,
+              needed: Math.max(...[...element.options].map(option => measure.measureText(option.text).width)),
+            };
+          });
+          assert.ok(select.available >= select.needed,
+            `${locale}: material options may clip at 320 px and 200% text: ${JSON.stringify(select)}`);
           // Full-page screenshots this tall can wrap the GPU compositor surface.
           // Preserve native viewport PNGs of the start, form, and footer.
           for (const [area, selector] of [["top", ".prism-header"], ["sampling", "#sample-form"], ["footer", "footer"]]) {
