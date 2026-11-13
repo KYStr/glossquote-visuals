@@ -259,8 +259,22 @@ export async function checkSignal(browser, {
 
     const captures = {};
     async function nextFrame() {
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await phase(page, "running");
+      // A responsive reflow or a full-page capture can move the stage out of
+      // view. Make the actual observed element visible before expecting motion.
+      await stage(page).evaluate((element) => element.scrollIntoView({ block: "center", behavior: "instant" }));
+      try {
+        await phase(page, "running");
+      } catch (error) {
+        const state = await stage(page).evaluate((element) => ({
+          phase: element.dataset.motion,
+          rect: element.getBoundingClientRect().toJSON(),
+          viewport: { width: innerWidth, height: innerHeight },
+          scroll: { x: scrollX, y: scrollY },
+          visibility: document.visibilityState,
+          textures: window.__visualProbe.textures,
+        }));
+        throw new Error("Signal did not resume in view: " + JSON.stringify(state), { cause: error });
+      }
       const count = await textureCount(page);
       await page.waitForFunction((previous) => window.__visualProbe.textures > previous + 3, count);
     }
