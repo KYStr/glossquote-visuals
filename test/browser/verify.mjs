@@ -889,7 +889,8 @@ async function checkLive(browser) {
         await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
         assert.equal(page.url(), url(prefix + route));
         assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "index, follow");
-        assert.ok((await page.locator(".site-footer a").last().getAttribute("href")).endsWith(`/tree/${commit}`));
+        const sourceLink = page.locator(`footer a[href="https://github.com/KYStr/glossquote-visuals/tree/${commit}"]`);
+        assert.equal(await sourceLink.count(), 1, "Footer must link to the exact deployed source");
         const shareImage = await page.locator('meta[property="og:image"]').getAttribute("content");
         assert.ok(shareImage.startsWith(site.origin + base));
         assert.equal((await fetch(shareImage)).status, 200);
@@ -921,7 +922,9 @@ async function checkLive(browser) {
           await phase(page, "running");
         }
         await probe.assertPrivate(site.origin, { fontPaths });
-        await page.locator(".site-footer a").first().click();
+        const galleryBacklink = page.locator(`footer a[href="${base}${prefix}"]`);
+        assert.equal(await galleryBacklink.count(), 1, "Footer must have one locale-correct gallery backlink");
+        await galleryBacklink.click();
         assert.equal(page.url(), url(prefix));
         await probe.assertPrivate(site.origin, { fontPaths });
       });
