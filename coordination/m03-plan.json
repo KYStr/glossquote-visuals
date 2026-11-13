@@ -18,10 +18,11 @@
       "owner": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
       "branch": "codex/v001-material-hero",
       "scope": "repair",
-      "status": "building",
+      "status": "candidate",
       "brief": "briefs/M03-hero-direction.md",
       "candidateCommit": null,
-      "blockers": []
+      "blockers": [],
+      "authorCandidateCommit": "9e2f1f1faa386968345b82d3f83cc1984f3aeb8a"
     },
     {
       "id": "V002",
@@ -32,7 +33,8 @@
       "status": "building",
       "brief": "briefs/M03-hero-direction.md",
       "candidateCommit": null,
-      "blockers": []
+      "blockers": [],
+      "authorCandidateCommit": "bebc75fb5c6a8c9689813ced294a6f7f7082ea43"
     },
     {
       "id": "V003",
@@ -40,10 +42,11 @@
       "owner": "01a1d0b2-414c-7452-ad32-445d958fb8a1",
       "branch": "codex/v003-signal-hero",
       "scope": "upgrade",
-      "status": "building",
+      "status": "candidate",
       "brief": "briefs/M03-hero-direction.md",
       "candidateCommit": null,
-      "blockers": []
+      "blockers": [],
+      "authorCandidateCommit": "7d2fce3754ed5aa5b58230923d3a4a3600a377b7"
     },
     {
       "id": "V004",
@@ -51,13 +54,14 @@
       "owner": "01a1d302-21ef-7052-92d8-1ca5a415af0a",
       "branch": "codex/v004-prism-materials",
       "scope": "new",
-      "status": "building",
+      "status": "candidate",
       "brief": "briefs/V004-prism-materials.md",
       "candidateCommit": null,
       "blockers": [],
       "previousOwner": "/root/prism_build",
       "hostId": "local",
-      "visibleProductionChat": true
+      "visibleProductionChat": true,
+      "authorCandidateCommit": "fa67cbc3d367a2e4547e0d9b2c818277779889db"
     },
     {
       "id": "V005",
@@ -65,13 +69,14 @@
       "owner": "01a1d302-2c57-70c3-b388-eed0ca27e754",
       "branch": "codex/v005-aeriform",
       "scope": "new",
-      "status": "building",
+      "status": "candidate",
       "brief": "briefs/V005-aeriform.md",
       "candidateCommit": null,
       "blockers": [],
       "previousOwner": "/root/aero_build",
       "hostId": "local",
-      "visibleProductionChat": true
+      "visibleProductionChat": true,
+      "authorCandidateCommit": "c9db17d750927158547171ed02c41e9410bca75d"
     }
   ],
   "productionPolicy": "Every new visual website uses a new user-visible gpt-6.1-sol/high production chat; revisions continue in that work chat."

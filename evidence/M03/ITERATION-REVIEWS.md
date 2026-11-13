@@ -9,14 +9,17 @@ These are non-author design reviews of individual production candidates. They do
 | V004 | `9f02e3d889a0181269228bd3accada8349a95fff` | 9.0 / 9.3 / 9.4 | `/root/signal_review` | Rejected for the flat opaque gray-blue glass edge; commerce and layout evidence already passed. |
 | V004 | `1c7f85d34dd11798ee09c059cd973bd085f1732c` | 9.2 / 9.3 / 9.4 | `/root/signal_review` | Position-dependent reflected room lighting restores edge variation. Both angle extremes, natural frames, satin and ribbed transmission reviewed. Native pause/lifecycle capture still pending after a test screenshot timeout. |
 | V005 | `23849827bbf9afa54818d979ee404063c71394e7` | 8.9 / 9.2 / 9.3 | `/root/commercial_review` | All five technical lanes passed, but mobile particles still lose volumetric definition. Only mobile size/density/depth needs refinement; branding, case applications and customer flows are accepted at this stage. |
+| V004 | `fa67cbc3d367a2e4547e0d9b2c818277779889db` | Same product source as `1c7f85d`; final integration review pending | `/root/signal_review` identified the capture defect | Both author workflows passed after correcting viewport-relative mobile screenshot coordinates. Native pause/queued controls remained pixel-identical and segmented 200% footer evidence was added. |
+| V005 | `c9db17d750927158547171ed02c41e9410bca75d` | 9.1 / 9.2 / 9.3 | `/root/commercial_review` | Mobile particle size, density and depth floor retain the rear contours and three distinct forms. The complete 26-second sequence, scattering/regrouping and exact pause hashes were independently checked. |
 
-V002 remains in revision: single-sample silhouette coverage, overly broad polished reflections, the large smooth union at the foot and its contact shadow were sent back with bounded implementation suggestions. Its earlier scores are not carried forward.
+V002 remains in revision. Silhouette coverage, reflection attachment and the foot/contact shadow improved in `92e5cf3`; the remaining aesthetic issue is aliasing at the bright reflected light edges. The later fixed-angle images need review at their new SHA. Long WARP readback times also require investigation of the test clock separately from the shader workload. Earlier scores are not carried forward.
 
 ## Evidence boundaries
 
 - A natural sequence is sampled motion, not a continuous video or an FPS measurement. V003 logical transition time is the browser clock after the selection; the adjacent GPU texture and composite are not proven to be the same submitted frame.
 - V004's old 18,808px-high 320/200% screenshot repeats its top after y=16,384. This is a capture limitation, not evidence of duplicated site content. DOM overflow checks remain valid; a segmented/footer capture is required.
 - V005 pause captures wait for the last submitted GPU work and two compositor animation frames, then retain the strict original PNG hash comparison. This does not relax pixel tolerances or permit new renderer submissions while paused.
+- The initial integrated particle-control metric bilinearly downsampled sparse points and exaggerated natural drift. Direct area averaging of the retained original pixels showed a stable torus versus a clearly different helix. The shared comparator now averages all source pixels into each 80×60 cell, retaining the same three-times-drift threshold and full-resolution native-pause checks. Original composites and independent GPU textures remain the review evidence.
 - Reviews use a documented isolated Windows VM. Physical GPU/mobile, continuous-video smoothness, human screen-reader use and conversion performance remain unverified.
 
 The M02 live release is unchanged while M03 is under review.
