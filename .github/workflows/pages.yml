@@ -27,7 +27,7 @@ jobs:
   build:
     if: github.repository == 'KYStr/glossquote-visuals' && github.ref == 'refs/heads/main' && github.sha == inputs.source_commit
     runs-on: windows-2025
-    timeout-minutes: 12
+    timeout-minutes: 20
     env:
       GQ_RELEASE_WORK: ${{ inputs.work }}
       GQ_RELEASE_SHA: ${{ inputs.source_commit }}
@@ -73,7 +73,7 @@ jobs:
   live:
     needs: deploy
     runs-on: windows-2025
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       GQ_RELEASE_WORK: ${{ inputs.work }}
     steps:
