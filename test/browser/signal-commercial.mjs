@@ -4,16 +4,21 @@ import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { base } from "../../scripts/site-map.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
+import { signalMotionEvidence } from "./signal-motion.mjs";
 
 export const signalFontPaths = [`${base}fonts/night-barlow-condensed-extrabold.ttf`];
 const route = "works/night-signal/";
+const previewProgram = (page, id) => page.locator(`[data-preview="${id}"]`);
 const selectProgram = (page, id) => page.locator(`[data-act="${id}"] label`);
 const active = (page, selector) => page.locator(selector).evaluate((node) => node === document.activeElement);
+const periods = { carrier: 10, echo: 8, dawn: 12 };
 const devices = (page) => page.evaluate(() => window.__visualProbe.devices);
 
 async function assertProgram(page, id, stage) {
   const row = page.locator(`[data-act="${id}"]`);
   assert.equal(await row.locator("input").isChecked(), true);
+  assert.equal(await previewProgram(page, id).getAttribute("aria-pressed"), "true");
+  assert.equal(await page.locator("[data-preview][aria-pressed=true]").count(), 1);
   const selectedDot = await row.locator(".act-indicator").evaluate((dot) => getComputedStyle(dot, "::before").backgroundColor);
   assert.notEqual(selectedDot, "rgba(0, 0, 0, 0)");
   assert.equal(await row.locator("[data-act-description]").isVisible(), true);
@@ -88,6 +93,7 @@ async function booking(page, english, { capture, layout, evidenceDir }) {
   await submit.click();
   assert.equal(await active(page, "#complete-title"), true);
   assert.equal(await page.locator("[data-complete-sets] li").count(), 1);
+  assert.match(await page.locator("[data-complete-admission]").textContent(), /18:30.*21:30/);
   await page.locator("[data-edit]").click();
   assert.equal(await active(page, "#pass-single"), true);
   assert.equal(await quantity.inputValue(), "3");
@@ -101,6 +107,7 @@ async function booking(page, english, { capture, layout, evidenceDir }) {
   await submit.click();
   const complete = page.locator("[data-complete]");
   assert.equal(await complete.isVisible(), true);
+  assert.match(await complete.locator("[data-complete-admission]").textContent(), /18:30/);
   assert.equal(await active(page, "#complete-title"), true);
   assert.match(await complete.locator("[data-complete-note]").textContent(), english ? /No payment.*no places/i : /尚未付款或保留席位/);
   await capture(page.locator("#passes"), `signal-${prefix}-complete.png`);
@@ -116,6 +123,7 @@ async function booking(page, english, { capture, layout, evidenceDir }) {
   assert.match(text, /NT\$2,640/);
   assert.match(text, /NT\$880/);
   assert.match(text, /2026/);
+  assert.match(text, english ? /Doors 18:30/ : /18:30 開門/);
   assert.match(text, english ? /No payment.*no places/i : /尚未付款或保留席位/);
   for (const range of ["19:00–20:00", "20:15–21:30", "21:45–23:30"]) assert.ok(text.includes(range));
   assert.equal(await complete.getByRole("status").isVisible(), true);
@@ -129,7 +137,8 @@ async function booking(page, english, { capture, layout, evidenceDir }) {
 export async function checkSignal(browser, {
   evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
 }) {
-  evidence.downloads = [];
+  evidence.downloads ??= [];
+  const motionEvidence = signalMotionEvidence({ evidence, evidenceDir });
   const privateRequests = (probe) => probe.assertPrivate(site.origin, { fontPaths: signalFontPaths });
   const capture = async (locator, name) => {
     await locator.screenshot({ path: resolve(evidenceDir, name) });
@@ -155,11 +164,11 @@ export async function checkSignal(browser, {
         await page.keyboard.press("Enter");
         assert.equal(await active(page, "main"), true);
         await layout(page);
-        const targets = await page.locator(".hero-cta, .act-select, .pass-option label, #booking-quantity, [data-receipt] button")
+        const targets = await page.locator(".hero-cta, [data-preview], .act-select, .pass-option label, #booking-quantity, [data-receipt] button")
           .evaluateAll((nodes) => nodes.map((node) => [node.offsetWidth, node.offsetHeight]));
         assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44), JSON.stringify(targets));
         const cta = await page.locator(".hero-cta").boundingBox();
-        assert.ok(cta && cta.y + cta.height <= 580, `CTA below mobile fold at ${width}px`);
+        assert.ok(cta && cta.y + cta.height <= (width === 1440 ? 844 : 580), `CTA below mobile fold at ${width}px`);
         if (width === 320 && prefix) {
           await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
           await capture(page.locator(".hero"), "signal-en-320-200-percent.png");
@@ -174,7 +183,11 @@ export async function checkSignal(browser, {
             return heading.bottom <= image.top && image.bottom <= details.top;
           });
           assert.equal(venue, true, "Mobile should show the venue image before arrival details");
-          await selectProgram(page, "echo").tap();
+          await previewProgram(page, "echo").tap();
+          await assertProgram(page, "echo", stage);
+          await selectProgram(page, "dawn").tap();
+          await assertProgram(page, "dawn", stage);
+          await previewProgram(page, "echo").press("Space");
           await assertProgram(page, "echo", stage);
           assert.equal(await stage(page).locator("img").evaluate((image) => getComputedStyle(image).filter !== "none"), true);
           await page.evaluate(() => window.scrollTo(0, 0));
@@ -194,7 +207,7 @@ export async function checkSignal(browser, {
     }
   }
 
-  evidence.checks.signalBooking = "PASS both locales: pass and set selection, empty/invalid quantity, pricing, retained set when browsing, keyboard review/edit, local UTF-8 itinerary download, no purchase or reservation";
+  evidence.checks.signalBooking = "PASS both locales: pass and set selection, empty/invalid quantity, pricing, retained set when browsing, opening/admission times, keyboard review/edit, local UTF-8 itinerary download, no purchase or reservation";
 
   for (const prefix of ["", "en/"]) {
     await withPage(browser, { javaScriptEnabled: false, viewport: { width: 390, height: 844 } }, async (page) => {
@@ -203,6 +216,7 @@ export async function checkSignal(browser, {
       assert.equal(await page.locator(".pass-option:visible").count(), 2);
       assert.equal(await page.locator("[data-receipt]").isVisible(), false);
       assert.equal(await page.locator("[data-program-hint]").isVisible(), false);
+      assert.equal(await page.locator("[data-program-previews]").isVisible(), false);
       assert.equal(await page.locator("audio, video, iframe").count(), 0);
       assert.ok(await stage(page).locator("img").isVisible());
       assert.ok(await page.locator("noscript p").isVisible());
@@ -255,12 +269,15 @@ export async function checkSignal(browser, {
       await selectProgram(page, id).click();
       await assertProgram(page, id, stage);
       await nextFrame();
+      await page.waitForTimeout(1050);
       const texture = await page.evaluate(() => window.__visualProbe.readFrame());
       const name = `signal-${id}-webgpu.png`;
       const visible = await pixelEvidence(page, stage(page), resolve(evidenceDir, name));
       assert.ok(texture.colors > 20 && visible.colors > 20, `Program ${id} did not render: ${JSON.stringify({ texture, visible })}`);
       evidence.screenshots.push(name);
       captures[id] = { texture, visible };
+      await nextFrame();
+      await motionEvidence.cycle(page, "desktop", id, periods[id]);
     }
     assert.equal(new Set(Object.values(captures).map(({ texture }) => texture.average.join(","))).size, 3);
     evidence.measurements.signalChannels = captures;
@@ -285,11 +302,14 @@ export async function checkSignal(browser, {
     await nextFrame();
     await screenshot(page, "signal-en-1440-webgpu.png");
     await capture(page.locator(".hero"), "signal-en-1440-poster.png");
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    await quiet(page);
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await nextFrame();
+    await motionEvidence.freeze(page, "desktop", stage(page), {
+      pause: async () => {
+        await page.getByRole("button", { name: "Pause motion" }).evaluate((button) => button.click());
+        await phase(page, "paused");
+      },
+      resume: () => page.getByRole("button", { name: "Resume motion" }).evaluate((button) => button.click()),
+      quiet, nextFrame,
+    });
 
     await page.evaluate(() => {
       Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
@@ -329,6 +349,22 @@ export async function checkSignal(browser, {
     await nextFrame();
     await screenshot(page, "signal-zh-Hant-390-webgpu.png");
     await capture(page.locator(".hero"), "signal-zh-Hant-390-poster.png");
+    await nextFrame();
+    for (const id of Object.keys(periods)) {
+      await selectProgram(page, id).click();
+      await assertProgram(page, id, stage);
+      await nextFrame();
+      await page.waitForTimeout(1050);
+      await motionEvidence.cycle(page, "mobile", id, periods[id]);
+    }
+    await motionEvidence.freeze(page, "mobile", stage(page), {
+      pause: async () => {
+        await page.getByRole("button", { name: "暫停動態" }).evaluate((button) => button.click());
+        await phase(page, "paused");
+      },
+      resume: () => page.getByRole("button", { name: "繼續動態" }).evaluate((button) => button.click()),
+      quiet, nextFrame,
+    });
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await phase(page, "still");
     await quiet(page);
@@ -339,5 +375,16 @@ export async function checkSignal(browser, {
     await screenshot(page, "signal-en-390-webgpu.png");
     await privateRequests(probe);
   });
-  evidence.checks.signal = "PASS bilingual 320/390/768/1440 and 200% text layout, keyboard/touch, three visible WebGPU programs, 18 switches on one device, lifecycle and recovery, no-GPU/no-JS/reduced motion and privacy";
+  await withPage(browser, { viewport: { width: 1440, height: 900 } }, async (page) => {
+    await page.clock.install();
+    const probe = await observe(page, { readPixels: true });
+    await open(page, "en/" + route);
+    await phase(page, "running");
+    await page.waitForFunction(() => window.__visualProbe.textures > 3);
+    await motionEvidence.transitions(page, stage(page), ["carrier", "echo", "dawn", "carrier"]);
+    await assertProgram(page, "carrier", stage);
+    await privateRequests(probe);
+  });
+  evidence.checks.signalMotion = "PASS natural desktop and mobile cycles for all three programs, three in-place transitions, and stable original-resolution stage pixels and zero extra presentation frames during native pause on desktop and mobile";
+  evidence.checks.signal = "PASS bilingual 320/390/768/1440 and 200% text layout, keyboard/touch, synchronized hero previews and lineup, three visible WebGPU programs, 18 switches on one device, lifecycle and recovery, no-GPU/no-JS/reduced motion and privacy";
 }

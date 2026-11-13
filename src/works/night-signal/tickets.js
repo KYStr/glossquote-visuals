@@ -3,6 +3,7 @@ const copy = {
     passError: "Choose a pass type to continue.",
     quantityError: "Enter a whole number from 1 to 6.",
     summaryLine: (name, quantity, total) => `${name} × ${quantity} · Estimated total ${total}`,
+    admission: (time) => "Single-set admission " + time,
     unitLine: (unit) => `Unit price ${unit}`,
     downloaded: "Your itinerary download is ready.",
     downloadError: "The download could not start. Try again or copy the summary on this page.",
@@ -11,6 +12,7 @@ const copy = {
     passError: "請先選擇一種票券。",
     quantityError: "請輸入 1 至 6 的整數。",
     summaryLine: (name, quantity, total) => `${name} × ${quantity} 張 · 預估總額 ${total}`,
+    admission: (time) => "單場票 " + time + " 入場",
     unitLine: (unit) => `單價 ${unit}`,
     downloaded: "行程摘要已準備下載。",
     downloadError: "無法開始下載。請再試一次，或複製本頁的摘要。",
@@ -50,6 +52,8 @@ export function setupTickets(english) {
   const sets = form.querySelector("[data-sets]");
   const complete = document.querySelector("[data-complete]");
   const completeHeading = complete.querySelector("h3");
+  const completeAdmission = complete.querySelector("[data-complete-admission]");
+  const doors = textOf(document.querySelector("[data-doors]"));
   const completeSummary = complete.querySelector("[data-complete-summary]");
   const completeSets = complete.querySelector("[data-complete-sets]");
   const download = complete.querySelector("[data-download]");
@@ -125,6 +129,9 @@ export function setupTickets(english) {
     const count = quantity.valueAsNumber;
     const summary = labels.summaryLine(pass.name, count, formatPrice(pass.price * count));
     const included = selectedSets(pass);
+    const admission = pass.radio.value === "single" ? labels.admission(set.selectedOptions[0].dataset.admission) : "";
+    const arrival = admission ? doors + " · " + admission : doors;
+    completeAdmission.textContent = arrival;
     completeSummary.textContent = summary;
     renderSets(completeSets, included);
     downloadStatus.textContent = "";
@@ -133,6 +140,7 @@ export function setupTickets(english) {
       textOf(completeHeading),
       textOf(complete.querySelector(".complete-event")),
       textOf(document.querySelector("[data-event-stage]")),
+      arrival,
       "",
       summary,
       labels.unitLine(formatPrice(pass.price)),
