@@ -8,7 +8,7 @@ export const SWEEP_SECONDS = 12;
 const geometry = (point, distance, identify = false) => `
   let local = ${point} - vec3f(0.0, 0.805, 0.0);
   let tube = length(vec2f(length(local.xy) - 0.585, local.z * 1.10)) - 0.151;
-  let foot = abs(${point} - vec3f(0.0, 0.113, 0.0)) - vec3f(0.319, 0.071, 0.182);
+  let foot = abs(${point} - vec3f(0.0, 0.115, 0.0)) - vec3f(0.319, 0.077, 0.182);
   let footDistance = length(max(foot, vec3f(0.0))) + min(max(foot.x, max(foot.y, foot.z)), 0.0) - 0.037;
   let cup = abs(vec2f(length(${point}.xz), ${point}.y - 1.561)) - vec2f(0.104, 0.065);
   let cupBody = length(max(cup, vec2f(0.0))) + min(max(cup.x, cup.y), 0.0) - 0.009;
@@ -19,10 +19,35 @@ const geometry = (point, distance, identify = false) => `
   let wickY = clamp(${point}.y, 1.895, 1.949);
   let wickCenter = vec3f(0.008 + (wickY - 1.895) * 0.33, wickY, 0.009);
   let wick = length(${point} - wickCenter) - 0.007;
-  let blend = max(0.135 - abs(tube - footDistance), 0.0) / 0.135;
-  let metal = min(min(tube, footDistance) - blend * blend * 0.03375, cupDistance);
+  let blend = max(0.045 - abs(tube - footDistance), 0.0) / 0.045;
+  let metal = min(min(tube, footDistance) - blend * blend * 0.01125, cupDistance);
   ${distance} = min(min(metal, wax), wick);
   ${identify ? "material = select(select(1, 2, wax < metal), 3, wick < min(wax, metal));" : ""}
+`;
+
+// Expand the same march at the centre and at four subpixel positions.
+// The latter runs only near boundaries, where centre-only sampling would alias.
+const trace = (direction, limit, iterations, recordMinimum = false) => `
+  let localDirection = transpose(pose) * ${direction};
+  let b = dot(sphereOrigin, localDirection);
+  let discriminant = b * b - dot(sphereOrigin, sphereOrigin) + 1.09;
+  distanceTravelled = max(0.0, -b - sqrt(max(discriminant, 0.0)));
+  let exit = min(${limit}, -b + sqrt(max(discriminant, 0.0)));
+  if (discriminant > 0.0) {
+    for (var iteration = 0; iteration < ${iterations}; iteration += 1) {
+      if (distanceTravelled > exit) { break; }
+      let samplePosition = objectCamera + localDirection * distanceTravelled;
+      var distanceToSolid = 0.0;
+      ${geometry("samplePosition", "distanceToSolid", true)}
+      ${recordMinimum ? "nearest = min(nearest, distanceToSolid);" : ""}
+      if (distanceToSolid < 0.00031) {
+        intersects = true;
+        ${recordMinimum ? "stepsTaken = iteration;" : ""}
+        break;
+      }
+      distanceTravelled += max(0.00044, distanceToSolid * 0.91);
+    }
+  }
 `;
 
 const HaloStudio = registerShader(defineShader({
@@ -32,6 +57,7 @@ const HaloStudio = registerShader(defineShader({
     sweep: { default: 1 },
     brushed: { default: 0 },
     compact: { default: 0 },
+    sweepElapsed: { default: 0 },
   },
   paint: wgsl`
     // Camera and studio coordinates. We orbit the light; the camera and sculpture are fixed.
@@ -45,36 +71,51 @@ const HaloStudio = registerShader(defineShader({
     let yaw = -0.35;
     let pose = mat3x3f(vec3f(cos(yaw), 0.0, -sin(yaw)), vec3f(0.0, 1.0, 0.0), vec3f(sin(yaw), 0.0, cos(yaw)));
     let objectCamera = transpose(pose) * camera;
-    let objectRay = transpose(pose) * ray;
-    let orbit = 90.0 - 62.0 * cos(time * tau / ${SWEEP_SECONDS}.0);
+    let orbit = 90.0 - 62.0 * cos(sweepElapsed * tau / ${SWEEP_SECONDS}.0);
     let azimuth = radians(mix(lightAngle, orbit, sweep) - 90.0);
     let lightPosition = vec3f(sin(azimuth) * 2.6, 2.65, cos(azimuth) * 2.6 + 0.11);
     let lightRight = normalize(vec3f(cos(azimuth), 0.0, -sin(azimuth)));
     let keyColor = vec3f(1.0, 0.86, 0.72);
 
-    // Analytic floor and rear wall limit the object march and receive the studio lights.
     let wallT = (-1.65 - camera.z) / ray.z;
     let floorT = -camera.y / min(-0.00001, ray.y);
     let roomT = min(floorT, wallT);
     let sphereOrigin = objectCamera - vec3f(0.0, 0.98, 0.0);
-    let sphereB = dot(sphereOrigin, objectRay);
-    let sphereH = sphereB * sphereB - dot(sphereOrigin, sphereOrigin) + 1.09;
-    var t = max(0.0, -sphereB - sqrt(max(sphereH, 0.0)));
-    let farT = min(roomT, -sphereB + sqrt(max(sphereH, 0.0)));
     var material = 0;
-    var struck = false;
-    if (sphereH > 0.0) {
-      for (var i = 0; i < 68; i += 1) {
-        if (t > farT) { break; }
-        let q = objectCamera + objectRay * t;
-        var d = 0.0;
-        ${geometry("q", "d", true)}
-        if (d < 0.00048) { struck = true; break; }
-        t += max(0.00065, d * 0.91);
+    var nearest = 2.0;
+    var stepsTaken = 0;
+    var distanceTravelled = 0.0;
+    var intersects = false;
+    ${trace("ray", "roomT", 104, true)}
+    var materialRay = ray;
+    var materialDistance = distanceTravelled;
+    var materialAtHit = material;
+    var coverage = select(0.0, 1.0, intersects);
+    let pixelFootprint = min(0.020, 3.0 / viewport.y);
+    let contactEdge = intersects && (objectCamera + transpose(pose) * ray * distanceTravelled).y < 0.23;
+    let edge = (intersects && (stepsTaken >= 14 || contactEdge)) || (!intersects && nearest < 1.4 * pixelFootprint);
+    if (edge) {
+      coverage = 0.0;
+      for (var tap = 0; tap < 4; tap += 1) {
+        let quadrant = vec2f(f32(tap % 2), f32(tap / 2)) * 0.5 - 0.25;
+        let shift = quadrant * vec2f(aspect, 1.0) / viewport;
+        let subRay = normalize(forward * mix(1.98, 1.84, compact) + right * (shot.x + shift.x) + up * (shot.y + shift.y));
+        let subRoom = min((-1.65 - camera.z) / subRay.z, -camera.y / min(-0.00001, subRay.y));
+        intersects = false;
+        ${trace("subRay", "subRoom", 112)}
+        if (intersects) {
+          if (coverage == 0.0 && (stepsTaken == 0 || materialAtHit == 0 || nearest > 0.00031)) {
+            materialRay = subRay;
+            materialDistance = distanceTravelled;
+            materialAtHit = material;
+          }
+          coverage += 0.25;
+        }
       }
     }
 
-    if (!struck) {
+    var room = vec3f(0.0);
+    if (coverage < 1.0) {
       let p = camera + ray * roomT;
       let onFloor = floorT < wallT;
       let roomNormal = select(vec3f(0.0, 0.0, 1.0), vec3f(0.0, 1.0, 0.0), onFloor);
@@ -99,7 +140,10 @@ const HaloStudio = registerShader(defineShader({
           travel += clamp(separation, 0.023, 0.35);
         }
       }
-      let contact = select(1.0, mix(0.43, 1.0, smoothstep(0.18, 0.80, length(p.xz * vec2f(1.0, 1.6)))), onFloor);
+      let floorLocal = (transpose(pose) * p).xz;
+      let edgeOfFoot = abs(floorLocal) - vec2f(0.319, 0.182);
+      let footPrint = length(max(edgeOfFoot, vec2f(0.0))) + min(max(edgeOfFoot.x, edgeOfFoot.y), 0.0) - 0.031;
+      let contact = select(1.0, mix(0.48, 1.0, smoothstep(-0.006, 0.17, footPrint)), onFloor);
       let backdrop = mix(vec3f(0.021, 0.030, 0.035), vec3f(0.113, 0.125, 0.122), upper);
       let shelf = mix(vec3f(0.025, 0.023, 0.021), vec3f(0.071, 0.057, 0.044), exp(-0.2 * dot(p.xz, p.xz)));
       let base = select(backdrop, shelf, onFloor);
@@ -107,10 +151,11 @@ const HaloStudio = registerShader(defineShader({
       let wallFill = select(vec3f(0.056, 0.066, 0.063) * setLight, vec3f(0.0), onFloor);
       let pool = keyColor * falloff * shadow * select(0.085, 0.20, onFloor);
       let seam = select(1.0, mix(0.63, 1.0, smoothstep(0.0, 0.16, p.y)), !onFloor);
-      return vec4f((base + wallFill + pool) * grain * contact * seam, 1.0);
+      room = (base + wallFill + pool) * grain * contact * seam;
     }
 
-    let q = objectCamera + objectRay * t;
+    if (coverage == 0.0) { return vec4f(room, 1.0); }
+    let q = objectCamera + transpose(pose) * materialRay * materialDistance;
     let p = pose * q;
     var normalParts = vec3f(0.0);
     // Central differences follow each actual curved surface, including the inner wall.
@@ -126,11 +171,12 @@ const HaloStudio = registerShader(defineShader({
     var localNormal = normalize(normalParts);
     let toLight = lightPosition - p;
     let direct = normalize(toLight);
-    if (material == 3) { return vec4f(0.024, 0.018, 0.013, 1.0); }
-    if (material == 2) {
+    if (materialAtHit == 3) { return vec4f(mix(room, vec3f(0.024, 0.018, 0.013), coverage), 1.0); }
+    if (materialAtHit == 2) {
       let diffuse = max(0.0, dot(pose * localNormal, direct));
       let waxRim = smoothstep(1.82, 1.91, q.y);
-      return vec4f(vec3f(0.84, 0.75, 0.62) * (0.32 + diffuse * 0.37 + waxRim * 0.14), 1.0);
+      let waxColor = vec3f(0.84, 0.75, 0.62) * (0.32 + diffuse * 0.37 + waxRim * 0.14);
+      return vec4f(mix(room, waxColor, coverage), 1.0);
     }
 
     // Tool marks follow the section around the tube. The base and cup use straight passes.
@@ -144,8 +190,8 @@ const HaloStudio = registerShader(defineShader({
     let tooling = mix(vec3f(0.0, 1.0, 0.4), vec3f(ringDirection, 0.55), onRing);
     localNormal = normalize(localNormal + brushed * hairlines * 0.012 * tooling);
     let normal = pose * localNormal;
-    let reflection = reflect(ray, normal);
-    let ndv = max(0.0, dot(normal, -ray));
+    let reflection = reflect(materialRay, normal);
+    let ndv = max(0.0, dot(normal, -materialRay));
     let fresnel = pow(1.0 - ndv, 4.0);
 
     // Project the reflected ray onto the same rectangular light that illuminates the room.
@@ -156,8 +202,8 @@ const HaloStudio = registerShader(defineShader({
     let reflectedT = dot(toLight, lightNormal) / min(-0.0001, towardEmitter);
     let reflectedP = reflection * reflectedT - toLight;
     let emitterUV = vec2f(dot(reflectedP, lightRight), dot(reflectedP, lightUp));
-    let roughness = mix(0.19, 0.55, brushed);
-    let strip = (1.0 - smoothstep(0.29, 0.29 + roughness, abs(emitterUV.x))) *
+    let roughness = mix(0.075, 0.48, brushed);
+    let strip = (1.0 - smoothstep(0.24, 0.24 + roughness, abs(emitterUV.x))) *
       (1.0 - smoothstep(0.95, 1.18 + roughness, abs(emitterUV.y)));
     let grazingLight = smoothstep(0.0, 0.16, -towardEmitter) * step(0.0, reflectedT);
     let specular = strip * grazingLight;
@@ -177,21 +223,20 @@ const HaloStudio = registerShader(defineShader({
     let towardFront = smoothstep(0.08, 0.38, reflection.z);
     let projection = reflection.xy / max(0.19, reflection.z);
     let windowUV = projection - vec2f(0.32, 0.21);
-    let softness = mix(0.15, 0.47, brushed);
-    let mainWindow = (1.0 - smoothstep(0.57, 0.57 + softness, abs(windowUV.x))) *
+    let softness = mix(0.046, 0.41, brushed);
+    let mainWindow = (1.0 - smoothstep(0.39, 0.39 + softness, abs(windowUV.x))) *
       (1.0 - smoothstep(0.62, 0.62 + softness, abs(windowUV.y)));
-    let mullion = 1.0 - smoothstep(mix(0.022, 0.07, brushed), mix(0.058, 0.22, brushed), abs(windowUV.x + 0.08));
     let sill = smoothstep(-0.62, -0.24, windowUV.y);
-    let panes = mainWindow * sill * (1.0 - mullion * mix(0.66, 0.22, brushed)) * towardFront;
+    let panes = mainWindow * sill * towardFront;
     let card = exp(-2.6 * pow(projection.x + 0.71 - projection.y * 0.15, 2.0)) *
       (1.0 - smoothstep(0.64, 1.17, abs(projection.y + 0.24))) * towardFront;
     let lightWell = pow(max(0.0, dot(reflection, normalize(vec3f(0.19, 0.91, -0.37)))), mix(13.0, 4.5, brushed));
     let rim = pow(max(0.0, dot(reflection, normalize(vec3f(-0.79, 0.19, -0.58)))), mix(58.0, 14.0, brushed));
-    let neutral = vec3f(0.90, 0.94, 0.95) * (panes * mix(0.82, 0.45, brushed) + card * 0.26 + lightWell * 0.40 + rim * 0.20);
-    let warm = keyColor * (specular * mix(0.76, 0.36, brushed) + softbox * mix(0.14, 0.24, brushed) + brushed * max(0.0, dot(normal, direct)) * 0.13);
+    let neutral = vec3f(0.90, 0.94, 0.95) * (panes * mix(0.72, 0.40, brushed) + card * mix(0.10, 0.23, brushed) + lightWell * mix(0.14, 0.32, brushed) + rim * 0.16);
+    let warm = keyColor * (specular * mix(0.76, 0.36, brushed) + softbox * mix(0.055, 0.24, brushed) + brushed * max(0.0, dot(normal, direct)) * 0.13);
     let silver = (lighting + neutral + warm) * (0.82 + 0.18 * fresnel);
     let mapped = silver * (1.0 + silver * 0.29) / (1.0 + silver * 0.53);
-    return vec4f(mapped * (1.0 + hairlines * brushed * 0.048), 1.0);
+    return vec4f(mix(room, mapped * (1.0 + hairlines * brushed * 0.048), coverage), 1.0);
   `,
 }));
 
@@ -210,7 +255,38 @@ function renderSize(width, height) {
 }
 
 export async function initializeLiquid(canvas, options) {
-  const renderer = await initializeStandalone(
+  let renderer;
+  let frameId = 0;
+  let elapsed = 0;
+  let lastFrame = 0;
+  let lastUpdate = 0;
+  let active = true;
+  let ready = false;
+  let failed = false;
+
+  // Use elapsed active time so a slower GPU cannot stretch a sweep. The
+  // renderer's own time is unused; pausing stops both the driver and rendering.
+  function tick(now) {
+    if (lastFrame) elapsed += now - lastFrame;
+    lastFrame = now;
+    if (now - lastUpdate >= 32) {
+      renderer.update("halo", { sweepElapsed: (elapsed / 1000) % SWEEP_SECONDS });
+      lastUpdate = now;
+    }
+    frameId = requestAnimationFrame(tick);
+  }
+
+  function startClock() {
+    if (active && renderer && ready && !failed && !frameId) frameId = requestAnimationFrame(tick);
+  }
+
+  function stopClock() {
+    cancelAnimationFrame(frameId);
+    frameId = 0;
+    lastFrame = 0;
+  }
+
+  renderer = await initializeStandalone(
     canvas,
     [{ id: "halo", type: HaloStudio.name, props: props(options.settings) }],
     {
@@ -218,14 +294,36 @@ export async function initializeLiquid(canvas, options) {
       ...renderSize(options.width, options.height),
       onReady() {
         canvas.dataset.sized = "";
+        ready = true;
+        if (renderer) renderer.update("halo", { sweepElapsed: (elapsed / 1000) % SWEEP_SECONDS });
         options.onReady();
+        startClock();
+      },
+      onError() {
+        stopClock();
+        ready = false;
+        options.onError();
       },
     },
   );
   if (!renderer) return null;
+  failed = Boolean(renderer.getFailureReason()) || options.signal.aborted;
+  startClock();
   return {
     ...renderer,
+    pause() {
+      active = false;
+      stopClock();
+      renderer.pause();
+    },
+    resume() {
+      active = true;
+      renderer.resume();
+      startClock();
+    },
     destroy() {
+      failed = true;
+      stopClock();
       delete canvas.dataset.sized;
       renderer.destroy();
     },

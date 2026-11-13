@@ -323,7 +323,7 @@ sweep.addEventListener("click", () => {
   stage.dataset.light = "auto";
   angleOutput.value = angleOutput.dataset.autoLabel;
   sweep.hidden = true;
-  angle.focus();
+  angle.focus({ preventScroll: true });
   motion.setSettings(settings);
 });
 compact.addEventListener("change", () => {
