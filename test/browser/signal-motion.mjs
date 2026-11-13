@@ -48,34 +48,35 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
   }, [first.toString("base64"), second.toString("base64")]);
 
   async function follow(page, stem, offsets) {
-    const epoch = performance.now();
+    const captured = await page.evaluate(async (offsets) => {
+      const epoch = performance.now();
+      return Promise.all(offsets.map(async (targetMs) => {
+        await new Promise((resolve) => setTimeout(resolve, targetMs));
+        const requestedMs = performance.now() - epoch;
+        const texture = await window.__visualProbe.readFrame(true);
+        return { targetMs, requestedMs, epoch, texture };
+      }));
+    }, offsets);
     const frames = [];
-    for (const offset of offsets) {
-      const wait = epoch + offset - performance.now();
-      if (wait > 0) await page.waitForTimeout(wait);
-      const start = performance.now();
-      const label = stem + "-" + String(offset).padStart(5, "0") + "ms";
-      const texture = await page.evaluate(() => window.__visualProbe.readFrame(true));
-      const gpu = await saveTexture(label, texture);
-      frames.push({
-        targetMs: offset, captureStartedMs: Math.round(start - epoch),
-        readbackMs: Math.round(performance.now() - start), gpu,
-      });
+    for (const { targetMs, requestedMs, epoch, texture } of captured) {
+      const label = stem + "-" + String(targetMs).padStart(5, "0") + "ms";
+      const { submittedAt, ...image } = texture;
+      const gpu = await saveTexture(label, image);
+      frames.push({ targetMs, requestedMs: Math.round(requestedMs), presentedMs: Math.round(submittedAt - epoch), gpu });
     }
+    measurements.cycles[stem].samples = frames;
     assert.ok(frames.every(({ gpu }) => gpu.colors > 20), JSON.stringify(frames));
     assert.equal(new Set(frames.map(({ gpu }) => gpu.sha256)).size, frames.length, stem + " did not change");
-    assert.ok(frames.every(({ targetMs, captureStartedMs }) => Math.abs(captureStartedMs - targetMs) < 600),
-      stem + " missed real-time capture deadlines: " + JSON.stringify(frames.map(({ targetMs, captureStartedMs }) => [targetMs, captureStartedMs])));
+    assert.ok(frames.every(({ targetMs, presentedMs }) => Math.abs(presentedMs - targetMs) < 600),
+      stem + " missed natural capture deadlines: " + JSON.stringify(frames.map(({ targetMs, presentedMs }) => [targetMs, presentedMs])));
     return frames;
   }
 
   return {
     async cycle(page, viewportName, id, period) {
       const stem = "signal-" + viewportName + "-" + id;
-      measurements.cycles[stem] = {
-        nominalPeriodSeconds: period,
-        samples: await follow(page, stem, schedule(period).map((seconds) => seconds * 1000)),
-      };
+      measurements.cycles[stem] = { nominalPeriodSeconds: period, samples: [] };
+      await follow(page, stem, schedule(period).map((seconds) => seconds * 1000));
     },
     async transitions(page, surface, sequence) {
       await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 100);
