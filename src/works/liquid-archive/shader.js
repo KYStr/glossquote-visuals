@@ -7,22 +7,22 @@ export const SWEEP_SECONDS = 12;
 // camera ray, finite-difference normals and the light's shadow ray.
 const geometry = (point, distance, identify = false) => `
   let local = ${point} - vec3f(0.0, 0.805, 0.0);
-  let tube = length(vec2f(length(local.xy) - 0.585, local.z * 1.16)) - 0.151;
-  let foot = abs(${point} - vec3f(0.0, 0.113, 0.0)) - vec3f(0.353, 0.078, 0.21);
-  let footDistance = length(max(foot, vec3f(0.0))) + min(max(foot.x, max(foot.y, foot.z)), 0.0) - 0.031;
-  let cup = abs(vec2f(length(${point}.xz), ${point}.y - 1.573)) - vec2f(0.104, 0.073);
+  let tube = length(vec2f(length(local.xy) - 0.585, local.z * 1.10)) - 0.151;
+  let foot = abs(${point} - vec3f(0.0, 0.113, 0.0)) - vec3f(0.319, 0.071, 0.182);
+  let footDistance = length(max(foot, vec3f(0.0))) + min(max(foot.x, max(foot.y, foot.z)), 0.0) - 0.037;
+  let cup = abs(vec2f(length(${point}.xz), ${point}.y - 1.561)) - vec2f(0.104, 0.065);
   let cupBody = length(max(cup, vec2f(0.0))) + min(max(cup.x, cup.y), 0.0) - 0.009;
   let opening = max(length(${point}.xz) - 0.082, 1.608 - ${point}.y);
   let cupDistance = max(cupBody, -opening);
-  let candle = abs(vec2f(length(${point}.xz), ${point}.y - 1.785)) - vec2f(0.070, 0.171);
+  let candle = abs(vec2f(length(${point}.xz), ${point}.y - 1.751)) - vec2f(0.072, 0.153);
   let wax = length(max(candle, vec2f(0.0))) + min(max(candle.x, candle.y), 0.0) - 0.006;
-  let wick = length(${point} - vec3f(0.0, clamp(${point}.y, 1.95, 1.999), 0.0)) - 0.009;
-  let flame = (length((${point} - vec3f(0.012, 2.055, 0.0)) * vec3f(2.7, 1.0, 2.5)) - 0.071) * 0.36;
-  let blend = max(0.053 - abs(tube - footDistance), 0.0) / 0.053;
-  let footJoint = min(tube, footDistance) - blend * blend * 0.01325;
-  let metal = min(footJoint, cupDistance);
-  ${distance} = min(min(metal, wax), min(wick, flame));
-  ${identify ? "material = select(select(1, 2, wax < metal), select(3, 4, flame < wick), min(wick, flame) < min(wax, metal));" : ""}
+  let wickY = clamp(${point}.y, 1.895, 1.949);
+  let wickCenter = vec3f(0.008 + (wickY - 1.895) * 0.33, wickY, 0.009);
+  let wick = length(${point} - wickCenter) - 0.007;
+  let blend = max(0.135 - abs(tube - footDistance), 0.0) / 0.135;
+  let metal = min(min(tube, footDistance) - blend * blend * 0.03375, cupDistance);
+  ${distance} = min(min(metal, wax), wick);
+  ${identify ? "material = select(select(1, 2, wax < metal), 3, wick < min(wax, metal));" : ""}
 `;
 
 const HaloStudio = registerShader(defineShader({
@@ -36,13 +36,13 @@ const HaloStudio = registerShader(defineShader({
   paint: wgsl`
     // Camera and studio coordinates. We orbit the light; the camera and sculpture are fixed.
     let tau = 6.28318530718;
-    let shot = (uv - vec2f(mix(0.68, 0.51, compact), mix(0.52, 0.49, compact))) * vec2f(aspect, -1.0);
+    let shot = (uv - vec2f(mix(0.68, 0.51, compact), mix(0.50, 0.48, compact))) * vec2f(aspect, -1.0);
     let forward = normalize(vec3f(0.0, -0.087, -1.0));
     let right = vec3f(1.0, 0.0, 0.0);
     let up = cross(right, forward);
     let camera = vec3f(0.0, 1.49, 4.85);
-    let ray = normalize(forward * mix(1.92, 1.78, compact) + right * shot.x + up * shot.y);
-    let yaw = -0.29;
+    let ray = normalize(forward * mix(1.98, 1.84, compact) + right * shot.x + up * shot.y);
+    let yaw = -0.35;
     let pose = mat3x3f(vec3f(cos(yaw), 0.0, -sin(yaw)), vec3f(0.0, 1.0, 0.0), vec3f(sin(yaw), 0.0, cos(yaw)));
     let objectCamera = transpose(pose) * camera;
     let objectRay = transpose(pose) * ray;
@@ -56,9 +56,9 @@ const HaloStudio = registerShader(defineShader({
     let wallT = (-1.65 - camera.z) / ray.z;
     let floorT = -camera.y / min(-0.00001, ray.y);
     let roomT = min(floorT, wallT);
-    let sphereOrigin = objectCamera - vec3f(0.0, 1.07, 0.0);
+    let sphereOrigin = objectCamera - vec3f(0.0, 0.98, 0.0);
     let sphereB = dot(sphereOrigin, objectRay);
-    let sphereH = sphereB * sphereB - dot(sphereOrigin, sphereOrigin) + 1.22;
+    let sphereH = sphereB * sphereB - dot(sphereOrigin, sphereOrigin) + 1.09;
     var t = max(0.0, -sphereB - sqrt(max(sphereH, 0.0)));
     let farT = min(roomT, -sphereB + sqrt(max(sphereH, 0.0)));
     var material = 0;
@@ -69,8 +69,8 @@ const HaloStudio = registerShader(defineShader({
         let q = objectCamera + objectRay * t;
         var d = 0.0;
         ${geometry("q", "d", true)}
-        if (d < 0.0009) { struck = true; break; }
-        t += max(0.001, d * 0.90);
+        if (d < 0.00048) { struck = true; break; }
+        t += max(0.00065, d * 0.91);
       }
     }
 
@@ -80,8 +80,9 @@ const HaloStudio = registerShader(defineShader({
       let roomNormal = select(vec3f(0.0, 0.0, 1.0), vec3f(0.0, 1.0, 0.0), onFloor);
       let toLight = lightPosition - p;
       let lightDir = normalize(toLight);
-      let paintNoise = sin(p.x * 141.3 + p.y * 233.2 + p.z * 63.1) * sin(p.z * 123.5 + p.x * 113.2);
-      let grain = 0.96 + 0.04 * paintNoise;
+      let stone = sin(p.x * 119.3 + p.y * 93.1) * sin(p.z * 86.5 + p.y * 78.8 - p.x * 128.2);
+      let oak = sin(p.z * 112.0 + sin(p.x * 2.8 + p.z * 17.0) * 1.6) * sin(p.z * 46.0 + p.x * 0.5);
+      let grain = 0.98 + select(stone * 0.023, oak * 0.066, onFloor);
       let upper = exp(-0.27 * dot(p - vec3f(0.5, 1.40, -1.65), p - vec3f(0.5, 1.40, -1.65)));
       let falloff = max(0.0, dot(roomNormal, lightDir)) / (1.0 + 0.15 * dot(toLight, toLight));
       var shadow = 1.0;
@@ -99,14 +100,14 @@ const HaloStudio = registerShader(defineShader({
         }
       }
       let contact = select(1.0, mix(0.43, 1.0, smoothstep(0.18, 0.80, length(p.xz * vec2f(1.0, 1.6)))), onFloor);
-      let base = mix(vec3f(0.012, 0.022, 0.029), vec3f(0.051, 0.069, 0.080), upper);
+      let backdrop = mix(vec3f(0.021, 0.030, 0.035), vec3f(0.113, 0.125, 0.122), upper);
+      let shelf = mix(vec3f(0.025, 0.023, 0.021), vec3f(0.071, 0.057, 0.044), exp(-0.2 * dot(p.xz, p.xz)));
+      let base = select(backdrop, shelf, onFloor);
       let setLight = exp(-0.73 * pow(p.x - p.y * 0.40 - 0.72, 2.0)) * smoothstep(0.0, 2.05, p.y);
-      let wallFill = select(vec3f(0.025, 0.045, 0.049) * setLight, vec3f(0.0), onFloor);
+      let wallFill = select(vec3f(0.056, 0.066, 0.063) * setLight, vec3f(0.0), onFloor);
       let pool = keyColor * falloff * shadow * select(0.085, 0.20, onFloor);
       let seam = select(1.0, mix(0.63, 1.0, smoothstep(0.0, 0.16, p.y)), !onFloor);
-      let flameAxis = normalize(vec3f(0.012, 2.055, 0.0) - camera);
-      let halo = exp(-175.0 * length(ray - flameAxis)) * vec3f(0.22, 0.11, 0.035);
-      return vec4f((base + wallFill + pool) * grain * contact * seam + halo, 1.0);
+      return vec4f((base + wallFill + pool) * grain * contact * seam, 1.0);
     }
 
     let q = objectCamera + objectRay * t;
@@ -125,23 +126,23 @@ const HaloStudio = registerShader(defineShader({
     var localNormal = normalize(normalParts);
     let toLight = lightPosition - p;
     let direct = normalize(toLight);
-    if (material == 4) {
-      let edge = pow(max(0.0, dot(pose * localNormal, -ray)), 0.52);
-      let tip = smoothstep(2.025, 2.111, q.y);
-      return vec4f(mix(vec3f(1.0, 0.86, 0.46), vec3f(0.91, 0.40, 0.095), tip * 0.6 + (1.0 - edge) * 0.24), 1.0);
-    }
     if (material == 3) { return vec4f(0.024, 0.018, 0.013, 1.0); }
     if (material == 2) {
       let diffuse = max(0.0, dot(pose * localNormal, direct));
-      let flameBounce = exp(-32.0 * max(0.0, 1.962 - q.y));
-      return vec4f(vec3f(0.76, 0.66, 0.51) * (0.25 + diffuse * 0.46) + keyColor * flameBounce * 0.20, 1.0);
+      let waxRim = smoothstep(1.82, 1.91, q.y);
+      return vec4f(vec3f(0.84, 0.75, 0.62) * (0.32 + diffuse * 0.37 + waxRim * 0.14), 1.0);
     }
 
-    // Concentric tooling marks on the ring and horizontal ones on the turned cup.
-    let ringRadius = length(q.xy - vec2f(0.0, 0.805));
-    let brushAxis = mix(q.y, ringRadius, smoothstep(0.18, 0.27, q.y) * (1.0 - smoothstep(1.52, 1.60, q.y)));
-    let hairlines = (0.57 * sin(brushAxis * 876.0 + 0.43 * sin(q.x * 17.0)) + 0.43 * sin(brushAxis * 473.0 + q.z * 39.0));
-    localNormal = normalize(localNormal + brushed * hairlines * 0.016 * vec3f(0.0, 1.0, 0.6));
+    // Tool marks follow the section around the tube. The base and cup use straight passes.
+    let ring = q.xy - vec2f(0.0, 0.805);
+    let ringDirection = normalize(ring);
+    let crossSection = atan2(q.z * 1.10, length(ring) - 0.585);
+    let onRing = smoothstep(0.23, 0.34, q.y) * (1.0 - smoothstep(1.49, 1.58, q.y));
+    let brushAxis = mix(q.y * 9.5 + q.z * 2.2, crossSection + 0.07 * ringDirection.x, onRing);
+    let hairlines = 0.62 * sin(brushAxis * 137.0 + 1.9 * sin(q.x * 18.0 + q.z * 7.0)) +
+      0.38 * sin(brushAxis * 91.0 + q.z * 49.0);
+    let tooling = mix(vec3f(0.0, 1.0, 0.4), vec3f(ringDirection, 0.55), onRing);
+    localNormal = normalize(localNormal + brushed * hairlines * 0.012 * tooling);
     let normal = pose * localNormal;
     let reflection = reflect(ray, normal);
     let ndv = max(0.0, dot(normal, -ray));
@@ -155,33 +156,42 @@ const HaloStudio = registerShader(defineShader({
     let reflectedT = dot(toLight, lightNormal) / min(-0.0001, towardEmitter);
     let reflectedP = reflection * reflectedT - toLight;
     let emitterUV = vec2f(dot(reflectedP, lightRight), dot(reflectedP, lightUp));
-    let roughness = mix(0.11, 0.36, brushed);
-    let strip = (1.0 - smoothstep(0.24, 0.24 + roughness, abs(emitterUV.x))) *
+    let roughness = mix(0.19, 0.55, brushed);
+    let strip = (1.0 - smoothstep(0.29, 0.29 + roughness, abs(emitterUV.x))) *
       (1.0 - smoothstep(0.95, 1.18 + roughness, abs(emitterUV.y)));
-    let specular = strip * smoothstep(0.0, 0.09, -towardEmitter) * step(0.0, reflectedT);
+    let grazingLight = smoothstep(0.0, 0.16, -towardEmitter) * step(0.0, reflectedT);
+    let specular = strip * grazingLight;
+    let softbox = exp(-1.55 * pow(emitterUV.x, 2.0) - 0.48 * pow(emitterUV.y, 2.0)) * grazingLight;
 
-    // Stationary ceiling and a cool rim are actual directions in the studio.
-    let ceiling = pow(max(0.0, dot(reflection, normalize(vec3f(-0.29, 0.92, 0.26)))), mix(9.0, 4.0, brushed));
-    let edgePanel = pow(max(0.0, dot(reflection, normalize(vec3f(-0.77, 0.14, -0.62)))), mix(38.0, 11.0, brushed));
-    let floorBounce = 0.042 * smoothstep(0.0, 0.73, -reflection.y);
-    let glow = exp(-11.0 * length(p - vec3f(0.0, 2.07, 0.0))) * keyColor;
-    // Large stationary photographic cards give the steel a readable broad face and dark flags.
-    let cardNormal = normalize(vec3f(-0.52, -0.10, -0.85));
-    let cardRight = normalize(cross(vec3f(0.0, 1.0, 0.0), cardNormal));
-    let cardUp = normalize(cross(cardNormal, cardRight));
-    let cardFront = normalize(vec3f(0.48, 0.28, 0.82));
-    let across = dot(reflection, cardRight);
-    let vertical = dot(reflection, cardUp);
-    let largeCard = smoothstep(0.32, 0.58, dot(reflection, cardFront)) *
-      (1.0 - smoothstep(mix(0.17, 0.30, brushed), mix(0.33, 0.57, brushed), abs(across))) *
-      (1.0 - smoothstep(0.55, 0.80, abs(vertical)));
-    let darkFlag = 1.0 - smoothstep(0.0, 0.26, abs(across + 0.32));
-    let ambient = (vec3f(0.036, 0.045, 0.049) + floorBounce * vec3f(1.0, 0.89, 0.78)) *
-      (1.0 - 0.32 * darkFlag);
-    let cool = vec3f(0.84, 0.93, 0.97) * (ceiling * 0.36 + edgePanel * 0.20 + largeCard * mix(0.67, 0.33, brushed));
-    let warm = keyColor * (specular * mix(0.79, 0.38, brushed) + brushed * max(0.0, dot(normal, direct)) * 0.10);
-    let silver = (ambient + cool + warm + glow * 0.4) * (0.77 + 0.23 * fresnel);
-    return vec4f(silver * (1.0 + hairlines * brushed * 0.041), 1.0);
+    // Reflection of the environment: the camera-side wall has a broad paper
+    // sweep, a two-pane studio window and narrow flags. The opposite half is
+    // the warm tabletop. These stay fixed when the key light travels.
+    let bounce = 0.5 + 0.5 * reflection.y;
+    let horizon = smoothstep(-0.36, 0.05, reflection.y);
+    let ground = mix(vec3f(0.075, 0.051, 0.034), vec3f(0.29, 0.224, 0.159),
+      smoothstep(0.12, 0.80, -reflection.y));
+    let wall = mix(vec3f(0.118, 0.131, 0.132), vec3f(0.238, 0.257, 0.26), bounce);
+    let wallShadow = exp(-22.0 * pow(reflection.x + 0.36 + reflection.y * 0.16, 2.0));
+    let lighting = mix(ground, wall, horizon) * (1.0 - wallShadow * mix(0.72, 0.37, brushed));
+
+    let towardFront = smoothstep(0.08, 0.38, reflection.z);
+    let projection = reflection.xy / max(0.19, reflection.z);
+    let windowUV = projection - vec2f(0.32, 0.21);
+    let softness = mix(0.15, 0.47, brushed);
+    let mainWindow = (1.0 - smoothstep(0.57, 0.57 + softness, abs(windowUV.x))) *
+      (1.0 - smoothstep(0.62, 0.62 + softness, abs(windowUV.y)));
+    let mullion = 1.0 - smoothstep(mix(0.022, 0.07, brushed), mix(0.058, 0.22, brushed), abs(windowUV.x + 0.08));
+    let sill = smoothstep(-0.62, -0.24, windowUV.y);
+    let panes = mainWindow * sill * (1.0 - mullion * mix(0.66, 0.22, brushed)) * towardFront;
+    let card = exp(-2.6 * pow(projection.x + 0.71 - projection.y * 0.15, 2.0)) *
+      (1.0 - smoothstep(0.64, 1.17, abs(projection.y + 0.24))) * towardFront;
+    let lightWell = pow(max(0.0, dot(reflection, normalize(vec3f(0.19, 0.91, -0.37)))), mix(13.0, 4.5, brushed));
+    let rim = pow(max(0.0, dot(reflection, normalize(vec3f(-0.79, 0.19, -0.58)))), mix(58.0, 14.0, brushed));
+    let neutral = vec3f(0.90, 0.94, 0.95) * (panes * mix(0.82, 0.45, brushed) + card * 0.26 + lightWell * 0.40 + rim * 0.20);
+    let warm = keyColor * (specular * mix(0.76, 0.36, brushed) + softbox * mix(0.14, 0.24, brushed) + brushed * max(0.0, dot(normal, direct)) * 0.13);
+    let silver = (lighting + neutral + warm) * (0.82 + 0.18 * fresnel);
+    let mapped = silver * (1.0 + silver * 0.29) / (1.0 + silver * 0.53);
+    return vec4f(mapped * (1.0 + hairlines * brushed * 0.048), 1.0);
   `,
 }));
 
