@@ -772,7 +772,7 @@ async function checkCandidateComposites(browser) {
     ];
     // Their dedicated natural-motion suites compare held mobile frames. Add
     // same-frame mobile before/action/held evidence under the controlled clock.
-    if (["night-signal", "aeriform"].includes(work.slug)) {
+    if (["night-signal", "prism-materials", "aeriform"].includes(work.slug)) {
       views.push({ prefix: "", width: 390, height: 844, label: "mobile" });
     }
     for (const { prefix, width, height, label } of views) {
