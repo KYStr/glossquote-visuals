@@ -30,7 +30,7 @@ export function initializeBrief(chooseForm) {
 
   function showOutputs() {
     for (const output of outputs) {
-      const relevant = !service.value || output.dataset.service === service.value;
+      const relevant = output.dataset.service === service.value;
       output.disabled = !relevant;
       output.closest("label").hidden = !relevant;
     }

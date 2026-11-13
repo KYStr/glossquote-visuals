@@ -15,7 +15,7 @@ const copy = english ? {
   unavailable: "Still form · live motion unavailable",
   paused: "Live form paused",
   starting: "Preparing the live form",
-  running: "Move over the form or tap Scatter",
+  running: "Move over the sculpture or tap Scatter",
   pause: "Pause", resume: "Resume",
 } : {
   still: "靜態造型",
@@ -23,7 +23,7 @@ const copy = english ? {
   unavailable: "靜態造型・無法即時渲染",
   paused: "即時造型已暫停",
   starting: "正在準備即時造型",
-  running: "移過造型或點選「散開」",
+  running: "移動游標掠過造型，或點選「散開」",
   pause: "暫停", resume: "繼續",
 };
 

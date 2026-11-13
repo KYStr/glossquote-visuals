@@ -104,13 +104,13 @@ section[id] { scroll-margin-block-start: 1rem; }
 .studio { font-weight: 650; letter-spacing: 0.04em; margin-block-end: clamp(0.9rem, 3vw, 2rem); }
 h1 {
   font: 800 clamp(3.25rem, 9.6vw, 9.5rem)/0.82 var(--headline);
-  letter-spacing: -0.09em;
+  letter-spacing: -0.065em;
   position: relative;
   z-index: 1;
 }
 h1 span { display: block; width: fit-content; }
 h1 span:last-child { color: #ffd8d0; }
-[lang="zh-Hant"] h1 { font-size: clamp(2.95rem, 7.1vw, 7.75rem); letter-spacing: -0.09em; line-height: 1.08; }
+[lang="zh-Hant"] h1 { font-size: clamp(2.95rem, 7.1vw, 7.75rem); letter-spacing: -0.065em; line-height: 1.08; }
 .hero-intro { max-inline-size: 21rem; font-size: 1.1rem; margin-block: clamp(1.3rem, 3vw, 2.1rem) 1.2rem; }
 .action {
   border: 1px solid currentColor;
@@ -167,8 +167,8 @@ h1 span:last-child { color: #ffd8d0; }
   position: absolute;
   z-index: 1;
   pointer-events: none;
-  inset: 14% 12%;
-  border: 1px solid #d6d8ff52;
+  inset: 12% 10%;
+  border: 1px solid #d6d8ff38;
   border-radius: 50%;
   transform: rotate(-27deg) scaleY(0.78);
 }
@@ -214,7 +214,7 @@ h1 span:last-child { color: #ffd8d0; }
 .controls .motion-buttons button { border-color: #ffffff85; }
 .motion-status { font-size: 0.8rem; min-block-size: 1.4em; color: #f1e9ff; }
 
-h2 { font: 800 clamp(2.15rem, 5.65vw, 5.75rem)/0.96 var(--headline); letter-spacing: -0.075em; }
+h2 { font: 800 clamp(2.15rem, 5.65vw, 5.75rem)/0.96 var(--headline); letter-spacing: -0.055em; }
 [lang="zh-Hant"] h2 { font-size: clamp(2rem, 4.4vw, 4.8rem); line-height: 1.14; letter-spacing: -0.065em; }
 h3 { font: 750 clamp(1.28rem, 2.1vw, 2.25rem)/1.05 var(--headline); letter-spacing: -0.045em; }
 [lang="zh-Hant"] h3 { line-height: 1.24; }
@@ -227,7 +227,7 @@ h3 { font: 750 clamp(1.28rem, 2.1vw, 2.25rem)/1.05 var(--headline); letter-spaci
 .case--identity { grid-column: span 7; }
 .case--motion { grid-column: span 5; padding-block-start: 13%; }
 .case--digital { grid-column: 4 / span 8; }
-.work-image { overflow: hidden; position: relative; isolation: isolate; min-block-size: 12rem; }
+.work-image { inline-size: 100%; min-inline-size: 0; overflow: hidden; position: relative; isolation: isolate; min-block-size: 0; }
 .work-image img { position: absolute; }
 .work-image--radio {
   aspect-ratio: 1.45;
@@ -260,7 +260,7 @@ h3 { font: 750 clamp(1.28rem, 2.1vw, 2.25rem)/1.05 var(--headline); letter-spaci
   z-index: 1;
   inset: 10% auto auto 7%;
   font: 800 clamp(1.35rem, 5.4vw, 6rem)/0.8 var(--headline);
-  letter-spacing: -0.09em;
+  letter-spacing: -0.065em;
 }
 .work-image--offbeat b span { color: #ff7a59; }
 .work-image--offbeat i { position: absolute; inset: auto auto 9% 7%; }

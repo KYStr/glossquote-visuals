@@ -6,8 +6,8 @@ const tilt = (outputMin, outputMax, speed = 0.5) => ({
 
 const forms = {
   identity: {
-    shape: { type: "torus3D", radius: 0.295, tube: 0.112, rotX: tilt(61, 76), rotY: tilt(-14, 18), rotZ: 0 },
-    colorA: "#f94b26", colorB: "#ffb583", rotation: -23, scale: 1,
+    shape: { type: "torus3D", radius: 0.29, tube: 0.126, rotX: tilt(42, 73), rotY: tilt(-18, 23), rotZ: 0 },
+    colorA: "#fb542d", colorB: "#ffd4b3", rotation: -23, scale: 1,
   },
   motion: {
     shape: { type: "helix3D", radius: 0.22, tube: 0.086, pitch: 0.205, rotX: tilt(-17, 2), rotY: tilt(-30, 20), rotZ: 0 },
@@ -43,7 +43,7 @@ export function initializeAeriform(canvas, options) {
     { id: "volume", type: "Particles", props: {
       ...particleProps(options.settings),
       count: matchMedia("(pointer: coarse)").matches ? 4300 : 5900,
-      size: 2.15, softness: 0.08, exposure: 1.34, damping: 0.42,
+      size: 2.24, softness: 0.06, exposure: 1.16, damping: 0.42,
       mouseRadius: 0.26, particleShape: "dot",
       center: { x: 0.5, y: 0.5 },
     } },

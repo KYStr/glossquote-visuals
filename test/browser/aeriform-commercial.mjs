@@ -207,14 +207,26 @@ async function gpu(browser, lang, width, inspect) {
     const probe = await observe(page, { readPixels: true });
     await open(page, lang);
     await phase(page, "running");
-    await nextFrames(page, 6);
+    const runningAt = performance.now();
+    const startingCount = await textures(page);
+    const clip = await stage(page).boundingBox();
+    if (inspect) {
+      await snap(page, stem + "-formation-first-presented", { clip });
+      await nextFrames(page, 20);
+      await snap(page, stem + "-formation-after-20-acquisitions", { clip });
+      evidence.measurements[stem + "-formation"] = {
+        elapsedMs: Math.round(performance.now() - runningAt),
+        acquisitions: await textures(page) - startingCount,
+      };
+    } else {
+      await nextFrames(page, 26);
+    }
     assert.equal(await stage(page).locator("canvas").isVisible(), true);
     assert.equal(await stage(page).locator('[data-still="identity"]').isVisible(), false);
     assert.equal(await page.locator("canvas").count(), 1);
     await snap(page, stem + "-webgpu-fold");
     await snap(page, stem + "-webgpu", { fullPage: true });
     await texture(page, stem + "-initial");
-    const clip = await stage(page).boundingBox();
     if (inspect) {
       const t0 = performance.now();
       const timing = [];
@@ -251,7 +263,7 @@ async function gpu(browser, lang, width, inspect) {
       for (const form of ["motion", "digital", "identity"]) {
         await page.locator(`button[data-form="${form}"]`).click();
         assert.equal(await stage(page).getAttribute("data-form"), form);
-        await nextFrames(page, 20);
+        await nextFrames(page, 45);
         await snap(page, stem + "-form-" + form, { clip });
         await texture(page, stem + "-form-" + form);
       }
