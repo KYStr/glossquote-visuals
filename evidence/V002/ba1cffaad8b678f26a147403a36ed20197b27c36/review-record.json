@@ -1,0 +1,1237 @@
+{
+  "commit": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+  "work": "V002",
+  "reviewer": "/root/v001_review",
+  "scores": {
+    "artDirection": 9.1,
+    "uiDesign": 9.2,
+    "commercialCompleteness": 9.4
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "深灰綠、銀色、Geist 與成套暖灰產品影像一致。首屏燭台的鋼環與系列商品照的輪廓相符，程序場景仍有較簡潔的展示室質感。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "桌面全幅畫面以文字和大型鋼環分居左右，手機改為文字、燭台、操作垂直順序。兩種尺寸的輪廓、內孔及腳座完整，CTA 清楚。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "雙語標題、產品名、價格及規格層級明確。英文首屏字距較緊，手機次要標籤較小。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "鏡面窄亮帶和拉絲柔光、細紋可區分，光移動時沿鋼環和內孔曲面變化，腳座的接觸暗部與投影保持連續。高對比外緣和腳座仍有細小階梯，程序場景的光影較商品照簡潔。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-90deg.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-180deg-texture.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-90deg-texture.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-90deg.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-b.png"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "深色首屏與工藝區交替淺色商品和詢問區。390px 可循三款、設定、工藝、FAQ 到清單，商品在系列與設定區重複出現使窄版流程較長。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "主視覺導向系列，商品比較再進入選款、規格和詢問清單，資訊順序清楚。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "系列、工藝及詢問清單入口清楚，品項直達設定，完成後可以下載或回到系列。手機次要連結及控制標籤較緊湊。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-inquiry.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-inquiry.png"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "商品、表面、件／組、數量、單價與合計有明確狀態，報告覆蓋無效數量與合併。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-product.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-product.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/results.json"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "實看中英 1440/390、商品表單與清單。四寬 320/390/768/1440、200%、鍵盤、觸控與無 JS/GPU 依本 SHA 斷言，抽測對比 6.87:1。部分次要文字在手機偏小。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-product.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-product.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-no-js.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/results.json"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "商品與表面選擇同步更新照片、規格、價格及清單；首屏固定以 Halo 展示表面，切換到花器仍需看首屏標籤才能辨識兩處角色。兩語下載與清單一致。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-inquiry.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-product.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-download.txt",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-download.txt"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "首屏明確定位不鏽鋼家飾，三款商品對應餐桌、窗邊與書架。商品照、工藝近照與可操控燭台呈現兩種表面的用途和差異。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "材質、尺寸、用途、兩表面、單價與組件數足以作選擇；書擋每組兩件與單件尺寸明確。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-product.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-product.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-download.txt",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-download.txt"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "概念品牌、示意價、未含運費與未送出詢問／訂單，均在雙語頁面及真正下載內容中明示。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-download.txt",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-download.txt"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "雙語商品與表面選擇、合併和分列、清單修改、移除、清空及真實下載均有本 SHA 證據。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-inquiry.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-inquiry.png",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "清單與兩份實際 TXT 合計一致，NT$8,640＋2,280＋6,760＝17,680。數量錯誤可修正，移除有焦點回復；清單只存在此頁，需下載才可留存。",
+          "evidence": [
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-download.txt",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-download.txt",
+            "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/results.json"
+          ]
+        }
+      ]
+    }
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+    "reviewer": "/root/v001_review",
+    "sharedFreeze": [
+      {
+        "viewport": "desktop",
+        "locale": "en",
+        "measurementEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+        "pauseMode": "freeze",
+        "queueSubmissions": 0,
+        "sameCanvas": true,
+        "pointerChallengePassed": true,
+        "clockElapsedMs": 1000,
+        "originalChangedPixels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparisons": {
+          "beforeToPaused": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 627
+          },
+          "pausedToAfter": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 627
+          },
+          "diagnosticRestored": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 627
+          }
+        },
+        "originalCssControlComparison": {
+          "drift": {
+            "mean": 0,
+            "changedPixels": 0,
+            "peak": 0,
+            "width": 80,
+            "height": 60
+          },
+          "forward": {
+            "mean": 4.269997179903429,
+            "changedPixels": 448,
+            "peak": 38.01948051948057,
+            "width": 80,
+            "height": 60
+          },
+          "backward": {
+            "mean": 4.269997179903429,
+            "changedPixels": 448,
+            "peak": 38.01948051948057,
+            "width": 80,
+            "height": 60
+          },
+          "restored": {
+            "mean": 0,
+            "changedPixels": 0,
+            "peak": 0,
+            "width": 80,
+            "height": 60
+          }
+        },
+        "fixedAngleResumeQualification": "共用 1100px 兩語測試續播保持固定角度，兩語各有新 GPU texture acquisition。兩表面的可見續播使用 forme-studio 原生與受控合成。",
+        "resumedTextureAcquisitions": 6,
+        "controlComposites": [
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-a0.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-a1.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-b.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-a2.png"
+        ],
+        "controlTextures": [
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-texture-a0.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-texture-a1.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-texture-b.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-texture-a2.png"
+        ],
+        "diagnosticNoCanvas": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-diagnostic-no-canvas.png",
+        "resumedTexture": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-texture-native-resume.png",
+        "files": {
+          "before-native-pause": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-before-native-pause.png",
+          "native-pause": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-native-pause.png",
+          "native-pause-after-1000ms": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-native-pause-after-1000ms.png",
+          "native-resume": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-en-composite-native-resume.png"
+        }
+      },
+      {
+        "viewport": "desktop",
+        "locale": "zh-Hant",
+        "measurementEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+        "pauseMode": "freeze",
+        "queueSubmissions": 0,
+        "sameCanvas": true,
+        "pointerChallengePassed": true,
+        "clockElapsedMs": 1000,
+        "originalChangedPixels": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "comparisons": {
+          "beforeToPaused": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 627
+          },
+          "pausedToAfter": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 627
+          },
+          "diagnosticRestored": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 627
+          }
+        },
+        "originalCssControlComparison": {
+          "drift": {
+            "mean": 0,
+            "changedPixels": 0,
+            "peak": 0,
+            "width": 80,
+            "height": 60
+          },
+          "forward": {
+            "mean": 4.30836192973693,
+            "changedPixels": 446,
+            "peak": 38.01948051948057,
+            "width": 80,
+            "height": 60
+          },
+          "backward": {
+            "mean": 4.30836192973693,
+            "changedPixels": 446,
+            "peak": 38.01948051948057,
+            "width": 80,
+            "height": 60
+          },
+          "restored": {
+            "mean": 0,
+            "changedPixels": 0,
+            "peak": 0,
+            "width": 80,
+            "height": 60
+          }
+        },
+        "fixedAngleResumeQualification": "共用 1100px 兩語測試續播保持固定角度，兩語各有新 GPU texture acquisition。兩表面的可見續播使用 forme-studio 原生與受控合成。",
+        "resumedTextureAcquisitions": 6,
+        "controlComposites": [
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-a0.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-a1.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-b.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-a2.png"
+        ],
+        "controlTextures": [
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-texture-a0.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-texture-a1.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-texture-b.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-texture-a2.png"
+        ],
+        "diagnosticNoCanvas": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-diagnostic-no-canvas.png",
+        "resumedTexture": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-texture-native-resume.png",
+        "files": {
+          "before-native-pause": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-before-native-pause.png",
+          "native-pause": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-native-pause.png",
+          "native-pause-after-1000ms": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-native-pause-after-1000ms.png",
+          "native-resume": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-liquid-archive-zh-Hant-composite-native-resume.png"
+        }
+      }
+    ],
+    "views": [
+      {
+        "viewport": "desktop",
+        "locale": "en",
+        "viewportCssPixels": [
+          1440,
+          920
+        ],
+        "motionKind": "periodic",
+        "cycleSeconds": 12,
+        "timeBasis": "controlled-animation-clock",
+        "timeQualification": "受控時間為 Chromium 受控時鐘的 elapsed。自然樣本使用 native RAF 期間的實際 GPU readback 請求時刻與 readbackMs。週期原圖是 GPU texture，固定 90°、四張暫停與共用 A/A/B/A 為可見合成。",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "桌面鏡面窄光沿鋼環內外輪廓移動，拉絲較柔的高光仍保留暗側與線紋。0°→180° 隨光改變投影方向，腳座與接觸區保持固定。兩材質的 12 秒原始取樣、固定角度與原 CSS 合成支持同一幾何上的反光。",
+        "measurementEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/results.json",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-0s.png"
+          },
+          {
+            "seconds": 2,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-2s.png"
+          },
+          {
+            "seconds": 4,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-4s.png"
+          },
+          {
+            "seconds": 6,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-6s.png"
+          },
+          {
+            "seconds": 8,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-8s.png"
+          },
+          {
+            "seconds": 10,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-10s.png"
+          },
+          {
+            "seconds": 12,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-12s.png"
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-0deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-45deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-90deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-135deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-180deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-return-0deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-90deg.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-before.png",
+          "paused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-at-click.png",
+          "stillPaused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-held.png",
+          "resumed": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-resumed.png"
+        },
+        "finishSequences": [
+          {
+            "finish": "polished",
+            "cycleSeconds": 12,
+            "timeBasis": "controlled-animation-clock",
+            "frames": [
+              {
+                "seconds": 0,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-0s.png"
+              },
+              {
+                "seconds": 2,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-2s.png"
+              },
+              {
+                "seconds": 4,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-4s.png"
+              },
+              {
+                "seconds": 6,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-6s.png"
+              },
+              {
+                "seconds": 8,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-8s.png"
+              },
+              {
+                "seconds": 10,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-10s.png"
+              },
+              {
+                "seconds": 12,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-auto-12s.png"
+              }
+            ],
+            "controlledClosure": {
+              "mean": 0.0001388888888888889,
+              "changedPixels": 0,
+              "peak": 1,
+              "width": 80,
+              "height": 60
+            },
+            "naturalTimeBasis": "measured-wall-clock",
+            "naturalSamples": [
+              {
+                "seconds": 0,
+                "targetSeconds": 0,
+                "readbackMs": 290,
+                "textures": 209,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-natural-0s.png"
+              },
+              {
+                "seconds": 2.035,
+                "targetSeconds": 2,
+                "readbackMs": 1101,
+                "textures": 246,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-natural-2s.png"
+              },
+              {
+                "seconds": 4.011,
+                "targetSeconds": 4,
+                "readbackMs": 1288,
+                "textures": 280,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-natural-4s.png"
+              },
+              {
+                "seconds": 6.028,
+                "targetSeconds": 6,
+                "readbackMs": 805,
+                "textures": 316,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-natural-6s.png"
+              },
+              {
+                "seconds": 8.024,
+                "targetSeconds": 8,
+                "readbackMs": 303,
+                "textures": 351,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-natural-8s.png"
+              },
+              {
+                "seconds": 10.016,
+                "targetSeconds": 10,
+                "readbackMs": 348,
+                "textures": 385,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-natural-10s.png"
+              },
+              {
+                "seconds": 12.009,
+                "targetSeconds": 12,
+                "readbackMs": 655,
+                "textures": 421,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-natural-12s.png"
+              }
+            ],
+            "controlEvidence": [
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-45deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-90deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-135deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-180deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-return-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-fixed-90deg.png"
+            ],
+            "fixedAngleReadbackMs": [
+              1383,
+              935,
+              2048,
+              971,
+              1007,
+              1491
+            ],
+            "fixedAngleTextureAcquisitions": [
+              23,
+              18,
+              36,
+              18,
+              18,
+              26
+            ],
+            "pauseEvidence": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-before.png",
+              "paused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-at-click.png",
+              "stillPaused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-held.png",
+              "resumed": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-controlled-pause-resumed.png"
+            },
+            "pauseVerification": {
+              "originalPngSize": [
+                1440,
+                816
+              ],
+              "originalBeforeClickedHeldPngSha256": "bafa69a89f515f021f88fe36a2b0f8f7442d821a41c5cf5c7a7c4ad9aeb34161",
+              "originalResumedPngSha256": "5575c159d725deaf11717bf0ab75db648761209ae9ba81cbf5dbe7003e552504",
+              "firstThreePngFilesByteIdentical": true,
+              "changedPixelsAtClick": 0,
+              "changedPixelsWhileHeld": 0,
+              "changedPixelsOnResume": 953391,
+              "queueSubmissions": 0,
+              "heldMilliseconds": 1000,
+              "sameCanvasAndDimensions": true
+            },
+            "nativePause": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-pause-before.png",
+              "beforeIsUnsynchronized": true,
+              "firstHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-paused-a.png",
+              "lastHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-paused-b.png",
+              "firstAndLastHeldByteIdentical": true,
+              "resumedEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-resumed.png",
+              "resumeSamples": [
+                {
+                  "targetMs": 2000,
+                  "requestedMs": 2365.8113999999987,
+                  "textures": 565,
+                  "difference": {
+                    "mean": 0.9179861111111111,
+                    "changedPixels": 34,
+                    "peak": 106,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 808823,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-resumed.png"
+                },
+                {
+                  "targetMs": 4000,
+                  "requestedMs": 4306.3128,
+                  "textures": 592,
+                  "difference": {
+                    "mean": 2.4740972222222224,
+                    "changedPixels": 139,
+                    "peak": 134,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 1008043,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-polished-resumed-4s.png"
+                }
+              ]
+            }
+          },
+          {
+            "finish": "satin",
+            "cycleSeconds": 12,
+            "timeBasis": "controlled-animation-clock",
+            "frames": [
+              {
+                "seconds": 0,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-auto-0s.png"
+              },
+              {
+                "seconds": 2,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-auto-2s.png"
+              },
+              {
+                "seconds": 4,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-auto-4s.png"
+              },
+              {
+                "seconds": 6,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-auto-6s.png"
+              },
+              {
+                "seconds": 8,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-auto-8s.png"
+              },
+              {
+                "seconds": 10,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-auto-10s.png"
+              },
+              {
+                "seconds": 12,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-auto-12s.png"
+              }
+            ],
+            "controlledClosure": {
+              "mean": 0.04020833333333333,
+              "changedPixels": 0,
+              "peak": 2,
+              "width": 80,
+              "height": 60
+            },
+            "naturalTimeBasis": "measured-wall-clock",
+            "naturalSamples": [
+              {
+                "seconds": 0,
+                "targetSeconds": 0,
+                "readbackMs": 281,
+                "textures": 769,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-natural-0s.png"
+              },
+              {
+                "seconds": 2.001,
+                "targetSeconds": 2,
+                "readbackMs": 235,
+                "textures": 804,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-natural-2s.png"
+              },
+              {
+                "seconds": 4.017,
+                "targetSeconds": 4,
+                "readbackMs": 711,
+                "textures": 841,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-natural-4s.png"
+              },
+              {
+                "seconds": 6.005,
+                "targetSeconds": 6,
+                "readbackMs": 282,
+                "textures": 875,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-natural-6s.png"
+              },
+              {
+                "seconds": 8.032,
+                "targetSeconds": 8,
+                "readbackMs": 959,
+                "textures": 912,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-natural-8s.png"
+              },
+              {
+                "seconds": 10.002,
+                "targetSeconds": 10,
+                "readbackMs": 642,
+                "textures": 947,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-natural-10s.png"
+              },
+              {
+                "seconds": 12.039,
+                "targetSeconds": 12,
+                "readbackMs": 415,
+                "textures": 983,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-natural-12s.png"
+              }
+            ],
+            "controlEvidence": [
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-fixed-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-fixed-45deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-fixed-90deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-fixed-135deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-fixed-180deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-fixed-return-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-fixed-90deg.png"
+            ],
+            "fixedAngleReadbackMs": [
+              1468,
+              575,
+              1214,
+              468,
+              1749,
+              1111
+            ],
+            "fixedAngleTextureAcquisitions": [
+              26,
+              10,
+              21,
+              11,
+              31,
+              20
+            ],
+            "pauseEvidence": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-controlled-pause-before.png",
+              "paused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-controlled-pause-at-click.png",
+              "stillPaused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-controlled-pause-held.png",
+              "resumed": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-controlled-pause-resumed.png"
+            },
+            "pauseVerification": {
+              "originalPngSize": [
+                1440,
+                816
+              ],
+              "originalBeforeClickedHeldPngSha256": "04c49d30a2b7dff894af2b4e77d4f40512d7d68a9b12cd0e16f60ed3eebc05ac",
+              "originalResumedPngSha256": "4b125ed1f9bb7a436a93227c14e9768029be4596a6bf2bd6084f7b39810fb4ba",
+              "firstThreePngFilesByteIdentical": true,
+              "changedPixelsAtClick": 0,
+              "changedPixelsWhileHeld": 0,
+              "changedPixelsOnResume": 1088828,
+              "queueSubmissions": 0,
+              "heldMilliseconds": 1000,
+              "sameCanvasAndDimensions": true
+            },
+            "nativePause": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-pause-before.png",
+              "beforeIsUnsynchronized": true,
+              "firstHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-paused-a.png",
+              "lastHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-paused-b.png",
+              "firstAndLastHeldByteIdentical": true,
+              "resumedEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-resumed.png",
+              "resumeSamples": [
+                {
+                  "targetMs": 2000,
+                  "requestedMs": 2600.6613999999972,
+                  "textures": 1121,
+                  "difference": {
+                    "mean": 3.2999305555555556,
+                    "changedPixels": 340,
+                    "peak": 80,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 1105965,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-resumed.png"
+                },
+                {
+                  "targetMs": 4000,
+                  "requestedMs": 4770.676500000001,
+                  "textures": 1155,
+                  "difference": {
+                    "mean": 4.352777777777778,
+                    "changedPixels": 455,
+                    "peak": 91,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 1114944,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-satin-resumed-4s.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "viewport": "mobile",
+        "locale": "zh-Hant",
+        "viewportCssPixels": [
+          390,
+          850
+        ],
+        "motionKind": "periodic",
+        "cycleSeconds": 12,
+        "timeBasis": "controlled-animation-clock",
+        "timeQualification": "受控時間為 Chromium 受控時鐘的 elapsed。自然樣本使用 native RAF 期間的實際 GPU readback 請求時刻與 readbackMs。週期原圖是 GPU texture，固定 90°、四張暫停與共用 A/A/B/A 為可見合成。",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "手機原圖完整保留燭杯、內孔與腳座。鏡面亮帶與較寬的拉絲反射都沿曲面移動，陰影留在底面。兩材質暫停前、立即與保持逐像素相同；兩個續播取樣時點都重新出現光影變化。",
+        "measurementEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/results.json",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-0s.png"
+          },
+          {
+            "seconds": 2,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-2s.png"
+          },
+          {
+            "seconds": 4,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-4s.png"
+          },
+          {
+            "seconds": 6,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-6s.png"
+          },
+          {
+            "seconds": 8,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-8s.png"
+          },
+          {
+            "seconds": 10,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-10s.png"
+          },
+          {
+            "seconds": 12,
+            "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-12s.png"
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-0deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-45deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-90deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-135deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-180deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-return-0deg-texture.png",
+          "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-90deg.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-before.png",
+          "paused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-at-click.png",
+          "stillPaused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-held.png",
+          "resumed": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-resumed.png"
+        },
+        "finishSequences": [
+          {
+            "finish": "polished",
+            "cycleSeconds": 12,
+            "timeBasis": "controlled-animation-clock",
+            "frames": [
+              {
+                "seconds": 0,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-0s.png"
+              },
+              {
+                "seconds": 2,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-2s.png"
+              },
+              {
+                "seconds": 4,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-4s.png"
+              },
+              {
+                "seconds": 6,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-6s.png"
+              },
+              {
+                "seconds": 8,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-8s.png"
+              },
+              {
+                "seconds": 10,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-10s.png"
+              },
+              {
+                "seconds": 12,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-auto-12s.png"
+              }
+            ],
+            "controlledClosure": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            },
+            "naturalTimeBasis": "measured-wall-clock",
+            "naturalSamples": [
+              {
+                "seconds": 0,
+                "targetSeconds": 0,
+                "readbackMs": 222,
+                "textures": 134,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-natural-0s.png"
+              },
+              {
+                "seconds": 2.026,
+                "targetSeconds": 2,
+                "readbackMs": 156,
+                "textures": 198,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-natural-2s.png"
+              },
+              {
+                "seconds": 4.02,
+                "targetSeconds": 4,
+                "readbackMs": 160,
+                "textures": 260,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-natural-4s.png"
+              },
+              {
+                "seconds": 6.027,
+                "targetSeconds": 6,
+                "readbackMs": 2720,
+                "textures": 323,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-natural-6s.png"
+              },
+              {
+                "seconds": 8.747,
+                "targetSeconds": 8,
+                "readbackMs": 344,
+                "textures": 407,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-natural-8s.png"
+              },
+              {
+                "seconds": 10.016,
+                "targetSeconds": 10,
+                "readbackMs": 101,
+                "textures": 446,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-natural-10s.png"
+              },
+              {
+                "seconds": 12.011,
+                "targetSeconds": 12,
+                "readbackMs": 321,
+                "textures": 510,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-natural-12s.png"
+              }
+            ],
+            "controlEvidence": [
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-45deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-90deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-135deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-180deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-return-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-fixed-90deg.png"
+            ],
+            "fixedAngleReadbackMs": [
+              424,
+              702,
+              387,
+              186,
+              229,
+              750
+            ],
+            "fixedAngleTextureAcquisitions": [
+              12,
+              23,
+              12,
+              7,
+              10,
+              22
+            ],
+            "pauseEvidence": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-before.png",
+              "paused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-at-click.png",
+              "stillPaused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-held.png",
+              "resumed": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-controlled-pause-resumed.png"
+            },
+            "pauseVerification": {
+              "originalPngSize": [
+                390,
+                679
+              ],
+              "originalBeforeClickedHeldPngSha256": "b8457a5db0d6e67219394cfa59b4eac5533e1e7baf871933d5b6cebcd37cbcac",
+              "originalResumedPngSha256": "2d02a8c7df60d849b693aa3d1486b44ef7944de5f35ac0cca91489a76a7c0f84",
+              "firstThreePngFilesByteIdentical": true,
+              "changedPixelsAtClick": 0,
+              "changedPixelsWhileHeld": 0,
+              "changedPixelsOnResume": 106435,
+              "queueSubmissions": 0,
+              "heldMilliseconds": 1000,
+              "sameCanvasAndDimensions": true
+            },
+            "nativePause": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-pause-before.png",
+              "beforeIsUnsynchronized": true,
+              "firstHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-paused-a.png",
+              "lastHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-paused-b.png",
+              "firstAndLastHeldByteIdentical": true,
+              "resumedEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-resumed.png",
+              "resumeSamples": [
+                {
+                  "targetMs": 2000,
+                  "requestedMs": 2199.8754000000044,
+                  "textures": 653,
+                  "difference": {
+                    "mean": 0.8300694444444444,
+                    "changedPixels": 38,
+                    "peak": 108,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 112957,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-resumed.png"
+                },
+                {
+                  "targetMs": 4000,
+                  "requestedMs": 4247.669999999998,
+                  "textures": 718,
+                  "difference": {
+                    "mean": 1.7189583333333334,
+                    "changedPixels": 100,
+                    "peak": 119,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 128243,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-polished-resumed-4s.png"
+                }
+              ]
+            }
+          },
+          {
+            "finish": "satin",
+            "cycleSeconds": 12,
+            "timeBasis": "controlled-animation-clock",
+            "frames": [
+              {
+                "seconds": 0,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-auto-0s.png"
+              },
+              {
+                "seconds": 2,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-auto-2s.png"
+              },
+              {
+                "seconds": 4,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-auto-4s.png"
+              },
+              {
+                "seconds": 6,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-auto-6s.png"
+              },
+              {
+                "seconds": 8,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-auto-8s.png"
+              },
+              {
+                "seconds": 10,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-auto-10s.png"
+              },
+              {
+                "seconds": 12,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-auto-12s.png"
+              }
+            ],
+            "controlledClosure": {
+              "mean": 0.03222222222222222,
+              "changedPixels": 0,
+              "peak": 2,
+              "width": 80,
+              "height": 60
+            },
+            "naturalTimeBasis": "measured-wall-clock",
+            "naturalSamples": [
+              {
+                "seconds": 0,
+                "targetSeconds": 0,
+                "readbackMs": 123,
+                "textures": 876,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-natural-0s.png"
+              },
+              {
+                "seconds": 2.015,
+                "targetSeconds": 2,
+                "readbackMs": 472,
+                "textures": 940,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-natural-2s.png"
+              },
+              {
+                "seconds": 4.027,
+                "targetSeconds": 4,
+                "readbackMs": 566,
+                "textures": 1003,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-natural-4s.png"
+              },
+              {
+                "seconds": 6.011,
+                "targetSeconds": 6,
+                "readbackMs": 219,
+                "textures": 1066,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-natural-6s.png"
+              },
+              {
+                "seconds": 8,
+                "targetSeconds": 8,
+                "readbackMs": 304,
+                "textures": 1128,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-natural-8s.png"
+              },
+              {
+                "seconds": 10.014,
+                "targetSeconds": 10,
+                "readbackMs": 192,
+                "textures": 1191,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-natural-10s.png"
+              },
+              {
+                "seconds": 12.011,
+                "targetSeconds": 12,
+                "readbackMs": 156,
+                "textures": 1253,
+                "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-natural-12s.png"
+              }
+            ],
+            "controlEvidence": [
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-45deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-90deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-135deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-180deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-return-0deg-texture.png",
+              "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-fixed-90deg.png"
+            ],
+            "fixedAngleReadbackMs": [
+              803,
+              267,
+              1022,
+              324,
+              481,
+              203
+            ],
+            "fixedAngleTextureAcquisitions": [
+              26,
+              8,
+              32,
+              12,
+              8,
+              4
+            ],
+            "pauseEvidence": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-controlled-pause-before.png",
+              "paused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-controlled-pause-at-click.png",
+              "stillPaused": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-controlled-pause-held.png",
+              "resumed": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-controlled-pause-resumed.png"
+            },
+            "pauseVerification": {
+              "originalPngSize": [
+                390,
+                679
+              ],
+              "originalBeforeClickedHeldPngSha256": "f4331b545ed207cf3aa03317b0d0e7666a05967b53ac2b06217f99e08e27a653",
+              "originalResumedPngSha256": "1bd56d38e480b3b7ed832c3b55c51e950a98d481f74396d0382a0238cce20f38",
+              "firstThreePngFilesByteIdentical": true,
+              "changedPixelsAtClick": 0,
+              "changedPixelsWhileHeld": 0,
+              "changedPixelsOnResume": 144832,
+              "queueSubmissions": 0,
+              "heldMilliseconds": 1000,
+              "sameCanvasAndDimensions": true
+            },
+            "nativePause": {
+              "before": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-pause-before.png",
+              "beforeIsUnsynchronized": true,
+              "firstHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-paused-a.png",
+              "lastHeld": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-paused-b.png",
+              "firstAndLastHeldByteIdentical": true,
+              "resumedEvidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-resumed.png",
+              "resumeSamples": [
+                {
+                  "targetMs": 2000,
+                  "requestedMs": 2238.739100000006,
+                  "textures": 1427,
+                  "difference": {
+                    "mean": 2.1527083333333334,
+                    "changedPixels": 299,
+                    "peak": 73,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 146148,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-resumed.png"
+                },
+                {
+                  "targetMs": 4000,
+                  "requestedMs": 4203.118199999997,
+                  "textures": 1484,
+                  "difference": {
+                    "mean": 2.767986111111111,
+                    "changedPixels": 331,
+                    "peak": 83,
+                    "width": 80,
+                    "height": 60
+                  },
+                  "originalChangedPixels": 151914,
+                  "evidence": "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-satin-resumed-4s.png"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "兩尺寸各有鏡面和拉絲的自然 GPU texture 原圖與實際 readback 請求時間。未量測逐張 GPU 提交或顯示時刻；固定角度、原 CSS A/A/B/A、暫停和續播另有可見合成原 PNG。",
+    "Native 續播依實際請求時間取樣，四組各兩個取樣都超過原可見變化門檻並有新 GPU acquisition。共用測試續播保留固定角度，原圖可相同。",
+    "實體 GPU、手機真機、完整人工讀屏及顯示 FPS 為 NOT_RUN。正式 HTTPS、交付 ZIP 及外部複核待主責確認。"
+  ],
+  "attachments": [
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/results.json",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-webgpu-full.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-1440-full.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-390-full.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-webgpu-full.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-inquiry.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-1440-inquiry.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-390-inquiry.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-inquiry.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-download.txt",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-download.txt",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-en-1440-first-render.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-first-render.png",
+    "evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/forme-studio/liquid-forme-zh-Hant-390-no-js.png"
+  ],
+  "verdict": "APPROVED"
+}

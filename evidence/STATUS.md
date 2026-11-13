@@ -1,8 +1,8 @@
 # Evidence status
 
-## M03 — candidate accepted, deployed; live verification pending
+## M03 — corrected candidate accepted; redeployment pending
 
-Five complete bilingual commercial websites passed non-author design and temporal review at `8fa4e8bcb86748fb100a10fd5a07904761e3c933`. All fifteen art/UI/commercial totals exceed 9/10, and all eight isolated lanes plus aggregate job 131723689722 passed. [Integration and limits](M03/8fa4e8bcb86748fb100a10fd5a07904761e3c933/INTEGRATION.md). Original artifact bytes and rejected historical evidence are retained. M03 build and deployment succeeded at `a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06`; its final live GPU verification remains pending after two capture/readback timeouts. [Release progress and unmodified failures](M03/a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06/RELEASE.md).
+All five complete bilingual commercial sites passed non-author design/material review at `ba1cffaad8b678f26a147403a36ed20197b27c36`, with every art/UI/commercial score strictly above 9/10. All eight isolated lanes and aggregate `131753694869` passed. The V001 English paused-caption defect is corrected and covered by actual 1100px/200% state screenshots. [Integration and limits](M03/ba1cffaad8b678f26a147403a36ed20197b27c36/INTEGRATION.md). The prior deployment/rejection remains historical; corrected release verification is still pending.
 
 ## M02 commercial collection — 2026-11-13
 
