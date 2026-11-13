@@ -281,8 +281,9 @@ async function checkStill(page) {
 
 async function setAngle(page, number) {
   const input = page.locator(selector);
-  await input.focus();
-  await input.press(number === -20 ? "Home" : number === 20 ? "End" : "Home");
+  await input.evaluate(node => node.focus({ preventScroll: true }));
+  assert.equal(await input.evaluate(node => node === document.activeElement), true);
+  await page.keyboard.press(number === 20 ? "End" : "Home");
   if (number === 0) {
     for (let step = 0; step < 20; step++) await page.keyboard.press("ArrowRight");
   }
@@ -433,32 +434,34 @@ async function checkOptics(browser) {
       await open(page, locale);
       await phase(page, "running");
       const scene = stage(page);
-      await scene.scrollIntoViewIfNeeded();
+      await scene.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
       await page.evaluate(() => document.fonts.ready);
       await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 500);
+      const specimenRegion = () => scene.evaluate(element => {
+        const { x, y, width, height } = element.getBoundingClientRect();
+        return { x, y, width, height, viewportWidth: innerWidth, viewportHeight: innerHeight };
+      });
+      const region = await specimenRegion();
+      assert.ok(region.y >= 0 && region.y + region.height <= region.viewportHeight,
+        `${label}: specimen must be entirely within the screenshot viewport`);
       const sampleControl = async name => {
-        const clip = await scene.evaluate(element => {
-          // Keyboard focus scrolls the mobile slider into view. Reposition and
-          // measure the specimen again before requesting its compositor pixels.
-          element.scrollIntoView({ block: "center", behavior: "instant" });
-          const { x, y, width, height } = element.getBoundingClientRect();
-          return { x: x + scrollX, y: y + scrollY, width, height };
-        });
+        await scene.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
         const before = await counters(page);
         await page.clock.runFor(84);
         assert.ok((await counters(page)).textures > before.textures);
         await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
         assert.equal(await scene.getAttribute("data-motion"), "running");
-        return capture(page, `${label}-${name}`, page, { clip });
+        assert.deepEqual(await specimenRegion(), region, `${label}: specimen moved within the screenshot viewport`);
+        return capture(page, `${label}-${name}`);
       };
       const angles = [];
       for (const [index, value] of [-20, 0, 20, -20].entries()) {
         await setAngle(page, value);
         angles.push(await sampleControl(`angle-${index + 1}-${value}`));
       }
-      const angleDifference = await difference(page, angles[0], angles[2]);
-      const angleReturn = await difference(page, angles[0], angles[3]);
-      const controls = evidence.measurements[label].controls = { angleDifference, angleReturn };
+      const angleDifference = await difference(page, angles[0], angles[2], region);
+      const angleReturn = await difference(page, angles[0], angles[3], region);
+      const controls = evidence.measurements[label].controls = { angleDifference, angleReturn, region };
       assert.ok(angleDifference > 1 && angleDifference > angleReturn, `Angle sweep absent: ${angleDifference} / return ${angleReturn}`);
 
       const materials = [];
@@ -469,7 +472,10 @@ async function checkOptics(browser) {
         const suffix = materials.length === 3 ? "clear-return" : value;
         materials.push(await sampleControl(`material-${suffix}`));
       }
-      controls.materialDifference = [await difference(page, materials[0], materials[1]), await difference(page, materials[1], materials[2])];
+      controls.materialDifference = [
+        await difference(page, materials[0], materials[1], region),
+        await difference(page, materials[1], materials[2], region),
+      ];
       assert.ok(controls.materialDifference.every(value => value > 0.5), `Surface controls absent: ${controls.materialDifference}`);
       assert.equal((await counters(page)).devices, 1);
       await probe.assertPrivate(site.origin, { fontPaths });
