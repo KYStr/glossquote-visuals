@@ -441,7 +441,7 @@ async function livePixelDifference(page, before, after, areaAverage = false) {
   }, [before.toString("base64"), after.toString("base64"), areaAverage]);
 }
 
-async function checkLiveComposite(page, slug, locale, isolatedOutput) {
+async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLabel = "") {
   const controls = {
     "paper-light": { selector: "#light-angle", values: ["0", "180"], surface: "[data-stage]" },
     "liquid-archive": { selector: "#object-angle", values: ["0", "180"], surface: ".hero-visual" },
@@ -453,12 +453,13 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
   };
   const control = controls[slug];
   assert.ok(control, `No live composite control defined for ${slug}`);
-  const stem = `${live ? "live" : "candidate"}-${slug}-${locale}`;
+  const stem = `${live ? "live" : "candidate"}-${slug}-${locale}${viewportLabel ? "-" + viewportLabel : ""}`;
   const surface = page.locator(control.surface);
   const captured = {};
   const files = {};
   const measurement = { control: control.selector, values: control.values, intervalMs: 100,
     sequence: ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
+  measurement.viewport = page.viewportSize();
   measurement.comparisonSampling = "80x60 area-averaged cells from original pixels; native pause uses full resolution";
   if (control.evolving) measurement.simulation = {
     settleMs: control.settleMs,
@@ -765,14 +766,24 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
 
 async function checkCandidateComposites(browser) {
   for (const work of worksFor("candidate").filter(({ slug }) => !paperOnly || slug === "paper-light")) {
-    for (const prefix of ["", "en/"]) {
-      await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
+    const views = [
+      { prefix: "", width: 1100, height: 850 },
+      { prefix: "en/", width: 1100, height: 850 },
+    ];
+    // Their dedicated natural-motion suites compare held mobile frames. Add
+    // same-frame mobile before/action/held evidence under the controlled clock.
+    if (["night-signal", "aeriform"].includes(work.slug)) {
+      views.push({ prefix: "", width: 390, height: 844, label: "mobile" });
+    }
+    for (const { prefix, width, height, label } of views) {
+      await withPage(browser, { viewport: { width, height }, hasTouch: width === 390 }, async (page) => {
         await page.clock.install();
         const probe = await observe(page, { readPixels: true });
         await open(page, `${prefix}works/${work.slug}/`);
+        await stage(page).evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
         await phase(page, "running");
         await page.waitForFunction(() => window.__visualProbe.textures > 3);
-        await checkLiveComposite(page, work.slug, prefix ? "en" : "zh-Hant");
+        await checkLiveComposite(page, work.slug, prefix ? "en" : "zh-Hant", null, label);
         const fontPaths = work.slug === "night-signal" ? signalFontPaths :
           work.slug === "liquid-archive" ? [base + "fonts/liquid-geist.ttf"] :
           work.slug === "prism-materials" ? [base + "fonts/prism-archivo-black.ttf", base + "fonts/prism-plex-mono.ttf"] :
