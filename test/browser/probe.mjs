@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { setTimeout as wait } from "node:timers/promises";
 import { prepareReadbackPixels } from "./readback-pixels.mjs";
 
 export async function observe(page, { readPixels = false, localFont } = {}) {
@@ -56,11 +57,13 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
         };
         const captures = new Set();
         probe.readFrame = (includeImage = false, retainRaw = false) => new Promise((resolve, reject) => {
+          const state = probe.readbackState = { phase: "requested", requestedAt: performance.now() };
           const timeout = setTimeout(() => {
             captures.delete(capture);
             reject(new Error("No canvas texture submitted for readback"));
           }, 8000);
           const capture = (texture, device, submittedAt, alphaMode) => {
+            Object.assign(state, { phase: "submitted", submittedAt, width: texture.width, height: texture.height });
             clearTimeout(timeout);
             const { width, height, format } = texture;
             if (!["bgra8unorm", "rgba8unorm"].includes(format)) {
@@ -73,6 +76,7 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
             encoder.copyTextureToBuffer({ texture }, { buffer, bytesPerRow }, { width, height });
             submit.call(device.queue, [encoder.finish()]);
             buffer.mapAsync(GPUMapMode.READ).then(() => {
+              state.phase = "mapped";
               const bytes = new Uint8Array(buffer.getMappedRange());
               const values = [];
               for (let y = 0; y < 24; y++) {
@@ -106,8 +110,10 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
                 output.height = height;
                 const prepared = window.__prepareReadbackPixels(pixels, alphaMode);
                 const encode = async (data) => {
+                  state.phase = "encoding";
                   output.getContext("2d", { willReadFrequently: true }).putImageData(new ImageData(data, width, height), 0, 0);
                   const blob = await new Promise((done) => output.toBlob(done, "image/png"));
+                  state.phase = "encoded";
                   if (!blob) throw new Error("Could not encode the captured GPU frame");
                   return new Uint8Array(await blob.arrayBuffer()).toBase64();
                 };
@@ -119,6 +125,7 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
                     stats.blackPng = await encode(prepared.black);
                     stats.comparisonEncoding = "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip";
                   }
+                  state.phase = "resolved";
                   resolve(stats);
                 });
               }
@@ -195,6 +202,8 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
 }
 
 export async function pixelEvidence(page, stage, file) {
+  await page.evaluate(() => document.fonts.ready.then(() => {}));
+  await stage.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
   await stage.evaluate((element) => {
     const image = element.querySelector("img");
     if (image) image.style.visibility = "hidden";
@@ -203,7 +212,23 @@ export async function pixelEvidence(page, stage, file) {
     canvas.style.mixBlendMode = "normal";
   });
   try {
-    const png = await stage.screenshot({ path: file });
+    // Locator screenshots wait for two page rAF callbacks. Capture the complete
+    // visible stage directly, while checking its geometry with real-time samples.
+    const geometry = () => stage.evaluate((element) => {
+      const { x, y, width, height } = element.getBoundingClientRect();
+      const style = getComputedStyle(element);
+      return { clip: { x, y, width, height }, viewport: { width: innerWidth, height: innerHeight },
+        scroll: [scrollX, scrollY], visible: style.display !== "none" && style.visibility === "visible" };
+    });
+    const before = await geometry();
+    assert.ok(before.visible && before.clip.width > 0 && before.clip.height > 0, JSON.stringify(before));
+    assert.ok(before.clip.x >= 0 && before.clip.y >= 0 &&
+      before.clip.x + before.clip.width <= before.viewport.width &&
+      before.clip.y + before.clip.height <= before.viewport.height, `Stage must fit the complete viewport: ${JSON.stringify(before)}`);
+    await wait(100);
+    assert.deepEqual(await geometry(), before, "Stage geometry moved before capture");
+    const png = await page.screenshot({ path: file, clip: before.clip });
+    assert.deepEqual(await geometry(), before, "Stage geometry moved during capture");
     return await page.evaluate(async (encoded) => {
       const raw = Uint8Array.from(atob(encoded), (letter) => letter.charCodeAt(0));
       const bitmap = await createImageBitmap(new Blob([raw], { type: "image/png" }));

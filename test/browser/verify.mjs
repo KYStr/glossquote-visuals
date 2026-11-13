@@ -18,16 +18,24 @@ if ((!windows && !linux) || process.env.GITHUB_ACTIONS !== "true" || process.env
   throw new Error("NOT_RUN_USER_FOCUS_BOUNDARY: browser checks require a GitHub-hosted VM");
 }
 
-const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
-assert.equal(commit, process.env.GITHUB_SHA);
+const verifierCommit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+assert.equal(verifierCommit, process.env.GITHUB_SHA);
+const live = process.argv[2] === "--live";
+const commit = live && process.env.GQ_DEPLOYED_SHA ? process.env.GQ_DEPLOYED_SHA : verifierCommit;
+assert.match(commit, /^[a-f0-9]{40}$/);
+if (commit !== verifierCommit) {
+  execFileSync("git", ["merge-base", "--is-ancestor", commit, verifierCommit]);
+  const changed = execFileSync("git", ["diff", "--name-only", commit, verifierCommit], { encoding: "utf8" }).trim().split("\n").filter(Boolean);
+  assert.ok(changed.every(path => /^(test\/|evidence\/|docs\/|coordination\/|\.github\/workflows\/verify-live\.yml$|README\.md$)/.test(path)),
+    `Separate live verifier must preserve deployed application sources: ${changed.join(", ")}`);
+}
 const evidenceDir = resolve(root, ".runs/browser-evidence");
 await mkdir(evidenceDir, { recursive: true });
 const evidence = {
-  commit, environment: windows ? "GitHub-hosted Windows Server 2025 VM" : "GitHub-hosted Ubuntu 24.04 VM",
+  commit, verifierCommit, environment: windows ? "GitHub-hosted Windows Server 2025 VM" : "GitHub-hosted Ubuntu 24.04 VM",
   display: windows ? "headless-d3d11-warp" : "headless-vulkan-swiftshader", browser: null,
   checks: {}, measurements: {}, screenshots: [],
 };
-const live = process.argv[2] === "--live";
 const paperOnly = process.argv[2] === "--paper-material";
 if (paperOnly && !windows) throw new Error("Paper material validation requires the GitHub-hosted Windows runner");
 const studioOnly = process.argv[2] === "--forme-studio";
@@ -523,13 +531,34 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
       frame = await Promise.race([
         page.evaluate(async () => {
           const frame = await window.__liveFrame;
+          window.__visualProbe.readbackState.phase = "queue-drain";
           await window.__visualProbe.device.queue.onSubmittedWorkDone();
+          window.__visualProbe.readbackState.phase = "complete";
           return frame;
         }),
         new Promise((_, reject) => {
           readbackTimeout = setTimeout(() => reject(new Error(`${stem}: GPU readback timed out`)), 15_000);
         }),
       ]);
+    } catch (error) {
+      let diagnosticTimeout;
+      let diagnostic;
+      try {
+        diagnostic = await Promise.race([
+          page.evaluate(() => ({
+            readback: window.__visualProbe.readbackState, textures: window.__visualProbe.textures,
+            motion: document.querySelector('[data-stage]')?.dataset.motion,
+            visibility: document.visibilityState, viewport: [innerWidth, innerHeight], scroll: [scrollX, scrollY],
+          })),
+          new Promise(resolve => { diagnosticTimeout = setTimeout(() => resolve({ diagnosticUnavailable: "page did not respond within 2000ms" }), 2000); }),
+        ]);
+      } catch (diagnosticError) {
+        diagnostic = { diagnosticUnavailable: diagnosticError.message };
+      } finally {
+        clearTimeout(diagnosticTimeout);
+      }
+      measurement.readbackFailure = { label, error: error.message, diagnostic };
+      throw error;
     } finally {
       clearTimeout(readbackTimeout);
     }

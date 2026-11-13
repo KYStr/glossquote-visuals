@@ -4,7 +4,7 @@
 
 Five original bilingual concept websites, combining distinct brand identities, shader-led art direction and complete local customer journeys.
 
-**Status:** M03 candidate accepted: all five works exceed 9 in every design category and all eight isolated verification lanes passed. M03 Pages deployment is pending; the live URL still serves historical M02 until the release workflow succeeds.
+**Status:** M03 candidate accepted: all five works exceed 9 in every design category and all eight isolated verification lanes passed. M03 was deployed at `a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06`; twelve localized HTTPS pages and 47 resources pass. Final live GPU verification is pending after two capture/readback timeouts. [Raw failed attempts](evidence/M03/a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06/RELEASE.md) remain preserved.
 
 [繁中作品集](https://kystr.github.io/glossquote-visuals/) · [English portfolio](https://kystr.github.io/glossquote-visuals/en/) · [Verification and limits](evidence/M03/8fa4e8bcb86748fb100a10fd5a07904761e3c933/INTEGRATION.md)
 
