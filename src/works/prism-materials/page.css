@@ -147,7 +147,7 @@ html.prism-page {
 .sampling { background: #e9edfa; }
 .sample-grid { display: grid; grid-template-columns: minmax(0, .83fr) minmax(0, 1.17fr); gap: clamp(.9rem, 3vw, 3rem); align-items: start; }
 .builder-form, .sample-list { background: var(--paper); border: 1px solid var(--rule); padding: clamp(.9rem, 2.3vw, 2.1rem); min-width: 0; }
-.builder-form { display: grid; align-content: start; gap: .48rem; }
+.builder-form { display: grid; align-content: start; gap: .48rem; container-type: inline-size; }
 .builder-form label { font-weight: 680; }
 .builder-form :is(select, input) { min-height: 44px; border: 1px solid #9faaca; border-radius: 0; color: var(--ink); background: #fff; padding: .45rem .6rem; }
 .builder-form select { width: 100%; }
@@ -212,7 +212,15 @@ html.prism-page {
 @media (max-width: 30rem) {
   .material-grid { grid-template-columns: minmax(0, 1fr); }
   .prism-nav nav { gap: 0 .85rem; }
+  .builder-form { padding-inline: clamp(12px, 4vw, .9rem); }
+  .builder-form select { padding-inline: .25rem; }
   .sample-spec { grid-template-columns: minmax(2.5rem, 22%) minmax(0, 1fr); }
+}
+@container (max-width: 13em) {
+  .sample-spec { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+  .sample-spec img { inline-size: min(3rem, 100%); }
+  .sample-spec dl { line-height: 1.35; }
+  .sample-spec dl div { grid-template-columns: minmax(0, 1fr); row-gap: .12em; }
 }
 @media (forced-colors: active) {
   .specimen-choices input:checked + span, .pause[aria-pressed="true"] { border: 2px solid Highlight; }
