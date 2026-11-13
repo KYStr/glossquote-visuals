@@ -1,8 +1,8 @@
 # Evidence status
 
-## M03 — candidate accepted, deployed; live verification pending
+## M03 — final visual acceptance blocked, caption repair in progress
 
-Five complete bilingual commercial websites passed non-author design and temporal review at `8fa4e8bcb86748fb100a10fd5a07904761e3c933`. All fifteen art/UI/commercial totals exceed 9/10, and all eight isolated lanes plus aggregate job 131723689722 passed. [Integration and limits](M03/8fa4e8bcb86748fb100a10fd5a07904761e3c933/INTEGRATION.md). Original artifact bytes and rejected historical evidence are retained. M03 build and deployment succeeded at `a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06`; its final live GPU verification remains pending after two capture/readback timeouts. [Release progress and unmodified failures](M03/a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06/RELEASE.md).
+The original five-work candidate passed technical checks and recorded design reviews, and source `a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06` was deployed. Subsequent independent inspection found a V001 English native-pause caption collapse at 1100px. [Original image and rejection](M03/a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06/caption-rejected/REVIEW.md). The visible V001 production chat is repairing the CSS; all five works will be re-bound to a corrected fixed candidate. The latest ten-locale live technical verifier passed, but that does not override this visual defect or constitute final acceptance. M02 below remains historical.
 
 ## M02 commercial collection — 2026-11-13
 

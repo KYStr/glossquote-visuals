@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 26,
+  "revision": 27,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.1-sol",
@@ -14,7 +14,7 @@
       "id": "V001",
       "slug": "paper-light",
       "brief": "briefs/V001-commercial.md",
-      "status": "reviewed",
+      "status": "building",
       "owner": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
       "candidateCommit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
       "pr": "https://github.com/KYStr/glossquote-visuals/pull/13",
@@ -25,11 +25,13 @@
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/paper-light/",
       "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
       "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
-      "blockers": [],
-      "branch": "codex/visuals-m03-integration",
-      "authorCandidateCommit": "416c47b63339a0005eb1bfd43b6a114515ddf336",
-      "authorBranch": "codex/v001-material-hero",
-      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/8"
+      "blockers": [
+        "V001 English 1100px native pause collapses the material caption; independent live review rejected."
+      ],
+      "branch": "codex/visuals-m03-caption-fix",
+      "authorCandidateCommit": "9f5a7dc94644c84bf2949ebf977996f16720395d",
+      "authorBranch": "codex/v001-paused-caption",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/14"
     },
     {
       "id": "V002",
@@ -47,7 +49,7 @@
       "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
       "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
       "blockers": [],
-      "branch": "codex/visuals-m03-integration",
+      "branch": "codex/visuals-m03-caption-fix",
       "authorCandidateCommit": "1db807b6efe93d8b755db65efde5bb69e23abcb8",
       "authorBranch": "codex/v002-material-hero",
       "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/9"
@@ -68,7 +70,7 @@
       "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
       "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
       "blockers": [],
-      "branch": "codex/visuals-m03-integration",
+      "branch": "codex/visuals-m03-caption-fix",
       "authorCandidateCommit": "7735e03b47d69bd1bdf2682c542146658ab45e63",
       "authorBranch": "codex/v003-signal-hero",
       "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/10"
@@ -87,7 +89,7 @@
       ],
       "plannedUrl": "https://kystr.github.io/glossquote-visuals/works/prism-materials/",
       "blockers": [],
-      "branch": "codex/visuals-m03-integration",
+      "branch": "codex/visuals-m03-caption-fix",
       "authorBranch": "codex/v004-prism-materials",
       "authorCandidateCommit": "5a3bc7011720b63ffb42f7e717b29f68b665116e",
       "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/12"
@@ -106,7 +108,7 @@
       ],
       "plannedUrl": "https://kystr.github.io/glossquote-visuals/works/aeriform/",
       "blockers": [],
-      "branch": "codex/visuals-m03-integration",
+      "branch": "codex/visuals-m03-caption-fix",
       "authorBranch": "codex/v005-aeriform",
       "authorCandidateCommit": "c9db17d750927158547171ed02c41e9410bca75d",
       "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/11"

@@ -830,6 +830,54 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
   }
 }
 
+async function checkPaperPausedCaption(page, locale) {
+  const record = { viewport: page.viewportSize(), states: {}, screenshots: [] };
+  evidence.measurements.paperPausedCaption ??= {};
+  evidence.measurements.paperPausedCaption[locale] = record;
+  const measure = async label => {
+    const geometry = await page.locator(".paper-plate figcaption").evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      const plate = element.closest("figure").getBoundingClientRect();
+      const style = getComputedStyle(element);
+      return { width: rect.width, height: rect.height, right: rect.right,
+        plateWidth: plate.width, plateRight: plate.right,
+        lineHeight: parseFloat(style.lineHeight), padding: parseFloat(style.paddingTop) + parseFloat(style.paddingBottom),
+        heroHeight: document.querySelector(".paper-hero").getBoundingClientRect().height,
+        viewportWidth: innerWidth, documentWidth: document.documentElement.scrollWidth,
+        motion: document.querySelector("[data-stage]").dataset.motion };
+    });
+    record.states[label] = geometry;
+    assert.ok(geometry.width >= Math.min(180, geometry.plateWidth * .4), `Paper caption collapsed in ${locale}/${label}: ${JSON.stringify(geometry)}`);
+    assert.ok(geometry.height - geometry.padding <= geometry.lineHeight * 4 + 1, `Paper caption became a vertical strip in ${locale}/${label}`);
+    assert.ok(geometry.right <= geometry.plateRight + 1 && geometry.documentWidth <= geometry.viewportWidth + 1,
+      `Paper paused layout overflows in ${locale}/${label}`);
+    return geometry;
+  };
+  const running = await measure("running");
+  await page.locator("[data-pause]").evaluate(button => button.click());
+  await phase(page, "paused");
+  try {
+    const paused = await measure("paused");
+    assert.ok(Math.abs(paused.heroHeight - running.heroHeight) <= 96, "Pause status must not stretch the hero by a paragraph column");
+    for (const zoom of [100, 200]) {
+      if (zoom === 200) {
+        await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
+        await measure("paused-200-percent");
+      }
+      const name = `${live ? "live" : "candidate"}-paper-caption-${locale}-1100-paused-${zoom}.png`;
+      await screenshot(page, name);
+      record.screenshots.push(name);
+    }
+  } finally {
+    await page.evaluate(() => { document.documentElement.style.removeProperty("font-size"); });
+    await page.locator("[data-stage]").evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
+    await page.locator("[data-pause]").evaluate(button => button.click());
+    await phase(page, "running");
+  }
+  await measure("resumed");
+  record.result = "PASS";
+}
+
 async function checkCandidateComposites(browser) {
   for (const work of worksFor("candidate").filter(({ slug }) => !paperOnly || slug === "paper-light")) {
     const views = [
@@ -850,6 +898,7 @@ async function checkCandidateComposites(browser) {
         await phase(page, "running");
         await page.waitForFunction(() => window.__visualProbe.textures > 3);
         await checkLiveComposite(page, work.slug, prefix ? "en" : "zh-Hant", null, label);
+        if (work.slug === "paper-light") await checkPaperPausedCaption(page, prefix ? "en" : "zh-Hant");
         const fontPaths = work.slug === "night-signal" ? signalFontPaths :
           work.slug === "liquid-archive" ? [base + "fonts/liquid-geist.ttf"] :
           work.slug === "prism-materials" ? [base + "fonts/prism-archivo-black.ttf", base + "fonts/prism-plex-mono.ttf"] :
@@ -901,6 +950,7 @@ async function checkLive(browser) {
         // potentially slow software-renderer diagnostic/full-page screenshots.
         // Every original live check is retained; screenshots follow controls.
         const composite = await checkLiveComposite(page, releasedWork.slug, locale, null);
+        if (releasedWork.slug === "paper-light") await checkPaperPausedCaption(page, locale);
         // The native pause has already passed same-frame/zero-submission gates.
         // Hold that actual GPU frame while the software compositor takes stills;
         // these are explicitly paused diagnostic stills, not temporal evidence.
