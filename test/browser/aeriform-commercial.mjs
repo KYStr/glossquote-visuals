@@ -73,7 +73,11 @@ async function layout(page) {
   for (const zoom of ["100%", "200%"]) {
     const dimensions = await page.evaluate((zoom) => {
       document.documentElement.style.fontSize = zoom;
-      return { scroll: document.documentElement.scrollWidth, width: innerWidth };
+      const scroll = document.documentElement.scrollWidth;
+      const outliers = scroll <= innerWidth + 1 ? [] : [...document.querySelectorAll("body *")]
+        .filter((element) => element.getBoundingClientRect().right > innerWidth + 1)
+        .slice(0, 24).map((element) => [element.tagName, element.className, Math.round(element.getBoundingClientRect().right)]);
+      return { scroll, width: innerWidth, outliers };
     }, zoom);
     assert.ok(dimensions.scroll <= dimensions.width + 1, JSON.stringify({ zoom, ...dimensions }));
   }
@@ -321,11 +325,25 @@ try {
   evidence.measurements.renderer = (await cdp.send("SystemInfo.getInfo")).gpu.devices
     .map(({ vendorString, deviceString }) => ({ vendorString, deviceString }));
   await cdp.detach();
-  await responsiveAndBrief(browser);
-  await gpu(browser, "en", 1440, true);
-  await gpu(browser, "zh-Hant", 390, true);
-  await gpu(browser, "zh-Hant", 1440, false);
-  await gpu(browser, "en", 390, false);
+  const outcomes = [];
+  for (const [name, run] of [
+    ["en desktop", () => gpu(browser, "en", 1440, true)],
+    ["zh-Hant mobile", () => gpu(browser, "zh-Hant", 390, true)],
+    ["zh-Hant desktop", () => gpu(browser, "zh-Hant", 1440, false)],
+    ["en mobile", () => gpu(browser, "en", 390, false)],
+    ["responsive and brief", () => responsiveAndBrief(browser)],
+  ]) {
+    try {
+      await run();
+    } catch (error) {
+      outcomes.push({ name, error: error.stack });
+      console.error(name, error);
+    }
+  }
+  if (outcomes.length) {
+    evidence.failures = outcomes;
+    throw new Error("One or more isolated AERIFORM checks failed");
+  }
   evidence.checks.webgpu = "PASS four bilingual live compositions and non-empty texture readbacks, three service forms and pointer/touch/keyboard evidence";
   evidence.checks.lifecycle = "PASS exact presented pause frame, pointer-quiet pause/hidden/offscreen/pagehide, resumed rendering, actual device loss/recovery and page return";
   evidence.checks.privacy = "PASS same-origin GET only, CSP, no telemetry/network APIs, no storage and no cookies";

@@ -19,10 +19,11 @@ const forms = {
   },
 };
 
-function particleProps({ form, pulse }) {
+function particleProps({ form, pulse, pointer }) {
   const { shape, ...look } = forms[form];
   return {
     ...look, shape: JSON.stringify(shape), shapeType: shape.type,
+    mouseInfluence: pointer ? 3.1 : 0,
     spread: pulse ? 2.75 : 0.78,
     agitation: pulse ? 0.74 : 0.14,
   };
@@ -33,8 +34,8 @@ export function applyAeriform(renderer, next, previous) {
     renderer.update("volume", particleProps(next));
     return;
   }
-  const { spread, agitation } = particleProps(next);
-  renderer.update("volume", { spread, agitation });
+  const { spread, agitation, mouseInfluence } = particleProps(next);
+  renderer.update("volume", { spread, agitation, mouseInfluence });
 }
 
 export function initializeAeriform(canvas, options) {
@@ -43,7 +44,7 @@ export function initializeAeriform(canvas, options) {
       ...particleProps(options.settings),
       count: matchMedia("(pointer: coarse)").matches ? 4300 : 5900,
       size: 2.15, softness: 0.08, exposure: 1.34, damping: 0.42,
-      mouseInfluence: 2.75, mouseRadius: 0.26, particleShape: "dot",
+      mouseRadius: 0.26, particleShape: "dot",
       center: { x: 0.5, y: 0.5 },
     } },
   ], options);

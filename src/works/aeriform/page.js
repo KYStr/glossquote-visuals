@@ -27,7 +27,7 @@ const copy = english ? {
   pause: "暫停", resume: "繼續",
 };
 
-let settings = { form: "identity", pulse: false };
+let settings = { form: "identity", pulse: false, pointer: false };
 let lastApplied;
 let paused = false;
 let pulseTimer;
@@ -61,7 +61,7 @@ const motion = createMotion({
 const formButtons = [...controls.querySelectorAll("[data-form]")];
 function chooseForm(form) {
   clearTimeout(pulseTimer);
-  settings = { form, pulse: false };
+  settings = { ...settings, form, pulse: false };
   for (const button of formButtons) button.setAttribute("aria-pressed", String(button.dataset.form === form));
   stage.dataset.form = form;
   motion.setSettings(settings);
@@ -71,6 +71,17 @@ function setPulse(value) {
   settings = { ...settings, pulse: value };
   motion.setSettings(settings);
 }
+
+function setPointer(active) {
+  if (settings.pointer === active) return;
+  settings = { ...settings, pointer: active };
+  motion.setSettings(settings);
+}
+
+stage.addEventListener("pointerenter", (event) => {
+  if (event.pointerType === "mouse") setPointer(true);
+});
+stage.addEventListener("pointerleave", () => setPointer(false));
 
 for (const button of formButtons) button.addEventListener("click", () => chooseForm(button.dataset.form));
 pause.addEventListener("click", () => {
