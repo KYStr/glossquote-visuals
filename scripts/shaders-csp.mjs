@@ -40,7 +40,7 @@ const probe = [
   "})();",
 ].join("\n");
 
-export function shaderContentPolicy() {
+export function shaderContentPolicy({ transformStd = (source) => source } = {}) {
   return {
     name: "shaders-4.0.7-no-jit",
     apply: "build",
@@ -60,7 +60,7 @@ export function shaderContentPolicy() {
       }
       // Select the same non-JIT TypeGPU writer that an eval-blocking CSP selects,
       // without calling the feature probe that would trigger a violation.
-      return { code: source.replace(probe, "const EVAL_ALLOWED_IN_ENV = false;"), map: null };
+      return { code: transformStd(source).replace(probe, "const EVAL_ALLOWED_IN_ENV = false;"), map: null };
     },
   };
 }

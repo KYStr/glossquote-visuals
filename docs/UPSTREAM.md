@@ -34,3 +34,7 @@ Upstream build 會刪除法律註解；發佈時收集實際 lockfile 所含依�
 這是輸出建置的相容修正，沒有改寫 node_modules 或放寬 CSP。原始 npm 檔案雜湊仍保持完整；雜湊改變時建置直接失敗，須重新檢查來源。此修正用於 `npm run build` 的正式與候選輸出；未打包的開發伺服器不作暫停驗收證據。單元測試檢查主／額外動畫時間保留、待執行影格取消、解鎖順序與雜湊失配；實際 GPU 與指標停止行為仍須隔離瀏覽器驗證。
 
 時間保留只適用仍有效的 renderer。GPU device loss 會重新初始化場景／粒子；`createMotion` 在暫停中失去 device 時銷毀失效實例，顯示 fallback，待允許續播後重新建立。這不是跨 device 的時間線或模擬狀態保存。獨立來源覆核確認 pointer gate 有效，並明列此重建界線；續播畫面的視覺連續性仍需實際原始影格評估。
+
+## V005 Particles 深度配色
+
+AERIFORM 的 `particle-depth.mjs` 對固定 Shaders 4.0.7 的 `splatVolume` 動態亮度和色階做建置期處理，分別以粒子在相機前後的 z 和 y 做亮度加權，以粒子位置、速度共同驅動現有暗到亮色階。位置、速度、力場、SDF、投影及緩衝區都沿用官方元件。這是透明粒子加權合成，沒有硬遮擋或深度排序。TypeGPU 同一段 CPU 表達式及 GPU AST 一起更新。原始模組 SHA-256 固定，失配會中止建置，CSP 仍停用 JIT。只在收錄 AERIFORM 的建置開啟。該元件目前只有 V005 使用，未來若新增使用 `Particles` 的作品，須重新審查這個建置期調整的作用範圍。
