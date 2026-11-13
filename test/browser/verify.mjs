@@ -528,24 +528,161 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
           `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
       }
     }
-    // Native pause supplies a same-setting static reference without changing CSS.
-    // This is especially important for V003, whose program also changes the still poster.
-    await page.locator("[data-pause]").evaluate((button) => button.click());
-    assert.equal(await stage(page).getAttribute("data-motion"), "paused");
-    const paused = await capture("native-pause");
-    if (slug === "liquid-archive" && await stage(page).getAttribute("data-frame") === "present") {
-      const frozen = await livePixelDifference(page, captured.a2.composite, paused);
-      await page.clock.runFor(300);
-      const later = await capture("native-pause-stable");
-      measurement.frozen = frozen;
-      measurement.frozenStable = await livePixelDifference(page, paused, later);
-      assert.ok(frozen.mean < 0.10 && measurement.frozenStable.peak === 0, `${stem}: native pause must freeze the displayed scene`);
-      return measurement;
+    // A product pause must freeze its presented frame. Legacy M02 pages instead
+    // hide the canvas; record that compatibility mode without accepting M03 freeze.
+    const canvas = stage(page).locator("canvas");
+    const pauseState = () => canvas.evaluate((element) => {
+      const style = getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      let visible = element.isConnected && rect.width > 0 && rect.height > 0;
+      for (let node = element; node; node = node.parentElement) {
+        const ancestor = getComputedStyle(node);
+        visible &&= ancestor.display !== "none" && ancestor.visibility === "visible" && Number(ancestor.opacity) > 0;
+      }
+      return { visible, opacity: style.opacity, visibility: style.visibility, display: style.display,
+        width: element.width, height: element.height,
+        textures: window.__visualProbe.textures, devices: window.__visualProbe.devices,
+        configurations: window.__visualProbe.configurations };
+    });
+    // Compare freeze frames at original resolution; the 80x60 control summary
+    // above is deliberately insufficient for catching fine detail that keeps moving.
+    const pauseDifference = (before, after) => page.evaluate(async ([before, after]) => {
+      const decode = async (encoded) => {
+        const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
+        const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
+        const { width, height } = bitmap;
+        const output = document.createElement("canvas");
+        output.width = width;
+        output.height = height;
+        const context = output.getContext("2d", { willReadFrequently: true });
+        context.drawImage(bitmap, 0, 0);
+        bitmap.close();
+        return { width, height, pixels: context.getImageData(0, 0, width, height).data };
+      };
+      const a = await decode(before);
+      const b = await decode(after);
+      if (a.width !== b.width || a.height !== b.height) throw new Error("Pause changed the captured surface dimensions");
+      let total = 0;
+      let peak = 0;
+      let changedPixels = 0;
+      for (let pixel = 0; pixel < a.pixels.length; pixel += 4) {
+        let delta = 0;
+        for (let channel = 0; channel < 3; channel++) {
+          const difference = Math.abs(a.pixels[pixel + channel] - b.pixels[pixel + channel]);
+          total += difference;
+          delta = Math.max(delta, difference);
+        }
+        peak = Math.max(peak, delta);
+        if (delta > 1) changedPixels++;
+      }
+      return { mean: total / (a.width * a.height * 3), peak, changedPixels, width: a.width, height: a.height };
+    }, [before.toString("base64"), after.toString("base64")]);
+    const stable = (difference, label) => assert.ok(difference.mean <= 0.01 && difference.peak <= 1,
+      `${stem}: ${label} must preserve the presented frame: ${JSON.stringify(difference)}`);
+    const beforePause = await capture("before-native-pause");
+    const pause = measurement.pause = { intervalMs: 1000, before: await pauseState(), comparisons: {},
+      stabilityLimits: { mean: 0.01, peak: 1 }, acceptsM03Freeze: false };
+    // Count actual queue submissions too: texture acquisitions alone miss a
+    // renderer that reuses a texture. No readback copy is requested in this interval.
+    await canvas.evaluate((element) => {
+      const original = GPUQueue.prototype.submit;
+      const monitor = { original, submissions: 0, canvas: element };
+      monitor.wrapper = function (commands) {
+        const result = original.call(this, commands);
+        if (this === window.__visualProbe.device?.queue) monitor.submissions++;
+        return result;
+      };
+      window.__compositePauseQueue = monitor;
+      GPUQueue.prototype.submit = monitor.wrapper;
+    });
+    try {
+      await page.locator("[data-pause]").evaluate((button) => button.click());
+      assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+      const paused = await capture("native-pause");
+      pause.immediate = await pauseState();
+      measurement.pauseMode = pause.immediate.visible ? "freeze" : "legacy-fallback";
+      pause.comparisons.beforeToPaused = await pauseDifference(beforePause, paused);
+      // shaders@4.0.7 dist/js/bundle.js registers its shared pointer dispatcher
+      // on window's mousemove event. Exercise that exact target without native input.
+      pause.pointerChallenge = { synthetic: true, target: "window", event: "mousemove",
+        listenerSource: "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+        sequence: [], passed: false };
+      const movePausedPointer = async (position) => {
+        const event = await canvas.evaluate((element, position) => {
+          const rect = element.getBoundingClientRect();
+          const point = position === "center"
+            ? { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 }
+            : { clientX: Math.max(innerWidth, rect.right) + 32, clientY: Math.max(innerHeight, rect.bottom) + 32 };
+          const event = new MouseEvent("mousemove", { ...point, bubbles: true, view: window });
+          window.dispatchEvent(event);
+          return { position, clientX: event.clientX, clientY: event.clientY, isTrusted: event.isTrusted };
+        }, position);
+        pause.pointerChallenge.sequence.push(event);
+      };
+      const pausedAt = await page.evaluate(() => Date.now());
+      await movePausedPointer("center");
+      await page.clock.runFor(pause.intervalMs / 2);
+      await movePausedPointer("outside");
+      await page.clock.runFor(pause.intervalMs / 2);
+      pause.clockElapsedMs = await page.evaluate((start) => Date.now() - start, pausedAt);
+      const afterPause = await capture("native-pause-after-1000ms");
+      pause.after = await pauseState();
+      pause.queueSubmissions = await page.evaluate(() => window.__compositePauseQueue.submissions);
+      pause.sameCanvas = await canvas.evaluate((element) => element === window.__compositePauseQueue.canvas);
+      pause.comparisons.pausedToAfter = await pauseDifference(paused, afterPause);
+      assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+      assert.equal(pause.clockElapsedMs, pause.intervalMs, `${stem}: pause clock did not advance by 1000ms`);
+      assert.equal(pause.sameCanvas, true, `${stem}: pause replaced the canvas`);
+      assert.equal(pause.queueSubmissions, 0, `${stem}: paused renderer submitted GPU work`);
+      for (const state of [pause.immediate, pause.after]) {
+        for (const key of ["textures", "devices", "configurations", "width", "height"]) {
+          assert.equal(state[key], pause.before[key], `${stem}: pause changed ${key}`);
+        }
+        assert.equal(state.visible, pause.immediate.visible, `${stem}: canvas visibility changed during pause`);
+      }
+      stable(pause.comparisons.pausedToAfter, "pause after advancing the clock by 1000ms");
+      if (measurement.pauseMode === "freeze") stable(pause.comparisons.beforeToPaused, "native pause");
+      else pause.compatibility = "Legacy canvas-hidden fallback only; not M03 freeze acceptance";
+      pause.pointerChallenge.passed = true;
+
+      // This mutation is diagnostic, never a product pause or an aesthetic pass.
+      // Preserve the complete inline attribute, including its original absence.
+      const originalStyle = await canvas.getAttribute("style");
+      try {
+        await canvas.evaluate((element) => element.style.setProperty("visibility", "hidden", "important"));
+        const withoutCanvas = await capture("diagnostic-no-canvas");
+        measurement.diagnosticContribution = {
+          method: "Temporarily hide the paused canvas; not a native product action",
+          ...await livePixelDifference(page, afterPause, withoutCanvas),
+        };
+      } finally {
+        await canvas.evaluate((element, style) => {
+          if (style === null) element.removeAttribute("style");
+          else element.setAttribute("style", style);
+        }, originalStyle);
+      }
+      assert.equal(await canvas.getAttribute("style"), originalStyle, `${stem}: diagnostic changed inline styles`);
+      const restoredPause = await capture("diagnostic-restored");
+      pause.comparisons.diagnosticRestored = await pauseDifference(afterPause, restoredPause);
+      stable(pause.comparisons.diagnosticRestored, "restoring diagnostic canvas styles");
+      if (measurement.pauseMode === "freeze") {
+        const contribution = measurement.diagnosticContribution;
+        assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
+          `${stem}: frozen canvas has no visible diagnostic contribution: ${JSON.stringify(contribution)}`);
+        pause.acceptsM03Freeze = true;
+      }
+    } finally {
+      await page.evaluate(() => {
+        const monitor = window.__compositePauseQueue;
+        if (monitor) GPUQueue.prototype.submit = monitor.original;
+        delete window.__compositePauseQueue;
+      });
     }
-    const contribution = await livePixelDifference(page, captured.a2.composite, paused);
-    measurement.contribution = contribution;
-    assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
-      `${stem}: native pause shows no visible live contribution: ${JSON.stringify(contribution)}`);
+    await page.locator("[data-pause]").evaluate((button) => button.click());
+    assert.equal(await stage(page).getAttribute("data-motion"), "running", `${stem}: native resume did not resume the renderer`);
+    await sample("native-resume");
+    pause.resume = { nativeAction: true, phase: "running", composite: files["native-resume"],
+      texture: files["texture-native-resume"], framesDuringInterval: measurement.textures["native-resume"].framesDuringInterval };
     return measurement;
   } finally {
     await page.clock.resume();
@@ -568,7 +705,7 @@ async function checkCandidateComposites(browser) {
       });
     }
   }
-  evidence.checks.compositeControls = "PASS candidate original-CSS A/A/B/A composite and GPU output checks, measured animation drift and native-pause reference; this routine is also used by live verification";
+  evidence.checks.compositeControls = "PASS candidate original-CSS A/A/B/A control checks above animation drift, classified native pause and separate canvas-hide diagnostic; only per-work pauseMode=freeze qualifies for M03 freeze acceptance. Live verification uses the same routine";
 }
 
 async function checkLive(browser) {
@@ -619,7 +756,7 @@ async function checkLive(browser) {
       });
     }
   }
-  evidence.checks.live = "PASS live HTTPS gallery, both locales, independent WebGPU output and original-CSS composite control effects above measured animation drift, source SHA, same-origin network and backlinks";
+  evidence.checks.live = "PASS live HTTPS gallery, both locales, independent WebGPU output and original-CSS controls above animation drift, classified native pause and separate canvas-hide diagnostic, source SHA, same-origin network and backlinks; legacy-fallback is compatibility only, not M03 freeze acceptance";
   evidence.measurements.deployed = release;
 }
 
