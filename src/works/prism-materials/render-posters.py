@@ -40,20 +40,35 @@ def refract(ray, normal, eta):
 def reflect(ray, normal):
     return ray - 2 * expand(dot(ray, normal)) * normal
 
-def field(p):
+def field(p, spread=0):
     grid_at = p + v(.38, -.08)
     minor = np.min(np.abs((grid_at * 3 + .5) % 1 - .5) / 3, axis=-1)
     major = np.min(np.abs((grid_at * .75 + .5) % 1 - .5) / .75, axis=-1)
     x, y = p.T
     paper = mix(v(.74, .8, .9), v(.98, .985, 1), np.clip(.78 + y * .13 - x * .08, 0, 1))
     track = x - .26 * y
-    stripe = 1 - smooth(.27, .28, np.abs(track + .46))
-    inset = 1 - smooth(.018, .024, np.abs(track - .06))
-    spectrum = 1 - smooth(.04, .045, np.abs(track - .13))
+    stripe = 1 - smooth(.27 - spread, .28 + spread, np.abs(track + .46))
+    inset = (1 - smooth(.018, .024 + spread, np.abs(track - .06))) * .024 / (.024 + spread)
+    spectrum = (1 - smooth(.04, .045 + spread, np.abs(track - .13))) * .045 / (.045 + spread)
     result = mix(paper, v(.01, .052, .94), stripe)
     result = mix(result, v(.02, .18, .74), inset)
     result = mix(result, v(.41, .66, .99), spectrum * .5)
-    return result * expand(1 - (1 - smooth(.003, .013, minor)) * .13 - (1 - smooth(.005, .015, major)) * .1)
+    minor_width = .013 + spread * .32
+    major_width = .015 + spread * .32
+    grid = ((1 - smooth(.003, minor_width, minor)) * .13 * .013 / minor_width +
+            (1 - smooth(.005, major_width, major)) * .10 * .015 / major_width)
+    return result * expand(1 - grid)
+
+def room_lighting(ray, origin):
+    y = ray[:, 1]
+    room_x, room_y, _ = (origin + 2.3 * ray).T
+    ceiling = smooth(-.24, .55, y)
+    window_at = room_x + room_y * .21
+    width = smooth(-.4, -.15, window_at) * (1 - smooth(1.1, 1.4, window_at))
+    height = smooth(-1.0, -.77, room_y) * (1 - smooth(.35, .47, room_y))
+    sill = 1 - smooth(.06, .3, np.abs(room_y + .19 - .16 * room_x))
+    return (mix(v(.17, .24, .36), v(.87, .93, .99), ceiling) +
+            v(.44, .49, .54) * expand(width * height) + v(.24, .26, .28) * expand(sill))
 
 def intersections(ro, rd):
     div = rd @ normals.T
@@ -85,27 +100,21 @@ def render_strip(u, y, aspect, finish, phase=0.0):
     entry, end, face, _ = intersections(origin, direction)
     shape = (entry < end) & (end > 0)
     back = field((eye + rays * expand((-2.05 - eye[2]) / rays[:,2]))[:, :2])
-    delta = (screen - v(.13, -1.14)) * v(1, 5.7)
-    back *= expand(1 - .20 * np.exp(-3 * dot(delta, delta)))
     if not shape.any():
         return back.reshape(len(w), len(u[0]), 3)
 
     heading = direction[shape]
     hit = origin + expand(entry[shape]) * heading
     geometric = unit(face[shape])
-    facing = np.abs(geometric[:,2])
-    flutes = np.sin(hit[:,0] * 39)
+    broad_face = smooth(.84, .99, np.abs(geometric[:, 2]))
+    flutes = np.sin(hit[:, 0] * 27)
     normal = geometric
-    if finish == "satin":
-        x, y_pos = hit[:,:2].T
-        etched = np.stack([np.sin(x*121+y_pos*174)*np.cos(y_pos*215), np.cos(x*181-y_pos*211)*np.sin(x*177), np.zeros_like(x)], axis=-1)
-        normal = unit(normal + etched * expand(.072 * facing))
     if finish == "ribbed":
-        normal = unit(normal + expand(flutes * facing * .24) * v(1, 0, 0))
+        normal = unit(normal + expand(flutes * broad_face * .16) * v(1, 0, 0))
 
     transmitted = np.zeros_like(hit)
     for channel in range(3):
-        ior = 1.511 + (channel - 1) * .0065
+        ior = 1.511 + (channel - 1) * .0035
         inside = refract(heading, normal, 1 / ior)
         inside_origin = hit + inside * .0002
         ray_length = np.zeros(len(hit))
@@ -118,40 +127,31 @@ def render_strip(u, y, aspect, finish, phase=0.0):
             exit_at[active] = inside_origin[active] + inside[active] * expand(exit_dist[active])
             exit_normal = unit(exit_normal)
             outside[active] = refract(inside[active], -exit_normal[active], ior)
-            active &= np.linalg.norm(outside, axis=-1) < .0001
+            active &= dot(outside, outside) <= .0001
             inside[active] = reflect(inside[active], exit_normal[active])
             inside_origin[active] = exit_at[active] + inside[active] * .0002
 
-        world_exit, world_ray = exit_at @ rotation.T, outside @ rotation.T
-        backdrop = world_ray[:,2] < -.06
-        receiver = world_exit[backdrop] + world_ray[backdrop] * expand((-2.05 - world_exit[backdrop,2]) / world_ray[backdrop,2])
-        scene = field(receiver[:,:2])
-        if finish == "satin":
-            stripe = 1 - smooth(.08, .64, np.abs(receiver[:,0] - .26 * receiver[:,1] + .46))
-            scene = mix(scene, mix(v(.81,.88,.96), v(.07,.28,.84), stripe), .72 * facing[backdrop])
-        absorb = np.exp(-v(.16, .052, .026)[channel] * ray_length[backdrop])
-        transmitted[backdrop,channel] = scene[:,channel] * absorb
-        transmitted[~backdrop,channel] = v(.29,.54,.94)[channel] * (.35 + .48 * np.abs(inside[~backdrop,1]))
+        emerged = dot(outside, outside) > .0001
+        world_exit = exit_at @ rotation.T
+        world_ray = np.where(expand(emerged), outside, inside) @ rotation.T
+        backdrop = emerged & (world_ray[:, 2] < -.18)
+        ray_z = world_ray[backdrop, 2]
+        receiver = world_exit[backdrop] + world_ray[backdrop] * expand((-2.05 - world_exit[backdrop, 2]) / ray_z)
+        light = room_lighting(world_ray, world_exit)
+        spread = .24 * broad_face[backdrop] + .01 if finish == "satin" else .007
+        wall = smooth(.18, .5, -ray_z) * (1 - smooth(4, 7, np.linalg.norm(receiver, axis=-1)))
+        light[backdrop] = mix(light[backdrop], field(receiver[:, :2], spread), wall)
+        transmitted[:, channel] = light[:, channel] * np.exp(-v(.20, .055, .035)[channel] * ray_length)
 
     reflected = reflect(heading, normal) @ rotation.T
-    light_strip = np.maximum(0, reflected @ unit(v(-.67,.76,.68))) ** 15
-    fill_strip = np.maximum(0, reflected @ unit(v(.71,.35,.64))) ** 22
-    fresnel = .045 + .91 * (1 - np.clip(dot(-heading,normal),0,1)) ** 4.2
-    side = 1 - smooth(.16, .84, facing)
-    overhead = smooth(-.8, .72, reflected[:, 1])
-    side_band = 1 - smooth(.038, .22, np.abs(reflected[:, 1] + .19 * hit[:, 1] - .41))
-    room = mix(v(.10, .18, .37), v(.61, .75, .94), overhead)
-    reflective_field = room + expand(light_strip*.46 + fill_strip*.31 + side_band*.18)
-    film = .5 + .5 * np.cos(v(0,2.094,4.189) + expand(hit @ v(4.7,6.9,3.1) + 6 * fresnel))
-    edge = 1 - smooth(.001, .031, end[shape] - entry[shape])
-    neutral = transmitted @ v(.2126, .7152, .0722)
-    edge_glass = mix(v(.13, .25, .49), v(.66, .82, .98), neutral)
-    transmitted = mix(transmitted, edge_glass, side * .92)
-    color = mix(transmitted, reflective_field, fresnel) + film * expand(fresnel*.023 + edge*.13)
-    color += expand(light_strip*.25 + fill_strip*.13 + edge*.18)
-    if finish == "ribbed":
-        color *= expand(.95 + .05 * flutes)
-    back[shape] = color
+    light_strip = np.maximum(0, reflected @ unit(v(-.67, .76, .68))) ** 24
+    fresnel = .042 + .958 * (1 - np.clip(dot(-heading, normal), 0, 1)) ** 5
+    path = end[shape] - entry[shape]
+    rim = (1 - smooth(.003, .028, path)) * .19
+    if finish == "satin":
+        transmitted = mix(transmitted, v(.88, .92, .97), .17 * broad_face)
+    color = mix(transmitted, room_lighting(reflected, hit @ rotation.T) + expand(light_strip * .42), fresnel) + expand(rim)
+    back[shape] = mix(back[shape], np.clip(color, 0, 1), smooth(0, .022, path))
     return np.clip(back.reshape(len(w), len(u[0]), 3), 0, 1)
 
 def render(w, h, finish):

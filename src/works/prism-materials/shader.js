@@ -29,37 +29,55 @@ const clipPlane = (origin, direction, normal, offset, near, far, nearNormal, far
 const planes = [
   [[1, 0, 0], 0.95], [[-1, 0, 0], 0.95],
   [[0, 1, 0], 1.01], [[0, -1, 0], 1.01],
-  [[0, 0, -1], 0.31], [[-0.23, 0.09, 1], 0.34],
-  [[1, 1, 0], 1.64], [[1, -1, 0], 1.71],
-  [[-1, -1, 0], 1.67], [[-1, 1, 0], 1.64],
-  [[0.77, 0.09, 1], 1.185], [[-1.23, 0.09, 1], 1.185],
-  [[-0.23, 1.09, 1], 1.24], [[-0.23, -0.91, 1], 1.24],
-  [[1, 0, -1], 1.17], [[-1, 0, -1], 1.17],
-  [[0, 1, -1], 1.22], [[0, -1, -1], 1.22],
-  [[0.77, 1.09, 1], 1.86], [[0.77, -0.91, 1], 1.93],
-  [[-1.23, -0.91, 1], 1.89], [[-1.23, 1.09, 1], 1.86],
+  [[0, 0, -1], 0.087], [[-0.065, 0.025, 1], 0.112],
+  [[1, 1, 0], 1.78], [[1, -1, 0], 1.81],
+  [[-1, -1, 0], 1.79], [[-1, 1, 0], 1.78],
+  [[0.935, 0.025, 1], 1.023], [[-1.065, 0.025, 1], 1.023],
+  [[-0.065, 1.025, 1], 1.083], [[-0.065, -0.975, 1], 1.083],
+  [[1, 0, -1], 1.010], [[-1, 0, -1], 1.010],
+  [[0, 1, -1], 1.070], [[0, -1, -1], 1.070],
+  [[0.935, 1.025, 1], 1.853], [[0.935, -0.975, 1], 1.883],
+  [[-1.065, -0.975, 1], 1.863], [[-1.065, 1.025, 1], 1.853],
 ];
 
 const vector = values => "vec3f(" + values.map(value => value.toFixed(4)).join(", ") + ")";
 const planeArray = "array<vec4f, " + planes.length + ">(" + planes.map(([normal, offset]) =>
   `vec4f(${vector(normal)}, ${offset})`).join(",\n") + ")";
 
-const environment = coordinate => `
+const environment = (coordinate, blur) => `
   let backdrop = ${coordinate};
+  let spread = ${blur};
   let gridAt = backdrop + vec2f(0.38, -0.08);
   let minorGrid = abs(fract(gridAt * 3.0 + 0.5) - 0.5) / 3.0;
   let majorGrid = abs(fract(gridAt * 0.75 + 0.5) - 0.5) / 0.75;
   let paper = mix(vec3f(0.74, 0.80, 0.90), vec3f(0.98, 0.985, 1.0),
     clamp(0.78 + backdrop.y * 0.13 - backdrop.x * 0.08, 0.0, 1.0));
-  let stripe = 1.0 - smoothstep(0.27, 0.28, abs(backdrop.x - 0.26 * backdrop.y + 0.46));
-  let insetStripe = 1.0 - smoothstep(0.018, 0.024, abs(backdrop.x - 0.26 * backdrop.y - 0.06));
-  let spectrumStripe = 1.0 - smoothstep(0.04, 0.045, abs(backdrop.x - 0.26 * backdrop.y - 0.13));
-  let grid = (1.0 - smoothstep(0.003, 0.013, min(minorGrid.x, minorGrid.y))) * 0.13 +
-    (1.0 - smoothstep(0.005, 0.015, min(majorGrid.x, majorGrid.y))) * 0.10;
+  let stripe = 1.0 - smoothstep(0.27 - spread, 0.28 + spread, abs(backdrop.x - 0.26 * backdrop.y + 0.46));
+  let insetStripe = (1.0 - smoothstep(0.018, 0.024 + spread, abs(backdrop.x - 0.26 * backdrop.y - 0.06))) *
+    (0.024 / (0.024 + spread));
+  let spectrumStripe = (1.0 - smoothstep(0.04, 0.045 + spread, abs(backdrop.x - 0.26 * backdrop.y - 0.13))) *
+    (0.045 / (0.045 + spread));
+  let minorWidth = 0.013 + spread * 0.32;
+  let majorWidth = 0.015 + spread * 0.32;
+  let grid = (1.0 - smoothstep(0.003, minorWidth, min(minorGrid.x, minorGrid.y))) * 0.13 * (0.013 / minorWidth) +
+    (1.0 - smoothstep(0.005, majorWidth, min(majorGrid.x, majorGrid.y))) * 0.10 * (0.015 / majorWidth);
   var field = mix(paper, vec3f(0.010, 0.052, 0.94), stripe);
   field = mix(field, vec3f(0.02, 0.18, 0.74), insetStripe);
   field = mix(field, vec3f(0.41, 0.66, 0.99), spectrumStripe * 0.5);
   field *= 1.0 - grid;
+`;
+
+const roomLighting = (direction, origin) => `
+  let roomRay = ${direction};
+  let roomPoint = ${origin} + 2.3 * roomRay;
+  let ceiling = smoothstep(-0.24, 0.55, roomRay.y);
+  let windowAt = roomPoint.x + roomPoint.y * 0.21;
+  let windowWidth = smoothstep(-0.4, -0.15, windowAt) * (1.0 - smoothstep(1.1, 1.4, windowAt));
+  let windowHeight = smoothstep(-1.0, -0.77, roomPoint.y) * (1.0 - smoothstep(0.35, 0.47, roomPoint.y));
+  let reflectedSill = 1.0 - smoothstep(0.06, 0.3, abs(roomPoint.y + 0.19 - 0.16 * roomPoint.x));
+  let room = mix(vec3f(0.17, 0.24, 0.36), vec3f(0.87, 0.93, 0.99), ceiling) +
+    vec3f(0.44, 0.49, 0.54) * windowWidth * windowHeight +
+    vec3f(0.24, 0.26, 0.28) * reflectedSill;
 `;
 
 const specimen = defineShader({
@@ -97,27 +115,21 @@ const specimen = defineShader({
       ${clipPlane("origin", "heading", "facet.xyz", "facet.w", "near", "far", "nearNormal", "farNormal")}
     }
 
-    if (near >= far || far <= 0.0) {
-      ${environment("(eye + ray * ((-2.05 - eye.z) / ray.z)).xy")}
-      let softShadow = exp(-dot((screen - vec2f(0.13, -1.14)) * vec2f(1.0, 5.7),
-                               (screen - vec2f(0.13, -1.14)) * vec2f(1.0, 5.7)) * 3.0);
-      return vec4f(field * (1.0 - 0.20 * softShadow), 1);
-    }
+    ${environment("(eye + ray * ((-2.05 - eye.z) / ray.z)).xy", "0.0")}
+    let background = field;
+    if (near >= far || far <= 0.0) { return vec4f(background, 1.0); }
 
     let hit = origin + near * heading;
     let geometricNormal = normalize(nearNormal);
     let facing = abs(geometricNormal.z);
-    let flute = sin(hit.x * 39.0);
-    let etched = vec3f(
-      sin(hit.x * 121.0 + hit.y * 174.0) * cos(hit.y * 215.0),
-      cos(hit.x * 181.0 - hit.y * 211.0) * sin(hit.x * 177.0), 0.0);
+    let flute = sin(hit.x * 27.0);
+    let broadFace = smoothstep(0.84, 0.99, facing);
     var normal = geometricNormal;
-    if (material == 1.0) { normal = normalize(normal + etched * 0.072 * facing); }
-    if (material == 2.0) { normal = normalize(normal + vec3f(flute * 0.24 * facing, 0, 0)); }
+    if (material == 2.0) { normal = normalize(normal + vec3f(flute * 0.16 * broadFace, 0, 0)); }
 
     var transmitted = vec3f(0);
     for (var channel = 0u; channel < 3u; channel += 1u) {
-      let ior = 1.511 + (f32(channel) - 1.0) * 0.0065;
+      let ior = 1.511 + (f32(channel) - 1.0) * 0.0035;
       var insideRay = refract(heading, normal, 1.0 / ior);
       var insideOrigin = hit + insideRay * 0.0002;
       var rayLength = 0.0;
@@ -126,14 +138,23 @@ const specimen = defineShader({
       for (var bounce = 0u; bounce < 2u; bounce += 1u) {
         var untilExit = 100.0;
         var exitNormal = vec3f(0, 0, -1);
-        for (var i = 0u; i < ${planes.length}u; i += 1u) {
-          let facet = facets[i];
-          let denom = dot(facet.xyz, insideRay);
-          if (denom > 0.00001) {
-            let crossAt = (facet.w - dot(facet.xyz, insideOrigin)) / denom;
-            if (crossAt < untilExit) {
-              untilExit = crossAt;
-              exitNormal = facet.xyz;
+        // A point strictly inside the back face cannot cross a different
+        // plane first. Most front-face rays take this shorter path.
+        let backDist = (-0.087 - insideOrigin.z) / min(insideRay.z, -0.00001);
+        let backPoint = abs((insideOrigin + backDist * insideRay).xy);
+        if (insideRay.z < -0.00001 && backDist > 0.0 && backPoint.x < 0.922 &&
+            backPoint.y < 0.982 && backPoint.x + backPoint.y < 1.775) {
+          untilExit = backDist;
+        } else {
+          for (var i = 0u; i < ${planes.length}u; i += 1u) {
+            let facet = facets[i];
+            let denom = dot(facet.xyz, insideRay);
+            if (denom > 0.00001) {
+              let crossAt = (facet.w - dot(facet.xyz, insideOrigin)) / denom;
+              if (crossAt < untilExit) {
+                untilExit = crossAt;
+                exitNormal = facet.xyz;
+              }
             }
           }
         }
@@ -141,49 +162,39 @@ const specimen = defineShader({
         exitAt = insideOrigin + untilExit * insideRay;
         exitNormal = normalize(exitNormal);
         outsideRay = refract(insideRay, -exitNormal, ior);
-        if (length(outsideRay) > 0.0001) { break; }
+        if (dot(outsideRay, outsideRay) > 0.0001) { break; }
         insideRay = reflect(insideRay, exitNormal);
         insideOrigin = exitAt + insideRay * 0.0002;
       }
 
       let worldExit = objectToWorld * exitAt;
-      let worldRay = objectToWorld * outsideRay;
-      if (worldRay.z < -0.06) {
+      let emerged = dot(outsideRay, outsideRay) > 0.0001;
+      let worldRay = objectToWorld * select(insideRay, outsideRay, emerged);
+      let absorption = exp(-vec3f(0.20, 0.055, 0.035) * rayLength);
+      ${roomLighting("worldRay", "worldExit")}
+      var lightThroughGlass = room;
+      if (emerged && worldRay.z < -0.18) {
         let receiver = worldExit + worldRay * ((-2.05 - worldExit.z) / worldRay.z);
-        ${environment("receiver.xy")}
-        if (material == 1.0) {
-          let broadStripe = 1.0 - smoothstep(0.08, 0.64, abs(receiver.x - 0.26 * receiver.y + 0.46));
-          let diffuse = mix(vec3f(0.81, 0.88, 0.96), vec3f(0.07, 0.28, 0.84), broadStripe);
-          field = mix(field, diffuse, 0.72 * facing);
-        }
-        let absorption = exp(-vec3f(0.16, 0.052, 0.026) * rayLength);
-        transmitted[channel] = field[channel] * absorption[channel];
-      } else {
-        let internalReflection = 0.35 + 0.48 * abs(insideRay.y);
-        transmitted[channel] = vec3f(0.29, 0.54, 0.94)[channel] * internalReflection;
+        ${environment("receiver.xy", "select(0.007, 0.24 * broadFace + 0.01, material == 1.0)")}
+        let wall = smoothstep(0.18, 0.5, -worldRay.z) *
+          (1.0 - smoothstep(4.0, 7.0, length(receiver)));
+        lightThroughGlass = mix(room, field, wall);
       }
+      transmitted[channel] = lightThroughGlass[channel] * absorption[channel];
     }
 
     let reflected = objectToWorld * reflect(heading, normal);
-    let lightStrip = pow(max(0.0, dot(reflected, normalize(vec3f(-0.67, 0.76, 0.68)))), 15.0);
-    let fillStrip = pow(max(0.0, dot(reflected, normalize(vec3f(0.71, 0.35, 0.64)))), 22.0);
+    ${roomLighting("reflected", "objectToWorld * hit")}
+    let lightStrip = pow(max(0.0, dot(reflected, normalize(vec3f(-0.67, 0.76, 0.68)))), 24.0);
     let viewCosine = clamp(dot(-heading, normal), 0.0, 1.0);
-    let fresnel = 0.045 + 0.91 * pow(1.0 - viewCosine, 4.2);
-    let side = 1.0 - smoothstep(0.16, 0.84, facing);
-    let overhead = smoothstep(-0.8, 0.72, reflected.y);
-    let sideBand = 1.0 - smoothstep(0.038, 0.22, abs(reflected.y + 0.19 * hit.y - 0.41));
-    let room = mix(vec3f(0.10, 0.18, 0.37), vec3f(0.61, 0.75, 0.94), overhead);
-    let reflectiveField = room + lightStrip * 0.46 + fillStrip * 0.31 + sideBand * 0.18;
-    let thinFilm = 0.5 + 0.5 * cos(vec3f(0, 2.094, 4.189) + dot(hit, vec3f(4.7, 6.9, 3.1)) + 6.0 * fresnel);
-    let facetEdge = 1.0 - smoothstep(0.001, 0.031, far - near);
-    let neutral = dot(transmitted, vec3f(0.2126, 0.7152, 0.0722));
-    let edgeGlass = mix(vec3f(0.13, 0.25, 0.49), vec3f(0.66, 0.82, 0.98), neutral);
-    transmitted = mix(transmitted, edgeGlass, side * 0.92);
-    let polish = lightStrip * 0.25 + fillStrip * 0.13 + facetEdge * 0.18;
-    var color = mix(transmitted, reflectiveField, fresnel) + thinFilm * (fresnel * 0.023 + facetEdge * 0.13);
-    color += vec3f(polish);
-    if (material == 2.0) { color *= 0.95 + 0.05 * flute; }
-    return vec4f(clamp(color, vec3f(0), vec3f(1)), 1.0);
+    let fresnel = 0.042 + 0.958 * pow(1.0 - viewCosine, 5.0);
+    let path = far - near;
+    let rim = (1.0 - smoothstep(0.003, 0.028, path)) * 0.19;
+    let satinFace = select(0.0, 0.17 * broadFace, material == 1.0);
+    let diffused = mix(transmitted, vec3f(0.88, 0.92, 0.97), satinFace);
+    let color = mix(diffused, room + vec3f(lightStrip * 0.42), fresnel) + vec3f(rim);
+    let coverage = smoothstep(0.0, 0.022, path);
+    return vec4f(mix(background, clamp(color, vec3f(0), vec3f(1)), coverage), 1.0);
   `,
 });
 
