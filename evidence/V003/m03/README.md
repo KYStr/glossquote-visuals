@@ -15,6 +15,6 @@
 
 - `signal-desktop-*`、`signal-mobile-*` 含同一工作階段的自然時序 PNG。每個節目、每個尺寸皆保存 0/2/4/6/8 秒，較長的週期另保存至 10 或 12 秒。逐時 `-texture.png` 為原尺寸 GPU 紋理讀回。瀏覽器首屏與全頁另存。時間點為名目取樣，報告也記錄實際開始時間與讀回耗時。
 - `signal-transition-*` 記錄三段節目循環切換前、切換開始、途中與結束。PNG 以原尺寸保存。完整自然取樣未用測試時鐘快轉。
-- `signal-desktop-pause*`、`signal-mobile-pause*` 的可見舞台 PNG 進行位元一致性比對，同時確認 canvas 保持可見、沒有額外的呈現幀，續播後像素再變化。
+- `signal-desktop-pause*`、`signal-mobile-pause*` 的可見舞台 PNG 進行原尺寸像素比對，容許極少量 WARP 合成捨入誤差，同時確認 canvas 保持可見、沒有額外的呈現幀，續播後像素再變化。
 - 保留中英桌面與手機全頁、320 px／200% 與 768 px、無 JS／GPU、選票狀態及兩份實際下載的 `.txt`。
 - 此測試環境使用 D3D11 WARP 軟體渲染。實體手機與人工讀屏仍待驗，獨立動態美術與評分待主責確認。

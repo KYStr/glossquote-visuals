@@ -19,6 +19,36 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
     return { ...texture, file, sha256: fingerprint(bytes), readbackMs: Math.round(performance.now() - before) };
   }
 
+  const difference = (page, first, second) => page.evaluate(async ([a, b]) => {
+    async function decode(encoded) {
+      const bytes = Uint8Array.from(atob(encoded), (char) => char.charCodeAt(0));
+      const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
+      const canvas = document.createElement("canvas");
+      canvas.width = bitmap.width;
+      canvas.height = bitmap.height;
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      context.drawImage(bitmap, 0, 0);
+      bitmap.close();
+      return context.getImageData(0, 0, canvas.width, canvas.height);
+    }
+
+    const [first, second] = await Promise.all([decode(a), decode(b)]);
+    if (first.width !== second.width || first.height !== second.height) throw new Error("Pause changed stage size");
+    let sum = 0;
+    let peak = 0;
+    let changedPixels = 0;
+    for (let i = 0; i < first.data.length; i += 4) {
+      const r = Math.abs(first.data[i] - second.data[i]);
+      const g = Math.abs(first.data[i + 1] - second.data[i + 1]);
+      const b = Math.abs(first.data[i + 2] - second.data[i + 2]);
+      sum += r + g + b;
+      const delta = Math.max(r, g, b);
+      peak = Math.max(peak, delta);
+      if (delta > 1) changedPixels++;
+    }
+    return { mean: sum / (first.width * first.height * 3), peak, changedPixels };
+  }, [first.toString("base64"), second.toString("base64")]);
+
   async function follow(page, stem, offsets, change) {
     const epoch = performance.now();
     const frames = [];
@@ -67,10 +97,10 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
         const file = "signal-" + stem + "-" + suffix + ".png";
         const png = await page.screenshot({ path: resolve(evidenceDir, file), clip });
         evidence.screenshots.push(file);
-        return { file, sha256: fingerprint(png) };
+        return { png, metadata: { file, sha256: fingerprint(png) } };
       }
 
-      const before = await capture("pre-pause");
+      const { metadata: before } = await capture("pre-pause");
       await pause();
       assert.equal(await surface.locator("canvas").isVisible(), true, "Pause must keep the GPU canvas visible");
       assert.equal(await surface.locator("img").isVisible(), false, "Pause must keep the still poster hidden");
@@ -83,13 +113,17 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
       const frozen = await capture("pause");
       await quiet(page);
       const later = await capture("pause-held");
-      measurements.freeze[stem] = { before, frozen, later };
-      assert.equal(later.sha256, frozen.sha256, "Visible stage changed after the final submitted frame settled");
+      const pixels = await difference(page, frozen.png, later.png);
+      const report = measurements.freeze[stem] = { before, frozen: frozen.metadata, later: later.metadata, pixels };
+      assert.ok(pixels.mean <= 0.01 && pixels.peak <= 2 && pixels.changedPixels <= 24,
+        "Visible stage moved while paused: " + JSON.stringify(pixels));
       await resume();
       await nextFrame();
       const resumed = await capture("resumed");
-      assert.notEqual(resumed.sha256, frozen.sha256, "The sculpture did not move after resuming");
-      measurements.freeze[stem] = { before, frozen, later, resumed };
+      const motion = await difference(page, frozen.png, resumed.png);
+      assert.ok(motion.mean > 0.05 && motion.changedPixels > 24, "The sculpture did not move after resuming");
+      report.resumed = resumed.metadata;
+      report.resumePixels = motion;
     },
   };
 }

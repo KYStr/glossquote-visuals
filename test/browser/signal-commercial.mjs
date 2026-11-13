@@ -368,6 +368,6 @@ export async function checkSignal(browser, {
     await screenshot(page, "signal-en-390-webgpu.png");
     await privateRequests(probe);
   });
-  evidence.checks.signalMotion = "PASS natural desktop and mobile cycles for all three programs, three in-place transitions, and exact preserved-stage PNG hashes during native pause on desktop and mobile";
+  evidence.checks.signalMotion = "PASS natural desktop and mobile cycles for all three programs, three in-place transitions, and stable original-resolution stage pixels and zero extra presentation frames during native pause on desktop and mobile";
   evidence.checks.signal = "PASS bilingual 320/390/768/1440 and 200% text layout, keyboard/touch, three visible WebGPU programs, 18 switches on one device, lifecycle and recovery, no-GPU/no-JS/reduced motion and privacy";
 }
