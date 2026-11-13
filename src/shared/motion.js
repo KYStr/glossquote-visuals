@@ -154,8 +154,10 @@ export function observeMotion(stage, motion, preference) {
     let active = true;
     const updateVisibility = () => motion.update({ visible: document.visibilityState === "visible" });
     const updatePreference = () => motion.update({ reduced: preference.matches });
-    const intersection = new IntersectionObserver(([entry]) => {
-      if (active) motion.update({ inView: entry.isIntersecting && entry.intersectionRatio >= 0.01 });
+    const intersection = new IntersectionObserver((entries) => {
+      // A delivery can contain both sides of a threshold crossing for this stage.
+      const entry = entries.at(-1);
+      if (active && entry) motion.update({ inView: entry.isIntersecting && entry.intersectionRatio >= 0.01 });
     }, { threshold: 0.01 });
     const resize = new ResizeObserver(([entry]) => {
       if (active) motion.update({

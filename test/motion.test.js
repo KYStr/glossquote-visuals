@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { setImmediate } from "node:timers/promises";
 import { test } from "node:test";
-import { createMotion } from "../src/shared/motion.js";
+import { createMotion, observeMotion } from "../src/shared/motion.js";
 
 const eligible = { active: true, visible: true, inView: true, reduced: false, paused: false, width: 700, height: 500 };
 const initialSettings = { angle: 38, preset: "dawn" };
@@ -164,4 +164,39 @@ test("leaving during recovery releases the instance and return starts cleanly", 
   motion.update(eligible);
   assert.equal(starts.length, 2);
   assert.equal(states.at(-1), "starting");
+});
+
+test("observes the latest stage intersection when notifications are batched", (t) => {
+  const stage = {};
+  const view = {};
+  let deliver;
+  const observers = {
+    IntersectionObserver: class {
+      constructor(callback, options) {
+        deliver = callback;
+        assert.equal(options.threshold, 0.01);
+      }
+      observe(target) { assert.equal(target, stage); }
+    },
+    ResizeObserver: class { observe() {} },
+    document: Object.assign(new EventTarget(), { visibilityState: "visible" }),
+    window: new EventTarget(),
+  };
+  for (const [key, value] of Object.entries(observers)) {
+    const original = Object.getOwnPropertyDescriptor(globalThis, key);
+    Object.defineProperty(globalThis, key, { configurable: true, value });
+    t.after(() => {
+      if (original) Object.defineProperty(globalThis, key, original);
+      else delete globalThis[key];
+    });
+  }
+  const preference = Object.assign(new EventTarget(), { matches: false });
+  observeMotion(stage, { update: (patch) => Object.assign(view, patch) }, preference);
+
+  const outside = { target: stage, isIntersecting: false, intersectionRatio: 0 };
+  const inside = { target: stage, isIntersecting: true, intersectionRatio: 1 };
+  deliver([outside, inside]);
+  assert.equal(view.inView, true);
+  deliver([inside, outside]);
+  assert.equal(view.inView, false);
 });
