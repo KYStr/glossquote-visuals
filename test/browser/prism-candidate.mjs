@@ -258,7 +258,7 @@ async function setAngle(page, number) {
   await input.focus();
   await input.press(number === -20 ? "Home" : number === 20 ? "End" : "Home");
   if (number === 0) {
-    for (let step = 0; step < 20; step++) await input.press("ArrowRight");
+    for (let step = 0; step < 20; step++) await page.keyboard.press("ArrowRight");
   }
   assert.equal(await input.inputValue(), String(number));
   await waitForDraw(page, (await counters(page)).textures + 1);
@@ -381,6 +381,7 @@ async function checkOptics(browser) {
       const resumeDifference = await difference(page, frozen, resumed);
       assert.ok(resumeDifference > 0.5);
 
+      evidence.measurements[label].controls = { angleDifference, angleReturn, materialDifference, freezeDifference, resumeDifference };
       await page.locator("footer").scrollIntoViewIfNeeded();
       await phase(page, "still");
       await checkStill(page);
@@ -404,23 +405,25 @@ async function checkOptics(browser) {
       assert.ok(recovery.colors > 50);
       await capture(page, `${label}-device-recovered`, scene);
 
-      // Simulate the page lifecycle against the original document and actual SDK resources.
-      await page.evaluate(() => {
-        const probe = window.__visualProbe;
-        probe.previousDevice = probe.device;
-        window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: true }));
-      });
+      // Standalone releases its composition and keeps the library-wide device
+      // cache. Verify no presentation during pagehide, then a fresh canvas
+      // configuration on pageshow without allocating a second active canvas.
+      const beforeExit = await counters(page);
+      await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: true })));
       await phase(page, "still");
-      await page.waitForFunction(async () => (await window.__visualProbe.previousDevice.lost).reason === "destroyed");
+      assert.equal(await scene.locator("canvas").isVisible(), false);
+      await checkStill(page);
       await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pageshow", { persisted: true })));
       await phase(page, "running");
-      assert.equal((await counters(page)).devices, 3);
+      const afterReturn = await counters(page);
+      assert.ok(afterReturn.configurations > beforeExit.configurations);
+      assert.equal(afterReturn.devices, 2);
+      assert.equal(await page.locator("canvas").count(), 1);
       await probe.assertPrivate(site.origin, { fontPaths });
-      evidence.measurements[label].controls = { angleDifference, angleReturn, materialDifference, freezeDifference, resumeDifference };
     });
   }
   evidence.checks.optics = "PASS visible WebGPU, four bilingual viewport renders, natural 12-second cycles, angle return, three surfaces and a one-second unchanged pause with pointer and queued control";
-  evidence.checks.lifecycle = "PASS offscreen, injected hidden, injected device loss followed by actual device destruction, and pagehide/pageshow resource teardown and restart";
+  evidence.checks.lifecycle = "PASS offscreen, injected hidden, injected device loss followed by actual device destruction, and pagehide/pageshow composition teardown and restart on cached device";
   evidence.checks.privacy = "PASS local static GETs only, no telemetry, fetch/XHR/beacon/socket, storage, CSP or GPU validation errors";
 }
 
