@@ -112,31 +112,12 @@
 .hero-visual { --photo-x: 61%; --photo-y: 42%; position: absolute; inset: 0; isolation: isolate; background: #293335; overflow: hidden; }
 .hero-surface { position: absolute; inset: 0; }
 .hero-visual img { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; object-position: var(--photo-x) var(--photo-y); filter: saturate(.72); }
-.hero-render { display: none; }
-
-@supports (width: 1cqh) and (mask-image: url("")) {
-  .hero-visual { container-type: size; }
-  .hero-surface {
-    inset: var(--photo-y) auto auto var(--photo-x);
-    inline-size: max(100cqw, 150cqh);
-    aspect-ratio: 3 / 2;
-    transform: translate(calc(-1 * var(--photo-x)), calc(-1 * var(--photo-y)));
-  }
-  .hero-render {
-    position: absolute;
-    display: block;
-    inset: 21.97266% auto auto 41.27604%;
-    inline-size: 38.41146%;
-    block-size: 62.5%;
-    mask: url("/media/liquid-forme-steel-mask.png") center / 100% 100% no-repeat;
-    mix-blend-mode: screen;
-    pointer-events: none;
-    opacity: .62;
-  }
-  .hero-render[data-finish="satin"] { mix-blend-mode: soft-light; opacity: .46; }
-  .hero-render canvas { position: absolute; inset: 0; visibility: hidden; }
-  .hero-render[data-motion="running"] canvas { visibility: visible; }
-}
+.hero-render { position: absolute; inset: 0; pointer-events: none; }
+.hero-render canvas { position: absolute; inset: 0; inline-size: 100% !important; block-size: 100% !important; visibility: hidden; }
+.hero-render[data-motion="running"] canvas,
+.hero-render[data-motion="paused"][data-frame="present"] canvas { visibility: visible; }
+.hero-visual:has(.hero-render[data-motion="running"]) [data-hero-image],
+.hero-visual:has(.hero-render[data-motion="paused"][data-frame="present"]) [data-hero-image] { visibility: hidden; }
 
 .button {
   display: inline-flex;

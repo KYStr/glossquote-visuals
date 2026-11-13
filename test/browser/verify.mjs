@@ -533,6 +533,15 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     await page.locator("[data-pause]").evaluate((button) => button.click());
     assert.equal(await stage(page).getAttribute("data-motion"), "paused");
     const paused = await capture("native-pause");
+    if (slug === "liquid-archive" && await stage(page).getAttribute("data-frame") === "present") {
+      const frozen = await livePixelDifference(page, captured.a2.composite, paused);
+      await page.clock.runFor(300);
+      const later = await capture("native-pause-stable");
+      measurement.frozen = frozen;
+      measurement.frozenStable = await livePixelDifference(page, paused, later);
+      assert.ok(frozen.mean < 0.10 && measurement.frozenStable.peak === 0, `${stem}: native pause must freeze the displayed scene`);
+      return measurement;
+    }
     const contribution = await livePixelDifference(page, captured.a2.composite, paused);
     measurement.contribution = contribution;
     assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
@@ -812,165 +821,202 @@ async function checkLiquid(browser) {
     });
   }
 
-  await withPage(browser, { viewport: { width: 1440, height: 920 }, deviceScaleFactor: 1 }, async (page) => {
-    const probe = await observe(page, { ...testFont, readPixels: true });
-    const photo = page.locator(".hero-visual");
-    const sample = async name => {
-      await phase(page, "running");
-      await page.locator("[data-hero-image]").evaluate(image => image.decode());
-      const previous = await textureCount(page);
-      await page.waitForFunction(count => window.__visualProbe.textures > count + 3, previous);
-      const texture = await page.evaluate(() => window.__visualProbe.readFrame());
-      assert.ok(texture.colors > 20, JSON.stringify({ name, texture }));
-      const file = "liquid-forme-" + name + ".png";
-      const pixels = await photo.screenshot({ path: resolve(evidenceDir, file) });
-      evidence.screenshots.push(file);
-      return { texture, pixels };
-    };
-    const difference = (first, second) => page.evaluate(async ([first, second]) => {
-      const toPixels = async encoded => {
-        const bytes = Uint8Array.from(atob(encoded), char => char.charCodeAt(0));
-        const image = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
-        const canvas = document.createElement("canvas");
-        canvas.width = 80;
-        canvas.height = 60;
-        const context = canvas.getContext("2d", { willReadFrequently: true });
-        context.drawImage(image, 0, 0, 80, 60);
-        image.close();
-        return context.getImageData(0, 0, 80, 60).data;
-      };
-      const a = await toPixels(first);
-      const b = await toPixels(second);
-      let changed = 0;
-      let peak = 0;
-      for (let i = 0; i < a.length; i += 4) {
-        const diff = Math.max(...[0, 1, 2].map(c => Math.abs(a[i + c] - b[i + c])));
-        if (diff > 10) changed++;
-        peak = Math.max(peak, diff);
-      }
-      return { changed, peak };
-    }, [first.toString("base64"), second.toString("base64")]);
+  for (const [prefix, width, height] of [["en/", 1440, 920], ["", 390, 850]]) {
+    const lang = prefix ? "en" : "zh-Hant";
+    const stem = `liquid-forme-${lang}-${width}`;
+    await withPage(browser, { viewport: { width, height }, deviceScaleFactor: 1, hasTouch: width === 390 }, async page => {
+      const probe = await observe(page, { ...testFont, readPixels: true });
+      const scene = page.locator(".hero-scene");
+      const hero = page.locator(".hero-visual");
+      const poster = hero.locator("img");
+      const canvas = stage(page).locator("canvas");
+      const angle = page.locator("#object-angle");
+      const sweep = page.locator("[data-light-sweep]");
+      const pauseButton = page.locator("[data-pause]");
 
-    await open(page, "en/" + route);
-    const polished = await sample("en-1440-polished-composite");
-    const coversPhoto = await photo.evaluate(element => {
-      const viewport = element.getBoundingClientRect();
-      const image = element.querySelector("img").getBoundingClientRect();
-      return image.left <= viewport.left + 1 && image.right >= viewport.right - 1 &&
-        image.top <= viewport.top + 1 && image.bottom >= viewport.bottom - 1;
-    });
-    assert.equal(coversPhoto, true, "The hero photograph covers its entire frame");
-    assert.equal(await page.evaluate(() => scrollY), 0, "The WebGPU composition is visible on entry");
-    const theme = await page.evaluate(async () => {
-      await document.fonts.ready;
-      return {
+      async function frame(label) {
+        const name = `${stem}-${label}.png`;
+        const clip = await scene.evaluate(element => {
+          const rect = element.getBoundingClientRect();
+          return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+        });
+        const png = await page.screenshot({ path: resolve(evidenceDir, name), clip });
+        evidence.screenshots.push(name);
+        return png;
+      }
+
+      async function nextFrames(count = 2) {
+        const start = await textureCount(page);
+        await page.waitForFunction(target => window.__visualProbe.textures >= target, start + count);
+      }
+
+      async function selectAngle(degrees) {
+        await angle.evaluate((input, value) => {
+          input.value = String(value);
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+        }, degrees);
+        assert.equal(await page.locator('output[for="object-angle"]').textContent(), `${degrees}°`);
+        assert.equal(await stage(page).getAttribute("data-light"), "manual");
+        await nextFrames();
+      }
+
+      async function captureCycle(finish) {
+        const frames = [];
+        const start = performance.now();
+        for (const time of [0, 2, 4, 6, 8, 10, 12]) {
+          const wait = time * 1000 - (performance.now() - start);
+          if (wait > 0) await page.waitForTimeout(wait);
+          const elapsed = performance.now() - start;
+          const textures = await textureCount(page);
+          const png = await frame(`${finish}-auto-${time}s`);
+          frames.push({ time, elapsed: Math.round(elapsed), textures, png });
+        }
+        assert.ok(frames.at(-1).textures > frames[0].textures + 8, `${stem}: no continuous motion`);
+        const travel = await livePixelDifference(page, frames[0].png, frames[3].png);
+        assert.ok(travel.mean > 0.1 && travel.changedPixels > 12, `${stem}: automatic sweep is not visible: ${JSON.stringify(travel)}`);
+        return { travel, samples: frames.map(({ png, ...sample }) => sample) };
+      }
+
+      async function checkFinish(finish) {
+        assert.equal(await stage(page).getAttribute("data-finish"), finish);
+        assert.equal(await stage(page).getAttribute("data-light"), "auto");
+        await nextFrames();
+        const cycle = await captureCycle(finish);
+        const before = await frame(`${finish}-pause-before`);
+        await pauseButton.evaluate(button => button.click());
+        await phase(page, "paused");
+        await quiet(page);
+        assert.ok(await canvas.isVisible());
+        assert.equal(await poster.isVisible(), false);
+        const firstPaused = await frame(`${finish}-paused-a`);
+        await page.waitForTimeout(600);
+        const secondPaused = await frame(`${finish}-paused-b`);
+        assert.deepEqual(await livePixelDifference(page, firstPaused, secondPaused),
+          { mean: 0, changedPixels: 0, peak: 0, width: 80, height: 60 });
+        const pauseDelta = await livePixelDifference(page, before, firstPaused);
+        assert.ok(pauseDelta.mean < 2.5, `${stem}: pause switched the visible scene: ${JSON.stringify(pauseDelta)}`);
+        assert.ok(await angle.isDisabled());
+        await pauseButton.evaluate(button => button.click());
+        await phase(page, "running");
+        await nextFrames();
+        await page.waitForTimeout(2000);
+        const resumed = await frame(`${finish}-resumed`);
+        const resumeDelta = await livePixelDifference(page, secondPaused, resumed);
+        assert.ok(resumeDelta.mean > 0.07 && resumeDelta.changedPixels > 7, `${stem}: resumed scene did not move: ${JSON.stringify(resumeDelta)}`);
+
+        const fixed = {};
+        for (const degrees of [0, 45, 90, 135, 180]) {
+          await selectAngle(degrees);
+          fixed[degrees] = await frame(`${finish}-fixed-${degrees}deg`);
+        }
+        const angleDelta = await livePixelDifference(page, fixed[0], fixed[180]);
+        assert.ok(angleDelta.changedPixels > 15, `${stem}: moving the light does not change the studio image`);
+        await selectAngle(0);
+        const restored = await frame(`${finish}-fixed-return-0deg`);
+        assert.equal((await livePixelDifference(page, fixed[0], restored)).peak, 0);
+        await selectAngle(90);
+        const texture = await page.evaluate(() => window.__visualProbe.readFrame(true));
+        const textureName = `${stem}-${finish}-fixed-90deg-texture.png`;
+        await writeFile(resolve(evidenceDir, textureName), Buffer.from(texture.png, "base64"));
+        evidence.screenshots.push(textureName);
+        const { png, ...textureStats } = texture;
+        assert.ok(textureStats.colors > 20, JSON.stringify(textureStats));
+        await sweep.evaluate(button => button.click());
+        assert.equal(await stage(page).getAttribute("data-light"), "auto");
+        await page.evaluate(() => window.scrollTo(0, 0));
+        return { cycle, angleDelta, pauseDelta, resumeDelta, texture: textureStats };
+      }
+
+      await open(page, prefix + route);
+      await phase(page, "running");
+      await page.evaluate(() => document.fonts.ready.then(() => undefined));
+      assert.equal(await page.evaluate(() => scrollY), 0);
+      assert.ok(await canvas.isVisible());
+      assert.equal(await poster.isVisible(), false);
+      assert.equal(await page.locator("canvas").count(), 1);
+      const fillsHero = await hero.evaluate(element => {
+        const image = element.getBoundingClientRect();
+        const output = element.querySelector("canvas").getBoundingClientRect();
+        return Math.abs(image.width - output.width) <= 1 && Math.abs(image.height - output.height) <= 1;
+      });
+      assert.ok(fillsHero, "Procedural canvas must cover the entire photograph frame");
+      const theme = await page.evaluate(() => ({
         background: getComputedStyle(document.documentElement).backgroundColor,
         accent: getComputedStyle(document.querySelector(".section-intro .eyebrow")).color,
         geist: [...document.fonts].some(face => face.family === "Geist" && face.status === "loaded"),
+      }));
+      assert.deepEqual(theme, { background: "rgb(238, 240, 237)", accent: "rgb(39, 81, 90)", geist: true });
+      evidence.measurements.liquidTheme = theme;
+      await checkContrast(page, [
+        ".config-copy h2", ".hero .button", ".card-description", ".finish-choices input:checked + span",
+      ], "liquidMinCheckedContrast");
+      await fullLiquidScreenshot(page, `${stem}-webgpu-full.png`);
+      const polished = await checkFinish("polished");
+
+      const configurations = await page.evaluate(() => window.__visualProbe.configurations);
+      await page.evaluate(() => {
+        const products = document.querySelector("#product");
+        const finishes = [...document.querySelectorAll('[name="finish"]')];
+        for (let index = 0; index < 20; index++) {
+          products.selectedIndex = index % products.options.length;
+          products.dispatchEvent(new Event("change", { bubbles: true }));
+          finishes[index % finishes.length].click();
+        }
+      });
+      assert.equal(await control(page).inputValue(), "orb");
+      assert.match(await page.locator("[data-detail-image]").getAttribute("src"), /orb-satin\.webp$/);
+      assert.match(await poster.getAttribute("src"), /hero-satin\.webp$/);
+      const satin = await checkFinish("satin");
+      assert.notDeepEqual(satin.texture.average, polished.texture.average);
+      assert.equal(await page.locator("canvas").count(), 1);
+      assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
+      assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
+      const before = await textureCount(page);
+      const started = performance.now();
+      await page.waitForTimeout(1200);
+      evidence.measurements.liquidStudios ??= {};
+      evidence.measurements.liquidStudios[stem] = {
+        polished, satin,
+        acquisitionsPerSecond: Number(((await textureCount(page) - before) * 1000 / (performance.now() - started)).toFixed(2)),
+        pixelRatio: await canvas.evaluate(element => element.width / element.getBoundingClientRect().width),
       };
+
+      await capture(page, page.locator("#configure"), `${stem}-product.png`);
+      await phase(page, "still");
+      await quiet(page);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await phase(page, "running");
+      await page.evaluate(() => {
+        Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
+        document.dispatchEvent(new Event("visibilitychange"));
+      });
+      await phase(page, "still");
+      await quiet(page);
+      await page.evaluate(() => {
+        delete document.visibilityState;
+        document.dispatchEvent(new Event("visibilitychange"));
+      });
+      await phase(page, "running");
+      await page.evaluate(() => window.__visualProbe.loseDevice());
+      await page.waitForFunction(() => window.__visualProbe.devices > 1, null, { timeout: 35_000 });
+      await phase(page, "running");
+      assert.equal(await stage(page).getAttribute("data-finish"), "satin");
+      await probe.assertPrivate(site.origin);
+
+      const nextLang = prefix ? "zh-Hant" : "en";
+      await page.locator(`header a[lang="${nextLang}"]`).click();
+      assert.equal(page.url(), url((prefix ? "" : "en/") + route));
+      await phase(page, "running");
+      await page.locator(`.forme-footer a[href="${base}${prefix ? "" : "en/"}"]`).click();
+      assert.equal(page.url(), url(prefix ? "" : "en/"));
+      await page.goBack({ waitUntil: "commit" });
+      assert.equal(page.url(), url((prefix ? "" : "en/") + route));
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await phase(page, "running");
+      await probe.assertPrivate(site.origin);
     });
-    assert.deepEqual(theme, { background: "rgb(238, 240, 237)", accent: "rgb(39, 81, 90)", geist: true });
-    evidence.measurements.liquidTheme = theme;
-    await checkContrast(page, [
-      ".config-copy h2", ".hero .button", ".card-description", ".finish-choices input:checked + span",
-    ], "liquidMinCheckedContrast");
-    await fullLiquidScreenshot(page, "liquid-forme-en-1440-webgpu-full.png");
-
-    const angle = page.locator("#object-angle");
-    await angle.press("Home");
-    assert.equal(await page.locator("output").textContent(), "0°");
-    const start = await sample("en-angle-0");
-    await angle.press("End");
-    assert.equal(await page.locator("output").textContent(), "180°");
-    const end = await sample("en-angle-180");
-    const angleChange = await difference(start.pixels, end.pixels);
-    assert.ok(angleChange.changed > 15, "Light angle must visibly change the photograph composition: " + JSON.stringify(angleChange));
-
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    await quiet(page);
-    const still = await photo.screenshot({ path: resolve(evidenceDir, "liquid-forme-en-still-reference.png") });
-    evidence.screenshots.push("liquid-forme-en-still-reference.png");
-    const shaderContribution = await difference(end.pixels, still);
-    assert.ok(shaderContribution.changed > 40, "The visible shader should change the steel surface: " + JSON.stringify(shaderContribution));
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await phase(page, "running");
-
-    const configurations = await page.evaluate(() => window.__visualProbe.configurations);
-    await page.evaluate(() => {
-      const products = document.querySelector("#product");
-      const finishes = [...document.querySelectorAll('[name="finish"]')];
-      for (let index = 0; index < 20; index++) {
-        products.selectedIndex = index % products.options.length;
-        products.dispatchEvent(new Event("change", { bubbles: true }));
-        finishes[index % finishes.length].click();
-      }
-    });
-    assert.equal(await control(page).inputValue(), "orb");
-    assert.equal(await stage(page).getAttribute("data-finish"), "satin");
-    assert.match(await page.locator("[data-detail-image]").getAttribute("src"), /orb-satin\.webp$/);
-    assert.match(await page.locator("[data-hero-image]").getAttribute("src"), /hero-satin\.webp$/);
-    const satin = await sample("en-1440-satin-composite");
-    assert.notDeepEqual(satin.texture.average, polished.texture.average);
-    assert.equal(await page.locator("canvas").count(), 1);
-    assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
-    assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
-
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    const satinStill = await photo.screenshot({ path: resolve(evidenceDir, "liquid-forme-en-satin-still-reference.png") });
-    evidence.screenshots.push("liquid-forme-en-satin-still-reference.png");
-    const satinContribution = await difference(satin.pixels, satinStill);
-    assert.ok(satinContribution.changed > 8, "Satin lighting should remain visible: " + JSON.stringify(satinContribution));
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await phase(page, "running");
-    evidence.measurements.liquidHero = { polished: polished.texture, satin: satin.texture, angleChange, shaderContribution, satinContribution };
-
-    const before = await textureCount(page);
-    const started = performance.now();
-    await page.waitForTimeout(1200);
-    evidence.measurements.liquidTextureAcquisitionsPerSecond = Number(((await textureCount(page) - before) * 1000 / (performance.now() - started)).toFixed(2));
-    evidence.measurements.liquidPixelRatio = await stage(page).locator("canvas").evaluate(canvas => canvas.width / canvas.getBoundingClientRect().width);
-    await capture(page, page.locator("#configure"), "liquid-forme-en-1440-product.png");
-    await phase(page, "still");
-    await quiet(page);
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await phase(page, "running");
-
-    await page.evaluate(() => {
-      Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
-    await phase(page, "still");
-    await quiet(page);
-    await page.evaluate(() => {
-      delete document.visibilityState;
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
-    await phase(page, "running");
-    await page.evaluate(() => window.__visualProbe.loseDevice());
-    await page.waitForFunction(() => window.__visualProbe.devices > 1, null, { timeout: 35_000 });
-    await phase(page, "running");
-    assert.equal(await stage(page).getAttribute("data-finish"), "satin");
-    await probe.assertPrivate(site.origin);
-
-    await page.setViewportSize({ width: 390, height: 800 });
-    await page.locator('header a[lang="zh-Hant"]').click();
-    assert.equal(page.url(), url(route));
-    await sample("zh-Hant-390-polished-composite");
-    await fullLiquidScreenshot(page, "liquid-forme-zh-Hant-390-webgpu-full.png");
-    await capture(page, page.locator("#configure"), "liquid-forme-zh-Hant-390-product.png");
-    await phase(page, "still");
-    await quiet(page);
-    await page.locator(".forme-footer a[href=\"" + base + "\"]").click();
-    assert.equal(page.url(), url());
-    await page.goBack({ waitUntil: "commit" });
-    assert.equal(page.url(), url(route));
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await phase(page, "running");
-    await probe.assertPrivate(site.origin);
-  });
-  evidence.checks.liquid = "PASS bilingual inquiry and downloaded contents, four widths/200%, keyboard/touch, no-JS, no-GPU, visible WebGPU hero composite and light angle, rapid finish switches on one device, pause/visibility/recovery/back and privacy";
+  }
+  evidence.checks.liquid = "PASS bilingual inquiry and download, four widths/200%, keyboard/touch, no-JS and no-GPU, visible procedural studio in both finishes, natural 12-second cycles, fixed 0/45/90/135/180 and return, frozen native pause, resume, visibility, device recovery, back and privacy";
 }
 
 let browser;
