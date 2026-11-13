@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { base } from "../../scripts/site-map.mjs";
@@ -13,6 +13,75 @@ const selectProgram = (page, id) => page.locator(`[data-act="${id}"] label`);
 const active = (page, selector) => page.locator(selector).evaluate((node) => node === document.activeElement);
 const periods = { carrier: 10, echo: 8, dawn: 12 };
 const devices = (page) => page.evaluate(() => window.__visualProbe.devices);
+
+async function watchSignalObservers(page) {
+  await page.addInitScript(() => {
+    const events = [];
+    let nextObserver = 0;
+    const stage = () => document.querySelector("[data-stage]");
+    const isStage = (target) => target?.matches("[data-stage]");
+    const rect = (value) => value?.toJSON();
+    function note(kind, detail = {}) {
+      const art = stage();
+      events.push({
+        at: Math.round(performance.now()), kind, phase: art?.dataset.motion, visibility: document.visibilityState,
+        scroll: [scrollX, scrollY], viewport: [innerWidth, innerHeight],
+        ...detail,
+      });
+      if (events.length > 200) events.shift();
+    }
+
+    window.__signalObserverEvidence = { note, events };
+    for (const [name, details] of Object.entries({
+      IntersectionObserver: (entry) => ({
+        time: entry.time, intersects: entry.isIntersecting, ratio: entry.intersectionRatio,
+        root: rect(entry.rootBounds), bounds: rect(entry.boundingClientRect), intersection: rect(entry.intersectionRect),
+      }),
+      ResizeObserver: (entry) => ({ content: rect(entry.contentRect) }),
+    })) {
+      const Native = window[name];
+      if (!Native) continue;
+      window[name] = class extends Native {
+        constructor(callback, options) {
+          const id = ++nextObserver;
+          super((entries, observer) => {
+            for (const entry of entries.filter(({ target }) => isStage(target))) {
+              note(name, { id, ...details(entry), currentBounds: rect(entry.target.getBoundingClientRect()) });
+            }
+            callback(entries, observer);
+          }, options);
+          this.signalObserverId = id;
+          this.observesSignal = false;
+        }
+
+        observe(target, options) {
+          if (isStage(target)) {
+            this.observesSignal = true;
+            note(name + ":observe", { id: this.signalObserverId, bounds: rect(target.getBoundingClientRect()) });
+          }
+          return super.observe(target, options);
+        }
+
+        disconnect() {
+          if (this.observesSignal) note(name + ":disconnect", { id: this.signalObserverId });
+          return super.disconnect();
+        }
+      };
+    }
+
+    for (const kind of ["resize", "scroll", "pagehide", "pageshow", "visibilitychange"]) {
+      window.addEventListener(kind, (event) => note(kind, { persisted: event.persisted }), true);
+    }
+    document.addEventListener("click", (event) => {
+      if (event.target.closest?.("[data-pause]")) note("pause-control", { label: event.target.textContent });
+    }, true);
+    new MutationObserver((records) => {
+      for (const { target, oldValue } of records) {
+        if (isStage(target)) note("phase", { previous: oldValue, bounds: rect(target.getBoundingClientRect()) });
+      }
+    }).observe(document, { subtree: true, attributes: true, attributeOldValue: true, attributeFilter: ["data-motion"] });
+  });
+}
 
 async function assertProgram(page, id, stage) {
   const row = page.locator(`[data-act="${id}"]`);
@@ -252,6 +321,7 @@ export async function checkSignal(browser, {
   });
 
   await withPage(browser, { viewport: { width: 1440, height: 900 } }, async (page) => {
+    await watchSignalObservers(page);
     const probe = await observe(page, { readPixels: true });
     await open(page, "en/" + route);
     await phase(page, "running");
@@ -272,8 +342,12 @@ export async function checkSignal(browser, {
           scroll: { x: scrollX, y: scrollY },
           visibility: document.visibilityState,
           textures: window.__visualProbe.textures,
+          observerHistory: window.__signalObserverEvidence.events,
         }));
-        throw new Error("Signal did not resume in view: " + JSON.stringify(state), { cause: error });
+        await writeFile(resolve(evidenceDir, "signal-observer-failure.json"), JSON.stringify(state, null, 2) + "\n");
+        await page.screenshot({ path: resolve(evidenceDir, "signal-observer-failure.png") });
+        const { observerHistory, ...current } = state;
+        throw new Error("Signal did not resume in view: " + JSON.stringify(current), { cause: error });
       }
       const count = await textureCount(page);
       await page.waitForFunction((previous) => window.__visualProbe.textures > previous + 3, count);
@@ -314,7 +388,9 @@ export async function checkSignal(browser, {
 
     await selectProgram(page, "carrier").click();
     await nextFrame();
+    await page.evaluate(() => window.__signalObserverEvidence.note("desktop-fullpage:before"));
     await screenshot(page, "signal-en-1440-webgpu.png");
+    await page.evaluate(() => window.__signalObserverEvidence.note("desktop-fullpage:after"));
     await capture(page.locator(".hero"), "signal-en-1440-poster.png");
     await motionEvidence.freeze(page, "desktop", stage(page), {
       pause: async () => {
@@ -359,7 +435,9 @@ export async function checkSignal(browser, {
     assert.equal(new URL(page.url()).pathname, base + route);
     await nextFrame();
     await screenshot(page, "signal-zh-Hant-1440-webgpu.png");
+    await page.evaluate(() => window.__signalObserverEvidence.note("mobile-resize:before"));
     await page.setViewportSize({ width: 390, height: 844 });
+    await page.evaluate(() => window.__signalObserverEvidence.note("mobile-resize:after"));
     await nextFrame();
     await screenshot(page, "signal-zh-Hant-390-webgpu.png");
     await capture(page.locator(".hero"), "signal-zh-Hant-390-poster.png");
@@ -387,6 +465,8 @@ export async function checkSignal(browser, {
     assert.equal(new URL(page.url()).pathname, base + "en/" + route);
     await nextFrame();
     await screenshot(page, "signal-en-390-webgpu.png");
+    const observerHistory = await page.evaluate(() => window.__signalObserverEvidence.events);
+    await writeFile(resolve(evidenceDir, "signal-observer-history.json"), JSON.stringify(observerHistory, null, 2) + "\n");
     await privateRequests(probe);
   });
   await withPage(browser, { viewport: { width: 1440, height: 900 } }, async (page) => {
