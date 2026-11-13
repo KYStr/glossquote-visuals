@@ -13,7 +13,7 @@
 
 由原有 GitHub Actions 的 GitHub-hosted Windows Server 2025 runner 執行。以 `results.json` 的 `commit` 與 PR head 核對。以下檔案可在該次 run 的 `visual-candidate-<SHA>-Windows` 取得。
 
-- `signal-desktop-*`、`signal-mobile-*` 含同一工作階段的自然時序 PNG。每個節目、每個尺寸皆保存 0/2/4/6/8 秒，較長的週期另保存至 10 或 12 秒。逐時 `-texture.png` 為原尺寸 GPU 紋理讀回。瀏覽器首屏與全頁另存。時間點為名目取樣，報告也記錄實際開始時間與讀回耗時。
+- `signal-desktop-*`、`signal-mobile-*` 含同一工作階段的自然時序 PNG。每個節目、每個尺寸皆保存 0/2/4/6/8 秒，較長的週期另保存至 10 或 12 秒。逐時 `-texture.png` 為原尺寸 GPU 紋理讀回。瀏覽器首屏與全頁另存。時間點為名目取樣，報告也記錄實際送出讀回要求與 GPU 提交影格的時間。
 - `signal-transition-*` 記錄三段節目循環切換前、切換開始、350／700 毫秒與結束。以 Playwright 控制瀏覽器時鐘，先擷取原尺寸合成 PNG 再輸出 GPU 讀回。報告分別記錄邏輯時間與實際經過時間。自然週期取樣使用未快轉的時鐘。
 - `signal-desktop-pause*`、`signal-mobile-pause*` 的可見舞台 PNG 進行原尺寸像素比對，容許極少量 WARP 合成捨入誤差，同時確認 canvas 保持可見、沒有額外的呈現幀，續播後像素再變化。
 - 保留中英桌面與手機全頁、320 px／200% 與 768 px、無 JS／GPU、選票狀態及兩份實際下載的 `.txt`。

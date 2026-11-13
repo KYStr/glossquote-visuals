@@ -471,6 +471,10 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     }
   };
   const sample = async (label) => {
+    if (slug === "night-signal" && (label === "b" || label === "a2")) {
+      // The continuous morph takes 940ms. Sample the new material after the morph.
+      await page.clock.runFor(1000);
+    }
     const before = await textureCount(page);
     // Both the actual composite and independent GPU frame are recorded. The latter
     // prevents a program's CSS background/filter change from impersonating shader control.
@@ -545,9 +549,18 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
         assert.ok(change.mean > Math.max(0.05, drift.mean * 3) &&
           change.changedPixels > Math.max(12, drift.changedPixels * 3),
         `${stem}: ${kind} control effect must exceed natural drift: ${JSON.stringify(comparisons[kind])}`);
-        if (!control.evolving) assert.ok(restored.mean < change.mean / 2,
+        if (!control.evolving && slug !== "night-signal") assert.ok(restored.mean < change.mean / 2,
           `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
       }
+    }
+    if (slug === "night-signal") {
+      // Different ribbon phases need not align in pixel space. Compare the
+      // underlying colors too: brass is red-dominant and echo is blue-dominant.
+      const channelBalance = ({ measurement: { average: [red, , blue] } }) => red - blue;
+      const palettes = measurement.programBalance = Object.fromEntries(
+        Object.entries(captured).map(([key, frame]) => [key, channelBalance(frame)]));
+      assert.ok(palettes.b + 4 < Math.min(palettes.a0, palettes.a1, palettes.a2),
+        `${stem}: program palette did not move to B and return to A: ${JSON.stringify(palettes)}`);
     }
     // A product pause must freeze its presented frame. Legacy M02 pages instead
     // hide the canvas; record that compatibility mode without accepting M03 freeze.
