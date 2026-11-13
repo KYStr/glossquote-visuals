@@ -1,0 +1,42 @@
+name: Verify FORME studio candidate
+
+on:
+  push:
+    branches: ['codex/v002-material-hero']
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  studio:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run check
+          npm test
+          npm run build
+      - run: node node_modules/playwright/cli.js install chromium --no-shell
+      - name: Capture studio frames and verify the inquiry flow
+        env:
+          DEBUG: pw:browser
+        run: npm run test:browser -- --forme-studio
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: forme-studio-${{ github.sha }}-${{ runner.os }}
+          path: .runs/browser-evidence/
+          if-no-files-found: ignore
+          retention-days: 7

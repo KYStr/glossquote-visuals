@@ -27,6 +27,7 @@ const evidence = {
   checks: {}, measurements: {}, screenshots: [],
 };
 const live = process.argv[2] === "--live";
+const studioOnly = process.argv[2] === "--forme-studio";
 const site = live ? { origin, close() {} } : await serveDist();
 const url = (path = "") => site.origin + base + path;
 const stage = (page) => page.locator("[data-stage]");
@@ -771,6 +772,7 @@ async function checkLive(browser) {
 }
 
 async function checkLiquid(browser) {
+  console.log("FORME bilingual catalog, accessibility, fallback and inquiry verification");
   const route = "works/liquid-archive/";
   const testFont = { localFont: base + "fonts/liquid-geist.ttf" };
   const fullLiquidScreenshot = async (page, name) => {
@@ -971,6 +973,7 @@ async function checkLiquid(browser) {
   for (const [prefix, width, height] of [["en/", 1440, 920], ["", 390, 850]]) {
     const lang = prefix ? "en" : "zh-Hant";
     const stem = `liquid-forme-${lang}-${width}`;
+    console.log("FORME studio " + stem);
     await withPage(browser, { viewport: { width, height }, deviceScaleFactor: 1, hasTouch: width === 390 }, async page => {
       await page.clock.install();
       const probe = await observe(page, { ...testFont, readPixels: true });
@@ -1102,6 +1105,7 @@ async function checkLiquid(browser) {
       }
 
       async function checkFinish(finish) {
+        console.log(stem + " " + finish + " fixed angles");
         await enterStudio();
         assert.equal(await stage(page).getAttribute("data-finish"), finish);
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
@@ -1111,7 +1115,8 @@ async function checkLiquid(browser) {
           await selectAngle(degrees);
           const snapshot = await page.evaluate(() => window.__visualProbe.readFrame(true));
           fixed[degrees] = await saveTexture(finish + "-fixed-" + degrees + "deg-texture", snapshot);
-          await frame(finish + "-fixed-" + degrees + "deg");
+          console.log(stem + " " + finish + " fixed " + degrees + "° texture");
+          if (degrees === 90) await frame(finish + "-fixed-90deg");
         }
         const angleDelta = await livePixelDifference(page, fixed[0].bytes, fixed[180].bytes);
         assert.ok(angleDelta.changedPixels > 15, stem + ": moving the light does not change the studio image");
@@ -1124,8 +1129,10 @@ async function checkLiquid(browser) {
         await sweep.evaluate(button => button.click());
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
+        console.log(stem + " " + finish + " natural and controlled time");
         const natural = await captureNatural(finish);
         const cycle = await captureCycle(finish);
+        console.log(stem + " " + finish + " native pause and resume");
         const before = await frame(`${finish}-pause-before`);
         await pauseButton.evaluate(button => button.click());
         await phase(page, "paused");
@@ -1209,6 +1216,7 @@ async function checkLiquid(browser) {
 
       await enterStudio();
       await fullLiquidScreenshot(page, `${stem}-webgpu-full.png`);
+      console.log(stem + " offscreen, hidden, recovery and history");
       await capture(page, page.locator("#configure"), `${stem}-product.png`);
       await phase(page, "still");
       await quiet(page);
@@ -1276,6 +1284,9 @@ try {
     : "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact";
   if (live) {
     await checkLive(browser);
+  } else if (studioOnly) {
+    assert.ok(windows, "FORME studio evidence requires the Windows 2025 runner");
+    await checkLiquid(browser);
   } else {
     await checkLayouts(browser);
     await checkFallback(browser);
