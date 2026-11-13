@@ -64,7 +64,11 @@ async function paperScreenshots(page, name) {
 }
 
 async function paperSurface(page, name) {
-  const png = await stage(page).screenshot({ path: resolve(evidenceDir, name) });
+  const clip = await stage(page).evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+  });
+  const png = await page.screenshot({ path: resolve(evidenceDir, name), clip, timeout: 10_000 });
   evidence.screenshots.push(name);
   return png.toString("base64");
 }
