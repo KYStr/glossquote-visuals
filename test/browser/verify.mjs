@@ -462,6 +462,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
     sequence: pauseOnly ? ["active-0", "active-1"] : ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
   measurement.viewport = page.viewportSize();
   measurement.scope = pauseOnly ? "mobile same-frame pause; form controls covered by dedicated per-work lane" : "desktop controls and same-frame pause";
+  measurement.captureTiming = "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.";
   measurement.comparisonSampling = "80x60 area-averaged cells from original pixels; native pause uses full resolution";
   if (control.evolving) measurement.simulation = {
     settleMs: control.settleMs,
@@ -608,7 +609,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
       if (control.evolving) measurement.controlAcceptance = {
         status: "REQUIRES_INDEPENDENT_FORM_REVIEW",
         reason: "A continuing particle simulation can change pixels without a working form selector. Equal-window differences are diagnostic only.",
-        requiredEvidence: "Same-candidate dedicated desktop/mobile original composites and GPU captures: motion helix, digital ribbon, restored identity ring; non-author semantic verdict in temporalReview.controls and coherence.",
+        requiredEvidence: "Same-candidate dedicated desktop/mobile original composites and GPU captures: motion helix, digital ribbon, restored identity ring; non-author semantic verdict in view.semanticControls and coherence.",
         submittedAt: Object.fromEntries(Object.entries(captured).map(([label, frame]) => [label, frame.measurement.submittedAt])),
       };
       if (slug === "night-signal") {
@@ -879,7 +880,7 @@ async function checkLive(browser) {
       });
     }
   }
-  evidence.checks.live = "PASS live HTTPS gallery, both locales, independent WebGPU output and original-CSS controls above animation drift, classified native pause and separate canvas-hide diagnostic, source SHA, same-origin network and backlinks; legacy-fallback is compatibility only, not M03 freeze acceptance";
+  evidence.checks.live = "PASS live HTTPS gallery, both locales, independent WebGPU output, non-evolving original-CSS A/A/B/A controls, native frozen pause, source SHA, same-origin network and backlinks. Evolving form differences are diagnostics; semantic acceptance belongs to the fixed-candidate independent desktop/mobile three-form review. Canvas-hide checks are separate diagnostics.";
   evidence.measurements.deployed = release;
 }
 
