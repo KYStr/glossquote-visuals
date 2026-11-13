@@ -28,6 +28,8 @@ const evidence = {
   checks: {}, measurements: {}, screenshots: [],
 };
 const live = process.argv[2] === "--live";
+const paperOnly = process.argv[2] === "--paper-material";
+if (paperOnly && !windows) throw new Error("Paper material validation requires the GitHub-hosted Windows runner");
 const site = live ? { origin, close() {} } : await serveDist();
 const url = (path = "") => site.origin + base + path;
 const stage = (page) => page.locator("[data-stage]");
@@ -700,7 +702,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
 }
 
 async function checkCandidateComposites(browser) {
-  for (const work of worksFor("candidate")) {
+  for (const work of worksFor("candidate").filter(({ slug }) => !paperOnly || slug === "paper-light")) {
     for (const prefix of ["", "en/"]) {
       await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
         await page.clock.install();
@@ -1191,8 +1193,8 @@ try {
       browser, withPage, open, work, site, phase, capture: paperSurface, difference: paperLightDifference, screenshot,
     });
     evidence.checks.paperMaterial = "PASS two viewports, full natural cycle, five lamp angles, same-frame pause and resume";
-    if (worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
-    if (worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
+    if (!paperOnly && worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
+    if (!paperOnly && worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
       evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
     });
     await checkCandidateComposites(browser);
