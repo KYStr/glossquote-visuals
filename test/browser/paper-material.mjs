@@ -29,7 +29,7 @@ export async function checkPaperMaterial({
       assert.equal(await stage.getAttribute("data-surface"), "rendered");
       const start = performance.now();
       let first;
-      for (const second of [0, 2, 4, 6, 8]) {
+      for (const second of [0, 2, 4, 6, 8, 10]) {
         const wait = start + second * 1000 - performance.now();
         if (wait > 0) await page.waitForTimeout(wait);
         const elapsed = (performance.now() - start) / 1000;
@@ -64,6 +64,8 @@ export async function checkPaperMaterial({
       await pause.evaluate((button) => button.click());
       assert.equal(await stage.getAttribute("data-motion"), "paused");
       assert.equal(await stage.getAttribute("data-surface"), "rendered");
+      const atClick = await snap("pause-at-click");
+      assert.equal(await difference(page, before, atClick), 0, "The pause action changed the paper composition");
       const surfaceBox = await stage.boundingBox();
       if (touch) {
         await page.touchscreen.tap(surfaceBox.x + surfaceBox.width * 0.73, surfaceBox.y + surfaceBox.height * 0.46);
