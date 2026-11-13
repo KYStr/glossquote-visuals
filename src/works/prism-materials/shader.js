@@ -67,14 +67,17 @@ const environment = (coordinate, blur) => `
   field *= 1.0 - grid;
 `;
 
-const roomLighting = direction => `
+const roomLighting = (direction, origin) => `
   let roomRay = ${direction};
+  let roomPoint = ${origin} + 2.3 * roomRay;
   let ceiling = smoothstep(-0.24, 0.55, roomRay.y);
-  let windowAt = roomRay.x + roomRay.y * 0.21;
-  let windowWidth = smoothstep(0.07, 0.12, windowAt) * (1.0 - smoothstep(0.28, 0.35, windowAt));
-  let windowHeight = smoothstep(-0.49, -0.29, roomRay.y) * (1.0 - smoothstep(0.56, 0.71, roomRay.y));
+  let windowAt = roomPoint.x + roomPoint.y * 0.21;
+  let windowWidth = smoothstep(-0.4, -0.15, windowAt) * (1.0 - smoothstep(1.1, 1.4, windowAt));
+  let windowHeight = smoothstep(-1.0, -0.77, roomPoint.y) * (1.0 - smoothstep(0.35, 0.47, roomPoint.y));
+  let reflectedSill = 1.0 - smoothstep(0.06, 0.3, abs(roomPoint.y + 0.19 - 0.16 * roomPoint.x));
   let room = mix(vec3f(0.17, 0.24, 0.36), vec3f(0.87, 0.93, 0.99), ceiling) +
-    vec3f(0.44, 0.49, 0.54) * windowWidth * windowHeight;
+    vec3f(0.44, 0.49, 0.54) * windowWidth * windowHeight +
+    vec3f(0.24, 0.26, 0.28) * reflectedSill;
 `;
 
 const specimen = defineShader({
@@ -135,14 +138,23 @@ const specimen = defineShader({
       for (var bounce = 0u; bounce < 2u; bounce += 1u) {
         var untilExit = 100.0;
         var exitNormal = vec3f(0, 0, -1);
-        for (var i = 0u; i < ${planes.length}u; i += 1u) {
-          let facet = facets[i];
-          let denom = dot(facet.xyz, insideRay);
-          if (denom > 0.00001) {
-            let crossAt = (facet.w - dot(facet.xyz, insideOrigin)) / denom;
-            if (crossAt < untilExit) {
-              untilExit = crossAt;
-              exitNormal = facet.xyz;
+        // A point strictly inside the back face cannot cross a different
+        // plane first. Most front-face rays take this shorter path.
+        let backDist = (-0.087 - insideOrigin.z) / min(insideRay.z, -0.00001);
+        let backPoint = abs((insideOrigin + backDist * insideRay).xy);
+        if (insideRay.z < -0.00001 && backDist > 0.0 && backPoint.x < 0.922 &&
+            backPoint.y < 0.982 && backPoint.x + backPoint.y < 1.775) {
+          untilExit = backDist;
+        } else {
+          for (var i = 0u; i < ${planes.length}u; i += 1u) {
+            let facet = facets[i];
+            let denom = dot(facet.xyz, insideRay);
+            if (denom > 0.00001) {
+              let crossAt = (facet.w - dot(facet.xyz, insideOrigin)) / denom;
+              if (crossAt < untilExit) {
+                untilExit = crossAt;
+                exitNormal = facet.xyz;
+              }
             }
           }
         }
@@ -150,7 +162,7 @@ const specimen = defineShader({
         exitAt = insideOrigin + untilExit * insideRay;
         exitNormal = normalize(exitNormal);
         outsideRay = refract(insideRay, -exitNormal, ior);
-        if (length(outsideRay) > 0.0001) { break; }
+        if (dot(outsideRay, outsideRay) > 0.0001) { break; }
         insideRay = reflect(insideRay, exitNormal);
         insideOrigin = exitAt + insideRay * 0.0002;
       }
@@ -159,7 +171,7 @@ const specimen = defineShader({
       let emerged = dot(outsideRay, outsideRay) > 0.0001;
       let worldRay = objectToWorld * select(insideRay, outsideRay, emerged);
       let absorption = exp(-vec3f(0.20, 0.055, 0.035) * rayLength);
-      ${roomLighting("worldRay")}
+      ${roomLighting("worldRay", "worldExit")}
       var lightThroughGlass = room;
       if (emerged && worldRay.z < -0.18) {
         let receiver = worldExit + worldRay * ((-2.05 - worldExit.z) / worldRay.z);
@@ -172,7 +184,7 @@ const specimen = defineShader({
     }
 
     let reflected = objectToWorld * reflect(heading, normal);
-    ${roomLighting("reflected")}
+    ${roomLighting("reflected", "objectToWorld * hit")}
     let lightStrip = pow(max(0.0, dot(reflected, normalize(vec3f(-0.67, 0.76, 0.68)))), 24.0);
     let viewCosine = clamp(dot(-heading, normal), 0.0, 1.0);
     let fresnel = 0.042 + 0.958 * pow(1.0 - viewCosine, 5.0);

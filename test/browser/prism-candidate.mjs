@@ -280,12 +280,32 @@ async function setAngle(page, number) {
     for (let step = 0; step < 20; step++) await page.keyboard.press("ArrowRight");
   }
   assert.equal(await input.inputValue(), String(number));
-  await waitForDraw(page, (await counters(page)).textures + 1);
 }
 
 async function captureCycle(page, locale, label) {
   const scene = stage(page);
   await page.addInitScript(() => {
+    const nativeRaf = window.requestAnimationFrame;
+    const nativeTexture = GPUCanvasContext.prototype.getCurrentTexture;
+    let tick;
+    let lastTick;
+    const presentations = window.__prismPresentations = [];
+    window.requestAnimationFrame = callback => nativeRaf.call(window, time => {
+      tick = time;
+      try { callback(time); }
+      finally { tick = undefined; }
+    });
+    GPUCanvasContext.prototype.getCurrentTexture = function () {
+      const texture = nativeTexture.call(this);
+      if (this.canvas.closest("[data-stage][data-rendered]") && tick !== undefined && tick !== lastTick) {
+        // The pinned animatedTime clock advances by at most 100 ms per draw.
+        // Count only presented rAF ticks and exclude the unobserved first delta.
+        const deltaMs = lastTick === undefined ? 0 : Math.min(100, tick - lastTick);
+        presentations.push({ epochMs: performance.timeOrigin + tick, deltaMs });
+        lastTick = tick;
+      }
+      return texture;
+    };
     const observer = new MutationObserver(records => {
       const stage = records.find(record => record.target.matches("[data-stage]"))?.target;
       if (stage?.hasAttribute("data-rendered")) {
@@ -319,7 +339,11 @@ async function captureCycle(page, locale, label) {
       const { x, y, width, height } = element.getBoundingClientRect();
       return { x, y, width, height, viewportWidth: innerWidth, viewportHeight: innerHeight };
     });
-    await page.waitForTimeout(25_000);
+    await page.waitForFunction(() => {
+      const ticks = window.__prismPresentations;
+      return ticks.reduce((elapsed, tick) => elapsed + tick.deltaMs, 0) >= 13_000;
+    }, null, { timeout: 95_000, polling: 300 });
+    await page.waitForTimeout(750);
     last = await counters(page);
   } finally {
     session.off("Page.screencastFrame", onFrame);
@@ -331,12 +355,15 @@ async function captureCycle(page, locale, label) {
   const live = frames.filter(frame => frame.epochMs >= clock.visibleEpochMs);
   assert.ok(live.length > 10, `${label}: Chromium sent only ${live.length} live screencast frames`);
   const origin = live[0].epochMs;
+  const presentations = await page.evaluate(() => window.__prismPresentations);
   const save = async (frame, suffix) => {
     const file = `prism-${label}-${suffix}.png`;
     await writeFile(resolve(dir, file), Buffer.from(frame.data, "base64"));
     evidence.screenshots.push(file);
+    const renderedMs = presentations.reduce((elapsed, tick) =>
+      tick.epochMs > origin && tick.epochMs <= frame.epochMs ? elapsed + tick.deltaMs : elapsed, 0);
     return { file, epochMs: frame.epochMs, navigationMs: Math.round(frame.epochMs - clock.navigationEpochMs),
-      liveMs: Math.round(frame.epochMs - origin) };
+      liveMs: Math.round(frame.epochMs - origin), renderedMs: Math.round(renderedMs) };
   };
   const startup = [];
   for (const targetMs of [0, 250, 500, 1000]) {
@@ -352,11 +379,15 @@ async function captureCycle(page, locale, label) {
     natural.push({ targetMs, ...await save(frame, `natural-target-${targetMs}ms`) });
     if (targetMs === 4000) comparison = frame;
   }
+  const cycle = [...live].reverse().find(frame => frame.epochMs <= presentations.at(-1).epochMs);
+  assert.ok(cycle, `${label}: no compositor frame during the measured shader cycle`);
+  const cycleEnd = await save(cycle, "natural-cycle-end");
   const measurement = evidence.measurements[label] = {
-    clock, startup, natural, compositorFrames: frames.length, liveFrames: live.length,
+    clock, startup, natural, cycleEnd, compositorFrames: frames.length, liveFrames: live.length,
     textureAcquisitions: last.textures - first.textures,
   };
   assert.ok(natural.at(-1).liveMs >= 12_000 && comparison, `${label}: incomplete screencast`);
+  assert.ok(cycleEnd.renderedMs >= 12_000, `${label}: screencast covered only ${cycleEnd.renderedMs} ms of shader animation`);
   assert.equal(await scene.getAttribute("data-motion"), "running");
   assert.ok(measurement.textureAcquisitions > 10, `${label}: shader stopped advancing during capture`);
   const variation = await difference(page, live[0].data, comparison.data, region);
@@ -391,30 +422,46 @@ async function checkOptics(browser) {
     const label = `${locale}-${width}`;
     await withPage(browser, { viewport: { width, height: mobile ? 844 : 960 }, hasTouch: mobile }, async page => {
       const probe = await observe(page, { readPixels: true });
+      await page.clock.install();
       await open(page, locale);
       await phase(page, "running");
       const scene = stage(page);
+      await scene.scrollIntoViewIfNeeded();
+      await page.evaluate(() => document.fonts.ready);
+      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 500);
+      const clip = await scene.evaluate(element => {
+        const { x, y, width, height } = element.getBoundingClientRect();
+        return { x: x + scrollX, y: y + scrollY, width, height };
+      });
+      const sampleControl = async name => {
+        const before = await counters(page);
+        await page.clock.runFor(84);
+        assert.ok((await counters(page)).textures > before.textures);
+        await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+        return capture(page, `${label}-${name}`, page, { clip });
+      };
       const angles = [];
       for (const [index, value] of [-20, 0, 20, -20].entries()) {
         await setAngle(page, value);
-        angles.push(await capture(page, `${label}-angle-${index + 1}-${value}`, scene));
+        angles.push(await sampleControl(`angle-${index + 1}-${value}`));
       }
       const angleDifference = await difference(page, angles[0], angles[2]);
       const angleReturn = await difference(page, angles[0], angles[3]);
+      evidence.measurements[label].controls = { angleDifference, angleReturn };
       assert.ok(angleDifference > 1 && angleDifference > angleReturn, `Angle sweep absent: ${angleDifference} / return ${angleReturn}`);
 
       const materials = [];
       for (const value of ["clear", "satin", "ribbed", "clear"]) {
-        const control = page.locator(`.specimen-choices label:has([value=${value}])`);
-        if (mobile) await control.tap();
-        else await control.click();
-        await waitForDraw(page, (await counters(page)).textures + 1);
+        const input = page.locator(`[name=specimen][value=${value}]`);
+        await input.evaluate(element => element.click());
+        assert.equal(await input.isChecked(), true);
         const suffix = materials.length === 3 ? "clear-return" : value;
-        materials.push(await capture(page, `${label}-material-${suffix}`, scene));
+        materials.push(await sampleControl(`material-${suffix}`));
       }
       const materialDifference = [await difference(page, materials[0], materials[1]), await difference(page, materials[1], materials[2])];
       assert.ok(materialDifference.every(value => value > 0.5), `Surface controls absent: ${materialDifference}`);
       assert.equal((await counters(page)).devices, 1);
+      await page.clock.resume();
 
       const pause = page.locator("[data-pause]");
       await capture(page, `${label}-pause-before`, scene);

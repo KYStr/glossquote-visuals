@@ -59,13 +59,16 @@ def field(p, spread=0):
             (1 - smooth(.005, major_width, major)) * .10 * .015 / major_width)
     return result * expand(1 - grid)
 
-def room_lighting(ray):
-    x, y, _ = ray.T
+def room_lighting(ray, origin):
+    y = ray[:, 1]
+    room_x, room_y, _ = (origin + 2.3 * ray).T
     ceiling = smooth(-.24, .55, y)
-    window_at = x + y * .21
-    width = smooth(.07, .12, window_at) * (1 - smooth(.28, .35, window_at))
-    height = smooth(-.49, -.29, y) * (1 - smooth(.56, .71, y))
-    return mix(v(.17, .24, .36), v(.87, .93, .99), ceiling) + v(.44, .49, .54) * expand(width * height)
+    window_at = room_x + room_y * .21
+    width = smooth(-.4, -.15, window_at) * (1 - smooth(1.1, 1.4, window_at))
+    height = smooth(-1.0, -.77, room_y) * (1 - smooth(.35, .47, room_y))
+    sill = 1 - smooth(.06, .3, np.abs(room_y + .19 - .16 * room_x))
+    return (mix(v(.17, .24, .36), v(.87, .93, .99), ceiling) +
+            v(.44, .49, .54) * expand(width * height) + v(.24, .26, .28) * expand(sill))
 
 def intersections(ro, rd):
     div = rd @ normals.T
@@ -124,7 +127,7 @@ def render_strip(u, y, aspect, finish, phase=0.0):
             exit_at[active] = inside_origin[active] + inside[active] * expand(exit_dist[active])
             exit_normal = unit(exit_normal)
             outside[active] = refract(inside[active], -exit_normal[active], ior)
-            active &= np.linalg.norm(outside, axis=-1) <= .0001
+            active &= dot(outside, outside) <= .0001
             inside[active] = reflect(inside[active], exit_normal[active])
             inside_origin[active] = exit_at[active] + inside[active] * .0002
 
@@ -134,7 +137,7 @@ def render_strip(u, y, aspect, finish, phase=0.0):
         backdrop = emerged & (world_ray[:, 2] < -.18)
         ray_z = world_ray[backdrop, 2]
         receiver = world_exit[backdrop] + world_ray[backdrop] * expand((-2.05 - world_exit[backdrop, 2]) / ray_z)
-        light = room_lighting(world_ray)
+        light = room_lighting(world_ray, world_exit)
         spread = .24 * broad_face[backdrop] + .01 if finish == "satin" else .007
         wall = smooth(.18, .5, -ray_z) * (1 - smooth(4, 7, np.linalg.norm(receiver, axis=-1)))
         light[backdrop] = mix(light[backdrop], field(receiver[:, :2], spread), wall)
@@ -147,7 +150,7 @@ def render_strip(u, y, aspect, finish, phase=0.0):
     rim = (1 - smooth(.003, .028, path)) * .19
     if finish == "satin":
         transmitted = mix(transmitted, v(.88, .92, .97), .17 * broad_face)
-    color = mix(transmitted, room_lighting(reflected) + expand(light_strip * .42), fresnel) + expand(rim)
+    color = mix(transmitted, room_lighting(reflected, hit @ rotation.T) + expand(light_strip * .42), fresnel) + expand(rim)
     back[shape] = mix(back[shape], np.clip(color, 0, 1), smooth(0, .022, path))
     return np.clip(back.reshape(len(w), len(u[0]), 3), 0, 1)
 
