@@ -447,7 +447,7 @@ async function checkOptics(browser) {
       }
       const angleDifference = await difference(page, angles[0], angles[2]);
       const angleReturn = await difference(page, angles[0], angles[3]);
-      evidence.measurements[label].controls = { angleDifference, angleReturn };
+      const controls = evidence.measurements[label].controls = { angleDifference, angleReturn };
       assert.ok(angleDifference > 1 && angleDifference > angleReturn, `Angle sweep absent: ${angleDifference} / return ${angleReturn}`);
 
       const materials = [];
@@ -458,12 +458,20 @@ async function checkOptics(browser) {
         const suffix = materials.length === 3 ? "clear-return" : value;
         materials.push(await sampleControl(`material-${suffix}`));
       }
-      const materialDifference = [await difference(page, materials[0], materials[1]), await difference(page, materials[1], materials[2])];
-      assert.ok(materialDifference.every(value => value > 0.5), `Surface controls absent: ${materialDifference}`);
+      controls.materialDifference = [await difference(page, materials[0], materials[1]), await difference(page, materials[1], materials[2])];
+      assert.ok(controls.materialDifference.every(value => value > 0.5), `Surface controls absent: ${controls.materialDifference}`);
       assert.equal((await counters(page)).devices, 1);
-      await page.clock.resume();
+      await probe.assertPrivate(site.origin, { fontPaths });
+    });
 
+    await withPage(browser, { viewport: { width, height: mobile ? 844 : 960 }, hasTouch: mobile }, async page => {
+      const probe = await observe(page, { readPixels: true });
+      await open(page, locale);
+      await phase(page, "running");
+      const scene = stage(page);
+      await scene.scrollIntoViewIfNeeded();
       const pause = page.locator("[data-pause]");
+      await pause.scrollIntoViewIfNeeded();
       await capture(page, `${label}-pause-before`, scene);
       await pause.click();
       await phase(page, "paused");
@@ -487,7 +495,7 @@ async function checkOptics(browser) {
       const resumeDifference = await difference(page, frozen, resumed);
       assert.ok(resumeDifference > 0.5);
 
-      evidence.measurements[label].controls = { angleDifference, angleReturn, materialDifference, freezeDifference, resumeDifference };
+      Object.assign(evidence.measurements[label].controls, { freezeDifference, resumeDifference });
       await page.locator("footer").scrollIntoViewIfNeeded();
       await phase(page, "still");
       await checkStill(page);
