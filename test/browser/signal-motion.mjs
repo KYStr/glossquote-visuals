@@ -5,7 +5,9 @@ import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 
 const fingerprint = (buffer) => createHash("sha256").update(buffer).digest("hex");
-const schedule = (period) => [...new Set([0, 2, 4, 6, 8, ...Array.from({ length: period - 8 }, (_, i) => i + 9)])];
+// Include a margin beyond the nominal period: the first submitted frame and
+// the last capture have independent scheduling delays on the software GPU.
+const schedule = (period) => [...new Set([0, 2, 4, 6, 8, ...Array.from({ length: period - 7 }, (_, i) => i + 9)])];
 
 export function signalMotionEvidence({ evidence, evidenceDir }) {
   const measurements = evidence.measurements.signalMotion = { cycles: {}, transitions: {}, freeze: {} };
@@ -76,7 +78,9 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
     async cycle(page, viewportName, id, period) {
       const stem = "signal-" + viewportName + "-" + id;
       measurements.cycles[stem] = { nominalPeriodSeconds: period, samples: [] };
-      await follow(page, stem, schedule(period).map((seconds) => seconds * 1000));
+      const frames = await follow(page, stem, schedule(period).map((seconds) => seconds * 1000));
+      assert.ok(frames.at(-1).presentedMs - frames[0].presentedMs >= period * 1000,
+        stem + " did not cover a full measured cycle");
     },
     async transitions(page, surface, sequence) {
       await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 100);
