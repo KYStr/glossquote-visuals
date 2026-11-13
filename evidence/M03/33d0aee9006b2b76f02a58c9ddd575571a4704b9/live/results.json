@@ -1,0 +1,3775 @@
+{
+  "commit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9",
+  "verifierCommit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9",
+  "environment": "GitHub-hosted Windows Server 2025 VM",
+  "display": "headless-d3d11-warp",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS live HTTPS share image, notices, robots, sitemap and 404",
+    "live": "PASS live HTTPS gallery, both locales, independent WebGPU output, non-evolving original-CSS A/A/B/A controls, native frozen pause, source SHA, same-origin network and backlinks. Evolving form differences are diagnostics; semantic acceptance belongs to the fixed-candidate independent desktop/mobile three-form review. Canvas-hide checks are separate diagnostics."
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "unavailable_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webnn": "disabled_off"
+    },
+    "compositeControls": {
+      "live-paper-light-zh-Hant": {
+        "control": "#light-angle",
+        "values": [
+          "0",
+          "180"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0.38235034653329,
+              "changedPixels": 0,
+              "peak": 4.0634920634920775,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 18.449648799189813,
+              "changedPixels": 3522,
+              "peak": 64.78125,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 18.70317685943009,
+              "changedPixels": 3509,
+              "peak": 66.140625,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.8627400586970868,
+              "changedPixels": 13,
+              "peak": 11.079365079365118,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.35147796792328045,
+              "changedPixels": 0,
+              "peak": 2.904761904761841,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 20.110270767884693,
+              "changedPixels": 3741,
+              "peak": 64.109375,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 20.490986483134904,
+              "changedPixels": 3730,
+              "peak": 65.6875,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.9502815496858473,
+              "changedPixels": 1,
+              "peak": 10.015873015872998,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-paper-light-zh-Hant-texture-a0.png",
+          "a0": "live-paper-light-zh-Hant-composite-a0.png",
+          "texture-a1": "live-paper-light-zh-Hant-texture-a1.png",
+          "a1": "live-paper-light-zh-Hant-composite-a1.png",
+          "texture-b": "live-paper-light-zh-Hant-texture-b.png",
+          "b": "live-paper-light-zh-Hant-composite-b.png",
+          "texture-a2": "live-paper-light-zh-Hant-texture-a2.png",
+          "a2": "live-paper-light-zh-Hant-composite-a2.png",
+          "before-native-pause": "live-paper-light-zh-Hant-composite-before-native-pause.png",
+          "native-pause": "live-paper-light-zh-Hant-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-paper-light-zh-Hant-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-paper-light-zh-Hant-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-paper-light-zh-Hant-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-paper-light-zh-Hant-texture-native-resume.png",
+          "native-resume": "live-paper-light-zh-Hant-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 12896,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 248,
+            "average": [
+              192,
+              174,
+              155,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-a0.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 12976,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 242,
+            "average": [
+              192,
+              174,
+              155,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-a1.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 13072,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 241,
+            "average": [
+              189,
+              170,
+              151,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-b.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-b-black.png",
+            "framesDuringInterval": 7
+          },
+          "a2": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 13184,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 265,
+            "average": [
+              193,
+              175,
+              156,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-a2.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 14272,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 254,
+            "average": [
+              193,
+              175,
+              156,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-native-resume.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-native-resume-black.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "isolatedOutput": {
+          "colors": 266,
+          "average": [
+            194,
+            177,
+            158
+          ],
+          "brightCenter": [
+            10.47,
+            10.09
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 34,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 34,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 764,
+                "clientY": 292,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 34,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-paper-light-zh-Hant-composite-native-resume.png",
+            "texture": "live-paper-light-zh-Hant-texture-native-resume.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 26.154097222222223,
+          "changedPixels": 4322,
+          "peak": 193,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-paper-light-en": {
+        "control": "#light-angle",
+        "values": [
+          "0",
+          "180"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0.3970110987103182,
+              "changedPixels": 0,
+              "peak": 5.047619047619037,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 18.843959280616172,
+              "changedPixels": 3544,
+              "peak": 65.765625,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 19.067005432236538,
+              "changedPixels": 3529,
+              "peak": 67.078125,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.8143586378417095,
+              "changedPixels": 31,
+              "peak": 12.785714285714278,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.43799858079806075,
+              "changedPixels": 0,
+              "peak": 4.507936507936478,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 20.612669839203008,
+              "changedPixels": 3774,
+              "peak": 65.140625,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 20.939240227485673,
+              "changedPixels": 3762,
+              "peak": 66.53125,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.897170311122133,
+              "changedPixels": 11,
+              "peak": 10.910714285714391,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-paper-light-en-texture-a0.png",
+          "a0": "live-paper-light-en-composite-a0.png",
+          "texture-a1": "live-paper-light-en-texture-a1.png",
+          "a1": "live-paper-light-en-composite-a1.png",
+          "texture-b": "live-paper-light-en-texture-b.png",
+          "b": "live-paper-light-en-composite-b.png",
+          "texture-a2": "live-paper-light-en-texture-a2.png",
+          "a2": "live-paper-light-en-composite-a2.png",
+          "before-native-pause": "live-paper-light-en-composite-before-native-pause.png",
+          "native-pause": "live-paper-light-en-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-paper-light-en-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-paper-light-en-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-paper-light-en-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-paper-light-en-texture-native-resume.png",
+          "native-resume": "live-paper-light-en-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 11264,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 240,
+            "average": [
+              192,
+              174,
+              155,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-a0.rgba",
+            "comparisonFile": "live-paper-light-en-texture-a0-black.png",
+            "framesDuringInterval": 6
+          },
+          "a1": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 11360,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 251,
+            "average": [
+              193,
+              175,
+              156,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-a1.rgba",
+            "comparisonFile": "live-paper-light-en-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 11456,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 239,
+            "average": [
+              189,
+              170,
+              151,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-b.rgba",
+            "comparisonFile": "live-paper-light-en-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 11552,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 259,
+            "average": [
+              193,
+              175,
+              156,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-a2.rgba",
+            "comparisonFile": "live-paper-light-en-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 12656,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 246,
+            "average": [
+              194,
+              175,
+              156,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-native-resume.rgba",
+            "comparisonFile": "live-paper-light-en-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 261,
+          "average": [
+            195,
+            177,
+            158
+          ],
+          "brightCenter": [
+            10.43,
+            10.07
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 37,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 37,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 764,
+                "clientY": 292,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 37,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-paper-light-en-composite-native-resume.png",
+            "texture": "live-paper-light-en-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 26.208125,
+          "changedPixels": 4310,
+          "peak": 196,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-liquid-archive-zh-Hant": {
+        "control": "#object-angle",
+        "values": [
+          "0",
+          "180"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 4.30836192973693,
+              "changedPixels": 446,
+              "peak": 38.01948051948057,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 4.30836192973693,
+              "changedPixels": 446,
+              "peak": 38.01948051948057,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 12.373426780202868,
+              "changedPixels": 2677,
+              "peak": 39.628571428571455,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 12.373426780202868,
+              "changedPixels": 2677,
+              "peak": 39.628571428571455,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-liquid-archive-zh-Hant-texture-a0.png",
+          "a0": "live-liquid-archive-zh-Hant-composite-a0.png",
+          "texture-a1": "live-liquid-archive-zh-Hant-texture-a1.png",
+          "a1": "live-liquid-archive-zh-Hant-composite-a1.png",
+          "texture-b": "live-liquid-archive-zh-Hant-texture-b.png",
+          "b": "live-liquid-archive-zh-Hant-composite-b.png",
+          "texture-a2": "live-liquid-archive-zh-Hant-texture-a2.png",
+          "a2": "live-liquid-archive-zh-Hant-composite-a2.png",
+          "before-native-pause": "live-liquid-archive-zh-Hant-composite-before-native-pause.png",
+          "native-pause": "live-liquid-archive-zh-Hant-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-liquid-archive-zh-Hant-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-liquid-archive-zh-Hant-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-liquid-archive-zh-Hant-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-liquid-archive-zh-Hant-texture-native-resume.png",
+          "native-resume": "live-liquid-archive-zh-Hant-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 12720,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-zh-Hant-texture-a0.rgba",
+            "comparisonFile": "live-liquid-archive-zh-Hant-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 12800,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-zh-Hant-texture-a1.rgba",
+            "comparisonFile": "live-liquid-archive-zh-Hant-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 12896,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 304,
+            "average": [
+              78,
+              81,
+              80,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-zh-Hant-texture-b.rgba",
+            "comparisonFile": "live-liquid-archive-zh-Hant-texture-b-black.png",
+            "framesDuringInterval": 7
+          },
+          "a2": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 13008,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-zh-Hant-texture-a2.rgba",
+            "comparisonFile": "live-liquid-archive-zh-Hant-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 14096,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-zh-Hant-texture-native-resume.rgba",
+            "comparisonFile": "live-liquid-archive-zh-Hant-texture-native-resume-black.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "isolatedOutput": {
+          "colors": 404,
+          "average": [
+            66,
+            70,
+            69
+          ],
+          "brightCenter": [
+            15.67,
+            9.54
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 780,
+            "height": 445,
+            "textures": 73,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 627
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 627
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 627
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 780,
+            "height": 445,
+            "textures": 73,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 550,
+                "clientY": 386,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 780,
+            "height": 445,
+            "textures": 73,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-liquid-archive-zh-Hant-composite-native-resume.png",
+            "texture": "live-liquid-archive-zh-Hant-texture-native-resume.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 26.325069444444445,
+          "changedPixels": 3231,
+          "peak": 166,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-liquid-archive-en": {
+        "control": "#object-angle",
+        "values": [
+          "0",
+          "180"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 4.269997179903429,
+              "changedPixels": 448,
+              "peak": 38.01948051948057,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 4.269997179903429,
+              "changedPixels": 448,
+              "peak": 38.01948051948057,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 12.373426780202868,
+              "changedPixels": 2677,
+              "peak": 39.628571428571455,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 12.373426780202868,
+              "changedPixels": 2677,
+              "peak": 39.628571428571455,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-liquid-archive-en-texture-a0.png",
+          "a0": "live-liquid-archive-en-composite-a0.png",
+          "texture-a1": "live-liquid-archive-en-texture-a1.png",
+          "a1": "live-liquid-archive-en-composite-a1.png",
+          "texture-b": "live-liquid-archive-en-texture-b.png",
+          "b": "live-liquid-archive-en-composite-b.png",
+          "texture-a2": "live-liquid-archive-en-texture-a2.png",
+          "a2": "live-liquid-archive-en-composite-a2.png",
+          "before-native-pause": "live-liquid-archive-en-composite-before-native-pause.png",
+          "native-pause": "live-liquid-archive-en-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-liquid-archive-en-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-liquid-archive-en-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-liquid-archive-en-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-liquid-archive-en-texture-native-resume.png",
+          "native-resume": "live-liquid-archive-en-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 12048,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-en-texture-a0.rgba",
+            "comparisonFile": "live-liquid-archive-en-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 12128,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-en-texture-a1.rgba",
+            "comparisonFile": "live-liquid-archive-en-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 12224,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 304,
+            "average": [
+              78,
+              81,
+              80,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-en-texture-b.rgba",
+            "comparisonFile": "live-liquid-archive-en-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 12320,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-en-texture-a2.rgba",
+            "comparisonFile": "live-liquid-archive-en-texture-a2-black.png",
+            "framesDuringInterval": 7
+          },
+          "native-resume": {
+            "width": 780,
+            "height": 445,
+            "format": "bgra8unorm",
+            "submittedAt": 13424,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 371,
+            "average": [
+              88,
+              89,
+              86,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-liquid-archive-en-texture-native-resume.rgba",
+            "comparisonFile": "live-liquid-archive-en-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 424,
+          "average": [
+            68,
+            72,
+            71
+          ],
+          "brightCenter": [
+            15.3,
+            9.52
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 780,
+            "height": 445,
+            "textures": 48,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 627
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 627
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 627
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 780,
+            "height": 445,
+            "textures": 48,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 550,
+                "clientY": 386,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 780,
+            "height": 445,
+            "textures": 48,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-liquid-archive-en-composite-native-resume.png",
+            "texture": "live-liquid-archive-en-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 26.33798611111111,
+          "changedPixels": 3244,
+          "peak": 166,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-night-signal-zh-Hant": {
+        "control": "input[name=\"program\"]",
+        "values": [
+          "carrier",
+          "echo"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 1.1530865596594753,
+              "changedPixels": 280,
+              "peak": 64.24603174603173,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 14.94272640245561,
+              "changedPixels": 1557,
+              "peak": 211.45714285714325,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 14.737329886548686,
+              "changedPixels": 1410,
+              "peak": 231.68253968253927,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 11.428093597374845,
+              "changedPixels": 1111,
+              "peak": 210.59285714285755,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.8460436804707625,
+              "changedPixels": 203,
+              "peak": 49.809523809523775,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 15.019021939865713,
+              "changedPixels": 1560,
+              "peak": 214.69047619047583,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 14.844581662935877,
+              "changedPixels": 1405,
+              "peak": 232.1214285714293,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 11.550747969237543,
+              "changedPixels": 1129,
+              "peak": 213.83333333333306,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-night-signal-zh-Hant-texture-a0.png",
+          "a0": "live-night-signal-zh-Hant-composite-a0.png",
+          "texture-a1": "live-night-signal-zh-Hant-texture-a1.png",
+          "a1": "live-night-signal-zh-Hant-composite-a1.png",
+          "texture-b": "live-night-signal-zh-Hant-texture-b.png",
+          "b": "live-night-signal-zh-Hant-composite-b.png",
+          "texture-a2": "live-night-signal-zh-Hant-texture-a2.png",
+          "a2": "live-night-signal-zh-Hant-composite-a2.png",
+          "before-native-pause": "live-night-signal-zh-Hant-composite-before-native-pause.png",
+          "native-pause": "live-night-signal-zh-Hant-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-night-signal-zh-Hant-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-night-signal-zh-Hant-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-night-signal-zh-Hant-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-night-signal-zh-Hant-texture-native-resume.png",
+          "native-resume": "live-night-signal-zh-Hant-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 1100,
+            "height": 577,
+            "format": "bgra8unorm",
+            "submittedAt": 12336,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 153,
+            "average": [
+              36,
+              30,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-zh-Hant-texture-a0.rgba",
+            "comparisonFile": "live-night-signal-zh-Hant-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 1100,
+            "height": 577,
+            "format": "bgra8unorm",
+            "submittedAt": 12416,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 151,
+            "average": [
+              36,
+              30,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-zh-Hant-texture-a1.rgba",
+            "comparisonFile": "live-night-signal-zh-Hant-texture-a1-black.png",
+            "framesDuringInterval": 7
+          },
+          "b": {
+            "width": 1100,
+            "height": 577,
+            "format": "bgra8unorm",
+            "submittedAt": 13520,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 157,
+            "average": [
+              29,
+              28,
+              56,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-zh-Hant-texture-b.rgba",
+            "comparisonFile": "live-night-signal-zh-Hant-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 1100,
+            "height": 577,
+            "format": "bgra8unorm",
+            "submittedAt": 14624,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 143,
+            "average": [
+              37,
+              31,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-zh-Hant-texture-a2.rgba",
+            "comparisonFile": "live-night-signal-zh-Hant-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 1100,
+            "height": 577,
+            "format": "bgra8unorm",
+            "submittedAt": 15728,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 140,
+            "average": [
+              36,
+              31,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-zh-Hant-texture-native-resume.rgba",
+            "comparisonFile": "live-night-signal-zh-Hant-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 231,
+          "average": [
+            50,
+            43,
+            49
+          ],
+          "brightCenter": [
+            10.76,
+            12.23
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "programBalance": {
+          "a0": -6,
+          "a1": -6,
+          "b": -27,
+          "a2": -5
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 1100,
+            "height": 577,
+            "textures": 161,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 576
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 576
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 576
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 1100,
+            "height": 577,
+            "textures": 161,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 550,
+                "clientY": 357,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 1100,
+            "height": 577,
+            "textures": 161,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-night-signal-zh-Hant-composite-native-resume.png",
+            "texture": "live-night-signal-zh-Hant-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 14.535555555555556,
+          "changedPixels": 1244,
+          "peak": 239,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-night-signal-en": {
+        "control": "input[name=\"program\"]",
+        "values": [
+          "carrier",
+          "echo"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 1.224297449464116,
+              "changedPixels": 250,
+              "peak": 119.97619047619023,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 16.007209138855043,
+              "changedPixels": 1492,
+              "peak": 232.40714285714347,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 13.809846853378158,
+              "changedPixels": 1481,
+              "peak": 229.62142857142913,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 10.942944720017657,
+              "changedPixels": 1048,
+              "peak": 231.03418803418836,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 1.0138874898249894,
+              "changedPixels": 205,
+              "peak": 97.42735042735033,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 16.34554862806946,
+              "changedPixels": 1491,
+              "peak": 232.42142857142926,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 14.017576990910367,
+              "changedPixels": 1470,
+              "peak": 232.8253968253964,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 11.324995480599643,
+              "changedPixels": 1061,
+              "peak": 232.8095238095234,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-night-signal-en-texture-a0.png",
+          "a0": "live-night-signal-en-composite-a0.png",
+          "texture-a1": "live-night-signal-en-texture-a1.png",
+          "a1": "live-night-signal-en-composite-a1.png",
+          "texture-b": "live-night-signal-en-texture-b.png",
+          "b": "live-night-signal-en-composite-b.png",
+          "texture-a2": "live-night-signal-en-texture-a2.png",
+          "a2": "live-night-signal-en-composite-a2.png",
+          "before-native-pause": "live-night-signal-en-composite-before-native-pause.png",
+          "native-pause": "live-night-signal-en-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-night-signal-en-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-night-signal-en-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-night-signal-en-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-night-signal-en-texture-native-resume.png",
+          "native-resume": "live-night-signal-en-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 1100,
+            "height": 576,
+            "format": "bgra8unorm",
+            "submittedAt": 13440,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 141,
+            "average": [
+              37,
+              31,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-en-texture-a0.rgba",
+            "comparisonFile": "live-night-signal-en-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 1100,
+            "height": 576,
+            "format": "bgra8unorm",
+            "submittedAt": 13520,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 144,
+            "average": [
+              36,
+              31,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-en-texture-a1.rgba",
+            "comparisonFile": "live-night-signal-en-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 1100,
+            "height": 576,
+            "format": "bgra8unorm",
+            "submittedAt": 14624,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 149,
+            "average": [
+              28,
+              27,
+              55,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-en-texture-b.rgba",
+            "comparisonFile": "live-night-signal-en-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 1100,
+            "height": 576,
+            "format": "bgra8unorm",
+            "submittedAt": 15728,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 142,
+            "average": [
+              36,
+              31,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-en-texture-a2.rgba",
+            "comparisonFile": "live-night-signal-en-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 1100,
+            "height": 576,
+            "format": "bgra8unorm",
+            "submittedAt": 16816,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 139,
+            "average": [
+              35,
+              30,
+              42,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-night-signal-en-texture-native-resume.rgba",
+            "comparisonFile": "live-night-signal-en-texture-native-resume-black.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "isolatedOutput": {
+          "colors": 215,
+          "average": [
+            55,
+            48,
+            52
+          ],
+          "brightCenter": [
+            9.39,
+            12.02
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "programBalance": {
+          "a0": -5,
+          "a1": -6,
+          "b": -27,
+          "a2": -6
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 1100,
+            "height": 576,
+            "textures": 217,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 576
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 576
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 1100,
+              "height": 576
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 1100,
+            "height": 576,
+            "textures": 217,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 550,
+                "clientY": 357,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 1100,
+            "height": 576,
+            "textures": 217,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-night-signal-en-composite-native-resume.png",
+            "texture": "live-night-signal-en-texture-native-resume.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 13.598125,
+          "changedPixels": 1251,
+          "peak": 239,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-prism-materials-zh-Hant": {
+        "control": "#prism-angle",
+        "values": [
+          "-20",
+          "20"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0.24121611926020387,
+              "changedPixels": 31,
+              "peak": 51.9464285714285,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 5.759093856292523,
+              "changedPixels": 688,
+              "peak": 208.73214285714272,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 6.000589923469392,
+              "changedPixels": 709,
+              "peak": 208.73214285714272,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.7765942106009075,
+              "changedPixels": 117,
+              "peak": 161.93877551020415,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.2380177995677441,
+              "changedPixels": 42,
+              "peak": 45.081632653061206,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 5.865824475623581,
+              "changedPixels": 695,
+              "peak": 208,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 5.874724458793933,
+              "changedPixels": 715,
+              "peak": 208,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.5636076344600339,
+              "changedPixels": 103,
+              "peak": 126.9821428571428,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-prism-materials-zh-Hant-texture-a0.png",
+          "a0": "live-prism-materials-zh-Hant-composite-a0.png",
+          "texture-a1": "live-prism-materials-zh-Hant-texture-a1.png",
+          "a1": "live-prism-materials-zh-Hant-composite-a1.png",
+          "texture-b": "live-prism-materials-zh-Hant-texture-b.png",
+          "b": "live-prism-materials-zh-Hant-composite-b.png",
+          "texture-a2": "live-prism-materials-zh-Hant-texture-a2.png",
+          "a2": "live-prism-materials-zh-Hant-composite-a2.png",
+          "before-native-pause": "live-prism-materials-zh-Hant-composite-before-native-pause.png",
+          "native-pause": "live-prism-materials-zh-Hant-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-prism-materials-zh-Hant-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-prism-materials-zh-Hant-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-prism-materials-zh-Hant-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-prism-materials-zh-Hant-texture-native-resume.png",
+          "native-resume": "live-prism-materials-zh-Hant-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12272,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 141,
+            "average": [
+              222,
+              229,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-zh-Hant-texture-a0.rgba",
+            "comparisonFile": "live-prism-materials-zh-Hant-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12352,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 139,
+            "average": [
+              222,
+              229,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-zh-Hant-texture-a1.rgba",
+            "comparisonFile": "live-prism-materials-zh-Hant-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12448,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 147,
+            "average": [
+              219,
+              226,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-zh-Hant-texture-b.rgba",
+            "comparisonFile": "live-prism-materials-zh-Hant-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12544,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 138,
+            "average": [
+              221,
+              228,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-zh-Hant-texture-a2.rgba",
+            "comparisonFile": "live-prism-materials-zh-Hant-texture-a2-black.png",
+            "framesDuringInterval": 7
+          },
+          "native-resume": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 13648,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 134,
+            "average": [
+              220,
+              227,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-zh-Hant-texture-native-resume.rgba",
+            "comparisonFile": "live-prism-materials-zh-Hant-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 259,
+          "average": [
+            219,
+            226,
+            249
+          ],
+          "brightCenter": [
+            11.5,
+            11.5
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 610,
+            "height": 454,
+            "textures": 53,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 611,
+              "height": 456
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 611,
+              "height": 456
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 611,
+              "height": 456
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 610,
+            "height": 454,
+            "textures": 53,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 745,
+                "clientY": 348,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 610,
+            "height": 454,
+            "textures": 53,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-prism-materials-zh-Hant-composite-native-resume.png",
+            "texture": "live-prism-materials-zh-Hant-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 10.148541666666667,
+          "changedPixels": 1124,
+          "peak": 229,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-prism-materials-en": {
+        "control": "#prism-angle",
+        "values": [
+          "-20",
+          "20"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0.260618688881803,
+              "changedPixels": 31,
+              "peak": 29.71875,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 5.9640543730513045,
+              "changedPixels": 710,
+              "peak": 209.2142857142856,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 5.893593949298471,
+              "changedPixels": 696,
+              "peak": 209.2142857142856,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.4270864778202949,
+              "changedPixels": 69,
+              "peak": 49.78571428571425,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.2381219662344103,
+              "changedPixels": 39,
+              "peak": 24.946428571428633,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 6.026218909438776,
+              "changedPixels": 726,
+              "peak": 208.00000000000014,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 5.92934065423044,
+              "changedPixels": 701,
+              "peak": 208,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.44238978794642847,
+              "changedPixels": 78,
+              "peak": 44.82142857142857,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-prism-materials-en-texture-a0.png",
+          "a0": "live-prism-materials-en-composite-a0.png",
+          "texture-a1": "live-prism-materials-en-texture-a1.png",
+          "a1": "live-prism-materials-en-composite-a1.png",
+          "texture-b": "live-prism-materials-en-texture-b.png",
+          "b": "live-prism-materials-en-composite-b.png",
+          "texture-a2": "live-prism-materials-en-texture-a2.png",
+          "a2": "live-prism-materials-en-composite-a2.png",
+          "before-native-pause": "live-prism-materials-en-composite-before-native-pause.png",
+          "native-pause": "live-prism-materials-en-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-prism-materials-en-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-prism-materials-en-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-prism-materials-en-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-prism-materials-en-texture-native-resume.png",
+          "native-resume": "live-prism-materials-en-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12256,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 134,
+            "average": [
+              222,
+              229,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-en-texture-a0.rgba",
+            "comparisonFile": "live-prism-materials-en-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12336,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 132,
+            "average": [
+              222,
+              229,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-en-texture-a1.rgba",
+            "comparisonFile": "live-prism-materials-en-texture-a1-black.png",
+            "framesDuringInterval": 7
+          },
+          "b": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12448,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 144,
+            "average": [
+              220,
+              227,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-en-texture-b.rgba",
+            "comparisonFile": "live-prism-materials-en-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 12544,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 137,
+            "average": [
+              222,
+              229,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-en-texture-a2.rgba",
+            "comparisonFile": "live-prism-materials-en-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 610,
+            "height": 454,
+            "format": "bgra8unorm",
+            "submittedAt": 13648,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 139,
+            "average": [
+              222,
+              229,
+              250,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-prism-materials-en-texture-native-resume.rgba",
+            "comparisonFile": "live-prism-materials-en-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 262,
+          "average": [
+            221,
+            228,
+            249
+          ],
+          "brightCenter": [
+            11.5,
+            11.5
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 610,
+            "height": 454,
+            "textures": 41,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 611,
+              "height": 456
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 611,
+              "height": 456
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 611,
+              "height": 456
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 610,
+            "height": 454,
+            "textures": 41,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 745,
+                "clientY": 348,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 610,
+            "height": 454,
+            "textures": 41,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-prism-materials-en-composite-native-resume.png",
+            "texture": "live-prism-materials-en-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 10.084861111111111,
+          "changedPixels": 1124,
+          "peak": 229,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-aeriform-zh-Hant": {
+        "control": "button[data-form]",
+        "values": [
+          "identity",
+          "motion"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 5.4252392664241595,
+              "changedPixels": 1374,
+              "peak": 96.9305555555555,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 8.909678354414677,
+              "changedPixels": 1965,
+              "peak": 99.86111111111107,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 9.125257471478182,
+              "changedPixels": 2011,
+              "peak": 103.43055555555551,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 5.475087391148594,
+              "changedPixels": 1412,
+              "peak": 85.15277777777774,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 5.956383274085106,
+              "changedPixels": 1496,
+              "peak": 111.87500000000001,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 10.430103512180343,
+              "changedPixels": 2029,
+              "peak": 135.70833333333331,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 10.73255180776014,
+              "changedPixels": 2107,
+              "peak": 120.3194444444444,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 5.973792886078041,
+              "changedPixels": 1513,
+              "peak": 108.30158730158732,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-aeriform-zh-Hant-texture-a0.png",
+          "a0": "live-aeriform-zh-Hant-composite-a0.png",
+          "texture-a1": "live-aeriform-zh-Hant-texture-a1.png",
+          "a1": "live-aeriform-zh-Hant-composite-a1.png",
+          "texture-b": "live-aeriform-zh-Hant-texture-b.png",
+          "b": "live-aeriform-zh-Hant-composite-b.png",
+          "texture-a2": "live-aeriform-zh-Hant-texture-a2.png",
+          "a2": "live-aeriform-zh-Hant-composite-a2.png",
+          "before-native-pause": "live-aeriform-zh-Hant-composite-before-native-pause.png",
+          "native-pause": "live-aeriform-zh-Hant-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-aeriform-zh-Hant-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-aeriform-zh-Hant-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-aeriform-zh-Hant-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-aeriform-zh-Hant-texture-native-resume.png",
+          "native-resume": "live-aeriform-zh-Hant-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 13856,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 133,
+            "average": [
+              25,
+              13,
+              9,
+              29
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-zh-Hant-texture-a0.rgba",
+            "comparisonFile": "live-aeriform-zh-Hant-texture-a0-black.png",
+            "framesDuringInterval": 6
+          },
+          "a1": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 14960,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 125,
+            "average": [
+              21,
+              11,
+              8,
+              24
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-zh-Hant-texture-a1.rgba",
+            "comparisonFile": "live-aeriform-zh-Hant-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 16064,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 110,
+            "average": [
+              18,
+              10,
+              9,
+              22
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-zh-Hant-texture-b.rgba",
+            "comparisonFile": "live-aeriform-zh-Hant-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 17152,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 111,
+            "average": [
+              19,
+              9,
+              7,
+              22
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-zh-Hant-texture-a2.rgba",
+            "comparisonFile": "live-aeriform-zh-Hant-texture-a2-black.png",
+            "framesDuringInterval": 7
+          },
+          "native-resume": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 18256,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 112,
+            "average": [
+              20,
+              10,
+              7,
+              23
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-zh-Hant-texture-native-resume.rgba",
+            "comparisonFile": "live-aeriform-zh-Hant-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 265,
+          "average": [
+            45,
+            53,
+            194
+          ],
+          "brightCenter": [
+            11.5,
+            11.5
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "simulation": {
+          "settleMs": 1000,
+          "note": "Evolving particles are allowed to keep distinct positions after a form is restored; shape return requires independent temporal review, not pixel identity."
+        },
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "controlAcceptance": {
+          "status": "REQUIRES_INDEPENDENT_FORM_REVIEW",
+          "reason": "A continuing particle simulation can change pixels without a working form selector. Equal-window differences are diagnostic only.",
+          "requiredEvidence": "Same-candidate dedicated desktop/mobile original composites and GPU captures: motion helix, digital ribbon, restored identity ring; non-author semantic verdict in view.semanticControls and coherence.",
+          "submittedAt": {
+            "a0": 13856,
+            "a1": 14960,
+            "b": 16064,
+            "a2": 17152
+          }
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 634,
+            "height": 537,
+            "textures": 314,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0.00005206982465240936,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            },
+            "pausedToAfter": {
+              "mean": 0.00005206982465240936,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            },
+            "diagnosticRestored": {
+              "mean": 0.00005206982465240936,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 634,
+            "height": 537,
+            "textures": 314,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 754,
+                "clientY": 376,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 634,
+            "height": 537,
+            "textures": 314,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-aeriform-zh-Hant-composite-native-resume.png",
+            "texture": "live-aeriform-zh-Hant-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 11.804236111111111,
+          "changedPixels": 1062,
+          "peak": 217,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      },
+      "live-aeriform-en": {
+        "control": "button[data-form]",
+        "values": [
+          "identity",
+          "motion"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 5.640752228698215,
+              "changedPixels": 1437,
+              "peak": 91.66666666666666,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 9.073923438877866,
+              "changedPixels": 2001,
+              "peak": 118.57142857142853,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 9.21486138668428,
+              "changedPixels": 2004,
+              "peak": 115.828125,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 5.434036320546734,
+              "changedPixels": 1399,
+              "peak": 94.09722222222226,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 6.11767144097223,
+              "changedPixels": 1525,
+              "peak": 116.48611111111114,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 10.666048418209881,
+              "changedPixels": 2055,
+              "peak": 139.01388888888886,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 10.788672167796495,
+              "changedPixels": 2086,
+              "peak": 134.56944444444446,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 5.875197740988746,
+              "changedPixels": 1501,
+              "peak": 108.01388888888887,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-aeriform-en-texture-a0.png",
+          "a0": "live-aeriform-en-composite-a0.png",
+          "texture-a1": "live-aeriform-en-texture-a1.png",
+          "a1": "live-aeriform-en-composite-a1.png",
+          "texture-b": "live-aeriform-en-texture-b.png",
+          "b": "live-aeriform-en-composite-b.png",
+          "texture-a2": "live-aeriform-en-texture-a2.png",
+          "a2": "live-aeriform-en-composite-a2.png",
+          "before-native-pause": "live-aeriform-en-composite-before-native-pause.png",
+          "native-pause": "live-aeriform-en-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-aeriform-en-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-aeriform-en-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-aeriform-en-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-aeriform-en-texture-native-resume.png",
+          "native-resume": "live-aeriform-en-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 13616,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 108,
+            "average": [
+              17,
+              9,
+              6,
+              20
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-en-texture-a0.rgba",
+            "comparisonFile": "live-aeriform-en-texture-a0-black.png",
+            "framesDuringInterval": 6
+          },
+          "a1": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 14704,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 115,
+            "average": [
+              18,
+              9,
+              6,
+              21
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-en-texture-a1.rgba",
+            "comparisonFile": "live-aeriform-en-texture-a1-black.png",
+            "framesDuringInterval": 7
+          },
+          "b": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 15808,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 114,
+            "average": [
+              18,
+              10,
+              9,
+              22
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-en-texture-b.rgba",
+            "comparisonFile": "live-aeriform-en-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 16912,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 134,
+            "average": [
+              21,
+              11,
+              8,
+              25
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-en-texture-a2.rgba",
+            "comparisonFile": "live-aeriform-en-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 634,
+            "height": 537,
+            "format": "bgra8unorm",
+            "submittedAt": 18016,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 115,
+            "average": [
+              19,
+              10,
+              7,
+              22
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-aeriform-en-texture-native-resume.rgba",
+            "comparisonFile": "live-aeriform-en-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 278,
+          "average": [
+            46,
+            54,
+            194
+          ],
+          "brightCenter": [
+            11.5,
+            11.5
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "simulation": {
+          "settleMs": 1000,
+          "note": "Evolving particles are allowed to keep distinct positions after a form is restored; shape return requires independent temporal review, not pixel identity."
+        },
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "controlAcceptance": {
+          "status": "REQUIRES_INDEPENDENT_FORM_REVIEW",
+          "reason": "A continuing particle simulation can change pixels without a working form selector. Equal-window differences are diagnostic only.",
+          "requiredEvidence": "Same-candidate dedicated desktop/mobile original composites and GPU captures: motion helix, digital ribbon, restored identity ring; non-author semantic verdict in view.semanticControls and coherence.",
+          "submittedAt": {
+            "a0": 13616,
+            "a1": 14704,
+            "b": 15808,
+            "a2": 16912
+          }
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 634,
+            "height": 537,
+            "textures": 323,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0.00005698207226112722,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            },
+            "pausedToAfter": {
+              "mean": 0.00005698207226112722,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 634,
+            "height": 537,
+            "textures": 323,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 754,
+                "clientY": 376,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 634,
+            "height": 537,
+            "textures": 323,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-aeriform-en-composite-native-resume.png",
+            "texture": "live-aeriform-en-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 11.304722222222223,
+          "changedPixels": 1052,
+          "peak": 214,
+          "width": 80,
+          "height": 60
+        },
+        "diagnosticCapture": {
+          "nativePaused": true,
+          "phase": "paused",
+          "note": "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences."
+        }
+      }
+    },
+    "paperPausedCaption": {
+      "zh-Hant": {
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "states": {
+          "running": {
+            "width": 309.640625,
+            "height": 37.046875,
+            "right": 738.640625,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 19.4656,
+            "padding": 17.6,
+            "heroHeight": 520.734375,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "running"
+          },
+          "paused": {
+            "width": 254.984375,
+            "height": 37.046875,
+            "right": 683.984375,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 19.4656,
+            "padding": 17.6,
+            "heroHeight": 520.734375,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "paused"
+          },
+          "paused-200-percent": {
+            "width": 254.984375,
+            "height": 113.03125,
+            "right": 683.984375,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 38.9312,
+            "padding": 35.2,
+            "heroHeight": 1067.09375,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "paused"
+          },
+          "resumed": {
+            "width": 309.640625,
+            "height": 37.046875,
+            "right": 738.640625,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 19.4656,
+            "padding": 17.6,
+            "heroHeight": 520.734375,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "running"
+          }
+        },
+        "screenshots": [
+          "live-paper-caption-zh-Hant-1100-paused-100.png",
+          "live-paper-caption-zh-Hant-1100-paused-200.png"
+        ],
+        "result": "PASS"
+      },
+      "en": {
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "states": {
+          "running": {
+            "width": 254.984375,
+            "height": 37.046875,
+            "right": 683.984375,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 19.4656,
+            "padding": 17.6,
+            "heroHeight": 520.734375,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "running"
+          },
+          "paused": {
+            "width": 254.984375,
+            "height": 37.046875,
+            "right": 683.984375,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 19.4656,
+            "padding": 17.6,
+            "heroHeight": 520.734375,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "paused"
+          },
+          "paused-200-percent": {
+            "width": 254.984375,
+            "height": 151.953125,
+            "right": 683.984375,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 38.9312,
+            "padding": 35.2,
+            "heroHeight": 1180.75,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "paused"
+          },
+          "resumed": {
+            "width": 254.984375,
+            "height": 37.046875,
+            "right": 683.984375,
+            "plateWidth": 671,
+            "plateRight": 1100,
+            "lineHeight": 19.4656,
+            "padding": 17.6,
+            "heroHeight": 520.734375,
+            "viewportWidth": 1100,
+            "documentWidth": 1100,
+            "motion": "running"
+          }
+        },
+        "screenshots": [
+          "live-paper-caption-en-1100-paused-100.png",
+          "live-paper-caption-en-1100-paused-200.png"
+        ],
+        "result": "PASS"
+      }
+    },
+    "deployed": {
+      "commit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9",
+      "work": "V001",
+      "slug": "paper-light",
+      "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+      "works": [
+        {
+          "work": "V001",
+          "slug": "paper-light",
+          "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36"
+        },
+        {
+          "work": "V002",
+          "slug": "liquid-archive",
+          "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36"
+        },
+        {
+          "work": "V003",
+          "slug": "night-signal",
+          "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36"
+        },
+        {
+          "work": "V004",
+          "slug": "prism-materials",
+          "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36"
+        },
+        {
+          "work": "V005",
+          "slug": "aeriform",
+          "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36"
+        }
+      ]
+    }
+  },
+  "screenshots": [
+    "live-paper-light-zh-Hant-texture-a0.png",
+    "live-paper-light-zh-Hant-composite-a0.png",
+    "live-paper-light-zh-Hant-texture-a1.png",
+    "live-paper-light-zh-Hant-composite-a1.png",
+    "live-paper-light-zh-Hant-texture-b.png",
+    "live-paper-light-zh-Hant-composite-b.png",
+    "live-paper-light-zh-Hant-texture-a2.png",
+    "live-paper-light-zh-Hant-composite-a2.png",
+    "live-paper-light-zh-Hant-composite-before-native-pause.png",
+    "live-paper-light-zh-Hant-composite-native-pause.png",
+    "live-paper-light-zh-Hant-composite-native-pause-after-1000ms.png",
+    "live-paper-light-zh-Hant-composite-diagnostic-no-canvas.png",
+    "live-paper-light-zh-Hant-composite-diagnostic-restored.png",
+    "live-paper-light-zh-Hant-texture-native-resume.png",
+    "live-paper-light-zh-Hant-composite-native-resume.png",
+    "live-paper-caption-zh-Hant-1100-paused-100.png",
+    "live-paper-caption-zh-Hant-1100-paused-200.png",
+    "live-paper-light-zh-Hant-isolated-output.png",
+    "live-paper-light-zh-Hant.png",
+    "live-paper-light-en-texture-a0.png",
+    "live-paper-light-en-composite-a0.png",
+    "live-paper-light-en-texture-a1.png",
+    "live-paper-light-en-composite-a1.png",
+    "live-paper-light-en-texture-b.png",
+    "live-paper-light-en-composite-b.png",
+    "live-paper-light-en-texture-a2.png",
+    "live-paper-light-en-composite-a2.png",
+    "live-paper-light-en-composite-before-native-pause.png",
+    "live-paper-light-en-composite-native-pause.png",
+    "live-paper-light-en-composite-native-pause-after-1000ms.png",
+    "live-paper-light-en-composite-diagnostic-no-canvas.png",
+    "live-paper-light-en-composite-diagnostic-restored.png",
+    "live-paper-light-en-texture-native-resume.png",
+    "live-paper-light-en-composite-native-resume.png",
+    "live-paper-caption-en-1100-paused-100.png",
+    "live-paper-caption-en-1100-paused-200.png",
+    "live-paper-light-en-isolated-output.png",
+    "live-paper-light-en.png",
+    "live-liquid-archive-zh-Hant-texture-a0.png",
+    "live-liquid-archive-zh-Hant-composite-a0.png",
+    "live-liquid-archive-zh-Hant-texture-a1.png",
+    "live-liquid-archive-zh-Hant-composite-a1.png",
+    "live-liquid-archive-zh-Hant-texture-b.png",
+    "live-liquid-archive-zh-Hant-composite-b.png",
+    "live-liquid-archive-zh-Hant-texture-a2.png",
+    "live-liquid-archive-zh-Hant-composite-a2.png",
+    "live-liquid-archive-zh-Hant-composite-before-native-pause.png",
+    "live-liquid-archive-zh-Hant-composite-native-pause.png",
+    "live-liquid-archive-zh-Hant-composite-native-pause-after-1000ms.png",
+    "live-liquid-archive-zh-Hant-composite-diagnostic-no-canvas.png",
+    "live-liquid-archive-zh-Hant-composite-diagnostic-restored.png",
+    "live-liquid-archive-zh-Hant-texture-native-resume.png",
+    "live-liquid-archive-zh-Hant-composite-native-resume.png",
+    "live-liquid-archive-zh-Hant-isolated-output.png",
+    "live-liquid-archive-zh-Hant.png",
+    "live-liquid-archive-en-texture-a0.png",
+    "live-liquid-archive-en-composite-a0.png",
+    "live-liquid-archive-en-texture-a1.png",
+    "live-liquid-archive-en-composite-a1.png",
+    "live-liquid-archive-en-texture-b.png",
+    "live-liquid-archive-en-composite-b.png",
+    "live-liquid-archive-en-texture-a2.png",
+    "live-liquid-archive-en-composite-a2.png",
+    "live-liquid-archive-en-composite-before-native-pause.png",
+    "live-liquid-archive-en-composite-native-pause.png",
+    "live-liquid-archive-en-composite-native-pause-after-1000ms.png",
+    "live-liquid-archive-en-composite-diagnostic-no-canvas.png",
+    "live-liquid-archive-en-composite-diagnostic-restored.png",
+    "live-liquid-archive-en-texture-native-resume.png",
+    "live-liquid-archive-en-composite-native-resume.png",
+    "live-liquid-archive-en-isolated-output.png",
+    "live-liquid-archive-en.png",
+    "live-night-signal-zh-Hant-texture-a0.png",
+    "live-night-signal-zh-Hant-composite-a0.png",
+    "live-night-signal-zh-Hant-texture-a1.png",
+    "live-night-signal-zh-Hant-composite-a1.png",
+    "live-night-signal-zh-Hant-texture-b.png",
+    "live-night-signal-zh-Hant-composite-b.png",
+    "live-night-signal-zh-Hant-texture-a2.png",
+    "live-night-signal-zh-Hant-composite-a2.png",
+    "live-night-signal-zh-Hant-composite-before-native-pause.png",
+    "live-night-signal-zh-Hant-composite-native-pause.png",
+    "live-night-signal-zh-Hant-composite-native-pause-after-1000ms.png",
+    "live-night-signal-zh-Hant-composite-diagnostic-no-canvas.png",
+    "live-night-signal-zh-Hant-composite-diagnostic-restored.png",
+    "live-night-signal-zh-Hant-texture-native-resume.png",
+    "live-night-signal-zh-Hant-composite-native-resume.png",
+    "live-night-signal-zh-Hant-isolated-output.png",
+    "live-night-signal-zh-Hant.png",
+    "live-night-signal-en-texture-a0.png",
+    "live-night-signal-en-composite-a0.png",
+    "live-night-signal-en-texture-a1.png",
+    "live-night-signal-en-composite-a1.png",
+    "live-night-signal-en-texture-b.png",
+    "live-night-signal-en-composite-b.png",
+    "live-night-signal-en-texture-a2.png",
+    "live-night-signal-en-composite-a2.png",
+    "live-night-signal-en-composite-before-native-pause.png",
+    "live-night-signal-en-composite-native-pause.png",
+    "live-night-signal-en-composite-native-pause-after-1000ms.png",
+    "live-night-signal-en-composite-diagnostic-no-canvas.png",
+    "live-night-signal-en-composite-diagnostic-restored.png",
+    "live-night-signal-en-texture-native-resume.png",
+    "live-night-signal-en-composite-native-resume.png",
+    "live-night-signal-en-isolated-output.png",
+    "live-night-signal-en.png",
+    "live-prism-materials-zh-Hant-texture-a0.png",
+    "live-prism-materials-zh-Hant-composite-a0.png",
+    "live-prism-materials-zh-Hant-texture-a1.png",
+    "live-prism-materials-zh-Hant-composite-a1.png",
+    "live-prism-materials-zh-Hant-texture-b.png",
+    "live-prism-materials-zh-Hant-composite-b.png",
+    "live-prism-materials-zh-Hant-texture-a2.png",
+    "live-prism-materials-zh-Hant-composite-a2.png",
+    "live-prism-materials-zh-Hant-composite-before-native-pause.png",
+    "live-prism-materials-zh-Hant-composite-native-pause.png",
+    "live-prism-materials-zh-Hant-composite-native-pause-after-1000ms.png",
+    "live-prism-materials-zh-Hant-composite-diagnostic-no-canvas.png",
+    "live-prism-materials-zh-Hant-composite-diagnostic-restored.png",
+    "live-prism-materials-zh-Hant-texture-native-resume.png",
+    "live-prism-materials-zh-Hant-composite-native-resume.png",
+    "live-prism-materials-zh-Hant-isolated-output.png",
+    "live-prism-materials-zh-Hant.png",
+    "live-prism-materials-en-texture-a0.png",
+    "live-prism-materials-en-composite-a0.png",
+    "live-prism-materials-en-texture-a1.png",
+    "live-prism-materials-en-composite-a1.png",
+    "live-prism-materials-en-texture-b.png",
+    "live-prism-materials-en-composite-b.png",
+    "live-prism-materials-en-texture-a2.png",
+    "live-prism-materials-en-composite-a2.png",
+    "live-prism-materials-en-composite-before-native-pause.png",
+    "live-prism-materials-en-composite-native-pause.png",
+    "live-prism-materials-en-composite-native-pause-after-1000ms.png",
+    "live-prism-materials-en-composite-diagnostic-no-canvas.png",
+    "live-prism-materials-en-composite-diagnostic-restored.png",
+    "live-prism-materials-en-texture-native-resume.png",
+    "live-prism-materials-en-composite-native-resume.png",
+    "live-prism-materials-en-isolated-output.png",
+    "live-prism-materials-en.png",
+    "live-aeriform-zh-Hant-texture-a0.png",
+    "live-aeriform-zh-Hant-composite-a0.png",
+    "live-aeriform-zh-Hant-texture-a1.png",
+    "live-aeriform-zh-Hant-composite-a1.png",
+    "live-aeriform-zh-Hant-texture-b.png",
+    "live-aeriform-zh-Hant-composite-b.png",
+    "live-aeriform-zh-Hant-texture-a2.png",
+    "live-aeriform-zh-Hant-composite-a2.png",
+    "live-aeriform-zh-Hant-composite-before-native-pause.png",
+    "live-aeriform-zh-Hant-composite-native-pause.png",
+    "live-aeriform-zh-Hant-composite-native-pause-after-1000ms.png",
+    "live-aeriform-zh-Hant-composite-diagnostic-no-canvas.png",
+    "live-aeriform-zh-Hant-composite-diagnostic-restored.png",
+    "live-aeriform-zh-Hant-texture-native-resume.png",
+    "live-aeriform-zh-Hant-composite-native-resume.png",
+    "live-aeriform-zh-Hant-isolated-output.png",
+    "live-aeriform-zh-Hant.png",
+    "live-aeriform-en-texture-a0.png",
+    "live-aeriform-en-composite-a0.png",
+    "live-aeriform-en-texture-a1.png",
+    "live-aeriform-en-composite-a1.png",
+    "live-aeriform-en-texture-b.png",
+    "live-aeriform-en-composite-b.png",
+    "live-aeriform-en-texture-a2.png",
+    "live-aeriform-en-composite-a2.png",
+    "live-aeriform-en-composite-before-native-pause.png",
+    "live-aeriform-en-composite-native-pause.png",
+    "live-aeriform-en-composite-native-pause-after-1000ms.png",
+    "live-aeriform-en-composite-diagnostic-no-canvas.png",
+    "live-aeriform-en-composite-diagnostic-restored.png",
+    "live-aeriform-en-texture-native-resume.png",
+    "live-aeriform-en-composite-native-resume.png",
+    "live-aeriform-en-isolated-output.png",
+    "live-aeriform-en.png"
+  ],
+  "lane": "live",
+  "result": "PASS"
+}

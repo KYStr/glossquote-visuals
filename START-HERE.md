@@ -1,6 +1,6 @@
 # 接續入口
 
-這是獨立的 GlossQuote Visuals，不是 Labs 工具製作任務。本輪 M03 重做三件既有商業網站的版頭，新增折光材料室與空型動態設計。五個側欄可見的製作對話各持有一件作品，主責負責美術、整合、共享畫廊與發布。M02 已發布成果與評分保留為歷史。
+這是獨立的 GlossQuote Visuals。M03 已完成三件商業網站版頭重做與折光材料室、空型動態設計兩件新作，五件均已發布並通過美術、UI、商業完整度各嚴格 >9/10 的非作者驗收。[正式發布證據](evidence/M03/33d0aee9006b2b76f02a58c9ddd575571a4704b9/RELEASE.md)。五個側欄可見製作對話各持有一件作品，主責負責美術、整合、共享畫廊與發布。下一個新作品依使用者新任務寫 brief，開新的製作對話；M01/M02 與本輪被退回的證據保留為歷史。
 
 1. 讀 AGENTS.md、GOAL.md、docs/WORKFLOW.md、docs/ACCEPTANCE.md。
 2. 讀 `.agents/skills/shaders/SKILL.md` 和 docs/UPSTREAM.md；不要執行 skill 裡涉及登入、遠端專案或付費預設的命令。

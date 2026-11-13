@@ -4,7 +4,7 @@
 
 Five original bilingual concept websites, combining distinct brand identities, shader-led art direction and complete local customer journeys.
 
-**Status:** Corrected M03 candidate accepted: all five works exceed 9 in every design category and all eight isolated lanes passed. The V001 paused caption repair is reviewed and awaits deployment. The previous live image and rejection remain in the release history.
+**Status:** Corrected M03 published and verified. All five works exceed 9 in every design category; eight candidate lanes, three release jobs, ten localized live GPU checks and the 12-page/47-resource HTTPS readback passed. [Release and retained failure history](evidence/M03/33d0aee9006b2b76f02a58c9ddd575571a4704b9/RELEASE.md).
 
 [繁中作品集](https://kystr.github.io/glossquote-visuals/) · [English portfolio](https://kystr.github.io/glossquote-visuals/en/) · [Verification and limits](evidence/M03/ba1cffaad8b678f26a147403a36ed20197b27c36/INTEGRATION.md)
 
