@@ -6,7 +6,7 @@ const labels = english ? {
   still: "Showing the still poster.",
   reduced: "Reduced motion is on. Showing the still poster.",
   unavailable: "Live rendering is unavailable. Showing the still poster.",
-  paused: "Motion paused. Showing the still poster.",
+  paused: "Motion paused on the current frame.",
   starting: "Preparing the live signal.",
   running: "Live signal.",
   static: "Still poster",
@@ -16,7 +16,7 @@ const labels = english ? {
   still: "顯示靜態海報。",
   reduced: "已依系統偏好減少動態，顯示靜態海報。",
   unavailable: "目前無法即時渲染，顯示靜態海報。",
-  paused: "動態已暫停，顯示靜態海報。",
+  paused: "動態已暫停，保留目前畫面。",
   starting: "正在準備即時訊號。",
   running: "正在即時呈現訊號。",
   static: "靜態海報",
@@ -57,6 +57,8 @@ const motion = createMotion({
   },
   renderState(phase) {
     stage.dataset.motion = phase;
+    if (phase === "running") stage.dataset.presented = "";
+    if (phase === "starting" || phase === "unavailable" || phase === "reduced") delete stage.dataset.presented;
     status.textContent = labels[phase];
     pause.disabled = phase === "reduced" || phase === "unavailable";
     pause.textContent = labels[pause.disabled ? "static" : paused ? "resume" : "pause"];
@@ -83,6 +85,7 @@ pause.addEventListener("click", () => {
   paused = !paused;
   motion.update({ paused });
 });
+window.addEventListener("pagehide", () => { delete stage.dataset.presented; });
 controls.hidden = false;
 if (hasObservers) {
   observeMotion(stage, motion, preference);

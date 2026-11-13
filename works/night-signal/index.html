@@ -15,7 +15,7 @@
   <meta property="og:description" content="在高雄港邊聽三段電子聲響，從環境音、現場低頻到深夜 DJ 選曲。探索節目並規劃你的夜間行程。">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/night-signal-share.jpg">
-  <meta property="og:image:alt" content="暗藍底上，奶黃色的光束沿波峰延展。">
+  <meta property="og:image:alt" content="黃銅色光帶在深靛藍背景中翻轉。">
   <link rel="icon" href="%BASE_URL%media/night-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/night-signal/page.css">
@@ -38,7 +38,8 @@
     <section class="hero" aria-labelledby="event-title">
       <div class="frame hero-content">
         <p class="event-kicker">高雄港邊電子音樂夜</p>
-        <h1 id="event-title">夜航訊號 <span class="hero-english" lang="en">NIGHT SIGNAL</span></h1>
+        <h1 id="event-title" aria-label="夜航訊號"><span>夜航</span><span>訊號</span></h1>
+        <p class="hero-english" lang="en">NIGHT SIGNAL</p>
         <div class="hero-meta">
           <div class="event-details">
             <p><time datetime="2026-11-21" data-event-date>2026.11.21 週六</time> <span aria-hidden="true">/</span> 19:00–23:30</p>
@@ -49,7 +50,10 @@
         </div>
       </div>
       <div class="signal-art" data-stage data-channel="carrier">
-        <img src="%BASE_URL%media/night-wave-poster.svg" width="1440" height="420" alt="">
+        <picture>
+          <source media="(max-width: 55rem)" srcset="%BASE_URL%media/night-sculpture-compact.webp">
+          <img src="%BASE_URL%media/night-sculpture-wide.webp" width="1440" height="760" alt="">
+        </picture>
         <canvas aria-hidden="true"></canvas>
       </div>
       <div class="hero-strip">

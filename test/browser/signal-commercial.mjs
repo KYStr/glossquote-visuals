@@ -4,11 +4,13 @@ import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { base } from "../../scripts/site-map.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
+import { signalMotionEvidence } from "./signal-motion.mjs";
 
 export const signalFontPaths = [`${base}fonts/night-barlow-condensed-extrabold.ttf`];
 const route = "works/night-signal/";
 const selectProgram = (page, id) => page.locator(`[data-act="${id}"] label`);
 const active = (page, selector) => page.locator(selector).evaluate((node) => node === document.activeElement);
+const periods = { carrier: 10, echo: 8, dawn: 12 };
 const devices = (page) => page.evaluate(() => window.__visualProbe.devices);
 
 async function assertProgram(page, id, stage) {
@@ -129,7 +131,8 @@ async function booking(page, english, { capture, layout, evidenceDir }) {
 export async function checkSignal(browser, {
   evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
 }) {
-  evidence.downloads = [];
+  evidence.downloads ??= [];
+  const motionEvidence = signalMotionEvidence({ evidence, evidenceDir });
   const privateRequests = (probe) => probe.assertPrivate(site.origin, { fontPaths: signalFontPaths });
   const capture = async (locator, name) => {
     await locator.screenshot({ path: resolve(evidenceDir, name) });
@@ -159,7 +162,7 @@ export async function checkSignal(browser, {
           .evaluateAll((nodes) => nodes.map((node) => [node.offsetWidth, node.offsetHeight]));
         assert.ok(targets.every(([w, h]) => w >= 44 && h >= 44), JSON.stringify(targets));
         const cta = await page.locator(".hero-cta").boundingBox();
-        assert.ok(cta && cta.y + cta.height <= 580, `CTA below mobile fold at ${width}px`);
+        assert.ok(cta && cta.y + cta.height <= (width === 1440 ? 844 : 580), `CTA below mobile fold at ${width}px`);
         if (width === 320 && prefix) {
           await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
           await capture(page.locator(".hero"), "signal-en-320-200-percent.png");
@@ -255,15 +258,22 @@ export async function checkSignal(browser, {
       await selectProgram(page, id).click();
       await assertProgram(page, id, stage);
       await nextFrame();
+      await page.waitForTimeout(1050);
       const texture = await page.evaluate(() => window.__visualProbe.readFrame());
       const name = `signal-${id}-webgpu.png`;
       const visible = await pixelEvidence(page, stage(page), resolve(evidenceDir, name));
       assert.ok(texture.colors > 20 && visible.colors > 20, `Program ${id} did not render: ${JSON.stringify({ texture, visible })}`);
       evidence.screenshots.push(name);
       captures[id] = { texture, visible };
+      await nextFrame();
+      await motionEvidence.cycle(page, "desktop", id, periods[id]);
     }
     assert.equal(new Set(Object.values(captures).map(({ texture }) => texture.average.join(","))).size, 3);
     evidence.measurements.signalChannels = captures;
+    for (const [from, to] of [["dawn", "carrier"], ["carrier", "echo"], ["echo", "dawn"]]) {
+      await motionEvidence.transition(page, from, to);
+      await assertProgram(page, to, stage);
+    }
 
     const configurations = await page.evaluate(() => window.__visualProbe.configurations);
     await page.evaluate(() => {
@@ -285,11 +295,14 @@ export async function checkSignal(browser, {
     await nextFrame();
     await screenshot(page, "signal-en-1440-webgpu.png");
     await capture(page.locator(".hero"), "signal-en-1440-poster.png");
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    await quiet(page);
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await nextFrame();
+    await motionEvidence.freeze(page, "desktop", stage(page), {
+      pause: async () => {
+        await page.getByRole("button", { name: "Pause motion" }).evaluate((button) => button.click());
+        await phase(page, "paused");
+      },
+      resume: () => page.getByRole("button", { name: "Resume motion" }).evaluate((button) => button.click()),
+      quiet, nextFrame,
+    });
 
     await page.evaluate(() => {
       Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
@@ -329,6 +342,22 @@ export async function checkSignal(browser, {
     await nextFrame();
     await screenshot(page, "signal-zh-Hant-390-webgpu.png");
     await capture(page.locator(".hero"), "signal-zh-Hant-390-poster.png");
+    await nextFrame();
+    for (const id of Object.keys(periods)) {
+      await selectProgram(page, id).click();
+      await assertProgram(page, id, stage);
+      await nextFrame();
+      await page.waitForTimeout(1050);
+      await motionEvidence.cycle(page, "mobile", id, periods[id]);
+    }
+    await motionEvidence.freeze(page, "mobile", stage(page), {
+      pause: async () => {
+        await page.getByRole("button", { name: "暫停動態" }).evaluate((button) => button.click());
+        await phase(page, "paused");
+      },
+      resume: () => page.getByRole("button", { name: "繼續動態" }).evaluate((button) => button.click()),
+      quiet, nextFrame,
+    });
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await phase(page, "still");
     await quiet(page);
@@ -339,5 +368,6 @@ export async function checkSignal(browser, {
     await screenshot(page, "signal-en-390-webgpu.png");
     await privateRequests(probe);
   });
+  evidence.checks.signalMotion = "PASS natural desktop and mobile cycles for all three programs, three in-place transitions, and exact preserved-stage PNG hashes during native pause on desktop and mobile";
   evidence.checks.signal = "PASS bilingual 320/390/768/1440 and 200% text layout, keyboard/touch, three visible WebGPU programs, 18 switches on one device, lifecycle and recovery, no-GPU/no-JS/reduced motion and privacy";
 }
