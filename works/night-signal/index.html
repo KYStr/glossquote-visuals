@@ -15,7 +15,7 @@
   <meta property="og:description" content="在高雄港邊聽三段電子聲響，從環境音、現場低頻到深夜 DJ 選曲。探索節目並規劃你的夜間行程。">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/night-signal/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/night-signal-share.jpg">
-  <meta property="og:image:alt" content="暗藍底上，奶黃色的光束沿波峰延展。">
+  <meta property="og:image:alt" content="黃銅色光帶在深靛藍背景中翻轉。">
   <link rel="icon" href="%BASE_URL%media/night-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/night-signal/page.css">
@@ -38,7 +38,8 @@
     <section class="hero" aria-labelledby="event-title">
       <div class="frame hero-content">
         <p class="event-kicker">高雄港邊電子音樂夜</p>
-        <h1 id="event-title">夜航訊號 <span class="hero-english" lang="en">NIGHT SIGNAL</span></h1>
+        <h1 id="event-title" aria-label="夜航訊號"><span>夜航</span><span>訊號</span></h1>
+        <p class="hero-english" lang="en">NIGHT SIGNAL</p>
         <div class="hero-meta">
           <div class="event-details">
             <p><time datetime="2026-11-21" data-event-date>2026.11.21 週六</time> <span aria-hidden="true">/</span> 19:00–23:30</p>
@@ -49,12 +50,20 @@
         </div>
       </div>
       <div class="signal-art" data-stage data-channel="carrier">
-        <img src="%BASE_URL%media/night-wave-poster.svg" width="1440" height="420" alt="">
+        <picture>
+          <source media="(max-width: 55rem)" srcset="%BASE_URL%media/night-sculpture-compact.webp">
+          <img src="%BASE_URL%media/night-sculpture-wide.webp" width="1440" height="760" alt="">
+        </picture>
         <canvas aria-hidden="true"></canvas>
       </div>
       <div class="hero-strip">
         <div class="frame hero-strip-inner">
           <p><span class="signal-pulse" aria-hidden="true"></span> <span data-hero-program>離岸載波</span></p>
+          <div class="program-previews" role="group" aria-label="預覽演出訊號" data-program-previews hidden>
+            <button type="button" data-preview="carrier" aria-pressed="true">離岸載波</button>
+            <button type="button" data-preview="echo" aria-pressed="false">盲區回聲</button>
+            <button type="button" data-preview="dawn" aria-pressed="false">晨線</button>
+          </div>
           <div class="motion-controls" data-motion-controls hidden>
             <span role="status" class="visually-hidden" data-motion-status>顯示靜態海報。</span>
             <button type="button" data-pause>暫停動態</button>
@@ -70,7 +79,7 @@
           <p data-program-hint hidden>選取節目可看演出介紹，也會帶入第一次選單場票的場次。</p>
         </div>
       </div>
-      <div class="schedule-heading"><span>18:30 開門</span><span data-event-stage>北堤聲場主舞台</span></div>
+      <div class="schedule-heading"><span data-doors>18:30 開門</span><span data-event-stage>北堤聲場主舞台</span></div>
       <fieldset class="schedule">
         <legend class="visually-hidden">選擇節目以查看演出介紹</legend>
           <article class="act" id="program-carrier" data-act="carrier" tabindex="-1">
@@ -150,9 +159,9 @@
             <div data-booking-set hidden>
               <label for="booking-set">單場票場次</label>
               <select name="set" id="booking-set">
-                <option value="carrier">19:00–20:00 · 鹽室 / 離岸載波</option>
-                <option value="echo">20:15–21:30 · 港脈 / 盲區回聲</option>
-                <option value="dawn">21:45–23:30 · 緩潮 / 晨線</option>
+                <option value="carrier" data-admission="18:45">19:00–20:00 · 鹽室 / 離岸載波</option>
+                <option value="echo" data-admission="20:00">20:15–21:30 · 港脈 / 盲區回聲</option>
+                <option value="dawn" data-admission="21:30">21:45–23:30 · 緩潮 / 晨線</option>
               </select>
             </div>
             <div>
@@ -186,6 +195,7 @@
           <h3 id="complete-title" tabindex="-1">已產生選票摘要</h3>
           <p data-complete-note>這是概念活動的選票摘要，尚未付款或保留席位。</p>
           <p class="complete-event"><time datetime="2026-11-21">2026.11.21 週六</time> · 高雄 · 北堤聲場</p>
+          <p data-complete-admission></p>
           <p data-complete-summary></p>
           <ul class="receipt-programs" data-complete-sets></ul>
         </div>

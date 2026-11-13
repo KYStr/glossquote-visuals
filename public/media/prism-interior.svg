@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="550" viewBox="0 0 850 550">
+  <defs>
+    <linearGradient id="sky" x2="1" y2="1"><stop stop-color="#f1f5ff"/><stop offset="1" stop-color="#b3caf3"/></linearGradient>
+    <linearGradient id="floor" x2=".82" y2="1"><stop stop-color="#bec5d5"/><stop offset="1" stop-color="#f9fafc"/></linearGradient>
+    <linearGradient id="glass" x2="1" y2="1"><stop stop-color="#97b6ff" stop-opacity=".78"/><stop offset=".7" stop-color="#5878e0" stop-opacity=".22"/><stop offset="1" stop-color="#b0cafa" stop-opacity=".83"/></linearGradient>
+    <pattern id="ribs" width="14" height="20" patternUnits="userSpaceOnUse">
+      <path d="M0 0h2v20H0z" fill="#637fcb" opacity=".5"/>
+      <path d="M4 0h3v20H4z" fill="#edf4ff" opacity=".61"/>
+      <path d="M10 0h1v20h-1z" fill="#7898eb" opacity=".3"/>
+    </pattern>
+    <clipPath id="pane"><path d="m299 55 351 50v350l-351-42z"/></clipPath>
+  </defs>
+  <path d="M0 0h850v550H0z" fill="#e7eaf3"/>
+  <path d="M0 0h850v72L242 141 0 70z" fill="#f8faff"/>
+  <path d="M0 70l242 71v277L0 522z" fill="#d1d8e6"/>
+  <path d="m242 141 608-69v339l-608 7z" fill="url(#sky)"/>
+  <path d="m242 418 608-7v139H0v-28z" fill="url(#floor)"/>
+  <path d="M0 522l242-104 608-7M109 550l163-132m213 132-143-132m346 132L429 417m401 132L554 416" stroke="#929ebd" fill="none"/>
+  <path d="m318 276 67-53 35 29 82-86 60 47 108-37 84 55 96-41v221l-532 6z" fill="#93a8d4" opacity=".37"/>
+  <path d="m552 101 0 313m161-326v325m-471-153 608-51m-608 96 608-38" stroke="#7c8cb0" stroke-width="3"/>
+  <path d="m299 413 351 42 130 72-350 8-191-46z" fill="#3765e8" opacity=".16"/>
+  <path d="m332 421 16 2 194 114h-22zm51 6 20 3 221 106h-23zm66 8 20 3 228 95h-28z" fill="#f9faff" opacity=".53"/>
+  <g clip-path="url(#pane)">
+    <path d="M288 49h375v414H288z" fill="url(#glass)"/>
+    <path d="m286 326 385-131v56L286 378z" fill="#2852e8" opacity=".48"/>
+    <path d="m286 326 385-131v8L286 340zm0 46 385-129v11L286 384z" fill="#9ebbff"/>
+    <path d="M288 49h375v414H288z" fill="url(#ribs)"/>
+  </g>
+  <path d="m299 55 351 50v350l-351-42z" fill="none" stroke="#2949a1" stroke-width="6" stroke-linejoin="round"/>
+  <path d="m299 55 12-7 352 52v354l-13 1m0-350 13-5m-189-20v354" fill="none" stroke="#192958" stroke-width="3"/>
+  <path d="m299 55 351 50v350" fill="none" stroke="#ebf4ff" stroke-opacity=".75" stroke-width="2"/>
+  <path d="M57 449 196 402l43 15-145 55zm37 23 145-55v35L94 507zm0 35-37-22v-36l37 23z" fill="#b4bfd6" stroke="#8998b5"/>
+  <path d="m56 448 140-47 42 16-144 53z" fill="#e9ecf4"/>
+  <path d="M25 27h24m-12-12v24m763 470h24m-12-12v24" stroke="#2548e8" fill="none" stroke-width="2"/>
+</svg>

@@ -1,12 +1,16 @@
 # Evidence status
 
+## M03 — candidate accepted, deployment pending
+
+Five complete bilingual commercial websites passed non-author design and temporal review at `8fa4e8bcb86748fb100a10fd5a07904761e3c933`. All fifteen art/UI/commercial totals exceed 9/10, and all eight isolated lanes plus aggregate job 131723689722 passed. [Integration and limits](M03/8fa4e8bcb86748fb100a10fd5a07904761e3c933/INTEGRATION.md). Original artifact bytes and rejected historical evidence are retained. M03 is not yet claimed live; M02 remains the last verified deployment.
+
 ## M02 commercial collection — 2026-11-13
 
 Three production chats requested as gpt-6.1-sol/high have implemented the Paper & Light print studio, FORME Objects homeware site, and Night Signal event site. The creation API accepted that configuration; backend model identity is not independently verified. Each site has its own art direction and a working local customer brief, shortlist or itinerary flow.
 
 Individual candidate verification uses an isolated GitHub-hosted Windows Server 2025 VM. WebGPU renders through SwiftShader; desktop composition uses WARP. These results do not establish physical GPU, battery, screen-reader or human conversion performance. Runtime assets and fonts are bundled locally; no order, payment or reservation is sent.
 
-The integrated M02 candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a passed all technical candidate gates and independent non-author review: Paper & Light 9.2/9.3/9.2, FORME 9.3/9.2/9.3, and Night Signal 9.2/9.3/9.5 (art/UI/commercial). The fixed-candidate reviews and acceptance records are under each work's matching commit directory. [Integration evidence](M02/40d3740761c2c8b44f41bf8efe0723e03f8a650a/INTEGRATION.md). M02 is published at `06709c4d6ccdd60096e3e5282bcbe9b329d08c24`. Build, deployment and live browser jobs passed; eight localized HTTPS pages, 32 static resources and a real missing-path 404 passed the final independent readback. [Release evidence](M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md). The following M01 and bootstrap records are historical.
+The integrated M02 candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a` passed all technical candidate gates and independent non-author review: Paper & Light 9.2/9.3/9.2, FORME 9.3/9.2/9.3, and Night Signal 9.2/9.3/9.5 (art/UI/commercial). The fixed-candidate reviews and acceptance records are under each work's matching commit directory. [Integration evidence](M02/40d3740761c2c8b44f41bf8efe0723e03f8a650a/INTEGRATION.md). M02 is published at `06709c4d6ccdd60096e3e5282bcbe9b329d08c24`. Build, deployment and live browser jobs passed; eight localized HTTPS pages, 32 static resources and a real missing-path 404 passed the final independent readback. [Release evidence](M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md). The following M01 and bootstrap records are historical.
 
 ## V00 bootstrap status — 2026-11-12
 

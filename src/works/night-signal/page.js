@@ -6,7 +6,7 @@ const labels = english ? {
   still: "Showing the still poster.",
   reduced: "Reduced motion is on. Showing the still poster.",
   unavailable: "Live rendering is unavailable. Showing the still poster.",
-  paused: "Motion paused. Showing the still poster.",
+  paused: "Motion paused on the current frame.",
   starting: "Preparing the live signal.",
   running: "Live signal.",
   static: "Still poster",
@@ -16,7 +16,7 @@ const labels = english ? {
   still: "顯示靜態海報。",
   reduced: "已依系統偏好減少動態，顯示靜態海報。",
   unavailable: "目前無法即時渲染，顯示靜態海報。",
-  paused: "動態已暫停，顯示靜態海報。",
+  paused: "動態已暫停，保留目前畫面。",
   starting: "正在準備即時訊號。",
   running: "正在即時呈現訊號。",
   static: "靜態海報",
@@ -27,6 +27,8 @@ const labels = english ? {
 const stage = document.querySelector("[data-stage]");
 const canvas = stage.querySelector("canvas");
 const heroProgram = document.querySelector("[data-hero-program]");
+const previews = document.querySelector("[data-program-previews]");
+const previewButtons = [...previews.querySelectorAll("button")];
 const controls = document.querySelector("[data-motion-controls]");
 const pause = controls.querySelector("[data-pause]");
 const status = controls.querySelector("[data-motion-status]");
@@ -57,6 +59,8 @@ const motion = createMotion({
   },
   renderState(phase) {
     stage.dataset.motion = phase;
+    if (phase === "running") stage.dataset.presented = "";
+    if (phase === "starting" || phase === "unavailable" || phase === "reduced") delete stage.dataset.presented;
     status.textContent = labels[phase];
     pause.disabled = phase === "reduced" || phase === "unavailable";
     pause.textContent = labels[pause.disabled ? "static" : paused ? "resume" : "pause"];
@@ -68,6 +72,7 @@ function selectProgram() {
   for (const program of programs) program.description.hidden = program !== active;
   stage.dataset.channel = active.id;
   heroProgram.textContent = active.title;
+  for (const button of previewButtons) button.setAttribute("aria-pressed", String(button.dataset.preview === active.id));
   motion.setSettings({ channel: active.id });
   tickets.suggestSet(active.id);
 }
@@ -76,13 +81,19 @@ for (const { control, radio } of programs) {
   control.hidden = false;
   radio.addEventListener("change", selectProgram);
 }
+for (const button of previewButtons) {
+  const program = programs.find(({ id }) => id === button.dataset.preview);
+  button.addEventListener("click", () => program.radio.click());
+}
 selectProgram();
+previews.hidden = false;
 document.querySelector("[data-program-hint]").hidden = false;
 
 pause.addEventListener("click", () => {
   paused = !paused;
   motion.update({ paused });
 });
+window.addEventListener("pagehide", () => { delete stage.dataset.presented; });
 controls.hidden = false;
 if (hasObservers) {
   observeMotion(stage, motion, preference);

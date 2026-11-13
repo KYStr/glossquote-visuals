@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { prepareReadbackPixels } from "./readback-pixels.mjs";
 
 export async function observe(page, { readPixels = false, localFont } = {}) {
   const requests = [];
@@ -8,6 +9,7 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
   page.on("console", (message) => {
     if (message.type() === "error" || /WebGPU validation|GPUValidationError/i.test(message.text())) errors.push(message.text());
   });
+  await page.addInitScript({ content: `window.__prepareReadbackPixels = ${prepareReadbackPixels.toString()};` });
   await page.addInitScript((readPixels) => {
     const probe = window.__visualProbe = { textures: 0, devices: 0, configurations: 0, calls: [], violations: [], gpuErrors: [] };
     window.addEventListener("securitypolicyviolation", (event) => {
@@ -34,10 +36,13 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
     });
     if (window.GPUCanvasContext) {
       let currentTexture;
+      let currentAlphaMode;
+      const alphaModes = new WeakMap();
       const getTexture = GPUCanvasContext.prototype.getCurrentTexture;
       GPUCanvasContext.prototype.getCurrentTexture = function () {
         const texture = getTexture.call(this);
         currentTexture = texture;
+        currentAlphaMode = alphaModes.get(this) ?? "opaque";
         probe.textures++;
         return texture;
       };
@@ -45,16 +50,17 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
         const configure = GPUCanvasContext.prototype.configure;
         GPUCanvasContext.prototype.configure = function (options) {
           probe.configurations++;
+          alphaModes.set(this, options.alphaMode ?? "opaque");
           const usage = (options.usage ?? GPUTextureUsage.RENDER_ATTACHMENT) | GPUTextureUsage.COPY_SRC;
           return configure.call(this, { ...options, usage });
         };
-        let capture;
-        probe.readFrame = (includeImage = false) => new Promise((resolve, reject) => {
+        const captures = new Set();
+        probe.readFrame = (includeImage = false, retainRaw = false) => new Promise((resolve, reject) => {
           const timeout = setTimeout(() => {
-            capture = undefined;
+            captures.delete(capture);
             reject(new Error("No canvas texture submitted for readback"));
           }, 8000);
-          capture = (texture, device) => {
+          const capture = (texture, device, submittedAt, alphaMode) => {
             clearTimeout(timeout);
             const { width, height, format } = texture;
             if (!["bgra8unorm", "rgba8unorm"].includes(format)) {
@@ -78,7 +84,8 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
                 }
               }
               const stats = {
-                width, height, format,
+                width, height, format, submittedAt, alphaMode,
+                readbackEncoding: "RGBA8 original GPU bytes, channel-swizzled only",
                 colors: new Set(values.map((value) => value.join(","))).size,
                 average: values[0].map((_, i) => Math.round(values.reduce((sum, value) => sum + value[i], 0) / values.length)),
               };
@@ -97,22 +104,39 @@ export async function observe(page, { readPixels = false, localFont } = {}) {
                 const output = document.createElement("canvas");
                 output.width = width;
                 output.height = height;
-                output.getContext("2d", { willReadFrequently: true }).putImageData(new ImageData(pixels, width, height), 0, 0);
-                stats.png = output.toDataURL("image/png").split(",")[1];
+                const prepared = window.__prepareReadbackPixels(pixels, alphaMode);
+                const encode = async (data) => {
+                  output.getContext("2d", { willReadFrequently: true }).putImageData(new ImageData(data, width, height), 0, 0);
+                  const blob = await new Promise((done) => output.toBlob(done, "image/png"));
+                  if (!blob) throw new Error("Could not encode the captured GPU frame");
+                  return new Uint8Array(await blob.arrayBuffer()).toBase64();
+                };
+                return encode(prepared.display).then(async (png) => {
+                  stats.png = png;
+                  stats.pngAlphaEncoding = "straight alpha; display RGB unpremultiplied and clamped to RGBA8";
+                  if (retainRaw) {
+                    stats.rawRgba = new Uint8Array(pixels.buffer).toBase64();
+                    stats.blackPng = await encode(prepared.black);
+                    stats.comparisonEncoding = "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip";
+                  }
+                  resolve(stats);
+                });
               }
               resolve(stats);
             }).catch(reject).finally(() => buffer.destroy());
           };
+          captures.add(capture);
         });
         const submit = GPUQueue.prototype.submit;
         GPUQueue.prototype.submit = function (commands) {
           submit.call(this, commands);
           const texture = currentTexture;
           currentTexture = undefined;
-          if (texture && capture && this === probe.device?.queue) {
-            const snapshot = capture;
-            capture = undefined;
-            snapshot(texture, probe.device);
+          if (texture && captures.size && this === probe.device?.queue) {
+            const snapshots = [...captures];
+            captures.clear();
+            const submittedAt = performance.now();
+            for (const snapshot of snapshots) snapshot(texture, probe.device, submittedAt, currentAlphaMode);
           }
         };
       }

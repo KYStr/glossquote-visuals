@@ -1,0 +1,837 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "work": "V004",
+  "reviewer": "/root/signal_review",
+  "scores": {
+    "artDirection": 9.2,
+    "uiDesign": 9.3,
+    "commercialCompleteness": 9.4
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "title": "品牌辨識",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "鈷藍光帶、建築格線、截面標誌與 PRISM 名稱在首屏、產品與空間示意中形成一致的玻璃材料品牌；保留為概念品牌而非宣稱真實廠商。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-1440-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "title": "首屏構圖",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "桌面大字與玻璃試片構成清楚雙焦點，CTA 接到選樣；手機先說明用途再展示試片，文字與材質不互相遮蔽。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-fold.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-webgpu-fold.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "title": "字體排版",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "大字、正文與等寬規格的正常尺寸層級清楚，中英文沿用一致視覺方向；320px／200% 英文標題 section 仍斷詞，保留排版扣分。選樣表單的規格重排已於本候選修正，沒有再逐字直排。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-top.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-top.png"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "title": "材質影像",
+          "score": 1.7,
+          "status": "PASS",
+          "reason": "同候選原圖的玻璃切面反射具有位置相關明暗，clear、satin、ribbed 透射與光帶切割可辨識；角度往返和完整週期未出現材質崩解。仍屬風格化光學示意，細邊與反射精細度保留扣分。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-angle-1--20.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-angle-3-20.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-material-satin.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-material-ribbed.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-material-satin.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-cycle-end.png"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "title": "整頁與跨尺寸節奏",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "首屏、三款材料、選樣工作區、空間情境、製作流程與 FAQ 有明確節奏；手機順序完整，圖像與資訊區塊仍維持同一品牌語言。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-390-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-webgpu-full.png"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "title": "資訊層級",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "首屏定位、材料差異、規格與選樣入口依顧客決策順序排列；材料控制、表單與結果清單各有清楚標籤。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "title": "導航與行動",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "頁首導覽、主 CTA、商品選入與情境段落 CTA 導向一致；報告已執行商品預填、鍵盤 Enter、touch 與焦點返回。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-fold.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "title": "表單與狀態",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "空清單、選樣、數量、修改、取消、移除與下載狀態均有清楚呈現；報告驗證空值、0、小數、超過 20 及累加上限，不只以成功截圖推斷錯誤狀態。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "title": "手機／鍵盤／縮放",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "已獨立重看本 SHA 雙語 320px／200% 的 top／sampling／footer 原始分段圖：縮圖改在規格上方，dt/dd 全寬上下重排，Surface／Double-polished、150 × 150 mm、12 mm 及 Optic Clear 選值完整可讀。這解決 646a2c6 的唯一 UI 阻擋；正常尺寸整頁未見退步。報告另涵蓋 320／390／768／1440、鍵盤、touch 與 44px 控制；真實裝置與讀屏仍未驗。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-top.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-sampling.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-footer.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-top.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-sampling.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-footer.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "title": "互動回饋與一致性",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "本候選桌面／手機的材質名稱、選中狀態與玻璃圖像一致；固定試片 region 的差值排除 radio 樣式。專屬 native held 原圖穩定；shared 桌面 1100×850 與手機 390×844 controlled quartet 的 before→pause→1 秒後均完全同像素、零 queue submission，恢復才繼續動。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-material-satin.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-material-satin.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-at-click.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-after-1s.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-at-click.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-after-1s.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-resumed.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-before-native-pause.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause-after-1000ms.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-resume.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-before-native-pause.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-resume.png"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "title": "定位與價值",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "開場明確說明建築玻璃選樣及三種表面如何改變透視與光影，情境圖與現場比較指引連接使用目的。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-1440-webgpu-full.png"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "title": "產品決策資訊",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "每款有表面處理、150×150 mm 樣板尺寸、示意厚度與適用場景；三款並列比較並可選入需求摘要。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-webgpu-full.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-en.txt",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-zh-Hant.txt"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "title": "內容信任與真實性",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "頁尾、FAQ、清單與實際下載均標明概念選樣，下載不等於送出需求或安排寄送；厚度為示意，最終製作需與製作者確認。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-footer.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-footer.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-en.txt",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-zh-Hant.txt"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "title": "主要顧客流程",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "材料理解→選款／數量→修改／移除→下載可帶給製作者的摘要，形成完整而準確的概念商業流程；兩語實際 UTF-8 檔包含選定 ST–02 三片、RB–03 一片及規格。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-en.txt",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-zh-Hant.txt",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "title": "完成與錯誤恢復",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "完成狀態提示瀏覽器下載位置與未送單；錯誤數量、上限、取消修改、移除後焦點及空清單已測。重新整理或換語言會清空選擇，已有事前說明，仍因此保留扣分。",
+          "evidence": [
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-selection.png",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-en.txt",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-zh-Hant.txt",
+            "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json"
+          ]
+        }
+      ]
+    }
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+    "reviewer": "/root/signal_review",
+    "views": [
+      {
+        "viewport": "desktop",
+        "locale": "en",
+        "width": 1440,
+        "height": 960,
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "timeBasis": "measured-wall-clock",
+        "motionKind": "periodic",
+        "cycleSeconds": 12,
+        "reason": "已實看本候選自然合成原幀，自首次可見 GPU 幀歸零至 18.051 秒，presentation hook 累積 shader 時間 13.105 秒，超過完整 12 秒週期；透射、薄側邊與反射變化連貫，沒有消失或海報替代。最小／中間／最大／返回角度及三種材質已檢視。另以同 SHA shared 的 1100×850 controlled quartet 驗證 before→pause→1 秒後原解析度像素完全一致、零 GPU 提交且恢復後再動。專屬 native-clock held 證據只作補充，未拿跨時間 before→click 代替同幀。",
+        "frames": [
+          {
+            "seconds": 0,
+            "shaderElapsedSeconds": 0,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-target-0ms.png"
+          },
+          {
+            "seconds": 2.007,
+            "shaderElapsedSeconds": 1.333,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-target-2000ms.png"
+          },
+          {
+            "seconds": 4.004,
+            "shaderElapsedSeconds": 2.729,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-target-4000ms.png"
+          },
+          {
+            "seconds": 6.594,
+            "shaderElapsedSeconds": 4.729,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-target-6000ms.png"
+          },
+          {
+            "seconds": 8.053,
+            "shaderElapsedSeconds": 5.724,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-target-8000ms.png"
+          },
+          {
+            "seconds": 12.034,
+            "shaderElapsedSeconds": 8.72,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-target-12000ms.png"
+          },
+          {
+            "seconds": 16.028,
+            "shaderElapsedSeconds": 11.609,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-target-16000ms.png"
+          },
+          {
+            "seconds": 18.051,
+            "shaderElapsedSeconds": 13.105,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-natural-cycle-end.png"
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-angle-1--20.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-angle-2-0.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-angle-3-20.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-angle-4--20.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-material-clear.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-material-satin.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-material-ribbed.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-material-clear-return.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-before-native-pause.png",
+          "paused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause.png",
+          "stillPaused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause-after-1000ms.png",
+          "resumed": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-resume.png"
+        },
+        "measurements": {
+          "compositorFrames": 96,
+          "liveFrames": 93,
+          "textureAcquisitions": 137,
+          "naturalVariation": 2.40040625,
+          "controls": {
+            "angleDifference": 5.0638125,
+            "angleReturn": 0.66959375,
+            "region": {
+              "x": 575.296875,
+              "y": 134.34375,
+              "width": 800.625,
+              "height": 597.46875,
+              "viewportWidth": 1440,
+              "viewportHeight": 960
+            },
+            "materialDifference": [
+              2.92859375,
+              4.0660625
+            ],
+            "freezeDifference": 0,
+            "resumeDifference": 2.71378125
+          }
+        },
+        "nativeClockHeldEvidence": {
+          "beforeContext": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-before.png",
+          "paused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-at-click.png",
+          "stillPaused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-after-1s.png",
+          "queuedControl": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-control-queued.png",
+          "resumed": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-resumed.png"
+        },
+        "pauseEvidenceStatus": "PASS",
+        "pauseViewport": {
+          "width": 1100,
+          "height": 850
+        }
+      },
+      {
+        "viewport": "mobile",
+        "locale": "zh-Hant",
+        "width": 390,
+        "height": 844,
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "timeBasis": "measured-wall-clock",
+        "motionKind": "periodic",
+        "cycleSeconds": 12,
+        "reason": "已實看本候選自然合成原幀，自首次可見 GPU 幀歸零至 13.681 秒，presentation hook 累積 shader 時間 13.45 秒，超過完整 12 秒週期；透射、薄側邊與反射變化連貫，沒有消失或海報替代。最小／中間／最大／返回角度及三種材質已檢視。另以同 SHA shared 的 390×844 controlled quartet 驗證 before→pause→1 秒後原解析度像素完全一致、零 GPU 提交且恢復後再動。專屬 native-clock held 證據只作補充，未拿跨時間 before→click 代替同幀。",
+        "frames": [
+          {
+            "seconds": 0,
+            "shaderElapsedSeconds": 0,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-0ms.png"
+          },
+          {
+            "seconds": 0.562,
+            "shaderElapsedSeconds": 0.527,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-500ms.png"
+          },
+          {
+            "seconds": 1.328,
+            "shaderElapsedSeconds": 1.243,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-1000ms.png"
+          },
+          {
+            "seconds": 2.009,
+            "shaderElapsedSeconds": 1.911,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-2000ms.png"
+          },
+          {
+            "seconds": 4.158,
+            "shaderElapsedSeconds": 4.023,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-4000ms.png"
+          },
+          {
+            "seconds": 6.332,
+            "shaderElapsedSeconds": 6.185,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-6000ms.png"
+          },
+          {
+            "seconds": 8.002,
+            "shaderElapsedSeconds": 7.807,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-8000ms.png"
+          },
+          {
+            "seconds": 12.045,
+            "shaderElapsedSeconds": 11.883,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-target-12000ms.png"
+          },
+          {
+            "seconds": 13.681,
+            "shaderElapsedSeconds": 13.45,
+            "evidence": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-natural-cycle-end.png"
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-angle-1--20.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-angle-2-0.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-angle-3-20.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-angle-4--20.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-material-clear.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-material-satin.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-material-ribbed.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-material-clear-return.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-before-native-pause.png",
+          "paused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause.png",
+          "stillPaused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+          "resumed": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-resume.png"
+        },
+        "measurements": {
+          "compositorFrames": 132,
+          "liveFrames": 129,
+          "textureAcquisitions": 203,
+          "naturalVariation": 2.4725,
+          "controls": {
+            "angleDifference": 5.54715625,
+            "angleReturn": 0.65946875,
+            "region": {
+              "x": 17.34375,
+              "y": 271.6875,
+              "width": 355.3125,
+              "height": 301.109375,
+              "viewportWidth": 390,
+              "viewportHeight": 844
+            },
+            "materialDifference": [
+              3.43796875,
+              4.3881875
+            ],
+            "freezeDifference": 0,
+            "resumeDifference": 3.40965625
+          }
+        },
+        "nativeClockHeldEvidence": {
+          "beforeContext": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-before.png",
+          "paused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-at-click.png",
+          "stillPaused": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-after-1s.png",
+          "queuedControl": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-control-queued.png",
+          "resumed": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-resumed.png"
+        },
+        "pauseEvidenceStatus": "PASS",
+        "pauseViewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "naturalCycleStatus": "PASS",
+    "nativeClockHeldStatus": "PASS",
+    "controlledPauseStatus": "PASS"
+  },
+  "limitations": [
+    {
+      "status": "NOT_RUN",
+      "scope": "physical-devices-and-screen-reader",
+      "reason": "證據環境為 Microsoft Basic Render Driver；未作實體手機、消費級 GPU 或讀屏驗證。"
+    },
+    {
+      "status": "NOT_RUN",
+      "scope": "live-deployment",
+      "reason": "本件為固定候選的遠端測試與原始產物審查；正式部署後的網址尚未由本次審查驗證。"
+    },
+    {
+      "status": "LIMITATION",
+      "scope": "temporal-clock",
+      "reason": "自然動畫 seconds 採 compositor 幀的實測 wall-clock，以第一個可見 GPU 幀歸零，沒有把檔名 targetMs 當實際時間。shaderElapsedSeconds 是 presentation hook 的累積 delta；軟體 GPU 的 wall-clock 週期較長，不能宣稱 12 秒 wall-clock 正好閉合或實機效能通過。"
+    },
+    {
+      "status": "LIMITATION",
+      "scope": "recovery",
+      "reason": "正常 renderer 的 pause 保留當前畫面；device loss 後可 fallback 並重建，不宣稱跨 device loss 保存 simulation 時間。"
+    },
+    {
+      "status": "LIMITATION",
+      "scope": "independent-readback-timing",
+      "reason": "shared 控制 sample 的 GPU submittedAt 在 100ms 區間前端，composite 在區間後截圖；按控制狀態配對，不宣稱是同一 submission。正式 pause 四圖只比較 controlled clock 下的 composite；desktop pause 為 1100×850，natural desktop 為 1440×960，mobile 兩者均 390×844。"
+    }
+  ],
+  "attachments": [
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-en.txt",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-zh-Hant.txt",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-at-click.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-after-1s.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-control-queued.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-at-click.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-after-1s.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-control-queued.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-before-native-pause.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause-after-1000ms.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-before-native-pause.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-1440-webgpu-full.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-390-webgpu-full.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-webgpu-full.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-top.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-sampling.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-footer.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-top.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-sampling.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-footer.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-resume.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-resume.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-a0.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-a1.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-b.png",
+    "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-a2.png"
+  ],
+  "blockingFindings": [],
+  "verdict": "APPROVED",
+  "verdictReason": "本固定候選的美術 9.2、UI 9.3、商業完整度 9.4 均嚴格超過 9；原圖、完整自然週期、角度／材質、雙語選樣下載、200% 重排及桌面／手機 controlled 同幀暫停均已核對。這是候選接受，不是正式 live 網址驗證。",
+  "resolvedFindings": [
+    {
+      "id": "V004-320-200-sample-spec-reflow",
+      "status": "RESOLVED",
+      "affectedCategory": "uiDesign",
+      "affectedCriterion": "responsiveAccessibility",
+      "priorCandidate": "646a2c675d4b4a2d947c4595bba1f5c10670ccd8",
+      "priorScore": 1.3,
+      "currentScore": 1.8,
+      "reason": "本候選原圖確認縮圖、規格與值上下重排，完整文字保留放大且不再逐字折行；英文選值完整顯示 Optic Clear。",
+      "evidence": [
+        "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-sampling.png",
+        "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-sampling.png"
+      ]
+    }
+  ],
+  "runId": 43375558737,
+  "jobId": 131723689722,
+  "inspectionDetails": {
+    "runId": "43375558737",
+    "artifacts": [
+      {
+        "lane": "prism",
+        "artifactId": "14015090165",
+        "sizeBytes": 18035264,
+        "sha256": "b58ec44dff381a5adae74740e282fe72e9db64f297b0e931bfd7eec84208a5c7",
+        "originalFileCount": 111,
+        "integrity": "Parent verified official artifact size, SHA256 and ZIP CRC before review.",
+        "report": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/results.json",
+        "result": "PASS"
+      },
+      {
+        "lane": "shared",
+        "artifactId": "14015250395",
+        "sizeBytes": 141986344,
+        "sha256": "cf6d1b2aad8163db9211d76983ec222fe149e6b6bfea46b9cdc2829fb479f9f6",
+        "originalFileCount": 458,
+        "integrity": "Parent verified official artifact size, SHA256 and ZIP CRC before review.",
+        "report": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json",
+        "result": "PASS"
+      }
+    ],
+    "sourceComparison": {
+      "baseline": "5e2cbdd8adb804ed05aee718dca68cfb020ea2eb",
+      "candidate": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+      "observation": "V004 product source unchanged after the accepted sample-form reflow fix. Current candidate changes are evidence-method fixes: correct alpha PNG encoding, bounded actual cycle-tail capture and shared clock handling. The current four full pages, six 200% sections, actual downloads, angles/materials and original natural frames were re-inspected; times and measurements in this review come only from this candidate."
+    },
+    "actualDownloads": [
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-en.txt",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-sample-brief-zh-Hant.txt"
+    ],
+    "downloadInspection": "本次已重新讀取兩語 UTF-8 實檔；ST–02 3 片、RB–03 1 片、共 4 片，尺寸與厚度一致；均揭露只是概念選樣，未送出需求或安排寄送。",
+    "independentPixelCheck": {
+      "method": "Read-only Pillow RGB ImageChops difference of original PNG pixels; no source or PNG edits.",
+      "result": "PASS",
+      "pairs": [
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-at-click.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-after-1s.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-at-click.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-pause-control-queued.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-at-click.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-after-1s.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-at-click.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-pause-control-queued.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-before-native-pause.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-before-native-pause.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause-after-1000ms.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-before-native-pause.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-before-native-pause.png",
+          "b": "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+          "identical": true
+        }
+      ],
+      "scope": "Dedicated native held-frame and shared controlled before/action/held original RGB pixel comparisons; native before-to-click is not asserted same-frame."
+    },
+    "fullPageInspection": [
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-1440-webgpu-full.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-1440-webgpu-full.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-390-webgpu-full.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-390-webgpu-full.png"
+    ],
+    "zoomSections": [
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-top.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-sampling.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-en-320-200pct-footer.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-top.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-sampling.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/prism/prism-zh-Hant-320-200pct-footer.png"
+    ],
+    "sharedControlledAndNativePause": [
+      {
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "pauseMode": "freeze",
+        "status": "PASS",
+        "beforeToPaused": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 611,
+          "height": 456
+        },
+        "pausedToAfter": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 611,
+          "height": 456
+        },
+        "queueSubmissions": 0,
+        "texturesBefore": 36,
+        "texturesAfter": 36,
+        "sameCanvas": true,
+        "pointerChallenge": {
+          "synthetic": true,
+          "target": "window",
+          "event": "mousemove",
+          "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+          "sequence": [
+            {
+              "position": "center",
+              "clientX": 745,
+              "clientY": 348,
+              "isTrusted": false
+            },
+            {
+              "position": "outside",
+              "clientX": 1132,
+              "clientY": 882,
+              "isTrusted": false
+            }
+          ],
+          "passed": true
+        },
+        "activeBeforePause": null,
+        "resumeDifference": null,
+        "resumeFrames": 6,
+        "controlComparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0.32756149464994366,
+              "changedPixels": 57,
+              "peak": 28.42857142857143,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 5.98555630846088,
+              "changedPixels": 753,
+              "peak": 209.66071428571416,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 5.90474201920351,
+              "changedPixels": 722,
+              "peak": 209.66071428571416,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.4901996970663263,
+              "changedPixels": 86,
+              "peak": 38.918367346938936,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.26579207855017,
+              "changedPixels": 44,
+              "peak": 26.714285714285694,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 5.986352683000286,
+              "changedPixels": 745,
+              "peak": 208.00000000000028,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 5.896851261337867,
+              "changedPixels": 729,
+              "peak": 208.00000000000028,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.5237153884991494,
+              "changedPixels": 97,
+              "peak": 49.59375,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "evidence": [
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-before-native-pause.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-pause-after-1000ms.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-native-resume.png"
+        ],
+        "reason": "已實看本候選原始 controlled quartet，並以原解析度 RGB 像素比對確認 before／paused／1 秒後完全一致；同一 canvas、零新增 texture acquisition 與 queue submission，指標挑戰通過，恢復有真實 GPU 幀。"
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scope": "mobile same-frame pause; form controls covered by dedicated per-work lane",
+        "pauseMode": "freeze",
+        "status": "PASS",
+        "beforeToPaused": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 355,
+          "height": 301
+        },
+        "pausedToAfter": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 355,
+          "height": 301
+        },
+        "queueSubmissions": 0,
+        "texturesBefore": 88,
+        "texturesAfter": 88,
+        "sameCanvas": true,
+        "pointerChallenge": {
+          "synthetic": true,
+          "target": "window",
+          "event": "mousemove",
+          "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+          "sequence": [
+            {
+              "position": "center",
+              "clientX": 194,
+              "clientY": 422,
+              "isTrusted": false
+            },
+            {
+              "position": "outside",
+              "clientX": 422,
+              "clientY": 876,
+              "isTrusted": false
+            }
+          ],
+          "passed": true
+        },
+        "activeBeforePause": {
+          "mean": 2.317222222222222,
+          "changedPixels": 311,
+          "peak": 216,
+          "width": 80,
+          "height": 60
+        },
+        "resumeDifference": {
+          "mean": 1.2034722222222223,
+          "changedPixels": 164,
+          "peak": 205,
+          "width": 80,
+          "height": 60
+        },
+        "resumeFrames": 6,
+        "controlComparisons": {},
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "evidence": [
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-before-native-pause.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+          "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-zh-Hant-mobile-composite-native-resume.png"
+        ],
+        "reason": "已實看本候選原始 controlled quartet，並以原解析度 RGB 像素比對確認 before／paused／1 秒後完全一致；同一 canvas、零新增 texture acquisition 與 queue submission，指標挑戰通過，恢復有真實 GPU 幀。"
+      }
+    ],
+    "sharedControlEvidence": [
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-a0.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-a1.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-b.png",
+      "evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-prism-materials-en-composite-a2.png"
+    ]
+  }
+}

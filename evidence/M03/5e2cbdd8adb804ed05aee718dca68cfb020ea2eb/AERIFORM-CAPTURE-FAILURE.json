@@ -1,0 +1,168 @@
+{
+  "commit": "5e2cbdd8adb804ed05aee718dca68cfb020ea2eb",
+  "runId": 43371916932,
+  "sharedJobId": 131709388879,
+  "result": "FAIL",
+  "measurement": {
+    "control": "button[data-form]",
+    "values": [
+      "identity",
+      "motion"
+    ],
+    "intervalMs": 100,
+    "sequence": [
+      "a0",
+      "a1",
+      "b",
+      "a2"
+    ],
+    "comparisons": {
+      "composite": {
+        "drift": {
+          "mean": 1.8114857638888895,
+          "changedPixels": 442,
+          "peak": 43.499999999999986,
+          "width": 80,
+          "height": 60
+        },
+        "forward": {
+          "mean": 8.84514496527778,
+          "changedPixels": 1733,
+          "peak": 185.35,
+          "width": 80,
+          "height": 60
+        },
+        "backward": {
+          "mean": 9.243577777777778,
+          "changedPixels": 1830,
+          "peak": 142.84999999999997,
+          "width": 80,
+          "height": 60
+        },
+        "restored": {
+          "mean": 6.39136440972223,
+          "changedPixels": 1406,
+          "peak": 135.0625,
+          "width": 80,
+          "height": 60
+        }
+      },
+      "texture": {
+        "drift": {
+          "mean": 2.2590368055555543,
+          "changedPixels": 642,
+          "peak": 61.199999999999996,
+          "width": 80,
+          "height": 60
+        },
+        "forward": {
+          "mean": 10.406071875000007,
+          "changedPixels": 1763,
+          "peak": 170.50000000000003,
+          "width": 80,
+          "height": 60
+        },
+        "backward": {
+          "mean": 10.756748958333313,
+          "changedPixels": 1847,
+          "peak": 154.1,
+          "width": 80,
+          "height": 60
+        },
+        "restored": {
+          "mean": 6.888309375000011,
+          "changedPixels": 1496,
+          "peak": 144.25,
+          "width": 80,
+          "height": 60
+        }
+      }
+    },
+    "files": {
+      "texture-a0": "candidate-aeriform-zh-Hant-mobile-texture-a0.png",
+      "a0": "candidate-aeriform-zh-Hant-mobile-composite-a0.png",
+      "texture-a1": "candidate-aeriform-zh-Hant-mobile-texture-a1.png",
+      "a1": "candidate-aeriform-zh-Hant-mobile-composite-a1.png",
+      "texture-b": "candidate-aeriform-zh-Hant-mobile-texture-b.png",
+      "b": "candidate-aeriform-zh-Hant-mobile-composite-b.png",
+      "texture-a2": "candidate-aeriform-zh-Hant-mobile-texture-a2.png",
+      "a2": "candidate-aeriform-zh-Hant-mobile-composite-a2.png"
+    },
+    "textures": {
+      "a0": {
+        "width": 351,
+        "height": 285,
+        "format": "bgra8unorm",
+        "submittedAt": 3152,
+        "colors": 121,
+        "average": [
+          21,
+          11,
+          8,
+          25
+        ],
+        "framesDuringInterval": 7
+      },
+      "a1": {
+        "width": 351,
+        "height": 285,
+        "format": "bgra8unorm",
+        "submittedAt": 3264,
+        "colors": 119,
+        "average": [
+          23,
+          12,
+          8,
+          26
+        ],
+        "framesDuringInterval": 6
+      },
+      "b": {
+        "width": 351,
+        "height": 285,
+        "format": "bgra8unorm",
+        "submittedAt": 4352,
+        "colors": 105,
+        "average": [
+          18,
+          10,
+          9,
+          23
+        ],
+        "framesDuringInterval": 7
+      },
+      "a2": {
+        "width": 351,
+        "height": 285,
+        "format": "bgra8unorm",
+        "submittedAt": 5456,
+        "colors": 116,
+        "average": [
+          19,
+          10,
+          7,
+          23
+        ],
+        "framesDuringInterval": 6
+      }
+    },
+    "isolatedOutput": null,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+    "simulation": {
+      "settleMs": 1000,
+      "note": "Evolving particles are allowed to keep distinct positions after a form is restored; shape return requires independent temporal review, not pixel identity."
+    },
+    "canvasCss": {
+      "opacity": "1",
+      "visibility": "visible",
+      "display": "block",
+      "blendMode": "normal",
+      "maskImage": "none",
+      "ancestorsVisible": true
+    }
+  }
+}

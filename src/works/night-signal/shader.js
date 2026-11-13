@@ -1,35 +1,89 @@
+import { defineShader, registerShader, wgsl } from "shaders/std";
 import { initializeStandalone } from "../../shared/standalone.js";
+import paint from "./signal.wgsl?raw";
+
+const sculpture = registerShader(defineShader({
+  name: "NightSignalSculpture",
+  animatedTime: { speed: "tempo" },
+  props: {
+    wide: { default: 1 },
+    echoMix: { default: 0 },
+    dawnMix: { default: 0 },
+    tempo: { default: 1 / 10 },
+  },
+  paint: wgsl(paint),
+}));
 
 const channels = {
-  carrier: { glow: "#755f68", light: "#ffe696", trace: "#c0a75d", end: 0.31, rise: 0.12, frequency: 0.36, angle: 7 },
-  echo: { glow: "#45427f", light: "#c7c3ff", trace: "#8178cf", end: 0.43, rise: 0.18, frequency: 0.51, angle: 352 },
-  dawn: { glow: "#744051", light: "#ffd0aa", trace: "#f09080", end: 0.57, rise: 0.08, frequency: 0.31, angle: 12 },
+  carrier: { echoMix: 0, dawnMix: 0, tempo: 1 / 10 },
+  echo: { echoMix: 1, dawnMix: 0, tempo: 1 / 8 },
+  dawn: { echoMix: 0, dawnMix: 1, tempo: 1 / 12 },
 };
+const layer = "signal";
+const duration = 940;
+const isWide = () => matchMedia("(min-width: 55.001rem)").matches ? 1 : 0;
 
-function composition({ channel }) {
-  const { glow, light, trace, end, rise, frequency, angle } = channels[channel];
-  return [
-    { id: "field", type: "SolidColor", props: { color: "#04050c" } },
-    { id: "beam", type: "Beam", props: {
-      startPosition: { x: 0.12, y: 0.76 }, endPosition: { x: 1, y: end },
-      startThickness: 0.004, endThickness: 0.038, startSoftness: 0.18, endSoftness: 0.48,
-      insideColor: glow, outsideColor: "#060611", opacity: 0.66,
-    } },
-    { id: "afterglow", type: "SineWave", props: {
-      color: trace, amplitude: rise + 0.028, frequency, speed: 0.19, angle,
-      position: { x: 0.51, y: 0.54 }, thickness: 0.015, softness: 0.042, opacity: 0.36,
-    } },
-    { id: "edge", type: "SineWave", props: {
-      color: light, amplitude: rise, frequency, speed: 0.19, angle,
-      position: { x: 0.5, y: 0.48 }, thickness: 0.010, softness: 0.012, opacity: 0.73,
-    } },
-  ];
+export function applySignal(renderer, { channel }) {
+  renderer.select(channel);
 }
 
-export function applySignal(renderer, settings) {
-  for (const { id, props } of composition(settings)) renderer.update(id, props);
-}
+export async function initializeSignal(canvas, options) {
+  let current = channels[options.settings.channel];
+  let channel = options.settings.channel;
+  let start = current;
+  let elapsed = duration;
+  let previous;
+  let animation;
+  const renderer = await initializeStandalone(canvas, [
+    { id: layer, type: sculpture.name, props: { ...current, wide: isWide() } },
+  ], options);
 
-export function initializeSignal(canvas, options) {
-  return initializeStandalone(canvas, composition(options.settings), options);
+  function stop() {
+    if (animation !== undefined) cancelAnimationFrame(animation);
+    animation = undefined;
+    previous = undefined;
+  }
+
+  function animate(now) {
+    if (previous !== undefined) elapsed = Math.min(duration, elapsed + now - previous);
+    previous = now;
+    const fraction = elapsed / duration;
+    const weight = fraction * fraction * (3 - 2 * fraction);
+    const end = channels[channel];
+    current = {
+      echoMix: start.echoMix + (end.echoMix - start.echoMix) * weight,
+      dawnMix: start.dawnMix + (end.dawnMix - start.dawnMix) * weight,
+      tempo: start.tempo + (end.tempo - start.tempo) * weight,
+    };
+    renderer.update(layer, current);
+    animation = elapsed < duration ? requestAnimationFrame(animate) : undefined;
+  }
+
+  return {
+    select(next) {
+      if (next === channel) return;
+      stop();
+      start = current;
+      channel = next;
+      elapsed = 0;
+      animation = requestAnimationFrame(animate);
+    },
+    pause() {
+      stop();
+      renderer.pause();
+    },
+    resume() {
+      renderer.resume();
+      if (elapsed < duration && animation === undefined) animation = requestAnimationFrame(animate);
+    },
+    resize(width, height) {
+      renderer.update(layer, { wide: isWide() });
+      renderer.resize(width, height);
+    },
+    destroy() {
+      stop();
+      renderer.destroy();
+    },
+    getFailureReason: renderer.getFailureReason,
+  };
 }

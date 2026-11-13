@@ -15,7 +15,7 @@ const copy = english ? {
   still: "Showing the still paper surface.",
   reduced: "Reduced motion is on. You can still adjust the light.",
   unavailable: "The still paper surface is shown. You can adjust the light.",
-  paused: "Motion paused.",
+  paused: "Light and paper are frozen. Resume to apply any light adjustments.",
   starting: "Preparing the light.",
   running: "Move across the paper to change the light.",
   pause: "Pause motion",
@@ -24,7 +24,7 @@ const copy = english ? {
   still: "顯示靜態紙面。",
   reduced: "已依系統偏好減少動態，仍可調整靜態紙面的光線。",
   unavailable: "目前無法即時渲染，仍可調整靜態紙面的光線。",
-  paused: "動態已暫停，仍可調整靜態紙面的光線。",
+  paused: "已凍結紙面與光線。繼續動態後套用新的光線設定。",
   starting: "正在準備即時光線。",
   running: "在紙面上移動即可改變光線。",
   pause: "暫停動態",
@@ -50,6 +50,8 @@ const motion = createMotion({
   },
   renderState(phase) {
     stage.dataset.motion = phase;
+    if (phase === "running") stage.dataset.surface = "rendered";
+    if (phase === "starting" || phase === "reduced" || phase === "unavailable") delete stage.dataset.surface;
     status.textContent = copy[phase];
     pause.disabled = phase === "reduced" || phase === "unavailable";
   },
@@ -102,6 +104,7 @@ reset.addEventListener("click", () => {
 
 controls.hidden = false;
 initializeBrief();
+window.addEventListener("pagehide", () => { delete stage.dataset.surface; });
 if (hasObservers) {
   observeMotion(stage, motion, preference);
 } else {

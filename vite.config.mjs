@@ -2,6 +2,7 @@ import { resolve, relative } from "node:path";
 import { defineConfig } from "vite";
 import { base, catalog, isPublished, isReleaseWork, languages, origin, repository, root, routesFor, worksFor } from "./scripts/site-map.mjs";
 import { shaderContentPolicy } from "./scripts/shaders-csp.mjs";
+import { addParticleDepthLighting } from "./src/works/aeriform/particle-depth.mjs";
 
 const escape = (text) => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
 const copy = {
@@ -50,7 +51,8 @@ export default defineConfig(({ mode, command }) => {
     base,
     appType: "mpa",
     build: { manifest: true, modulePreload: false, assetsInlineLimit: 0, rolldownOptions: { input } },
-    plugins: [shaderContentPolicy(), {
+    plugins: [shaderContentPolicy(works.some(({ slug }) => slug === "aeriform")
+      ? { transformStd: addParticleDepthLighting } : undefined), {
       name: "glossquote-exhibition-pages",
       transformIndexHtml: {
         order: "pre",

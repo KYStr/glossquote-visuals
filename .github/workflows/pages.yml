@@ -27,7 +27,7 @@ jobs:
   build:
     if: github.repository == 'KYStr/glossquote-visuals' && github.ref == 'refs/heads/main' && github.sha == inputs.source_commit
     runs-on: windows-2025
-    timeout-minutes: 12
+    timeout-minutes: 20
     env:
       GQ_RELEASE_WORK: ${{ inputs.work }}
       GQ_RELEASE_SHA: ${{ inputs.source_commit }}
@@ -46,7 +46,7 @@ jobs:
           npm test
           npm run build -- release
       - run: node node_modules/playwright/cli.js install chromium --no-shell
-      - run: npm run test:browser
+      - run: npm run test:browser -- --shared
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
@@ -73,7 +73,7 @@ jobs:
   live:
     needs: deploy
     runs-on: windows-2025
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       GQ_RELEASE_WORK: ${{ inputs.work }}
     steps:

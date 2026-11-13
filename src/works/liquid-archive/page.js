@@ -5,9 +5,9 @@ const copy = en ? {
   still: "Showing the still reflection.",
   reduced: "Reduced motion is on. Showing the still reflection.",
   unavailable: "Live reflections are unavailable. Showing the still reflection.",
-  paused: "Motion paused. Showing the still reflection.",
-  starting: "Preparing the moving reflection.",
-  running: "Adjust the light across the Halo Candleholder.",
+  paused: "The studio is frozen at the current light position.",
+  starting: "Preparing the studio lighting.",
+  running: "Move the studio light to study the steel.",
   pause: "Pause motion", resume: "Resume motion", quantity: "Quantity", remove: "Remove",
   unitNames: { piece: ["piece", "pieces"], set: ["set", "sets"] },
   quantityLabel: units => "Quantity (" + units[1] + ")",
@@ -25,9 +25,9 @@ const copy = en ? {
   still: "顯示靜態反光。",
   reduced: "已依系統偏好減少動態，顯示靜態反光。",
   unavailable: "目前無法即時呈現反光，顯示靜態反光。",
-  paused: "動態已暫停，顯示靜態反光。",
-  starting: "正在準備動態反光。",
-  running: "調整光線，觀察折光燭台的反光。",
+  paused: "已凍結當前的光線位置。",
+  starting: "正在準備攝影棚光線。",
+  running: "移動攝影棚光源，觀察鋼面的反光。",
   pause: "暫停動態", resume: "繼續動態", quantity: "數量", remove: "移除",
   unitNames: { piece: ["件", "件"], set: ["組", "組"] },
   quantityLabel: units => "數量（" + units[0] + "）",
@@ -86,16 +86,17 @@ const heroCaption = find("[data-hero-caption]");
 const heroAlt = heroImage.alt;
 const angle = find("#object-angle");
 const angleOutput = find("output");
+const sweep = find("[data-light-sweep]");
 const pause = find("[data-pause]");
 const status = find("[data-motion-status]");
 const preference = matchMedia("(prefers-reduced-motion: reduce)");
 const hasObservers = "IntersectionObserver" in window && "ResizeObserver" in window;
-const canComposite = CSS.supports("width", "1cqh") && CSS.supports("mask-image", "url('')");
-let settings = { finish: "polished", angle: angle.valueAsNumber };
+const compact = matchMedia("(max-width: 44rem)");
+let settings = { finish: "polished", angle: angle.valueAsNumber, auto: true, compact: compact.matches };
 let paused = false;
 let shader;
 const motion = createMotion({
-  supported: Boolean(navigator.gpu) && hasObservers && canComposite,
+  supported: Boolean(navigator.gpu) && hasObservers,
   initialSettings: settings,
   async initialize(options) {
     shader = await import("./shader.js");
@@ -107,10 +108,13 @@ const motion = createMotion({
   },
   renderState(phase) {
     stage.dataset.motion = phase;
+    if (phase === "running") stage.dataset.frame = "present";
+    else if (phase !== "paused" && phase !== "still") delete stage.dataset.frame;
     status.textContent = copy[phase];
     const unavailable = phase === "reduced" || phase === "unavailable";
-    pause.disabled = unavailable;
-    angle.disabled = unavailable;
+    pause.disabled = unavailable || (phase !== "paused" && !stage.dataset.frame);
+    angle.disabled = unavailable || phase === "paused";
+    sweep.disabled = unavailable || phase === "paused";
   },
 });
 
@@ -308,8 +312,22 @@ download.addEventListener("click", () => {
 });
 
 angle.addEventListener("input", () => {
-  settings = { ...settings, angle: angle.valueAsNumber };
+  settings = { ...settings, angle: angle.valueAsNumber, auto: false };
+  stage.dataset.light = "manual";
+  sweep.hidden = false;
   angleOutput.value = `${settings.angle}°`;
+  motion.setSettings(settings);
+});
+sweep.addEventListener("click", () => {
+  settings = { ...settings, auto: true };
+  stage.dataset.light = "auto";
+  angleOutput.value = angleOutput.dataset.autoLabel;
+  sweep.hidden = true;
+  angle.focus({ preventScroll: true });
+  motion.setSettings(settings);
+});
+compact.addEventListener("change", () => {
+  settings = { ...settings, compact: compact.matches };
   motion.setSettings(settings);
 });
 pause.addEventListener("click", () => {
@@ -320,6 +338,7 @@ pause.addEventListener("click", () => {
 
 configuration.hidden = false;
 find("[data-inquiry]").hidden = false;
+stage.dataset.light = "auto";
 find("[data-motion-tools]").hidden = false;
 count.hidden = false;
 updateProduct();

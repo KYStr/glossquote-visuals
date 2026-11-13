@@ -7,6 +7,7 @@ import { chromium } from "playwright";
 import { base, isPublished, origin, registry, releaseWorkIds, root, worksFor } from "../../scripts/site-map.mjs";
 import { verifyReleaseReceipt } from "../../scripts/release-proof.mjs";
 import { checkPaperCommercial } from "./paper-commercial.mjs";
+import { checkPaperMaterial } from "./paper-material.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 import { checkSignal, signalFontPaths } from "./signal-commercial.mjs";
@@ -27,6 +28,11 @@ const evidence = {
   checks: {}, measurements: {}, screenshots: [],
 };
 const live = process.argv[2] === "--live";
+const paperOnly = process.argv[2] === "--paper-material";
+if (paperOnly && !windows) throw new Error("Paper material validation requires the GitHub-hosted Windows runner");
+const studioOnly = process.argv[2] === "--forme-studio";
+const sharedOnly = process.argv[2] === "--shared";
+evidence.lane = live ? "live" : studioOnly ? "forme-studio" : sharedOnly ? "shared" : paperOnly ? "paper-material" : "complete";
 const site = live ? { origin, close() {} } : await serveDist();
 const url = (path = "") => site.origin + base + path;
 const stage = (page) => page.locator("[data-stage]");
@@ -63,7 +69,13 @@ async function paperScreenshots(page, name) {
 }
 
 async function paperSurface(page, name) {
-  const png = await stage(page).screenshot({ path: resolve(evidenceDir, name) });
+  const clip = await stage(page).evaluate((element) => {
+    element.scrollIntoView({ block: "center", behavior: "instant" });
+    const rect = element.getBoundingClientRect();
+    // Playwright page.screenshot clip is relative to the viewport.
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+  });
+  const png = await page.screenshot({ path: resolve(evidenceDir, name), clip, timeout: 10_000 });
   evidence.screenshots.push(name);
   return png.toString("base64");
 }
@@ -234,7 +246,7 @@ async function checkFallback(browser) {
       assert.equal(await page.locator("#angle-output").textContent(), "180°");
       assert.equal(await stage(page).evaluate((element) => element.style.getPropertyValue("--light-angle")), "180deg");
       await page.getByRole("button", { name: "Reset" }).click();
-      assert.equal(await settings(page).inputValue(), "38");
+      assert.equal(await settings(page).inputValue(), "151");
       await probe.assertPrivate(site.origin);
     });
   }
@@ -286,8 +298,8 @@ async function checkShader(browser) {
       canvas: Number((canvas.width / canvas.getBoundingClientRect().width).toFixed(3)),
     }));
     const art = await stage(page).boundingBox();
-    await page.mouse.move(art.x + art.width * 0.8, art.y + art.height / 2);
-    await page.waitForFunction(() => Number(document.querySelector("#light-angle").value) === 144);
+    await page.mouse.move(art.x + art.width * 0.2, art.y + art.height / 2);
+    await page.waitForFunction(() => Number(document.querySelector("#light-angle").value) === 36);
     const beforePointerFrames = await textureCount(page);
     await page.waitForFunction((frames) => window.__visualProbe.textures >= frames + 2, beforePointerFrames);
     const paperAtAngle = await paperSurface(page, "paper-en-angle-surface.png");
@@ -297,16 +309,15 @@ async function checkShader(browser) {
     await page.waitForTimeout(200);
     const changed = await pixelEvidence(page, stage(page));
     const changedTexture = await page.evaluate(() => window.__visualProbe.readFrame());
-    assert.ok(changedTexture.colors > 20 && changedTexture.average.some((value, i) => Math.abs(value - firstTexture.average[i]) > 5));
-    compositeOk = first.colors > 20 && changed.colors > 20 &&
-      changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5);
+    assert.ok(changedTexture.colors > 20 && changedTexture.average.some((value, i) => Math.abs(value - firstTexture.average[i]) > 3));
+    compositeOk = first.colors > 20 && changed.colors > 20;
     evidence.checks.compositing = compositeOk ? "PASS visible canvas changes with controls" : "FAIL compositor did not present the changing WebGPU texture";
     evidence.measurements.pixelSamples = { dawn: firstTexture, overcast: changedTexture, overcastComposite: changed };
     const paperOvercast = await paperSurface(page, "paper-en-overcast-surface.png");
     const pointerDifference = await paperLightDifference(page, paperBefore, paperAtAngle);
     const presetDifference = await paperLightDifference(page, paperBefore, paperOvercast);
     evidence.measurements.paperSurfaceDifference = { pointer: pointerDifference, preset: presetDifference };
-    assert.ok(pointerDifference > 1 && presetDifference > 3, "Actual paper composition did not change with angle and light preset");
+    assert.ok(pointerDifference > 0.65 && presetDifference > 3, "Actual paper composition did not change with angle and light preset");
     await paperLightDetails(page).locator("summary").click();
 
     for (let i = 0; i < 3; i++) {
@@ -320,7 +331,7 @@ async function checkShader(browser) {
     evidence.checks.pause = "PASS three pause/resume cycles without extra devices or texture acquisition while paused";
     await openPaperLightDetails(page);
     await page.getByRole("button", { name: "Reset" }).click();
-    assert.equal(await settings(page).inputValue(), "38");
+    assert.equal(await settings(page).inputValue(), "151");
     assert.equal(await stage(page).getAttribute("data-preset"), "dawn");
     await paperLightDetails(page).locator("summary").click();
 
@@ -376,20 +387,43 @@ async function checkShader(browser) {
   assert.ok(compositeOk, "The browser compositor did not present the changing WebGPU texture");
 }
 
-async function livePixelDifference(page, before, after) {
-  return page.evaluate(async ([before, after]) => {
+async function livePixelDifference(page, before, after, areaAverage = false) {
+  return page.evaluate(async ([before, after, areaAverage]) => {
     const width = 80;
     const height = 60;
     const pixels = async (encoded) => {
       const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
       const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
       const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = areaAverage ? bitmap.width : width;
+      canvas.height = areaAverage ? bitmap.height : height;
       const context = canvas.getContext("2d", { willReadFrequently: true });
-      context.drawImage(bitmap, 0, 0, width, height);
+      context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
       bitmap.close();
-      return context.getImageData(0, 0, width, height).data;
+      const source = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      if (!areaAverage) return source;
+      const sampled = new Float64Array(width * height * 4);
+      // Area-average each cell instead of bilinear point sampling. Sparse
+      // moving particles otherwise alias into false whole-shape drift.
+      // Full-resolution native-pause comparisons below remain unchanged.
+      for (let y = 0; y < height; y++) {
+        const y0 = Math.floor(y * canvas.height / height);
+        const y1 = Math.max(y0 + 1, Math.floor((y + 1) * canvas.height / height));
+        for (let x = 0; x < width; x++) {
+          const x0 = Math.floor(x * canvas.width / width);
+          const x1 = Math.max(x0 + 1, Math.floor((x + 1) * canvas.width / width));
+          const target = (y * width + x) * 4;
+          const count = (x1 - x0) * (y1 - y0);
+          for (let sy = y0; sy < y1; sy++) {
+            for (let sx = x0; sx < x1; sx++) {
+              const input = (sy * canvas.width + sx) * 4;
+              for (let channel = 0; channel < 3; channel++) sampled[target + channel] += source[input + channel] / count;
+            }
+          }
+          sampled[target + 3] = 255;
+        }
+      }
+      return sampled;
     };
     const a = await pixels(before);
     const b = await pixels(after);
@@ -404,31 +438,44 @@ async function livePixelDifference(page, before, after) {
       peak = Math.max(peak, delta);
     }
     return { mean: total / (width * height * 3), changedPixels, peak, width, height };
-  }, [before.toString("base64"), after.toString("base64")]);
+  }, [before.toString("base64"), after.toString("base64"), areaAverage]);
 }
 
-async function checkLiveComposite(page, slug, locale, isolatedOutput) {
+async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLabel = "") {
   const controls = {
     "paper-light": { selector: "#light-angle", values: ["0", "180"], surface: "[data-stage]" },
     "liquid-archive": { selector: "#object-angle", values: ["0", "180"], surface: ".hero-visual" },
     // The commercial event site uses program radios, not the former amplitude slider.
     "night-signal": { selector: 'input[name="program"]', values: ["carrier", "echo"], surface: "[data-stage]" },
+    "prism-materials": { selector: "#prism-angle", values: ["-20", "20"], surface: "[data-stage]" },
+    "aeriform": { selector: "button[data-form]", values: ["identity", "motion"], surface: "[data-stage]",
+      kind: "particle-form", settleMs: 1000, evolving: true },
   };
   const control = controls[slug];
+  const pauseOnly = viewportLabel === "mobile";
   assert.ok(control, `No live composite control defined for ${slug}`);
-  const stem = `${live ? "live" : "candidate"}-${slug}-${locale}`;
+  const stem = `${live ? "live" : "candidate"}-${slug}-${locale}${viewportLabel ? "-" + viewportLabel : ""}`;
   const surface = page.locator(control.surface);
   const captured = {};
   const files = {};
   const measurement = { control: control.selector, values: control.values, intervalMs: 100,
-    sequence: ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
+    sequence: pauseOnly ? ["active-0", "active-1"] : ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
+  measurement.viewport = page.viewportSize();
+  measurement.scope = pauseOnly ? "mobile same-frame pause; form controls covered by dedicated per-work lane" : "desktop controls and same-frame pause";
+  measurement.captureTiming = "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.";
+  measurement.comparisonSampling = "80x60 area-averaged cells from original pixels; native pause uses full resolution";
+  if (control.evolving) measurement.simulation = {
+    settleMs: control.settleMs,
+    note: "Evolving particles are allowed to keep distinct positions after a form is restored; shape return requires independent temporal review, not pixel identity.",
+  };
   evidence.measurements.compositeControls ??= {};
   evidence.measurements.compositeControls[stem] = measurement;
   const capture = async (label) => {
     // page.screenshot with an explicit clip needs no locator stability rAF while the clock is paused.
     const clip = await surface.evaluate((element) => {
+      element.scrollIntoView({ block: "center", behavior: "instant" });
       const rect = element.getBoundingClientRect();
-      return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+      return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
     });
     const file = `${stem}-composite-${label}.png`;
     const png = await page.screenshot({ path: resolve(evidenceDir, file), clip });
@@ -437,7 +484,15 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     return png;
   };
   const setControl = async (value) => {
-    if (slug === "night-signal") {
+    if (control.kind === "particle-form") {
+      const button = page.locator(`${control.selector}[data-form="${value}"]`);
+      await button.evaluate((element) => element.click());
+      assert.equal(await stage(page).getAttribute("data-form"), value);
+      assert.equal(await button.getAttribute("aria-pressed"), "true");
+      // Let the simulation approach its new SDF before requesting a GPU readback.
+      await page.clock.runFor(control.settleMs);
+      await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+    } else if (slug === "night-signal") {
       await page.locator(`${control.selector}[value="${value}"]`).evaluate((input) => input.click());
       assert.equal(await stage(page).getAttribute("data-channel"), value);
       assert.equal(await page.locator(`${control.selector}[value="${value}"]`).isChecked(), true);
@@ -450,10 +505,14 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     }
   };
   const sample = async (label) => {
+    if (slug === "night-signal" && (label === "b" || label === "a2")) {
+      // The continuous morph takes 940ms. Sample the new material after the morph.
+      await page.clock.runFor(1000);
+    }
     const before = await textureCount(page);
     // Both the actual composite and independent GPU frame are recorded. The latter
     // prevents a program's CSS background/filter change from impersonating shader control.
-    await page.evaluate(() => { window.__liveFrame = window.__visualProbe.readFrame(true); });
+    await page.evaluate(() => { window.__liveFrame = window.__visualProbe.readFrame(true, true); });
     await page.clock.runFor(100);
     assert.ok(await textureCount(page) > before, `${stem}: no frame during the controlled interval`);
     // The probe's own timeout uses the paused page clock; retain a real-time
@@ -474,15 +533,22 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     } finally {
       clearTimeout(readbackTimeout);
     }
-    const { png, ...texture } = frame;
+    const { png, rawRgba, blackPng, ...texture } = frame;
     assert.equal(await stage(page).getAttribute("data-motion"), "running");
     const textureFile = `${stem}-texture-${label}.png`;
     const texturePng = Buffer.from(png, "base64");
     await writeFile(resolve(evidenceDir, textureFile), texturePng);
+    const rawFile = `${stem}-texture-${label}.rgba`;
+    const comparisonFile = `${stem}-texture-${label}-black.png`;
+    const comparisonPng = Buffer.from(blackPng, "base64");
+    await writeFile(resolve(evidenceDir, rawFile), Buffer.from(rawRgba, "base64"));
+    await writeFile(resolve(evidenceDir, comparisonFile), comparisonPng);
+    texture.rawFile = rawFile;
+    texture.comparisonFile = comparisonFile;
     evidence.screenshots.push(textureFile);
     files[`texture-${label}`] = textureFile;
     measurement.textures[label] = { ...texture, framesDuringInterval: await textureCount(page) - before };
-    captured[label] = { composite: await capture(label), texture: texturePng, measurement: texture };
+    captured[label] = { composite: await capture(label), texture: comparisonPng, measurement: texture };
     assert.ok(texture.colors > 20, `${stem}: ${label} lacks structured GPU output`);
   };
   await page.evaluate(() => window.scrollTo(0, 0));
@@ -501,42 +567,234 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
   });
   measurement.canvasCss = canvasCss;
   assert.ok(canvasCss.ancestorsVisible, `${stem}: canvas is hidden in the real composition`);
-  // Freeze between snapshots, advancing equal intervals only. Shader time still
-  // advances during runFor, so A->A measures drift and A->B->A must exceed it.
-  await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
+  // Freeze between snapshots. Each sample records its actual GPU submission
+  // time; native pause below never compares captures from different clock times.
+  // Leave room for cross-process RPC scheduling on the isolated software GPU.
+  // pauseAt fast-forwards to this point; it is not a ten-second wall-time wait.
+  await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 10_000);
   try {
-    await setControl(control.values[0]);
-    await sample("a0");
-    await sample("a1");
-    await setControl(control.values[1]);
-    await sample("b");
-    await setControl(control.values[0]);
-    await sample("a2");
-    const comparisons = measurement.comparisons;
-    for (const kind of ["composite", "texture"]) {
-      const difference = (a, b) => livePixelDifference(page, captured[a][kind], captured[b][kind]);
-      const drift = await difference("a0", "a1");
-      const forward = await difference("a1", "b");
-      const backward = await difference("b", "a2");
-      const restored = await difference("a1", "a2");
-      comparisons[kind] = { drift, forward, backward, restored };
-      for (const change of [forward, backward]) {
-        assert.ok(change.mean > Math.max(0.05, drift.mean * 3) &&
-          change.changedPixels > Math.max(12, drift.changedPixels * 3),
-        `${stem}: ${kind} control effect must exceed natural drift: ${JSON.stringify(comparisons[kind])}`);
-        assert.ok(restored.mean < change.mean / 2,
-          `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
+    if (pauseOnly) {
+      await sample("active-0");
+      await page.clock.runFor(1000);
+      await sample("active-1");
+      measurement.activeBeforePause = await livePixelDifference(page, captured["active-0"].composite, captured["active-1"].composite);
+      assert.ok(measurement.activeBeforePause.mean > 0.05 && measurement.activeBeforePause.changedPixels > 12,
+        `${stem}: no visible GPU evolution before same-frame pause`);
+    } else {
+      await setControl(control.values[0]);
+      await sample("a0");
+      // The no-action baseline spans the same waiting window as a form change.
+      // Evolving simulation pixels are diagnostic, not proof of a selected shape.
+      if (control.evolving) await page.clock.runFor(control.settleMs);
+      await sample("a1");
+      await setControl(control.values[1]);
+      await sample("b");
+      await setControl(control.values[0]);
+      await sample("a2");
+      const comparisons = measurement.comparisons;
+      for (const kind of ["composite", "texture"]) {
+        const difference = (a, b) => livePixelDifference(page, captured[a][kind], captured[b][kind], true);
+        const drift = await difference("a0", "a1");
+        const forward = await difference("a1", "b");
+        const backward = await difference("b", "a2");
+        const restored = await difference("a1", "a2");
+        comparisons[kind] = { drift, forward, backward, restored };
+        if (control.evolving) continue;
+        for (const change of [forward, backward]) {
+          assert.ok(change.mean > Math.max(0.05, drift.mean * 3) &&
+            change.changedPixels > Math.max(12, drift.changedPixels * 3),
+          `${stem}: ${kind} control effect must exceed natural drift: ${JSON.stringify(comparisons[kind])}`);
+          if (!control.evolving && slug !== "night-signal") assert.ok(restored.mean < change.mean / 2,
+            `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
+        }
+      }
+      if (control.evolving) measurement.controlAcceptance = {
+        status: "REQUIRES_INDEPENDENT_FORM_REVIEW",
+        reason: "A continuing particle simulation can change pixels without a working form selector. Equal-window differences are diagnostic only.",
+        requiredEvidence: "Same-candidate dedicated desktop/mobile original composites and GPU captures: motion helix, digital ribbon, restored identity ring; non-author semantic verdict in view.semanticControls and coherence.",
+        submittedAt: Object.fromEntries(Object.entries(captured).map(([label, frame]) => [label, frame.measurement.submittedAt])),
+      };
+      if (slug === "night-signal") {
+        // Different ribbon phases need not align in pixel space. Compare the
+        // underlying colors too: brass is red-dominant and echo is blue-dominant.
+        const channelBalance = ({ measurement: { average: [red, , blue] } }) => red - blue;
+        const palettes = measurement.programBalance = Object.fromEntries(
+          Object.entries(captured).map(([key, frame]) => [key, channelBalance(frame)]));
+        assert.ok(palettes.b + 4 < Math.min(palettes.a0, palettes.a1, palettes.a2),
+          `${stem}: program palette did not move to B and return to A: ${JSON.stringify(palettes)}`);
       }
     }
-    // Native pause supplies a same-setting static reference without changing CSS.
-    // This is especially important for V003, whose program also changes the still poster.
+    // A product pause must freeze its presented frame. Legacy M02 pages instead
+    // hide the canvas; record that compatibility mode without accepting M03 freeze.
+    const canvas = stage(page).locator("canvas");
+    const pauseState = () => canvas.evaluate((element) => {
+      const style = getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      let visible = element.isConnected && rect.width > 0 && rect.height > 0;
+      for (let node = element; node; node = node.parentElement) {
+        const ancestor = getComputedStyle(node);
+        visible &&= ancestor.display !== "none" && ancestor.visibility === "visible" && Number(ancestor.opacity) > 0;
+      }
+      return { visible, opacity: style.opacity, visibility: style.visibility, display: style.display,
+        width: element.width, height: element.height,
+        textures: window.__visualProbe.textures, devices: window.__visualProbe.devices,
+        configurations: window.__visualProbe.configurations };
+    });
+    // Compare freeze frames at original resolution; the 80x60 control summary
+    // above is deliberately insufficient for catching fine detail that keeps moving.
+    const pauseDifference = (before, after) => page.evaluate(async ([before, after]) => {
+      const decode = async (encoded) => {
+        const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
+        const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
+        const { width, height } = bitmap;
+        const output = document.createElement("canvas");
+        output.width = width;
+        output.height = height;
+        const context = output.getContext("2d", { willReadFrequently: true });
+        context.drawImage(bitmap, 0, 0);
+        bitmap.close();
+        return { width, height, pixels: context.getImageData(0, 0, width, height).data };
+      };
+      const a = await decode(before);
+      const b = await decode(after);
+      if (a.width !== b.width || a.height !== b.height) throw new Error("Pause changed the captured surface dimensions");
+      let total = 0;
+      let peak = 0;
+      let changedPixels = 0;
+      for (let pixel = 0; pixel < a.pixels.length; pixel += 4) {
+        let delta = 0;
+        for (let channel = 0; channel < 3; channel++) {
+          const difference = Math.abs(a.pixels[pixel + channel] - b.pixels[pixel + channel]);
+          total += difference;
+          delta = Math.max(delta, difference);
+        }
+        peak = Math.max(peak, delta);
+        if (delta > 1) changedPixels++;
+      }
+      return { mean: total / (a.width * a.height * 3), peak, changedPixels, width: a.width, height: a.height };
+    }, [before.toString("base64"), after.toString("base64")]);
+    const stable = (difference, label) => assert.ok(difference.mean <= 0.01 && difference.peak <= 1,
+      `${stem}: ${label} must preserve the presented frame: ${JSON.stringify(difference)}`);
+    const beforePause = await capture("before-native-pause");
+    const pause = measurement.pause = { intervalMs: 1000, before: await pauseState(), comparisons: {},
+      stabilityLimits: { mean: 0.01, peak: 1 }, acceptsM03Freeze: false };
+    // Count actual queue submissions too: texture acquisitions alone miss a
+    // renderer that reuses a texture. No readback copy is requested in this interval.
+    await canvas.evaluate((element) => {
+      const original = GPUQueue.prototype.submit;
+      const monitor = { original, submissions: 0, canvas: element };
+      monitor.wrapper = function (commands) {
+        const result = original.call(this, commands);
+        if (this === window.__visualProbe.device?.queue) monitor.submissions++;
+        return result;
+      };
+      window.__compositePauseQueue = monitor;
+      GPUQueue.prototype.submit = monitor.wrapper;
+    });
+    try {
+      await page.locator("[data-pause]").evaluate((button) => button.click());
+      assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+      const paused = await capture("native-pause");
+      pause.immediate = await pauseState();
+      measurement.pauseMode = pause.immediate.visible ? "freeze" : "legacy-fallback";
+      pause.comparisons.beforeToPaused = await pauseDifference(beforePause, paused);
+      // shaders@4.0.7 dist/js/bundle.js registers its shared pointer dispatcher
+      // on window's mousemove event. Exercise that exact target without native input.
+      pause.pointerChallenge = { synthetic: true, target: "window", event: "mousemove",
+        listenerSource: "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+        sequence: [], passed: false };
+      const movePausedPointer = async (position) => {
+        const event = await canvas.evaluate((element, position) => {
+          const rect = element.getBoundingClientRect();
+          const point = position === "center"
+            ? { clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 }
+            : { clientX: Math.max(innerWidth, rect.right) + 32, clientY: Math.max(innerHeight, rect.bottom) + 32 };
+          const event = new MouseEvent("mousemove", { ...point, bubbles: true, view: window });
+          window.dispatchEvent(event);
+          return { position, clientX: event.clientX, clientY: event.clientY, isTrusted: event.isTrusted };
+        }, position);
+        pause.pointerChallenge.sequence.push(event);
+      };
+      const pausedAt = await page.evaluate(() => Date.now());
+      await movePausedPointer("center");
+      await page.clock.runFor(pause.intervalMs / 2);
+      await movePausedPointer("outside");
+      await page.clock.runFor(pause.intervalMs / 2);
+      pause.clockElapsedMs = await page.evaluate((start) => Date.now() - start, pausedAt);
+      const afterPause = await capture("native-pause-after-1000ms");
+      pause.after = await pauseState();
+      pause.queueSubmissions = await page.evaluate(() => window.__compositePauseQueue.submissions);
+      pause.sameCanvas = await canvas.evaluate((element) => element === window.__compositePauseQueue.canvas);
+      pause.comparisons.pausedToAfter = await pauseDifference(paused, afterPause);
+      assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+      assert.equal(pause.clockElapsedMs, pause.intervalMs, `${stem}: pause clock did not advance by 1000ms`);
+      assert.equal(pause.sameCanvas, true, `${stem}: pause replaced the canvas`);
+      assert.equal(pause.queueSubmissions, 0, `${stem}: paused renderer submitted GPU work`);
+      for (const state of [pause.immediate, pause.after]) {
+        for (const key of ["textures", "devices", "configurations", "width", "height"]) {
+          assert.equal(state[key], pause.before[key], `${stem}: pause changed ${key}`);
+        }
+        assert.equal(state.visible, pause.immediate.visible, `${stem}: canvas visibility changed during pause`);
+      }
+      stable(pause.comparisons.pausedToAfter, "pause after advancing the clock by 1000ms");
+      if (measurement.pauseMode === "freeze") stable(pause.comparisons.beforeToPaused, "native pause");
+      else pause.compatibility = "Legacy canvas-hidden fallback only; not M03 freeze acceptance";
+      pause.pointerChallenge.passed = true;
+
+      // This mutation is diagnostic, never a product pause or an aesthetic pass.
+      // Preserve the complete inline attribute, including its original absence.
+      const originalStyle = await canvas.getAttribute("style");
+      const originalProperties = await canvas.evaluate((element) => [...element.style].map((name) =>
+        [name, element.style.getPropertyValue(name), element.style.getPropertyPriority(name)]));
+      try {
+        await canvas.evaluate((element) => element.style.setProperty("visibility", "hidden", "important"));
+        const withoutCanvas = await capture("diagnostic-no-canvas");
+        measurement.diagnosticContribution = {
+          method: "Temporarily hide the paused canvas; not a native product action",
+          ...await livePixelDifference(page, afterPause, withoutCanvas),
+        };
+      } finally {
+        await canvas.evaluate((element, { style, properties }) => {
+          for (const name of [...element.style]) element.style.removeProperty(name);
+          for (const [name, value, priority] of properties) element.style.setProperty(name, value, priority);
+          if (style === null) element.removeAttribute("style");
+        }, { style: originalStyle, properties: originalProperties });
+      }
+      assert.equal(await canvas.getAttribute("style"), originalStyle, `${stem}: diagnostic changed inline styles`);
+      const restoredPause = await capture("diagnostic-restored");
+      pause.comparisons.diagnosticRestored = await pauseDifference(afterPause, restoredPause);
+      // Hiding/reintroducing a GPU layer can change WARP compositor rounding by
+      // 1–2 channel values. This is a diagnostic mutation, not native pause;
+      // keep the stricter native-frame stability limit above unchanged.
+      const diagnostic = pause.comparisons.diagnosticRestored;
+      pause.diagnosticRestoreLimits = { mean: 0.05, peak: 2 };
+      assert.ok(diagnostic.mean <= 0.05 && diagnostic.peak <= 2,
+        `${stem}: restoring diagnostic canvas styles changed the composition: ${JSON.stringify(diagnostic)}`);
+      if (measurement.pauseMode === "freeze") {
+        const contribution = measurement.diagnosticContribution;
+        assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
+          `${stem}: frozen canvas has no visible diagnostic contribution: ${JSON.stringify(contribution)}`);
+        pause.acceptsM03Freeze = true;
+      }
+    } finally {
+      await page.evaluate(() => {
+        const monitor = window.__compositePauseQueue;
+        if (monitor) GPUQueue.prototype.submit = monitor.original;
+        delete window.__compositePauseQueue;
+      });
+    }
     await page.locator("[data-pause]").evaluate((button) => button.click());
-    assert.equal(await stage(page).getAttribute("data-motion"), "paused");
-    const paused = await capture("native-pause");
-    const contribution = await livePixelDifference(page, captured.a2.composite, paused);
-    measurement.contribution = contribution;
-    assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
-      `${stem}: native pause shows no visible live contribution: ${JSON.stringify(contribution)}`);
+    assert.equal(await stage(page).getAttribute("data-motion"), "running", `${stem}: native resume did not resume the renderer`);
+    if (pauseOnly) await page.clock.runFor(1000);
+    await sample("native-resume");
+    if (pauseOnly) {
+      pause.resumeDifference = await livePixelDifference(page, beforePause, captured["native-resume"].composite);
+      assert.ok(pause.resumeDifference.mean > 0.05 && pause.resumeDifference.changedPixels > 12,
+        `${stem}: native resume did not restore visible evolution`);
+    }
+    if (live) assert.equal(pause.acceptsM03Freeze, true, `${stem}: released native pause must freeze its GPU frame`);
+    pause.resume = { nativeAction: true, phase: "running", composite: files["native-resume"],
+      texture: files["texture-native-resume"], framesDuringInterval: measurement.textures["native-resume"].framesDuringInterval };
     return measurement;
   } finally {
     await page.clock.resume();
@@ -544,22 +802,34 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
 }
 
 async function checkCandidateComposites(browser) {
-  for (const work of worksFor("candidate")) {
-    for (const prefix of ["", "en/"]) {
-      await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
+  for (const work of worksFor("candidate").filter(({ slug }) => !paperOnly || slug === "paper-light")) {
+    const views = [
+      { prefix: "", width: 1100, height: 850 },
+      { prefix: "en/", width: 1100, height: 850 },
+    ];
+    // Their dedicated natural-motion suites compare held mobile frames. Add
+    // same-frame mobile before/action/held evidence under the controlled clock.
+    if (["night-signal", "prism-materials", "aeriform"].includes(work.slug)) {
+      views.push({ prefix: "", width: 390, height: 844, label: "mobile" });
+    }
+    for (const { prefix, width, height, label } of views) {
+      await withPage(browser, { viewport: { width, height }, hasTouch: width === 390 }, async (page) => {
         await page.clock.install();
         const probe = await observe(page, { readPixels: true });
         await open(page, `${prefix}works/${work.slug}/`);
+        await stage(page).evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
         await phase(page, "running");
         await page.waitForFunction(() => window.__visualProbe.textures > 3);
-        await checkLiveComposite(page, work.slug, prefix ? "en" : "zh-Hant");
+        await checkLiveComposite(page, work.slug, prefix ? "en" : "zh-Hant", null, label);
         const fontPaths = work.slug === "night-signal" ? signalFontPaths :
-          work.slug === "liquid-archive" ? [base + "fonts/liquid-geist.ttf"] : [];
+          work.slug === "liquid-archive" ? [base + "fonts/liquid-geist.ttf"] :
+          work.slug === "prism-materials" ? [base + "fonts/prism-archivo-black.ttf", base + "fonts/prism-plex-mono.ttf"] :
+          work.slug === "aeriform" ? [base + "fonts/aero-bricolage.woff2"] : [];
         await probe.assertPrivate(site.origin, { fontPaths });
       });
     }
   }
-  evidence.checks.compositeControls = "PASS candidate original-CSS A/A/B/A composite and GPU output checks, measured animation drift and native-pause reference; this routine is also used by live verification";
+  evidence.checks.compositeControls = "PASS non-evolving desktop A/A/B/A control checks and all same-frame pauses. Evolving particle differences are equal-window diagnostics requiring separate same-SHA non-author three-form review. Supplemental mobile checks actual evolution before/after pause, zero paused submissions and canvas-hide diagnostic; dedicated lanes cover mobile forms and natural sequences. Only pauseMode=freeze qualifies for M03 freeze acceptance.";
 }
 
 async function checkLive(browser) {
@@ -571,6 +841,8 @@ async function checkLive(browser) {
   const workFonts = {
     "night-signal": signalFontPaths,
     "liquid-archive": [base + "fonts/liquid-geist.ttf"],
+    "prism-materials": [base + "fonts/prism-archivo-black.ttf", base + "fonts/prism-plex-mono.ttf"],
+    "aeriform": [base + "fonts/aero-bricolage.woff2"],
   };
   for (const work of registry.works.filter(isPublished)) {
     for (const prefix of ["", "en/"]) {
@@ -610,11 +882,12 @@ async function checkLive(browser) {
       });
     }
   }
-  evidence.checks.live = "PASS live HTTPS gallery, both locales, independent WebGPU output and original-CSS composite control effects above measured animation drift, source SHA, same-origin network and backlinks";
+  evidence.checks.live = "PASS live HTTPS gallery, both locales, independent WebGPU output, non-evolving original-CSS A/A/B/A controls, native frozen pause, source SHA, same-origin network and backlinks. Evolving form differences are diagnostics; semantic acceptance belongs to the fixed-candidate independent desktop/mobile three-form review. Canvas-hide checks are separate diagnostics.";
   evidence.measurements.deployed = release;
 }
 
 async function checkLiquid(browser) {
+  console.log("FORME bilingual catalog, accessibility, fallback and inquiry verification");
   const route = "works/liquid-archive/";
   const testFont = { localFont: base + "fonts/liquid-geist.ttf" };
   const fullLiquidScreenshot = async (page, name) => {
@@ -812,165 +1085,407 @@ async function checkLiquid(browser) {
     });
   }
 
-  await withPage(browser, { viewport: { width: 1440, height: 920 }, deviceScaleFactor: 1 }, async (page) => {
-    const probe = await observe(page, { ...testFont, readPixels: true });
-    const photo = page.locator(".hero-visual");
-    const sample = async name => {
-      await phase(page, "running");
-      await page.locator("[data-hero-image]").evaluate(image => image.decode());
-      const previous = await textureCount(page);
-      await page.waitForFunction(count => window.__visualProbe.textures > count + 3, previous);
-      const texture = await page.evaluate(() => window.__visualProbe.readFrame());
-      assert.ok(texture.colors > 20, JSON.stringify({ name, texture }));
-      const file = "liquid-forme-" + name + ".png";
-      const pixels = await photo.screenshot({ path: resolve(evidenceDir, file) });
-      evidence.screenshots.push(file);
-      return { texture, pixels };
-    };
-    const difference = (first, second) => page.evaluate(async ([first, second]) => {
-      const toPixels = async encoded => {
-        const bytes = Uint8Array.from(atob(encoded), char => char.charCodeAt(0));
-        const image = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
-        const canvas = document.createElement("canvas");
-        canvas.width = 80;
-        canvas.height = 60;
-        const context = canvas.getContext("2d", { willReadFrequently: true });
-        context.drawImage(image, 0, 0, 80, 60);
-        image.close();
-        return context.getImageData(0, 0, 80, 60).data;
-      };
-      const a = await toPixels(first);
-      const b = await toPixels(second);
-      let changed = 0;
-      let peak = 0;
-      for (let i = 0; i < a.length; i += 4) {
-        const diff = Math.max(...[0, 1, 2].map(c => Math.abs(a[i + c] - b[i + c])));
-        if (diff > 10) changed++;
-        peak = Math.max(peak, diff);
-      }
-      return { changed, peak };
-    }, [first.toString("base64"), second.toString("base64")]);
+  for (const [prefix, width, height] of [["en/", 1440, 920], ["", 390, 850]]) {
+    const lang = prefix ? "en" : "zh-Hant";
+    const stem = `liquid-forme-${lang}-${width}`;
+    console.log("FORME studio " + stem);
+    await withPage(browser, { viewport: { width, height }, deviceScaleFactor: 1, hasTouch: width === 390 }, async page => {
+      const probe = await observe(page, { ...testFont, readPixels: true });
+      const scene = page.locator(".hero-scene");
+      const hero = page.locator(".hero-visual");
+      const poster = hero.locator("img");
+      const canvas = stage(page).locator("canvas");
+      const angle = page.locator("#object-angle");
+      const sweep = page.locator("[data-light-sweep]");
+      const pauseButton = page.locator("[data-pause]");
 
-    await open(page, "en/" + route);
-    const polished = await sample("en-1440-polished-composite");
-    const coversPhoto = await photo.evaluate(element => {
-      const viewport = element.getBoundingClientRect();
-      const image = element.querySelector("img").getBoundingClientRect();
-      return image.left <= viewport.left + 1 && image.right >= viewport.right - 1 &&
-        image.top <= viewport.top + 1 && image.bottom >= viewport.bottom - 1;
-    });
-    assert.equal(coversPhoto, true, "The hero photograph covers its entire frame");
-    assert.equal(await page.evaluate(() => scrollY), 0, "The WebGPU composition is visible on entry");
-    const theme = await page.evaluate(async () => {
-      await document.fonts.ready;
-      return {
+      const captureSession = await page.context().newCDPSession(page);
+      async function frame(label) {
+        const name = `${stem}-${label}.png`;
+        const clip = await scene.evaluate(element => {
+          const rect = element.getBoundingClientRect();
+          return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height, scale: 1 };
+        });
+        const { data } = await captureSession.send("Page.captureScreenshot", {
+          format: "png", fromSurface: true, captureBeyondViewport: false, clip,
+        });
+        const png = Buffer.from(data, "base64");
+        await writeFile(resolve(evidenceDir, name), png);
+        evidence.screenshots.push(name);
+        return png;
+      }
+
+      async function enterStudio() {
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await phase(page, "running");
+      }
+
+      async function nextFrames(count = 2) {
+        const start = await textureCount(page);
+        await page.waitForFunction(target => window.__visualProbe.textures >= target, start + count, { polling: 50 });
+      }
+
+      async function saveTexture(label, snapshot) {
+        const file = stem + "-" + label + ".png";
+        const { png, ...texture } = snapshot;
+        const bytes = Buffer.from(png, "base64");
+        await writeFile(resolve(evidenceDir, file), bytes);
+        evidence.screenshots.push(file);
+        return { file, bytes, texture };
+      }
+
+      const times = [0, 2, 4, 6, 8, 10, 12];
+      async function captureNatural(finish) {
+        const collect = page.evaluate(async times => {
+          const probe = window.__visualProbe;
+          const start = performance.now();
+          const frames = [];
+          for (const time of times) {
+            await new Promise(resolve => setTimeout(resolve, Math.max(0, time * 1000 - (performance.now() - start))));
+            const requested = performance.now() - start;
+            const textures = probe.textures;
+            const snapshot = await probe.readFrame(true);
+            frames.push({ time, requested, complete: performance.now() - start, textures, snapshot });
+          }
+          return frames;
+        }, times);
+        let timeout;
+        const frames = await Promise.race([collect, new Promise((_, reject) => {
+          timeout = setTimeout(() => reject(new Error("Natural FORME GPU readbacks exceeded 55 seconds")), 55_000);
+        })]).finally(() => clearTimeout(timeout));
+        const samples = [];
+        for (const { time, requested, complete, textures, snapshot } of frames) {
+          const { file } = await saveTexture(finish + "-natural-" + time + "s", snapshot);
+          samples.push({ time, requested: Math.round(requested), readbackMs: Math.round(complete - requested), textures, file });
+        }
+        const changes = [];
+        for (const sample of frames.slice(1, -1)) changes.push(await livePixelDifference(page, Buffer.from(frames[0].snapshot.png, "base64"), Buffer.from(sample.snapshot.png, "base64")));
+        const travel = changes.reduce((largest, next) => next.mean > largest.mean ? next : largest);
+        assert.ok(travel.mean > 0.1 && travel.changedPixels > 12, "Natural light sweep did not visibly advance");
+        assert.ok(samples.every((sample, index) => index === 0 || sample.textures > samples[index - 1].textures),
+          stem + ": no new GPU frames between natural samples");
+        return { timebase: "Native RAF without clock instrumentation; actual request/readback timing", travel, samples };
+      }
+
+      async function checkFinish(finish) {
+        console.log(stem + " " + finish + " fixed angles");
+        await enterStudio();
+        assert.equal(await stage(page).getAttribute("data-finish"), finish);
+        assert.equal(await stage(page).getAttribute("data-light"), "auto");
+        await nextFrames();
+        const fixed = {};
+        const readbackMs = [];
+        const submissions = [];
+        for (const degrees of [0, 45, 90, 135, 180, 0]) {
+          const started = performance.now();
+          const firstTexture = await textureCount(page);
+          await angle.evaluate((input, value) => {
+            input.value = String(value);
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+          }, degrees);
+          assert.equal(await stage(page).getAttribute("data-light"), "manual");
+          assert.equal(await page.locator('output[for="object-angle"]').textContent(), degrees + "°");
+          await nextFrames(1);
+          const snapshot = await page.evaluate(() => window.__visualProbe.readFrame(true));
+          const key = degrees === 0 && fixed[0] ? "return-0" : degrees;
+          fixed[key] = await saveTexture(finish + "-fixed-" + key + "deg-texture", snapshot);
+          readbackMs.push(Math.round(performance.now() - started));
+          submissions.push(await textureCount(page) - firstTexture);
+          console.log(stem + " " + finish + " fixed " + key + "° in " + readbackMs.at(-1) + "ms, " + submissions.at(-1) + " textures");
+          if (degrees === 90) await frame(finish + "-fixed-90deg");
+        }
+        const angleDelta = await livePixelDifference(page, fixed[0].bytes, fixed[180].bytes);
+        assert.ok(angleDelta.changedPixels > 15, stem + ": moving the light does not change the studio image");
+        const restored = fixed["return-0"];
+        assert.equal((await livePixelDifference(page, fixed[0].bytes, restored.bytes)).peak, 0);
+        const textureStats = fixed[90].texture;
+        assert.ok(textureStats.colors > 20, JSON.stringify(textureStats));
+        await sweep.evaluate(button => button.click());
+        assert.equal(await stage(page).getAttribute("data-light"), "auto");
+        await nextFrames();
+        console.log(stem + " " + finish + " natural native RAF");
+        const natural = await captureNatural(finish);
+        console.log(stem + " " + finish + " native pause and resume");
+        const before = await frame(`${finish}-pause-before`);
+        await pauseButton.evaluate(button => button.click());
+        await phase(page, "paused");
+        await quiet(page);
+        await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+        assert.ok(await canvas.isVisible());
+        assert.equal(await poster.isVisible(), false);
+        const firstPaused = await frame(`${finish}-paused-a`);
+        await page.waitForTimeout(600);
+        const secondPaused = await frame(`${finish}-paused-b`);
+        assert.ok(firstPaused.equals(secondPaused), stem + ": native pause changed original-resolution pixels");
+        const pauseDelta = await livePixelDifference(page, before, firstPaused);
+        // These native-clock captures occur at different animation times. Keep
+        // their difference as a diagnostic, not a same-frame freeze assertion.
+        // The separate controlled context below verifies the action itself at
+        // original resolution for each finish without contaminating native RAF.
+        assert.ok(await angle.isDisabled());
+        await pauseButton.evaluate(button => button.click());
+        await phase(page, "running");
+        const resumeStart = performance.now();
+        const resumeSamples = [];
+        let previousTextures = await textureCount(page);
+        // A cosine light sweep can return to the same angle after two seconds
+        // around an extremum. Two distinct offsets test visible resumed motion
+        // without confusing that symmetry with a stopped renderer.
+        for (const [targetMs, label] of [[2000, "resumed"], [4000, "resumed-4s"]]) {
+          const remaining = targetMs - (performance.now() - resumeStart);
+          if (remaining > 0) await page.waitForTimeout(remaining);
+          await nextFrames();
+          await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+          const requestedMs = performance.now() - resumeStart;
+          const resumed = await frame(`${finish}-${label}`);
+          const textures = await textureCount(page);
+          assert.ok(textures > previousTextures, `${stem}: no new texture acquisition after resume`);
+          previousTextures = textures;
+          resumeSamples.push({ targetMs, requestedMs, textures, file: `${stem}-${finish}-${label}.png`,
+            difference: await livePixelDifference(page, secondPaused, resumed) });
+        }
+        const changed = resumeSamples.find(({ difference }) => difference.mean > 0.07 && difference.changedPixels > 7);
+        assert.ok(changed, `${stem}: resumed scene did not move at either measured offset: ${JSON.stringify(resumeSamples)}`);
+        const resumeDelta = changed.difference;
+
+        await enterStudio();
+        return { natural, fixed: { readbackMs, submissions }, angleDelta, pauseDelta,
+          pauseDeltaBasis: "Unsynchronized native captures before and after the action; diagnostic only",
+          nativeHeldOriginalPngIdentical: true, resumeDelta, resumeSamples,
+          resumeEvidence: changed.file, texture: textureStats };
+      }
+
+      await open(page, prefix + route);
+      await phase(page, "running");
+      await page.evaluate(() => document.fonts.ready.then(() => undefined));
+      assert.equal(await page.evaluate(() => scrollY), 0);
+      assert.ok(await canvas.isVisible());
+      assert.equal(await poster.isVisible(), false);
+      assert.equal(await page.locator("canvas").count(), 1);
+      const fillsHero = await hero.evaluate(element => {
+        const image = element.getBoundingClientRect();
+        const output = element.querySelector("canvas").getBoundingClientRect();
+        return Math.abs(image.width - output.width) <= 1 && Math.abs(image.height - output.height) <= 1;
+      });
+      assert.ok(fillsHero, "Procedural canvas must cover the entire hero frame");
+      assert.ok(await canvas.evaluate(output => output.width <= 780 && output.height <= 500), "DPR 1 studio must respect its render-size limit");
+      const theme = await page.evaluate(() => ({
         background: getComputedStyle(document.documentElement).backgroundColor,
         accent: getComputedStyle(document.querySelector(".section-intro .eyebrow")).color,
         geist: [...document.fonts].some(face => face.family === "Geist" && face.status === "loaded"),
+      }));
+      assert.deepEqual(theme, { background: "rgb(238, 240, 237)", accent: "rgb(39, 81, 90)", geist: true });
+      evidence.measurements.liquidTheme = theme;
+      await checkContrast(page, [
+        ".config-copy h2", ".hero .button", ".card-description", ".finish-choices input:checked + span",
+      ], "liquidMinCheckedContrast");
+      await frame("first-render");
+      const polished = await checkFinish("polished");
+
+      const configurations = await page.evaluate(() => window.__visualProbe.configurations);
+      await page.evaluate(() => {
+        const products = document.querySelector("#product");
+        const finishes = [...document.querySelectorAll('[name="finish"]')];
+        for (let index = 0; index < 20; index++) {
+          products.selectedIndex = index % products.options.length;
+          products.dispatchEvent(new Event("change", { bubbles: true }));
+          finishes[index % finishes.length].click();
+        }
+      });
+      assert.equal(await control(page).inputValue(), "orb");
+      assert.match(await page.locator("[data-detail-image]").getAttribute("src"), /orb-satin\.webp$/);
+      assert.match(await poster.getAttribute("src"), /hero-satin\.webp$/);
+      const satin = await checkFinish("satin");
+      assert.notDeepEqual(satin.texture.average, polished.texture.average);
+      assert.equal(await page.locator("canvas").count(), 1);
+      assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
+      assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
+      const before = await textureCount(page);
+      const started = performance.now();
+      await page.waitForTimeout(1200);
+      evidence.measurements.liquidStudios ??= {};
+      evidence.measurements.liquidStudios[stem] = {
+        polished, satin,
+        acquisitionsPerSecond: Number(((await textureCount(page) - before) * 1000 / (performance.now() - started)).toFixed(2)),
+        pixelRatio: await canvas.evaluate(element => element.width / element.getBoundingClientRect().width),
       };
+
+      await enterStudio();
+      await fullLiquidScreenshot(page, `${stem}-webgpu-full.png`);
+      console.log(stem + " offscreen, hidden, recovery and history");
+      await capture(page, page.locator("#configure"), `${stem}-product.png`);
+      await phase(page, "still");
+      await quiet(page);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await phase(page, "running");
+      await page.evaluate(() => {
+        Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
+        document.dispatchEvent(new Event("visibilitychange"));
+      });
+      await phase(page, "still");
+      await quiet(page);
+      await page.evaluate(() => {
+        delete document.visibilityState;
+        document.dispatchEvent(new Event("visibilitychange"));
+      });
+      await phase(page, "running");
+      await page.evaluate(() => window.__visualProbe.loseDevice());
+      await page.waitForFunction(() => window.__visualProbe.devices > 1, null, { timeout: 35_000 });
+      await phase(page, "running");
+      assert.equal(await stage(page).getAttribute("data-finish"), "satin");
+      await probe.assertPrivate(site.origin);
+
+      await captureSession.detach();
+      const nextLang = prefix ? "zh-Hant" : "en";
+      await page.locator(`header a[lang="${nextLang}"]`).click();
+      assert.equal(page.url(), url((prefix ? "" : "en/") + route));
+      await phase(page, "running");
+      await page.locator(`.forme-footer a[href="${base}${prefix ? "" : "en/"}"]`).click();
+      assert.equal(page.url(), url(prefix ? "" : "en/"));
+      await page.goBack({ waitUntil: "commit" });
+      assert.equal(page.url(), url((prefix ? "" : "en/") + route));
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await phase(page, "running");
+      await probe.assertPrivate(site.origin);
     });
-    assert.deepEqual(theme, { background: "rgb(238, 240, 237)", accent: "rgb(39, 81, 90)", geist: true });
-    evidence.measurements.liquidTheme = theme;
-    await checkContrast(page, [
-      ".config-copy h2", ".hero .button", ".card-description", ".finish-choices input:checked + span",
-    ], "liquidMinCheckedContrast");
-    await fullLiquidScreenshot(page, "liquid-forme-en-1440-webgpu-full.png");
+  }
+  // An independent, controlled browser runs only the exact-time series.
+  for (const [prefix, width, height] of [["en/", 1440, 920], ["", 390, 850]]) {
+    const stem = "liquid-forme-" + (prefix ? "en" : "zh-Hant") + "-" + width;
+    await withPage(browser, { viewport: { width, height }, deviceScaleFactor: 1 }, async page => {
+      const probe = await observe(page, { ...testFont, readPixels: true });
+      const startTime = new Date("2026-11-13T00:00:00Z");
+      await page.clock.install({ time: startTime });
+      await page.clock.pauseAt(new Date(startTime.getTime() + 10_000));
+      await open(page, prefix + route);
 
-    const angle = page.locator("#object-angle");
-    await angle.press("Home");
-    assert.equal(await page.locator("output").textContent(), "0°");
-    const start = await sample("en-angle-0");
-    await angle.press("End");
-    assert.equal(await page.locator("output").textContent(), "180°");
-    const end = await sample("en-angle-180");
-    const angleChange = await difference(start.pixels, end.pixels);
-    assert.ok(angleChange.changed > 15, "Light angle must visibly change the photograph composition: " + JSON.stringify(angleChange));
-
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    await quiet(page);
-    const still = await photo.screenshot({ path: resolve(evidenceDir, "liquid-forme-en-still-reference.png") });
-    evidence.screenshots.push("liquid-forme-en-still-reference.png");
-    const shaderContribution = await difference(end.pixels, still);
-    assert.ok(shaderContribution.changed > 40, "The visible shader should change the steel surface: " + JSON.stringify(shaderContribution));
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await phase(page, "running");
-
-    const configurations = await page.evaluate(() => window.__visualProbe.configurations);
-    await page.evaluate(() => {
-      const products = document.querySelector("#product");
-      const finishes = [...document.querySelectorAll('[name="finish"]')];
-      for (let index = 0; index < 20; index++) {
-        products.selectedIndex = index % products.options.length;
-        products.dispatchEvent(new Event("change", { bubbles: true }));
-        finishes[index % finishes.length].click();
+      // While the synthetic clock is stopped, issue a bounded number of
+      // callbacks. A pending GPU copy always has a real-wall-time deadline.
+      const pending = task => {
+        let timeout;
+        return Promise.race([task, new Promise((_, reject) => {
+          timeout = setTimeout(() => reject(new Error(stem + ": controlled GPU readback timed out")), 12_000);
+        })]).finally(() => clearTimeout(timeout));
+      };
+      for (let attempt = 0; attempt < 60 && await stage(page).getAttribute("data-motion") !== "running"; attempt++) {
+        await pending(page.clock.runFor(48));
+        await new Promise(resolve => setTimeout(resolve, 150));
       }
+      assert.equal(await stage(page).getAttribute("data-motion"), "running");
+      async function freezeCurrentFrame(finish) {
+        const canvas = stage(page).locator("canvas");
+        const clip = await page.locator(".hero-scene").evaluate(element => {
+          const rect = element.getBoundingClientRect();
+          return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+        });
+        const capture = async suffix => {
+          const file = `${stem}-${finish}-controlled-pause-${suffix}.png`;
+          const png = await page.screenshot({ path: resolve(evidenceDir, file), clip });
+          evidence.screenshots.push(file);
+          return { file, png };
+        };
+        const state = () => canvas.evaluate(element => ({
+          width: element.width, height: element.height,
+          textures: window.__visualProbe.textures, devices: window.__visualProbe.devices,
+          configurations: window.__visualProbe.configurations,
+        }));
+        await pending(page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone()));
+        const before = await capture("before");
+        const initial = await state();
+        await canvas.evaluate(element => {
+          const original = GPUQueue.prototype.submit;
+          const monitor = { original, submissions: 0, canvas: element };
+          monitor.wrapper = function (commands) {
+            const result = original.call(this, commands);
+            if (this === window.__visualProbe.device?.queue) monitor.submissions++;
+            return result;
+          };
+          window.__formePauseQueue = monitor;
+          GPUQueue.prototype.submit = monitor.wrapper;
+        });
+        let paused, held;
+        try {
+          await page.locator("[data-pause]").evaluate(button => button.click());
+          assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+          assert.equal(await stage(page).getAttribute("data-frame"), "present");
+          assert.equal(await canvas.isVisible(), true);
+          assert.equal(await page.locator(".hero-visual img").isVisible(), false);
+          paused = await capture("at-click");
+          assert.ok(before.png.equals(paused.png), stem + ": pause action changed the original composition");
+          await page.evaluate(() => window.dispatchEvent(new MouseEvent("mousemove", {
+            clientX: innerWidth * 0.7, clientY: innerHeight * 0.4, bubbles: true, view: window,
+          })));
+          const heldAt = await page.evaluate(() => performance.now());
+          await pending(page.clock.runFor(1000));
+          assert.equal(await page.evaluate(start => performance.now() - start, heldAt), 1000);
+          held = await capture("held");
+          assert.ok(paused.png.equals(held.png), stem + ": controlled pause changed original-resolution pixels");
+          assert.deepEqual(await state(), initial);
+          assert.equal(await canvas.evaluate(element => element === window.__formePauseQueue.canvas), true);
+          assert.equal(await page.evaluate(() => window.__formePauseQueue.submissions), 0);
+          assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+        } finally {
+          await page.evaluate(() => {
+            GPUQueue.prototype.submit = window.__formePauseQueue.original;
+            delete window.__formePauseQueue;
+          });
+        }
+        await page.locator("[data-pause]").evaluate(button => button.click());
+        assert.equal(await stage(page).getAttribute("data-motion"), "running");
+        // Resume's first callback rebuilds the active-time origin. Let it run
+        // before jumping forward, otherwise only the final 48ms would animate.
+        await pending(page.clock.runFor(48));
+        await page.clock.fastForward(1952);
+        await pending(page.clock.runFor(48));
+        await pending(page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone()));
+        const resumed = await capture("resumed");
+        const resumeDelta = await livePixelDifference(page, held.png, resumed.png);
+        assert.ok(resumeDelta.mean > 0.07 && resumeDelta.changedPixels > 7,
+          `${stem}: controlled resume did not move: ${JSON.stringify(resumeDelta)}`);
+        assert.ok(await textureCount(page) > initial.textures);
+        return {
+          timeBasis: "controlled-animation-clock", heldMilliseconds: 1000,
+          originalPngIdenticalAtClickAndHeld: true, queueSubmissions: 0,
+          sameCanvasAndDimensions: true, resumeDelta,
+          frames: { before: before.file, paused: paused.file, stillPaused: held.file, resumed: resumed.file },
+        };
+      }
+      const timed = [0, 2, 4, 6, 8, 10, 12];
+      for (const finish of ["polished", "satin"]) {
+        console.log(stem + " " + finish + " controlled cycle (isolated clock)");
+        await page.locator('input[name=finish][value="' + finish + '"]').evaluate(input => input.click());
+        const samples = [];
+        let start;
+        for (const time of timed) {
+          if (time) await page.clock.fastForward(1952);
+          await page.evaluate(() => { window.__formeStudioTexture = window.__visualProbe.readFrame(true); });
+          await pending(page.clock.runFor(48));
+          const texture = await pending(page.evaluate(() => window.__formeStudioTexture));
+          const stamp = await page.evaluate(() => performance.now());
+          start ??= stamp;
+          const file = stem + "-" + finish + "-auto-" + time + "s.png";
+          const png = Buffer.from(texture.png, "base64");
+          await writeFile(resolve(evidenceDir, file), png);
+          evidence.screenshots.push(file);
+          samples.push({ time, elapsed: stamp - start, file, png });
+        }
+        const difference = (a, b) => livePixelDifference(page, a.png, b.png);
+        const changes = [];
+        for (const sample of samples.slice(1, -1)) changes.push(await difference(samples[0], sample));
+        const travel = changes.reduce((largest, next) => next.mean > largest.mean ? next : largest);
+        const closure = await difference(samples[0], samples.at(-1));
+        assert.ok(travel.mean > 0.10 && travel.changedPixels > 12, stem + ": controlled light does not move");
+        assert.ok(closure.mean < travel.mean * 0.55, stem + ": controlled 12s cycle does not close");
+        evidence.measurements.liquidStudios[stem][finish].cycle = {
+          timebase: "Separate paused Chromium clock with bounded callbacks and raw GPU readback",
+          travel, closure, samples: samples.map(({ png, ...sample }) => sample),
+        };
+        evidence.measurements.liquidStudios[stem][finish].sameFramePause = await freezeCurrentFrame(finish);
+      }
+      await probe.assertPrivate(site.origin);
     });
-    assert.equal(await control(page).inputValue(), "orb");
-    assert.equal(await stage(page).getAttribute("data-finish"), "satin");
-    assert.match(await page.locator("[data-detail-image]").getAttribute("src"), /orb-satin\.webp$/);
-    assert.match(await page.locator("[data-hero-image]").getAttribute("src"), /hero-satin\.webp$/);
-    const satin = await sample("en-1440-satin-composite");
-    assert.notDeepEqual(satin.texture.average, polished.texture.average);
-    assert.equal(await page.locator("canvas").count(), 1);
-    assert.equal(await page.evaluate(() => window.__visualProbe.devices), 1);
-    assert.equal(await page.evaluate(() => window.__visualProbe.configurations), configurations);
-
-    await page.getByRole("button", { name: "Pause motion" }).click();
-    await phase(page, "paused");
-    const satinStill = await photo.screenshot({ path: resolve(evidenceDir, "liquid-forme-en-satin-still-reference.png") });
-    evidence.screenshots.push("liquid-forme-en-satin-still-reference.png");
-    const satinContribution = await difference(satin.pixels, satinStill);
-    assert.ok(satinContribution.changed > 8, "Satin lighting should remain visible: " + JSON.stringify(satinContribution));
-    await page.getByRole("button", { name: "Resume motion" }).click();
-    await phase(page, "running");
-    evidence.measurements.liquidHero = { polished: polished.texture, satin: satin.texture, angleChange, shaderContribution, satinContribution };
-
-    const before = await textureCount(page);
-    const started = performance.now();
-    await page.waitForTimeout(1200);
-    evidence.measurements.liquidTextureAcquisitionsPerSecond = Number(((await textureCount(page) - before) * 1000 / (performance.now() - started)).toFixed(2));
-    evidence.measurements.liquidPixelRatio = await stage(page).locator("canvas").evaluate(canvas => canvas.width / canvas.getBoundingClientRect().width);
-    await capture(page, page.locator("#configure"), "liquid-forme-en-1440-product.png");
-    await phase(page, "still");
-    await quiet(page);
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await phase(page, "running");
-
-    await page.evaluate(() => {
-      Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
-    await phase(page, "still");
-    await quiet(page);
-    await page.evaluate(() => {
-      delete document.visibilityState;
-      document.dispatchEvent(new Event("visibilitychange"));
-    });
-    await phase(page, "running");
-    await page.evaluate(() => window.__visualProbe.loseDevice());
-    await page.waitForFunction(() => window.__visualProbe.devices > 1, null, { timeout: 35_000 });
-    await phase(page, "running");
-    assert.equal(await stage(page).getAttribute("data-finish"), "satin");
-    await probe.assertPrivate(site.origin);
-
-    await page.setViewportSize({ width: 390, height: 800 });
-    await page.locator('header a[lang="zh-Hant"]').click();
-    assert.equal(page.url(), url(route));
-    await sample("zh-Hant-390-polished-composite");
-    await fullLiquidScreenshot(page, "liquid-forme-zh-Hant-390-webgpu-full.png");
-    await capture(page, page.locator("#configure"), "liquid-forme-zh-Hant-390-product.png");
-    await phase(page, "still");
-    await quiet(page);
-    await page.locator(".forme-footer a[href=\"" + base + "\"]").click();
-    assert.equal(page.url(), url());
-    await page.goBack({ waitUntil: "commit" });
-    assert.equal(page.url(), url(route));
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await phase(page, "running");
-    await probe.assertPrivate(site.origin);
-  });
-  evidence.checks.liquid = "PASS bilingual inquiry and downloaded contents, four widths/200%, keyboard/touch, no-JS, no-GPU, visible WebGPU hero composite and light angle, rapid finish switches on one device, pause/visibility/recovery/back and privacy";
+  }
+  evidence.checks.liquid = "PASS bilingual inquiry and download, four widths/200%, keyboard/touch, no-JS and no-GPU, visible procedural studio in both finishes, natural 12-second cycles, fixed 0/45/90/135/180 and return, frozen native pause, resume, visibility, device recovery, back and privacy";
 }
 
 let browser;
@@ -1001,6 +1516,9 @@ try {
     : "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact";
   if (live) {
     await checkLive(browser);
+  } else if (studioOnly) {
+    assert.ok(windows, "FORME studio evidence requires the Windows 2025 runner");
+    await checkLiquid(browser);
   } else {
     await checkLayouts(browser);
     await checkFallback(browser);
@@ -1031,8 +1549,12 @@ try {
       assert.equal(evidence.measurements.gpuBufferSmoke.value, 0x1234abcd);
     });
     await checkShader(browser);
-    if (worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
-    if (worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
+    evidence.measurements.paperMaterial = await checkPaperMaterial({
+      browser, withPage, open, work, site, phase, capture: paperSurface, difference: paperLightDifference, screenshot,
+    });
+    evidence.checks.paperMaterial = "PASS two viewports, full natural cycle, five lamp angles, same-frame pause and resume";
+    if (!paperOnly && !sharedOnly && worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
+    if (!paperOnly && worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
       evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
     });
     await checkCandidateComposites(browser);

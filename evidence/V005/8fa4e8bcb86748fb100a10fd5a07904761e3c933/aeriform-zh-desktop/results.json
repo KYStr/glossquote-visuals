@@ -1,0 +1,51 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "lane": "zh-desktop",
+  "environment": "GitHub-hosted Windows Server 2025 VM · headless Chromium D3D11 WARP",
+  "checks": {
+    "webgpu": "PASS live composition with non-empty WebGPU readback",
+    "privacy": "PASS same-origin GET only, CSP, no telemetry/network APIs, no storage and no cookies"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "aeriform-zh-Hant-1440-initial": {
+      "width": 824,
+      "height": 698,
+      "format": "bgra8unorm",
+      "submittedAt": 6437.799999999988,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 118,
+      "average": [
+        20,
+        10,
+        7,
+        23
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-zh-Hant-1440-presentations": {
+      "acquisitions": 24,
+      "elapsedMs": 1264,
+      "note": "getCurrentTexture acquisitions. This is not FPS.",
+      "devicePixelRatio": 1
+    }
+  },
+  "screenshots": [
+    "aeriform-zh-Hant-1440-webgpu-fold.png",
+    "aeriform-zh-Hant-1440-initial-texture.png",
+    "aeriform-zh-Hant-1440-webgpu.png"
+  ],
+  "downloads": [],
+  "browser": "158.0.8127.18",
+  "result": "PASS"
+}

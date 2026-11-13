@@ -1,0 +1,213 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "lane": "en-desktop",
+  "environment": "GitHub-hosted Windows Server 2025 VM · headless Chromium D3D11 WARP",
+  "checks": {
+    "webgpu": "PASS live composition with non-empty WebGPU readback",
+    "lifecycle": "PASS exact presented pause frame, pointer-quiet pause/hidden/offscreen/pagehide, resumed rendering, actual device loss/recovery and page return",
+    "privacy": "PASS same-origin GET only, CSP, no telemetry/network APIs, no storage and no cookies"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "aeriform-en-1440-formation": {
+      "elapsedMs": 5785,
+      "acquisitions": 53
+    },
+    "aeriform-en-1440-initial": {
+      "width": 824,
+      "height": 698,
+      "format": "bgra8unorm",
+      "submittedAt": 9144,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 128,
+      "average": [
+        20,
+        10,
+        7,
+        23
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-en-1440-natural": [
+      {
+        "targetMs": 0,
+        "startedMs": 0,
+        "textures": 110
+      },
+      {
+        "targetMs": 2000,
+        "startedMs": 2092,
+        "textures": 129
+      },
+      {
+        "targetMs": 4000,
+        "startedMs": 4033,
+        "textures": 148
+      },
+      {
+        "targetMs": 6000,
+        "startedMs": 6032,
+        "textures": 167
+      },
+      {
+        "targetMs": 8000,
+        "startedMs": 8077,
+        "textures": 182
+      },
+      {
+        "targetMs": 10000,
+        "startedMs": 10006,
+        "textures": 202
+      },
+      {
+        "targetMs": 12000,
+        "startedMs": 12008,
+        "textures": 222
+      },
+      {
+        "targetMs": 14000,
+        "startedMs": 14083,
+        "textures": 244
+      },
+      {
+        "targetMs": 18000,
+        "startedMs": 18025,
+        "textures": 282
+      },
+      {
+        "targetMs": 22000,
+        "startedMs": 22031,
+        "textures": 323
+      },
+      {
+        "targetMs": 26000,
+        "startedMs": 26013,
+        "textures": 361
+      }
+    ],
+    "aeriform-en-1440-pause": {
+      "pauseCount": 460,
+      "heldCount": 460,
+      "frozen": "9c60d21c612ed73c31cee0a37e8acf173d16dea487e513a800cf2a43e5933353",
+      "held": "9c60d21c612ed73c31cee0a37e8acf173d16dea487e513a800cf2a43e5933353"
+    },
+    "aeriform-en-1440-form-motion": {
+      "width": 824,
+      "height": 698,
+      "format": "bgra8unorm",
+      "submittedAt": 64207.600000000035,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 104,
+      "average": [
+        17,
+        9,
+        8,
+        20
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-en-1440-form-digital": {
+      "width": 824,
+      "height": 698,
+      "format": "bgra8unorm",
+      "submittedAt": 76540.70000000001,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 89,
+      "average": [
+        16,
+        12,
+        13,
+        19
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-en-1440-form-identity": {
+      "width": 824,
+      "height": 698,
+      "format": "bgra8unorm",
+      "submittedAt": 89029.29999999999,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 117,
+      "average": [
+        21,
+        11,
+        8,
+        24
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-en-1440-recovered": {
+      "width": 824,
+      "height": 698,
+      "format": "bgra8unorm",
+      "submittedAt": 94162.00000000006,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 138,
+      "average": [
+        25,
+        14,
+        10,
+        28
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-en-1440-presentations": {
+      "acquisitions": 13,
+      "elapsedMs": 1274,
+      "note": "getCurrentTexture acquisitions. This is not FPS.",
+      "devicePixelRatio": 1
+    }
+  },
+  "screenshots": [
+    "aeriform-en-1440-formation-first-presented.png",
+    "aeriform-en-1440-formation-after-20-acquisitions.png",
+    "aeriform-en-1440-webgpu-fold.png",
+    "aeriform-en-1440-initial-texture.png",
+    "aeriform-en-1440-natural-0s.png",
+    "aeriform-en-1440-natural-2s.png",
+    "aeriform-en-1440-natural-4s.png",
+    "aeriform-en-1440-natural-6s.png",
+    "aeriform-en-1440-natural-8s.png",
+    "aeriform-en-1440-natural-10s.png",
+    "aeriform-en-1440-natural-12s.png",
+    "aeriform-en-1440-natural-14s.png",
+    "aeriform-en-1440-natural-18s.png",
+    "aeriform-en-1440-natural-22s.png",
+    "aeriform-en-1440-natural-26s.png",
+    "aeriform-en-1440-settled.png",
+    "aeriform-en-1440-pointer-scatter.png",
+    "aeriform-en-1440-pointer-regroup.png",
+    "aeriform-en-1440-before-pause.png",
+    "aeriform-en-1440-paused.png",
+    "aeriform-en-1440-paused-held.png",
+    "aeriform-en-1440-resumed.png",
+    "aeriform-en-1440-transition-motion.png",
+    "aeriform-en-1440-form-motion.png",
+    "aeriform-en-1440-form-motion-texture.png",
+    "aeriform-en-1440-transition-digital.png",
+    "aeriform-en-1440-form-digital.png",
+    "aeriform-en-1440-form-digital-texture.png",
+    "aeriform-en-1440-transition-identity.png",
+    "aeriform-en-1440-form-identity.png",
+    "aeriform-en-1440-form-identity-texture.png",
+    "aeriform-en-1440-recovered-texture.png",
+    "aeriform-en-1440-webgpu.png"
+  ],
+  "downloads": [],
+  "browser": "158.0.8127.18",
+  "result": "PASS"
+}

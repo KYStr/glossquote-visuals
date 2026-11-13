@@ -1,0 +1,215 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "lane": "zh-mobile",
+  "environment": "GitHub-hosted Windows Server 2025 VM · headless Chromium D3D11 WARP",
+  "checks": {
+    "webgpu": "PASS live composition with non-empty WebGPU readback",
+    "lifecycle": "PASS exact presented pause frame, pointer-quiet pause/hidden/offscreen/pagehide, resumed rendering, actual device loss/recovery and page return",
+    "privacy": "PASS same-origin GET only, CSP, no telemetry/network APIs, no storage and no cookies"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "aeriform-zh-Hant-390-formation": {
+      "elapsedMs": 2553,
+      "acquisitions": 101
+    },
+    "aeriform-zh-Hant-390-initial": {
+      "width": 351,
+      "height": 285,
+      "format": "bgra8unorm",
+      "submittedAt": 5521.100000000006,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 121,
+      "average": [
+        19,
+        10,
+        7,
+        23
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-zh-Hant-390-natural": [
+      {
+        "targetMs": 0,
+        "startedMs": 0,
+        "textures": 143
+      },
+      {
+        "targetMs": 2000,
+        "startedMs": 2031,
+        "textures": 239
+      },
+      {
+        "targetMs": 4000,
+        "startedMs": 4028,
+        "textures": 318
+      },
+      {
+        "targetMs": 6000,
+        "startedMs": 6033,
+        "textures": 402
+      },
+      {
+        "targetMs": 8000,
+        "startedMs": 8004,
+        "textures": 482
+      },
+      {
+        "targetMs": 10000,
+        "startedMs": 10013,
+        "textures": 574
+      },
+      {
+        "targetMs": 12000,
+        "startedMs": 12089,
+        "textures": 658
+      },
+      {
+        "targetMs": 14000,
+        "startedMs": 14011,
+        "textures": 738
+      },
+      {
+        "targetMs": 18000,
+        "startedMs": 18011,
+        "textures": 922
+      },
+      {
+        "targetMs": 22000,
+        "startedMs": 22064,
+        "textures": 1097
+      },
+      {
+        "targetMs": 26000,
+        "startedMs": 26022,
+        "textures": 1256
+      }
+    ],
+    "aeriform-zh-Hant-390-pause": {
+      "pauseCount": 1344,
+      "heldCount": 1344,
+      "frozen": "608430b29ed2affa705902fb84069001d6906493357c5fc034533e8f1f5feb29",
+      "held": "608430b29ed2affa705902fb84069001d6906493357c5fc034533e8f1f5feb29"
+    },
+    "aeriform-zh-Hant-390-form-motion": {
+      "width": 351,
+      "height": 285,
+      "format": "bgra8unorm",
+      "submittedAt": 39157.600000000006,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 99,
+      "average": [
+        15,
+        8,
+        7,
+        19
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-zh-Hant-390-form-digital": {
+      "width": 351,
+      "height": 285,
+      "format": "bgra8unorm",
+      "submittedAt": 41998.70000000001,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 85,
+      "average": [
+        18,
+        14,
+        14,
+        21
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-zh-Hant-390-form-identity": {
+      "width": 351,
+      "height": 285,
+      "format": "bgra8unorm",
+      "submittedAt": 45084.70000000001,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 95,
+      "average": [
+        17,
+        9,
+        7,
+        20
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-zh-Hant-390-recovered": {
+      "width": 351,
+      "height": 285,
+      "format": "bgra8unorm",
+      "submittedAt": 47935.399999999994,
+      "alphaMode": "premultiplied",
+      "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+      "colors": 118,
+      "average": [
+        20,
+        10,
+        7,
+        23
+      ],
+      "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+    },
+    "aeriform-zh-Hant-390-presentations": {
+      "acquisitions": 53,
+      "elapsedMs": 1243,
+      "note": "getCurrentTexture acquisitions. This is not FPS.",
+      "devicePixelRatio": 1
+    }
+  },
+  "screenshots": [
+    "aeriform-zh-Hant-390-formation-first-presented.png",
+    "aeriform-zh-Hant-390-formation-after-20-acquisitions.png",
+    "aeriform-zh-Hant-390-webgpu-fold.png",
+    "aeriform-zh-Hant-390-initial-texture.png",
+    "aeriform-zh-Hant-390-natural-0s.png",
+    "aeriform-zh-Hant-390-natural-2s.png",
+    "aeriform-zh-Hant-390-natural-4s.png",
+    "aeriform-zh-Hant-390-natural-6s.png",
+    "aeriform-zh-Hant-390-natural-8s.png",
+    "aeriform-zh-Hant-390-natural-10s.png",
+    "aeriform-zh-Hant-390-natural-12s.png",
+    "aeriform-zh-Hant-390-natural-14s.png",
+    "aeriform-zh-Hant-390-natural-18s.png",
+    "aeriform-zh-Hant-390-natural-22s.png",
+    "aeriform-zh-Hant-390-natural-26s.png",
+    "aeriform-zh-Hant-390-settled.png",
+    "aeriform-zh-Hant-390-pointer-scatter.png",
+    "aeriform-zh-Hant-390-pointer-regroup.png",
+    "aeriform-zh-Hant-390-before-pause.png",
+    "aeriform-zh-Hant-390-paused.png",
+    "aeriform-zh-Hant-390-paused-held.png",
+    "aeriform-zh-Hant-390-resumed.png",
+    "aeriform-zh-Hant-390-transition-motion.png",
+    "aeriform-zh-Hant-390-form-motion.png",
+    "aeriform-zh-Hant-390-form-motion-texture.png",
+    "aeriform-zh-Hant-390-transition-digital.png",
+    "aeriform-zh-Hant-390-form-digital.png",
+    "aeriform-zh-Hant-390-form-digital-texture.png",
+    "aeriform-zh-Hant-390-transition-identity.png",
+    "aeriform-zh-Hant-390-form-identity.png",
+    "aeriform-zh-Hant-390-form-identity-texture.png",
+    "aeriform-zh-Hant-390-recovered-texture.png",
+    "aeriform-zh-Hant-390-touch-scatter.png",
+    "aeriform-zh-Hant-390-keyboard-motion.png",
+    "aeriform-zh-Hant-390-webgpu.png"
+  ],
+  "downloads": [],
+  "browser": "158.0.8127.18",
+  "result": "PASS"
+}

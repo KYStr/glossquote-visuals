@@ -44,6 +44,7 @@ async function verifyWork(work, head) {
   assert.ok(proof.reviewer && proof.reviewer !== proof.author);
   for (const gate of gates) assert.equal(proof.gates[gate], "PASS", gate);
   verifyDesignScores(proof.scores, proof.designReview);
+  verifyTemporalReview(proof.temporalReview, proof);
   for (const criteria of Object.values(proof.designReview.categories)) {
     for (const criterion of criteria) {
       for (const evidence of criterion.evidence) {
@@ -53,6 +54,12 @@ async function verifyWork(work, head) {
         assert.ok(existsSync(file) && lstatSync(file).isFile(), `Missing design evidence file: ${evidence}`);
       }
     }
+  }
+  for (const evidence of temporalEvidence(proof.temporalReview)) {
+    assert.ok(evidence.startsWith(`evidence/${work.id}/${work.candidateCommit}/`),
+      "Temporal evidence must belong to this work and candidate");
+    const file = resolve(root, evidence);
+    assert.ok(existsSync(file) && lstatSync(file).isFile(), `Missing temporal evidence: ${evidence}`);
   }
   assert.ok(Number.isSafeInteger(proof.jobId) && proof.jobId > 0);
   assert.ok(Number.isSafeInteger(proof.runId) && proof.runId > 0);
@@ -72,6 +79,7 @@ async function verifyWork(work, head) {
   assert.equal(job.head_sha, work.candidateCommit);
   assert.equal(job.run_id, proof.runId);
   assert.equal(job.workflow_name, "Verify visual candidate");
+  assert.equal(job.name, "All candidate checks", "Release needs the aggregate of all eight isolated browser lanes");
   assert.ok(job.labels.includes("windows-2025"), "Acceptance requires the verified Windows renderer");
 }
 
@@ -80,6 +88,64 @@ export const designCriteria = {
   uiDesign: ["informationHierarchy", "navigationActions", "formsStates", "responsiveAccessibility", "interactionConsistency"],
   commercialCompleteness: ["positioningValue", "decisionInformation", "truthfulTrust", "customerJourney", "completionRecovery"],
 };
+
+function temporalEvidence(review) {
+  return review.views.flatMap((view) => [
+    ...view.frames.map((frame) => frame.evidence),
+    ...view.controlEvidence,
+    ...(view.semanticControls?.sequence ?? []).flatMap(({ composite, texture }) => [composite, texture]),
+    ...Object.values(view.pauseEvidence),
+  ]);
+}
+
+export function verifyTemporalReview(review, proof) {
+  assert.equal(review?.version, "material-motion-v1");
+  assert.equal(review.status, "PASS");
+  assert.equal(review.commit, proof.commit);
+  assert.equal(review.reviewer, proof.reviewer);
+  assert.notEqual(review.reviewer, proof.author);
+  assert.deepEqual(review.views.map(({ viewport }) => viewport).sort(), ["desktop", "mobile"]);
+  for (const view of review.views) {
+    assert.equal(view.pauseMode, "freeze", "A static fallback is not a frozen GPU frame");
+    assert.equal(view.coherence, "PASS");
+    assert.ok(typeof view.reason === "string" && view.reason.trim().length > 0);
+    assert.ok(["measured-wall-clock", "controlled-animation-clock"].includes(view.timeBasis),
+      "Scheduled screenshot labels are not actual frame timestamps");
+    const times = view.frames.map(({ seconds }) => seconds);
+    assert.ok(times.length >= 5 && times[0] === 0 && times.at(-1) >= 8,
+      "Review at least five original frames spanning eight measured animation seconds");
+    assert.ok(times.every((time, index) => Number.isFinite(time) && time >= 0 &&
+      (index === 0 || time > times[index - 1])), "Original frames need ordered unique timestamps");
+    assert.ok(["periodic", "evolving"].includes(view.motionKind));
+    if (view.motionKind === "periodic") {
+      assert.ok(Number.isFinite(view.cycleSeconds) && view.cycleSeconds > 0);
+      assert.ok(times.at(-1) >= view.cycleSeconds, "The full declared animation cycle must be reviewed");
+    } else {
+      const controls = view.semanticControls;
+      assert.equal(controls?.status, "PASS", "Evolving pixels require an independent semantic form review");
+      assert.ok(typeof controls.reason === "string" && controls.reason.trim().length > 0);
+      assert.ok(Array.isArray(controls.sequence) && controls.sequence.length >= 4);
+      const states = controls.sequence.map(({ state }) => state);
+      assert.ok(states.every((state) => typeof state === "string" && state.length > 0));
+      assert.ok(new Set(states).size >= 3 && states[0] === states.at(-1), "Review three distinct controls and the return state");
+      for (const entry of controls.sequence) {
+        assert.equal(entry.verdict, "PASS");
+        assert.ok(typeof entry.observedShape === "string" && entry.observedShape.trim().length > 0);
+      }
+      for (const kind of ["composite", "texture"]) {
+        assert.equal(new Set(controls.sequence.map((entry) => entry[kind])).size, controls.sequence.length,
+          "Each form and its return require a distinct original capture");
+      }
+    }
+    assert.ok(Array.isArray(view.controlEvidence) && view.controlEvidence.length >= 3,
+      "Review minimum, middle/alternate, maximum and return control evidence");
+    assert.deepEqual(Object.keys(view.pauseEvidence).sort(), ["before", "paused", "resumed", "stillPaused"]);
+  }
+  for (const path of temporalEvidence(review)) {
+    assert.ok(typeof path === "string" && path.startsWith("evidence/") && path.length > 9 &&
+      !path.endsWith("/") && !path.includes("\\") && !path.split("/").includes(".."));
+  }
+}
 
 export function verifyReleaseSelection(ids, outputWorks) {
   assert.ok(ids.length > 0);

@@ -8,9 +8,11 @@ Vite base 與路由必須支援 `/glossquote-visuals/`；檢查所有語言切�
 
 發布順序：作者推 codex candidate → 開 PR → 非作者 review 同 SHA → 修正並重新核對必要項 → 合併核准內容 → 免費 Pages 配置/部署 → 讀回 deployment SHA 和 HTTPS 頁面/資產 → 真實瀏覽器 spot check → 更新 live 狀態。workflow_dispatch 也只能部署已有必要驗收證據的確切 default-branch commit 或受保護核准 ref，觸發人按下按鈕本身不等於驗收；build artifact、review 與部署需綁同一 source commit，合併造成差異就重新驗證差異。GitHub Pages 不能自訂所有 HTTP headers；不可偽稱有正式 CSP response headers。允許的 meta CSP 需驗證是否足夠保護本靜態作品，frame-ancestors 不能用 meta 假裝生效。若未來需要 Cloudflare hosting 再獨立安排具體遷移，不阻擋目前來源作品集。
 
-同時改版多件作品時，先形成共同整合候選並對每件完成該 SHA 的審查。workflow 的 work 輸入可用逗號分隔，例如 V001,V002,V003；每件都須 reviewed、無 blockers 且有獨立 acceptance.json，任一失敗即停止整批。release.json 記錄全部 works，正式站逐件核對兩種語言與 WebGPU。
+同時改版多件作品時，先形成共同整合候選並對每件完成該 SHA 的審查。M03 的 work 輸入為 V001,V002,V003,V004,V005；每件都須 reviewed、無 blockers 且有獨立 acceptance.json，任一失敗即停止整批。release.json 記錄全部 works，正式站逐件核對兩種語言與 WebGPU。
 
-Pages artifact 每次替換整站，因此所有輸出的作品都必須列入本次發布清單並完成候選審查。不能將仍標為 published 的作品用當前新來源重新建置，卻只引用舊 deployedCommit 當作已驗收。初期只有一件輸出時仍可單件發布；三件整合後使用完整清單。評分依 0.1 刻度轉為整數十分位加總，實際子項總和也須 >90，不能利用浮點容差將 9.0 提升為通過。
+M03 的 Verify visual candidate 將共用驗收、FORME 商品與兩種表面時序、玻璃材料室，以及粒子工作室的四個語言／尺寸與商業流程分在八台隔離 Windows VM。正式 acceptance 的 jobId 必須指向同 SHA 的 All candidate checks 彙總 job；單一 lane 綠燈不能替代整批通過。每件另附 material-motion-v1 temporalReview，引用相同候選內的桌面／手機原始時間序列、控制與暫停影格，由非作者記錄具體材質貼合判斷。自然拍攝的目標時間不等於真實擷取時間。FORME 專屬測試拆出以避免軟體 GPU 的完整時序擠佔其他作品驗收時間，檢查範圍沒有縮減。正式 Pages build 重驗共用項，其他專屬檢查由不可變候選的彙總 job 與來源差異限制保證；正式 HTTPS 仍逐件驗證兩語 WebGPU 與控制。
+
+Pages artifact 每次替換整站，因此所有輸出的作品都必須列入本次發布清單並完成候選審查。不能將仍標為 published 的作品用當前新來源重新建置，卻只引用舊 deployedCommit 當作已驗收。五件整合後使用完整清單。評分依 0.1 刻度轉為整數十分位加總，實際子項總和也須 >90，不能利用浮點容差將 9.0 提升為通過。
 
 失敗只回退本 repo 自己已驗證的前版，保留失敗證據；不得刪歷史、force push、停其他站、改 040141.xyz。
 

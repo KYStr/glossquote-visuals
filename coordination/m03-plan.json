@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "milestone": "M03",
+  "status": "candidate",
+  "baseline": "14554ed2c9a229736eb73102ef6bc352fde98adc",
+  "deployedBaseline": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+  "director": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
+  "integrationBranch": "codex/visuals-m03-integration",
+  "requestedProductionModel": "gpt-6.1-sol",
+  "requestedReasoning": "high",
+  "backendIdentityIndependentlyVerified": false,
+  "brief": "briefs/M03-hero-direction.md",
+  "releasePolicy": "Keep M02 live until all five works pass fixed-candidate review including temporal material coherence. Runtime registry is updated only during integration.",
+  "works": [
+    {
+      "id": "V001",
+      "slug": "paper-light",
+      "owner": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
+      "branch": "codex/v001-material-hero",
+      "scope": "repair",
+      "status": "candidate",
+      "brief": "briefs/M03-hero-direction.md",
+      "candidateCommit": null,
+      "blockers": [],
+      "authorCandidateCommit": "416c47b63339a0005eb1bfd43b6a114515ddf336"
+    },
+    {
+      "id": "V002",
+      "slug": "liquid-archive",
+      "owner": "01a1d0b2-3cc2-7600-bf46-2cab8dda6039",
+      "branch": "codex/v002-material-hero",
+      "scope": "repair",
+      "status": "candidate",
+      "brief": "briefs/M03-hero-direction.md",
+      "candidateCommit": null,
+      "blockers": [],
+      "authorCandidateCommit": "1db807b6efe93d8b755db65efde5bb69e23abcb8"
+    },
+    {
+      "id": "V003",
+      "slug": "night-signal",
+      "owner": "01a1d0b2-414c-7452-ad32-445d958fb8a1",
+      "branch": "codex/v003-signal-observer",
+      "scope": "upgrade",
+      "status": "candidate",
+      "brief": "briefs/M03-hero-direction.md",
+      "candidateCommit": null,
+      "blockers": [],
+      "authorCandidateCommit": "7735e03b47d69bd1bdf2682c542146658ab45e63"
+    },
+    {
+      "id": "V004",
+      "slug": "prism-materials",
+      "owner": "01a1d302-21ef-7052-92d8-1ca5a415af0a",
+      "branch": "codex/v004-prism-materials",
+      "scope": "new",
+      "status": "candidate",
+      "brief": "briefs/V004-prism-materials.md",
+      "candidateCommit": null,
+      "blockers": [],
+      "previousOwner": "/root/prism_build",
+      "hostId": "local",
+      "visibleProductionChat": true,
+      "authorCandidateCommit": "5a3bc7011720b63ffb42f7e717b29f68b665116e"
+    },
+    {
+      "id": "V005",
+      "slug": "aeriform",
+      "owner": "01a1d302-2c57-70c3-b388-eed0ca27e754",
+      "branch": "codex/v005-aeriform",
+      "scope": "new",
+      "status": "candidate",
+      "brief": "briefs/V005-aeriform.md",
+      "candidateCommit": null,
+      "blockers": [],
+      "previousOwner": "/root/aero_build",
+      "hostId": "local",
+      "visibleProductionChat": true,
+      "authorCandidateCommit": "c9db17d750927158547171ed02c41e9410bca75d"
+    }
+  ],
+  "productionPolicy": "Every new visual website uses a new user-visible gpt-6.1-sol/high production chat; revisions continue in that work chat."
+}

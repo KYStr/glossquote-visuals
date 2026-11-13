@@ -1,0 +1,203 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "runId": 43375558737,
+  "run": {
+    "id": 43375558737,
+    "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737",
+    "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "push",
+    "name": "Verify visual candidate",
+    "run_number": 105,
+    "created_at": "2026-11-13T05:59:12Z",
+    "updated_at": "2026-11-13T06:06:22Z"
+  },
+  "aggregateJob": {
+    "id": 131723689722,
+    "run_id": 43375558737,
+    "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+    "status": "completed",
+    "conclusion": "success",
+    "name": "All candidate checks",
+    "workflow_name": "Verify visual candidate",
+    "labels": [
+      "windows-2025"
+    ],
+    "started_at": "2026-11-13T06:06:19Z",
+    "completed_at": "2026-11-13T06:06:22Z",
+    "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131723689722"
+  },
+  "artifacts": [
+    {
+      "id": 14015250395,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-shared",
+      "digest": "sha256:cf6d1b2aad8163db9211d76983ec222fe149e6b6bfea46b9cdc2829fb479f9f6",
+      "size_in_bytes": 141986344,
+      "job": {
+        "id": 131721121589,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (shared, npm run test:browser -- --shared, .runs/browser-evidence/)",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:14Z",
+        "completed_at": "2026-11-13T06:06:17Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121589"
+      }
+    },
+    {
+      "id": 14015090165,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-prism",
+      "digest": "sha256:b58ec44dff381a5adae74740e282fe72e9db64f297b0e931bfd7eec84208a5c7",
+      "size_in_bytes": 18035264,
+      "job": {
+        "id": 131721121132,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (prism, node test/browser/prism-candidate.mjs, .runs/prism-evidence/)",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:14Z",
+        "completed_at": "2026-11-13T06:02:21Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121132"
+      }
+    },
+    {
+      "id": 14014830956,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-forme-studio",
+      "digest": "sha256:de316426f8a8485fee76601076d264e84cc466afde9f6467e47948469911ff8e",
+      "size_in_bytes": 50227465,
+      "job": {
+        "id": 131721121550,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (forme-studio, npm run test:browser -- --forme-studio, .runs/browser-evidence/)",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:14Z",
+        "completed_at": "2026-11-13T06:02:37Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121550"
+      }
+    },
+    {
+      "id": 14014705812,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-aeriform-commercial",
+      "digest": "sha256:e91cbb746ba46d8b96619f49b705f1940066d1b941c52e57b52721bada6ecb5e",
+      "size_in_bytes": 1863980,
+      "job": {
+        "id": 131721121402,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (aeriform-commercial, node test/browser/aeriform-commercial.mjs commercial, .runs/aeriform...",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:14Z",
+        "completed_at": "2026-11-13T06:00:25Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121402"
+      }
+    },
+    {
+      "id": 14014571208,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-aeriform-zh-mobile",
+      "digest": "sha256:c701316be8a951d00391830bcee8d346fdeca238ec03a62982be265e4adb0ef0",
+      "size_in_bytes": 3502624,
+      "job": {
+        "id": 131721121417,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (aeriform-zh-mobile, node test/browser/aeriform-commercial.mjs zh-mobile, .runs/aeriform-e...",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:14Z",
+        "completed_at": "2026-11-13T06:00:54Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121417"
+      }
+    },
+    {
+      "id": 14014102764,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-aeriform-en-desktop",
+      "digest": "sha256:6f2f2835467dd822619e2b2923f8b1e119f8e709e1c5c9e6a6ef52481a0bd944",
+      "size_in_bytes": 15392661,
+      "job": {
+        "id": 131721121467,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (aeriform-en-desktop, node test/browser/aeriform-commercial.mjs en-desktop, .runs/aeriform...",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:14Z",
+        "completed_at": "2026-11-13T06:01:52Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121467"
+      }
+    },
+    {
+      "id": 14014024085,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-aeriform-en-mobile",
+      "digest": "sha256:c25b8363af160b9fd54d17338080745b31811f8e717360723515e8d31c98dbc1",
+      "size_in_bytes": 821633,
+      "job": {
+        "id": 131721121514,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (aeriform-en-mobile, node test/browser/aeriform-commercial.mjs en-mobile, .runs/aeriform-e...",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:15Z",
+        "completed_at": "2026-11-13T06:00:29Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121514"
+      }
+    },
+    {
+      "id": 14013434426,
+      "name": "visual-candidate-8fa4e8bcb86748fb100a10fd5a07904761e3c933-Windows-aeriform-zh-desktop",
+      "digest": "sha256:d8a4c6a8401aa7b73434866dd79536934121f58adaff504aba702a32a10536f0",
+      "size_in_bytes": 2214107,
+      "job": {
+        "id": 131721121518,
+        "run_id": 43375558737,
+        "head_sha": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+        "status": "completed",
+        "conclusion": "success",
+        "name": "verify (aeriform-zh-desktop, node test/browser/aeriform-commercial.mjs zh-desktop, .runs/aeriform...",
+        "workflow_name": "Verify visual candidate",
+        "labels": [
+          "windows-2025"
+        ],
+        "started_at": "2026-11-13T05:59:14Z",
+        "completed_at": "2026-11-13T06:00:10Z",
+        "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/43375558737/job/131721121518"
+      }
+    }
+  ],
+  "archiveDigestsVerified": true,
+  "extractedFilesMatchedArchive": true
+}

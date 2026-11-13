@@ -1,0 +1,1227 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "work": "V003",
+  "reviewer": "/root/signal_review",
+  "runId": 43375558737,
+  "jobId": 131723689722,
+  "scores": {
+    "artDirection": 9.1,
+    "uiDesign": 9.2,
+    "commercialCompleteness": 9.4
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "深藍、奶黃、壓縮海報字與金／紫／紅節目色彩形成一致電子音樂夜品牌；場地影像、節目列與票務區延續這個方向。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "桌面大標與緞帶雕塑有清楚主次，主 CTA 不被材質搶去；手機先交代活動及入口，再提供有份量的主視覺，未遮蔽資訊。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "中英文標題、節目時間、演出者與票價層級清楚。320px／200% 首屏仍可讀且 CTA 能換行；英文手機暫停列較鬆，保留精緻度餘裕。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "本候選的金色寬幅、冷紫密集及紅色細長緞帶可辨，網格與亮暗保留立體前後關係；48 張自然 GPU 原幀及三組受控轉場未見黑場或形體重置。最細手機邊緣仍略有點線感，維持 1.8。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00350ms-composite.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00700ms-composite.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-01080ms-composite.png"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "雙語全頁由深色主視覺、淺色節目、深色場地再到票務及 FAQ，節奏完整；390px 圖文順序及 768px 版面仍清楚。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-768-still.png"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "日期、地點、活動時段與主行動在前，節目、交通與票種依決策次序展開，單場／全夜的選擇與總額易於辨識。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "首屏三節目預覽與下方節目列同步；主 CTA、票種選擇、完成後下載與修改的目的清楚，鍵盤／touch 的流程由同 SHA 報告支持。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-390-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "單場、場次、數量、單價及總額均有明確標籤；實際選票與完成圖顯示三張單場 NT$1,440、三張全夜 NT$2,640，必填及無效數量依同 SHA 測試。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "實看 390px 中英頁面、768px 與 320px／200% 首屏；票務與完成操作保持可讀。完整尺寸、鍵盤、touch、fallback 依本 SHA 執行報告，未把這些證據等同實體裝置或人工讀屏驗證。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-320-200-percent.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "預覽、節目選中狀態、單場建議與票務摘要一致；自訂選擇保留有本 SHA 測試。shared 桌面與手機 controlled quartet 確認真正同幀暫停、零提交及恢復動作。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-en.txt",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-zh-Hant.txt",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-before-native-pause.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause-after-1000ms.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-resume.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-before-native-pause.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-resume.png"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "港灣電子音樂夜的日期、時間、場地及環境音／低頻／深夜 DJ 體驗明確，主視覺服務活動定位並連到選票流程。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "三場時間、18:30 開門、票價、數量及交通回程提示支持選擇；場地以觀眾口吻說明入口、站席與休息，且揭露概念場所。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "score": 2,
+          "status": "PASS",
+          "reason": "頁尾、場地說明、票價及完成摘要皆明確揭露概念性質；兩語實際下載直接說明沒有付款或保留席位，沒有虛構交易成功或真實地址。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-en.txt",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-zh-Hant.txt"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "互動已形成商業活動流程：了解節目、選單場／全夜與張數、檢視摘要、修改及下載。兩語原始畫面、UTF-8 下載及同 SHA 測試相互一致。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "完成畫面及 TXT 含相同日期、18:30、三場時段、張數與 NT$2,640；可返回修改，無效數量、必填、選擇保留與單場入場時間由同 SHA 斷言覆蓋。",
+          "evidence": [
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-en.txt",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-zh-Hant.txt",
+            "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json"
+          ]
+        }
+      ]
+    }
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+    "reviewer": "/root/signal_review",
+    "views": [
+      {
+        "viewport": "desktop",
+        "width": 1440,
+        "motionKind": "periodic",
+        "cycleSeconds": 10,
+        "timeBasis": "measured-wall-clock",
+        "coherence": "PASS",
+        "pauseMode": "freeze",
+        "frames": [
+          {
+            "seconds": 0,
+            "requestedMs": 0,
+            "reportedPresentedMs": 49,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-00000ms-texture.png",
+            "sha256": "bd07bf2e0172d7ad6fcac36ef0258c3a9a5e97350655efc501180016dd8117a5"
+          },
+          {
+            "seconds": 2.007,
+            "requestedMs": 2006,
+            "reportedPresentedMs": 2056,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-02000ms-texture.png",
+            "sha256": "c55bb3f1b1484933e1b92d58ee8c1c2dc31ed7d5fd98d9c3c35ad24946e00ed9"
+          },
+          {
+            "seconds": 4.013,
+            "requestedMs": 4023,
+            "reportedPresentedMs": 4062,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-04000ms-texture.png",
+            "sha256": "e3f58fb06ecb1c6a86d7fe4a6bb9ae54f3b77531c515ad58af6dee3c438b26ac"
+          },
+          {
+            "seconds": 6,
+            "requestedMs": 6002,
+            "reportedPresentedMs": 6049,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-06000ms-texture.png",
+            "sha256": "c31993308bb037711e1c37c1b07b7c4b33a2ad199525440e5c1842d93efba79d"
+          },
+          {
+            "seconds": 8.038,
+            "requestedMs": 8028,
+            "reportedPresentedMs": 8087,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-08000ms-texture.png",
+            "sha256": "fad1ba9540d4e2ecab5c20dd6e282fe1188493077681c73f032158d2530a33ff"
+          },
+          {
+            "seconds": 9.034,
+            "requestedMs": 9020,
+            "reportedPresentedMs": 9083,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-09000ms-texture.png",
+            "sha256": "c4a1ea8621f77ba4b99271b81cd24e8b9ac81173200f6be37c423b2eb1988807"
+          },
+          {
+            "seconds": 10.034,
+            "requestedMs": 10007,
+            "reportedPresentedMs": 10083,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-10000ms-texture.png",
+            "sha256": "ce28f8d06b9efb5dc05311db858a0b6f1c259527bfd957de1cafb1022baaf171"
+          },
+          {
+            "seconds": 11.016,
+            "requestedMs": 11008,
+            "reportedPresentedMs": 11065,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-11000ms-texture.png",
+            "sha256": "c195ddf1d9c1fc2a3947293451f8b3f3ec906b765976e142d72a5a81131e36f0"
+          }
+        ],
+        "reason": "已實看本候選三節目所有自然取樣，Carrier 寬幅金色、Echo 密集冷紫與 Dawn 細長紅色均跨完整名義週期維持輪廓、網格、高光與粒子空間，未見黑場或重置。商業全頁與轉場合成圖確認 shader 在原 CSS 中可見；controlled quartet 獨立證明同幀暫停，沒有用自然時鐘 before→click 充當同幀。",
+        "controlEvidence": [
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00000ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00350ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00700ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-01080ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00000ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00350ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00700ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-01080ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00000ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00350ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00700ms-composite.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-01080ms-composite.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-before-native-pause.png",
+          "paused": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause.png",
+          "stillPaused": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause-after-1000ms.png",
+          "resumed": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-resume.png"
+        },
+        "pauseViewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "pauseEvidenceStatus": "PASS",
+        "measurementEvidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json",
+        "timeQualification": "seconds 為 results 的 presentedMs 減首張後換秒；該欄實際來源是 GPU submission 相對時間，非螢幕呈現時間。natural 為 GPU texture 間隔原圖，不能代表每幀流暢度；可見性與控制狀態另由原 CSS 合成圖驗證。次級粒子不要求全週期首尾每像素一致。",
+        "programSequences": [
+          {
+            "program": "carrier",
+            "motionKind": "periodic",
+            "cycleSeconds": 10,
+            "timeBasis": "measured-wall-clock",
+            "submittedSpanSeconds": 11.016,
+            "frames": [
+              {
+                "seconds": 0,
+                "requestedMs": 0,
+                "reportedPresentedMs": 49,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-00000ms-texture.png",
+                "sha256": "bd07bf2e0172d7ad6fcac36ef0258c3a9a5e97350655efc501180016dd8117a5"
+              },
+              {
+                "seconds": 2.007,
+                "requestedMs": 2006,
+                "reportedPresentedMs": 2056,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-02000ms-texture.png",
+                "sha256": "c55bb3f1b1484933e1b92d58ee8c1c2dc31ed7d5fd98d9c3c35ad24946e00ed9"
+              },
+              {
+                "seconds": 4.013,
+                "requestedMs": 4023,
+                "reportedPresentedMs": 4062,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-04000ms-texture.png",
+                "sha256": "e3f58fb06ecb1c6a86d7fe4a6bb9ae54f3b77531c515ad58af6dee3c438b26ac"
+              },
+              {
+                "seconds": 6,
+                "requestedMs": 6002,
+                "reportedPresentedMs": 6049,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-06000ms-texture.png",
+                "sha256": "c31993308bb037711e1c37c1b07b7c4b33a2ad199525440e5c1842d93efba79d"
+              },
+              {
+                "seconds": 8.038,
+                "requestedMs": 8028,
+                "reportedPresentedMs": 8087,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-08000ms-texture.png",
+                "sha256": "fad1ba9540d4e2ecab5c20dd6e282fe1188493077681c73f032158d2530a33ff"
+              },
+              {
+                "seconds": 9.034,
+                "requestedMs": 9020,
+                "reportedPresentedMs": 9083,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-09000ms-texture.png",
+                "sha256": "c4a1ea8621f77ba4b99271b81cd24e8b9ac81173200f6be37c423b2eb1988807"
+              },
+              {
+                "seconds": 10.034,
+                "requestedMs": 10007,
+                "reportedPresentedMs": 10083,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-10000ms-texture.png",
+                "sha256": "ce28f8d06b9efb5dc05311db858a0b6f1c259527bfd957de1cafb1022baaf171"
+              },
+              {
+                "seconds": 11.016,
+                "requestedMs": 11008,
+                "reportedPresentedMs": 11065,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-carrier-11000ms-texture.png",
+                "sha256": "c195ddf1d9c1fc2a3947293451f8b3f3ec906b765976e142d72a5a81131e36f0"
+              }
+            ]
+          },
+          {
+            "program": "echo",
+            "motionKind": "periodic",
+            "cycleSeconds": 8,
+            "timeBasis": "measured-wall-clock",
+            "submittedSpanSeconds": 8.995,
+            "frames": [
+              {
+                "seconds": 0,
+                "requestedMs": 0,
+                "reportedPresentedMs": 37,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-echo-00000ms-texture.png",
+                "sha256": "6de500169d68ab964b19922f775179cd25e107c0383727fad0f7be1646dc55a3"
+              },
+              {
+                "seconds": 2.045,
+                "requestedMs": 2014,
+                "reportedPresentedMs": 2082,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-echo-02000ms-texture.png",
+                "sha256": "16f78f94e81a930906e6b244dcff3d1c1ca504da5ea8dec24ed46ee8d482bccf"
+              },
+              {
+                "seconds": 4.013,
+                "requestedMs": 4004,
+                "reportedPresentedMs": 4050,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-echo-04000ms-texture.png",
+                "sha256": "d1bb1beb9e771c6e2c00f27a211193a41390a41780d67e60bd676a3f1e2d0a5c"
+              },
+              {
+                "seconds": 6.056,
+                "requestedMs": 6022,
+                "reportedPresentedMs": 6093,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-echo-06000ms-texture.png",
+                "sha256": "6e37ce9173279c2a902fa9a8b1215c026217d4040cc56fceaa8b46163c17ee26"
+              },
+              {
+                "seconds": 8.008,
+                "requestedMs": 8008,
+                "reportedPresentedMs": 8045,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-echo-08000ms-texture.png",
+                "sha256": "98a5c45b96e07a724096539057c664519b6977c798cbd07c40fe59fb6f6b48bb"
+              },
+              {
+                "seconds": 8.995,
+                "requestedMs": 9011,
+                "reportedPresentedMs": 9032,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-echo-09000ms-texture.png",
+                "sha256": "a7a130b42617cceb4f144eb960c362650f83f4b380121e4115be712d45e0a946"
+              }
+            ]
+          },
+          {
+            "program": "dawn",
+            "motionKind": "periodic",
+            "cycleSeconds": 12,
+            "timeBasis": "measured-wall-clock",
+            "submittedSpanSeconds": 13.021,
+            "frames": [
+              {
+                "seconds": 0,
+                "requestedMs": 0,
+                "reportedPresentedMs": 22,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-00000ms-texture.png",
+                "sha256": "deb905cd6b2632da83000aaeebf274648f4a78c73e06f21efb7d0253446bb1b0"
+              },
+              {
+                "seconds": 2.049,
+                "requestedMs": 2015,
+                "reportedPresentedMs": 2071,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-02000ms-texture.png",
+                "sha256": "5a585c926103555834a31ea06953d9ee186d7577cfd2c682ec339d82798e5caf"
+              },
+              {
+                "seconds": 4.016,
+                "requestedMs": 4001,
+                "reportedPresentedMs": 4038,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-04000ms-texture.png",
+                "sha256": "69a1c442f6ef11346414f1212b5c6c3998f099b85b908a8da8e1dab4ae6e9269"
+              },
+              {
+                "seconds": 6.063,
+                "requestedMs": 6015,
+                "reportedPresentedMs": 6085,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-06000ms-texture.png",
+                "sha256": "31b6c331117dac6040753cb51c6e44b1017a4bde82a1c764266997bcdf85dac8"
+              },
+              {
+                "seconds": 8.044,
+                "requestedMs": 8003,
+                "reportedPresentedMs": 8066,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-08000ms-texture.png",
+                "sha256": "730bed130de390d6b04033f19dd749e6e9fb095354684f8e0e6f6bbf2562472a"
+              },
+              {
+                "seconds": 9.039,
+                "requestedMs": 9004,
+                "reportedPresentedMs": 9061,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-09000ms-texture.png",
+                "sha256": "7d7f38ff8c106a91f192acf475a15264244594c8e7bcb94060fdec89943a82fc"
+              },
+              {
+                "seconds": 10.083,
+                "requestedMs": 10034,
+                "reportedPresentedMs": 10105,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-10000ms-texture.png",
+                "sha256": "4ab0e8a449d297e84ec801b09bc33a34bf7b6f24d5dc785b8def64c7bcb6eb4f"
+              },
+              {
+                "seconds": 11.046,
+                "requestedMs": 11019,
+                "reportedPresentedMs": 11068,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-11000ms-texture.png",
+                "sha256": "1fb50972dc42e85cb949f66ad1b0eaeaa2b4c0599932458f15559a0b053206f6"
+              },
+              {
+                "seconds": 12.043,
+                "requestedMs": 12019,
+                "reportedPresentedMs": 12065,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-12000ms-texture.png",
+                "sha256": "84cc6b3a7fa1a041a445bea447a4e3ed0461c3fa66e8052873a3967506af778b"
+              },
+              {
+                "seconds": 13.021,
+                "requestedMs": 13005,
+                "reportedPresentedMs": 13043,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-desktop-dawn-13000ms-texture.png",
+                "sha256": "41d5a32f4cdff2d885dc88d4b3f24bfd09fb8bcb8581cfb782c64c800ca2e7e1"
+              }
+            ]
+          }
+        ],
+        "controlledPauseMeasurement": {
+          "beforeToPaused": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 576
+          },
+          "pausedToAfter": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 1100,
+            "height": 576
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "texturesBefore": 158,
+          "texturesAfter": 158,
+          "pointerChallengePassed": true,
+          "resumeFrames": 6
+        }
+      },
+      {
+        "viewport": "mobile",
+        "width": 390,
+        "motionKind": "periodic",
+        "cycleSeconds": 10,
+        "timeBasis": "measured-wall-clock",
+        "coherence": "PASS",
+        "pauseMode": "freeze",
+        "frames": [
+          {
+            "seconds": 0,
+            "requestedMs": 0,
+            "reportedPresentedMs": 17,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-00000ms-texture.png",
+            "sha256": "2595cf7a9a1d9979e08a655937306ce54345c495974e4489872ce644961cd8cc"
+          },
+          {
+            "seconds": 2.012,
+            "requestedMs": 2002,
+            "reportedPresentedMs": 2029,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-02000ms-texture.png",
+            "sha256": "5c6266a6033030861d6a6aa5cfe14bafcff48f7afc0e15692eaccc30cbc6ce7b"
+          },
+          {
+            "seconds": 3.985,
+            "requestedMs": 4002,
+            "reportedPresentedMs": 4002,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-04000ms-texture.png",
+            "sha256": "cb7a133c66e27c888206bb81bece33004fc1bb70bfddf88a20a020e8395cccda"
+          },
+          {
+            "seconds": 6.013,
+            "requestedMs": 6000,
+            "reportedPresentedMs": 6030,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-06000ms-texture.png",
+            "sha256": "029144904533121bb556be36f53e5950ed61515a8f2a6e350525f85aecae177e"
+          },
+          {
+            "seconds": 7.991,
+            "requestedMs": 8000,
+            "reportedPresentedMs": 8008,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-08000ms-texture.png",
+            "sha256": "8bdaf498d4dca813a6c8bea7d195e8eabe904627f264e043a5bd263a8c0c1021"
+          },
+          {
+            "seconds": 8.989,
+            "requestedMs": 9002,
+            "reportedPresentedMs": 9006,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-09000ms-texture.png",
+            "sha256": "fd70bf2488ab6fa609d17562836414133c7e3736ac80df7353b823cc528a116d"
+          },
+          {
+            "seconds": 10.01,
+            "requestedMs": 10007,
+            "reportedPresentedMs": 10027,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-10000ms-texture.png",
+            "sha256": "459ed69a1775536534ccaed93da849f1dc0ae87356598b4bd2e482e878d30f0c"
+          },
+          {
+            "seconds": 11.001,
+            "requestedMs": 11002,
+            "reportedPresentedMs": 11018,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-11000ms-texture.png",
+            "sha256": "f443610eb6b3e6fc4d9529756f51487bad880836da711760fc467bf999cb93bc"
+          }
+        ],
+        "reason": "已實看本候選三節目所有自然取樣，Carrier 寬幅金色、Echo 密集冷紫與 Dawn 細長紅色均跨完整名義週期維持輪廓、網格、高光與粒子空間，未見黑場或重置。商業全頁與轉場合成圖確認 shader 在原 CSS 中可見；controlled quartet 獨立證明同幀暫停，沒有用自然時鐘 before→click 充當同幀。",
+        "controlEvidence": [
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-00000ms-texture.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-echo-00000ms-texture.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-00000ms-texture.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-11000ms-texture.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-before-native-pause.png",
+          "paused": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause.png",
+          "stillPaused": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+          "resumed": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-resume.png"
+        },
+        "pauseViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "pauseEvidenceStatus": "PASS",
+        "measurementEvidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json",
+        "timeQualification": "seconds 為 results 的 presentedMs 減首張後換秒；該欄實際來源是 GPU submission 相對時間，非螢幕呈現時間。natural 為 GPU texture 間隔原圖，不能代表每幀流暢度；可見性與控制狀態另由原 CSS 合成圖驗證。次級粒子不要求全週期首尾每像素一致。",
+        "programSequences": [
+          {
+            "program": "carrier",
+            "motionKind": "periodic",
+            "cycleSeconds": 10,
+            "timeBasis": "measured-wall-clock",
+            "submittedSpanSeconds": 11.001,
+            "frames": [
+              {
+                "seconds": 0,
+                "requestedMs": 0,
+                "reportedPresentedMs": 17,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-00000ms-texture.png",
+                "sha256": "2595cf7a9a1d9979e08a655937306ce54345c495974e4489872ce644961cd8cc"
+              },
+              {
+                "seconds": 2.012,
+                "requestedMs": 2002,
+                "reportedPresentedMs": 2029,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-02000ms-texture.png",
+                "sha256": "5c6266a6033030861d6a6aa5cfe14bafcff48f7afc0e15692eaccc30cbc6ce7b"
+              },
+              {
+                "seconds": 3.985,
+                "requestedMs": 4002,
+                "reportedPresentedMs": 4002,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-04000ms-texture.png",
+                "sha256": "cb7a133c66e27c888206bb81bece33004fc1bb70bfddf88a20a020e8395cccda"
+              },
+              {
+                "seconds": 6.013,
+                "requestedMs": 6000,
+                "reportedPresentedMs": 6030,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-06000ms-texture.png",
+                "sha256": "029144904533121bb556be36f53e5950ed61515a8f2a6e350525f85aecae177e"
+              },
+              {
+                "seconds": 7.991,
+                "requestedMs": 8000,
+                "reportedPresentedMs": 8008,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-08000ms-texture.png",
+                "sha256": "8bdaf498d4dca813a6c8bea7d195e8eabe904627f264e043a5bd263a8c0c1021"
+              },
+              {
+                "seconds": 8.989,
+                "requestedMs": 9002,
+                "reportedPresentedMs": 9006,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-09000ms-texture.png",
+                "sha256": "fd70bf2488ab6fa609d17562836414133c7e3736ac80df7353b823cc528a116d"
+              },
+              {
+                "seconds": 10.01,
+                "requestedMs": 10007,
+                "reportedPresentedMs": 10027,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-10000ms-texture.png",
+                "sha256": "459ed69a1775536534ccaed93da849f1dc0ae87356598b4bd2e482e878d30f0c"
+              },
+              {
+                "seconds": 11.001,
+                "requestedMs": 11002,
+                "reportedPresentedMs": 11018,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-carrier-11000ms-texture.png",
+                "sha256": "f443610eb6b3e6fc4d9529756f51487bad880836da711760fc467bf999cb93bc"
+              }
+            ]
+          },
+          {
+            "program": "echo",
+            "motionKind": "periodic",
+            "cycleSeconds": 8,
+            "timeBasis": "measured-wall-clock",
+            "submittedSpanSeconds": 9.005,
+            "frames": [
+              {
+                "seconds": 0,
+                "requestedMs": 0,
+                "reportedPresentedMs": 15,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-echo-00000ms-texture.png",
+                "sha256": "1d051b888d7822f34b0d0588444b1accebac827e4a7cd31875591e3db379d110"
+              },
+              {
+                "seconds": 1.99,
+                "requestedMs": 2002,
+                "reportedPresentedMs": 2005,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-echo-02000ms-texture.png",
+                "sha256": "66ada806a90f284732cf32e7b5a57f86d3a2fedd899e6ce6229b7dd185ff1d5e"
+              },
+              {
+                "seconds": 4,
+                "requestedMs": 4002,
+                "reportedPresentedMs": 4015,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-echo-04000ms-texture.png",
+                "sha256": "ced000c95c98843730a807c1cfc4f8e097e397b55bf1052ab08fb6fde2d336f7"
+              },
+              {
+                "seconds": 5.995,
+                "requestedMs": 6010,
+                "reportedPresentedMs": 6010,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-echo-06000ms-texture.png",
+                "sha256": "5ac696f0b9b137ab4b2f87c844aa9b22446b7d720a9edf3fd13d48a44b8cf3ff"
+              },
+              {
+                "seconds": 8.01,
+                "requestedMs": 8006,
+                "reportedPresentedMs": 8025,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-echo-08000ms-texture.png",
+                "sha256": "43235ff50acdf8b1d20c298ddb3d081bc75547337339aff4787ceb3a3071f33e"
+              },
+              {
+                "seconds": 9.005,
+                "requestedMs": 9001,
+                "reportedPresentedMs": 9020,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-echo-09000ms-texture.png",
+                "sha256": "e0f3a5e29315c43052da10185c2e209a8ce251b1f886f157f94b4ef3c5f4c71a"
+              }
+            ]
+          },
+          {
+            "program": "dawn",
+            "motionKind": "periodic",
+            "cycleSeconds": 12,
+            "timeBasis": "measured-wall-clock",
+            "submittedSpanSeconds": 12.994,
+            "frames": [
+              {
+                "seconds": 0,
+                "requestedMs": 0,
+                "reportedPresentedMs": 18,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-00000ms-texture.png",
+                "sha256": "013b775f40c985a3ceb856d31742d48a21ed4d896ced598564524d14036b0f54"
+              },
+              {
+                "seconds": 1.994,
+                "requestedMs": 2002,
+                "reportedPresentedMs": 2012,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-02000ms-texture.png",
+                "sha256": "c6a27c12bdc838ab93a25c2c69d0466fe308db1c8168d14da777b3c4c537cf13"
+              },
+              {
+                "seconds": 4.004,
+                "requestedMs": 4003,
+                "reportedPresentedMs": 4022,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-04000ms-texture.png",
+                "sha256": "8886bcb8a7ad7fa8c12d5b614cedbb0ff4a7209b44283b5f3d2272b7b610e36e"
+              },
+              {
+                "seconds": 5.99,
+                "requestedMs": 6002,
+                "reportedPresentedMs": 6008,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-06000ms-texture.png",
+                "sha256": "73f91786c86df98ed2cb88d11ad5d5cde4ee7eb4f75a4c4dd37a9499eba29764"
+              },
+              {
+                "seconds": 8.001,
+                "requestedMs": 8001,
+                "reportedPresentedMs": 8019,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-08000ms-texture.png",
+                "sha256": "fbd3376e7766d6174cf87cc089cbba4f22caf0f40d6631294544487b520239e5"
+              },
+              {
+                "seconds": 8.994,
+                "requestedMs": 9002,
+                "reportedPresentedMs": 9012,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-09000ms-texture.png",
+                "sha256": "dbb825f44cabd44f3c5483c77adb95ddfaf42539a13e2febcdf8118d1a5413d1"
+              },
+              {
+                "seconds": 10.026,
+                "requestedMs": 10016,
+                "reportedPresentedMs": 10044,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-10000ms-texture.png",
+                "sha256": "0ab1e11871c3e66f19cd3ecce111159cd6a72943f9f3675941c8db00c55dc876"
+              },
+              {
+                "seconds": 10.999,
+                "requestedMs": 11001,
+                "reportedPresentedMs": 11017,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-11000ms-texture.png",
+                "sha256": "6b57a653356f65059d16fc10330ea4663cba9dd614bbe1810fb8942924519661"
+              },
+              {
+                "seconds": 12.009,
+                "requestedMs": 12006,
+                "reportedPresentedMs": 12027,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-12000ms-texture.png",
+                "sha256": "9ec43868e3177549caab007f9f73bfd3ce1f47aebe6cad4a0add5bc40a8eb311"
+              },
+              {
+                "seconds": 12.994,
+                "requestedMs": 13003,
+                "reportedPresentedMs": 13012,
+                "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-mobile-dawn-13000ms-texture.png",
+                "sha256": "c5c8bbca9355b27fdde886a5278a455c449a71a88ca42cbaf686bf4782b240ae"
+              }
+            ]
+          }
+        ],
+        "controlledPauseMeasurement": {
+          "beforeToPaused": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 390,
+            "height": 249
+          },
+          "pausedToAfter": {
+            "mean": 0,
+            "peak": 0,
+            "changedPixels": 0,
+            "width": 390,
+            "height": 249
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "texturesBefore": 81,
+          "texturesAfter": 81,
+          "pointerChallengePassed": true,
+          "resumeFrames": 6
+        }
+      }
+    ]
+  },
+  "limitations": [
+    {
+      "status": "LIMITATION",
+      "scope": "natural-time",
+      "reason": "三節目的自然證據是 GPU texture 間隔取樣，不是連續錄影或顯示器呈現時間；以實際 submission 跨度覆蓋名義週期，不宣稱所有次級動作完全閉合。"
+    },
+    {
+      "status": "LIMITATION",
+      "scope": "paired-capture-timing",
+      "reason": "shared sample 的 GPU readback 在 100ms 區間前端、composite 在區間後取得；兩者按控制狀態配對，未宣稱同一提交幀。pause 只比較 controlled clock 的 composite，desktop 為 1100×850，mobile 為 390×844；自然 desktop 為 1440px。"
+    },
+    {
+      "status": "LIMITATION",
+      "scope": "material-detail",
+      "reason": "手機 Dawn 最細左緣局部有輕微階梯／點線感；未影響主形、內容或操作，已反映在材質與美術分數，沒有新增 >9 阻擋。"
+    },
+    {
+      "status": "NOT_RUN",
+      "scope": "physical-gpu-mobile-screen-reader",
+      "reason": "遠端 Windows WARP 原圖與自動鍵盤／touch／縮放證據，未驗實體 GPU、實體手機或人工讀屏。"
+    },
+    {
+      "status": "NOT_RUN",
+      "scope": "live-deployment",
+      "reason": "本件接受固定候選與遠端測試產物，尚未驗證正式部署網址。"
+    }
+  ],
+  "attachments": [
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-1440-webgpu.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-390-webgpu.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-768-still.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-320-200-percent.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-selection.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-selection.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-complete.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-en.txt",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-zh-Hant.txt",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00000ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00350ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00700ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-01080ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00000ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00350ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00700ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-01080ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00000ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00350ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00700ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-01080ms-composite.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-before-native-pause.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause-after-1000ms.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-resume.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-before-native-pause.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+    "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-resume.png"
+  ],
+  "blockingFindings": [],
+  "verdict": "APPROVED",
+  "verdictReason": "本候選原圖與流程支持美術 9.1、UI 9.2、商業完整度 9.4，均嚴格超過 9。三節目兩尺寸完整自然週期、原 CSS 轉場、雙語選票下載及桌面／手機 controlled 同幀暫停已核對；沒有未解的候選阻擋。這不等於正式 live 驗證。",
+  "inspectionDetails": {
+    "artifact": {
+      "lane": "shared",
+      "artifactId": "14015250395",
+      "sizeBytes": 141986344,
+      "sha256": "cf6d1b2aad8163db9211d76983ec222fe149e6b6bfea46b9cdc2829fb479f9f6",
+      "originalFileCount": 458,
+      "integrity": "Parent verified official artifact size, SHA256 and ZIP CRC before review.",
+      "result": "PASS",
+      "report": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/results.json"
+    },
+    "fullPages": [
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-webgpu.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-1440-webgpu.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-390-webgpu.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-webgpu.png"
+    ],
+    "responsive": [
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-768-still.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-320-200-percent.png"
+    ],
+    "commerce": [
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-selection.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-selection.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-en-1440-complete.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-zh-Hant-390-complete.png",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-en.txt",
+      "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/night-signal-2026-11-21-zh-Hant.txt"
+    ],
+    "actualDownloadInspection": "兩語 UTF-8 TXT 均已實讀：全夜票 3 張、單價 NT$880、總額 NT$2,640，18:30 開門及 19:00–20:00／20:15–21:30／21:45–23:30 三場一致；明示未付款、未保留席位。",
+    "transitions": {
+      "carrier-to-echo": {
+        "method": "paused Playwright clock with real GPU rendering",
+        "samples": [
+          {
+            "logicalMs": 0,
+            "captureStartedWallMs": 412,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00000ms-composite.png"
+          },
+          {
+            "logicalMs": 350,
+            "captureStartedWallMs": 2276,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00350ms-composite.png"
+          },
+          {
+            "logicalMs": 700,
+            "captureStartedWallMs": 4224,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-00700ms-composite.png"
+          },
+          {
+            "logicalMs": 1080,
+            "captureStartedWallMs": 6352,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-carrier-to-echo-01080ms-composite.png"
+          }
+        ]
+      },
+      "echo-to-dawn": {
+        "method": "paused Playwright clock with real GPU rendering",
+        "samples": [
+          {
+            "logicalMs": 0,
+            "captureStartedWallMs": 3,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00000ms-composite.png"
+          },
+          {
+            "logicalMs": 350,
+            "captureStartedWallMs": 1944,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00350ms-composite.png"
+          },
+          {
+            "logicalMs": 700,
+            "captureStartedWallMs": 3828,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-00700ms-composite.png"
+          },
+          {
+            "logicalMs": 1080,
+            "captureStartedWallMs": 5885,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-echo-to-dawn-01080ms-composite.png"
+          }
+        ]
+      },
+      "dawn-to-carrier": {
+        "method": "paused Playwright clock with real GPU rendering",
+        "samples": [
+          {
+            "logicalMs": 0,
+            "captureStartedWallMs": 4,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00000ms-composite.png"
+          },
+          {
+            "logicalMs": 350,
+            "captureStartedWallMs": 1928,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00350ms-composite.png"
+          },
+          {
+            "logicalMs": 700,
+            "captureStartedWallMs": 3856,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-00700ms-composite.png"
+          },
+          {
+            "logicalMs": 1080,
+            "captureStartedWallMs": 5950,
+            "evidence": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/signal-transition-dawn-to-carrier-01080ms-composite.png"
+          }
+        ]
+      }
+    },
+    "sharedControlledAndNativePause": [
+      {
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "pauseMode": "freeze",
+        "status": "PASS",
+        "beforeToPaused": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 1100,
+          "height": 576
+        },
+        "pausedToAfter": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 1100,
+          "height": 576
+        },
+        "queueSubmissions": 0,
+        "texturesBefore": 158,
+        "texturesAfter": 158,
+        "sameCanvas": true,
+        "pointerChallenge": {
+          "synthetic": true,
+          "target": "window",
+          "event": "mousemove",
+          "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+          "sequence": [
+            {
+              "position": "center",
+              "clientX": 550,
+              "clientY": 357,
+              "isTrusted": false
+            },
+            {
+              "position": "outside",
+              "clientX": 1132,
+              "clientY": 882,
+              "isTrusted": false
+            }
+          ],
+          "passed": true
+        },
+        "activeBeforePause": null,
+        "resumeDifference": null,
+        "resumeFrames": 6,
+        "controlComparisons": {
+          "composite": {
+            "drift": {
+              "mean": 1.1233055852326688,
+              "changedPixels": 274,
+              "peak": 65.6111111111111,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 14.897919244335963,
+              "changedPixels": 1557,
+              "peak": 213.91428571428622,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 14.718291666666705,
+              "changedPixels": 1408,
+              "peak": 232.6587301587297,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 11.460769892144917,
+              "changedPixels": 1124,
+              "peak": 213.02857142857192,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.8469113968593135,
+              "changedPixels": 212,
+              "peak": 53.579365079365076,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 14.98904451990914,
+              "changedPixels": 1566,
+              "peak": 215.1714285714292,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 14.858824735449774,
+              "changedPixels": 1407,
+              "peak": 231.67460317460274,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 11.548070584893534,
+              "changedPixels": 1122,
+              "peak": 214.2857142857149,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "evidence": [
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-before-native-pause.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause-after-1000ms.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-resume.png"
+        ],
+        "reason": "已實看本候選原始 controlled quartet，並以原解析度 RGB 像素比對確認 before／paused／1 秒後完全一致；同一 canvas、零新增 texture acquisition 與 queue submission，指標挑戰通過，恢復有真實 GPU 幀。"
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "scope": "mobile same-frame pause; form controls covered by dedicated per-work lane",
+        "pauseMode": "freeze",
+        "status": "PASS",
+        "beforeToPaused": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 390,
+          "height": 249
+        },
+        "pausedToAfter": {
+          "mean": 0,
+          "peak": 0,
+          "changedPixels": 0,
+          "width": 390,
+          "height": 249
+        },
+        "queueSubmissions": 0,
+        "texturesBefore": 81,
+        "texturesAfter": 81,
+        "sameCanvas": true,
+        "pointerChallenge": {
+          "synthetic": true,
+          "target": "window",
+          "event": "mousemove",
+          "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+          "sequence": [
+            {
+              "position": "center",
+              "clientX": 195,
+              "clientY": 421,
+              "isTrusted": false
+            },
+            {
+              "position": "outside",
+              "clientX": 422,
+              "clientY": 876,
+              "isTrusted": false
+            }
+          ],
+          "passed": true
+        },
+        "activeBeforePause": {
+          "mean": 12.460347222222222,
+          "changedPixels": 1458,
+          "peak": 213,
+          "width": 80,
+          "height": 60
+        },
+        "resumeDifference": {
+          "mean": 15.878819444444444,
+          "changedPixels": 1431,
+          "peak": 224,
+          "width": 80,
+          "height": 60
+        },
+        "resumeFrames": 6,
+        "controlComparisons": {},
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "evidence": [
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-before-native-pause.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+          "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-resume.png"
+        ],
+        "reason": "已實看本候選原始 controlled quartet，並以原解析度 RGB 像素比對確認 before／paused／1 秒後完全一致；同一 canvas、零新增 texture acquisition 與 queue submission，指標挑戰通過，恢復有真實 GPU 幀。"
+      }
+    ],
+    "independentPixelCheck": {
+      "method": "Read-only Pillow RGB ImageChops comparison of original-resolution controlled quartet PNGs.",
+      "result": "PASS",
+      "pairs": [
+        {
+          "a": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-before-native-pause.png",
+          "b": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-before-native-pause.png",
+          "b": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-en-composite-native-pause-after-1000ms.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-before-native-pause.png",
+          "b": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause.png",
+          "identical": true
+        },
+        {
+          "a": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-before-native-pause.png",
+          "b": "evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/shared/candidate-night-signal-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+          "identical": true
+        }
+      ]
+    },
+    "measurementQualifications": {
+      "contrastMinimumChecked": 6,
+      "privacy": "PASS only static same-origin GETs, no fetch/XHR/beacon/socket, CSP violations, browser errors, cookies or storage",
+      "booking": "PASS both locales: pass and set selection, empty/invalid quantity, pricing, retained set when browsing, opening/admission times, keyboard review/edit, local UTF-8 itinerary download, no purchase or reservation",
+      "layoutAndLifecycle": "PASS bilingual 320/390/768/1440 and 200% text layout, keyboard/touch, synchronized hero previews and lineup, three visible WebGPU programs, 18 switches on one device, lifecycle and recovery, no-GPU/no-JS/reduced motion and privacy"
+    },
+    "sourceComparison": {
+      "baseline": "5e2cbdd8adb804ed05aee718dca68cfb020ea2eb",
+      "candidate": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+      "observation": "No Night Signal product source changes in this interval. Current original frames, page layouts, controls, actual downloads and timing measurements were independently re-inspected; no prior candidate images or timestamps are used for acceptance."
+    }
+  }
+}

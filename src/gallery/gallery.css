@@ -26,16 +26,19 @@
 }
 .exhibition-list:has(> :nth-child(3)) > :first-child { grid-row: span 2; }
 .exhibition-list:has(> :only-child) { grid-template-columns: 1fr; }
+.exhibition-list > li { min-inline-size: 0; }
 .exhibition-card {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-inline-size: 0;
   block-size: 100%;
   background: #ede7da;
   text-decoration: none;
 }
 .exhibition-list:has(> :only-child) .exhibition-card { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); }
 .exhibition-card img { inline-size: 100%; block-size: 100%; aspect-ratio: 7 / 4; object-fit: cover; }
-.exhibition-copy { padding: clamp(1rem, 4vw, 3.5rem); align-self: center; }
-.exhibition-copy h3 { margin-block: 0.3em; font: 400 clamp(1.9rem, 4.5vw, 4rem)/1.07 var(--serif); }
+.exhibition-copy { min-inline-size: 0; padding: clamp(1rem, 4vw, 3.5rem); align-self: center; }
+.exhibition-copy h3 { margin-block: 0.3em; font: 400 clamp(1.9rem, 4.5vw, 4rem)/1.07 var(--serif); overflow-wrap: anywhere; }
 .exhibition-copy p { max-inline-size: 36ch; margin-block: 0.5em; color: var(--muted); }
 .exhibition-copy .exhibition-status { color: var(--accent); font-size: 0.8125rem; font-weight: 680; }
 .exhibition-open { display: block; margin-block-start: 1.2rem; text-decoration: underline; text-underline-offset: 0.28em; }

@@ -6,7 +6,7 @@
 
 狀態：idea（只構想）→ ready（完整 brief）→ building（承接中）→ candidate（已推來源）→ reviewed（必要驗收通過）→ published（正式站讀回驗證）→ external-reviewed（使用者/外部指定版本通過）。blocked 是明確原因與保存點，不能假裝釋放承接。狀態倒退保留歷史。
 
-此獨立 repo 不採用 Labs 的私有執行端和庫存政策。M02 依使用者指示採三個獨立 clone 與製作對話（gpt-6.1-sol/high），每位作者承接一件作品與獨立 PR；主責是共享 gallery、registry 與 release 的唯一 writer。指派及整合前讀回遠端 head 和 registry，保留各自來源歷史；不得照抄不存在的 claim API。
+此獨立 repo 不採用 Labs 的私有執行端和庫存政策。M03 依使用者指示採五個獨立 clone 與側欄可見製作對話（gpt-6.1-sol/high），每位作者承接一件作品與獨立 PR。以後每件新作品均開新的製作對話，修訂留在該作品對話；背景審查者不能代替使用者要求的製作對話。主責是共享 gallery、registry 與 release 的唯一 writer。指派及整合前讀回遠端 head 和 registry，保留各自來源歷史；不得照抄不存在的 claim API。
 
 ## Brief 的完成條件
 
