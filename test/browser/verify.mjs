@@ -651,33 +651,28 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
       else pause.compatibility = "Legacy canvas-hidden fallback only; not M03 freeze acceptance";
       pause.pointerChallenge.passed = true;
 
-      // This mutation is diagnostic, never a product pause or an aesthetic pass.
-      // Preserve the complete inline attribute, including its original absence.
-      const originalStyle = await canvas.getAttribute("style");
-      try {
-        await canvas.evaluate((element, keepComposited) => {
-          // On the isolated Windows compositor, hiding a paused opaque canvas
-          // may discard the presented surface. Keep it in the layer tree.
-          if (keepComposited) element.style.setProperty("opacity", "0.01", "important");
-          else element.style.setProperty("visibility", "hidden", "important");
-        }, slug === "paper-light");
-        const withoutCanvas = await capture("diagnostic-no-canvas");
-        measurement.diagnosticContribution = {
-          method: slug === "paper-light" ? "Attenuate the paused canvas to 1% opacity for diagnosis" :
-            "Temporarily hide the paused canvas; not a native product action",
-          ...await livePixelDifference(page, afterPause, withoutCanvas),
-        };
-      } finally {
-        await canvas.evaluate((element, style) => {
-          if (style === null) element.removeAttribute("style");
-          else element.setAttribute("style", style);
-        }, originalStyle);
+      if (slug !== "paper-light") {
+        // This diagnostic mutation is separate from the native pause.
+        const originalStyle = await canvas.getAttribute("style");
+        try {
+          await canvas.evaluate((element) => element.style.setProperty("visibility", "hidden", "important"));
+          const withoutCanvas = await capture("diagnostic-no-canvas");
+          measurement.diagnosticContribution = {
+            method: "Temporarily hide the paused canvas; not a native product action",
+            ...await livePixelDifference(page, afterPause, withoutCanvas),
+          };
+        } finally {
+          await canvas.evaluate((element, style) => {
+            if (style === null) element.removeAttribute("style");
+            else element.setAttribute("style", style);
+          }, originalStyle);
+        }
+        assert.equal(await canvas.getAttribute("style"), originalStyle, `${stem}: diagnostic changed inline styles`);
       }
-      assert.equal(await canvas.getAttribute("style"), originalStyle, `${stem}: diagnostic changed inline styles`);
       const restoredPause = await capture("diagnostic-restored");
       pause.comparisons.diagnosticRestored = await pauseDifference(afterPause, restoredPause);
       stable(pause.comparisons.diagnosticRestored, "restoring diagnostic canvas styles");
-      if (measurement.pauseMode === "freeze") {
+      if (measurement.pauseMode === "freeze" && slug !== "paper-light") {
         const contribution = measurement.diagnosticContribution;
         assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
           `${stem}: frozen canvas has no visible diagnostic contribution: ${JSON.stringify(contribution)}`);
@@ -695,6 +690,32 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     await sample("native-resume");
     pause.resume = { nativeAction: true, phase: "running", composite: files["native-resume"],
       texture: files["texture-native-resume"], framesDuringInterval: measurement.textures["native-resume"].framesDuringInterval };
+    if (slug === "paper-light") {
+      // An independent page keeps the Windows compositor's frozen layer
+      // untouched. Open it after native resume has been measured.
+      const staticPage = await page.context().newPage();
+      try {
+        await staticPage.setViewportSize(page.viewportSize());
+        await staticPage.emulateMedia({ reducedMotion: "reduce" });
+        await staticPage.goto(page.url());
+        await phase(staticPage, "reduced");
+        await stage(staticPage).locator("img").evaluate((image) => image.decode());
+        const file = `${stem}-composite-diagnostic-static.png`;
+        const still = await stage(staticPage).screenshot({ path: resolve(evidenceDir, file) });
+        evidence.screenshots.push(file);
+        files.diagnosticStatic = file;
+        measurement.diagnosticContribution = {
+          method: "Compare with a separate reduced-motion page at the same viewport",
+          ...await livePixelDifference(page, beforePause, still),
+        };
+        assert.equal(measurement.pauseMode, "freeze", `${stem}: paper must retain the rendered frame`);
+        const contribution = measurement.diagnosticContribution;
+        assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12);
+        pause.acceptsM03Freeze = true;
+      } finally {
+        await staticPage.close();
+      }
+    }
     return measurement;
   } finally {
     await page.clock.resume();
