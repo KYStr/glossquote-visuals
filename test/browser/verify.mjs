@@ -653,10 +653,16 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
       // Preserve the complete inline attribute, including its original absence.
       const originalStyle = await canvas.getAttribute("style");
       try {
-        await canvas.evaluate((element) => element.style.setProperty("visibility", "hidden", "important"));
+        await canvas.evaluate((element, keepComposited) => {
+          // On the isolated Windows compositor, hiding a paused opaque canvas
+          // may discard the presented surface. Keep it in the layer tree.
+          if (keepComposited) element.style.setProperty("opacity", "0.01", "important");
+          else element.style.setProperty("visibility", "hidden", "important");
+        }, slug === "paper-light");
         const withoutCanvas = await capture("diagnostic-no-canvas");
         measurement.diagnosticContribution = {
-          method: "Temporarily hide the paused canvas; not a native product action",
+          method: slug === "paper-light" ? "Attenuate the paused canvas to 1% opacity for diagnosis" :
+            "Temporarily hide the paused canvas; not a native product action",
           ...await livePixelDifference(page, afterPause, withoutCanvas),
         };
       } finally {
