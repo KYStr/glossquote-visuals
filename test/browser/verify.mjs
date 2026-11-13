@@ -962,6 +962,7 @@ async function checkLiquid(browser) {
     const lang = prefix ? "en" : "zh-Hant";
     const stem = `liquid-forme-${lang}-${width}`;
     await withPage(browser, { viewport: { width, height }, deviceScaleFactor: 1, hasTouch: width === 390 }, async page => {
+      await page.clock.install();
       const probe = await observe(page, { ...testFont, readPixels: true });
       const scene = page.locator(".hero-scene");
       const hero = page.locator(".hero-visual");
@@ -997,27 +998,81 @@ async function checkLiquid(browser) {
         await nextFrames();
       }
 
-      async function captureCycle(finish) {
-        const frames = [];
-        const start = performance.now();
-        for (const time of [0, 2, 4, 6, 8, 10, 12]) {
-          const wait = time * 1000 - (performance.now() - start);
-          if (wait > 0) await page.waitForTimeout(wait);
-          const elapsed = performance.now() - start;
-          const textures = await textureCount(page);
-          const png = await frame(`${finish}-auto-${time}s`);
-          frames.push({ time, elapsed: Math.round(elapsed), textures, png });
+      async function captureNatural(finish) {
+        const session = await page.context().newCDPSession(page);
+        const targets = [0, 2, 4, 6, 8, 10, 12];
+        const frames = new Map();
+        let origin;
+        let resolveComplete;
+        const complete = new Promise(resolve => { resolveComplete = resolve; });
+        const receive = event => {
+          void session.send("Page.screencastFrameAck", { sessionId: event.sessionId }).catch(() => {});
+          const timestamp = event.metadata.timestamp;
+          if (!Number.isFinite(timestamp)) return;
+          origin ??= timestamp;
+          const elapsed = (timestamp - origin) * 1000;
+          for (const time of targets) {
+            const error = Math.abs(time * 1000 - elapsed);
+            if (error < (frames.get(time)?.error ?? Infinity)) frames.set(time, { elapsed, error, data: event.data });
+          }
+          if (elapsed >= 12_000) resolveComplete();
+        };
+        let timeout;
+        session.on("Page.screencastFrame", receive);
+        try {
+          await session.send("Page.startScreencast", { format: "jpeg", quality: 91, everyNthFrame: 1 });
+          await Promise.race([complete, new Promise((_, reject) => {
+            timeout = setTimeout(() => reject(new Error("No continuous 12-second Chromium screencast")), 23_000);
+          })]);
+        } finally {
+          clearTimeout(timeout);
+          await session.send("Page.stopScreencast");
+          await session.detach();
         }
-        assert.ok(frames.at(-1).textures > frames[0].textures + 8, `${stem}: no continuous motion`);
-        const travel = await livePixelDifference(page, frames[0].png, frames[3].png);
-        assert.ok(travel.mean > 0.1 && travel.changedPixels > 12, `${stem}: automatic sweep is not visible: ${JSON.stringify(travel)}`);
-        return { travel, samples: frames.map(({ png, ...sample }) => sample) };
+        const samples = [];
+        for (const [time, entry] of frames) {
+          assert.ok(entry.error < 950, "Native screencast missed " + time + "s by " + entry.error + "ms");
+          const file = stem + "-" + finish + "-natural-" + time + "s.jpg";
+          await writeFile(resolve(evidenceDir, file), Buffer.from(entry.data, "base64"));
+          evidence.screenshots.push(file);
+          samples.push({ time, elapsed: Math.round(entry.elapsed), error: Math.round(entry.error), file });
+        }
+        assert.equal(samples.length, targets.length);
+        return { timebase: "Chromium compositor timestamps (real time)", samples };
+      }
+
+      async function captureCycle(finish) {
+        const samples = [];
+        await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 350);
+        try {
+          let elapsed = 0;
+          for (const time of [0, 2, 4, 6, 8, 10, 12]) {
+            const previous = await textureCount(page);
+            if (time) await page.clock.runFor(time * 1000 - elapsed);
+            await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+            const textures = await textureCount(page);
+            if (time) assert.ok(textures > previous, "No GPU frame in timed sweep interval");
+            const png = await frame(finish + "-auto-" + time + "s");
+            samples.push({ time, elapsed: time * 1000, textures, png });
+            elapsed = time * 1000;
+          }
+        } finally {
+          await page.clock.resume();
+        }
+        const changes = await Promise.all(samples.slice(1, -1).map(sample => livePixelDifference(page, samples[0].png, sample.png)));
+        const travel = changes.reduce((largest, next) => next.mean > largest.mean ? next : largest);
+        const closure = await livePixelDifference(page, samples[0].png, samples.at(-1).png);
+        assert.ok(travel.mean > 0.1 && travel.changedPixels > 12, stem + ": automatic sweep is not visible: " + JSON.stringify(travel));
+        assert.ok(closure.mean < travel.mean * 0.4, "12-second loop did not return to its starting lighting");
+        return { timebase: "Browser clock with frame callbacks and GPU queue synchronization", travel, closure,
+          samples: samples.map(({ png, ...sample }) => sample) };
       }
 
       async function checkFinish(finish) {
         assert.equal(await stage(page).getAttribute("data-finish"), finish);
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
+        const natural = await captureNatural(finish);
         const cycle = await captureCycle(finish);
         const before = await frame(`${finish}-pause-before`);
         await pauseButton.evaluate(button => button.click());
@@ -1061,7 +1116,7 @@ async function checkLiquid(browser) {
         await sweep.evaluate(button => button.click());
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await page.evaluate(() => window.scrollTo(0, 0));
-        return { cycle, angleDelta, pauseDelta, resumeDelta, texture: textureStats };
+        return { natural, cycle, angleDelta, pauseDelta, resumeDelta, texture: textureStats };
       }
 
       await open(page, prefix + route);
@@ -1076,7 +1131,8 @@ async function checkLiquid(browser) {
         const output = element.querySelector("canvas").getBoundingClientRect();
         return Math.abs(image.width - output.width) <= 1 && Math.abs(image.height - output.height) <= 1;
       });
-      assert.ok(fillsHero, "Procedural canvas must cover the entire photograph frame");
+      assert.ok(fillsHero, "Procedural canvas must cover the entire hero frame");
+      assert.ok(await canvas.evaluate(output => output.width <= 840 && output.height <= 540), "DPR 1 studio must respect its render-size limit");
       const theme = await page.evaluate(() => ({
         background: getComputedStyle(document.documentElement).backgroundColor,
         accent: getComputedStyle(document.querySelector(".section-intro .eyebrow")).color,

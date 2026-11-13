@@ -18,7 +18,9 @@ const geometry = (point, distance, identify = false) => `
   let wax = length(max(candle, vec2f(0.0))) + min(max(candle.x, candle.y), 0.0) - 0.006;
   let wick = length(${point} - vec3f(0.0, clamp(${point}.y, 1.95, 1.999), 0.0)) - 0.009;
   let flame = (length((${point} - vec3f(0.012, 2.055, 0.0)) * vec3f(2.7, 1.0, 2.5)) - 0.071) * 0.36;
-  let metal = min(tube, min(footDistance, cupDistance));
+  let blend = max(0.053 - abs(tube - footDistance), 0.0) / 0.053;
+  let footJoint = min(tube, footDistance) - blend * blend * 0.01325;
+  let metal = min(footJoint, cupDistance);
   ${distance} = min(min(metal, wax), min(wick, flame));
   ${identify ? "material = select(select(1, 2, wax < metal), select(3, 4, flame < wick), min(wick, flame) < min(wax, metal));" : ""}
 `;
@@ -39,7 +41,7 @@ const HaloStudio = registerShader(defineShader({
     let right = vec3f(1.0, 0.0, 0.0);
     let up = cross(right, forward);
     let camera = vec3f(0.0, 1.49, 4.85);
-    let ray = normalize(forward * mix(1.98, 1.84, compact) + right * shot.x + up * shot.y);
+    let ray = normalize(forward * mix(1.92, 1.78, compact) + right * shot.x + up * shot.y);
     let yaw = -0.29;
     let pose = mat3x3f(vec3f(cos(yaw), 0.0, -sin(yaw)), vec3f(0.0, 1.0, 0.0), vec3f(sin(yaw), 0.0, cos(yaw)));
     let objectCamera = transpose(pose) * camera;
@@ -62,13 +64,13 @@ const HaloStudio = registerShader(defineShader({
     var material = 0;
     var struck = false;
     if (sphereH > 0.0) {
-      for (var i = 0; i < 86; i += 1) {
+      for (var i = 0; i < 68; i += 1) {
         if (t > farT) { break; }
         let q = objectCamera + objectRay * t;
         var d = 0.0;
         ${geometry("q", "d", true)}
         if (d < 0.0009) { struck = true; break; }
-        t += max(0.001, d * 0.86);
+        t += max(0.001, d * 0.90);
       }
     }
 
@@ -87,20 +89,24 @@ const HaloStudio = registerShader(defineShader({
         let localOrigin = transpose(pose) * (p + roomNormal * 0.013);
         let localLight = transpose(pose) * lightDir;
         var travel = 0.035;
-        for (var j = 0; j < 30; j += 1) {
+        for (var j = 0; j < 21; j += 1) {
           if (travel > length(toLight) || shadow < 0.025) { break; }
           let s = localOrigin + localLight * travel;
           var separation = 0.0;
           ${geometry("s", "separation")}
           shadow = min(shadow, 9.0 * max(separation, 0.0) / travel);
-          travel += clamp(separation, 0.018, 0.31);
+          travel += clamp(separation, 0.023, 0.35);
         }
       }
       let contact = select(1.0, mix(0.43, 1.0, smoothstep(0.18, 0.80, length(p.xz * vec2f(1.0, 1.6)))), onFloor);
-      let base = mix(vec3f(0.016, 0.023, 0.027), vec3f(0.060, 0.073, 0.077), upper);
+      let base = mix(vec3f(0.012, 0.022, 0.029), vec3f(0.051, 0.069, 0.080), upper);
+      let setLight = exp(-0.73 * pow(p.x - p.y * 0.40 - 0.72, 2.0)) * smoothstep(0.0, 2.05, p.y);
+      let wallFill = select(vec3f(0.025, 0.045, 0.049) * setLight, vec3f(0.0), onFloor);
       let pool = keyColor * falloff * shadow * select(0.085, 0.20, onFloor);
       let seam = select(1.0, mix(0.63, 1.0, smoothstep(0.0, 0.16, p.y)), !onFloor);
-      return vec4f((base + pool) * grain * contact * seam, 1.0);
+      let flameAxis = normalize(vec3f(0.012, 2.055, 0.0) - camera);
+      let halo = exp(-175.0 * length(ray - flameAxis)) * vec3f(0.22, 0.11, 0.035);
+      return vec4f((base + wallFill + pool) * grain * contact * seam + halo, 1.0);
     }
 
     let q = objectCamera + objectRay * t;
@@ -149,8 +155,8 @@ const HaloStudio = registerShader(defineShader({
     let reflectedT = dot(toLight, lightNormal) / min(-0.0001, towardEmitter);
     let reflectedP = reflection * reflectedT - toLight;
     let emitterUV = vec2f(dot(reflectedP, lightRight), dot(reflectedP, lightUp));
-    let roughness = mix(0.06, 0.34, brushed);
-    let strip = (1.0 - smoothstep(0.20, 0.20 + roughness, abs(emitterUV.x))) *
+    let roughness = mix(0.11, 0.36, brushed);
+    let strip = (1.0 - smoothstep(0.24, 0.24 + roughness, abs(emitterUV.x))) *
       (1.0 - smoothstep(0.95, 1.18 + roughness, abs(emitterUV.y)));
     let specular = strip * smoothstep(0.0, 0.09, -towardEmitter) * step(0.0, reflectedT);
 
@@ -159,9 +165,21 @@ const HaloStudio = registerShader(defineShader({
     let edgePanel = pow(max(0.0, dot(reflection, normalize(vec3f(-0.77, 0.14, -0.62)))), mix(38.0, 11.0, brushed));
     let floorBounce = 0.042 * smoothstep(0.0, 0.73, -reflection.y);
     let glow = exp(-11.0 * length(p - vec3f(0.0, 2.07, 0.0))) * keyColor;
-    let ambient = vec3f(0.032, 0.045, 0.048) + floorBounce * vec3f(1.0, 0.86, 0.71);
-    let cool = vec3f(0.65, 0.86, 0.94) * (ceiling * 0.29 + edgePanel * 0.19);
-    let warm = keyColor * (specular * mix(0.87, 0.36, brushed) + brushed * max(0.0, dot(normal, direct)) * 0.077);
+    // Large stationary photographic cards give the steel a readable broad face and dark flags.
+    let cardNormal = normalize(vec3f(-0.52, -0.10, -0.85));
+    let cardRight = normalize(cross(vec3f(0.0, 1.0, 0.0), cardNormal));
+    let cardUp = normalize(cross(cardNormal, cardRight));
+    let cardFront = normalize(vec3f(0.48, 0.28, 0.82));
+    let across = dot(reflection, cardRight);
+    let vertical = dot(reflection, cardUp);
+    let largeCard = smoothstep(0.32, 0.58, dot(reflection, cardFront)) *
+      (1.0 - smoothstep(mix(0.17, 0.30, brushed), mix(0.33, 0.57, brushed), abs(across))) *
+      (1.0 - smoothstep(0.55, 0.80, abs(vertical)));
+    let darkFlag = 1.0 - smoothstep(0.0, 0.26, abs(across + 0.32));
+    let ambient = (vec3f(0.036, 0.045, 0.049) + floorBounce * vec3f(1.0, 0.89, 0.78)) *
+      (1.0 - 0.32 * darkFlag);
+    let cool = vec3f(0.84, 0.93, 0.97) * (ceiling * 0.36 + edgePanel * 0.20 + largeCard * mix(0.67, 0.33, brushed));
+    let warm = keyColor * (specular * mix(0.79, 0.38, brushed) + brushed * max(0.0, dot(normal, direct)) * 0.10);
     let silver = (ambient + cool + warm + glow * 0.4) * (0.77 + 0.23 * fresnel);
     return vec4f(silver * (1.0 + hairlines * brushed * 0.041), 1.0);
   `,
@@ -177,7 +195,7 @@ export function applyLiquid(renderer, settings) {
 
 function renderSize(width, height) {
   // Limit the software-rasterization workload without changing the shot's aspect ratio.
-  const scale = Math.min(1, 960 / width, 650 / height);
+  const scale = Math.min(1, 840 / width, 540 / height);
   return { width: Math.round(width * scale), height: Math.round(height * scale) };
 }
 
@@ -185,11 +203,22 @@ export async function initializeLiquid(canvas, options) {
   const renderer = await initializeStandalone(
     canvas,
     [{ id: "halo", type: HaloStudio.name, props: props(options.settings) }],
-    { ...options, ...renderSize(options.width, options.height) },
+    {
+      ...options,
+      ...renderSize(options.width, options.height),
+      onReady() {
+        canvas.dataset.sized = "";
+        options.onReady();
+      },
+    },
   );
   if (!renderer) return null;
   return {
     ...renderer,
+    destroy() {
+      delete canvas.dataset.sized;
+      renderer.destroy();
+    },
     resize(width, height) {
       const size = renderSize(width, height);
       renderer.resize(size.width, size.height);

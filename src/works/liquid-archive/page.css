@@ -113,7 +113,8 @@
 .hero-surface { position: absolute; inset: 0; }
 .hero-visual img { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; object-position: var(--photo-x) var(--photo-y); filter: saturate(.72); }
 .hero-render { position: absolute; inset: 0; pointer-events: none; }
-.hero-render canvas { position: absolute; inset: 0; inline-size: 100% !important; block-size: 100% !important; visibility: hidden; }
+.hero-render canvas { position: absolute; inset: 0; visibility: hidden; }
+.hero-render canvas[data-sized] { inline-size: 100% !important; block-size: 100% !important; }
 .hero-render[data-motion="running"] canvas,
 .hero-render[data-motion="paused"][data-frame="present"] canvas { visibility: visible; }
 .hero-visual:has(.hero-render[data-motion="running"]) [data-hero-image],
