@@ -64,9 +64,15 @@ export async function checkPaperMaterial({
       await pause.evaluate((button) => button.click());
       assert.equal(await stage.getAttribute("data-motion"), "paused");
       assert.equal(await stage.getAttribute("data-surface"), "rendered");
+      const surfaceBox = await stage.boundingBox();
+      if (touch) {
+        await page.touchscreen.tap(surfaceBox.x + surfaceBox.width * 0.73, surfaceBox.y + surfaceBox.height * 0.46);
+      } else {
+        await page.mouse.move(surfaceBox.x + surfaceBox.width * 0.73, surfaceBox.y + surfaceBox.height * 0.46);
+      }
       await page.clock.runFor(1600);
       const paused = await snap("pause-held");
-      assert.equal(await textures(), beforeCount);
+      assert.equal(await textures(), beforeCount, "A pointer event rendered during the pause");
       const freeze = await difference(page, before, paused);
       assert.equal(freeze, 0, "Pause changed the actual paper composition");
       await pause.evaluate((button) => button.click());
