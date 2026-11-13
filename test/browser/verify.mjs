@@ -1041,7 +1041,6 @@ async function checkLiquid(browser) {
     const stem = `liquid-forme-${lang}-${width}`;
     console.log("FORME studio " + stem);
     await withPage(browser, { viewport: { width, height }, deviceScaleFactor: 1, hasTouch: width === 390 }, async page => {
-      await page.clock.install();
       const probe = await observe(page, { ...testFont, readPixels: true });
       const scene = page.locator(".hero-scene");
       const hero = page.locator(".hero-visual");
@@ -1077,16 +1076,6 @@ async function checkLiquid(browser) {
         await page.waitForFunction(target => window.__visualProbe.textures >= target, start + count, { polling: 50 });
       }
 
-      async function selectAngle(degrees) {
-        await angle.evaluate((input, value) => {
-          input.value = String(value);
-          input.dispatchEvent(new Event("input", { bubbles: true }));
-        }, degrees);
-        assert.equal(await page.locator('output[for="object-angle"]').textContent(), `${degrees}°`);
-        assert.equal(await stage(page).getAttribute("data-light"), "manual");
-        await nextFrames();
-      }
-
       async function saveTexture(label, snapshot) {
         const file = stem + "-" + label + ".png";
         const { png, ...texture } = snapshot;
@@ -1101,73 +1090,32 @@ async function checkLiquid(browser) {
         const collect = page.evaluate(async times => {
           const probe = window.__visualProbe;
           const start = performance.now();
-          const snapshots = times.map(time => new Promise((resolve, reject) => {
-            setTimeout(() => {
-              const requested = performance.now() - start;
-              const textures = probe.textures;
-              probe.readFrame(true).then(snapshot => resolve({ time, requested, textures, snapshot }), reject);
-            }, time * 1000);
-          }));
-          return Promise.all(snapshots);
+          const frames = [];
+          for (const time of times) {
+            await new Promise(resolve => setTimeout(resolve, Math.max(0, time * 1000 - (performance.now() - start))));
+            const requested = performance.now() - start;
+            const textures = probe.textures;
+            const snapshot = await probe.readFrame(true);
+            frames.push({ time, requested, complete: performance.now() - start, textures, snapshot });
+          }
+          return frames;
         }, times);
         let timeout;
         const frames = await Promise.race([collect, new Promise((_, reject) => {
-          timeout = setTimeout(() => reject(new Error("Natural FORME GPU readbacks exceeded 25 seconds")), 25_000);
+          timeout = setTimeout(() => reject(new Error("Natural FORME GPU readbacks exceeded 55 seconds")), 55_000);
         })]).finally(() => clearTimeout(timeout));
         const samples = [];
-        for (const { time, requested, textures, snapshot } of frames) {
+        for (const { time, requested, complete, textures, snapshot } of frames) {
           const { file } = await saveTexture(finish + "-natural-" + time + "s", snapshot);
-          samples.push({ time, requested: Math.round(requested), textures, file });
-        }
-        assert.ok(samples.every((sample, index) => index === 0 || sample.textures > samples[index - 1].textures),
-          stem + ": no new GPU frames between natural samples");
-        return { timebase: "Natural wall-time GPU readbacks; requested elapsed milliseconds recorded", samples };
-      }
-
-      async function timedReadback(advance) {
-        await page.evaluate(() => { window.__formeStudioTexture = window.__visualProbe.readFrame(true); });
-        let timeout;
-        try {
-          return await Promise.race([
-            page.clock.runFor(advance).then(() => page.evaluate(() => window.__formeStudioTexture)),
-            new Promise((_, reject) => {
-              timeout = setTimeout(() => reject(new Error("Timed FORME GPU readback exceeded 15 seconds")), 15_000);
-            }),
-          ]);
-        } finally {
-          clearTimeout(timeout);
-        }
-      }
-
-      async function captureCycle(finish) {
-        const samples = [];
-        await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 250);
-        try {
-          // Advancing Chromium one interval would queue ~120 WARP renders at once.
-          // Skip unused callbacks and give the final callback a short render window.
-          const start = await page.evaluate(() => Date.now());
-          const sample = async time => {
-            const snapshot = await timedReadback(48);
-            const { file, bytes } = await saveTexture(finish + "-auto-" + time + "s", snapshot);
-            samples.push({ time, elapsed: await page.evaluate(start => Date.now() - start, start), file, bytes });
-          };
-          await sample(0);
-          for (const time of times.slice(1)) {
-            const now = await page.evaluate(() => Date.now());
-            await page.clock.fastForward(start + time * 1000 - now - 48);
-            await sample(time);
-          }
-        } finally {
-          await page.clock.resume();
+          samples.push({ time, requested: Math.round(requested), readbackMs: Math.round(complete - requested), textures, file });
         }
         const changes = [];
-        for (const sample of samples.slice(1, -1)) changes.push(await livePixelDifference(page, samples[0].bytes, sample.bytes));
+        for (const sample of frames.slice(1, -1)) changes.push(await livePixelDifference(page, Buffer.from(frames[0].snapshot.png, "base64"), Buffer.from(sample.snapshot.png, "base64")));
         const travel = changes.reduce((largest, next) => next.mean > largest.mean ? next : largest);
-        const closure = await livePixelDifference(page, samples[0].bytes, samples.at(-1).bytes);
-        assert.ok(travel.mean > 0.1 && travel.changedPixels > 12, stem + ": automatic sweep is not visible: " + JSON.stringify(travel));
-        assert.ok(closure.mean < travel.mean * 0.55, "12-second loop did not return to its starting lighting: " + JSON.stringify({ travel, closure }));
-        return { timebase: "Controlled Chromium clock and raw GPU readback", travel, closure,
-          samples: samples.map(({ bytes, ...sample }) => sample) };
+        assert.ok(travel.mean > 0.1 && travel.changedPixels > 12, "Natural light sweep did not visibly advance");
+        assert.ok(samples.every((sample, index) => index === 0 || sample.textures > samples[index - 1].textures),
+          stem + ": no new GPU frames between natural samples");
+        return { timebase: "Native RAF without clock instrumentation; actual request/readback timing", travel, samples };
       }
 
       async function checkFinish(finish) {
@@ -1177,27 +1125,37 @@ async function checkLiquid(browser) {
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
         const fixed = {};
-        for (const degrees of [0, 45, 90, 135, 180]) {
-          await selectAngle(degrees);
+        const readbackMs = [];
+        const submissions = [];
+        for (const degrees of [0, 45, 90, 135, 180, 0]) {
+          const started = performance.now();
+          const firstTexture = await textureCount(page);
+          await angle.evaluate((input, value) => {
+            input.value = String(value);
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+          }, degrees);
+          assert.equal(await stage(page).getAttribute("data-light"), "manual");
+          assert.equal(await page.locator('output[for="object-angle"]').textContent(), degrees + "°");
+          await nextFrames(1);
           const snapshot = await page.evaluate(() => window.__visualProbe.readFrame(true));
-          fixed[degrees] = await saveTexture(finish + "-fixed-" + degrees + "deg-texture", snapshot);
-          console.log(stem + " " + finish + " fixed " + degrees + "° texture");
+          const key = degrees === 0 && fixed[0] ? "return-0" : degrees;
+          fixed[key] = await saveTexture(finish + "-fixed-" + key + "deg-texture", snapshot);
+          readbackMs.push(Math.round(performance.now() - started));
+          submissions.push(await textureCount(page) - firstTexture);
+          console.log(stem + " " + finish + " fixed " + key + "° in " + readbackMs.at(-1) + "ms, " + submissions.at(-1) + " textures");
           if (degrees === 90) await frame(finish + "-fixed-90deg");
         }
         const angleDelta = await livePixelDifference(page, fixed[0].bytes, fixed[180].bytes);
         assert.ok(angleDelta.changedPixels > 15, stem + ": moving the light does not change the studio image");
-        await selectAngle(0);
-        const returnSnapshot = await page.evaluate(() => window.__visualProbe.readFrame(true));
-        const restored = await saveTexture(finish + "-fixed-return-0deg-texture", returnSnapshot);
+        const restored = fixed["return-0"];
         assert.equal((await livePixelDifference(page, fixed[0].bytes, restored.bytes)).peak, 0);
         const textureStats = fixed[90].texture;
         assert.ok(textureStats.colors > 20, JSON.stringify(textureStats));
         await sweep.evaluate(button => button.click());
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
-        console.log(stem + " " + finish + " natural and controlled time");
+        console.log(stem + " " + finish + " natural native RAF");
         const natural = await captureNatural(finish);
-        const cycle = await captureCycle(finish);
         console.log(stem + " " + finish + " native pause and resume");
         const before = await frame(`${finish}-pause-before`);
         await pauseButton.evaluate(button => button.click());
@@ -1222,7 +1180,7 @@ async function checkLiquid(browser) {
         assert.ok(resumeDelta.mean > 0.07 && resumeDelta.changedPixels > 7, `${stem}: resumed scene did not move: ${JSON.stringify(resumeDelta)}`);
 
         await enterStudio();
-        return { natural, cycle, angleDelta, pauseDelta, resumeDelta, texture: textureStats };
+        return { natural, fixed: { readbackMs, submissions }, angleDelta, pauseDelta, resumeDelta, texture: textureStats };
       }
 
       await open(page, prefix + route);
@@ -1238,7 +1196,7 @@ async function checkLiquid(browser) {
         return Math.abs(image.width - output.width) <= 1 && Math.abs(image.height - output.height) <= 1;
       });
       assert.ok(fillsHero, "Procedural canvas must cover the entire hero frame");
-      assert.ok(await canvas.evaluate(output => output.width <= 840 && output.height <= 540), "DPR 1 studio must respect its render-size limit");
+      assert.ok(await canvas.evaluate(output => output.width <= 780 && output.height <= 500), "DPR 1 studio must respect its render-size limit");
       const theme = await page.evaluate(() => ({
         background: getComputedStyle(document.documentElement).backgroundColor,
         accent: getComputedStyle(document.querySelector(".section-intro .eyebrow")).color,
@@ -1316,6 +1274,63 @@ async function checkLiquid(browser) {
       assert.equal(page.url(), url((prefix ? "" : "en/") + route));
       await page.evaluate(() => window.scrollTo(0, 0));
       await phase(page, "running");
+      await probe.assertPrivate(site.origin);
+    });
+  }
+  // An independent, controlled browser runs only the exact-time series.
+  for (const [prefix, width, height] of [["en/", 1440, 920], ["", 390, 850]]) {
+    const stem = "liquid-forme-" + (prefix ? "en" : "zh-Hant") + "-" + width;
+    await withPage(browser, { viewport: { width, height }, deviceScaleFactor: 1 }, async page => {
+      const probe = await observe(page, { ...testFont, readPixels: true });
+      const startTime = new Date("2026-11-13T00:00:00Z");
+      await page.clock.install({ time: startTime });
+      await page.clock.pauseAt(new Date(startTime.getTime() + 10_000));
+      await open(page, prefix + route);
+
+      // While the synthetic clock is stopped, issue a bounded number of
+      // callbacks. A pending GPU copy always has a real-wall-time deadline.
+      const pending = task => {
+        let timeout;
+        return Promise.race([task, new Promise((_, reject) => {
+          timeout = setTimeout(() => reject(new Error(stem + ": controlled GPU readback timed out")), 12_000);
+        })]).finally(() => clearTimeout(timeout));
+      };
+      for (let attempt = 0; attempt < 60 && await stage(page).getAttribute("data-motion") !== "running"; attempt++) {
+        await pending(page.clock.runFor(48));
+        await new Promise(resolve => setTimeout(resolve, 150));
+      }
+      assert.equal(await stage(page).getAttribute("data-motion"), "running");
+      const timed = [0, 2, 4, 6, 8, 10, 12];
+      for (const finish of ["polished", "satin"]) {
+        console.log(stem + " " + finish + " controlled cycle (isolated clock)");
+        await page.locator('input[name=finish][value="' + finish + '"]').evaluate(input => input.click());
+        const samples = [];
+        let start;
+        for (const time of timed) {
+          if (time) await page.clock.fastForward(1952);
+          await page.evaluate(() => { window.__formeStudioTexture = window.__visualProbe.readFrame(true); });
+          await pending(page.clock.runFor(48));
+          const texture = await pending(page.evaluate(() => window.__formeStudioTexture));
+          const stamp = await page.evaluate(() => performance.now());
+          start ??= stamp;
+          const file = stem + "-" + finish + "-auto-" + time + "s.png";
+          const png = Buffer.from(texture.png, "base64");
+          await writeFile(resolve(evidenceDir, file), png);
+          evidence.screenshots.push(file);
+          samples.push({ time, elapsed: stamp - start, file, png });
+        }
+        const difference = (a, b) => livePixelDifference(page, a.png, b.png);
+        const changes = [];
+        for (const sample of samples.slice(1, -1)) changes.push(await difference(samples[0], sample));
+        const travel = changes.reduce((largest, next) => next.mean > largest.mean ? next : largest);
+        const closure = await difference(samples[0], samples.at(-1));
+        assert.ok(travel.mean > 0.10 && travel.changedPixels > 12, stem + ": controlled light does not move");
+        assert.ok(closure.mean < travel.mean * 0.55, stem + ": controlled 12s cycle does not close");
+        evidence.measurements.liquidStudios[stem][finish].cycle = {
+          timebase: "Separate paused Chromium clock with bounded callbacks and raw GPU readback",
+          travel, closure, samples: samples.map(({ png, ...sample }) => sample),
+        };
+      }
       await probe.assertPrivate(site.origin);
     });
   }
