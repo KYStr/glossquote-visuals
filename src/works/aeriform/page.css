@@ -149,7 +149,7 @@ h1 span:last-child { color: #ffd8d0; }
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 54%, #3044e3 0%, transparent 67%);
+  background: url("/media/aero-field.webp") center / 100% 100% no-repeat;
   touch-action: pan-y;
 }
 .artwork img, .artwork canvas {
@@ -196,7 +196,7 @@ h1 span:last-child { color: #ffd8d0; }
 .controls .motion-buttons button { border-color: #ffffff85; }
 .motion-status { font-size: 0.8rem; min-block-size: 1.4em; color: #f1e9ff; }
 
-h2 { font: 800 clamp(2.15rem, 5.65vw, 5.75rem)/0.96 var(--headline); letter-spacing: -0.055em; }
+h2 { font: 800 clamp(2.15rem, 5.65vw, 5.75rem)/0.96 var(--headline); letter-spacing: -0.055em; text-wrap: balance; }
 [lang="zh-Hant"] h2 { font-size: clamp(2rem, 4.4vw, 4.8rem); line-height: 1.14; letter-spacing: -0.065em; }
 h3 { font: 750 clamp(1.28rem, 2.1vw, 2.25rem)/1.05 var(--headline); letter-spacing: -0.045em; }
 [lang="zh-Hant"] h3 { line-height: 1.24; }
@@ -213,28 +213,85 @@ h3 { font: 750 clamp(1.28rem, 2.1vw, 2.25rem)/1.05 var(--headline); letter-spaci
 .work-image img { position: absolute; }
 .work-image--radio {
   aspect-ratio: 1.45;
+  container-type: inline-size;
   background: repeating-linear-gradient(126deg,#edc7c9 0 2px,#f1cbcb 2px 7px);
-  display: grid;
-  place-items: center;
 }
-.case-print {
-  color: #f9e6df;
-  background: var(--blue);
+.radio-poster, .radio-player, .radio-member {
   position: absolute;
+  font-family: var(--headline);
+  line-height: 0.9;
+}
+.radio-poster {
+  inset: 8% auto 8% 14%;
+  width: 38%;
+  padding: 3%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  inset: 8% auto 7% 32%;
-  aspect-ratio: 0.72;
-  padding: 0.7rem;
-  transform: rotate(-11deg);
-  box-shadow: 0.65rem 0.65rem 0 #401c4434;
-  line-height: 0.8;
-  letter-spacing: -0.07em;
-  font-size: clamp(0.8rem, 3.1vw, 3.25rem);
+  overflow: hidden;
+  color: #ffefeb;
+  background: var(--blue);
+  box-shadow: 0.7cqw 1cqw 0 #4c1b4659;
+  transform: rotate(-10deg);
 }
-.case-print i, .work-image--offbeat i { font: 750 clamp(0.46rem, 0.95vw, 0.95rem)/1 var(--headline); letter-spacing: 0; }
-.work-image--radio img { inline-size: 67%; inset: 3% -5% auto auto; transform: rotate(13deg); }
+.radio-poster b, .radio-poster i { position: relative; z-index: 1; }
+.radio-poster b { font-size: 7.1cqw; letter-spacing: -0.075em; }
+.radio-poster i { font-size: 1.55cqw; font-weight: 800; }
+.radio-poster img { inline-size: 135%; max-inline-size: none; inset: 29% -39% auto auto; }
+.radio-ring {
+  display: inline-block;
+  inline-size: 1.2em;
+  block-size: 0.85em;
+  border: 0.16em solid currentColor;
+  border-radius: 50%;
+  transform: rotate(-28deg);
+}
+.radio-player {
+  inset: 11% 13% 17% auto;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  border: 0.45cqw solid #121738;
+  border-radius: 3.2cqw;
+  background: #fff0e9;
+  color: #1a2dbd;
+  box-shadow: 0.9cqw 1.3cqw 0 #4c1b4648;
+  transform: rotate(7deg);
+}
+.radio-player-bar { display: flex; align-items: center; justify-content: space-between; font-size: 1.9cqw; }
+.radio-player-bar .radio-ring { font-size: 2.7cqw; }
+.radio-player > b { font-size: 3.65cqw; letter-spacing: -0.065em; }
+.radio-live { margin-block: 19% 9%; font-size: 1.55cqw; color: #9d2e32; font-weight: 800; }
+.radio-play {
+  display: grid;
+  place-items: center;
+  width: 4.7cqw;
+  aspect-ratio: 1;
+  margin-block: 14%;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-size: 1.5cqw;
+}
+.radio-seek { block-size: 1px; background: linear-gradient(90deg, var(--blue) 36%, #c1b6de 36%); }
+.radio-member {
+  inset: auto 9% 9% auto;
+  width: 26%;
+  aspect-ratio: 1.64;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-content: space-between;
+  padding: 2%;
+  border-radius: 0.85cqw;
+  background: #f17e67;
+  color: #23165b;
+  box-shadow: 0.65cqw 0.95cqw 0 #4c1b4648;
+  transform: rotate(-8deg);
+}
+.radio-member b { font-size: 2.75cqw; letter-spacing: -0.06em; }
+.radio-member .radio-ring { font-size: 3.75cqw; }
+.radio-member i { font-size: 1.35cqw; font-weight: 800; }
 .work-image--offbeat { aspect-ratio: 1.04; background: #191931; color: #ffd7cd; }
 .work-image--offbeat img { inline-size: 104%; inset: 1% -16% auto auto; }
 .work-image--offbeat b {
@@ -245,7 +302,7 @@ h3 { font: 750 clamp(1.28rem, 2.1vw, 2.25rem)/1.05 var(--headline); letter-spaci
   letter-spacing: -0.065em;
 }
 .work-image--offbeat b span { color: #ff7a59; }
-.work-image--offbeat i { position: absolute; inset: auto auto 9% 7%; }
+.work-image--offbeat i { position: absolute; inset: auto auto 9% 7%; font: 750 clamp(0.46rem, 0.95vw, 0.95rem)/1 var(--headline); }
 .work-image--morrow {
   aspect-ratio: 1.85;
   display: grid;
@@ -383,23 +440,26 @@ fieldset p { font-size: 0.875rem; }
   h1 { font-size: clamp(3rem, 12.7vw, 6rem); }
   [lang="zh-Hant"] h1 { font-size: clamp(2.7rem, 11.1vw, 5.4rem); }
   .hero-intro { margin-block: 0.85rem 0.7rem; font-size: 1rem; }
-  .hero-art { grid-column: 1; grid-row: auto; width: 100%; max-width: 31rem; justify-self: center; margin: -0.2rem 0 0; aspect-ratio: 1.23; }
+  .hero-art { grid-column: 1; grid-row: auto; width: 100%; max-width: 31rem; justify-self: center; margin: 0.45rem 0 0; aspect-ratio: 1.23; }
   .hero-tools { gap: 0.1rem; min-inline-size: 0; }
   .controls { gap: 0.25rem 0.5rem; }
   .controls button { padding-inline: 0.55em; }
   .work-grid, .service-grid, .process-section, .faq-section, .brief-layout { display: grid; grid-template-columns: minmax(0,1fr); }
   .case { grid-column: 1; padding-block-start: 0; }
   .work-image--offbeat { aspect-ratio: 1.26; }
+  .work-image--offbeat img { inline-size: 100%; inset-inline-end: 0; }
   .work-image--offbeat b { font-size: clamp(2.75rem, 13vw, 5.75rem); }
-  .work-image--radio img { width: 59%; }
-  .case-print { font-size: clamp(1.2rem, 5.1vw, 2.75rem); }
   .morrow-screen span { font-size: clamp(1.1rem, 5.5vw, 2.75rem); }
   .service-card { padding: 1.25rem 0; }
+  .section-heading, .process-steps, .brief-work { overflow-wrap: anywhere; }
+  .process-steps li { grid-template-columns: 1.5em minmax(0,1fr); gap: 0.45em; }
+  .brief-work { padding-inline: clamp(1rem, 4.3vw, 1.4rem); }
+  .brief-work .action { max-inline-size: 100%; }
   .service-card + .service-card { border-inline-start: 0; border-block-start: 1px solid #8e777b; }
 }
 
 @media (max-width: 23em) {
-  .outputs, .brief-review dl div { grid-template-columns: 1fr; }
+  .outputs, .brief-review dl div { grid-template-columns: minmax(0,1fr); }
   .masthead nav { gap: 0 0.65rem; }
   .masthead .wordmark { font-size: min(1.25rem, 7vw); }
   .masthead .locale { font-size: min(0.875rem, 5vw); }

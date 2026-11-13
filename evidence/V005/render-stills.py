@@ -23,23 +23,23 @@ def rotate(a, b, degrees):
 def sample_volume(form, rng):
     if form == "identity":
         theta, phi = (rng.random() * 2 * pi for _ in range(2))
-        tube = (0.3 + 0.7 * sqrt(rng.random())) * 0.112
-        radius = 0.295 + tube * cos(phi)
+        tube = (0.3 + 0.7 * sqrt(rng.random())) * 0.126
+        radius = 0.29 + tube * cos(phi)
         x, y, z = radius * cos(theta), tube * sin(phi), radius * sin(theta)
-        x, y, z = inverse_view(x, y, z, 67, -7, -23)
+        x, y, z = inverse_view(x, y, z, 61, -5, -23)
     elif form == "motion":
         theta = rng.uniform(-3 * pi, 3 * pi)
         phi = rng.random() * 2 * pi
-        tube = 0.086 * sqrt(rng.random())
+        tube = 0.075 * sqrt(rng.random())
         radius = 0.22 + tube * cos(phi)
-        x, y, z = radius * cos(theta), 0.205 * theta / (2 * pi) + tube * sin(phi), radius * sin(theta)
-        x, y, z = inverse_view(x, y, z, -10, -15, 31)
+        x, y, z = radius * cos(theta), 0.215 * theta / (2 * pi) + tube * sin(phi), radius * sin(theta)
+        x, y, z = inverse_view(x, y, z, -10, -15, 28)
     else:
-        while True:
-            x, y, z = rng.uniform(-0.31, 0.31), rng.uniform(-0.25, 0.25), rng.uniform(-0.17, 0.17)
-            if sum(max(abs(axis) - edge, 0) ** 2 for axis, edge in zip((x, y, z), (0.273, 0.213, 0.133))) <= 0.037**2:
-                break
-        x, y, z = inverse_view(x, y, z, 31, -24, -18)
+        x = rng.uniform(-0.383, 0.383)
+        y, z = rotate(rng.uniform(-0.163, 0.163), rng.uniform(-0.029, 0.029), 172 * x / 0.766)
+        y += 0.06 * sin(5.5 * x)
+        z += 0.036 * sin(4.4 * x + 2.1)
+        x, y, z = inverse_view(x, y, z, 17, -2, -32)
     return x, y, z
 
 
@@ -72,30 +72,29 @@ def render(form):
     return image.resize((ART_SIZE, ART_SIZE), Image.Resampling.LANCZOS)
 
 
+def backdrop(width, height):
+    image = Image.new("RGB", (width, height))
+    pixels = image.load()
+    blue, center = (23, 43, 200), (48, 68, 227)
+    for y in range(height):
+        for x in range(width):
+            distance = sqrt(((x / width - 0.5) / 0.50)**2 + ((y / height - 0.54) / 0.54)**2)
+            pixels[x, y] = mix(blue, center, max(0, 1 - distance)**1.35)
+    return image
+
+
 def main():
     for form in COLORS:
         render(form).save(MEDIA / f"aero-{form}.webp", quality=87, method=6)
+    backdrop(500, 425).save(MEDIA / "aero-field.webp", lossless=True)
     art = render("identity").resize((870, 870), Image.Resampling.LANCZOS)
-    plate = Image.new("RGB", (1200, 800), "#172bc8")
-    pixels = plate.load()
-    for y in range(800):
-        for x in range(1200):
-            light = max(0, 1 - sqrt(((x - 644) / 620)**2 + ((y - 420) / 470)**2)) ** 2
-            pixels[x, y] = (round(23 + 26*light), round(43 + 33*light), round(200 + 31*light))
-    guide = Image.new("RGBA", (660, 660))
-    ring = Image.new("RGBA", (660, 660))
-    ImageDraw.Draw(ring).ellipse((52, 130, 608, 530), outline=(208, 210, 255, 160), width=2)
-    guide.alpha_composite(ring.rotate(25, resample=Image.Resampling.BICUBIC))
-    plate.paste(guide, (270, 70), guide)
+    plate = backdrop(1200, 800)
     plate.paste(art, (165, -35), art)
     plate.save(MEDIA / "aero-share.jpg", quality=92, optimize=True)
     svg = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
   <title>AERIFORM, a vermilion particle ring on cobalt</title>
-  <defs>
-    <radialGradient id="field"><stop stop-color="#3447e6"/><stop offset="1" stop-color="#172bc8"/></radialGradient>
-  </defs>
+  <defs><radialGradient id="field"><stop stop-color="#3044e3"/><stop offset="1" stop-color="#172bc8"/></radialGradient></defs>
   <path fill="url(#field)" d="M0 0h1200v800H0z"/>
-  <ellipse cx="600" cy="400" rx="382" ry="226" transform="rotate(-25 600 400)" fill="none" stroke="#c9ccff" stroke-opacity=".48"/>
   <image href="data:image/webp;base64,IMAGE_DATA" x="165" y="-35" width="870" height="870"/>
 </svg>
 '''

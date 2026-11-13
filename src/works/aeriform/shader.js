@@ -6,16 +6,20 @@ const tilt = (outputMin, outputMax, speed = 0.5) => ({
 
 const forms = {
   identity: {
-    shape: { type: "torus3D", radius: 0.29, tube: 0.126, rotX: tilt(49, 71), rotY: tilt(-18, 23), rotZ: 0 },
-    colorA: "#ad372f", colorB: "#ff9b66", rotation: -23, scale: 1,
+    shape: { type: "torus3D", radius: 0.29, tube: 0.126, rotX: tilt(46, 68), rotY: tilt(-15, 28), rotZ: 0 },
+    colorA: "#be422f", colorB: "#ffa879", rotation: -23, scale: 1,
   },
   motion: {
-    shape: { type: "helix3D", radius: 0.22, tube: 0.086, pitch: 0.205, rotX: tilt(-17, 2), rotY: tilt(-30, 20), rotZ: 0 },
-    colorA: "#a8414c", colorB: "#ffb48b", rotation: 31, scale: 1.03,
+    shape: { type: "helix3D", radius: 0.22, tube: 0.075, pitch: 0.215, rotX: tilt(-17, 2), rotY: tilt(-27, 22), rotZ: 0 },
+    colorA: "#a8414c", colorB: "#ffb48b", rotation: 28, scale: 0.99,
   },
   digital: {
-    shape: { type: "cube3D", sizeX: 0.31, sizeY: 0.25, sizeZ: 0.17, rounding: 0.037, rotX: tilt(24, 42), rotY: tilt(-32, -11), rotZ: 0 },
-    colorA: "#955866", colorB: "#ffbfb1", rotation: -18, scale: 0.94,
+    shape: {
+      type: "ribbon3D", width: 0.163, thickness: 0.029, length: 0.383,
+      wave: 0.075, waveFrequency: 5.5, twist: 172, speed: 0,
+      rotX: tilt(9, 25), rotY: tilt(-20, 17), rotZ: 0,
+    },
+    colorA: "#c78194", colorB: "#ffe4ce", rotation: -32, scale: 1.02,
   },
 };
 
@@ -43,7 +47,7 @@ export function initializeAeriform(canvas, options) {
     { id: "volume", type: "Particles", props: {
       ...particleProps(options.settings),
       count: matchMedia("(pointer: coarse)").matches ? 5750 : 11200,
-      size: 1.72, softness: 0.04, exposure: 1.6, damping: 0.42,
+      size: 1.72, softness: 0.04, exposure: 1.76, damping: 0.42,
       mouseRadius: 0.26, particleShape: "dot",
       center: { x: 0.5, y: 0.5 },
     } },

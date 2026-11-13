@@ -70,22 +70,51 @@ async function quietWithPointer(page) {
   await page.mouse.move(280, 175, { steps: 4 });
   await page.waitForTimeout(1000);
   assert.equal(await textures(page), before);
+  return before;
+}
+
+async function finishSubmittedFrame(page) {
+  await page.evaluate(async () => {
+    await window.__visualProbe.device.queue.onSubmittedWorkDone();
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  });
 }
 
 async function layout(page) {
+  const measurements = [];
   for (const zoom of ["100%", "200%"]) {
     const dimensions = await page.evaluate((zoom) => {
       document.documentElement.style.fontSize = zoom;
       const scroll = document.documentElement.scrollWidth;
-      const outliers = scroll <= innerWidth + 1 ? [] : [...document.querySelectorAll("body *")]
-        .filter((element) => element.getBoundingClientRect().right > innerWidth + 1)
-        .slice(0, 24).map((element) => [element.tagName, element.className, element.parentElement.className,
-          Math.round(element.getBoundingClientRect().right)]);
-      return { scroll, width: innerWidth, outliers };
+      const outliers = [];
+      const scrollBoxes = [];
+      const textOutliers = [];
+      if (scroll > innerWidth + 1) {
+        for (const element of document.querySelectorAll("body *")) {
+          const { left, right, width } = element.getBoundingClientRect();
+          const style = getComputedStyle(element);
+          const label = element.tagName + (element.className ? "." + element.className : "");
+          if (right > innerWidth + 1) outliers.push([label, Math.round(right)]);
+          if (element.clientWidth && element.scrollWidth > element.clientWidth + 1) {
+            scrollBoxes.push([label, Math.round(left), Math.round(width), element.clientWidth,
+              element.scrollWidth, style.overflowX]);
+          }
+          for (const node of element.childNodes) {
+            if (node.nodeType !== Node.TEXT_NODE || !node.textContent.trim()) continue;
+            const range = new Range();
+            range.selectNodeContents(node);
+            const textRight = range.getBoundingClientRect().right;
+            if (textRight > innerWidth + 1) textOutliers.push([label, node.textContent.trim().slice(0, 75), textRight]);
+          }
+        }
+      }
+      return { scroll, width: innerWidth, outliers: outliers.slice(0, 24),
+        scrollBoxes: scrollBoxes.slice(0, 24), textOutliers: textOutliers.slice(0, 24) };
     }, zoom);
-    assert.ok(dimensions.scroll <= dimensions.width + 1, JSON.stringify({ zoom, ...dimensions }));
+    measurements.push({ zoom, ...dimensions });
   }
   await page.evaluate(() => document.documentElement.style.removeProperty("font-size"));
+  return measurements;
 }
 
 async function texture(page, label) {
@@ -98,17 +127,27 @@ async function texture(page, label) {
 }
 
 async function responsiveAndBrief(browser) {
+  const overflows = [];
   for (const lang of ["en", "zh-Hant"]) {
     for (const width of [320, 390, 768, 1440]) {
       await withPage(browser, { viewport: { width, height: 844 }, reducedMotion: "reduce", hasTouch: width === 390 }, async (page) => {
         const probe = await observe(page);
         await open(page, lang);
         await phase(page, "reduced");
-        await layout(page);
+        const emptyBrief = await layout(page);
         await page.keyboard.press("Tab");
         assert.equal(await page.locator(".skip").evaluate((node) => node === document.activeElement), true);
         await page.keyboard.press("Enter");
         assert.equal(await page.locator("main").evaluate((node) => node === document.activeElement), true);
+        await page.locator("select[name=service]").selectOption("motion");
+        const selectedBrief = await layout(page);
+        evidence.measurements[`layout-${lang}-${width}`] = { emptyBrief, selectedBrief };
+        for (const [state, measurements] of Object.entries({ emptyBrief, selectedBrief })) {
+          for (const measurement of measurements) {
+            if (measurement.scroll > measurement.width + 1) overflows.push({ lang, state, ...measurement });
+          }
+        }
+        await page.locator("select[name=service]").selectOption("");
         assert.equal(await devices(page), 0);
         assert.equal(await textures(page), 0);
         assert.equal(await page.locator("canvas").count(), 1);
@@ -121,8 +160,13 @@ async function responsiveAndBrief(browser) {
           await page.locator('button[data-form="digital"]').tap();
           assert.equal(await stage(page).getAttribute("data-form"), "digital");
           assert.equal(await stage(page).locator('[data-still="digital"]').isVisible(), true);
+          await page.locator('button[data-form="motion"]').tap();
+          assert.equal(await stage(page).locator('[data-still="motion"]').isVisible(), true);
           await page.locator('button[data-form="identity"]').tap();
           await snap(page, `aeriform-${lang}-390-reduced`, { fullPage: true });
+          const caseArt = page.locator(".work-image--radio");
+          await caseArt.scrollIntoViewIfNeeded();
+          await snap(page, `aeriform-${lang}-390-radio-applications`, { clip: await caseArt.boundingBox() });
           await brief(page, lang);
         }
         await probe.assertPrivate(site.origin, { fontPaths });
@@ -156,7 +200,8 @@ async function responsiveAndBrief(browser) {
       await probe.assertPrivate(site.origin, { fontPaths });
     });
   }
-  evidence.checks.responsive = "PASS bilingual 320/390/768/1440, 100% and 200% text, skip/focus, 44px form selectors, touch and no GPU starts under reduced motion";
+  assert.deepEqual(overflows, [], JSON.stringify(overflows));
+  evidence.checks.responsive = "PASS bilingual 320/390/768/1440, 100% and 200% text including selected form and brief review, skip/focus, 44px form selectors, touch and no GPU starts under reduced motion";
   evidence.checks.fallback = "PASS bilingual no JavaScript, unavailable navigator.gpu, denied adapter, and three still forms under reduced motion";
   evidence.checks.brief = "PASS real bilingual UTF-8 downloads, package presets, native required validation, deliverable validation, editing, and no send";
 }
@@ -170,6 +215,7 @@ async function brief(page, lang) {
   assert.equal(await service.evaluate((input) => input === document.activeElement), true);
   await page.locator('[data-brief-service="motion"]').tap();
   assert.equal(await service.inputValue(), "motion");
+  assert.equal(await stage(page).getAttribute("data-form"), "motion");
   assert.equal(await form.locator('input[name="deliverable"]:visible').count(), 3);
   await form.locator('select[name="stage"]').selectOption("refresh");
   await form.locator('select[name="timing"]').selectOption("quarter");
@@ -199,10 +245,16 @@ async function brief(page, lang) {
     rows.map((row) => row.querySelector("dt").textContent + "\t" + row.querySelector("dd").textContent));
   for (const entry of entries) assert.ok(content.includes(entry), entry);
   assert.ok(content.includes(lang === "en" ? "Logo animation, Social templates" : "標誌動畫、社群範本"));
+  assert.ok(content.includes("NT$120,000–220,000"));
+  assert.ok(content.includes(lang === "en" ? "5–8 weeks" : "5–8 週"));
   assert.ok(content.includes(lang === "en" ? "This brief has not been sent" : "尚未聯絡工作室"));
   assert.equal(await review.locator("[role=status]").isVisible(), true);
   evidence.downloads.push({ name, bytes: bytes.length, entries });
   await snap(page, `aeriform-${lang}-390-brief-complete`);
+  await page.setViewportSize({ width: 320, height: 844 });
+  const reviewLayout = await layout(page);
+  evidence.measurements[`layout-${lang}-320-review`] = reviewLayout;
+  assert.ok(reviewLayout.every(({ scroll, width }) => scroll <= width + 1), JSON.stringify(reviewLayout));
 }
 
 async function gpu(browser, lang, width, inspect) {
@@ -229,12 +281,11 @@ async function gpu(browser, lang, width, inspect) {
     assert.equal(await stage(page).locator('[data-still="identity"]').isVisible(), false);
     assert.equal(await page.locator("canvas").count(), 1);
     await snap(page, stem + "-webgpu-fold");
-    await snap(page, stem + "-webgpu", { fullPage: true });
     await texture(page, stem + "-initial");
     if (inspect) {
       const t0 = performance.now();
       const timing = [];
-      for (const second of [0, 2, 4, 6, 8, 10, 12, 14]) {
+      for (const second of [0, 2, 4, 6, 8, 10, 12, 14, 18, 22, 26]) {
         const remaining = second * 1000 - (performance.now() - t0);
         if (remaining > 0) await page.waitForTimeout(remaining);
         const time = performance.now() - t0;
@@ -256,9 +307,14 @@ async function gpu(browser, lang, width, inspect) {
       await pause.click();
       await phase(page, "paused");
       assert.equal(await stage(page).locator("canvas").isVisible(), true);
+      const pauseCount = await textures(page);
+      await finishSubmittedFrame(page);
       const frozen = await snap(page, stem + "-paused", { clip });
-      await quietWithPointer(page);
+      const heldCount = await quietWithPointer(page);
+      await finishSubmittedFrame(page);
       const held = await snap(page, stem + "-paused-held", { clip });
+      assert.equal(await textures(page), pauseCount);
+      evidence.measurements[stem + "-pause"] = { pauseCount, heldCount, frozen, held };
       assert.equal(held, frozen, "The presented paused artwork changed");
       await pause.click();
       await nextFrames(page, 12);
@@ -267,7 +323,9 @@ async function gpu(browser, lang, width, inspect) {
       for (const form of ["motion", "digital", "identity"]) {
         await page.locator(`button[data-form="${form}"]`).click();
         assert.equal(await stage(page).getAttribute("data-form"), form);
-        await nextFrames(page, 45);
+        await nextFrames(page, 14);
+        await snap(page, stem + "-transition-" + form, { clip });
+        await nextFrames(page, 65);
         await snap(page, stem + "-form-" + form, { clip });
         await texture(page, stem + "-form-" + form);
       }
@@ -325,6 +383,10 @@ async function gpu(browser, lang, width, inspect) {
       note: "getCurrentTexture acquisitions. This is not FPS.",
       devicePixelRatio: await stage(page).locator("canvas").evaluate((canvas) => canvas.width / canvas.getBoundingClientRect().width),
     };
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await phase(page, "running");
+    await nextFrames(page);
+    await snap(page, stem + "-webgpu", { fullPage: true });
     await probe.assertPrivate(site.origin, { fontPaths });
   });
 }
