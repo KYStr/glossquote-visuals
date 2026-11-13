@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
 import { chromium } from "playwright";
 import { base, root } from "../../scripts/site-map.mjs";
 import { observe } from "./probe.mjs";
@@ -375,7 +376,17 @@ async function captureCycle(page, locale, label) {
       const ticks = window.__prismPresentations;
       return ticks.reduce((elapsed, tick) => elapsed + tick.deltaMs, 0) >= 13_000;
     }, null, { timeout: 95_000, polling: 300 });
-    await page.waitForTimeout(750);
+    const firstLiveFrame = frames.find(frame => frame.epochMs >= clock.visibleEpochMs);
+    const cycleReadyAt = Math.max(
+      await page.evaluate(() => window.__prismPresentations.at(-1).epochMs),
+      (firstLiveFrame?.epochMs ?? clock.visibleEpochMs) + 12_000,
+    );
+    const deadline = Date.now() + 15_000;
+    while (!frames.some(frame => frame.epochMs >= cycleReadyAt) && Date.now() < deadline) {
+      await delay(250);
+    }
+    assert.ok(frames.some(frame => frame.epochMs >= cycleReadyAt),
+      `${label}: compositor did not deliver a frame after the measured shader cycle`);
     last = await counters(page);
   } finally {
     session.off("Page.screencastFrame", onFrame);
@@ -411,9 +422,7 @@ async function captureCycle(page, locale, label) {
     natural.push({ targetMs, ...await save(frame, `natural-target-${targetMs}ms`) });
     if (targetMs === 4000) comparison = frame;
   }
-  const cycle = [...live].reverse().find(frame => frame.epochMs <= presentations.at(-1).epochMs);
-  assert.ok(cycle, `${label}: no compositor frame during the measured shader cycle`);
-  const cycleEnd = await save(cycle, "natural-cycle-end");
+  const cycleEnd = await save(live.at(-1), "natural-cycle-end");
   const measurement = evidence.measurements[label] = {
     clock, startup, natural, cycleEnd, compositorFrames: frames.length, liveFrames: live.length,
     textureAcquisitions: last.textures - first.textures,
