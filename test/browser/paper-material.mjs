@@ -58,7 +58,7 @@ export async function checkPaperMaterial({
       // Hold the browser clock just before the product action, then advance it
       // while paused. This gives a same-frame comparison without click/RAF races.
       await page.clock.install();
-      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 450);
+      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 10_000);
       const before = await snap("pause-before");
       const beforeCount = await textures();
       await pause.evaluate((button) => button.click());

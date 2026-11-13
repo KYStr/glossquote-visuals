@@ -95,7 +95,8 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
         stem + " did not cover a full measured cycle");
     },
     async transitions(page, surface, sequence) {
-      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 100);
+      // A 100ms RPC margin can expire before the remote browser receives it.
+      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 10_000);
       const clip = await surface.evaluate((element) => {
         element.scrollIntoView({ block: "center", behavior: "instant" });
         const rect = element.getBoundingClientRect();

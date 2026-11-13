@@ -569,7 +569,9 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
   assert.ok(canvasCss.ancestorsVisible, `${stem}: canvas is hidden in the real composition`);
   // Freeze between snapshots. Each sample records its actual GPU submission
   // time; native pause below never compares captures from different clock times.
-  await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
+  // Leave room for cross-process RPC scheduling on the isolated software GPU.
+  // pauseAt fast-forwards to this point; it is not a ten-second wall-time wait.
+  await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 10_000);
   try {
     if (pauseOnly) {
       await sample("active-0");
@@ -1223,16 +1225,34 @@ async function checkLiquid(browser) {
         assert.ok(await angle.isDisabled());
         await pauseButton.evaluate(button => button.click());
         await phase(page, "running");
-        await nextFrames();
-        await page.waitForTimeout(2000);
-        const resumed = await frame(`${finish}-resumed`);
-        const resumeDelta = await livePixelDifference(page, secondPaused, resumed);
-        assert.ok(resumeDelta.mean > 0.07 && resumeDelta.changedPixels > 7, `${stem}: resumed scene did not move: ${JSON.stringify(resumeDelta)}`);
+        const resumeStart = performance.now();
+        const resumeSamples = [];
+        let previousTextures = await textureCount(page);
+        // A cosine light sweep can return to the same angle after two seconds
+        // around an extremum. Two distinct offsets test visible resumed motion
+        // without confusing that symmetry with a stopped renderer.
+        for (const [targetMs, label] of [[2000, "resumed"], [4000, "resumed-4s"]]) {
+          const remaining = targetMs - (performance.now() - resumeStart);
+          if (remaining > 0) await page.waitForTimeout(remaining);
+          await nextFrames();
+          await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+          const requestedMs = performance.now() - resumeStart;
+          const resumed = await frame(`${finish}-${label}`);
+          const textures = await textureCount(page);
+          assert.ok(textures > previousTextures, `${stem}: no new texture acquisition after resume`);
+          previousTextures = textures;
+          resumeSamples.push({ targetMs, requestedMs, textures, file: `${stem}-${finish}-${label}.png`,
+            difference: await livePixelDifference(page, secondPaused, resumed) });
+        }
+        const changed = resumeSamples.find(({ difference }) => difference.mean > 0.07 && difference.changedPixels > 7);
+        assert.ok(changed, `${stem}: resumed scene did not move at either measured offset: ${JSON.stringify(resumeSamples)}`);
+        const resumeDelta = changed.difference;
 
         await enterStudio();
         return { natural, fixed: { readbackMs, submissions }, angleDelta, pauseDelta,
           pauseDeltaBasis: "Unsynchronized native captures before and after the action; diagnostic only",
-          nativeHeldOriginalPngIdentical: true, resumeDelta, texture: textureStats };
+          nativeHeldOriginalPngIdentical: true, resumeDelta, resumeSamples,
+          resumeEvidence: changed.file, texture: textureStats };
       }
 
       await open(page, prefix + route);

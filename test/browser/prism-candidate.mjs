@@ -469,7 +469,7 @@ async function checkOptics(browser) {
       const scene = stage(page);
       await scene.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
       await page.evaluate(() => document.fonts.ready);
-      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 500);
+      await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 10_000);
       const specimenRegion = () => scene.evaluate(element => {
         const { x, y, width, height } = element.getBoundingClientRect();
         return { x, y, width, height, viewportWidth: innerWidth, viewportHeight: innerHeight };
