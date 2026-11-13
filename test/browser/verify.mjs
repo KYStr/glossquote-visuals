@@ -900,14 +900,26 @@ async function checkLive(browser) {
         // potentially slow software-renderer diagnostic/full-page screenshots.
         // Every original live check is retained; screenshots follow controls.
         const composite = await checkLiveComposite(page, releasedWork.slug, locale, null);
-        const isolatedFile = `live-${releasedWork.slug}-${locale}-isolated-output.png`;
-        const isolatedOutput = await pixelEvidence(page, stage(page), resolve(evidenceDir, isolatedFile));
-        evidence.screenshots.push(isolatedFile);
-        assert.ok(isolatedOutput.colors > 20, "The deployed shader has no structured independent output");
-        composite.isolatedOutput = isolatedOutput;
-        // The isolated check above deliberately changes CSS and is not a visibility pass.
-        // Save the original-CSS page after restoring diagnostic styles.
-        await screenshot(page, `live-${releasedWork.slug}-${locale}.png`);
+        // The native pause has already passed same-frame/zero-submission gates.
+        // Hold that actual GPU frame while the software compositor takes stills;
+        // these are explicitly paused diagnostic stills, not temporal evidence.
+        await page.locator("[data-pause]").evaluate(button => button.click());
+        await phase(page, "paused");
+        composite.diagnosticCapture = { nativePaused: true, phase: "paused",
+          note: "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences." };
+        try {
+          const isolatedFile = `live-${releasedWork.slug}-${locale}-isolated-output.png`;
+          const isolatedOutput = await pixelEvidence(page, stage(page), resolve(evidenceDir, isolatedFile));
+          evidence.screenshots.push(isolatedFile);
+          assert.ok(isolatedOutput.colors > 20, "The deployed shader has no structured independent output");
+          composite.isolatedOutput = isolatedOutput;
+          // The isolated check deliberately changes CSS and is not a visibility pass.
+          // Save the original-CSS page after restoring diagnostic styles.
+          await screenshot(page, `live-${releasedWork.slug}-${locale}.png`);
+        } finally {
+          await page.locator("[data-pause]").evaluate(button => button.click());
+          await phase(page, "running");
+        }
         await probe.assertPrivate(site.origin, { fontPaths });
         await page.locator(".site-footer a").first().click();
         assert.equal(page.url(), url(prefix));
