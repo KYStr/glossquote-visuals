@@ -35,7 +35,10 @@ export function addParticleDepthLighting(source) {
 
   // The same particle position controls perspective, intensity and lighting.
   // Far points have less weight where they overlap brighter points near camera.
-  const depthEnergy = clamp(sum(number(0.63), scaled("pos", "z", 1.54), scaled("pos", "y", 0.53)), 0.14, 1.25);
+  const depthEnergy = [
+    6, "std.clamp",
+    [sum("depthBase", scaled("pos", "z", 1.54), scaled("pos", "y", 0.53)), "depthFloor", number(1.25)],
+  ];
   const motionEnergy = binary(property("vel", "w"), "*", property("prm", "speedColorK"));
   energy[2] = binary(energy[2], "*", depthEnergy);
   tone[2] = clamp(sum(number(0.34), scaled("pos", "z", 1.43), scaled("pos", "y", 0.66),
@@ -43,10 +46,20 @@ export function addParticleDepthLighting(source) {
 
   // The bundled kernel includes both the CPU function and the precompiled GPU
   // syntax tree. Preserve matching math in both paths and leave JIT disabled.
+  const externals = "externals: {" + "\n\t\t\t" + '"layout": () => layout,';
   let patched = replaceExactly(kernel, astSource, JSON.stringify(ast));
+  patched = replaceExactly(patched, externals,
+    externals + "\n\t\t\t" + '"depthBase": () => depthBase,' + "\n\t\t\t" + '"depthFloor": () => depthFloor,');
+  patched = replaceExactly(patched, "const OUT_RES = cfg.outRes;", [
+    "const OUT_RES = cfg.outRes;",
+    // Match the pinned Particles raster tier. Lift its far side without changing
+    // the full-resolution ramp or losing the nearer points' stronger weighting.
+    "const depthBase = OUT_RES === 768 ? .71 : .63;",
+    "const depthFloor = OUT_RES === 768 ? .22 : .14;",
+  ].join("\n\t"));
   patched = replaceExactly(patched,
     "const bright = __tsover_mul(__tsover_mul(__tsover_add(.7, __tsover_mul(.6, pos.w)), persp), persp);",
-    "const bright = (.7 + .6 * pos.w) * persp * persp * clamp$1(.63 + pos.z * 1.54 + pos.y * .53, .14, 1.25);");
+    "const bright = (.7 + .6 * pos.w) * persp * persp * clamp$1(depthBase + pos.z * 1.54 + pos.y * .53, depthFloor, 1.25);");
   patched = replaceExactly(patched,
     "const speedNorm = clamp$1(__tsover_mul(vel.w, prm.speedColorK), 0, 1);",
     "const speedNorm = clamp$1(.34 + pos.z * 1.43 + pos.y * .66 - pos.x * .18 + vel.w * prm.speedColorK * .42, 0, 1);");

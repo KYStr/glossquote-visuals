@@ -43,11 +43,12 @@ export function applyAeriform(renderer, next, previous) {
 }
 
 export function initializeAeriform(canvas, options) {
+  const compact = matchMedia("(pointer: coarse) and (max-width: 1366px) and (max-height: 1366px)").matches;
   return initializeStandalone(canvas, [
     { id: "volume", type: "Particles", props: {
       ...particleProps(options.settings),
-      count: matchMedia("(pointer: coarse)").matches ? 5750 : 11200,
-      size: 1.72, softness: 0.04, exposure: 1.76, damping: 0.42,
+      count: compact ? 6300 : 11200,
+      size: compact ? 2.18 : 1.72, softness: 0.04, exposure: 1.76, damping: 0.42,
       mouseRadius: 0.26, particleShape: "dot",
       center: { x: 0.5, y: 0.5 },
     } },
