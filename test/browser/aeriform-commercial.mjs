@@ -86,13 +86,31 @@ async function layout(page) {
     const dimensions = await page.evaluate((zoom) => {
       document.documentElement.style.fontSize = zoom;
       const scroll = document.documentElement.scrollWidth;
-      const outliers = scroll <= innerWidth + 1 ? [] : [...document.querySelectorAll("body *")]
-        .filter((element) => element.getBoundingClientRect().right > innerWidth + 1)
-        .slice(0, 24).map((element) => [element.tagName, element.className, element.parentElement.className,
-          Math.round(element.getBoundingClientRect().right)]);
-      return { scroll, width: innerWidth, outliers };
+      const outliers = [];
+      const scrollBoxes = [];
+      const textOutliers = [];
+      if (scroll > innerWidth + 1) {
+        for (const element of document.querySelectorAll("body *")) {
+          const { left, right, width } = element.getBoundingClientRect();
+          const style = getComputedStyle(element);
+          const label = element.tagName + (element.className ? "." + element.className : "");
+          if (right > innerWidth + 1) outliers.push([label, Math.round(right)]);
+          if (element.clientWidth && element.scrollWidth > element.clientWidth + 1) {
+            scrollBoxes.push([label, Math.round(left), Math.round(width), element.clientWidth,
+              element.scrollWidth, style.overflowX]);
+          }
+          for (const node of element.childNodes) {
+            if (node.nodeType !== Node.TEXT_NODE || !node.textContent.trim()) continue;
+            const range = new Range();
+            range.selectNodeContents(node);
+            const textRight = range.getBoundingClientRect().right;
+            if (textRight > innerWidth + 1) textOutliers.push([label, node.textContent.trim().slice(0, 75), textRight]);
+          }
+        }
+      }
+      return { scroll, width: innerWidth, outliers: outliers.slice(0, 24),
+        scrollBoxes: scrollBoxes.slice(0, 24), textOutliers: textOutliers.slice(0, 24) };
     }, zoom);
-    assert.ok(dimensions.scroll <= dimensions.width + 1, JSON.stringify({ zoom, ...dimensions }));
     measurements.push({ zoom, ...dimensions });
   }
   await page.evaluate(() => document.documentElement.style.removeProperty("font-size"));
@@ -109,6 +127,7 @@ async function texture(page, label) {
 }
 
 async function responsiveAndBrief(browser) {
+  const overflows = [];
   for (const lang of ["en", "zh-Hant"]) {
     for (const width of [320, 390, 768, 1440]) {
       await withPage(browser, { viewport: { width, height: 844 }, reducedMotion: "reduce", hasTouch: width === 390 }, async (page) => {
@@ -123,6 +142,11 @@ async function responsiveAndBrief(browser) {
         await page.locator("select[name=service]").selectOption("motion");
         const selectedBrief = await layout(page);
         evidence.measurements[`layout-${lang}-${width}`] = { emptyBrief, selectedBrief };
+        for (const [state, measurements] of Object.entries({ emptyBrief, selectedBrief })) {
+          for (const measurement of measurements) {
+            if (measurement.scroll > measurement.width + 1) overflows.push({ lang, state, ...measurement });
+          }
+        }
         await page.locator("select[name=service]").selectOption("");
         assert.equal(await devices(page), 0);
         assert.equal(await textures(page), 0);
@@ -174,6 +198,7 @@ async function responsiveAndBrief(browser) {
       await probe.assertPrivate(site.origin, { fontPaths });
     });
   }
+  assert.deepEqual(overflows, [], JSON.stringify(overflows));
   evidence.checks.responsive = "PASS bilingual 320/390/768/1440, 100% and 200% text, skip/focus, 44px form selectors, touch and no GPU starts under reduced motion";
   evidence.checks.fallback = "PASS bilingual no JavaScript, unavailable navigator.gpu, denied adapter, and three still forms under reduced motion";
   evidence.checks.brief = "PASS real bilingual UTF-8 downloads, package presets, native required validation, deliverable validation, editing, and no send";
@@ -250,7 +275,6 @@ async function gpu(browser, lang, width, inspect) {
     assert.equal(await stage(page).locator('[data-still="identity"]').isVisible(), false);
     assert.equal(await page.locator("canvas").count(), 1);
     await snap(page, stem + "-webgpu-fold");
-    await snap(page, stem + "-webgpu", { fullPage: true });
     await texture(page, stem + "-initial");
     if (inspect) {
       const t0 = performance.now();
@@ -353,6 +377,10 @@ async function gpu(browser, lang, width, inspect) {
       note: "getCurrentTexture acquisitions. This is not FPS.",
       devicePixelRatio: await stage(page).locator("canvas").evaluate((canvas) => canvas.width / canvas.getBoundingClientRect().width),
     };
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await phase(page, "running");
+    await nextFrames(page);
+    await snap(page, stem + "-webgpu", { fullPage: true });
     await probe.assertPrivate(site.origin, { fontPaths });
   });
 }
