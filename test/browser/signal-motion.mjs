@@ -81,8 +81,9 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
     async transitions(page, surface, sequence) {
       await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 100);
       const clip = await surface.evaluate((element) => {
+        element.scrollIntoView({ block: "center", behavior: "instant" });
         const rect = element.getBoundingClientRect();
-        return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+        return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
       });
 
       try {
@@ -146,8 +147,9 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
 
     async freeze(page, stem, surface, { pause, resume, quiet, nextFrame }) {
       const clip = await surface.evaluate((element) => {
+        element.scrollIntoView({ block: "center", behavior: "instant" });
         const rect = element.getBoundingClientRect();
-        return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+        return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
       });
       async function capture(suffix) {
         const file = "signal-" + stem + "-" + suffix + ".png";

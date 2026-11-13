@@ -70,8 +70,10 @@ async function paperScreenshots(page, name) {
 
 async function paperSurface(page, name) {
   const clip = await stage(page).evaluate((element) => {
+    element.scrollIntoView({ block: "center", behavior: "instant" });
     const rect = element.getBoundingClientRect();
-    return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+    // Playwright page.screenshot clip is relative to the viewport.
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
   });
   const png = await page.screenshot({ path: resolve(evidenceDir, name), clip, timeout: 10_000 });
   evidence.screenshots.push(name);
@@ -443,8 +445,9 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
   const capture = async (label) => {
     // page.screenshot with an explicit clip needs no locator stability rAF while the clock is paused.
     const clip = await surface.evaluate((element) => {
+      element.scrollIntoView({ block: "center", behavior: "instant" });
       const rect = element.getBoundingClientRect();
-      return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height };
+      return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
     });
     const file = `${stem}-composite-${label}.png`;
     const png = await page.screenshot({ path: resolve(evidenceDir, file), clip });
