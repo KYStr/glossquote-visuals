@@ -1,0 +1,616 @@
+{
+  "commit": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+  "work": "V001",
+  "reviewer": "/root/v001_review",
+  "scores": {
+    "artDirection": 9.2,
+    "uiDesign": 9.3,
+    "commercialCompleteness": 9.4
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "紙與光的弧形盲壓、暖紙色和朱紅從品牌標記一路延伸到商品圖、紙樣與訂製區，紙品工作室的識別在中英版一致。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "桌面以斜切紙面、弧線與襯底陰影平衡左側標題及主 CTA。390px 改採直排，壓印和紙弧仍完整落在設計畫框。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu-fold.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-webgpu-fold.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-auto-0s.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "英文襯線展示字與中文標題都有清楚主次，按鈕和規格使用較樸素的文字。桌面部分短標、規格補充仍需更近看。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu-fold.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-1440-webgpu-fold.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-brief-complete.png"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "自然序列可見纖維、盲壓肩部、紙緣與陰影跟隨同一紙面曲率；角度變動時亮邊沿壓印和弧面移動。三款紙樣另讓棉紙、暖白卡紙與再生紙容易辨識。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-0s.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-4s.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-090.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-180.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "三款商品、紙樣比較、流程和朱紅訂製區的段落順序清楚。1100px 英文暫停後圖說保有一行，首屏高度與運作、續播相同。手機逐一列出三張完整商品卡，至表單的閱讀距離較長。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-768-still.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-100.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "首屏行動、系列規格、紙材/加工、印製流程及需求摘要依序展開。表單與摘要重述示意尺寸、組成及交期，減少為選項來回找資料。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "首屏開始訂製、各系列直達入口、頁內導覽、回到編輯及下載的去向清楚。手機導覽及材質控制標籤比主按鈕更緊湊。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-webgpu-fold.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-390-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "系列切換同步提供建議、數量單位與規格；自訂值保留、無效數量焦點及可回編已由中英操作驗證。摘要有明確下載、回編和完成狀態。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "390px 有觸控完成畫面，雙語四寬與 200% 根文字尺寸、鍵盤和減少動態由同 SHA 測試驗證。1100px 暫停在 100%/200% 中英原圖都能讀到圖說與操作，頁面無橫向溢位。200% 英文圖說排為三行；部分狹窄的關閉選單只顯示選項開頭。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-768-still-fold.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-Hant-768-still-fold.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-zh-Hant-1100-paused-100.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-zh-Hant-1100-paused-200.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-100.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-200.png"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "商品卡、表單、摘要與真實下載共用系列、規格、紙材、加工和數量單位。角度反饋與暫停、續播符合操作文字，1100px 英文狀態變化未拉長首屏。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-print-brief.txt",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-print-brief.txt",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-pause-at-click.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-pause-resumed.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-100.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "定位為有選材及加工工序的紙品訂製工作室，名片、婚禮邀請與禮盒對應不同用途，盲壓和紙材的觸感有對照。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-angle-090.png"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "各系列列示尺寸、組成、起印量和參考交期，另有 300/350 g/m² 紙材、加工與印檔資訊。中文完成畫面與下載列明禮盒 250 組、校稿後 10–15 個工作天，以及「訂製數量超過 200，需另確認工期」。英文摘要的 sets 與工期條件一致。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-print-brief.txt"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "產品頁交代紙樣、打樣、校稿與特殊工期，完成畫面和兩語文字檔清楚說明只是生成需求摘要、尚未下單。概念品牌的示意資料與實際履約仍有界線。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-print-brief.txt",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-print-brief.txt"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "可從主行動或單款帶入系列，選紙/加工、填數量用途、檢查後下載。兩語實際下載都保留棉紙 350 g/m²、單色印刷＋盲壓、250 組與用途。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-print-brief.txt",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-print-brief.txt",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "錯誤有焦點與修正路徑，回編保留先前選擇。完成提示與兩語原 TXT 都明示已產生需求摘要、尚未送出訂單。數量超過 200 的工期提醒和加工打樣提醒分行列示。",
+          "evidence": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-print-brief.txt",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-print-brief.txt",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json"
+          ]
+        }
+      ]
+    }
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+    "reviewer": "/root/v001_review",
+    "measurementBasis": "自然序列以隔離 runner 的 performance.now() 記錄原 PNG 截圖發起時刻，依每個視窗第一張 elapsed 歸零。檔名的秒數是取樣目標；證據未記 GPU 提交或截圖完成時刻。暫停以受控時鐘推進 1,600ms 並重比原圖像素。",
+    "captionRegression": {
+      "status": "PASS",
+      "results": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+      "observation": "雙語 1100px 暫停原圖在 100% 保持可讀圖說及正常下段位置。200% 英文圖說三行、中文兩行。英文 100% 暫停前、保持與續播圖說寬、高及首屏高度完全相同；中文圖說變窄但仍是一行，首屏高度不變。",
+      "locales": {
+        "zh-Hant": {
+          "viewport": {
+            "width": 1100,
+            "height": 850
+          },
+          "states": {
+            "running": {
+              "width": 309.640625,
+              "height": 37.046875,
+              "right": 738.640625,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 19.4656,
+              "padding": 17.6,
+              "heroHeight": 520.734375,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "running"
+            },
+            "paused": {
+              "width": 254.984375,
+              "height": 37.046875,
+              "right": 683.984375,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 19.4656,
+              "padding": 17.6,
+              "heroHeight": 520.734375,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "paused"
+            },
+            "paused-200-percent": {
+              "width": 254.984375,
+              "height": 113.03125,
+              "right": 683.984375,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 38.9312,
+              "padding": 35.2,
+              "heroHeight": 1067.09375,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "paused"
+            },
+            "resumed": {
+              "width": 309.640625,
+              "height": 37.046875,
+              "right": 738.640625,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 19.4656,
+              "padding": 17.6,
+              "heroHeight": 520.734375,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "running"
+            }
+          },
+          "screenshots": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-zh-Hant-1100-paused-100.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-zh-Hant-1100-paused-200.png"
+          ],
+          "result": "PASS"
+        },
+        "en": {
+          "viewport": {
+            "width": 1100,
+            "height": 850
+          },
+          "states": {
+            "running": {
+              "width": 254.984375,
+              "height": 37.046875,
+              "right": 683.984375,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 19.4656,
+              "padding": 17.6,
+              "heroHeight": 520.734375,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "running"
+            },
+            "paused": {
+              "width": 254.984375,
+              "height": 37.046875,
+              "right": 683.984375,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 19.4656,
+              "padding": 17.6,
+              "heroHeight": 520.734375,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "paused"
+            },
+            "paused-200-percent": {
+              "width": 254.984375,
+              "height": 151.953125,
+              "right": 683.984375,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 38.9312,
+              "padding": 35.2,
+              "heroHeight": 1180.75,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "paused"
+            },
+            "resumed": {
+              "width": 254.984375,
+              "height": 37.046875,
+              "right": 683.984375,
+              "plateWidth": 671,
+              "plateRight": 1100,
+              "lineHeight": 19.4656,
+              "padding": 17.6,
+              "heroHeight": 520.734375,
+              "viewportWidth": 1100,
+              "documentWidth": 1100,
+              "motion": "running"
+            }
+          },
+          "screenshots": [
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-100.png",
+            "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-200.png"
+          ],
+          "result": "PASS"
+        }
+      }
+    },
+    "views": [
+      {
+        "viewport": "desktop",
+        "viewportCssPixels": [
+          1440,
+          900
+        ],
+        "locale": "en",
+        "motionKind": "periodic",
+        "cycleSeconds": 8,
+        "timeBasis": "measured-wall-clock",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "桌面六張自然原圖中，弧形盲壓、纖維和下緣一起隨曲面緩慢起伏；底色上的陰影沿紙緣改變。45° 至 180° 的明暗沿壓痕與紙緣移動，回 0° 恢復同方向掠光。暫停前、立即、保持全像素相同，續播恢復紙緣與光影變化。",
+        "frames": [
+          {
+            "seconds": 0,
+            "targetSeconds": 0,
+            "captureElapsed": 4.80000000243308e-06,
+            "sampledDifferenceFromFirst": 0,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-0s.png"
+          },
+          {
+            "seconds": 2.006463499999998,
+            "targetSeconds": 2,
+            "captureElapsed": 2.0064683000000003,
+            "sampledDifferenceFromFirst": 6.533950617283951,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-2s.png"
+          },
+          {
+            "seconds": 4.051476600000002,
+            "targetSeconds": 4,
+            "captureElapsed": 4.051481400000005,
+            "sampledDifferenceFromFirst": 7.681327160493828,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-4s.png"
+          },
+          {
+            "seconds": 6.013379799999995,
+            "targetSeconds": 6,
+            "captureElapsed": 6.0133845999999975,
+            "sampledDifferenceFromFirst": 6.545138888888889,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-6s.png"
+          },
+          {
+            "seconds": 8.004662199999999,
+            "targetSeconds": 8,
+            "captureElapsed": 8.004667000000001,
+            "sampledDifferenceFromFirst": 0.9645061728395061,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-8s.png"
+          },
+          {
+            "seconds": 10.0124614,
+            "targetSeconds": 10,
+            "captureElapsed": 10.012466200000002,
+            "sampledDifferenceFromFirst": 5.708333333333333,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-auto-10s.png"
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-angle-000.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-angle-045.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-angle-090.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-angle-135.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-angle-180.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-angle-000-return.png"
+        ],
+        "controlMeasurements": [
+          {
+            "angle": 0,
+            "difference": 0
+          },
+          {
+            "angle": 45,
+            "difference": 8.646604938271604
+          },
+          {
+            "angle": 90,
+            "difference": 10.916280864197532
+          },
+          {
+            "angle": 135,
+            "difference": 16.996913580246915
+          },
+          {
+            "angle": 180,
+            "difference": 20.98341049382716
+          },
+          {
+            "angle": 0,
+            "difference": 7.762345679012346
+          }
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-pause-before.png",
+          "paused": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-pause-at-click.png",
+          "stillPaused": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-pause-held.png",
+          "resumed": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-pause-resumed.png"
+        },
+        "pauseMeasurement": {
+          "originalPngSize": [
+            878,
+            561
+          ],
+          "heldControlledMilliseconds": 1600,
+          "changedPixelsAtClick": 0,
+          "changedPixelsWhileHeld": 0,
+          "changedPixelsOnResume": 447108,
+          "firstThreePngFilesByteIdentical": true,
+          "freezePngSha256": "0b42c89d213efe948beb494d03a2b275b6bf2ce51baf61782a18d7d9e31ef535",
+          "resumedPngSha256": "8cf34fc49db08c5b7467b13b8c5ba11d44e006705f5cb49b5db6469e8583d2d8"
+        }
+      },
+      {
+        "viewport": "mobile",
+        "viewportCssPixels": [
+          390,
+          844
+        ],
+        "locale": "zh-Hant",
+        "motionKind": "periodic",
+        "cycleSeconds": 8,
+        "timeBasis": "measured-wall-clock",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "手機完整保留紙緣、盲壓及接觸陰影。四秒附近可見下緣抬起，八秒附近回到初始形狀；調光時暖色亮區沿弧面移動。觸控及受控推進 1.6 秒後暫停原圖仍逐像素相同，續播後可見纖維與曲面明暗變化。",
+        "frames": [
+          {
+            "seconds": 0,
+            "targetSeconds": 0,
+            "captureElapsed": 6.999999997788109e-06,
+            "sampledDifferenceFromFirst": 0,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-auto-0s.png"
+          },
+          {
+            "seconds": 2.00629819999999,
+            "targetSeconds": 2,
+            "captureElapsed": 2.006305199999988,
+            "sampledDifferenceFromFirst": 6.568287037037037,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-auto-2s.png"
+          },
+          {
+            "seconds": 4.000156099999994,
+            "targetSeconds": 4,
+            "captureElapsed": 4.000163099999991,
+            "sampledDifferenceFromFirst": 7.872685185185185,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-auto-4s.png"
+          },
+          {
+            "seconds": 6.004871499999994,
+            "targetSeconds": 6,
+            "captureElapsed": 6.004878499999991,
+            "sampledDifferenceFromFirst": 5.967592592592593,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-auto-6s.png"
+          },
+          {
+            "seconds": 8.006183300000004,
+            "targetSeconds": 8,
+            "captureElapsed": 8.006190300000002,
+            "sampledDifferenceFromFirst": 0.022762345679012346,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-auto-8s.png"
+          },
+          {
+            "seconds": 10.001324500000003,
+            "targetSeconds": 10,
+            "captureElapsed": 10.001331500000001,
+            "sampledDifferenceFromFirst": 6.581404320987654,
+            "evidence": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-auto-10s.png"
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-000.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-045.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-090.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-135.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-180.png",
+          "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-angle-000-return.png"
+        ],
+        "controlMeasurements": [
+          {
+            "angle": 0,
+            "difference": 0
+          },
+          {
+            "angle": 45,
+            "difference": 17.70679012345679
+          },
+          {
+            "angle": 90,
+            "difference": 25.09182098765432
+          },
+          {
+            "angle": 135,
+            "difference": 18.879243827160494
+          },
+          {
+            "angle": 180,
+            "difference": 21.03240740740741
+          },
+          {
+            "angle": 0,
+            "difference": 6.508873456790123
+          }
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-pause-before.png",
+          "paused": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-pause-at-click.png",
+          "stillPaused": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-pause-held.png",
+          "resumed": "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-pause-resumed.png"
+        },
+        "pauseMeasurement": {
+          "originalPngSize": [
+            390,
+            339
+          ],
+          "heldControlledMilliseconds": 1600,
+          "changedPixelsAtClick": 0,
+          "changedPixelsWhileHeld": 0,
+          "changedPixelsOnResume": 117822,
+          "firstThreePngFilesByteIdentical": true,
+          "freezePngSha256": "c9705480c2586df144473e0e156b542223d429b2f196879b96bdf1b72abd2e9b",
+          "resumedPngSha256": "cb73fb0183714d421f57c2b9e99d306cad233e2bc9f18abd5fb2b61d364067ca"
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "實體 GPU、實體手機、耗電及發熱、完整人工讀屏為 NOT_RUN。原圖取自 GitHub-hosted Windows Server 2025 的 Chromium 軟體渲染與 WebGPU。",
+    "自然 PNG 是實測請求時間下的離散取樣。32.08 次 texture acquisition／秒是 runner 觀測，顯示 FPS 未測。",
+    "正式 HTTPS、交付 ZIP 及外部複核待主責確認。"
+  ],
+  "attachments": [
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-webgpu.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-1440-webgpu.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-390-webgpu.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-webgpu.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-768-still.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-Hant-768-still.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-768-still-fold.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-Hant-768-still-fold.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-1440-brief-complete.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-390-brief-complete.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-print-brief.txt",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-zh-print-brief.txt",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-en-texture-readback.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-1440-full.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/paper-material-390-full.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-en-composite-a1.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-en-composite-b.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-en-composite-a2.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-en-composite-before-native-pause.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-en-composite-native-pause.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-en-composite-native-pause-after-1000ms.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-en-composite-native-resume.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-zh-Hant-composite-a1.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-zh-Hant-composite-b.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-zh-Hant-composite-a2.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-zh-Hant-composite-before-native-pause.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-zh-Hant-composite-native-pause.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-zh-Hant-composite-native-pause-after-1000ms.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-light-zh-Hant-composite-native-resume.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-zh-Hant-1100-paused-100.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-zh-Hant-1100-paused-200.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-100.png",
+    "evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-paper-caption-en-1100-paused-200.png"
+  ],
+  "verdict": "APPROVED"
+}

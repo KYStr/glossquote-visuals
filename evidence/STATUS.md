@@ -1,8 +1,8 @@
 # Evidence status
 
-## M03 — final visual acceptance blocked, caption repair in progress
+## M03 — corrected candidate accepted; redeployment pending
 
-The original five-work candidate passed technical checks and recorded design reviews, and source `a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06` was deployed. Subsequent independent inspection found a V001 English native-pause caption collapse at 1100px. [Original image and rejection](M03/a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06/caption-rejected/REVIEW.md). The visible V001 production chat is repairing the CSS; all five works will be re-bound to a corrected fixed candidate. The latest ten-locale live technical verifier passed, but that does not override this visual defect or constitute final acceptance. M02 below remains historical.
+All five complete bilingual commercial sites passed non-author design/material review at `ba1cffaad8b678f26a147403a36ed20197b27c36`, with every art/UI/commercial score strictly above 9/10. All eight isolated lanes and aggregate `131753694869` passed. The V001 English paused-caption defect is corrected and covered by actual 1100px/200% state screenshots. [Integration and limits](M03/ba1cffaad8b678f26a147403a36ed20197b27c36/INTEGRATION.md). The prior deployment/rejection remains historical; corrected release verification is still pending.
 
 ## M02 commercial collection — 2026-11-13
 

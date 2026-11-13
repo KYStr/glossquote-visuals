@@ -4,17 +4,17 @@
 
 Five original bilingual concept websites, combining distinct brand identities, shader-led art direction and complete local customer journeys.
 
-**Status:** M03 is deployed, but final visual acceptance is blocked by a newly observed V001 English paused-layout defect at 1100px. The author is repairing it; previous scores remain historical until the corrected candidate is independently rendered and reviewed. [Original failure](evidence/M03/a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06/caption-rejected/REVIEW.md).
+**Status:** Corrected M03 candidate accepted: all five works exceed 9 in every design category and all eight isolated lanes passed. The V001 paused caption repair is reviewed and awaits deployment. The previous live image and rejection remain in the release history.
 
-[繁中作品集](https://kystr.github.io/glossquote-visuals/) · [English portfolio](https://kystr.github.io/glossquote-visuals/en/) · [Verification and limits](evidence/M03/8fa4e8bcb86748fb100a10fd5a07904761e3c933/INTEGRATION.md)
+[繁中作品集](https://kystr.github.io/glossquote-visuals/) · [English portfolio](https://kystr.github.io/glossquote-visuals/en/) · [Verification and limits](evidence/M03/ba1cffaad8b678f26a147403a36ed20197b27c36/INTEGRATION.md)
 
 | Website | Art direction | UI design | Commercial completeness | Independent review |
 |---|---:|---:|---:|---|
-| 紙與光 / Paper & Light | 9.2 | 9.3 | 9.4 | [Review](evidence/V001/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
-| FORME Objects | 9.1 | 9.2 | 9.4 | [Review](evidence/V002/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
-| 夜航訊號 / Night Signal | 9.1 | 9.2 | 9.4 | [Review](evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
-| 折光材料室 / PRISM Materials | 9.2 | 9.3 | 9.4 | [Review](evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
-| 空型動態設計 / AERIFORM | 9.1 | 9.2 | 9.3 | [Review](evidence/V005/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
+| 紙與光 / Paper & Light | 9.2 | 9.3 | 9.4 | [Review](evidence/V001/ba1cffaad8b678f26a147403a36ed20197b27c36/REVIEW.md) |
+| FORME Objects | 9.1 | 9.2 | 9.4 | [Review](evidence/V002/ba1cffaad8b678f26a147403a36ed20197b27c36/REVIEW.md) |
+| 夜航訊號 / Night Signal | 9.1 | 9.2 | 9.4 | [Review](evidence/V003/ba1cffaad8b678f26a147403a36ed20197b27c36/REVIEW.md) |
+| 折光材料室 / PRISM Materials | 9.2 | 9.3 | 9.4 | [Review](evidence/V004/ba1cffaad8b678f26a147403a36ed20197b27c36/REVIEW.md) |
+| 空型動態設計 / AERIFORM | 9.1 | 9.2 | 9.3 | [Review](evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/REVIEW.md) |
 
 Every category must independently exceed 9/10 under the fixed [commercial design rubric](docs/M02-ART-DIRECTION.md). These scores are non-author design judgments, not market certification or measured conversion rates. The review covers original desktop/mobile frames, material coherence through complete motion cycles, controls and a pause that preserves the current rendered frame.
 

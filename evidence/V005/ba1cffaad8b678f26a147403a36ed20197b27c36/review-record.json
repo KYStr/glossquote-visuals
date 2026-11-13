@@ -1,0 +1,755 @@
+{
+  "commit": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+  "work": "V005",
+  "reviewer": "/root/commercial_review",
+  "scores": {
+    "artDirection": 9.1,
+    "uiDesign": 9.2,
+    "commercialCompleteness": 9.3
+  },
+  "designReview": {
+    "rubricVersion": "commercial-v1",
+    "categories": {
+      "artDirection": [
+        {
+          "id": "brandIdentity",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "鈷藍、粉白和橘色粒子與工作室識別、案例形成一致品牌。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu-fold.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu-fold.png"
+          ]
+        },
+        {
+          "id": "heroComposition",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "大字與立體粒子主次明確，手機仍保留主行動和三形態入口。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu-fold.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu-fold.png"
+          ]
+        },
+        {
+          "id": "typography",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "同候選雙語標題、服務與流程層級清楚；桌面大字與手機 FAQ 排版沒有新增孤字或溢出。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "materialImagery",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "本候選桌面與手機三形態原合成／正確alpha texture及各11張自然影格均已檢視：環體中央開口、螺旋分圈與薄扭帶折轉清楚；近側亮點與後下緣暗點保留體積，散開後可回聚。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-identity.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-motion.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-digital.png"
+          ]
+        },
+        {
+          "id": "pageRhythm",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "案例寬窄交錯、服務與流程區節奏完整；手機保留形體輪廓。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu.png"
+          ]
+        }
+      ],
+      "uiDesign": [
+        {
+          "id": "informationHierarchy",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "品牌定位、案例、三服務與需求摘要的閱讀及決策順序清楚。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "navigationActions",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "主CTA、服務預填、三形態與觸控等效散開入口清楚，位置一致。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu-fold.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu-fold.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/results.json"
+          ]
+        },
+        {
+          "id": "formsStates",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "必填選擇、交付項目、檢視、返回編輯與下載具明確狀態；本SHA報告驗證資料一致。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/results.json"
+          ]
+        },
+        {
+          "id": "responsiveAccessibility",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "本候選390px原頁、雙語完成摘要及無JS頁可讀；報告中的320/390/768/1440空白與已選表單在100%/200%根文字放大無溢出，完成摘要另有320px量測。鍵盤與觸控依隔離runner報告，不宣稱人工完整讀屏或瀏覽器整頁縮放。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/results.json"
+          ]
+        },
+        {
+          "id": "interactionConsistency",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "服務、表單、摘要與真TXT一致；手機散開回聚及暫停提供清楚狀態。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-en.txt",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-zh-Hant.txt",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-pointer-regroup.png"
+          ]
+        }
+      ],
+      "commercialCompleteness": [
+        {
+          "id": "positioningValue",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "識別、動態與數位體驗三種服務和預期產出明確。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu.png"
+          ]
+        },
+        {
+          "id": "decisionInformation",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "交付範圍、價格、週期、兩輪修改與費用說明支持選擇，概念案例展示應用。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-radio-applications.png"
+          ]
+        },
+        {
+          "id": "truthfulTrust",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "案例明示概念；摘要與TXT明示本機產生、尚未聯絡工作室。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-en.txt",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-zh-Hant.txt"
+          ]
+        },
+        {
+          "id": "customerJourney",
+          "score": 1.9,
+          "status": "PASS",
+          "reason": "方案預填、必填和交付驗證、返回編輯及雙語真實下載依同SHA報告成立。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/results.json"
+          ]
+        },
+        {
+          "id": "completionRecovery",
+          "score": 1.8,
+          "status": "PASS",
+          "reason": "完成摘要和TXT一致、編輯入口清楚；本季內仍是相對時程文字，無新增阻擋。",
+          "evidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-brief-complete.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-en.txt",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-zh-Hant.txt"
+          ]
+        }
+      ]
+    }
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+    "reviewer": "/root/commercial_review",
+    "views": [
+      {
+        "viewport": "desktop",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "已逐張檢視本候選0至26.075秒的11張原始頁面合成：環體輪廓、中央開口與近遠明暗在自然變化中連貫，未見突然換色或破裂。三形態與返回的原合成及正確alpha texture可辨環體／螺旋／薄扭帶；散開與回聚影格支持可逆反應。shared原生暫停保持可見粒子並於續播恢復變化。",
+        "timeBasis": "measured-wall-clock",
+        "timeQualification": "seconds取本次專屬lane measurements的startedMs/1000，為自然capture起點而非宣稱實體顯示器呈現時間；targetMs僅用來對應檔名，acquisitions不是FPS。",
+        "frames": [
+          {
+            "seconds": 0.0,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-0s.png"
+          },
+          {
+            "seconds": 2.135,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-2s.png"
+          },
+          {
+            "seconds": 4.05,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-4s.png"
+          },
+          {
+            "seconds": 6.083,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-6s.png"
+          },
+          {
+            "seconds": 8.005,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-8s.png"
+          },
+          {
+            "seconds": 10.02,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-10s.png"
+          },
+          {
+            "seconds": 12.041,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-12s.png"
+          },
+          {
+            "seconds": 14.106,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-14s.png"
+          },
+          {
+            "seconds": 18.096,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-18s.png"
+          },
+          {
+            "seconds": 22.002,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-22s.png"
+          },
+          {
+            "seconds": 26.075,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-26s.png"
+          }
+        ],
+        "motionKind": "evolving",
+        "controlEvidence": [
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-transition-motion.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-motion.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-transition-digital.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-digital.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-transition-identity.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-identity.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-pointer-scatter.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-pointer-regroup.png"
+        ],
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "本SHA桌面及手機均實看原頁面合成與經正確straight-alpha編碼的GPU texture，逐一核對identity→motion→digital→identity返回。每個狀態使用不同原始檔；不以稀疏點集像素漂移代替形態正確性。",
+          "sequence": [
+            {
+              "state": "identity",
+              "observedShape": "橘色粒子形成帶中央開口的環體，近側明亮、後下緣較暗；頁面合成與透明texture均可辨斜向環狀體積。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu-fold.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-initial-texture.png"
+            },
+            {
+              "state": "motion",
+              "observedShape": "原環體轉為向上延伸的三圈螺旋，圈間負空間與前後環段可辨，並非只換色。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-motion.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-motion-texture.png"
+            },
+            {
+              "state": "digital",
+              "observedShape": "螺旋轉為粉白色斜向薄扭帶，細長邊緣、扭轉曲面及中間空隙清楚。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-digital.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-digital-texture.png"
+            },
+            {
+              "state": "identity",
+              "observedShape": "返回橘色環體與中央開口，螺旋分圈與薄帶輪廓消失；持續演變的粒子不要求回到原像素位置。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-identity.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-identity-texture.png"
+            }
+          ]
+        },
+        "pauseEvidence": {
+          "before": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-before-native-pause.png",
+          "paused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-native-pause.png",
+          "stillPaused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-native-pause-after-1000ms.png",
+          "resumed": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-native-resume.png"
+        },
+        "pauseVerification": {
+          "status": "PASS",
+          "measurementEvidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+          "scope": "desktop controls and same-frame pause",
+          "pageViewport": {
+            "width": 1100,
+            "height": 850
+          },
+          "canvasPixels": {
+            "width": 634,
+            "height": 537
+          },
+          "originalCompositePixels": {
+            "width": 633,
+            "height": 536
+          },
+          "clockElapsedMs": 1000,
+          "queueSubmissions": 0,
+          "textureAcquisitions": {
+            "before": 301,
+            "immediate": 301,
+            "held": 301
+          },
+          "sameCanvas": true,
+          "deviceCount": 1,
+          "configurationCount": 1,
+          "canvasRemainedVisible": true,
+          "pointerChallengePassed": true,
+          "fullResolutionComparisons": {
+            "beforeToPaused": {
+              "mean": 5.698207226112722e-05,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            },
+            "pausedToAfter": {
+              "mean": 5.698207226112722e-05,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            },
+            "diagnosticRestored": {
+              "mean": 5.698207226112722e-05,
+              "peak": 1,
+              "changedPixels": 0,
+              "width": 633,
+              "height": 536
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "reviewerRecomputedDifferences": {
+            "beforeToPaused": {
+              "mean": 5.698207226112722e-05,
+              "peak": 1,
+              "pixelsWithAnyChannelChange": 37,
+              "width": 633,
+              "height": 536
+            },
+            "pausedToAfter": {
+              "mean": 5.698207226112722e-05,
+              "peak": 1,
+              "pixelsWithAnyChannelChange": 37,
+              "width": 633,
+              "height": 536
+            }
+          },
+          "reviewerRecomputedOriginalPngHashes": {
+            "before": "465258bf65f95332151c832838498db9c9d76c4c1644f2259147b87319b25383",
+            "paused": "a37e131e57d0a5b874c2b5af833409b712b87edf38f3041ac61cd6cd216133b7",
+            "stillPaused": "465258bf65f95332151c832838498db9c9d76c4c1644f2259147b87319b25383",
+            "resumed": "8ba5ec4117b3056bef2b7848da175d1cc76130c1ac29ee97ffe797901ec46671"
+          },
+          "originalBeforePausedHeldPngByteIdentical": false,
+          "resume": {
+            "phase": "running",
+            "newTextureAcquisitions": 6,
+            "gpuSubmittedAt": 17456,
+            "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-native-resume.png",
+            "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-texture-native-resume.png"
+          },
+          "qualification": "桌面before/action及action/held各37個像素有1階色值微差，mean 0.00005698207226112722，符合既有mean≤0.01、peak≤1限制；不是PNG byte-identical。兩尺寸均零queue提交、同canvas/device/configuration；隱藏canvas僅為診斷，已還原，不是原生暫停動作。"
+        },
+        "textureEncoding": {
+          "alphaMode": "premultiplied",
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "measurementEvidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/results.json",
+        "naturalPauseEvidence": {
+          "before": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-before-pause.png",
+          "paused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-paused.png",
+          "stillPaused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-paused-held.png",
+          "resumed": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-resumed.png"
+        },
+        "naturalPauseVerification": {
+          "textureCountBefore": 468,
+          "textureCountAfter": 468,
+          "reviewerRecomputedOriginalPngHashes": {
+            "before": "4635c33e35e19a4819cec6627a9bd772fedbcc29f7477bacbcecfb180424da69",
+            "paused": "751caf12b4ddd38a31f8b1f4d6a67db2242bc700a6d5d6baa9becb8d85f724f4",
+            "stillPaused": "751caf12b4ddd38a31f8b1f4d6a67db2242bc700a6d5d6baa9becb8d85f724f4",
+            "resumed": "3216f1cc03909cbb3f27bd70900281abd238c414f276460fc6d202d4aa34f6ef"
+          },
+          "originalPausedAndHeldPngByteIdentical": true,
+          "instantClickSameFrameClaim": false,
+          "qualification": "專屬lane自然paused/held PNG一致且acquisition不增加。before與paused為不同自然時刻，不能據此宣稱點擊瞬間同幀；正式pauseEvidence使用本SHA shared受控原合成四圖。"
+        },
+        "capturePairing": "GPU readback與頁面合成依控制狀態配對，並非相同GPU submission；同幀暫停只比較受控時鐘未推進及原生暫停1000ms後的原始合成。"
+      },
+      {
+        "viewport": "mobile",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "已逐張檢視本候選0至26.048秒的11張原始頁面合成：環體輪廓、中央開口與近遠明暗在自然變化中連貫，未見突然換色或破裂。三形態與返回的原合成及正確alpha texture可辨環體／螺旋／薄扭帶；散開與回聚影格支持可逆反應。shared原生暫停保持可見粒子並於續播恢復變化。",
+        "timeBasis": "measured-wall-clock",
+        "timeQualification": "seconds取本次專屬lane measurements的startedMs/1000，為自然capture起點而非宣稱實體顯示器呈現時間；targetMs僅用來對應檔名，acquisitions不是FPS。",
+        "frames": [
+          {
+            "seconds": 0.0,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-0s.png"
+          },
+          {
+            "seconds": 2.329,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-2s.png"
+          },
+          {
+            "seconds": 4.158,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-4s.png"
+          },
+          {
+            "seconds": 6.018,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-6s.png"
+          },
+          {
+            "seconds": 8.081,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-8s.png"
+          },
+          {
+            "seconds": 10.019,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-10s.png"
+          },
+          {
+            "seconds": 12.046,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-12s.png"
+          },
+          {
+            "seconds": 14.031,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-14s.png"
+          },
+          {
+            "seconds": 18.022,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-18s.png"
+          },
+          {
+            "seconds": 22.012,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-22s.png"
+          },
+          {
+            "seconds": 26.048,
+            "evidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-26s.png"
+          }
+        ],
+        "motionKind": "evolving",
+        "controlEvidence": [
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-transition-motion.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-motion.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-transition-digital.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-digital.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-transition-identity.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-identity.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-pointer-scatter.png",
+          "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-pointer-regroup.png"
+        ],
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "本SHA桌面及手機均實看原頁面合成與經正確straight-alpha編碼的GPU texture，逐一核對identity→motion→digital→identity返回。每個狀態使用不同原始檔；不以稀疏點集像素漂移代替形態正確性。",
+          "sequence": [
+            {
+              "state": "identity",
+              "observedShape": "橘色粒子形成帶中央開口的環體，近側明亮、後下緣較暗；頁面合成與透明texture均可辨斜向環狀體積。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu-fold.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-initial-texture.png"
+            },
+            {
+              "state": "motion",
+              "observedShape": "原環體轉為向上延伸的三圈螺旋，圈間負空間與前後環段可辨，並非只換色。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-motion.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-motion-texture.png"
+            },
+            {
+              "state": "digital",
+              "observedShape": "螺旋轉為粉白色斜向薄扭帶，細長邊緣、扭轉曲面及中間空隙清楚。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-digital.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-digital-texture.png"
+            },
+            {
+              "state": "identity",
+              "observedShape": "返回橘色環體與中央開口，螺旋分圈與薄帶輪廓消失；持續演變的粒子不要求回到原像素位置。",
+              "verdict": "PASS",
+              "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-identity.png",
+              "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-identity-texture.png"
+            }
+          ]
+        },
+        "pauseEvidence": {
+          "before": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-before-native-pause.png",
+          "paused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-native-pause.png",
+          "stillPaused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+          "resumed": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-native-resume.png"
+        },
+        "pauseVerification": {
+          "status": "PASS",
+          "measurementEvidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+          "scope": "mobile same-frame pause; form controls covered by dedicated per-work lane",
+          "pageViewport": {
+            "width": 390,
+            "height": 844
+          },
+          "canvasPixels": {
+            "width": 351,
+            "height": 285
+          },
+          "originalCompositePixels": {
+            "width": 351,
+            "height": 285
+          },
+          "clockElapsedMs": 1000,
+          "queueSubmissions": 0,
+          "textureAcquisitions": {
+            "before": 106,
+            "immediate": 106,
+            "held": 106
+          },
+          "sameCanvas": true,
+          "deviceCount": 1,
+          "configurationCount": 1,
+          "canvasRemainedVisible": true,
+          "pointerChallengePassed": true,
+          "fullResolutionComparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 351,
+              "height": 285
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 351,
+              "height": 285
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 351,
+              "height": 285
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "reviewerRecomputedDifferences": {
+            "beforeToPaused": {
+              "mean": 0.0,
+              "peak": 0,
+              "pixelsWithAnyChannelChange": 0,
+              "width": 351,
+              "height": 285
+            },
+            "pausedToAfter": {
+              "mean": 0.0,
+              "peak": 0,
+              "pixelsWithAnyChannelChange": 0,
+              "width": 351,
+              "height": 285
+            }
+          },
+          "reviewerRecomputedOriginalPngHashes": {
+            "before": "4d18ec040d68ba76081e57904907055e8ce586fa33d07dbb26e6cc6d5b1cede7",
+            "paused": "4d18ec040d68ba76081e57904907055e8ce586fa33d07dbb26e6cc6d5b1cede7",
+            "stillPaused": "4d18ec040d68ba76081e57904907055e8ce586fa33d07dbb26e6cc6d5b1cede7",
+            "resumed": "e2c1f1435c5b687bd54c78d5ada7b21707e5333006b648f09a2812590f1debb8"
+          },
+          "originalBeforePausedHeldPngByteIdentical": true,
+          "resume": {
+            "phase": "running",
+            "newTextureAcquisitions": 6,
+            "gpuSubmittedAt": 14752,
+            "composite": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-native-resume.png",
+            "texture": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-texture-native-resume.png"
+          },
+          "qualification": "手機before/action/1000ms原PNG完全一致。兩尺寸均零queue提交、同canvas/device/configuration；隱藏canvas僅為診斷，已還原，不是原生暫停動作。",
+          "activeBeforePause": {
+            "mean": 12.572986111111112,
+            "changedPixels": 1375,
+            "peak": 213,
+            "width": 80,
+            "height": 60
+          },
+          "activeEvidence": [
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-active-0.png",
+            "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-active-1.png"
+          ],
+          "activeSubmittedAt": [
+            11568,
+            12656
+          ],
+          "resumeDifference": {
+            "mean": 12.770555555555555,
+            "changedPixels": 1451,
+            "peak": 204,
+            "width": 80,
+            "height": 60
+          }
+        },
+        "textureEncoding": {
+          "alphaMode": "premultiplied",
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "measurementEvidence": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/results.json",
+        "naturalPauseEvidence": {
+          "before": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-before-pause.png",
+          "paused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-paused.png",
+          "stillPaused": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-paused-held.png",
+          "resumed": "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-resumed.png"
+        },
+        "naturalPauseVerification": {
+          "textureCountBefore": 1001,
+          "textureCountAfter": 1001,
+          "reviewerRecomputedOriginalPngHashes": {
+            "before": "6f2a39697720a0e23bada34c99ab97fe354b80c692d67691bfc56b79a94d53e1",
+            "paused": "4e1078aa550df76666e5f47b07c77f2b93a2d44f82d98ee7ae05955a5790683f",
+            "stillPaused": "4e1078aa550df76666e5f47b07c77f2b93a2d44f82d98ee7ae05955a5790683f",
+            "resumed": "7521ace573a59b6b58d05f01f6643330dbe141aeaedf717550c61d2bf5c24ca7"
+          },
+          "originalPausedAndHeldPngByteIdentical": true,
+          "instantClickSameFrameClaim": false,
+          "qualification": "專屬lane自然paused/held PNG一致且acquisition不增加。before與paused為不同自然時刻，不能據此宣稱點擊瞬間同幀；正式pauseEvidence使用本SHA shared受控原合成四圖。"
+        },
+        "capturePairing": "GPU readback與頁面合成依控制狀態配對，並非相同GPU submission；同幀暫停只比較受控時鐘未推進及原生暫停1000ms後的原始合成。"
+      }
+    ]
+  },
+  "sourceComparison": {
+    "previousCandidate": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+    "productFilesUnchanged": true,
+    "scope": "src/works/aeriform and test/browser/aeriform-commercial.mjs unchanged; shared probe diagnostics/capture stability changed. All cited captures and numerical measurements below were re-read from this candidate."
+  },
+  "limitations": [
+    "本檔批准ba1cffaad8b678f26a147403a36ed20197b27c36的V005設計與材質動作審查，九項release gates與正式部署由主責另核；未宣稱本候選live已驗。",
+    "shared桌面頁面1100×850，canvas634×537，原合成clip633×536；手機頁面390×844，canvas及原合成351×285。桌面37個像素1階微差在既有限制內，不是byte-identical；手機before/action/held原PNG完全相同。",
+    "shared手機覆蓋暫停前自然演變、同幀凍結與續播，未執行A/A/B/A。桌面evolving差異為診斷，所需獨立形態審查由本候選專lane三形態與返回的semanticControls補足。",
+    "GPU texture與原合成為相鄰擷取及狀態配對，不是相同GPU submission。自然seconds是本輪capture起點；靜態時間序列支持形態連貫，不取代實體裝置即時流暢度測試。",
+    "雙語四寬空白/已選表單100%/200%根文字放大及320px完成摘要依同SHA報告；已查看雙語原頁、摘要、無JS、應用圖與真TXT，商業子審查由/root/commercial_review/release_gate_audit補核。不宣稱整頁200%瀏覽器縮放或完整人工讀屏。實體GPU、實體手機與正式live NOT_RUN。"
+  ],
+  "attachments": [
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu-fold.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-desktop/aeriform-zh-Hant-1440-webgpu-fold.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-mobile/aeriform-en-390-webgpu-fold.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu-fold.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-webgpu.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-webgpu.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/results.json",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-desktop/results.json",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-mobile/results.json",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/results.json",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/results.json",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-brief-complete.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-radio-applications.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-en-390-no-js.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-en.txt",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-brief-complete.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-radio-applications.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-zh-Hant-390-no-js.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-commercial/aeriform-project-brief-zh-Hant.txt",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-initial-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-motion.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-motion-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-digital.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-digital-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-identity.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-form-identity-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-initial-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-motion.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-motion-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-digital.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-digital-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-identity.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-form-identity-texture.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/results.json",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-before-native-pause.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-native-pause.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-native-pause-after-1000ms.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-native-resume.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-texture-native-resume.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-diagnostic-no-canvas.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-en-composite-diagnostic-restored.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-before-native-pause.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-native-pause.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-native-pause-after-1000ms.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-native-resume.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-texture-native-resume.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-diagnostic-no-canvas.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-diagnostic-restored.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-active-0.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/shared/candidate-aeriform-zh-Hant-mobile-composite-active-1.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-before-pause.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-paused.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-paused-held.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-resumed.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-0s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-2s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-4s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-6s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-8s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-10s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-12s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-14s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-18s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-22s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-natural-26s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-transition-motion.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-transition-digital.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-transition-identity.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-pointer-scatter.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-en-desktop/aeriform-en-1440-pointer-regroup.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-before-pause.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-paused.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-paused-held.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-resumed.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-0s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-2s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-4s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-6s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-8s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-10s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-12s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-14s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-18s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-22s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-natural-26s.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-transition-motion.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-transition-digital.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-transition-identity.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-pointer-scatter.png",
+    "evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/aeriform-zh-mobile/aeriform-zh-Hant-390-pointer-regroup.png"
+  ],
+  "verdict": "APPROVED",
+  "runId": 43384882948,
+  "jobId": 131753694869
+}
