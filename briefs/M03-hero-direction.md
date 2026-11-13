@@ -28,6 +28,7 @@
 - 舊 native-pause 差異測試假設 pause 會移除 GPU，需要改為凍結穩定性。Shader 貢獻可在獨立診斷中暫時移除 canvas 作比較，但必須標明是診斷，不是產品操作。
 - 保留原商業流程、雙語、320/390/768/1440、200%、鍵盤／觸控、no-JS/no-GPU/reduced-motion、hidden/offscreen、device recovery、同源隱私與一頁一 canvas。
 - 每件美術／UI／商業完整度仍須各 >9/10，並增加上述連續動態貼合 gate。不得搬用 M02 的舊分數。
+- 發布證據的 `temporalReview` 使用 `material-motion-v1`，綁定同候選與非作者 reviewer，記錄 desktop/mobile 的時間序列、控制與暫停前／立即／一秒後／續播影格及具體貼合判斷。週期動畫要覆蓋其完整週期；粒子等持續演化模擬記錄 `evolving`，不得捏造重複週期。發布程式會拒絕缺失時間影格、legacy-fallback 或不同候選的動態證據。
 
 只使用現有 pinned shaders 4.0.7，先讀 vendored skill 與固定來源精確 props。官方預設登入／Pro／mutable npx 不適用。可使用自行託管、經查核的 ImageTexture/vector 資料，禁止遠端字型或 runtime CDN。自訂 shader 必須有具體必要性並遵循官方 custom shader API；不得自行換框架或加無關引擎。所有 browser 工作仍限定 GitHub-hosted 隔離 VM。
 

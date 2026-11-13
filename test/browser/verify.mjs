@@ -413,6 +413,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     "liquid-archive": { selector: "#object-angle", values: ["0", "180"], surface: ".hero-visual" },
     // The commercial event site uses program radios, not the former amplitude slider.
     "night-signal": { selector: 'input[name="program"]', values: ["carrier", "echo"], surface: "[data-stage]" },
+    "prism-materials": { selector: "#prism-angle", values: ["-20", "20"], surface: "[data-stage]" },
   };
   const control = controls[slug];
   assert.ok(control, `No live composite control defined for ${slug}`);
@@ -700,7 +701,9 @@ async function checkCandidateComposites(browser) {
         await page.waitForFunction(() => window.__visualProbe.textures > 3);
         await checkLiveComposite(page, work.slug, prefix ? "en" : "zh-Hant");
         const fontPaths = work.slug === "night-signal" ? signalFontPaths :
-          work.slug === "liquid-archive" ? [base + "fonts/liquid-geist.ttf"] : [];
+          work.slug === "liquid-archive" ? [base + "fonts/liquid-geist.ttf"] :
+          work.slug === "prism-materials" ? [base + "fonts/prism-archivo-black.ttf", base + "fonts/prism-plex-mono.ttf"] :
+          work.slug === "aeriform" ? [base + "fonts/aero-bricolage.woff2"] : [];
         await probe.assertPrivate(site.origin, { fontPaths });
       });
     }
@@ -717,6 +720,8 @@ async function checkLive(browser) {
   const workFonts = {
     "night-signal": signalFontPaths,
     "liquid-archive": [base + "fonts/liquid-geist.ttf"],
+    "prism-materials": [base + "fonts/prism-archivo-black.ttf", base + "fonts/prism-plex-mono.ttf"],
+    "aeriform": [base + "fonts/aero-bricolage.woff2"],
   };
   for (const work of registry.works.filter(isPublished)) {
     for (const prefix of ["", "en/"]) {

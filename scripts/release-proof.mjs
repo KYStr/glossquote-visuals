@@ -44,6 +44,7 @@ async function verifyWork(work, head) {
   assert.ok(proof.reviewer && proof.reviewer !== proof.author);
   for (const gate of gates) assert.equal(proof.gates[gate], "PASS", gate);
   verifyDesignScores(proof.scores, proof.designReview);
+  verifyTemporalReview(proof.temporalReview, proof);
   for (const criteria of Object.values(proof.designReview.categories)) {
     for (const criterion of criteria) {
       for (const evidence of criterion.evidence) {
@@ -53,6 +54,12 @@ async function verifyWork(work, head) {
         assert.ok(existsSync(file) && lstatSync(file).isFile(), `Missing design evidence file: ${evidence}`);
       }
     }
+  }
+  for (const evidence of temporalEvidence(proof.temporalReview)) {
+    assert.ok(evidence.startsWith(`evidence/${work.id}/${work.candidateCommit}/`),
+      "Temporal evidence must belong to this work and candidate");
+    const file = resolve(root, evidence);
+    assert.ok(existsSync(file) && lstatSync(file).isFile(), `Missing temporal evidence: ${evidence}`);
   }
   assert.ok(Number.isSafeInteger(proof.jobId) && proof.jobId > 0);
   assert.ok(Number.isSafeInteger(proof.runId) && proof.runId > 0);
@@ -80,6 +87,44 @@ export const designCriteria = {
   uiDesign: ["informationHierarchy", "navigationActions", "formsStates", "responsiveAccessibility", "interactionConsistency"],
   commercialCompleteness: ["positioningValue", "decisionInformation", "truthfulTrust", "customerJourney", "completionRecovery"],
 };
+
+function temporalEvidence(review) {
+  return review.views.flatMap((view) => [
+    ...view.frames.map((frame) => frame.evidence),
+    ...view.controlEvidence,
+    ...Object.values(view.pauseEvidence),
+  ]);
+}
+
+export function verifyTemporalReview(review, proof) {
+  assert.equal(review?.version, "material-motion-v1");
+  assert.equal(review.status, "PASS");
+  assert.equal(review.commit, proof.commit);
+  assert.equal(review.reviewer, proof.reviewer);
+  assert.notEqual(review.reviewer, proof.author);
+  assert.deepEqual(review.views.map(({ viewport }) => viewport).sort(), ["desktop", "mobile"]);
+  for (const view of review.views) {
+    assert.equal(view.pauseMode, "freeze", "A static fallback is not a frozen GPU frame");
+    assert.equal(view.coherence, "PASS");
+    assert.ok(typeof view.reason === "string" && view.reason.trim().length > 0);
+    const times = view.frames.map(({ seconds }) => seconds);
+    for (const seconds of [0, 2, 4, 6, 8]) assert.ok(times.includes(seconds), `Missing ${seconds}s frame`);
+    assert.ok(times.every((time, index) => Number.isFinite(time) && time >= 0 &&
+      (index === 0 || time > times[index - 1])), "Original frames need ordered unique timestamps");
+    assert.ok(["periodic", "evolving"].includes(view.motionKind));
+    if (view.motionKind === "periodic") {
+      assert.ok(Number.isFinite(view.cycleSeconds) && view.cycleSeconds > 0);
+      assert.ok(times.at(-1) >= view.cycleSeconds, "The full declared animation cycle must be reviewed");
+    }
+    assert.ok(Array.isArray(view.controlEvidence) && view.controlEvidence.length >= 3,
+      "Review minimum, middle/alternate, maximum and return control evidence");
+    assert.deepEqual(Object.keys(view.pauseEvidence).sort(), ["before", "paused", "resumed", "stillPaused"]);
+  }
+  for (const path of temporalEvidence(review)) {
+    assert.ok(typeof path === "string" && path.startsWith("evidence/") && path.length > 9 &&
+      !path.endsWith("/") && !path.includes("\\") && !path.split("/").includes(".."));
+  }
+}
 
 export function verifyReleaseSelection(ids, outputWorks) {
   assert.ok(ids.length > 0);
