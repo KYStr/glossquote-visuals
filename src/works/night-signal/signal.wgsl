@@ -3,14 +3,16 @@
   let axes = vec2f(mix(0.482, 0.326, wide), mix(0.486, 0.435, wide));
   let origin = vec2f(mix(0.50, 0.692, wide), mix(0.52, 0.56, wide));
   let xy = (uv - origin) / axes;
+  let px = floor(uv * viewport);
   let x = xy.x - 0.17 * xy.y;
   let y = xy.y + 0.27 * xy.x;
   let underglow = exp(-dot(xy * vec2f(1.27, 1.37), xy * vec2f(1.27, 1.37)) * 1.70);
-  let grain = fract(sin(dot(floor(uv * viewport), vec2f(12.9898, 78.233))) * 43758.5453);
+  let hash = fract(px * vec2f(0.1031, 0.11369));
+  let grain = fract((hash.x + hash.y) * (hash.x + 13.13) * (hash.y + 19.19));
   let fog = carrier * vec3f(0.020, 0.015, 0.034) + echoMix * vec3f(0.019, 0.014, 0.079) + dawnMix * vec3f(0.048, 0.012, 0.034);
   let background = vec3f(0.0052, 0.0056, 0.0145) + fog * underglow + 0.0015 * grain * underglow;
 
-  if (abs(x) > 1.04) {
+  if (abs(x) > 1.04 || abs(y) > 1.30) {
     return vec4f(background, 1.0);
   }
 
@@ -27,6 +29,14 @@
   let shellEdge = 1.0 - smoothstep(0.986, 1.014, abs(dy));
   let tip = 1.0 - smoothstep(0.95, 1.027, abs(x));
 
+  let twist = (4.1 * carrier + 6.2 * echoMix + 2.8 * dawnMix) * x
+    + turn + (0.46 * carrier + 0.25 * echoMix + 0.71 * dawnMix) * sin(x * 4.2 - turn);
+  let widthA = 0.91 * carrier + 0.56 * echoMix + 0.44 * dawnMix;
+  let widthB = 0.24 * carrier + 0.52 * echoMix + 0.36 * dawnMix;
+  let widthC = 0.31 * dawnMix;
+  let phaseB = 1.83 + 1.23 * echoMix;
+  let phaseC = -1.28 - 0.40 * x;
+
   var color = background;
   let indigo = carrier * vec3f(0.073, 0.029, 0.145) + echoMix * vec3f(0.074, 0.036, 0.40) + dawnMix * vec3f(0.20, 0.018, 0.078);
   let enamel = carrier * vec3f(0.61, 0.26, 0.054) + echoMix * vec3f(0.19, 0.15, 0.62) + dawnMix * vec3f(0.67, 0.15, 0.16);
@@ -39,16 +49,10 @@
       let front = f32(face);
       let z = core * (front * 2.0 - 1.0);
       let theta = atan2(dy, z);
-      let twist = (4.1 * carrier + 6.2 * echoMix + 2.8 * dawnMix) * x
-        + turn + (0.46 * carrier + 0.25 * echoMix + 0.71 * dawnMix) * sin(x * 4.2 - turn);
       let roll = theta - twist;
-      let widthA = 0.91 * carrier + 0.56 * echoMix + 0.44 * dawnMix;
-      let widthB = 0.24 * carrier + 0.52 * echoMix + 0.36 * dawnMix;
-      let widthC = 0.31 * dawnMix;
-
-      let distanceA = acos(clamp(cos(roll), -1.0, 1.0));
-      let distanceB = acos(clamp(cos(roll + 1.83 + 1.23 * echoMix), -1.0, 1.0));
-      let distanceC = acos(clamp(cos(roll - 1.28 - 0.40 * x), -1.0, 1.0));
+      let distanceA = abs(fract((roll + 3.14159265) / 6.2831853) * 6.2831853 - 3.14159265);
+      let distanceB = abs(fract((roll + phaseB + 3.14159265) / 6.2831853) * 6.2831853 - 3.14159265);
+      let distanceC = abs(fract((roll + phaseC + 3.14159265) / 6.2831853) * 6.2831853 - 3.14159265);
       let stripA = 1.0 - smoothstep(widthA - 0.02, widthA + 0.02, distanceA);
       let stripB = 1.0 - smoothstep(widthB - 0.02, widthB + 0.02, distanceB);
       let stripC = dawnMix * (1.0 - smoothstep(widthC - 0.02, widthC + 0.02, distanceC));
