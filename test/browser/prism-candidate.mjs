@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { performance } from "node:perf_hooks";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
 import { base, root } from "../../scripts/site-map.mjs";
@@ -65,8 +64,8 @@ async function full(page, name) {
   return capture(page, name, page, { fullPage: true });
 }
 
-async function difference(page, a, b) {
-  return page.evaluate(async ([first, second]) => {
+async function difference(page, a, b, region) {
+  return page.evaluate(async ([first, second, region]) => {
     const canvas = document.createElement("canvas");
     canvas.width = 100;
     canvas.height = 80;
@@ -75,7 +74,14 @@ async function difference(page, a, b) {
       const bytes = Uint8Array.from(atob(encoded), value => value.charCodeAt(0));
       const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      if (region) {
+        const xScale = bitmap.width / region.viewportWidth;
+        const yScale = bitmap.height / region.viewportHeight;
+        ctx.drawImage(bitmap, region.x * xScale, region.y * yScale,
+          region.width * xScale, region.height * yScale, 0, 0, canvas.width, canvas.height);
+      } else {
+        ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      }
       bitmap.close();
       return ctx.getImageData(0, 0, canvas.width, canvas.height).data;
     }));
@@ -84,17 +90,29 @@ async function difference(page, a, b) {
       total += Math.abs(images[0][index] - images[1][index]);
     }
     return total / images[0].length;
-  }, [a, b]);
+  }, [a, b, region]);
 }
 
-async function assertLayout(page) {
-  const controls = await page.locator("a.button, nav a, select, #sample-quantity, button, summary").evaluateAll(nodes =>
+async function assertLayout(page, label) {
+  const controls = await page.locator("a.button, nav a, select, #sample-quantity, button, summary, .specimen-choices label, #prism-angle").evaluateAll(nodes =>
     nodes.filter(node => node.getClientRects().length).map(node => ({
       width: node.getBoundingClientRect().width, height: node.getBoundingClientRect().height,
-      text: node.textContent.trim(),
+      text: node.textContent.trim() || node.id,
     })));
-  for (const { width, height, text } of controls) assert.ok(width >= 44 && height >= 44, `Small target ${text}: ${width}×${height}`);
-  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), 0, "Horizontal overflow");
+  for (const { width, height, text } of controls) {
+    assert.ok(width >= 44 && height >= 44, `${label}: small target ${text} (${width}×${height})`);
+  }
+  const overflow = await page.evaluate(() => {
+    const pixels = document.documentElement.scrollWidth - innerWidth;
+    if (pixels <= 0) return { pixels };
+    const offenders = [...document.querySelectorAll("body *")].flatMap(node => {
+      const rect = node.getBoundingClientRect();
+      if (rect.right <= innerWidth + 1) return [];
+      return [{ element: node.tagName, id: node.id, classes: node.getAttribute("class"), right: Math.round(rect.right) }];
+    }).slice(0, 15);
+    return { pixels, offenders };
+  });
+  assert.equal(overflow.pixels, 0, `${label}: horizontal overflow ${JSON.stringify(overflow)}`);
 }
 
 async function checkLayout(browser) {
@@ -105,7 +123,8 @@ async function checkLayout(browser) {
         const probe = await observe(page);
         await open(page, locale);
         await phase(page, "reduced");
-        await assertLayout(page);
+        await page.evaluate(() => document.fonts.ready);
+        await assertLayout(page, `${locale}-${width}`);
         assert.equal((await counters(page)).devices, 0);
         assert.equal(await stage(page).locator("canvas").isVisible(), false);
         const photo = stage(page).locator("img");
@@ -117,8 +136,8 @@ async function checkLayout(browser) {
           await full(page, `${locale}-390-reduced-ribbed`);
         }
         await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
-        await assertLayout(page);
         if (width === 320) await full(page, `${locale}-320-200pct`);
+        await assertLayout(page, `${locale}-${width}-200pct`);
         await probe.assertPrivate(site.origin, { fontPaths });
       });
     }
@@ -264,41 +283,84 @@ async function setAngle(page, number) {
   await waitForDraw(page, (await counters(page)).textures + 1);
 }
 
-async function captureCycle(page, label) {
+async function captureCycle(page, locale, label) {
   const scene = stage(page);
-  await scene.scrollIntoViewIfNeeded();
-  await phase(page, "running");
-  await waitForDraw(page, (await counters(page)).textures + 1);
-  const session = await page.context().newCDPSession(page);
-  const clip = await scene.evaluate(element => {
-    const bounds = element.getBoundingClientRect();
-    return { x: bounds.x + scrollX, y: bounds.y + scrollY, width: bounds.width, height: bounds.height, scale: 1 };
+  await page.addInitScript(() => {
+    const observer = new MutationObserver(records => {
+      const stage = records.find(record => record.target.matches("[data-stage]"))?.target;
+      if (stage?.hasAttribute("data-rendered")) {
+        window.__prismVisibleAt = performance.timeOrigin + performance.now();
+        observer.disconnect();
+      }
+    });
+    observer.observe(document, { subtree: true, attributes: true, attributeFilter: ["data-rendered"] });
   });
-  const start = performance.now();
-  const times = [];
+  const session = await page.context().newCDPSession(page);
   const frames = [];
-  try {
-    for (const second of [0, 2, 4, 6, 8, 12]) {
-      const remainder = second * 1000 - (performance.now() - start);
-      if (remainder > 0) await page.waitForTimeout(remainder);
-      const before = performance.now() - start;
-      const { data } = await session.send("Page.captureScreenshot", { format: "png", clip, fromSurface: true, captureBeyondViewport: false });
-      const completed = performance.now() - start;
-      const file = `prism-${label}-natural-${second}s.png`;
-      await writeFile(resolve(dir, file), Buffer.from(data, "base64"));
-      evidence.screenshots.push(file);
-      frames.push(data);
-      times.push({ targetSeconds: second, screenshotRequestedMs: Math.round(before),
-        screenshotReturnedMs: Math.round(completed), ...(await counters(page)),
-        phase: await scene.getAttribute("data-motion") });
+  let ackError;
+  const onFrame = ({ data, metadata, sessionId }) => {
+    if (Number.isFinite(metadata.timestamp)) {
+      frames.push({ data, epochMs: metadata.timestamp * 1000 });
     }
+    void session.send("Page.screencastFrameAck", { sessionId }).catch(error => { ackError = error; });
+  };
+  session.on("Page.screencastFrame", onFrame);
+  await session.send("Page.startScreencast", { format: "png", everyNthFrame: 1 });
+  let clock, first, last, region;
+  try {
+    await open(page, locale);
+    await phase(page, "running");
+    clock = await page.evaluate(() => ({
+      navigationEpochMs: performance.timeOrigin, visibleEpochMs: window.__prismVisibleAt,
+    }));
+    assert.ok(Number.isFinite(clock.visibleEpochMs));
+    first = await counters(page);
+    region = await scene.evaluate(element => {
+      const { x, y, width, height } = element.getBoundingClientRect();
+      return { x, y, width, height, viewportWidth: innerWidth, viewportHeight: innerHeight };
+    });
+    await page.waitForTimeout(25_000);
+    last = await counters(page);
   } finally {
+    session.off("Page.screencastFrame", onFrame);
+    await session.send("Page.stopScreencast");
     await session.detach();
   }
-  const variation = await difference(page, frames[0], frames[2]);
-  evidence.measurements[label] = { ...evidence.measurements[label], natural: times, naturalVariation: variation };
-  assert.ok(times.every(frame => frame.phase === "running") && times.at(-1).textures > times[0].textures,
-    `Renderer left its running phase during the real-time capture for ${label}: ${JSON.stringify(times)}`);
+  if (ackError) throw ackError;
+  frames.sort((a, b) => a.epochMs - b.epochMs);
+  const live = frames.filter(frame => frame.epochMs >= clock.visibleEpochMs);
+  assert.ok(live.length > 10, `${label}: Chromium sent only ${live.length} live screencast frames`);
+  const origin = live[0].epochMs;
+  const save = async (frame, suffix) => {
+    const file = `prism-${label}-${suffix}.png`;
+    await writeFile(resolve(dir, file), Buffer.from(frame.data, "base64"));
+    evidence.screenshots.push(file);
+    return { file, epochMs: frame.epochMs, navigationMs: Math.round(frame.epochMs - clock.navigationEpochMs),
+      liveMs: Math.round(frame.epochMs - origin) };
+  };
+  const startup = [];
+  for (const targetMs of [0, 250, 500, 1000]) {
+    const target = clock.navigationEpochMs + targetMs;
+    const frame = frames.find(frame => frame.epochMs >= target);
+    if (frame) startup.push({ targetMs, ...await save(frame, `navigation-target-${targetMs}ms`) });
+  }
+  const natural = [];
+  let comparison;
+  for (const targetMs of [0, 250, 500, 1000, 2000, 4000, 6000, 8000, 12000, 16000, 20000, 24000]) {
+    const frame = live.find(frame => frame.epochMs >= origin + targetMs);
+    if (!frame) continue;
+    natural.push({ targetMs, ...await save(frame, `natural-target-${targetMs}ms`) });
+    if (targetMs === 4000) comparison = frame;
+  }
+  const measurement = evidence.measurements[label] = {
+    clock, startup, natural, compositorFrames: frames.length, liveFrames: live.length,
+    textureAcquisitions: last.textures - first.textures,
+  };
+  assert.ok(natural.at(-1).liveMs >= 12_000 && comparison, `${label}: incomplete screencast`);
+  assert.equal(await scene.getAttribute("data-motion"), "running");
+  assert.ok(measurement.textureAcquisitions > 10, `${label}: shader stopped advancing during capture`);
+  const variation = await difference(page, live[0].data, comparison.data, region);
+  measurement.naturalVariation = variation;
   assert.ok(variation > 0.3, `Natural variation did not reach the original compositor for ${label}: ${variation}`);
 }
 
@@ -310,16 +372,13 @@ async function checkOptics(browser) {
       const options = { viewport: { width, height }, hasTouch: width === 390, deviceScaleFactor: width === 390 ? 2 : 1 };
       await withPage(browser, options, async page => {
         const probe = await observe(page, { readPixels: true });
-        await open(page, locale);
+        await captureCycle(page, locale, label);
         await phase(page, "running");
         assert.equal(await stage(page).locator("canvas").isVisible(), true);
         const gpu = await page.evaluate(() => window.__visualProbe.readFrame());
         assert.ok(gpu.colors > 50 && gpu.average[3] > 250, JSON.stringify(gpu));
         const bounds = await stage(page).locator("canvas").boundingBox();
-        evidence.measurements[label] = { gpu, dpr: [gpu.width / bounds.width, gpu.height / bounds.height] };
-        await captureCycle(page, label);
-        await page.evaluate(() => scrollTo(0, 0));
-        await phase(page, "running");
+        Object.assign(evidence.measurements[label], { gpu, dpr: [gpu.width / bounds.width, gpu.height / bounds.height] });
         await capture(page, `${label}-webgpu-fold`);
         await full(page, `${label}-webgpu-full`);
         await probe.assertPrivate(site.origin, { fontPaths });
@@ -422,7 +481,7 @@ async function checkOptics(browser) {
       await probe.assertPrivate(site.origin, { fontPaths });
     });
   }
-  evidence.checks.optics = "PASS visible WebGPU, four bilingual viewport renders, natural 12-second cycles, angle return, three surfaces and a one-second unchanged pause with pointer and queued control";
+  evidence.checks.optics = "PASS visible WebGPU, four bilingual viewport renders, timestamped natural compositor footage, angle return, three surfaces and a one-second unchanged pause with pointer and queued control";
   evidence.checks.lifecycle = "PASS offscreen, injected hidden, injected device loss followed by actual device destruction, and pagehide/pageshow composition teardown and restart on cached device";
   evidence.checks.privacy = "PASS local static GETs only, no telemetry, fetch/XHR/beacon/socket, storage, CSP or GPU validation errors";
 }
@@ -437,9 +496,14 @@ try {
   const hardware = await session.send("SystemInfo.getInfo");
   evidence.measurements.renderer = hardware.gpu.devices.map(({ vendorString, deviceString }) => ({ vendorString, deviceString }));
   await session.detach();
-  await checkOptics(browser);
-  await checkLayout(browser);
-  await checkCommerce(browser);
+  for (const check of [checkLayout, checkCommerce, checkOptics]) {
+    try {
+      await check(browser);
+    } catch (error) {
+      (evidence.failures ??= []).push({ check: check.name, error: error.stack });
+    }
+  }
+  assert.ok(!evidence.failures, JSON.stringify(evidence.failures, null, 2));
   evidence.result = "PASS";
 } catch (error) {
   evidence.result = "FAIL";
