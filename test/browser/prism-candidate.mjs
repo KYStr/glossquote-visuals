@@ -436,15 +436,19 @@ async function checkOptics(browser) {
       await scene.scrollIntoViewIfNeeded();
       await page.evaluate(() => document.fonts.ready);
       await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 500);
-      const clip = await scene.evaluate(element => {
-        const { x, y, width, height } = element.getBoundingClientRect();
-        return { x: x + scrollX, y: y + scrollY, width, height };
-      });
       const sampleControl = async name => {
+        const clip = await scene.evaluate(element => {
+          // Keyboard focus scrolls the mobile slider into view. Reposition and
+          // measure the specimen again before requesting its compositor pixels.
+          element.scrollIntoView({ block: "center", behavior: "instant" });
+          const { x, y, width, height } = element.getBoundingClientRect();
+          return { x: x + scrollX, y: y + scrollY, width, height };
+        });
         const before = await counters(page);
         await page.clock.runFor(84);
         assert.ok((await counters(page)).textures > before.textures);
         await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+        assert.equal(await scene.getAttribute("data-motion"), "running");
         return capture(page, `${label}-${name}`, page, { clip });
       };
       const angles = [];
