@@ -136,8 +136,15 @@ async function checkLayout(browser) {
           await full(page, `${locale}-390-reduced-ribbed`);
         }
         await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
-        if (width === 320) await full(page, `${locale}-320-200pct`);
         await assertLayout(page, `${locale}-${width}-200pct`);
+        if (width === 320) {
+          // Full-page screenshots this tall can wrap the GPU compositor surface.
+          // Preserve native viewport PNGs of the start, form, and footer.
+          for (const [area, selector] of [["top", ".prism-header"], ["sampling", "#sample-form"], ["footer", "footer"]]) {
+            await page.locator(selector).evaluate(node => node.scrollIntoView({ block: "start" }));
+            await capture(page, `${locale}-320-200pct-${area}`);
+          }
+        }
         await probe.assertPrivate(site.origin, { fontPaths });
       });
     }
