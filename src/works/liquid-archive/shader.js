@@ -42,7 +42,7 @@ const trace = (direction, limit, iterations, recordMinimum = false) => `
       ${recordMinimum ? "nearest = min(nearest, distanceToSolid);" : ""}
       if (distanceToSolid < 0.00031) {
         intersects = true;
-        ${recordMinimum ? "stepsTaken = iteration;" : ""}
+
         break;
       }
       distanceTravelled += max(0.00044, distanceToSolid * 0.91);
@@ -83,28 +83,31 @@ const HaloStudio = registerShader(defineShader({
     let sphereOrigin = objectCamera - vec3f(0.0, 0.98, 0.0);
     var material = 0;
     var nearest = 2.0;
-    var stepsTaken = 0;
     var distanceTravelled = 0.0;
     var intersects = false;
-    ${trace("ray", "roomT", 104, true)}
+    ${trace("ray", "roomT", 90, true)}
     var materialRay = ray;
     var materialDistance = distanceTravelled;
     var materialAtHit = material;
     var coverage = select(0.0, 1.0, intersects);
+    // A discontinuity in hit distance detects the outer rim, the inner hole,
+    // and the shelf contact without running extra traces over the metal faces.
+    let depth = select(roomT, materialDistance, intersects);
     let pixelFootprint = min(0.020, 3.0 / viewport.y);
-    let contactEdge = intersects && (objectCamera + transpose(pose) * ray * distanceTravelled).y < 0.23;
-    let edge = (intersects && (stepsTaken >= 14 || contactEdge)) || (!intersects && nearest < 1.4 * pixelFootprint);
+    let depthWidth = fwidth(depth);
+    let edge = (intersects || nearest < 1.7 * pixelFootprint) && depthWidth > 6.0 / viewport.y;
     if (edge) {
       coverage = 0.0;
+      let centreHit = intersects;
       for (var tap = 0; tap < 4; tap += 1) {
         let quadrant = vec2f(f32(tap % 2), f32(tap / 2)) * 0.5 - 0.25;
         let shift = quadrant * vec2f(aspect, 1.0) / viewport;
         let subRay = normalize(forward * mix(1.98, 1.84, compact) + right * (shot.x + shift.x) + up * (shot.y + shift.y));
         let subRoom = min((-1.65 - camera.z) / subRay.z, -camera.y / min(-0.00001, subRay.y));
         intersects = false;
-        ${trace("subRay", "subRoom", 112)}
+        ${trace("subRay", "subRoom", 80)}
         if (intersects) {
-          if (coverage == 0.0 && (stepsTaken == 0 || materialAtHit == 0 || nearest > 0.00031)) {
+          if (coverage == 0.0 && !centreHit) {
             materialRay = subRay;
             materialDistance = distanceTravelled;
             materialAtHit = material;
@@ -127,17 +130,17 @@ const HaloStudio = registerShader(defineShader({
       let upper = exp(-0.27 * dot(p - vec3f(0.5, 1.40, -1.65), p - vec3f(0.5, 1.40, -1.65)));
       let falloff = max(0.0, dot(roomNormal, lightDir)) / (1.0 + 0.15 * dot(toLight, toLight));
       var shadow = 1.0;
-      if (onFloor && length(p.xz) < 2.1) {
+      if (onFloor && dot(p.xz, p.xz) < 2.9) {
         let localOrigin = transpose(pose) * (p + roomNormal * 0.013);
         let localLight = transpose(pose) * lightDir;
         var travel = 0.035;
-        for (var j = 0; j < 21; j += 1) {
+        for (var j = 0; j < 14; j += 1) {
           if (travel > length(toLight) || shadow < 0.025) { break; }
           let s = localOrigin + localLight * travel;
           var separation = 0.0;
           ${geometry("s", "separation")}
           shadow = min(shadow, 9.0 * max(separation, 0.0) / travel);
-          travel += clamp(separation, 0.023, 0.35);
+          travel += clamp(separation, 0.034, 0.40);
         }
       }
       let floorLocal = (transpose(pose) * p).xz;
@@ -203,8 +206,11 @@ const HaloStudio = registerShader(defineShader({
     let reflectedP = reflection * reflectedT - toLight;
     let emitterUV = vec2f(dot(reflectedP, lightRight), dot(reflectedP, lightUp));
     let roughness = mix(0.075, 0.48, brushed);
-    let strip = (1.0 - smoothstep(0.24, 0.24 + roughness, abs(emitterUV.x))) *
-      (1.0 - smoothstep(0.95, 1.18 + roughness, abs(emitterUV.y)));
+    // At grazing normals the reflected light travels farther than one pixel.
+    // Widen only its band edge by the projected pixel footprint.
+    let emitterEdge = min(0.16, 2.7 / (viewport.y * max(0.035, ndv) * max(0.20, -towardEmitter)));
+    let strip = (1.0 - smoothstep(0.24 - emitterEdge, 0.24 + roughness + emitterEdge, abs(emitterUV.x))) *
+      (1.0 - smoothstep(0.95 - emitterEdge, 1.18 + roughness + emitterEdge, abs(emitterUV.y)));
     let grazingLight = smoothstep(0.0, 0.16, -towardEmitter) * step(0.0, reflectedT);
     let specular = strip * grazingLight;
     let softbox = exp(-1.55 * pow(emitterUV.x, 2.0) - 0.48 * pow(emitterUV.y, 2.0)) * grazingLight;
@@ -224,8 +230,9 @@ const HaloStudio = registerShader(defineShader({
     let projection = reflection.xy / max(0.19, reflection.z);
     let windowUV = projection - vec2f(0.32, 0.21);
     let softness = mix(0.046, 0.41, brushed);
-    let mainWindow = (1.0 - smoothstep(0.39, 0.39 + softness, abs(windowUV.x))) *
-      (1.0 - smoothstep(0.62, 0.62 + softness, abs(windowUV.y)));
+    let windowEdge = min(0.10, 1.7 / (viewport.y * max(0.045, ndv) * max(0.20, reflection.z)));
+    let mainWindow = (1.0 - smoothstep(0.39 - windowEdge, 0.39 + softness + windowEdge, abs(windowUV.x))) *
+      (1.0 - smoothstep(0.62 - windowEdge, 0.62 + softness + windowEdge, abs(windowUV.y)));
     let sill = smoothstep(-0.62, -0.24, windowUV.y);
     let panes = mainWindow * sill * towardFront;
     let card = exp(-2.6 * pow(projection.x + 0.71 - projection.y * 0.15, 2.0)) *
@@ -250,7 +257,7 @@ export function applyLiquid(renderer, settings) {
 
 function renderSize(width, height) {
   // Limit the software-rasterization workload without changing the shot's aspect ratio.
-  const scale = Math.min(1, 840 / width, 540 / height);
+  const scale = Math.min(1, 780 / width, 500 / height);
   return { width: Math.round(width * scale), height: Math.round(height * scale) };
 }
 

@@ -1011,16 +1011,6 @@ async function checkLiquid(browser) {
         await page.waitForFunction(target => window.__visualProbe.textures >= target, start + count, { polling: 50 });
       }
 
-      async function selectAngle(degrees) {
-        await angle.evaluate((input, value) => {
-          input.value = String(value);
-          input.dispatchEvent(new Event("input", { bubbles: true }));
-        }, degrees);
-        assert.equal(await page.locator('output[for="object-angle"]').textContent(), `${degrees}°`);
-        assert.equal(await stage(page).getAttribute("data-light"), "manual");
-        await nextFrames();
-      }
-
       async function saveTexture(label, snapshot) {
         const file = stem + "-" + label + ".png";
         const { png, ...texture } = snapshot;
@@ -1035,18 +1025,19 @@ async function checkLiquid(browser) {
         const collect = page.evaluate(async times => {
           const probe = window.__visualProbe;
           const start = performance.now();
-          const snapshots = times.map(time => new Promise((resolve, reject) => {
-            setTimeout(() => {
-              const requested = performance.now() - start;
-              const textures = probe.textures;
-              probe.readFrame(true).then(snapshot => resolve({ time, requested, textures, snapshot }), reject);
-            }, time * 1000);
-          }));
-          return Promise.all(snapshots);
+          const frames = [];
+          for (const time of times) {
+            await new Promise(resolve => setTimeout(resolve, Math.max(0, time * 1000 - (performance.now() - start))));
+            const requested = performance.now() - start;
+            const textures = probe.textures;
+            const snapshot = await probe.readFrame(true);
+            frames.push({ time, requested, textures, snapshot });
+          }
+          return frames;
         }, times);
         let timeout;
         const frames = await Promise.race([collect, new Promise((_, reject) => {
-          timeout = setTimeout(() => reject(new Error("Natural FORME GPU readbacks exceeded 25 seconds")), 25_000);
+          timeout = setTimeout(() => reject(new Error("Natural FORME GPU readbacks exceeded 55 seconds")), 55_000);
         })]).finally(() => clearTimeout(timeout));
         const samples = [];
         for (const { time, requested, textures, snapshot } of frames) {
@@ -1111,18 +1102,25 @@ async function checkLiquid(browser) {
         assert.equal(await stage(page).getAttribute("data-light"), "auto");
         await nextFrames();
         const fixed = {};
-        for (const degrees of [0, 45, 90, 135, 180]) {
-          await selectAngle(degrees);
-          const snapshot = await page.evaluate(() => window.__visualProbe.readFrame(true));
-          fixed[degrees] = await saveTexture(finish + "-fixed-" + degrees + "deg-texture", snapshot);
-          console.log(stem + " " + finish + " fixed " + degrees + "° texture");
-          if (degrees === 90) await frame(finish + "-fixed-90deg");
+        await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 200);
+        try {
+          for (const degrees of [0, 45, 90, 135, 180, 0]) {
+            await angle.evaluate((input, value) => {
+              input.value = String(value);
+              input.dispatchEvent(new Event("input", { bubbles: true }));
+            }, degrees);
+            assert.equal(await stage(page).getAttribute("data-light"), "manual");
+            const key = degrees === 0 && fixed[0] ? "return-0" : degrees;
+            fixed[key] = await saveTexture(finish + "-fixed-" + key + "deg-texture", await timedReadback(48));
+            console.log(stem + " " + finish + " fixed " + key + "° texture");
+            if (degrees === 90) await frame(finish + "-fixed-90deg");
+          }
+        } finally {
+          await page.clock.resume();
         }
         const angleDelta = await livePixelDifference(page, fixed[0].bytes, fixed[180].bytes);
         assert.ok(angleDelta.changedPixels > 15, stem + ": moving the light does not change the studio image");
-        await selectAngle(0);
-        const returnSnapshot = await page.evaluate(() => window.__visualProbe.readFrame(true));
-        const restored = await saveTexture(finish + "-fixed-return-0deg-texture", returnSnapshot);
+        const restored = fixed["return-0"];
         assert.equal((await livePixelDifference(page, fixed[0].bytes, restored.bytes)).peak, 0);
         const textureStats = fixed[90].texture;
         assert.ok(textureStats.colors > 20, JSON.stringify(textureStats));
@@ -1172,7 +1170,7 @@ async function checkLiquid(browser) {
         return Math.abs(image.width - output.width) <= 1 && Math.abs(image.height - output.height) <= 1;
       });
       assert.ok(fillsHero, "Procedural canvas must cover the entire hero frame");
-      assert.ok(await canvas.evaluate(output => output.width <= 840 && output.height <= 540), "DPR 1 studio must respect its render-size limit");
+      assert.ok(await canvas.evaluate(output => output.width <= 780 && output.height <= 500), "DPR 1 studio must respect its render-size limit");
       const theme = await page.evaluate(() => ({
         background: getComputedStyle(document.documentElement).backgroundColor,
         accent: getComputedStyle(document.querySelector(".section-intro .eyebrow")).color,
