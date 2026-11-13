@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 21,
+  "revision": 22,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.1-sol",
   "requestedReasoning": "high",
   "backendModelVerified": false,
-  "milestone": "M02",
+  "milestone": "M03",
   "works": [
     {
       "id": "V001",
@@ -72,6 +72,21 @@
       "authorCandidateCommit": "82ba3063ec2e7bd2bddee2a6efe7307563d8a7bd",
       "authorBranch": "codex/v003-commercial",
       "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/5"
+    },
+    {
+      "id": "V005",
+      "slug": "aeriform",
+      "brief": "briefs/V005-aeriform.md",
+      "status": "building",
+      "owner": "/root/aero_build",
+      "candidateCommit": null,
+      "pr": null,
+      "reviewEvidence": [],
+      "plannedUrl": "https://kystr.github.io/glossquote-visuals/works/aeriform/",
+      "blockers": [
+        "Implementation and fixed-candidate acceptance pending"
+      ],
+      "branch": "codex/v005-aeriform"
     }
   ],
   "releaseHistory": [
