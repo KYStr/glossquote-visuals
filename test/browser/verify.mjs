@@ -649,6 +649,8 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
       // This mutation is diagnostic, never a product pause or an aesthetic pass.
       // Preserve the complete inline attribute, including its original absence.
       const originalStyle = await canvas.getAttribute("style");
+      const originalProperties = await canvas.evaluate((element) => [...element.style].map((name) =>
+        [name, element.style.getPropertyValue(name), element.style.getPropertyPriority(name)]));
       try {
         await canvas.evaluate((element) => element.style.setProperty("visibility", "hidden", "important"));
         const withoutCanvas = await capture("diagnostic-no-canvas");
@@ -657,10 +659,11 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
           ...await livePixelDifference(page, afterPause, withoutCanvas),
         };
       } finally {
-        await canvas.evaluate((element, style) => {
+        await canvas.evaluate((element, { style, properties }) => {
+          for (const name of [...element.style]) element.style.removeProperty(name);
+          for (const [name, value, priority] of properties) element.style.setProperty(name, value, priority);
           if (style === null) element.removeAttribute("style");
-          else element.setAttribute("style", style);
-        }, originalStyle);
+        }, { style: originalStyle, properties: originalProperties });
       }
       assert.equal(await canvas.getAttribute("style"), originalStyle, `${stem}: diagnostic changed inline styles`);
       const restoredPause = await capture("diagnostic-restored");
