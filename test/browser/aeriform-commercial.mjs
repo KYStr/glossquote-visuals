@@ -160,6 +160,8 @@ async function responsiveAndBrief(browser) {
           await page.locator('button[data-form="digital"]').tap();
           assert.equal(await stage(page).getAttribute("data-form"), "digital");
           assert.equal(await stage(page).locator('[data-still="digital"]').isVisible(), true);
+          await page.locator('button[data-form="motion"]').tap();
+          assert.equal(await stage(page).locator('[data-still="motion"]').isVisible(), true);
           await page.locator('button[data-form="identity"]').tap();
           await snap(page, `aeriform-${lang}-390-reduced`, { fullPage: true });
           const caseArt = page.locator(".work-image--radio");
@@ -199,7 +201,7 @@ async function responsiveAndBrief(browser) {
     });
   }
   assert.deepEqual(overflows, [], JSON.stringify(overflows));
-  evidence.checks.responsive = "PASS bilingual 320/390/768/1440, 100% and 200% text, skip/focus, 44px form selectors, touch and no GPU starts under reduced motion";
+  evidence.checks.responsive = "PASS bilingual 320/390/768/1440, 100% and 200% text including selected form and brief review, skip/focus, 44px form selectors, touch and no GPU starts under reduced motion";
   evidence.checks.fallback = "PASS bilingual no JavaScript, unavailable navigator.gpu, denied adapter, and three still forms under reduced motion";
   evidence.checks.brief = "PASS real bilingual UTF-8 downloads, package presets, native required validation, deliverable validation, editing, and no send";
 }
@@ -249,6 +251,10 @@ async function brief(page, lang) {
   assert.equal(await review.locator("[role=status]").isVisible(), true);
   evidence.downloads.push({ name, bytes: bytes.length, entries });
   await snap(page, `aeriform-${lang}-390-brief-complete`);
+  await page.setViewportSize({ width: 320, height: 844 });
+  const reviewLayout = await layout(page);
+  evidence.measurements[`layout-${lang}-320-review`] = reviewLayout;
+  assert.ok(reviewLayout.every(({ scroll, width }) => scroll <= width + 1), JSON.stringify(reviewLayout));
 }
 
 async function gpu(browser, lang, width, inspect) {

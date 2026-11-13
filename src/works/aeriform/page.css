@@ -451,11 +451,15 @@ fieldset p { font-size: 0.875rem; }
   .work-image--offbeat b { font-size: clamp(2.75rem, 13vw, 5.75rem); }
   .morrow-screen span { font-size: clamp(1.1rem, 5.5vw, 2.75rem); }
   .service-card { padding: 1.25rem 0; }
+  .section-heading, .process-steps, .brief-work { overflow-wrap: anywhere; }
+  .process-steps li { grid-template-columns: 1.5em minmax(0,1fr); gap: 0.45em; }
+  .brief-work { padding-inline: clamp(1rem, 4.3vw, 1.4rem); }
+  .brief-work .action { max-inline-size: 100%; }
   .service-card + .service-card { border-inline-start: 0; border-block-start: 1px solid #8e777b; }
 }
 
 @media (max-width: 23em) {
-  .outputs, .brief-review dl div { grid-template-columns: 1fr; }
+  .outputs, .brief-review dl div { grid-template-columns: minmax(0,1fr); }
   .masthead nav { gap: 0 0.65rem; }
   .masthead .wordmark { font-size: min(1.25rem, 7vw); }
   .masthead .locale { font-size: min(0.875rem, 5vw); }
