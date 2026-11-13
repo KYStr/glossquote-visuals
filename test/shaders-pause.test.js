@@ -13,8 +13,15 @@ test("interactive frame lock retains animation state and cancels pending pointer
   const end = patched.indexOf("\n\t\tsetOnReady:", start);
   const state = {
     frameLocked: false, lastRenderTime: 500, globalElapsedTime: 6.5,
-    pendingRenderRAF: 42, nodes: new Map(), stopped: 0, cancelled: [],
+    pendingRenderRAF: 42, nodes: new Map([["animated", { definition: { animatedTime: true,
+      extraAnimatedTimes: { drift: "driftSpeed" } } }]]), stopped: 0, cancelled: [],
   };
+  const times = new Map([["primary", { value: 3.25 }], ["driftSpeed", { value: 1.75 }]]);
+  const writes = [];
+  state.animatedTimeKey = () => "primary";
+  state.extraAnimatedTimeKey = (_, speedProp) => speedProp;
+  state.getAnimatedTimeState = (key) => times.get(key);
+  state.writeSyntheticScalar = (_, key, value) => writes.push([key, value]);
   state.stopAnimation = () => state.stopped++;
   state.cancelAnimationFrame = (id) => state.cancelled.push(id);
   const api = runInNewContext(`({${patched.slice(start, end)}})`, state);
@@ -27,8 +34,13 @@ test("interactive frame lock retains animation state and cancels pending pointer
   assert.equal(state.frameLocked, false);
   assert.equal(state.lastRenderTime, 0);
   assert.equal(state.globalElapsedTime, 6.5);
+  assert.equal(times.get("primary").value, 3.25);
+  assert.equal(times.get("driftSpeed").value, 1.75);
+  assert.deepEqual(writes, []);
   api.setFrameLocked(true);
   assert.equal(state.globalElapsedTime, 0, "offline deterministic rendering retains upstream reset behavior");
+  assert.equal(times.get("primary").value, 0);
+  assert.equal(times.get("driftSpeed").value, 0);
 });
 
 test("standalone pause locks frames and resume unlocks before restarting", () => {
