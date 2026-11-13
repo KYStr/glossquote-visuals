@@ -6,16 +6,16 @@ const tilt = (outputMin, outputMax, speed = 0.5) => ({
 
 const forms = {
   identity: {
-    shape: { type: "torus3D", radius: 0.29, tube: 0.126, rotX: tilt(42, 73), rotY: tilt(-18, 23), rotZ: 0 },
-    colorA: "#fb542d", colorB: "#ffd4b3", rotation: -23, scale: 1,
+    shape: { type: "torus3D", radius: 0.29, tube: 0.126, rotX: tilt(49, 71), rotY: tilt(-18, 23), rotZ: 0 },
+    colorA: "#ad372f", colorB: "#ff9b66", rotation: -23, scale: 1,
   },
   motion: {
     shape: { type: "helix3D", radius: 0.22, tube: 0.086, pitch: 0.205, rotX: tilt(-17, 2), rotY: tilt(-30, 20), rotZ: 0 },
-    colorA: "#ff784e", colorB: "#ffe2d0", rotation: 31, scale: 1.03,
+    colorA: "#a8414c", colorB: "#ffb48b", rotation: 31, scale: 1.03,
   },
   digital: {
     shape: { type: "cube3D", sizeX: 0.31, sizeY: 0.25, sizeZ: 0.17, rounding: 0.037, rotX: tilt(24, 42), rotY: tilt(-32, -11), rotZ: 0 },
-    colorA: "#ffc4b3", colorB: "#ff6b43", rotation: -18, scale: 0.94,
+    colorA: "#955866", colorB: "#ffbfb1", rotation: -18, scale: 0.94,
   },
 };
 
@@ -42,8 +42,8 @@ export function initializeAeriform(canvas, options) {
   return initializeStandalone(canvas, [
     { id: "volume", type: "Particles", props: {
       ...particleProps(options.settings),
-      count: matchMedia("(pointer: coarse)").matches ? 4300 : 5900,
-      size: 2.24, softness: 0.06, exposure: 1.16, damping: 0.42,
+      count: matchMedia("(pointer: coarse)").matches ? 5750 : 11200,
+      size: 1.72, softness: 0.04, exposure: 1.6, damping: 0.42,
       mouseRadius: 0.26, particleShape: "dot",
       center: { x: 0.5, y: 0.5 },
     } },
