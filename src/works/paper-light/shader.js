@@ -25,14 +25,14 @@ const paper = defineShader({
   animatedTime: { speed: "clockRate" },
   props: {
     clockRate: { default: 1 },
-    lampAngle: { default: 38 },
+    lampAngle: { default: 151 },
     lampStock: { default: 0 },
   },
   paint: wgsl({
     body: `
       let cycle = time * ${2 * Math.PI / PAPER_PERIOD_SECONDS};
       let breath = 0.5 - 0.5 * cos(cycle);
-      let lamp = (lampAngle - 90.0) * 0.014 + 0.29 * sin(cycle);
+      let lamp = (lampAngle - 90.0) * 0.014 + 0.20 * sin(cycle);
       let warmth = select(vec3f(1.0, 0.92, 0.79), vec3f(0.81, 0.92, 1.10), lampStock > 1.5);
       let lightColor = select(warmth, vec3f(1.14, 0.91, 0.66), lampStock > 0.5 && lampStock < 1.5);
 
@@ -60,23 +60,26 @@ const paper = defineShader({
       let coverage = max(pos.x - upperX, sectionY - edgeY);
       let aa = 1.15 / viewport.y;
       let face = 1.0 - smoothstep(-aa, aa, coverage);
-      let thickness = 0.0055;
+      let thickness = 0.006 + 0.007 * sin(endTheta);
       let edge = 1.0 - smoothstep(-aa, aa, coverage - thickness);
 
       // The shadow is projected from the same raised rim and light direction.
-      let lampPosition = vec3f(1.23 * sin(lamp), -0.48 + 0.47 * sin(cycle), 0.91);
+      let lampPosition = vec3f(1.46 * sin(lamp), -0.79 + 0.31 * sin(cycle), 0.73);
       let rimLight = normalize(lampPosition - vec3f(screen.x, 0.28, edgeZ));
       let ground = vec2f(pos.x + edgeZ * dot(rimLight.xy, across) / rimLight.z,
                          pos.y + edgeZ * dot(rimLight.xy, down) / rimLight.z);
       let groundCurve = -0.21 * (ground.x + 0.17) * (ground.x + 0.17);
       let shadowDistance = max(ground.y - groundCurve - edgeY, ground.x - upperX);
-      let shadow = 1.0 - smoothstep(-0.027, 0.037 + 0.16 * edgeZ, shadowDistance);
+      let shadow = 1.0 - smoothstep(-0.017, 0.037 + 0.16 * edgeZ, shadowDistance);
+      let rimShadow = 1.0 - smoothstep(0.003, 0.066, coverage - thickness);
       let floorFalloff = max(0.0, 1.0 - 0.72 * length(screen - vec2f(-0.31, -0.24)));
       let detailScale = min(1.0, viewport.y / 480.0);
       ${grain("groundGrain", "pos * (260.0 * detailScale)", "9.7")}
-      let underlay = vec3f(0.42, 0.104, 0.049) * (0.53 + 0.56 * floorFalloff) * (1.0 - 0.62 * shadow);
+      let underlay = vec3f(0.46, 0.109, 0.046) * (0.53 + 0.56 * floorFalloff) * (1.0 - 0.60 * shadow - 0.18 * rimShadow);
       let background = underlay + vec3f(0.0045 * groundGrain);
-      let cut = vec3f(0.81, 0.67, 0.50) * (0.58 + 0.27 * max(0.0, dot(-down, rimLight.xy)) + 0.08 * groundGrain);
+      let edgeDepth = smoothstep(0.0, thickness, coverage);
+      let edgeLambert = max(0.0, dot(normalize(vec3f(down - across * curveSlope, 0.27)), rimLight));
+      let cut = vec3f(0.83, 0.68, 0.48) * (0.66 - 0.38 * edgeDepth + 0.17 * edgeLambert + 0.045 * groundGrain);
       let underSheet = mix(background, cut, edge);
 
       // Four concentric arch channels and their compressed shoulders.
@@ -87,19 +90,22 @@ const paper = defineShader({
       let spacing = 0.059;
       let ring = round((dist - 0.171) / spacing);
       let delta = dist - (0.171 + clamp(ring, 0.0, 3.0) * spacing);
-      let trough = delta / 0.0093;
-      let bevel = delta / 0.017;
+      let trough = delta / 0.0098;
+      let bevel = delta / 0.015;
       let pressed = exp(-trough * trough);
       let shoulder = exp(-bevel * bevel);
       let cap = 1.0 - smoothstep(0.137, 0.168, mark.y);
-      let slope = cap * delta * (0.0105 * pressed / 0.00008649 - 0.0028 * shoulder / 0.000289);
+      let slope = cap * delta * (0.018 * pressed / 0.00009604 - 0.004 * shoulder / 0.000225);
 
       let fibreUV = vec2f(dot(sheet, vec2f(0.84, 0.54)), dot(sheet, vec2f(-0.54, 0.84)));
       ${grain("warp", "sheet * 71.0", "1.7")}
-      ${grain("floss", "fibreUV * vec2f(183.0, 342.0) * detailScale + warp * 1.1", "3.3")}
-      ${grain("lint", "fibreUV * vec2f(426.0, 210.0) * detailScale", "12.3")}
-      let detail = vec2f(0.29 * floss + 0.035 * warp, 0.24 * lint - 0.045 * warp);
-      let fiberDepth = slope * grad + detail;
+      ${grain("floss", "fibreUV * vec2f(137.0, 362.0) * detailScale + warp * 0.65", "3.3")}
+      ${grain("lint", "fibreUV * vec2f(322.0, 104.0) * detailScale", "12.3")}
+      let fibrePatch = smoothstep(-0.27, 0.29, warp);
+      let sparseLint = smoothstep(0.15, 0.39, lint);
+      let detail = vec2f(0.115 * floss + 0.028 * warp, 0.095 * floss - 0.045 * sparseLint);
+      let fibreContrast = 0.42 + 0.58 * fibrePatch;
+      let fiberDepth = slope * grad + detail * fibreContrast;
 
       let curlSlope = tan(theta);
       let slopeV = curlSlope + fiberDepth.y / max(0.35, cos(theta));
@@ -108,14 +114,14 @@ const paper = defineShader({
       let height = radius * (1.0 - cos(theta));
       let lightVector = lampPosition - vec3f(screen, height);
       let light = normalize(lightVector);
-      let exposure = 0.82 + 0.26 / (0.32 + dot(lightVector, lightVector));
+      let exposure = 0.76 + 0.38 / (0.38 + dot(lightVector, lightVector));
       let diffuse = max(dot(surfaceNormal, light), 0.0);
       let sheen = pow(max(dot(surfaceNormal, normalize(light + vec3f(0.0, 0.0, 1.0))), 0.0), 12.0);
-      let edgeBounce = 0.024 * smoothstep(hinge, edgeY, sectionY);
+      let edgeBounce = 0.034 * smoothstep(hinge, edgeY, sectionY);
       let bounce = vec3f(1.0, 0.53, 0.30) * edgeBounce;
-      let material = vec3f(0.93, 0.845, 0.70) * (1.0 + 0.031 * warp + 0.092 * floss + 0.078 * lint - 0.065 * cap * pressed);
-      let surface = material * (vec3f(0.18, 0.195, 0.22) + lightColor * exposure * (0.20 + 0.57 * diffuse));
-      let lit = surface + bounce + lightColor * (0.056 * sheen);
+      let material = vec3f(0.95, 0.865, 0.735) * (1.0 + 0.018 * warp + fibreContrast * (0.034 * floss + 0.027 * sparseLint));
+      let surface = material * (vec3f(0.19, 0.208, 0.23) + lightColor * exposure * (0.20 + 0.62 * diffuse));
+      let lit = surface + bounce + lightColor * (0.065 * sheen);
       return vec4f(mix(underSheet, lit, face), 1.0);
     `,
   }),

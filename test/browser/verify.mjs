@@ -239,7 +239,7 @@ async function checkFallback(browser) {
       assert.equal(await page.locator("#angle-output").textContent(), "180°");
       assert.equal(await stage(page).evaluate((element) => element.style.getPropertyValue("--light-angle")), "180deg");
       await page.getByRole("button", { name: "Reset" }).click();
-      assert.equal(await settings(page).inputValue(), "38");
+      assert.equal(await settings(page).inputValue(), "151");
       await probe.assertPrivate(site.origin);
     });
   }
@@ -291,8 +291,8 @@ async function checkShader(browser) {
       canvas: Number((canvas.width / canvas.getBoundingClientRect().width).toFixed(3)),
     }));
     const art = await stage(page).boundingBox();
-    await page.mouse.move(art.x + art.width * 0.8, art.y + art.height / 2);
-    await page.waitForFunction(() => Number(document.querySelector("#light-angle").value) === 144);
+    await page.mouse.move(art.x + art.width * 0.2, art.y + art.height / 2);
+    await page.waitForFunction(() => Number(document.querySelector("#light-angle").value) === 36);
     const beforePointerFrames = await textureCount(page);
     await page.waitForFunction((frames) => window.__visualProbe.textures >= frames + 2, beforePointerFrames);
     const paperAtAngle = await paperSurface(page, "paper-en-angle-surface.png");
@@ -324,7 +324,7 @@ async function checkShader(browser) {
     evidence.checks.pause = "PASS three pause/resume cycles without extra devices or texture acquisition while paused";
     await openPaperLightDetails(page);
     await page.getByRole("button", { name: "Reset" }).click();
-    assert.equal(await settings(page).inputValue(), "38");
+    assert.equal(await settings(page).inputValue(), "151");
     assert.equal(await stage(page).getAttribute("data-preset"), "dawn");
     await paperLightDetails(page).locator("summary").click();
 
