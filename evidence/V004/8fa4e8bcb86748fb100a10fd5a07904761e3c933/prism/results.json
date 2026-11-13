@@ -1,0 +1,767 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "environment": "GitHub-hosted Windows Server 2025 / Chromium D3D11 WARP",
+  "checks": {
+    "layout": "PASS two languages, 320/390/768/1440, 200% text, 44px controls, touch, no-JS, reduced motion, no GPU and rejected adapter",
+    "commerce": "PASS bilingual UTF-8 sample brief, catalog prefill, invalid quantities, quantity cap, add/edit/cancel/remove, empty state, touch and focus return",
+    "optics": "PASS visible WebGPU, four bilingual viewport renders, timestamped natural compositor footage, angle return, three surfaces and a one-second unchanged pause with pointer and queued control",
+    "lifecycle": "PASS offscreen, injected hidden, injected device loss followed by actual device destruction, and pagehide/pageshow composition teardown and restart on cached device",
+    "privacy": "PASS local static GETs only, no telemetry, fetch/XHR/beacon/socket, storage, CSP or GPU validation errors"
+  },
+  "screenshots": [
+    "prism-en-320-200pct-top.png",
+    "prism-en-320-200pct-sampling.png",
+    "prism-en-320-200pct-footer.png",
+    "prism-en-390-reduced-ribbed.png",
+    "prism-en-390-no-js.png",
+    "prism-zh-Hant-320-200pct-top.png",
+    "prism-zh-Hant-320-200pct-sampling.png",
+    "prism-zh-Hant-320-200pct-footer.png",
+    "prism-zh-Hant-390-reduced-ribbed.png",
+    "prism-zh-Hant-390-no-js.png",
+    "prism-en-1100-no-gpu.png",
+    "prism-en-1100-no-adapter.png",
+    "prism-en-1440-selection.png",
+    "prism-zh-Hant-390-selection.png",
+    "prism-en-390-navigation-target-0ms.png",
+    "prism-en-390-navigation-target-250ms.png",
+    "prism-en-390-navigation-target-500ms.png",
+    "prism-en-390-navigation-target-1000ms.png",
+    "prism-en-390-natural-target-0ms.png",
+    "prism-en-390-natural-target-250ms.png",
+    "prism-en-390-natural-target-500ms.png",
+    "prism-en-390-natural-target-1000ms.png",
+    "prism-en-390-natural-target-2000ms.png",
+    "prism-en-390-natural-target-4000ms.png",
+    "prism-en-390-natural-target-6000ms.png",
+    "prism-en-390-natural-target-8000ms.png",
+    "prism-en-390-natural-target-12000ms.png",
+    "prism-en-390-natural-cycle-end.png",
+    "prism-en-390-webgpu-fold.png",
+    "prism-en-390-webgpu-full.png",
+    "prism-en-1440-navigation-target-0ms.png",
+    "prism-en-1440-navigation-target-250ms.png",
+    "prism-en-1440-navigation-target-500ms.png",
+    "prism-en-1440-navigation-target-1000ms.png",
+    "prism-en-1440-natural-target-0ms.png",
+    "prism-en-1440-natural-target-250ms.png",
+    "prism-en-1440-natural-target-500ms.png",
+    "prism-en-1440-natural-target-1000ms.png",
+    "prism-en-1440-natural-target-2000ms.png",
+    "prism-en-1440-natural-target-4000ms.png",
+    "prism-en-1440-natural-target-6000ms.png",
+    "prism-en-1440-natural-target-8000ms.png",
+    "prism-en-1440-natural-target-12000ms.png",
+    "prism-en-1440-natural-target-16000ms.png",
+    "prism-en-1440-natural-cycle-end.png",
+    "prism-en-1440-webgpu-fold.png",
+    "prism-en-1440-webgpu-full.png",
+    "prism-zh-Hant-390-navigation-target-0ms.png",
+    "prism-zh-Hant-390-navigation-target-250ms.png",
+    "prism-zh-Hant-390-navigation-target-500ms.png",
+    "prism-zh-Hant-390-navigation-target-1000ms.png",
+    "prism-zh-Hant-390-natural-target-0ms.png",
+    "prism-zh-Hant-390-natural-target-250ms.png",
+    "prism-zh-Hant-390-natural-target-500ms.png",
+    "prism-zh-Hant-390-natural-target-1000ms.png",
+    "prism-zh-Hant-390-natural-target-2000ms.png",
+    "prism-zh-Hant-390-natural-target-4000ms.png",
+    "prism-zh-Hant-390-natural-target-6000ms.png",
+    "prism-zh-Hant-390-natural-target-8000ms.png",
+    "prism-zh-Hant-390-natural-target-12000ms.png",
+    "prism-zh-Hant-390-natural-cycle-end.png",
+    "prism-zh-Hant-390-webgpu-fold.png",
+    "prism-zh-Hant-390-webgpu-full.png",
+    "prism-zh-Hant-1440-navigation-target-0ms.png",
+    "prism-zh-Hant-1440-navigation-target-250ms.png",
+    "prism-zh-Hant-1440-navigation-target-500ms.png",
+    "prism-zh-Hant-1440-navigation-target-1000ms.png",
+    "prism-zh-Hant-1440-natural-target-0ms.png",
+    "prism-zh-Hant-1440-natural-target-250ms.png",
+    "prism-zh-Hant-1440-natural-target-500ms.png",
+    "prism-zh-Hant-1440-natural-target-1000ms.png",
+    "prism-zh-Hant-1440-natural-target-2000ms.png",
+    "prism-zh-Hant-1440-natural-target-4000ms.png",
+    "prism-zh-Hant-1440-natural-target-6000ms.png",
+    "prism-zh-Hant-1440-natural-target-8000ms.png",
+    "prism-zh-Hant-1440-natural-target-12000ms.png",
+    "prism-zh-Hant-1440-natural-target-16000ms.png",
+    "prism-zh-Hant-1440-natural-cycle-end.png",
+    "prism-zh-Hant-1440-webgpu-fold.png",
+    "prism-zh-Hant-1440-webgpu-full.png",
+    "prism-en-1440-angle-1--20.png",
+    "prism-en-1440-angle-2-0.png",
+    "prism-en-1440-angle-3-20.png",
+    "prism-en-1440-angle-4--20.png",
+    "prism-en-1440-material-clear.png",
+    "prism-en-1440-material-satin.png",
+    "prism-en-1440-material-ribbed.png",
+    "prism-en-1440-material-clear-return.png",
+    "prism-en-1440-pause-before.png",
+    "prism-en-1440-pause-at-click.png",
+    "prism-en-1440-pause-after-1s.png",
+    "prism-en-1440-pause-control-queued.png",
+    "prism-en-1440-resumed.png",
+    "prism-en-1440-device-recovered.png",
+    "prism-zh-Hant-390-angle-1--20.png",
+    "prism-zh-Hant-390-angle-2-0.png",
+    "prism-zh-Hant-390-angle-3-20.png",
+    "prism-zh-Hant-390-angle-4--20.png",
+    "prism-zh-Hant-390-material-clear.png",
+    "prism-zh-Hant-390-material-satin.png",
+    "prism-zh-Hant-390-material-ribbed.png",
+    "prism-zh-Hant-390-material-clear-return.png",
+    "prism-zh-Hant-390-pause-before.png",
+    "prism-zh-Hant-390-pause-at-click.png",
+    "prism-zh-Hant-390-pause-after-1s.png",
+    "prism-zh-Hant-390-pause-control-queued.png",
+    "prism-zh-Hant-390-resumed.png",
+    "prism-zh-Hant-390-device-recovered.png"
+  ],
+  "downloads": [
+    "prism-sample-brief-en.txt",
+    "prism-sample-brief-zh-Hant.txt"
+  ],
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "en-390": {
+      "clock": {
+        "navigationEpochMs": 1794549611283.3,
+        "visibleEpochMs": 1794549611652.2
+      },
+      "startup": [
+        {
+          "targetMs": 0,
+          "file": "prism-en-390-navigation-target-0ms.png",
+          "epochMs": 1794549611293.497,
+          "navigationMs": 10,
+          "liveMs": -376,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-en-390-navigation-target-250ms.png",
+          "epochMs": 1794549611669.7,
+          "navigationMs": 386,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-en-390-navigation-target-500ms.png",
+          "epochMs": 1794549611812.651,
+          "navigationMs": 529,
+          "liveMs": 143,
+          "renderedMs": 117
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-en-390-navigation-target-1000ms.png",
+          "epochMs": 1794549612426.739,
+          "navigationMs": 1143,
+          "liveMs": 757,
+          "renderedMs": 599
+        }
+      ],
+      "natural": [
+        {
+          "targetMs": 0,
+          "file": "prism-en-390-natural-target-0ms.png",
+          "epochMs": 1794549611669.7,
+          "navigationMs": 386,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-en-390-natural-target-250ms.png",
+          "epochMs": 1794549612024.571,
+          "navigationMs": 741,
+          "liveMs": 355,
+          "renderedMs": 329
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-en-390-natural-target-500ms.png",
+          "epochMs": 1794549612426.739,
+          "navigationMs": 1143,
+          "liveMs": 757,
+          "renderedMs": 599
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-en-390-natural-target-1000ms.png",
+          "epochMs": 1794549612978.3909,
+          "navigationMs": 1695,
+          "liveMs": 1309,
+          "renderedMs": 1211
+        },
+        {
+          "targetMs": 2000,
+          "file": "prism-en-390-natural-target-2000ms.png",
+          "epochMs": 1794549613869.966,
+          "navigationMs": 2587,
+          "liveMs": 2200,
+          "renderedMs": 2103
+        },
+        {
+          "targetMs": 4000,
+          "file": "prism-en-390-natural-target-4000ms.png",
+          "epochMs": 1794549615694.621,
+          "navigationMs": 4411,
+          "liveMs": 4025,
+          "renderedMs": 3933
+        },
+        {
+          "targetMs": 6000,
+          "file": "prism-en-390-natural-target-6000ms.png",
+          "epochMs": 1794549617708.936,
+          "navigationMs": 6426,
+          "liveMs": 6039,
+          "renderedMs": 5931
+        },
+        {
+          "targetMs": 8000,
+          "file": "prism-en-390-natural-target-8000ms.png",
+          "epochMs": 1794549619705.648,
+          "navigationMs": 8422,
+          "liveMs": 8036,
+          "renderedMs": 7906
+        },
+        {
+          "targetMs": 12000,
+          "file": "prism-en-390-natural-target-12000ms.png",
+          "epochMs": 1794549623708.54,
+          "navigationMs": 12425,
+          "liveMs": 12039,
+          "renderedMs": 11908
+        }
+      ],
+      "cycleEnd": {
+        "file": "prism-en-390-natural-cycle-end.png",
+        "epochMs": 1794549625370.792,
+        "navigationMs": 14087,
+        "liveMs": 13701,
+        "renderedMs": 13493
+      },
+      "compositorFrames": 120,
+      "liveFrames": 117,
+      "textureAcquisitions": 203,
+      "naturalVariation": 2.48821875,
+      "gpu": {
+        "width": 530,
+        "height": 449,
+        "format": "bgra8unorm",
+        "submittedAt": 14966.700000000012,
+        "alphaMode": "premultiplied",
+        "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+        "colors": 154,
+        "average": [
+          215,
+          223,
+          249,
+          255
+        ]
+      },
+      "dpr": [
+        1.501416430594901,
+        1.5016722408026757
+      ]
+    },
+    "en-1440": {
+      "clock": {
+        "navigationEpochMs": 1794549630441.1,
+        "visibleEpochMs": 1794549630849.9001
+      },
+      "startup": [
+        {
+          "targetMs": 0,
+          "file": "prism-en-1440-navigation-target-0ms.png",
+          "epochMs": 1794549630595.919,
+          "navigationMs": 155,
+          "liveMs": -272,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-en-1440-navigation-target-250ms.png",
+          "epochMs": 1794549630867.441,
+          "navigationMs": 426,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-en-1440-navigation-target-500ms.png",
+          "epochMs": 1794549631073.793,
+          "navigationMs": 633,
+          "liveMs": 206,
+          "renderedMs": 100
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-en-1440-navigation-target-1000ms.png",
+          "epochMs": 1794549631625.644,
+          "navigationMs": 1185,
+          "liveMs": 758,
+          "renderedMs": 300
+        }
+      ],
+      "natural": [
+        {
+          "targetMs": 0,
+          "file": "prism-en-1440-natural-target-0ms.png",
+          "epochMs": 1794549630867.441,
+          "navigationMs": 426,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-en-1440-natural-target-250ms.png",
+          "epochMs": 1794549631205.156,
+          "navigationMs": 764,
+          "liveMs": 338,
+          "renderedMs": 200
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-en-1440-natural-target-500ms.png",
+          "epochMs": 1794549631625.644,
+          "navigationMs": 1185,
+          "liveMs": 758,
+          "renderedMs": 300
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-en-1440-natural-target-1000ms.png",
+          "epochMs": 1794549631924.1619,
+          "navigationMs": 1483,
+          "liveMs": 1057,
+          "renderedMs": 633
+        },
+        {
+          "targetMs": 2000,
+          "file": "prism-en-1440-natural-target-2000ms.png",
+          "epochMs": 1794549632874.2212,
+          "navigationMs": 2433,
+          "liveMs": 2007,
+          "renderedMs": 1333
+        },
+        {
+          "targetMs": 4000,
+          "file": "prism-en-1440-natural-target-4000ms.png",
+          "epochMs": 1794549634871.3738,
+          "navigationMs": 4430,
+          "liveMs": 4004,
+          "renderedMs": 2729
+        },
+        {
+          "targetMs": 6000,
+          "file": "prism-en-1440-natural-target-6000ms.png",
+          "epochMs": 1794549637461.257,
+          "navigationMs": 7020,
+          "liveMs": 6594,
+          "renderedMs": 4729
+        },
+        {
+          "targetMs": 8000,
+          "file": "prism-en-1440-natural-target-8000ms.png",
+          "epochMs": 1794549638920.684,
+          "navigationMs": 8480,
+          "liveMs": 8053,
+          "renderedMs": 5724
+        },
+        {
+          "targetMs": 12000,
+          "file": "prism-en-1440-natural-target-12000ms.png",
+          "epochMs": 1794549642901.8682,
+          "navigationMs": 12461,
+          "liveMs": 12034,
+          "renderedMs": 8720
+        },
+        {
+          "targetMs": 16000,
+          "file": "prism-en-1440-natural-target-16000ms.png",
+          "epochMs": 1794549646895.445,
+          "navigationMs": 16454,
+          "liveMs": 16028,
+          "renderedMs": 11609
+        }
+      ],
+      "cycleEnd": {
+        "file": "prism-en-1440-natural-cycle-end.png",
+        "epochMs": 1794549648918.224,
+        "navigationMs": 18477,
+        "liveMs": 18051,
+        "renderedMs": 13105
+      },
+      "compositorFrames": 96,
+      "liveFrames": 93,
+      "textureAcquisitions": 137,
+      "naturalVariation": 2.40040625,
+      "gpu": {
+        "width": 799,
+        "height": 595,
+        "format": "bgra8unorm",
+        "submittedAt": 20247,
+        "alphaMode": "premultiplied",
+        "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+        "colors": 127,
+        "average": [
+          218,
+          226,
+          250,
+          255
+        ]
+      },
+      "dpr": [
+        1,
+        1
+      ],
+      "controls": {
+        "angleDifference": 5.0638125,
+        "angleReturn": 0.66959375,
+        "region": {
+          "x": 575.296875,
+          "y": 134.34375,
+          "width": 800.625,
+          "height": 597.46875,
+          "viewportWidth": 1440,
+          "viewportHeight": 960
+        },
+        "materialDifference": [
+          2.92859375,
+          4.0660625
+        ],
+        "freezeDifference": 0,
+        "resumeDifference": 2.71378125
+      }
+    },
+    "zh-Hant-390": {
+      "clock": {
+        "navigationEpochMs": 1794549657116.5,
+        "visibleEpochMs": 1794549657495.7
+      },
+      "startup": [
+        {
+          "targetMs": 0,
+          "file": "prism-zh-Hant-390-navigation-target-0ms.png",
+          "epochMs": 1794549657127.123,
+          "navigationMs": 11,
+          "liveMs": -387,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-zh-Hant-390-navigation-target-250ms.png",
+          "epochMs": 1794549657514.505,
+          "navigationMs": 398,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-zh-Hant-390-navigation-target-500ms.png",
+          "epochMs": 1794549657659.571,
+          "navigationMs": 543,
+          "liveMs": 145,
+          "renderedMs": 119
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-zh-Hant-390-navigation-target-1000ms.png",
+          "epochMs": 1794549658209.394,
+          "navigationMs": 1093,
+          "liveMs": 695,
+          "renderedMs": 527
+        }
+      ],
+      "natural": [
+        {
+          "targetMs": 0,
+          "file": "prism-zh-Hant-390-natural-target-0ms.png",
+          "epochMs": 1794549657514.505,
+          "navigationMs": 398,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-zh-Hant-390-natural-target-250ms.png",
+          "epochMs": 1794549657802.979,
+          "navigationMs": 686,
+          "liveMs": 288,
+          "renderedMs": 251
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-zh-Hant-390-natural-target-500ms.png",
+          "epochMs": 1794549658076.514,
+          "navigationMs": 960,
+          "liveMs": 562,
+          "renderedMs": 527
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-zh-Hant-390-natural-target-1000ms.png",
+          "epochMs": 1794549658842.646,
+          "navigationMs": 1726,
+          "liveMs": 1328,
+          "renderedMs": 1243
+        },
+        {
+          "targetMs": 2000,
+          "file": "prism-zh-Hant-390-natural-target-2000ms.png",
+          "epochMs": 1794549659523.648,
+          "navigationMs": 2407,
+          "liveMs": 2009,
+          "renderedMs": 1911
+        },
+        {
+          "targetMs": 4000,
+          "file": "prism-zh-Hant-390-natural-target-4000ms.png",
+          "epochMs": 1794549661672.383,
+          "navigationMs": 4556,
+          "liveMs": 4158,
+          "renderedMs": 4023
+        },
+        {
+          "targetMs": 6000,
+          "file": "prism-zh-Hant-390-natural-target-6000ms.png",
+          "epochMs": 1794549663846.7231,
+          "navigationMs": 6730,
+          "liveMs": 6332,
+          "renderedMs": 6185
+        },
+        {
+          "targetMs": 8000,
+          "file": "prism-zh-Hant-390-natural-target-8000ms.png",
+          "epochMs": 1794549665516.47,
+          "navigationMs": 8400,
+          "liveMs": 8002,
+          "renderedMs": 7807
+        },
+        {
+          "targetMs": 12000,
+          "file": "prism-zh-Hant-390-natural-target-12000ms.png",
+          "epochMs": 1794549669559.528,
+          "navigationMs": 12443,
+          "liveMs": 12045,
+          "renderedMs": 11883
+        }
+      ],
+      "cycleEnd": {
+        "file": "prism-zh-Hant-390-natural-cycle-end.png",
+        "epochMs": 1794549671195.832,
+        "navigationMs": 14079,
+        "liveMs": 13681,
+        "renderedMs": 13450
+      },
+      "compositorFrames": 132,
+      "liveFrames": 129,
+      "textureAcquisitions": 203,
+      "naturalVariation": 2.4725,
+      "gpu": {
+        "width": 530,
+        "height": 449,
+        "format": "bgra8unorm",
+        "submittedAt": 15081.699999999983,
+        "alphaMode": "premultiplied",
+        "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+        "colors": 155,
+        "average": [
+          215,
+          223,
+          249,
+          255
+        ]
+      },
+      "dpr": [
+        1.501416430594901,
+        1.5016722408026757
+      ],
+      "controls": {
+        "angleDifference": 5.54715625,
+        "angleReturn": 0.65946875,
+        "region": {
+          "x": 17.34375,
+          "y": 271.6875,
+          "width": 355.3125,
+          "height": 301.109375,
+          "viewportWidth": 390,
+          "viewportHeight": 844
+        },
+        "materialDifference": [
+          3.43796875,
+          4.3881875
+        ],
+        "freezeDifference": 0,
+        "resumeDifference": 3.40965625
+      }
+    },
+    "zh-Hant-1440": {
+      "clock": {
+        "navigationEpochMs": 1794549675973.9,
+        "visibleEpochMs": 1794549676426.0999
+      },
+      "startup": [
+        {
+          "targetMs": 0,
+          "file": "prism-zh-Hant-1440-navigation-target-0ms.png",
+          "epochMs": 1794549676162.7222,
+          "navigationMs": 189,
+          "liveMs": -281,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-zh-Hant-1440-navigation-target-250ms.png",
+          "epochMs": 1794549676443.321,
+          "navigationMs": 469,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-zh-Hant-1440-navigation-target-500ms.png",
+          "epochMs": 1794549676652.393,
+          "navigationMs": 678,
+          "liveMs": 209,
+          "renderedMs": 118
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-zh-Hant-1440-navigation-target-1000ms.png",
+          "epochMs": 1794549677320.865,
+          "navigationMs": 1347,
+          "liveMs": 878,
+          "renderedMs": 518
+        }
+      ],
+      "natural": [
+        {
+          "targetMs": 0,
+          "file": "prism-zh-Hant-1440-natural-target-0ms.png",
+          "epochMs": 1794549676443.321,
+          "navigationMs": 469,
+          "liveMs": 0,
+          "renderedMs": 0
+        },
+        {
+          "targetMs": 250,
+          "file": "prism-zh-Hant-1440-natural-target-250ms.png",
+          "epochMs": 1794549676766.7651,
+          "navigationMs": 793,
+          "liveMs": 323,
+          "renderedMs": 118
+        },
+        {
+          "targetMs": 500,
+          "file": "prism-zh-Hant-1440-natural-target-500ms.png",
+          "epochMs": 1794549677320.865,
+          "navigationMs": 1347,
+          "liveMs": 878,
+          "renderedMs": 518
+        },
+        {
+          "targetMs": 1000,
+          "file": "prism-zh-Hant-1440-natural-target-1000ms.png",
+          "epochMs": 1794549677466.261,
+          "navigationMs": 1492,
+          "liveMs": 1023,
+          "renderedMs": 664
+        },
+        {
+          "targetMs": 2000,
+          "file": "prism-zh-Hant-1440-natural-target-2000ms.png",
+          "epochMs": 1794549678463.574,
+          "navigationMs": 2490,
+          "liveMs": 2020,
+          "renderedMs": 1364
+        },
+        {
+          "targetMs": 4000,
+          "file": "prism-zh-Hant-1440-natural-target-4000ms.png",
+          "epochMs": 1794549680953.047,
+          "navigationMs": 4979,
+          "liveMs": 4510,
+          "renderedMs": 3164
+        },
+        {
+          "targetMs": 6000,
+          "file": "prism-zh-Hant-1440-natural-target-6000ms.png",
+          "epochMs": 1794549682454.694,
+          "navigationMs": 6481,
+          "liveMs": 6011,
+          "renderedMs": 4164
+        },
+        {
+          "targetMs": 8000,
+          "file": "prism-zh-Hant-1440-natural-target-8000ms.png",
+          "epochMs": 1794549684512.393,
+          "navigationMs": 8538,
+          "liveMs": 8069,
+          "renderedMs": 5664
+        },
+        {
+          "targetMs": 12000,
+          "file": "prism-zh-Hant-1440-natural-target-12000ms.png",
+          "epochMs": 1794549688810.7551,
+          "navigationMs": 12837,
+          "liveMs": 12367,
+          "renderedMs": 8949
+        },
+        {
+          "targetMs": 16000,
+          "file": "prism-zh-Hant-1440-natural-target-16000ms.png",
+          "epochMs": 1794549692763.0662,
+          "navigationMs": 16789,
+          "liveMs": 16320,
+          "renderedMs": 11836
+        }
+      ],
+      "cycleEnd": {
+        "file": "prism-zh-Hant-1440-natural-cycle-end.png",
+        "epochMs": 1794549694793.904,
+        "navigationMs": 18820,
+        "liveMs": 18351,
+        "renderedMs": 13330
+      },
+      "compositorFrames": 101,
+      "liveFrames": 97,
+      "textureAcquisitions": 140,
+      "naturalVariation": 2.4260625,
+      "gpu": {
+        "width": 799,
+        "height": 595,
+        "format": "bgra8unorm",
+        "submittedAt": 20336.199999999983,
+        "alphaMode": "premultiplied",
+        "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+        "colors": 126,
+        "average": [
+          218,
+          226,
+          250,
+          255
+        ]
+      },
+      "dpr": [
+        1,
+        1
+      ]
+    }
+  },
+  "browser": "158.0.8127.18",
+  "result": "PASS"
+}

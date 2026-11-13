@@ -1,0 +1,1084 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "environment": "GitHub-hosted Windows Server 2025 VM",
+  "display": "headless-d3d11-warp",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS Pages-style base, share image, notices, robots, sitemap and 404 from built artifact",
+    "liquid": "PASS bilingual inquiry and download, four widths/200%, keyboard/touch, no-JS and no-GPU, visible procedural studio in both finishes, natural 12-second cycles, fixed 0/45/90/135/180 and return, frozen native pause, resume, visibility, device recovery, back and privacy"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "unavailable_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webnn": "disabled_off"
+    },
+    "liquidTheme": {
+      "background": "rgb(238, 240, 237)",
+      "accent": "rgb(39, 81, 90)",
+      "geist": true
+    },
+    "liquidMinCheckedContrast": 6.872156326596201,
+    "liquidStudios": {
+      "liquid-forme-en-1440": {
+        "polished": {
+          "natural": {
+            "timebase": "Native RAF without clock instrumentation; actual request/readback timing",
+            "travel": {
+              "mean": 4.601388888888889,
+              "changedPixels": 564,
+              "peak": 125,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "requested": 0,
+                "readbackMs": 791,
+                "textures": 170,
+                "file": "liquid-forme-en-1440-polished-natural-0s.png"
+              },
+              {
+                "time": 2,
+                "requested": 2009,
+                "readbackMs": 1223,
+                "textures": 208,
+                "file": "liquid-forme-en-1440-polished-natural-2s.png"
+              },
+              {
+                "time": 4,
+                "requested": 4009,
+                "readbackMs": 1067,
+                "textures": 247,
+                "file": "liquid-forme-en-1440-polished-natural-4s.png"
+              },
+              {
+                "time": 6,
+                "requested": 6027,
+                "readbackMs": 290,
+                "textures": 284,
+                "file": "liquid-forme-en-1440-polished-natural-6s.png"
+              },
+              {
+                "time": 8,
+                "requested": 8016,
+                "readbackMs": 1910,
+                "textures": 322,
+                "file": "liquid-forme-en-1440-polished-natural-8s.png"
+              },
+              {
+                "time": 10,
+                "requested": 10018,
+                "readbackMs": 266,
+                "textures": 362,
+                "file": "liquid-forme-en-1440-polished-natural-10s.png"
+              },
+              {
+                "time": 12,
+                "requested": 12026,
+                "readbackMs": 163,
+                "textures": 400,
+                "file": "liquid-forme-en-1440-polished-natural-12s.png"
+              }
+            ]
+          },
+          "fixed": {
+            "readbackMs": [
+              785,
+              797,
+              835,
+              2358,
+              701,
+              462
+            ],
+            "submissions": [
+              15,
+              14,
+              16,
+              46,
+              12,
+              8
+            ]
+          },
+          "angleDelta": {
+            "mean": 12.276319444444445,
+            "changedPixels": 2564,
+            "peak": 104,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDelta": {
+            "mean": 0.7495833333333334,
+            "changedPixels": 24,
+            "peak": 111,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDeltaBasis": "Unsynchronized native captures before and after the action; diagnostic only",
+          "nativeHeldOriginalPngIdentical": true,
+          "resumeDelta": {
+            "mean": 2.519652777777778,
+            "changedPixels": 135,
+            "peak": 118,
+            "width": 80,
+            "height": 60
+          },
+          "resumeSamples": [
+            {
+              "targetMs": 2000,
+              "requestedMs": 2460.328099999999,
+              "textures": 544,
+              "file": "liquid-forme-en-1440-polished-resumed.png",
+              "difference": {
+                "mean": 2.519652777777778,
+                "changedPixels": 135,
+                "peak": 118,
+                "width": 80,
+                "height": 60
+              }
+            },
+            {
+              "targetMs": 4000,
+              "requestedMs": 4848.717199999999,
+              "textures": 583,
+              "file": "liquid-forme-en-1440-polished-resumed-4s.png",
+              "difference": {
+                "mean": 2.8916666666666666,
+                "changedPixels": 168,
+                "peak": 118,
+                "width": 80,
+                "height": 60
+              }
+            }
+          ],
+          "resumeEvidence": "liquid-forme-en-1440-polished-resumed.png",
+          "texture": {
+            "width": 780,
+            "height": 442,
+            "format": "bgra8unorm",
+            "submittedAt": 3394.3000000000466,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 319,
+            "average": [
+              81,
+              83,
+              81,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          },
+          "cycle": {
+            "timebase": "Separate paused Chromium clock with bounded callbacks and raw GPU readback",
+            "travel": {
+              "mean": 8.885486111111112,
+              "changedPixels": 2116,
+              "peak": 125,
+              "width": 80,
+              "height": 60
+            },
+            "closure": {
+              "mean": 0.00020833333333333335,
+              "changedPixels": 0,
+              "peak": 1,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "elapsed": 0,
+                "file": "liquid-forme-en-1440-polished-auto-0s.png"
+              },
+              {
+                "time": 2,
+                "elapsed": 2000,
+                "file": "liquid-forme-en-1440-polished-auto-2s.png"
+              },
+              {
+                "time": 4,
+                "elapsed": 4000,
+                "file": "liquid-forme-en-1440-polished-auto-4s.png"
+              },
+              {
+                "time": 6,
+                "elapsed": 6000,
+                "file": "liquid-forme-en-1440-polished-auto-6s.png"
+              },
+              {
+                "time": 8,
+                "elapsed": 8000,
+                "file": "liquid-forme-en-1440-polished-auto-8s.png"
+              },
+              {
+                "time": 10,
+                "elapsed": 10000,
+                "file": "liquid-forme-en-1440-polished-auto-10s.png"
+              },
+              {
+                "time": 12,
+                "elapsed": 12000,
+                "file": "liquid-forme-en-1440-polished-auto-12s.png"
+              }
+            ]
+          },
+          "sameFramePause": {
+            "timeBasis": "controlled-animation-clock",
+            "heldMilliseconds": 1000,
+            "originalPngIdenticalAtClickAndHeld": true,
+            "queueSubmissions": 0,
+            "sameCanvasAndDimensions": true,
+            "resumeDelta": {
+              "mean": 1.389375,
+              "changedPixels": 50,
+              "peak": 133,
+              "width": 80,
+              "height": 60
+            },
+            "frames": {
+              "before": "liquid-forme-en-1440-polished-controlled-pause-before.png",
+              "paused": "liquid-forme-en-1440-polished-controlled-pause-at-click.png",
+              "stillPaused": "liquid-forme-en-1440-polished-controlled-pause-held.png",
+              "resumed": "liquid-forme-en-1440-polished-controlled-pause-resumed.png"
+            }
+          }
+        },
+        "satin": {
+          "natural": {
+            "timebase": "Native RAF without clock instrumentation; actual request/readback timing",
+            "travel": {
+              "mean": 8.569930555555555,
+              "changedPixels": 1967,
+              "peak": 84,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "requested": 0,
+                "readbackMs": 572,
+                "textures": 742,
+                "file": "liquid-forme-en-1440-satin-natural-0s.png"
+              },
+              {
+                "time": 2,
+                "requested": 2007,
+                "readbackMs": 342,
+                "textures": 780,
+                "file": "liquid-forme-en-1440-satin-natural-2s.png"
+              },
+              {
+                "time": 4,
+                "requested": 4013,
+                "readbackMs": 554,
+                "textures": 817,
+                "file": "liquid-forme-en-1440-satin-natural-4s.png"
+              },
+              {
+                "time": 6,
+                "requested": 6024,
+                "readbackMs": 1271,
+                "textures": 855,
+                "file": "liquid-forme-en-1440-satin-natural-6s.png"
+              },
+              {
+                "time": 8,
+                "requested": 8015,
+                "readbackMs": 386,
+                "textures": 892,
+                "file": "liquid-forme-en-1440-satin-natural-8s.png"
+              },
+              {
+                "time": 10,
+                "requested": 10009,
+                "readbackMs": 1239,
+                "textures": 931,
+                "file": "liquid-forme-en-1440-satin-natural-10s.png"
+              },
+              {
+                "time": 12,
+                "requested": 12023,
+                "readbackMs": 1270,
+                "textures": 970,
+                "file": "liquid-forme-en-1440-satin-natural-12s.png"
+              }
+            ]
+          },
+          "fixed": {
+            "readbackMs": [
+              961,
+              717,
+              712,
+              442,
+              763,
+              785
+            ],
+            "submissions": [
+              18,
+              13,
+              13,
+              11,
+              14,
+              17
+            ]
+          },
+          "angleDelta": {
+            "mean": 13.284722222222221,
+            "changedPixels": 2749,
+            "peak": 93,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDelta": {
+            "mean": 1.1453472222222223,
+            "changedPixels": 69,
+            "peak": 64,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDeltaBasis": "Unsynchronized native captures before and after the action; diagnostic only",
+          "nativeHeldOriginalPngIdentical": true,
+          "resumeDelta": {
+            "mean": 2.1579166666666665,
+            "changedPixels": 135,
+            "peak": 77,
+            "width": 80,
+            "height": 60
+          },
+          "resumeSamples": [
+            {
+              "targetMs": 2000,
+              "requestedMs": 2560.046100000007,
+              "textures": 1133,
+              "file": "liquid-forme-en-1440-satin-resumed.png",
+              "difference": {
+                "mean": 2.1579166666666665,
+                "changedPixels": 135,
+                "peak": 77,
+                "width": 80,
+                "height": 60
+              }
+            },
+            {
+              "targetMs": 4000,
+              "requestedMs": 4709.947600000014,
+              "textures": 1174,
+              "file": "liquid-forme-en-1440-satin-resumed-4s.png",
+              "difference": {
+                "mean": 0.021736111111111112,
+                "changedPixels": 0,
+                "peak": 3,
+                "width": 80,
+                "height": 60
+              }
+            }
+          ],
+          "resumeEvidence": "liquid-forme-en-1440-satin-resumed.png",
+          "texture": {
+            "width": 780,
+            "height": 442,
+            "format": "bgra8unorm",
+            "submittedAt": 37449.40000000002,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 323,
+            "average": [
+              85,
+              86,
+              84,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          },
+          "cycle": {
+            "timebase": "Separate paused Chromium clock with bounded callbacks and raw GPU readback",
+            "travel": {
+              "mean": 7.232291666666667,
+              "changedPixels": 991,
+              "peak": 93,
+              "width": 80,
+              "height": 60
+            },
+            "closure": {
+              "mean": 0.050694444444444445,
+              "changedPixels": 0,
+              "peak": 3,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "elapsed": 0,
+                "file": "liquid-forme-en-1440-satin-auto-0s.png"
+              },
+              {
+                "time": 2,
+                "elapsed": 2000,
+                "file": "liquid-forme-en-1440-satin-auto-2s.png"
+              },
+              {
+                "time": 4,
+                "elapsed": 4000,
+                "file": "liquid-forme-en-1440-satin-auto-4s.png"
+              },
+              {
+                "time": 6,
+                "elapsed": 6000,
+                "file": "liquid-forme-en-1440-satin-auto-6s.png"
+              },
+              {
+                "time": 8,
+                "elapsed": 8000,
+                "file": "liquid-forme-en-1440-satin-auto-8s.png"
+              },
+              {
+                "time": 10,
+                "elapsed": 10000,
+                "file": "liquid-forme-en-1440-satin-auto-10s.png"
+              },
+              {
+                "time": 12,
+                "elapsed": 12000,
+                "file": "liquid-forme-en-1440-satin-auto-12s.png"
+              }
+            ]
+          },
+          "sameFramePause": {
+            "timeBasis": "controlled-animation-clock",
+            "heldMilliseconds": 1000,
+            "originalPngIdenticalAtClickAndHeld": true,
+            "queueSubmissions": 0,
+            "sameCanvasAndDimensions": true,
+            "resumeDelta": {
+              "mean": 2.6660416666666666,
+              "changedPixels": 291,
+              "peak": 83,
+              "width": 80,
+              "height": 60
+            },
+            "frames": {
+              "before": "liquid-forme-en-1440-satin-controlled-pause-before.png",
+              "paused": "liquid-forme-en-1440-satin-controlled-pause-at-click.png",
+              "stillPaused": "liquid-forme-en-1440-satin-controlled-pause-held.png",
+              "resumed": "liquid-forme-en-1440-satin-controlled-pause-resumed.png"
+            }
+          }
+        },
+        "acquisitionsPerSecond": 18.93,
+        "pixelRatio": 0.5416666666666666
+      },
+      "liquid-forme-zh-Hant-390": {
+        "polished": {
+          "natural": {
+            "timebase": "Native RAF without clock instrumentation; actual request/readback timing",
+            "travel": {
+              "mean": 5.382708333333333,
+              "changedPixels": 688,
+              "peak": 122,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "requested": 0,
+                "readbackMs": 134,
+                "textures": 211,
+                "file": "liquid-forme-zh-Hant-390-polished-natural-0s.png"
+              },
+              {
+                "time": 2,
+                "requested": 2009,
+                "readbackMs": 404,
+                "textures": 274,
+                "file": "liquid-forme-zh-Hant-390-polished-natural-2s.png"
+              },
+              {
+                "time": 4,
+                "requested": 4010,
+                "readbackMs": 214,
+                "textures": 335,
+                "file": "liquid-forme-zh-Hant-390-polished-natural-4s.png"
+              },
+              {
+                "time": 6,
+                "requested": 6005,
+                "readbackMs": 170,
+                "textures": 400,
+                "file": "liquid-forme-zh-Hant-390-polished-natural-6s.png"
+              },
+              {
+                "time": 8,
+                "requested": 8017,
+                "readbackMs": 170,
+                "textures": 462,
+                "file": "liquid-forme-zh-Hant-390-polished-natural-8s.png"
+              },
+              {
+                "time": 10,
+                "requested": 10028,
+                "readbackMs": 542,
+                "textures": 526,
+                "file": "liquid-forme-zh-Hant-390-polished-natural-10s.png"
+              },
+              {
+                "time": 12,
+                "requested": 12007,
+                "readbackMs": 280,
+                "textures": 589,
+                "file": "liquid-forme-zh-Hant-390-polished-natural-12s.png"
+              }
+            ]
+          },
+          "fixed": {
+            "readbackMs": [
+              277,
+              1001,
+              683,
+              360,
+              762,
+              1336
+            ],
+            "submissions": [
+              10,
+              33,
+              22,
+              13,
+              24,
+              43
+            ]
+          },
+          "angleDelta": {
+            "mean": 7.057361111111111,
+            "changedPixels": 1168,
+            "peak": 111,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDelta": {
+            "mean": 0.22993055555555555,
+            "changedPixels": 13,
+            "peak": 108,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDeltaBasis": "Unsynchronized native captures before and after the action; diagnostic only",
+          "nativeHeldOriginalPngIdentical": true,
+          "resumeDelta": {
+            "mean": 1.0580555555555555,
+            "changedPixels": 59,
+            "peak": 114,
+            "width": 80,
+            "height": 60
+          },
+          "resumeSamples": [
+            {
+              "targetMs": 2000,
+              "requestedMs": 2395.9523999999947,
+              "textures": 756,
+              "file": "liquid-forme-zh-Hant-390-polished-resumed.png",
+              "difference": {
+                "mean": 1.0580555555555555,
+                "changedPixels": 59,
+                "peak": 114,
+                "width": 80,
+                "height": 60
+              }
+            },
+            {
+              "targetMs": 4000,
+              "requestedMs": 4191.113700000002,
+              "textures": 819,
+              "file": "liquid-forme-zh-Hant-390-polished-resumed-4s.png",
+              "difference": {
+                "mean": 0.9202083333333333,
+                "changedPixels": 37,
+                "peak": 119,
+                "width": 80,
+                "height": 60
+              }
+            }
+          ],
+          "resumeEvidence": "liquid-forme-zh-Hant-390-polished-resumed.png",
+          "texture": {
+            "width": 390,
+            "height": 433,
+            "format": "bgra8unorm",
+            "submittedAt": 2827.100000000093,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 295,
+            "average": [
+              95,
+              96,
+              93,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          },
+          "cycle": {
+            "timebase": "Separate paused Chromium clock with bounded callbacks and raw GPU readback",
+            "travel": {
+              "mean": 5.568680555555556,
+              "changedPixels": 751,
+              "peak": 114,
+              "width": 80,
+              "height": 60
+            },
+            "closure": {
+              "mean": 0,
+              "changedPixels": 0,
+              "peak": 0,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "elapsed": 0,
+                "file": "liquid-forme-zh-Hant-390-polished-auto-0s.png"
+              },
+              {
+                "time": 2,
+                "elapsed": 2000,
+                "file": "liquid-forme-zh-Hant-390-polished-auto-2s.png"
+              },
+              {
+                "time": 4,
+                "elapsed": 4000,
+                "file": "liquid-forme-zh-Hant-390-polished-auto-4s.png"
+              },
+              {
+                "time": 6,
+                "elapsed": 6000,
+                "file": "liquid-forme-zh-Hant-390-polished-auto-6s.png"
+              },
+              {
+                "time": 8,
+                "elapsed": 8000,
+                "file": "liquid-forme-zh-Hant-390-polished-auto-8s.png"
+              },
+              {
+                "time": 10,
+                "elapsed": 10000,
+                "file": "liquid-forme-zh-Hant-390-polished-auto-10s.png"
+              },
+              {
+                "time": 12,
+                "elapsed": 12000,
+                "file": "liquid-forme-zh-Hant-390-polished-auto-12s.png"
+              }
+            ]
+          },
+          "sameFramePause": {
+            "timeBasis": "controlled-animation-clock",
+            "heldMilliseconds": 1000,
+            "originalPngIdenticalAtClickAndHeld": true,
+            "queueSubmissions": 0,
+            "sameCanvasAndDimensions": true,
+            "resumeDelta": {
+              "mean": 0.7894444444444444,
+              "changedPixels": 31,
+              "peak": 113,
+              "width": 80,
+              "height": 60
+            },
+            "frames": {
+              "before": "liquid-forme-zh-Hant-390-polished-controlled-pause-before.png",
+              "paused": "liquid-forme-zh-Hant-390-polished-controlled-pause-at-click.png",
+              "stillPaused": "liquid-forme-zh-Hant-390-polished-controlled-pause-held.png",
+              "resumed": "liquid-forme-zh-Hant-390-polished-controlled-pause-resumed.png"
+            }
+          }
+        },
+        "satin": {
+          "natural": {
+            "timebase": "Native RAF without clock instrumentation; actual request/readback timing",
+            "travel": {
+              "mean": 6.249097222222222,
+              "changedPixels": 911,
+              "peak": 84,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "requested": 0,
+                "readbackMs": 481,
+                "textures": 1008,
+                "file": "liquid-forme-zh-Hant-390-satin-natural-0s.png"
+              },
+              {
+                "time": 2,
+                "requested": 2015,
+                "readbackMs": 211,
+                "textures": 1072,
+                "file": "liquid-forme-zh-Hant-390-satin-natural-2s.png"
+              },
+              {
+                "time": 4,
+                "requested": 4029,
+                "readbackMs": 170,
+                "textures": 1136,
+                "file": "liquid-forme-zh-Hant-390-satin-natural-4s.png"
+              },
+              {
+                "time": 6,
+                "requested": 6006,
+                "readbackMs": 965,
+                "textures": 1199,
+                "file": "liquid-forme-zh-Hant-390-satin-natural-6s.png"
+              },
+              {
+                "time": 8,
+                "requested": 8002,
+                "readbackMs": 307,
+                "textures": 1264,
+                "file": "liquid-forme-zh-Hant-390-satin-natural-8s.png"
+              },
+              {
+                "time": 10,
+                "requested": 10015,
+                "readbackMs": 164,
+                "textures": 1329,
+                "file": "liquid-forme-zh-Hant-390-satin-natural-10s.png"
+              },
+              {
+                "time": 12,
+                "requested": 12004,
+                "readbackMs": 166,
+                "textures": 1395,
+                "file": "liquid-forme-zh-Hant-390-satin-natural-12s.png"
+              }
+            ]
+          },
+          "fixed": {
+            "readbackMs": [
+              441,
+              250,
+              831,
+              1759,
+              441,
+              500
+            ],
+            "submissions": [
+              14,
+              8,
+              26,
+              58,
+              15,
+              15
+            ]
+          },
+          "angleDelta": {
+            "mean": 8.708402777777778,
+            "changedPixels": 1481,
+            "peak": 96,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDelta": {
+            "mean": 0.8788194444444445,
+            "changedPixels": 53,
+            "peak": 60,
+            "width": 80,
+            "height": 60
+          },
+          "pauseDeltaBasis": "Unsynchronized native captures before and after the action; diagnostic only",
+          "nativeHeldOriginalPngIdentical": true,
+          "resumeDelta": {
+            "mean": 0.8560416666666667,
+            "changedPixels": 59,
+            "peak": 60,
+            "width": 80,
+            "height": 60
+          },
+          "resumeSamples": [
+            {
+              "targetMs": 2000,
+              "requestedMs": 2384.4881999999925,
+              "textures": 1554,
+              "file": "liquid-forme-zh-Hant-390-satin-resumed.png",
+              "difference": {
+                "mean": 0.8560416666666667,
+                "changedPixels": 59,
+                "peak": 60,
+                "width": 80,
+                "height": 60
+              }
+            },
+            {
+              "targetMs": 4000,
+              "requestedMs": 4310.329800000007,
+              "textures": 1619,
+              "file": "liquid-forme-zh-Hant-390-satin-resumed-4s.png",
+              "difference": {
+                "mean": 1.0530555555555556,
+                "changedPixels": 65,
+                "peak": 60,
+                "width": 80,
+                "height": 60
+              }
+            }
+          ],
+          "resumeEvidence": "liquid-forme-zh-Hant-390-satin-resumed.png",
+          "texture": {
+            "width": 390,
+            "height": 433,
+            "format": "bgra8unorm",
+            "submittedAt": 29554.20000000007,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 308,
+            "average": [
+              101,
+              102,
+              98,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          },
+          "cycle": {
+            "timebase": "Separate paused Chromium clock with bounded callbacks and raw GPU readback",
+            "travel": {
+              "mean": 6.841458333333334,
+              "changedPixels": 1126,
+              "peak": 96,
+              "width": 80,
+              "height": 60
+            },
+            "closure": {
+              "mean": 0.035416666666666666,
+              "changedPixels": 0,
+              "peak": 3,
+              "width": 80,
+              "height": 60
+            },
+            "samples": [
+              {
+                "time": 0,
+                "elapsed": 0,
+                "file": "liquid-forme-zh-Hant-390-satin-auto-0s.png"
+              },
+              {
+                "time": 2,
+                "elapsed": 2000,
+                "file": "liquid-forme-zh-Hant-390-satin-auto-2s.png"
+              },
+              {
+                "time": 4,
+                "elapsed": 4000,
+                "file": "liquid-forme-zh-Hant-390-satin-auto-4s.png"
+              },
+              {
+                "time": 6,
+                "elapsed": 6000,
+                "file": "liquid-forme-zh-Hant-390-satin-auto-6s.png"
+              },
+              {
+                "time": 8,
+                "elapsed": 8000,
+                "file": "liquid-forme-zh-Hant-390-satin-auto-8s.png"
+              },
+              {
+                "time": 10,
+                "elapsed": 10000,
+                "file": "liquid-forme-zh-Hant-390-satin-auto-10s.png"
+              },
+              {
+                "time": 12,
+                "elapsed": 12000,
+                "file": "liquid-forme-zh-Hant-390-satin-auto-12s.png"
+              }
+            ]
+          },
+          "sameFramePause": {
+            "timeBasis": "controlled-animation-clock",
+            "heldMilliseconds": 1000,
+            "originalPngIdenticalAtClickAndHeld": true,
+            "queueSubmissions": 0,
+            "sameCanvasAndDimensions": true,
+            "resumeDelta": {
+              "mean": 1.9333333333333333,
+              "changedPixels": 225,
+              "peak": 67,
+              "width": 80,
+              "height": 60
+            },
+            "frames": {
+              "before": "liquid-forme-zh-Hant-390-satin-controlled-pause-before.png",
+              "paused": "liquid-forme-zh-Hant-390-satin-controlled-pause-at-click.png",
+              "stillPaused": "liquid-forme-zh-Hant-390-satin-controlled-pause-held.png",
+              "resumed": "liquid-forme-zh-Hant-390-satin-controlled-pause-resumed.png"
+            }
+          }
+        },
+        "acquisitionsPerSecond": 32.61,
+        "pixelRatio": 1
+      }
+    }
+  },
+  "screenshots": [
+    "liquid-forme-zh-Hant-390-full.png",
+    "liquid-forme-zh-Hant-390-inquiry.png",
+    "liquid-forme-en-390-full.png",
+    "liquid-forme-en-390-inquiry.png",
+    "liquid-forme-zh-Hant-1440-full.png",
+    "liquid-forme-en-1440-full.png",
+    "liquid-forme-zh-Hant-390-no-js.png",
+    "liquid-forme-zh-Hant-1440-inquiry.png",
+    "liquid-forme-en-1440-inquiry.png",
+    "liquid-forme-en-1440-first-render.png",
+    "liquid-forme-en-1440-polished-fixed-0deg-texture.png",
+    "liquid-forme-en-1440-polished-fixed-45deg-texture.png",
+    "liquid-forme-en-1440-polished-fixed-90deg-texture.png",
+    "liquid-forme-en-1440-polished-fixed-90deg.png",
+    "liquid-forme-en-1440-polished-fixed-135deg-texture.png",
+    "liquid-forme-en-1440-polished-fixed-180deg-texture.png",
+    "liquid-forme-en-1440-polished-fixed-return-0deg-texture.png",
+    "liquid-forme-en-1440-polished-natural-0s.png",
+    "liquid-forme-en-1440-polished-natural-2s.png",
+    "liquid-forme-en-1440-polished-natural-4s.png",
+    "liquid-forme-en-1440-polished-natural-6s.png",
+    "liquid-forme-en-1440-polished-natural-8s.png",
+    "liquid-forme-en-1440-polished-natural-10s.png",
+    "liquid-forme-en-1440-polished-natural-12s.png",
+    "liquid-forme-en-1440-polished-pause-before.png",
+    "liquid-forme-en-1440-polished-paused-a.png",
+    "liquid-forme-en-1440-polished-paused-b.png",
+    "liquid-forme-en-1440-polished-resumed.png",
+    "liquid-forme-en-1440-polished-resumed-4s.png",
+    "liquid-forme-en-1440-satin-fixed-0deg-texture.png",
+    "liquid-forme-en-1440-satin-fixed-45deg-texture.png",
+    "liquid-forme-en-1440-satin-fixed-90deg-texture.png",
+    "liquid-forme-en-1440-satin-fixed-90deg.png",
+    "liquid-forme-en-1440-satin-fixed-135deg-texture.png",
+    "liquid-forme-en-1440-satin-fixed-180deg-texture.png",
+    "liquid-forme-en-1440-satin-fixed-return-0deg-texture.png",
+    "liquid-forme-en-1440-satin-natural-0s.png",
+    "liquid-forme-en-1440-satin-natural-2s.png",
+    "liquid-forme-en-1440-satin-natural-4s.png",
+    "liquid-forme-en-1440-satin-natural-6s.png",
+    "liquid-forme-en-1440-satin-natural-8s.png",
+    "liquid-forme-en-1440-satin-natural-10s.png",
+    "liquid-forme-en-1440-satin-natural-12s.png",
+    "liquid-forme-en-1440-satin-pause-before.png",
+    "liquid-forme-en-1440-satin-paused-a.png",
+    "liquid-forme-en-1440-satin-paused-b.png",
+    "liquid-forme-en-1440-satin-resumed.png",
+    "liquid-forme-en-1440-satin-resumed-4s.png",
+    "liquid-forme-en-1440-webgpu-full.png",
+    "liquid-forme-en-1440-product.png",
+    "liquid-forme-zh-Hant-390-first-render.png",
+    "liquid-forme-zh-Hant-390-polished-fixed-0deg-texture.png",
+    "liquid-forme-zh-Hant-390-polished-fixed-45deg-texture.png",
+    "liquid-forme-zh-Hant-390-polished-fixed-90deg-texture.png",
+    "liquid-forme-zh-Hant-390-polished-fixed-90deg.png",
+    "liquid-forme-zh-Hant-390-polished-fixed-135deg-texture.png",
+    "liquid-forme-zh-Hant-390-polished-fixed-180deg-texture.png",
+    "liquid-forme-zh-Hant-390-polished-fixed-return-0deg-texture.png",
+    "liquid-forme-zh-Hant-390-polished-natural-0s.png",
+    "liquid-forme-zh-Hant-390-polished-natural-2s.png",
+    "liquid-forme-zh-Hant-390-polished-natural-4s.png",
+    "liquid-forme-zh-Hant-390-polished-natural-6s.png",
+    "liquid-forme-zh-Hant-390-polished-natural-8s.png",
+    "liquid-forme-zh-Hant-390-polished-natural-10s.png",
+    "liquid-forme-zh-Hant-390-polished-natural-12s.png",
+    "liquid-forme-zh-Hant-390-polished-pause-before.png",
+    "liquid-forme-zh-Hant-390-polished-paused-a.png",
+    "liquid-forme-zh-Hant-390-polished-paused-b.png",
+    "liquid-forme-zh-Hant-390-polished-resumed.png",
+    "liquid-forme-zh-Hant-390-polished-resumed-4s.png",
+    "liquid-forme-zh-Hant-390-satin-fixed-0deg-texture.png",
+    "liquid-forme-zh-Hant-390-satin-fixed-45deg-texture.png",
+    "liquid-forme-zh-Hant-390-satin-fixed-90deg-texture.png",
+    "liquid-forme-zh-Hant-390-satin-fixed-90deg.png",
+    "liquid-forme-zh-Hant-390-satin-fixed-135deg-texture.png",
+    "liquid-forme-zh-Hant-390-satin-fixed-180deg-texture.png",
+    "liquid-forme-zh-Hant-390-satin-fixed-return-0deg-texture.png",
+    "liquid-forme-zh-Hant-390-satin-natural-0s.png",
+    "liquid-forme-zh-Hant-390-satin-natural-2s.png",
+    "liquid-forme-zh-Hant-390-satin-natural-4s.png",
+    "liquid-forme-zh-Hant-390-satin-natural-6s.png",
+    "liquid-forme-zh-Hant-390-satin-natural-8s.png",
+    "liquid-forme-zh-Hant-390-satin-natural-10s.png",
+    "liquid-forme-zh-Hant-390-satin-natural-12s.png",
+    "liquid-forme-zh-Hant-390-satin-pause-before.png",
+    "liquid-forme-zh-Hant-390-satin-paused-a.png",
+    "liquid-forme-zh-Hant-390-satin-paused-b.png",
+    "liquid-forme-zh-Hant-390-satin-resumed.png",
+    "liquid-forme-zh-Hant-390-satin-resumed-4s.png",
+    "liquid-forme-zh-Hant-390-webgpu-full.png",
+    "liquid-forme-zh-Hant-390-product.png",
+    "liquid-forme-en-1440-polished-auto-0s.png",
+    "liquid-forme-en-1440-polished-auto-2s.png",
+    "liquid-forme-en-1440-polished-auto-4s.png",
+    "liquid-forme-en-1440-polished-auto-6s.png",
+    "liquid-forme-en-1440-polished-auto-8s.png",
+    "liquid-forme-en-1440-polished-auto-10s.png",
+    "liquid-forme-en-1440-polished-auto-12s.png",
+    "liquid-forme-en-1440-polished-controlled-pause-before.png",
+    "liquid-forme-en-1440-polished-controlled-pause-at-click.png",
+    "liquid-forme-en-1440-polished-controlled-pause-held.png",
+    "liquid-forme-en-1440-polished-controlled-pause-resumed.png",
+    "liquid-forme-en-1440-satin-auto-0s.png",
+    "liquid-forme-en-1440-satin-auto-2s.png",
+    "liquid-forme-en-1440-satin-auto-4s.png",
+    "liquid-forme-en-1440-satin-auto-6s.png",
+    "liquid-forme-en-1440-satin-auto-8s.png",
+    "liquid-forme-en-1440-satin-auto-10s.png",
+    "liquid-forme-en-1440-satin-auto-12s.png",
+    "liquid-forme-en-1440-satin-controlled-pause-before.png",
+    "liquid-forme-en-1440-satin-controlled-pause-at-click.png",
+    "liquid-forme-en-1440-satin-controlled-pause-held.png",
+    "liquid-forme-en-1440-satin-controlled-pause-resumed.png",
+    "liquid-forme-zh-Hant-390-polished-auto-0s.png",
+    "liquid-forme-zh-Hant-390-polished-auto-2s.png",
+    "liquid-forme-zh-Hant-390-polished-auto-4s.png",
+    "liquid-forme-zh-Hant-390-polished-auto-6s.png",
+    "liquid-forme-zh-Hant-390-polished-auto-8s.png",
+    "liquid-forme-zh-Hant-390-polished-auto-10s.png",
+    "liquid-forme-zh-Hant-390-polished-auto-12s.png",
+    "liquid-forme-zh-Hant-390-polished-controlled-pause-before.png",
+    "liquid-forme-zh-Hant-390-polished-controlled-pause-at-click.png",
+    "liquid-forme-zh-Hant-390-polished-controlled-pause-held.png",
+    "liquid-forme-zh-Hant-390-polished-controlled-pause-resumed.png",
+    "liquid-forme-zh-Hant-390-satin-auto-0s.png",
+    "liquid-forme-zh-Hant-390-satin-auto-2s.png",
+    "liquid-forme-zh-Hant-390-satin-auto-4s.png",
+    "liquid-forme-zh-Hant-390-satin-auto-6s.png",
+    "liquid-forme-zh-Hant-390-satin-auto-8s.png",
+    "liquid-forme-zh-Hant-390-satin-auto-10s.png",
+    "liquid-forme-zh-Hant-390-satin-auto-12s.png",
+    "liquid-forme-zh-Hant-390-satin-controlled-pause-before.png",
+    "liquid-forme-zh-Hant-390-satin-controlled-pause-at-click.png",
+    "liquid-forme-zh-Hant-390-satin-controlled-pause-held.png",
+    "liquid-forme-zh-Hant-390-satin-controlled-pause-resumed.png"
+  ],
+  "lane": "forme-studio",
+  "result": "PASS"
+}

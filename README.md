@@ -1,39 +1,39 @@
 # GlossQuote Visuals
 
-**M03 candidate in progress — not released.** This branch integrates revised material heroes for Paper & Light, FORME and Night Signal, plus PRISM Materials and AERIFORM. Five visible production chats are refining the work. Same-candidate browser lanes, temporal material review and fresh scores strictly above 9/10 are still required before deployment. The public Pages site continues to serve the M02 version below; its historical scores do not approve these new candidates. [Current brief](briefs/M03-hero-direction.md) · [Production owners](coordination/m03-plan.json).
+五個原創雙語商業網站作品：紙品訂製、不鏽鋼家飾、電子音樂活動、建築玻璃及動態設計服務。每件都有獨立的品牌、WebGPU 主視覺、產品或服務資訊，以及能選配、修改和下載的顧客需求流程。
 
-原創品牌網站作品集：以紙品訂製、金屬家飾與音樂活動為主題，將材質、光影與完整顧客流程結合。
+Five original bilingual concept websites, combining distinct brand identities, shader-led art direction and complete local customer journeys.
 
-Original brand websites for bespoke stationery, steel homeware and an electronic music event. Each brings its own art direction, material language and complete customer journey.
+**Status:** M03 candidate accepted: all five works exceed 9 in every design category and all eight isolated verification lanes passed. M03 Pages deployment is pending; the live URL still serves historical M02 until the release workflow succeeds.
 
-**Status:** The M02 integration candidate `40d3740761c2c8b44f41bf8efe0723e03f8a650a` passed the complete isolated-browser suite and non-author design review. All nine category scores are strictly above 9/10. M02 is live at deployment `06709c4d6ccdd60096e3e5282bcbe9b329d08c24`. The release build, Pages deployment and actual HTTPS/browser verification all passed. [Release evidence](evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md). See the work registry for exact release status and preserved M01 history.
+[繁中作品集](https://kystr.github.io/glossquote-visuals/) · [English portfolio](https://kystr.github.io/glossquote-visuals/en/) · [Verification and limits](evidence/M03/8fa4e8bcb86748fb100a10fd5a07904761e3c933/INTEGRATION.md)
 
-| Website | Art direction | UI design | Commercial completeness | Fixed-candidate review |
+| Website | Art direction | UI design | Commercial completeness | Independent review |
 |---|---:|---:|---:|---|
-| Paper & Light | 9.2 | 9.3 | 9.2 | [V001](evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
-| FORME Objects | 9.3 | 9.2 | 9.3 | [V002](evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
-| Night Signal | 9.2 | 9.3 | 9.5 | [V003](evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md) |
+| 紙與光 / Paper & Light | 9.2 | 9.3 | 9.4 | [Review](evidence/V001/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
+| FORME Objects | 9.1 | 9.2 | 9.4 | [Review](evidence/V002/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
+| 夜航訊號 / Night Signal | 9.1 | 9.2 | 9.4 | [Review](evidence/V003/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
+| 折光材料室 / PRISM Materials | 9.2 | 9.3 | 9.4 | [Review](evidence/V004/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
+| 空型動態設計 / AERIFORM | 9.1 | 9.2 | 9.3 | [Review](evidence/V005/8fa4e8bcb86748fb100a10fd5a07904761e3c933/REVIEW.md) |
 
-These are evidence-backed design judgments for concept websites, not measured conversion rates or external certification. [Integrated verification and limitations](evidence/M02/40d3740761c2c8b44f41bf8efe0723e03f8a650a/INTEGRATION.md).
+Every category must independently exceed 9/10 under the fixed [commercial design rubric](docs/M02-ART-DIRECTION.md). These scores are non-author design judgments, not market certification or measured conversion rates. The review covers original desktop/mobile frames, material coherence through complete motion cycles, controls and a pause that preserves the current rendered frame.
 
-[繁中畫廊](https://kystr.github.io/glossquote-visuals/) · [English gallery](https://kystr.github.io/glossquote-visuals/en/)
+The five sites are concept brands. Customer flows produce local briefs, sample lists, product inquiries or itineraries. They do not submit orders, collect payments or reserve tickets.
 
-- Source: https://github.com/KYStr/glossquote-visuals
-- Start development: [START-HERE.md](START-HERE.md)
-- Continuing objective: [GOAL.md](GOAL.md)
-- Work status: [coordination/work-registry.json](coordination/work-registry.json)
-- Upstream skill and licenses: [docs/UPSTREAM.md](docs/UPSTREAM.md)
-- Historical M01 design baselines: [Paper & Light](evidence/V001/DESIGN.md), [Liquid Archive](evidence/V002/DESIGN.md), [Night Signal](evidence/V003/DESIGN.md)
+Static hosting serves HTML, CSS and JavaScript; WebGPU renders the live visuals in the browser. Readable HTML and designed still alternatives remain available without JavaScript or GPU, and with reduced motion. Fonts and runtime assets are bundled locally; the isolated browser checks verify same-origin static requests, privacy, lifecycle and customer flows.
 
-Current works: **紙與光 / Paper & Light**, **物形 / FORME Objects**, **夜航訊號 / Night Signal**. These are original concept brands. Customer flows create local briefs or itineraries; they do not submit orders, collect payments or reserve tickets. Art direction and review criteria are in [docs/M02-ART-DIRECTION.md](docs/M02-ART-DIRECTION.md). Future directions in [docs/IDEAS.md](docs/IDEAS.md) are not counted as ready production.
+Each new work uses a new sidebar-visible production chat requested as `gpt-6.1-sol / high`. Revisions stay in that work's chat. The director owns art direction, independent review, integration and release. Requested configuration is recorded separately from backend model identity, which is not independently exposed.
 
-Shaders are progressive enhancement. Essential content and navigation remain HTML; a designed static fallback is always available. No accounts, uploads, analytics or third-party runtime requests are intended. These promises must be checked before each release.
-
-Original source is made public for inspection; no blanket license is granted to original artworks at bootstrap. Vendored upstream material retains its own MIT license in `licenses/shaders-MIT.txt`. Record any future asset licenses individually.
+- Development entry: [START-HERE.md](START-HERE.md)
+- Exact work and release state: [work registry](coordination/work-registry.json)
+- Review and release records: [evidence status](evidence/STATUS.md)
+- Upstream API, adapters and licenses: [UPSTREAM](docs/UPSTREAM.md)
+- Historical M02 release: [release evidence](evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md)
+- Historical M01 assessment: [design baseline](docs/M02-ART-DIRECTION.md)
 
 ## Reproduce the candidate
 
-Use Node.js `24.14.0`. The candidate build uses the GitHub Pages project path and marks candidate HTML as noindex.
+Use Node.js `24.14.0` and the committed lockfile. Dependencies include `shaders 4.0.7`, `vite 8.3.8` and `playwright 1.65.0`.
 
 ```sh
 npm ci --ignore-scripts
@@ -43,4 +43,6 @@ npm run build
 npm run preview -- --host 127.0.0.1
 ```
 
-The preview serves the bilingual gallery at `/glossquote-visuals/`. The browser verification command runs in the repository's GitHub-hosted workflow. Third-party notices for the emitted shader bundle are in [public/licenses/NOTICES.txt](public/licenses/NOTICES.txt).
+The candidate build uses `/glossquote-visuals/` and marks its HTML as noindex. Browser verification runs only in documented isolated GitHub-hosted Windows VMs. Eight candidate lanes and their aggregate must pass before publication; release and actual HTTPS verification are separate steps. Software GPU evidence does not establish physical-device FPS, battery behavior or a human screen-reader audit.
+
+Original source is public for inspection; no blanket license is granted to original artworks. Vendored upstream material retains its MIT license in `licenses/shaders-MIT.txt`; bundled third-party notices are in [NOTICES](public/licenses/NOTICES.txt).

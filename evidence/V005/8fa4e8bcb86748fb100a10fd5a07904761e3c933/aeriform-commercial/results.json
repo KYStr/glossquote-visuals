@@ -1,0 +1,399 @@
+{
+  "commit": "8fa4e8bcb86748fb100a10fd5a07904761e3c933",
+  "lane": "commercial",
+  "environment": "GitHub-hosted Windows Server 2025 VM · headless Chromium D3D11 WARP",
+  "checks": {
+    "responsive": "PASS bilingual 320/390/768/1440, 100% and 200% text including selected form and brief review, skip/focus, 44px form selectors, touch and no GPU starts under reduced motion",
+    "fallback": "PASS bilingual no JavaScript, unavailable navigator.gpu, denied adapter, and three still forms under reduced motion",
+    "brief": "PASS real bilingual UTF-8 downloads, package presets, native required validation, deliverable validation, editing, and no send",
+    "privacy": "PASS same-origin GET only, CSP, no telemetry/network APIs, no storage and no cookies"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "layout-en-320": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    },
+    "layout-en-390": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    },
+    "layout-en-320-review": [
+      {
+        "zoom": "100%",
+        "scroll": 320,
+        "width": 320,
+        "outliers": [],
+        "scrollBoxes": [],
+        "textOutliers": []
+      },
+      {
+        "zoom": "200%",
+        "scroll": 320,
+        "width": 320,
+        "outliers": [],
+        "scrollBoxes": [],
+        "textOutliers": []
+      }
+    ],
+    "layout-en-768": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    },
+    "layout-en-1440": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    },
+    "layout-zh-Hant-320": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 320,
+          "width": 320,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    },
+    "layout-zh-Hant-390": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 390,
+          "width": 390,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    },
+    "layout-zh-Hant-320-review": [
+      {
+        "zoom": "100%",
+        "scroll": 320,
+        "width": 320,
+        "outliers": [],
+        "scrollBoxes": [],
+        "textOutliers": []
+      },
+      {
+        "zoom": "200%",
+        "scroll": 320,
+        "width": 320,
+        "outliers": [],
+        "scrollBoxes": [],
+        "textOutliers": []
+      }
+    ],
+    "layout-zh-Hant-768": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 768,
+          "width": 768,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    },
+    "layout-zh-Hant-1440": {
+      "emptyBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ],
+      "selectedBrief": [
+        {
+          "zoom": "100%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        },
+        {
+          "zoom": "200%",
+          "scroll": 1440,
+          "width": 1440,
+          "outliers": [],
+          "scrollBoxes": [],
+          "textOutliers": []
+        }
+      ]
+    }
+  },
+  "screenshots": [
+    "aeriform-en-390-reduced.png",
+    "aeriform-en-390-radio-applications.png",
+    "aeriform-en-390-brief-complete.png",
+    "aeriform-zh-Hant-390-reduced.png",
+    "aeriform-zh-Hant-390-radio-applications.png",
+    "aeriform-zh-Hant-390-brief-complete.png",
+    "aeriform-en-390-no-js.png",
+    "aeriform-zh-Hant-390-no-js.png"
+  ],
+  "downloads": [
+    {
+      "name": "aeriform-project-brief-en.txt",
+      "bytes": 281,
+      "entries": [
+        "Service\tMotion system",
+        "Brand stage\tRefreshing a brand",
+        "Target timeline\tWithin this quarter",
+        "Deliverables\tLogo animation, Social templates",
+        "Indicative package\tNT$120,000–220,000 · 5–8 weeks"
+      ]
+    },
+    {
+      "name": "aeriform-project-brief-zh-Hant.txt",
+      "bytes": 262,
+      "entries": [
+        "服務\t動態系統",
+        "品牌階段\t品牌改造",
+        "目標時程\t本季內",
+        "交付項目\t標誌動畫、社群範本",
+        "方案預估\tNT$120,000–220,000・5–8 週"
+      ]
+    }
+  ],
+  "browser": "158.0.8127.18",
+  "result": "PASS"
+}
