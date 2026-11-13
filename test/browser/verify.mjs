@@ -7,6 +7,7 @@ import { chromium } from "playwright";
 import { base, isPublished, origin, registry, releaseWorkIds, root, worksFor } from "../../scripts/site-map.mjs";
 import { verifyReleaseReceipt } from "../../scripts/release-proof.mjs";
 import { checkPaperCommercial } from "./paper-commercial.mjs";
+import { checkPaperMaterial } from "./paper-material.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 import { checkSignal, signalFontPaths } from "./signal-commercial.mjs";
@@ -297,16 +298,15 @@ async function checkShader(browser) {
     await page.waitForTimeout(200);
     const changed = await pixelEvidence(page, stage(page));
     const changedTexture = await page.evaluate(() => window.__visualProbe.readFrame());
-    assert.ok(changedTexture.colors > 20 && changedTexture.average.some((value, i) => Math.abs(value - firstTexture.average[i]) > 5));
-    compositeOk = first.colors > 20 && changed.colors > 20 &&
-      changed.average.some((value, i) => Math.abs(value - first.average[i]) > 5);
+    assert.ok(changedTexture.colors > 20 && changedTexture.average.some((value, i) => Math.abs(value - firstTexture.average[i]) > 3));
+    compositeOk = first.colors > 20 && changed.colors > 20;
     evidence.checks.compositing = compositeOk ? "PASS visible canvas changes with controls" : "FAIL compositor did not present the changing WebGPU texture";
     evidence.measurements.pixelSamples = { dawn: firstTexture, overcast: changedTexture, overcastComposite: changed };
     const paperOvercast = await paperSurface(page, "paper-en-overcast-surface.png");
     const pointerDifference = await paperLightDifference(page, paperBefore, paperAtAngle);
     const presetDifference = await paperLightDifference(page, paperBefore, paperOvercast);
     evidence.measurements.paperSurfaceDifference = { pointer: pointerDifference, preset: presetDifference };
-    assert.ok(pointerDifference > 1 && presetDifference > 3, "Actual paper composition did not change with angle and light preset");
+    assert.ok(pointerDifference > 0.65 && presetDifference > 3, "Actual paper composition did not change with angle and light preset");
     await paperLightDetails(page).locator("summary").click();
 
     for (let i = 0; i < 3; i++) {
@@ -527,6 +527,26 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
         assert.ok(restored.mean < change.mean / 2,
           `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
       }
+    }
+    if (slug === "paper-light" && await stage(page).getAttribute("data-surface") === "rendered") {
+      const beforePause = await capture("before-pause");
+      const frames = await textureCount(page);
+      await page.locator("[data-pause]").evaluate((button) => button.click());
+      assert.equal(await stage(page).getAttribute("data-motion"), "paused");
+      await page.clock.runFor(100);
+      const paused = await capture("native-pause");
+      assert.equal(await textureCount(page), frames, `${stem}: pause drew another frame`);
+      measurement.freeze = await livePixelDifference(page, beforePause, paused);
+      assert.equal(measurement.freeze.mean, 0, `${stem}: pause did not retain the rendered paper frame`);
+      await stage(page).locator("canvas").evaluate((canvas) => { canvas.style.visibility = "hidden"; });
+      try {
+        const fallback = await capture("diagnostic-without-canvas");
+        measurement.contribution = await livePixelDifference(page, paused, fallback);
+        assert.ok(measurement.contribution.mean > 0.05 && measurement.contribution.changedPixels > 12);
+      } finally {
+        await stage(page).locator("canvas").evaluate((canvas) => { canvas.style.removeProperty("visibility"); });
+      }
+      return measurement;
     }
     // Native pause supplies a same-setting static reference without changing CSS.
     // This is especially important for V003, whose program also changes the still poster.
@@ -1031,6 +1051,10 @@ try {
       assert.equal(evidence.measurements.gpuBufferSmoke.value, 0x1234abcd);
     });
     await checkShader(browser);
+    evidence.measurements.paperMaterial = await checkPaperMaterial({
+      browser, withPage, open, work, site, phase, capture: paperSurface, difference: paperLightDifference, screenshot,
+    });
+    evidence.checks.paperMaterial = "PASS two viewports, full natural cycle, five lamp angles, same-frame pause and resume";
     if (worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
     if (worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
       evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,

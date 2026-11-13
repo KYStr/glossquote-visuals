@@ -165,11 +165,14 @@ select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent);
 }
 .paper-art canvas {
   opacity: 0;
-  mix-blend-mode: multiply;
   pointer-events: none;
 }
-.paper-art[data-motion="running"] canvas { opacity: 0.46; }
-.paper-art[data-motion="running"]::after { opacity: 0; }
+.paper-art[data-surface="rendered"] canvas {
+  inline-size: 100% !important;
+  block-size: 100% !important;
+  opacity: 1;
+}
+.paper-art[data-surface="rendered"]::after { opacity: 0; }
 
 .paper-plate figcaption, .stock-figure figcaption {
   align-self: center;
