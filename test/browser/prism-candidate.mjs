@@ -267,21 +267,39 @@ async function setAngle(page, number) {
 async function captureCycle(page, label) {
   const scene = stage(page);
   await scene.scrollIntoViewIfNeeded();
-  await page.waitForFunction(() => window.__visualProbe.textures > 3);
+  await phase(page, "running");
+  await waitForDraw(page, (await counters(page)).textures + 1);
+  const session = await page.context().newCDPSession(page);
+  const clip = await scene.evaluate(element => {
+    const bounds = element.getBoundingClientRect();
+    return { x: bounds.x + scrollX, y: bounds.y + scrollY, width: bounds.width, height: bounds.height, scale: 1 };
+  });
   const start = performance.now();
   const times = [];
   const frames = [];
-  for (const second of [0, 2, 4, 6, 8, 12]) {
-    const remainder = second * 1000 - (performance.now() - start);
-    if (remainder > 0) await page.waitForTimeout(remainder);
-    const before = performance.now() - start;
-    frames.push(await capture(page, `${label}-natural-${second}s`, scene));
-    times.push({ targetSeconds: second, screenshotRequestedMs: Math.round(before),
-      screenshotReturnedMs: Math.round(performance.now() - start) });
+  try {
+    for (const second of [0, 2, 4, 6, 8, 12]) {
+      const remainder = second * 1000 - (performance.now() - start);
+      if (remainder > 0) await page.waitForTimeout(remainder);
+      const before = performance.now() - start;
+      const { data } = await session.send("Page.captureScreenshot", { format: "png", clip, fromSurface: true, captureBeyondViewport: false });
+      const completed = performance.now() - start;
+      const file = `prism-${label}-natural-${second}s.png`;
+      await writeFile(resolve(dir, file), Buffer.from(data, "base64"));
+      evidence.screenshots.push(file);
+      frames.push(data);
+      times.push({ targetSeconds: second, screenshotRequestedMs: Math.round(before),
+        screenshotReturnedMs: Math.round(completed), ...(await counters(page)),
+        phase: await scene.getAttribute("data-motion") });
+    }
+  } finally {
+    await session.detach();
   }
   const variation = await difference(page, frames[0], frames[2]);
-  assert.ok(variation > 0.3, `Natural variation did not reach the original compositor for ${label}: ${variation}`);
   evidence.measurements[label] = { ...evidence.measurements[label], natural: times, naturalVariation: variation };
+  assert.ok(times.every(frame => frame.phase === "running") && times.at(-1).textures > times[0].textures,
+    `Renderer left its running phase during the real-time capture for ${label}: ${JSON.stringify(times)}`);
+  assert.ok(variation > 0.3, `Natural variation did not reach the original compositor for ${label}: ${variation}`);
 }
 
 async function checkOptics(browser) {
@@ -299,8 +317,11 @@ async function checkOptics(browser) {
         assert.ok(gpu.colors > 50 && gpu.average[3] > 250, JSON.stringify(gpu));
         const bounds = await stage(page).locator("canvas").boundingBox();
         evidence.measurements[label] = { gpu, dpr: [gpu.width / bounds.width, gpu.height / bounds.height] };
-        await full(page, `${label}-webgpu-full`);
         await captureCycle(page, label);
+        await page.evaluate(() => scrollTo(0, 0));
+        await phase(page, "running");
+        await capture(page, `${label}-webgpu-fold`);
+        await full(page, `${label}-webgpu-full`);
         await probe.assertPrivate(site.origin, { fontPaths });
       });
     }

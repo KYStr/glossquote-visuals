@@ -67,7 +67,7 @@ def intersections(ro, rd):
 def render_strip(u, y, aspect, finish, phase=0.0):
     u, w = np.meshgrid(u, y)
     uv = np.stack([u.flatten(), w.flatten()], axis=-1)
-    screen = (uv - v(.52, .475)) * v(aspect, -1) * max(3.18, 3.0 / aspect)
+    screen = (uv - v(.52, .475)) * v(aspect, -1) * max(2.88, 2.8 / aspect)
     eye = v(0, 0, 5.25)
     rays = unit(np.column_stack([screen, np.full(len(screen), -5.25, dtype=np.float32)]))
     y_turn = -.49 + np.sin(phase) * .135
@@ -105,7 +105,7 @@ def render_strip(u, y, aspect, finish, phase=0.0):
 
     transmitted = np.zeros_like(hit)
     for channel in range(3):
-        ior = 1.504 + channel * .023
+        ior = 1.511 + (channel - 1) * .0065
         inside = refract(heading, normal, 1 / ior)
         inside_origin = hit + inside * .0002
         ray_length = np.zeros(len(hit))
@@ -137,11 +137,18 @@ def render_strip(u, y, aspect, finish, phase=0.0):
     light_strip = np.maximum(0, reflected @ unit(v(-.67,.76,.68))) ** 15
     fill_strip = np.maximum(0, reflected @ unit(v(.71,.35,.64))) ** 22
     fresnel = .045 + .91 * (1 - np.clip(dot(-heading,normal),0,1)) ** 4.2
-    reflective_field = v(.39,.54,.86) + expand(light_strip*.56 + fill_strip*.35)
+    side = 1 - smooth(.16, .84, facing)
+    overhead = smooth(-.8, .72, reflected[:, 1])
+    side_band = 1 - smooth(.038, .22, np.abs(reflected[:, 1] + .19 * hit[:, 1] - .41))
+    room = mix(v(.10, .18, .37), v(.61, .75, .94), overhead)
+    reflective_field = room + expand(light_strip*.46 + fill_strip*.31 + side_band*.18)
     film = .5 + .5 * np.cos(v(0,2.094,4.189) + expand(hit @ v(4.7,6.9,3.1) + 6 * fresnel))
-    edge = 1 - smooth(0, .05, end[shape] - entry[shape])
-    color = mix(transmitted, reflective_field, fresnel) + film * expand(fresnel*.21 + edge*.16)
-    color += expand(light_strip*.30 + fill_strip*.16)
+    edge = 1 - smooth(.001, .031, end[shape] - entry[shape])
+    neutral = transmitted @ v(.2126, .7152, .0722)
+    edge_glass = mix(v(.13, .25, .49), v(.66, .82, .98), neutral)
+    transmitted = mix(transmitted, edge_glass, side * .92)
+    color = mix(transmitted, reflective_field, fresnel) + film * expand(fresnel*.023 + edge*.13)
+    color += expand(light_strip*.25 + fill_strip*.13 + edge*.18)
     if finish == "ribbed":
         color *= expand(.95 + .05 * flutes)
     back[shape] = color

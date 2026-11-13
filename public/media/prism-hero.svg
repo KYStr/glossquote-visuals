@@ -2,7 +2,7 @@
   <defs>
     <linearGradient id="wall" x2="1" y2="1"><stop stop-color="#fcfdff"/><stop offset="1" stop-color="#e4eafb"/></linearGradient>
     <linearGradient id="blue" x2="1" y2="1"><stop stop-color="#4e66fa"/><stop offset=".65" stop-color="#213bd6"/><stop offset="1" stop-color="#4772f9"/></linearGradient>
-    <linearGradient id="bevel" x2="1" y2="1"><stop stop-color="#a8ceff"/><stop offset=".25" stop-color="#5274c4"/><stop offset=".44" stop-color="#dfb9e9"/><stop offset=".58" stop-color="#b7e6fe"/><stop offset=".82" stop-color="#5f8acc"/><stop offset="1" stop-color="#9cbaeb"/></linearGradient>
+    <linearGradient id="bevel" x2="1" y2="1"><stop stop-color="#a8ceff"/><stop offset=".25" stop-color="#5274c4"/><stop offset=".44" stop-color="#8ea6cc"/><stop offset=".58" stop-color="#b7e6fe"/><stop offset=".82" stop-color="#5f8acc"/><stop offset="1" stop-color="#9cbaeb"/></linearGradient>
     <linearGradient id="face" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".53"/><stop offset=".62" stop-color="#b2dcff" stop-opacity=".22"/><stop offset="1" stop-color="#e5f1ff" stop-opacity=".88"/></linearGradient>
     <pattern id="grid" width="61" height="61" patternUnits="userSpaceOnUse"><path d="M61 0H0v61" fill="none" stroke="#bdc7da" stroke-opacity=".53" stroke-width="2"/></pattern>
     <pattern id="cutGrid" width="64" height="59" patternUnits="userSpaceOnUse" patternTransform="rotate(-2)"><path d="M64 0H0v59" fill="none" stroke="#7797c2" stroke-opacity=".42" stroke-width="2"/></pattern>
@@ -17,20 +17,20 @@
   <ellipse cx="674" cy="706" rx="260" ry="35" fill="url(#shadow)"/>
   <path d="m486 110 310 30 90 104-46 371-142 100-277-130-19-71 22-334Z" fill="url(#bevel)" stroke="#b8cef3" stroke-width="3"/>
   <path d="m775 143 21-3 90 104-63-8zm48 93 63 8-11 89-66-27zm-14 70 66 27-11 78-72-27z" fill="#7197cf" opacity=".67"/>
-  <path d="m823 236 63 8-11 89-66-27z" fill="#c5eac8" opacity=".86"/>
-  <path d="m809 306 66 27-11 78-72-27z" fill="#d997d9" opacity=".57"/>
+  <path d="m823 236 63 8-11 89-66-27z" fill="#aec7e4" opacity=".86"/>
+  <path d="m809 306 66 27-11 78-72-27z" fill="#6787bd" opacity=".57"/>
   <path d="m792 384 72 27-24 204-95 40z" fill="#395aa4" opacity=".34"/>
   <g clip-path="url(#front)">
     <path d="M398 99h435v615H398z" fill="#e5edfa"/>
     <path d="m473 88 112 19-139 500-75-54z" fill="url(#blue)"/>
     <path d="m598 102 13 2-143 527-14-6z" fill="#4f7cea"/>
-    <path d="m615 105 11 2-143 530-14-6z" fill="#ef8be3" opacity=".72"/>
+    <path d="m615 105 11 2-143 530-14-6z" fill="#b0a7ec" opacity=".72"/>
     <path d="M398 99h435v615H398z" fill="url(#cutGrid)"/>
     <path d="M398 99h435v615H398z" fill="url(#face)"/>
     <path d="m417 511 36 58 276 109-38 30-288-125z" fill="#6a95ce" opacity=".6"/>
     <path d="m790 148 22 6-88 530-25 20z" fill="#f8fbff" opacity=".78"/>
-    <path d="m799 148 12 6-88 525-12 14z" fill="#7de7f5" opacity=".78"/>
-    <path d="m789 150 6 4-88 527-7-3z" fill="#b18efa" opacity=".72"/>
+    <path d="m799 148 12 6-88 525-12 14z" fill="#b3ddea" opacity=".78"/>
+    <path d="m789 150 6 4-88 527-7-3z" fill="#91a0db" opacity=".72"/>
   </g>
   <path d="M486 110 775 143 823 236 745 655 683 705 421 585 402 514 424 180Z" fill="none" stroke="#f8fdff" stroke-width="2.5"/>
   <path d="m421 585 262 120 15 10m47-60 95-40m-17-379 63 8" fill="none" stroke="#f7fbff" stroke-opacity=".8" stroke-width="2"/>

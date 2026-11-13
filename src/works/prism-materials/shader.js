@@ -67,7 +67,7 @@ const specimen = defineShader({
   props: { yaw: { default: 0 }, material: { default: 0 }, speed: { default: 1 } },
   animatedTime: { speed: "speed" },
   paint: wgsl`
-    let screen = (uv - vec2f(0.52, 0.475)) * vec2f(aspect, -1.0) * max(3.18, 3.0 / aspect);
+    let screen = (uv - vec2f(0.52, 0.475)) * vec2f(aspect, -1.0) * max(2.88, 2.8 / aspect);
     let ray = normalize(vec3f(screen, -5.25));
     let eye = vec3f(0.0, 0.0, 5.25);
     let orbit = time * ${2 * Math.PI / cycle};
@@ -101,8 +101,7 @@ const specimen = defineShader({
       ${environment("(eye + ray * ((-2.05 - eye.z) / ray.z)).xy")}
       let softShadow = exp(-dot((screen - vec2f(0.13, -1.14)) * vec2f(1.0, 5.7),
                                (screen - vec2f(0.13, -1.14)) * vec2f(1.0, 5.7)) * 3.0);
-      let dither = fract(sin(dot(uv * viewport, vec2f(12.9898, 78.233))) * 43758.5453);
-      return vec4f(field * (1.0 - 0.20 * softShadow) + (dither - 0.5) * 0.003, 1);
+      return vec4f(field * (1.0 - 0.20 * softShadow), 1);
     }
 
     let hit = origin + near * heading;
@@ -118,7 +117,7 @@ const specimen = defineShader({
 
     var transmitted = vec3f(0);
     for (var channel = 0u; channel < 3u; channel += 1u) {
-      let ior = 1.504 + f32(channel) * 0.023;
+      let ior = 1.511 + (f32(channel) - 1.0) * 0.0065;
       var insideRay = refract(heading, normal, 1.0 / ior);
       var insideOrigin = hit + insideRay * 0.0002;
       var rayLength = 0.0;
@@ -168,12 +167,20 @@ const specimen = defineShader({
     let reflected = objectToWorld * reflect(heading, normal);
     let lightStrip = pow(max(0.0, dot(reflected, normalize(vec3f(-0.67, 0.76, 0.68)))), 15.0);
     let fillStrip = pow(max(0.0, dot(reflected, normalize(vec3f(0.71, 0.35, 0.64)))), 22.0);
-    let fresnel = 0.045 + 0.91 * pow(1.0 - clamp(dot(-heading, normal), 0.0, 1.0), 4.2);
-    let reflectiveField = vec3f(0.39, 0.54, 0.86) + lightStrip * 0.56 + fillStrip * 0.35;
+    let viewCosine = clamp(dot(-heading, normal), 0.0, 1.0);
+    let fresnel = 0.045 + 0.91 * pow(1.0 - viewCosine, 4.2);
+    let side = 1.0 - smoothstep(0.16, 0.84, facing);
+    let overhead = smoothstep(-0.8, 0.72, reflected.y);
+    let sideBand = 1.0 - smoothstep(0.038, 0.22, abs(reflected.y + 0.19 * hit.y - 0.41));
+    let room = mix(vec3f(0.10, 0.18, 0.37), vec3f(0.61, 0.75, 0.94), overhead);
+    let reflectiveField = room + lightStrip * 0.46 + fillStrip * 0.31 + sideBand * 0.18;
     let thinFilm = 0.5 + 0.5 * cos(vec3f(0, 2.094, 4.189) + dot(hit, vec3f(4.7, 6.9, 3.1)) + 6.0 * fresnel);
-    let facetEdge = 1.0 - smoothstep(0.0, 0.05, far - near);
-    let polish = lightStrip * 0.30 + fillStrip * 0.16;
-    var color = mix(transmitted, reflectiveField, fresnel) + thinFilm * (fresnel * 0.21 + facetEdge * 0.16);
+    let facetEdge = 1.0 - smoothstep(0.001, 0.031, far - near);
+    let neutral = dot(transmitted, vec3f(0.2126, 0.7152, 0.0722));
+    let edgeGlass = mix(vec3f(0.13, 0.25, 0.49), vec3f(0.66, 0.82, 0.98), neutral);
+    transmitted = mix(transmitted, edgeGlass, side * 0.92);
+    let polish = lightStrip * 0.25 + fillStrip * 0.13 + facetEdge * 0.18;
+    var color = mix(transmitted, reflectiveField, fresnel) + thinFilm * (fresnel * 0.023 + facetEdge * 0.13);
     color += vec3f(polish);
     if (material == 2.0) { color *= 0.95 + 0.05 * flute; }
     return vec4f(clamp(color, vec3f(0), vec3f(1)), 1.0);
