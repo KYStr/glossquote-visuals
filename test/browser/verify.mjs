@@ -387,20 +387,21 @@ async function checkShader(browser) {
   assert.ok(compositeOk, "The browser compositor did not present the changing WebGPU texture");
 }
 
-async function livePixelDifference(page, before, after) {
-  return page.evaluate(async ([before, after]) => {
+async function livePixelDifference(page, before, after, areaAverage = false) {
+  return page.evaluate(async ([before, after, areaAverage]) => {
     const width = 80;
     const height = 60;
     const pixels = async (encoded) => {
       const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
       const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
       const canvas = document.createElement("canvas");
-      canvas.width = bitmap.width;
-      canvas.height = bitmap.height;
+      canvas.width = areaAverage ? bitmap.width : width;
+      canvas.height = areaAverage ? bitmap.height : height;
       const context = canvas.getContext("2d", { willReadFrequently: true });
-      context.drawImage(bitmap, 0, 0);
+      context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
       bitmap.close();
       const source = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      if (!areaAverage) return source;
       const sampled = new Float64Array(width * height * 4);
       // Area-average each cell instead of bilinear point sampling. Sparse
       // moving particles otherwise alias into false whole-shape drift.
@@ -437,7 +438,7 @@ async function livePixelDifference(page, before, after) {
       peak = Math.max(peak, delta);
     }
     return { mean: total / (width * height * 3), changedPixels, peak, width, height };
-  }, [before.toString("base64"), after.toString("base64")]);
+  }, [before.toString("base64"), after.toString("base64"), areaAverage]);
 }
 
 async function checkLiveComposite(page, slug, locale, isolatedOutput) {
@@ -568,7 +569,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     await sample("a2");
     const comparisons = measurement.comparisons;
     for (const kind of ["composite", "texture"]) {
-      const difference = (a, b) => livePixelDifference(page, captured[a][kind], captured[b][kind]);
+      const difference = (a, b) => livePixelDifference(page, captured[a][kind], captured[b][kind], true);
       const drift = await difference("a0", "a1");
       const forward = await difference("a1", "b");
       const backward = await difference("b", "a2");
