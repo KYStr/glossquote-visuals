@@ -37,5 +37,24 @@ test("motion acceptance rejects fallback substitution and incomplete or mismatch
   }
   const simulation = fixture();
   for (const view of simulation.views) { view.motionKind = "evolving"; delete view.cycleSeconds; }
+  assert.throws(() => verifyTemporalReview(simulation, proof), /semantic form review/);
+  for (const view of simulation.views) {
+    view.semanticControls = { status: "PASS", reason: "Original composite and GPU shape inspected, not inferred from DOM or pixel movement",
+      sequence: ["identity", "motion", "digital", "identity"].map((state, index) => ({
+        state, verdict: "PASS", observedShape: { identity: "ring", motion: "helix", digital: "ribbon" }[state],
+        composite: `evidence/${view.viewport}-form-${index}.png`, texture: `evidence/${view.viewport}-gpu-${index}.png`,
+      })),
+    };
+  }
   assert.doesNotThrow(() => verifyTemporalReview(simulation, proof));
+  for (const mutate of [
+    (view) => { view.semanticControls.sequence.pop(); },
+    (view) => { view.semanticControls.sequence[1].verdict = "NOT_RUN"; },
+    (view) => { view.semanticControls.sequence[1].texture = view.semanticControls.sequence[0].texture; },
+    (view) => { delete view.semanticControls.sequence[1].observedShape; },
+  ]) {
+    const altered = structuredClone(simulation);
+    mutate(altered.views[0]);
+    assert.throws(() => verifyTemporalReview(altered, proof));
+  }
 });

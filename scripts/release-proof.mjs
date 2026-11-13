@@ -93,6 +93,7 @@ function temporalEvidence(review) {
   return review.views.flatMap((view) => [
     ...view.frames.map((frame) => frame.evidence),
     ...view.controlEvidence,
+    ...(view.semanticControls?.sequence ?? []).flatMap(({ composite, texture }) => [composite, texture]),
     ...Object.values(view.pauseEvidence),
   ]);
 }
@@ -119,6 +120,22 @@ export function verifyTemporalReview(review, proof) {
     if (view.motionKind === "periodic") {
       assert.ok(Number.isFinite(view.cycleSeconds) && view.cycleSeconds > 0);
       assert.ok(times.at(-1) >= view.cycleSeconds, "The full declared animation cycle must be reviewed");
+    } else {
+      const controls = view.semanticControls;
+      assert.equal(controls?.status, "PASS", "Evolving pixels require an independent semantic form review");
+      assert.ok(typeof controls.reason === "string" && controls.reason.trim().length > 0);
+      assert.ok(Array.isArray(controls.sequence) && controls.sequence.length >= 4);
+      const states = controls.sequence.map(({ state }) => state);
+      assert.ok(states.every((state) => typeof state === "string" && state.length > 0));
+      assert.ok(new Set(states).size >= 3 && states[0] === states.at(-1), "Review three distinct controls and the return state");
+      for (const entry of controls.sequence) {
+        assert.equal(entry.verdict, "PASS");
+        assert.ok(typeof entry.observedShape === "string" && entry.observedShape.trim().length > 0);
+      }
+      for (const kind of ["composite", "texture"]) {
+        assert.equal(new Set(controls.sequence.map((entry) => entry[kind])).size, controls.sequence.length,
+          "Each form and its return require a distinct original capture");
+      }
     }
     assert.ok(Array.isArray(view.controlEvidence) && view.controlEvidence.length >= 3,
       "Review minimum, middle/alternate, maximum and return control evidence");

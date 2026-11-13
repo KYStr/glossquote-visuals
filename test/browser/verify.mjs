@@ -452,14 +452,16 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
       kind: "particle-form", settleMs: 1000, evolving: true },
   };
   const control = controls[slug];
+  const pauseOnly = viewportLabel === "mobile";
   assert.ok(control, `No live composite control defined for ${slug}`);
   const stem = `${live ? "live" : "candidate"}-${slug}-${locale}${viewportLabel ? "-" + viewportLabel : ""}`;
   const surface = page.locator(control.surface);
   const captured = {};
   const files = {};
   const measurement = { control: control.selector, values: control.values, intervalMs: 100,
-    sequence: ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
+    sequence: pauseOnly ? ["active-0", "active-1"] : ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
   measurement.viewport = page.viewportSize();
+  measurement.scope = pauseOnly ? "mobile same-frame pause; form controls covered by dedicated per-work lane" : "desktop controls and same-frame pause";
   measurement.comparisonSampling = "80x60 area-averaged cells from original pixels; native pause uses full resolution";
   if (control.evolving) measurement.simulation = {
     settleMs: control.settleMs,
@@ -509,7 +511,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
     const before = await textureCount(page);
     // Both the actual composite and independent GPU frame are recorded. The latter
     // prevents a program's CSS background/filter change from impersonating shader control.
-    await page.evaluate(() => { window.__liveFrame = window.__visualProbe.readFrame(true); });
+    await page.evaluate(() => { window.__liveFrame = window.__visualProbe.readFrame(true, true); });
     await page.clock.runFor(100);
     assert.ok(await textureCount(page) > before, `${stem}: no frame during the controlled interval`);
     // The probe's own timeout uses the paused page clock; retain a real-time
@@ -530,15 +532,22 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
     } finally {
       clearTimeout(readbackTimeout);
     }
-    const { png, ...texture } = frame;
+    const { png, rawRgba, blackPng, ...texture } = frame;
     assert.equal(await stage(page).getAttribute("data-motion"), "running");
     const textureFile = `${stem}-texture-${label}.png`;
     const texturePng = Buffer.from(png, "base64");
     await writeFile(resolve(evidenceDir, textureFile), texturePng);
+    const rawFile = `${stem}-texture-${label}.rgba`;
+    const comparisonFile = `${stem}-texture-${label}-black.png`;
+    const comparisonPng = Buffer.from(blackPng, "base64");
+    await writeFile(resolve(evidenceDir, rawFile), Buffer.from(rawRgba, "base64"));
+    await writeFile(resolve(evidenceDir, comparisonFile), comparisonPng);
+    texture.rawFile = rawFile;
+    texture.comparisonFile = comparisonFile;
     evidence.screenshots.push(textureFile);
     files[`texture-${label}`] = textureFile;
     measurement.textures[label] = { ...texture, framesDuringInterval: await textureCount(page) - before };
-    captured[label] = { composite: await capture(label), texture: texturePng, measurement: texture };
+    captured[label] = { composite: await capture(label), texture: comparisonPng, measurement: texture };
     assert.ok(texture.colors > 20, `${stem}: ${label} lacks structured GPU output`);
   };
   await page.evaluate(() => window.scrollTo(0, 0));
@@ -557,41 +566,60 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
   });
   measurement.canvasCss = canvasCss;
   assert.ok(canvasCss.ancestorsVisible, `${stem}: canvas is hidden in the real composition`);
-  // Freeze between snapshots, advancing equal intervals only. Shader time still
-  // advances during runFor, so A->A measures drift and A->B->A must exceed it.
+  // Freeze between snapshots. Each sample records its actual GPU submission
+  // time; native pause below never compares captures from different clock times.
   await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 1000);
   try {
-    await setControl(control.values[0]);
-    await sample("a0");
-    await sample("a1");
-    await setControl(control.values[1]);
-    await sample("b");
-    await setControl(control.values[0]);
-    await sample("a2");
-    const comparisons = measurement.comparisons;
-    for (const kind of ["composite", "texture"]) {
-      const difference = (a, b) => livePixelDifference(page, captured[a][kind], captured[b][kind], true);
-      const drift = await difference("a0", "a1");
-      const forward = await difference("a1", "b");
-      const backward = await difference("b", "a2");
-      const restored = await difference("a1", "a2");
-      comparisons[kind] = { drift, forward, backward, restored };
-      for (const change of [forward, backward]) {
-        assert.ok(change.mean > Math.max(0.05, drift.mean * 3) &&
-          change.changedPixels > Math.max(12, drift.changedPixels * 3),
-        `${stem}: ${kind} control effect must exceed natural drift: ${JSON.stringify(comparisons[kind])}`);
-        if (!control.evolving && slug !== "night-signal") assert.ok(restored.mean < change.mean / 2,
-          `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
+    if (pauseOnly) {
+      await sample("active-0");
+      await page.clock.runFor(1000);
+      await sample("active-1");
+      measurement.activeBeforePause = await livePixelDifference(page, captured["active-0"].composite, captured["active-1"].composite);
+      assert.ok(measurement.activeBeforePause.mean > 0.05 && measurement.activeBeforePause.changedPixels > 12,
+        `${stem}: no visible GPU evolution before same-frame pause`);
+    } else {
+      await setControl(control.values[0]);
+      await sample("a0");
+      // The no-action baseline spans the same waiting window as a form change.
+      // Evolving simulation pixels are diagnostic, not proof of a selected shape.
+      if (control.evolving) await page.clock.runFor(control.settleMs);
+      await sample("a1");
+      await setControl(control.values[1]);
+      await sample("b");
+      await setControl(control.values[0]);
+      await sample("a2");
+      const comparisons = measurement.comparisons;
+      for (const kind of ["composite", "texture"]) {
+        const difference = (a, b) => livePixelDifference(page, captured[a][kind], captured[b][kind], true);
+        const drift = await difference("a0", "a1");
+        const forward = await difference("a1", "b");
+        const backward = await difference("b", "a2");
+        const restored = await difference("a1", "a2");
+        comparisons[kind] = { drift, forward, backward, restored };
+        if (control.evolving) continue;
+        for (const change of [forward, backward]) {
+          assert.ok(change.mean > Math.max(0.05, drift.mean * 3) &&
+            change.changedPixels > Math.max(12, drift.changedPixels * 3),
+          `${stem}: ${kind} control effect must exceed natural drift: ${JSON.stringify(comparisons[kind])}`);
+          if (!control.evolving && slug !== "night-signal") assert.ok(restored.mean < change.mean / 2,
+            `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
+        }
       }
-    }
-    if (slug === "night-signal") {
-      // Different ribbon phases need not align in pixel space. Compare the
-      // underlying colors too: brass is red-dominant and echo is blue-dominant.
-      const channelBalance = ({ measurement: { average: [red, , blue] } }) => red - blue;
-      const palettes = measurement.programBalance = Object.fromEntries(
-        Object.entries(captured).map(([key, frame]) => [key, channelBalance(frame)]));
-      assert.ok(palettes.b + 4 < Math.min(palettes.a0, palettes.a1, palettes.a2),
-        `${stem}: program palette did not move to B and return to A: ${JSON.stringify(palettes)}`);
+      if (control.evolving) measurement.controlAcceptance = {
+        status: "REQUIRES_INDEPENDENT_FORM_REVIEW",
+        reason: "A continuing particle simulation can change pixels without a working form selector. Equal-window differences are diagnostic only.",
+        requiredEvidence: "Same-candidate dedicated desktop/mobile original composites and GPU captures: motion helix, digital ribbon, restored identity ring; non-author semantic verdict in temporalReview.controls and coherence.",
+        submittedAt: Object.fromEntries(Object.entries(captured).map(([label, frame]) => [label, frame.measurement.submittedAt])),
+      };
+      if (slug === "night-signal") {
+        // Different ribbon phases need not align in pixel space. Compare the
+        // underlying colors too: brass is red-dominant and echo is blue-dominant.
+        const channelBalance = ({ measurement: { average: [red, , blue] } }) => red - blue;
+        const palettes = measurement.programBalance = Object.fromEntries(
+          Object.entries(captured).map(([key, frame]) => [key, channelBalance(frame)]));
+        assert.ok(palettes.b + 4 < Math.min(palettes.a0, palettes.a1, palettes.a2),
+          `${stem}: program palette did not move to B and return to A: ${JSON.stringify(palettes)}`);
+      }
     }
     // A product pause must freeze its presented frame. Legacy M02 pages instead
     // hide the canvas; record that compatibility mode without accepting M03 freeze.
@@ -754,7 +782,13 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput, viewportLa
     }
     await page.locator("[data-pause]").evaluate((button) => button.click());
     assert.equal(await stage(page).getAttribute("data-motion"), "running", `${stem}: native resume did not resume the renderer`);
+    if (pauseOnly) await page.clock.runFor(1000);
     await sample("native-resume");
+    if (pauseOnly) {
+      pause.resumeDifference = await livePixelDifference(page, beforePause, captured["native-resume"].composite);
+      assert.ok(pause.resumeDifference.mean > 0.05 && pause.resumeDifference.changedPixels > 12,
+        `${stem}: native resume did not restore visible evolution`);
+    }
     if (live) assert.equal(pause.acceptsM03Freeze, true, `${stem}: released native pause must freeze its GPU frame`);
     pause.resume = { nativeAction: true, phase: "running", composite: files["native-resume"],
       texture: files["texture-native-resume"], framesDuringInterval: measurement.textures["native-resume"].framesDuringInterval };
@@ -792,7 +826,7 @@ async function checkCandidateComposites(browser) {
       });
     }
   }
-  evidence.checks.compositeControls = "PASS candidate original-CSS A/A/B/A control checks above animation drift, classified native pause and separate canvas-hide diagnostic; only per-work pauseMode=freeze qualifies for M03 freeze acceptance. Live verification uses the same routine";
+  evidence.checks.compositeControls = "PASS non-evolving desktop A/A/B/A control checks and all same-frame pauses. Evolving particle differences are equal-window diagnostics requiring separate same-SHA non-author three-form review. Supplemental mobile checks actual evolution before/after pause, zero paused submissions and canvas-hide diagnostic; dedicated lanes cover mobile forms and natural sequences. Only pauseMode=freeze qualifies for M03 freeze acceptance.";
 }
 
 async function checkLive(browser) {
