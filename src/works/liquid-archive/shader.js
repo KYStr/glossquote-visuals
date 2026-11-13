@@ -57,6 +57,7 @@ const HaloStudio = registerShader(defineShader({
     sweep: { default: 1 },
     brushed: { default: 0 },
     compact: { default: 0 },
+    sweepElapsed: { default: 0 },
   },
   paint: wgsl`
     // Camera and studio coordinates. We orbit the light; the camera and sculpture are fixed.
@@ -70,7 +71,7 @@ const HaloStudio = registerShader(defineShader({
     let yaw = -0.35;
     let pose = mat3x3f(vec3f(cos(yaw), 0.0, -sin(yaw)), vec3f(0.0, 1.0, 0.0), vec3f(sin(yaw), 0.0, cos(yaw)));
     let objectCamera = transpose(pose) * camera;
-    let orbit = 90.0 - 62.0 * cos(time * tau / ${SWEEP_SECONDS}.0);
+    let orbit = 90.0 - 62.0 * cos(sweepElapsed * tau / ${SWEEP_SECONDS}.0);
     let azimuth = radians(mix(lightAngle, orbit, sweep) - 90.0);
     let lightPosition = vec3f(sin(azimuth) * 2.6, 2.65, cos(azimuth) * 2.6 + 0.11);
     let lightRight = normalize(vec3f(cos(azimuth), 0.0, -sin(azimuth)));
@@ -254,7 +255,38 @@ function renderSize(width, height) {
 }
 
 export async function initializeLiquid(canvas, options) {
-  const renderer = await initializeStandalone(
+  let renderer;
+  let frameId = 0;
+  let elapsed = 0;
+  let lastFrame = 0;
+  let lastUpdate = 0;
+  let active = true;
+  let ready = false;
+  let failed = false;
+
+  // Use elapsed active time so a slower GPU cannot stretch a sweep. The
+  // renderer's own time is unused; pausing stops both the driver and rendering.
+  function tick(now) {
+    if (lastFrame) elapsed += now - lastFrame;
+    lastFrame = now;
+    if (now - lastUpdate >= 32) {
+      renderer.update("halo", { sweepElapsed: (elapsed / 1000) % SWEEP_SECONDS });
+      lastUpdate = now;
+    }
+    frameId = requestAnimationFrame(tick);
+  }
+
+  function startClock() {
+    if (active && renderer && ready && !failed && !frameId) frameId = requestAnimationFrame(tick);
+  }
+
+  function stopClock() {
+    cancelAnimationFrame(frameId);
+    frameId = 0;
+    lastFrame = 0;
+  }
+
+  renderer = await initializeStandalone(
     canvas,
     [{ id: "halo", type: HaloStudio.name, props: props(options.settings) }],
     {
@@ -262,14 +294,36 @@ export async function initializeLiquid(canvas, options) {
       ...renderSize(options.width, options.height),
       onReady() {
         canvas.dataset.sized = "";
+        ready = true;
+        if (renderer) renderer.update("halo", { sweepElapsed: (elapsed / 1000) % SWEEP_SECONDS });
         options.onReady();
+        startClock();
+      },
+      onError() {
+        stopClock();
+        ready = false;
+        options.onError();
       },
     },
   );
   if (!renderer) return null;
+  failed = Boolean(renderer.getFailureReason()) || options.signal.aborted;
+  startClock();
   return {
     ...renderer,
+    pause() {
+      active = false;
+      stopClock();
+      renderer.pause();
+    },
+    resume() {
+      active = true;
+      renderer.resume();
+      startClock();
+    },
     destroy() {
+      failed = true;
+      stopClock();
       delete canvas.dataset.sized;
       renderer.destroy();
     },

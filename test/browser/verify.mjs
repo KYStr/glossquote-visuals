@@ -985,7 +985,6 @@ async function checkLiquid(browser) {
       const captureSession = await page.context().newCDPSession(page);
       async function frame(label) {
         const name = `${stem}-${label}.png`;
-        await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
         const clip = await scene.evaluate(element => {
           const rect = element.getBoundingClientRect();
           return { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height, scale: 1 };
@@ -1030,7 +1029,7 @@ async function checkLiquid(browser) {
 
       const times = [0, 2, 4, 6, 8, 10, 12];
       async function captureNatural(finish) {
-        const frames = await page.evaluate(async times => {
+        const collect = page.evaluate(async times => {
           const probe = window.__visualProbe;
           const start = performance.now();
           const snapshots = times.map(time => new Promise((resolve, reject) => {
@@ -1042,6 +1041,10 @@ async function checkLiquid(browser) {
           }));
           return Promise.all(snapshots);
         }, times);
+        let timeout;
+        const frames = await Promise.race([collect, new Promise((_, reject) => {
+          timeout = setTimeout(() => reject(new Error("Natural FORME GPU readbacks exceeded 25 seconds")), 25_000);
+        })]).finally(() => clearTimeout(timeout));
         const samples = [];
         for (const { time, requested, textures, snapshot } of frames) {
           const { file } = await saveTexture(finish + "-natural-" + time + "s", snapshot);
@@ -1052,16 +1055,38 @@ async function checkLiquid(browser) {
         return { timebase: "Natural wall-time GPU readbacks; requested elapsed milliseconds recorded", samples };
       }
 
+      async function timedReadback(advance) {
+        await page.evaluate(() => { window.__formeStudioTexture = window.__visualProbe.readFrame(true); });
+        let timeout;
+        try {
+          return await Promise.race([
+            page.clock.runFor(advance).then(() => page.evaluate(() => window.__formeStudioTexture)),
+            new Promise((_, reject) => {
+              timeout = setTimeout(() => reject(new Error("Timed FORME GPU readback exceeded 15 seconds")), 15_000);
+            }),
+          ]);
+        } finally {
+          clearTimeout(timeout);
+        }
+      }
+
       async function captureCycle(finish) {
         const samples = [];
         await page.clock.pauseAt(await page.evaluate(() => Date.now()) + 250);
         try {
-          for (const time of times) {
-            await page.evaluate(() => { window.__formeStudioTexture = window.__visualProbe.readFrame(true); });
-            await page.clock.runFor(time === 0 ? 32 : 2000);
-            const snapshot = await page.evaluate(() => window.__formeStudioTexture);
+          // Advancing Chromium one interval would queue ~120 WARP renders at once.
+          // Skip unused callbacks and give the final callback a short render window.
+          const start = await page.evaluate(() => Date.now());
+          const sample = async time => {
+            const snapshot = await timedReadback(48);
             const { file, bytes } = await saveTexture(finish + "-auto-" + time + "s", snapshot);
-            samples.push({ time, file, bytes, textures: await textureCount(page) });
+            samples.push({ time, elapsed: await page.evaluate(start => Date.now() - start, start), file, bytes });
+          };
+          await sample(0);
+          for (const time of times.slice(1)) {
+            const now = await page.evaluate(() => Date.now());
+            await page.clock.fastForward(start + time * 1000 - now - 48);
+            await sample(time);
           }
         } finally {
           await page.clock.resume();
