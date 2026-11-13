@@ -70,13 +70,14 @@ export async function checkPaperMaterial({
       const freeze = await difference(page, before, paused);
       assert.equal(freeze, 0, "Pause changed the actual paper composition");
       await pause.evaluate((button) => button.click());
-      await page.clock.runFor(1100);
+      assert.equal(await stage.getAttribute("data-motion"), "running");
+      await page.clock.resume();
+      await nextFrames(3);
+      await page.waitForTimeout(1100);
       const resumed = await snap("pause-resumed");
       assert.ok(await textures() > beforeCount);
       const resume = await difference(page, paused, resumed);
       assert.ok(resume > 0.15, "The paper did not change after resume");
-      await page.clock.resume();
-
       await page.locator("main img").evaluateAll(async (images) => {
         for (const image of images) image.loading = "eager";
         await Promise.all(images.map((image) => image.decode()));
