@@ -9,6 +9,18 @@ const fingerprint = (buffer) => createHash("sha256").update(buffer).digest("hex"
 // the last capture have independent scheduling delays on the software GPU.
 const schedule = (period) => [...new Set([0, 2, 4, 6, 8, ...Array.from({ length: period - 7 }, (_, i) => i + 9)])];
 
+export function assertNaturalCycleVariation(frames, periodMs, stem) {
+  // A full-cycle capture can correctly repeat its initial pixels. Only samples
+  // scheduled at different phases must differ; a frozen renderer still fails.
+  for (let index = 0; index < frames.length; index++) {
+    for (let earlier = 0; earlier < index; earlier++) {
+      if ((frames[index].targetMs - frames[earlier].targetMs) % periodMs === 0) continue;
+      assert.notEqual(frames[index].gpu.sha256, frames[earlier].gpu.sha256,
+        `${stem} did not change between distinct cycle phases ${frames[earlier].targetMs}/${frames[index].targetMs}`);
+    }
+  }
+}
+
 export function signalMotionEvidence({ evidence, evidenceDir }) {
   const measurements = evidence.measurements.signalMotion = { cycles: {}, transitions: {}, freeze: {} };
   async function saveTexture(name, { png, ...texture }) {
@@ -68,7 +80,7 @@ export function signalMotionEvidence({ evidence, evidenceDir }) {
     }
     measurements.cycles[stem].samples = frames;
     assert.ok(frames.every(({ gpu }) => gpu.colors > 20), JSON.stringify(frames));
-    assert.equal(new Set(frames.map(({ gpu }) => gpu.sha256)).size, frames.length, stem + " did not change");
+    assertNaturalCycleVariation(frames, measurements.cycles[stem].nominalPeriodSeconds * 1000, stem);
     assert.ok(frames.every(({ targetMs, presentedMs }) => Math.abs(presentedMs - targetMs) < 600),
       stem + " missed natural capture deadlines: " + JSON.stringify(frames.map(({ targetMs, presentedMs }) => [targetMs, presentedMs])));
     return frames;
