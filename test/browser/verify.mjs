@@ -395,12 +395,34 @@ async function livePixelDifference(page, before, after) {
       const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
       const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
       const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
+      canvas.width = bitmap.width;
+      canvas.height = bitmap.height;
       const context = canvas.getContext("2d", { willReadFrequently: true });
-      context.drawImage(bitmap, 0, 0, width, height);
+      context.drawImage(bitmap, 0, 0);
       bitmap.close();
-      return context.getImageData(0, 0, width, height).data;
+      const source = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      const sampled = new Float64Array(width * height * 4);
+      // Area-average each cell instead of bilinear point sampling. Sparse
+      // moving particles otherwise alias into false whole-shape drift.
+      // Full-resolution native-pause comparisons below remain unchanged.
+      for (let y = 0; y < height; y++) {
+        const y0 = Math.floor(y * canvas.height / height);
+        const y1 = Math.max(y0 + 1, Math.floor((y + 1) * canvas.height / height));
+        for (let x = 0; x < width; x++) {
+          const x0 = Math.floor(x * canvas.width / width);
+          const x1 = Math.max(x0 + 1, Math.floor((x + 1) * canvas.width / width));
+          const target = (y * width + x) * 4;
+          const count = (x1 - x0) * (y1 - y0);
+          for (let sy = y0; sy < y1; sy++) {
+            for (let sx = x0; sx < x1; sx++) {
+              const input = (sy * canvas.width + sx) * 4;
+              for (let channel = 0; channel < 3; channel++) sampled[target + channel] += source[input + channel] / count;
+            }
+          }
+          sampled[target + 3] = 255;
+        }
+      }
+      return sampled;
     };
     const a = await pixels(before);
     const b = await pixels(after);
@@ -436,6 +458,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
   const files = {};
   const measurement = { control: control.selector, values: control.values, intervalMs: 100,
     sequence: ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
+  measurement.comparisonSampling = "80x60 area-averaged cells from original pixels; native pause uses full resolution";
   if (control.evolving) measurement.simulation = {
     settleMs: control.settleMs,
     note: "Evolving particles are allowed to keep distinct positions after a form is restored; shape return requires independent temporal review, not pixel identity.",
