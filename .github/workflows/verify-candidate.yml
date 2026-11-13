@@ -20,7 +20,10 @@ jobs:
       matrix:
         include:
           - lane: shared
-            command: npm run test:browser
+            command: npm run test:browser -- --shared
+            output: .runs/browser-evidence/
+          - lane: forme-studio
+            command: npm run test:browser -- --forme-studio
             output: .runs/browser-evidence/
           - lane: prism
             command: node test/browser/prism-candidate.mjs

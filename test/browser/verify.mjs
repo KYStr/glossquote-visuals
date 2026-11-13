@@ -31,6 +31,8 @@ const live = process.argv[2] === "--live";
 const paperOnly = process.argv[2] === "--paper-material";
 if (paperOnly && !windows) throw new Error("Paper material validation requires the GitHub-hosted Windows runner");
 const studioOnly = process.argv[2] === "--forme-studio";
+const sharedOnly = process.argv[2] === "--shared";
+evidence.lane = live ? "live" : studioOnly ? "forme-studio" : sharedOnly ? "shared" : paperOnly ? "paper-material" : "complete";
 const site = live ? { origin, close() {} } : await serveDist();
 const url = (path = "") => site.origin + base + path;
 const stage = (page) => page.locator("[data-stage]");
@@ -1359,7 +1361,7 @@ try {
       browser, withPage, open, work, site, phase, capture: paperSurface, difference: paperLightDifference, screenshot,
     });
     evidence.checks.paperMaterial = "PASS two viewports, full natural cycle, five lamp angles, same-frame pause and resume";
-    if (!paperOnly && worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
+    if (!paperOnly && !sharedOnly && worksFor("candidate").some(({ id }) => id === "V002")) await checkLiquid(browser);
     if (!paperOnly && worksFor("candidate").some(({ id }) => id === "V003")) await checkSignal(browser, {
       evidence, evidenceDir, site, withPage, open, layout, phase, stage, textureCount, quiet, screenshot,
     });
