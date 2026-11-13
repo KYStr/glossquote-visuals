@@ -390,6 +390,7 @@ fieldset p { font-size: 0.875rem; }
   .work-grid, .service-grid, .process-section, .faq-section, .brief-layout { display: grid; grid-template-columns: minmax(0,1fr); }
   .case { grid-column: 1; padding-block-start: 0; }
   .work-image--offbeat { aspect-ratio: 1.26; }
+  .work-image--offbeat img { inline-size: 100%; inset-inline-end: 0; }
   .work-image--offbeat b { font-size: clamp(2.75rem, 13vw, 5.75rem); }
   .work-image--radio img { width: 59%; }
   .case-print { font-size: clamp(1.2rem, 5.1vw, 2.75rem); }
