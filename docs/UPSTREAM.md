@@ -31,4 +31,6 @@ Upstream build 會刪除法律註解；發佈時收集實際 lockfile 所含依�
 
 固定版 `pause()` 只停止連續迴圈；使用指標的 Particles 仍會由 mousemove/touch 觸發 `requestRender()`，使暫停或離開視窗後產生單幀更新。`scripts/shaders-csp.mjs` 的建置轉換以完整 SHA-256 鎖定 `dist/core/index.js` 與 `dist/js/createShader.js`，沿用既有 frame lock 關閉連續與待執行的指標影格。新增 `preserveTimeline` 選項保留動畫時間；一般離線 deterministic frame lock 的原本歸零行為維持不變。resume 先解鎖並重設前次影格的時間戳，避免把停頓時長加入 simulation delta。
 
-這是輸出建置的相容修正，沒有改寫 node_modules 或放寬 CSP。原始 npm 檔案雜湊仍保持完整；雜湊改變時建置直接失敗，須重新檢查來源。此修正用於 `npm run build` 的正式與候選輸出；未打包的開發伺服器不作暫停驗收證據。單元測試檢查時間保留、待執行影格取消、解鎖順序與雜湊失配；實際 GPU 與指標停止行為仍須隔離瀏覽器驗證。
+這是輸出建置的相容修正，沒有改寫 node_modules 或放寬 CSP。原始 npm 檔案雜湊仍保持完整；雜湊改變時建置直接失敗，須重新檢查來源。此修正用於 `npm run build` 的正式與候選輸出；未打包的開發伺服器不作暫停驗收證據。單元測試檢查主／額外動畫時間保留、待執行影格取消、解鎖順序與雜湊失配；實際 GPU 與指標停止行為仍須隔離瀏覽器驗證。
+
+時間保留只適用仍有效的 renderer。GPU device loss 會重新初始化場景／粒子；`createMotion` 在暫停中失去 device 時銷毀失效實例，顯示 fallback，待允許續播後重新建立。這不是跨 device 的時間線或模擬狀態保存。獨立來源覆核確認 pointer gate 有效，並明列此重建界線；續播畫面的視覺連續性仍需實際原始影格評估。

@@ -671,7 +671,13 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
       }
       const restoredPause = await capture("diagnostic-restored");
       pause.comparisons.diagnosticRestored = await pauseDifference(afterPause, restoredPause);
-      stable(pause.comparisons.diagnosticRestored, "restoring diagnostic canvas styles");
+      // Hiding/reintroducing a GPU layer can change WARP compositor rounding by
+      // 1–2 channel values. This is a diagnostic mutation, not native pause;
+      // keep the stricter native-frame stability limit above unchanged.
+      const diagnostic = pause.comparisons.diagnosticRestored;
+      pause.diagnosticRestoreLimits = { mean: 0.05, peak: 2 };
+      assert.ok(diagnostic.mean <= 0.05 && diagnostic.peak <= 2,
+        `${stem}: restoring diagnostic canvas styles changed the composition: ${JSON.stringify(diagnostic)}`);
       if (measurement.pauseMode === "freeze" && slug !== "paper-light") {
         const contribution = measurement.diagnosticContribution;
         assert.ok(contribution.mean > 0.05 && contribution.changedPixels > 12,
@@ -716,6 +722,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
         await staticPage.close();
       }
     }
+    if (live) assert.equal(pause.acceptsM03Freeze, true, `${stem}: released native pause must freeze its GPU frame`);
     return measurement;
   } finally {
     await page.clock.resume();
