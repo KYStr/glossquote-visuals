@@ -691,6 +691,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
 
 async function checkCandidateComposites(browser) {
   for (const work of worksFor("candidate")) {
+    if (work.slug === "aeriform") continue; // Covered by the dedicated volumetric particle workflow.
     for (const prefix of ["", "en/"]) {
       await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
         await page.clock.install();
