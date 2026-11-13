@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-Hant" class="prism-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>折光材料室｜建築玻璃選樣</title>
+  <meta name="description" content="比較清透、霧面與直紋建築玻璃在光線下的表現，建立並下載你的選樣清單。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/prism-materials/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/prism-materials/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/prism-materials/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/prism-materials/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="折光材料室｜建築玻璃選樣">
+  <meta property="og:description" content="比較清透、霧面與直紋建築玻璃在光線下的表現，建立並下載你的選樣清單。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/prism-materials/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/prism-share.jpg">
+  <meta property="og:image:alt" content="厚實的斜面玻璃懸在建築格線前，將鈷藍光帶折成多道有色邊緣。">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" href="%BASE_URL%media/prism-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/prism-materials/page.css">
+  <script type="module" src="/src/works/prism-materials/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="prism-header">
+    <div class="frame prism-nav">
+      <a class="brand" href="#top" aria-label="折光材料室">
+        <img src="%BASE_URL%media/prism-mark.svg" width="30" height="30" alt="">
+        <span>PRISM<span class="brand-secondary"> 折光材料室</span></span>
+      </a>
+      <nav aria-label="網站導覽">
+        <a href="#materials">玻璃系列</a>
+        <a href="#process">選樣流程</a>
+        <a href="#sample-builder" data-list-link>選樣清單<span class="list-count mono" aria-hidden="true" data-count hidden>0</span></a>
+        <a class="locale" href="%BASE_URL%en/works/prism-materials/" lang="en" hreflang="en">English <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="frame hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span aria-hidden="true"></span>建築玻璃試片</p>
+        <h1 id="hero-title"><span>給光</span> <span>一個截面。</span></h1>
+        <p class="hero-intro">三種表面，一道光。比較清透、柔霧與直紋玻璃在空間裡留下的光影。</p>
+        <a class="button" href="#sample-builder">建立選樣清單<span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="hero-figure">
+        <div class="optical-stage" data-stage data-finish="clear">
+          <img class="hero-poster" src="%BASE_URL%media/prism-clear-hero.webp" alt="厚實的斜面玻璃懸在建築格線前，將鈷藍光帶折成多道有色邊緣。" width="1056" height="852" fetchpriority="high">
+          <canvas aria-hidden="true"></canvas>
+        </div>
+        <figcaption class="figure-meta mono">
+          <span><span class="figure-cross" aria-hidden="true">+</span> 光學試片</span>
+          <span data-figure-name>CL–01 <span aria-hidden="true">/</span> 光學清透</span>
+        </figcaption>
+      </figure>
+      <div class="hero-instrument">
+        <div class="instrument-actions" data-instrument hidden>
+          <fieldset class="specimen-choices">
+            <legend class="mono">表面</legend>
+            <div>
+                  <label><input type="radio" name="specimen" value="clear" checked><span>光學清透</span></label>
+                  <label><input type="radio" name="specimen" value="satin"><span>柔霧蝕刻</span></label>
+                  <label><input type="radio" name="specimen" value="ribbed"><span>直紋折影</span></label>
+            </div>
+          </fieldset>
+          <div class="angle-control">
+            <label class="mono" for="prism-angle">觀察角度</label>
+            <input id="prism-angle" type="range" min="-20" max="20" step="1" value="0" aria-describedby="motion-status">
+            <output class="mono" id="prism-angle-output" for="prism-angle">0°</output>
+          </div>
+          <button class="pause" type="button" data-pause aria-pressed="false">暫停動態</button>
+        </div>
+        <p class="motion-status" id="motion-status" role="status" data-motion-status>目前顯示靜態試片。</p>
+      </div>
+    </section>
+
+    <section id="materials" class="frame section range" aria-labelledby="range-title">
+      <header class="section-head">
+        <h2 id="range-title">玻璃系列</h2>
+        <p>從保留視線到模糊輪廓，依空間所需的透光程度選擇表面。</p>
+      </header>
+      <div class="material-grid">
+        <article id="glass-clear" class="glass-card" data-product="clear" data-code="CL–01">
+          <img src="%BASE_URL%media/prism-clear.webp" width="600" height="560" alt="藍色光帶穿過清透玻璃的拋光斜邊" loading="lazy">
+          <div class="glass-card-copy">
+            <p class="mono glass-code">CL–01</p>
+            <h3 data-name>光學清透</h3>
+            <p>保留另一側的輪廓與光線。厚邊讓側光顯出一道乾淨的藍。</p>
+            <dl>
+              <div><dt>表面</dt><dd data-surface>雙面拋光</dd></div>
+              <div><dt>樣板尺寸</dt><dd data-size>150 × 150 mm</dd></div>
+              <div><dt>示意厚度</dt><dd data-thickness>12 mm</dd></div>
+              <div><dt>適用場景</dt><dd data-use>展示櫃、層板、透景隔屏</dd></div>
+            </dl>
+            <a class="text-link" data-select="clear" href="#sample-builder" hidden>選入此款 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article id="glass-satin" class="glass-card" data-product="satin" data-code="ST–02">
+          <img src="%BASE_URL%media/prism-satin.webp" width="600" height="560" alt="霧面玻璃表面柔化背後的藍色光帶" loading="lazy">
+          <div class="glass-card-copy">
+            <p class="mono glass-code">ST–02</p>
+            <h3 data-name>柔霧蝕刻</h3>
+            <p>細緻蝕刻把清晰的線條散開，近看可辨材質，遠看只剩光影。</p>
+            <dl>
+              <div><dt>表面</dt><dd data-surface>單面蝕刻</dd></div>
+              <div><dt>樣板尺寸</dt><dd data-size>150 × 150 mm</dd></div>
+              <div><dt>示意厚度</dt><dd data-thickness>10 mm</dd></div>
+              <div><dt>適用場景</dt><dd data-use>會議室隔屏、櫃門、玄關</dd></div>
+            </dl>
+            <a class="text-link" data-select="satin" href="#sample-builder" hidden>選入此款 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article id="glass-ribbed" class="glass-card" data-product="ribbed" data-code="RB–03">
+          <img src="%BASE_URL%media/prism-ribbed.webp" width="600" height="560" alt="直紋玻璃把鈷藍光帶分割成細條" loading="lazy">
+          <div class="glass-card-copy">
+            <p class="mono glass-code">RB–03</p>
+            <h3 data-name>直紋折影</h3>
+            <p>密排的直紋把背後的景物分成細長切片，走動時逐道顯露。</p>
+            <dl>
+              <div><dt>表面</dt><dd data-surface>單面直紋</dd></div>
+              <div><dt>樣板尺寸</dt><dd data-size>150 × 150 mm</dd></div>
+              <div><dt>示意厚度</dt><dd data-thickness>14 mm</dd></div>
+              <div><dt>適用場景</dt><dd data-use>拉門、迎賓櫃檯、立面嵌片</dd></div>
+            </dl>
+            <a class="text-link" data-select="ribbed" href="#sample-builder" hidden>選入此款 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sample-builder" class="sampling" aria-labelledby="sampling-title">
+      <div class="frame section">
+        <header class="section-head">
+          <div><p class="eyebrow"><span aria-hidden="true"></span>選樣工作台</p><h2 id="sampling-title" tabindex="-1">組合你的試片。</h2></div>
+          <p>把不同表面放進同一張清單，帶到案場比較。</p>
+        </header>
+        <noscript><p>玻璃規格與選樣流程可在下方閱讀。建立與下載清單需要 JavaScript。</p></noscript>
+        <div class="sample-grid" data-builder hidden>
+          <form class="builder-form" id="sample-form" novalidate>
+            <label for="sample-finish">玻璃表面</label>
+            <select id="sample-finish" name="finish"><option value="clear">光學清透</option><option value="satin">柔霧蝕刻</option><option value="ribbed">直紋折影</option></select>
+            <div class="sample-spec">
+              <img src="%BASE_URL%media/prism-clear.webp" width="600" height="560" alt="" loading="lazy" data-sample-photo>
+              <dl>
+                <div><dt>表面</dt><dd data-selected-surface>雙面拋光</dd></div>
+                <div><dt>樣板尺寸</dt><dd data-selected-size>150 × 150 mm</dd></div>
+                <div><dt>示意厚度</dt><dd data-selected-thickness>12 mm</dd></div>
+              </dl>
+            </div>
+            <label for="sample-quantity">樣板數量</label>
+            <input id="sample-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="20" step="1" value="1" required aria-describedby="form-feedback">
+            <div class="form-actions">
+              <button class="button" type="submit" data-add><span>加入清單</span><span aria-hidden="true">+</span></button>
+              <button class="text-link" type="button" data-cancel-edit hidden>取消修改</button>
+            </div>
+            <p id="form-feedback" role="status" data-form-feedback></p>
+          </form>
+          <section id="sample-list" class="sample-list" aria-labelledby="list-title">
+            <h3 id="list-title" tabindex="-1">選樣清單</h3>
+            <p class="empty-list" data-empty>清單是空的。從左側選擇一款玻璃開始。</p>
+            <ul class="sample-items" data-items></ul>
+            <p class="sample-total mono" data-total hidden></p>
+            <button class="button download" type="button" data-download disabled>下載選樣需求<span aria-hidden="true">↓</span></button>
+            <p class="download-note">清單只保留在目前頁面，重新整理或切換語言會清空。下載不會送出需求或安排寄送。</p>
+            <p class="download-status" role="status" data-download-status></p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame section context" aria-labelledby="context-title">
+      <figure class="context-figure">
+        <img src="%BASE_URL%media/prism-interior.svg" width="850" height="550" alt="" loading="lazy">
+        <figcaption class="figure-meta mono"><span class="figure-cross" aria-hidden="true">+</span> 空間剖面示意</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow"><span aria-hidden="true"></span>空間應用</p>
+        <h2 id="context-title">在真正的光線下選材。</h2>
+        <p>同一片玻璃，正面受光與逆光看起來不同。把樣板帶到預定位置，以接近完工時的光源與視距比較。</p>
+        <a href="#sample-builder" class="text-link">建立選樣清單 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="frame section process" id="process" aria-labelledby="process-title">
+      <header class="section-head"><h2 id="process-title">從選樣到製作</h2></header>
+      <ol class="process-grid">
+        <li><span class="mono" aria-hidden="true">01 /</span><h3>組合試片</h3><p>先確認希望保留多少視線，再把要比較的表面和數量放入清單。</p></li>
+        <li><span class="mono" aria-hidden="true">02 /</span><h3>帶回空間</h3><p>用白天與夜間的光源測試，把玻璃靠近將搭配的牆面或框材。</p></li>
+        <li><span class="mono" aria-hidden="true">03 /</span><h3>核對實作</h3><p>用下載的需求摘要和製作方討論尺寸、固定方式、邊部處理與交期。</p></li>
+      </ol>
+    </section>
+
+    <section class="frame section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">清潔與交付</h2>
+      <div>
+        <details><summary>怎麼清潔樣板？</summary><p>先用柔軟布除塵，再以少量清水擦拭並擦乾。霧面與紋理面避免研磨工具。實際成品請依供應商的保養指引。</p></details>
+        <details><summary>樣板與成品會有差異嗎？</summary><p>樣板適合比較表面和透光。成品的尺寸、厚度和玻璃後方的色彩都會改變觀感，定案前請與製作方核對。</p></details>
+        <details><summary>下載後會收到樣板嗎？</summary><p>下載會在瀏覽器產生一份文字摘要供你分享。本概念網站沒有販售、收件或寄送服務。</p></details>
+      </div>
+    </section>
+  </main>
+  <footer class="prism-footer">
+    <div class="frame footer-inner">
+      <div>
+        <p class="footer-brand">PRISM<span> 折光材料室</span></p>
+        <p>建築玻璃選樣品牌概念</p>
+      </div>
+      <div class="footer-links">
+        <a href="%BASE_URL%">返回視覺作品集 <span aria-hidden="true">↗</span></a>
+        <a href="<!-- work-source -->">原始碼 <span aria-hidden="true">↗</span></a>
+        <a href="#top">回到頁首 <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
