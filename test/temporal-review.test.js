@@ -7,7 +7,7 @@ function fixture() {
   return { version: "material-motion-v1", status: "PASS", commit: proof.commit, reviewer: proof.reviewer,
     views: ["desktop", "mobile"].map((viewport) => ({
       viewport, pauseMode: "freeze", coherence: "PASS", reason: "Original frames reviewed",
-      motionKind: "periodic", cycleSeconds: 8,
+      motionKind: "periodic", cycleSeconds: 8, timeBasis: "controlled-animation-clock",
       frames: [0, 2, 4, 6, 8].map((seconds) => ({ seconds, evidence: `evidence/${viewport}-${seconds}.png` })),
       controlEvidence: ["min", "middle", "max", "return"].map((label) => `evidence/${viewport}-${label}.png`),
       pauseEvidence: Object.fromEntries(["before", "paused", "stillPaused", "resumed"]
@@ -25,6 +25,7 @@ test("motion acceptance rejects fallback substitution and incomplete or mismatch
     (review) => { review.views[0].pauseMode = "legacy-fallback"; },
     (review) => { review.views[0].coherence = "NOT_RUN"; },
     (review) => { review.views[0].frames.pop(); },
+    (review) => { review.views[0].timeBasis = "scheduled-targets"; },
     (review) => { review.views[0].cycleSeconds = 12; },
     (review) => { delete review.views[0].pauseEvidence.resumed; },
     (review) => { review.views[0].controlEvidence = []; },

@@ -107,8 +107,11 @@ export function verifyTemporalReview(review, proof) {
     assert.equal(view.pauseMode, "freeze", "A static fallback is not a frozen GPU frame");
     assert.equal(view.coherence, "PASS");
     assert.ok(typeof view.reason === "string" && view.reason.trim().length > 0);
+    assert.ok(["measured-wall-clock", "controlled-animation-clock"].includes(view.timeBasis),
+      "Scheduled screenshot labels are not actual frame timestamps");
     const times = view.frames.map(({ seconds }) => seconds);
-    for (const seconds of [0, 2, 4, 6, 8]) assert.ok(times.includes(seconds), `Missing ${seconds}s frame`);
+    assert.ok(times.length >= 5 && times[0] === 0 && times.at(-1) >= 8,
+      "Review at least five original frames spanning eight measured animation seconds");
     assert.ok(times.every((time, index) => Number.isFinite(time) && time >= 0 &&
       (index === 0 || time > times[index - 1])), "Original frames need ordered unique timestamps");
     assert.ok(["periodic", "evolving"].includes(view.motionKind));

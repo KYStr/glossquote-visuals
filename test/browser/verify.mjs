@@ -414,6 +414,8 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     // The commercial event site uses program radios, not the former amplitude slider.
     "night-signal": { selector: 'input[name="program"]', values: ["carrier", "echo"], surface: "[data-stage]" },
     "prism-materials": { selector: "#prism-angle", values: ["-20", "20"], surface: "[data-stage]" },
+    "aeriform": { selector: "button[data-form]", values: ["identity", "motion"], surface: "[data-stage]",
+      kind: "particle-form", settleMs: 1000, evolving: true },
   };
   const control = controls[slug];
   assert.ok(control, `No live composite control defined for ${slug}`);
@@ -423,6 +425,10 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
   const files = {};
   const measurement = { control: control.selector, values: control.values, intervalMs: 100,
     sequence: ["a0", "a1", "b", "a2"], comparisons: {}, files, textures: {}, isolatedOutput };
+  if (control.evolving) measurement.simulation = {
+    settleMs: control.settleMs,
+    note: "Evolving particles are allowed to keep distinct positions after a form is restored; shape return requires independent temporal review, not pixel identity.",
+  };
   evidence.measurements.compositeControls ??= {};
   evidence.measurements.compositeControls[stem] = measurement;
   const capture = async (label) => {
@@ -438,7 +444,15 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
     return png;
   };
   const setControl = async (value) => {
-    if (slug === "night-signal") {
+    if (control.kind === "particle-form") {
+      const button = page.locator(`${control.selector}[data-form="${value}"]`);
+      await button.evaluate((element) => element.click());
+      assert.equal(await stage(page).getAttribute("data-form"), value);
+      assert.equal(await button.getAttribute("aria-pressed"), "true");
+      // Let the simulation approach its new SDF before requesting a GPU readback.
+      await page.clock.runFor(control.settleMs);
+      await page.evaluate(() => window.__visualProbe.device.queue.onSubmittedWorkDone());
+    } else if (slug === "night-signal") {
       await page.locator(`${control.selector}[value="${value}"]`).evaluate((input) => input.click());
       assert.equal(await stage(page).getAttribute("data-channel"), value);
       assert.equal(await page.locator(`${control.selector}[value="${value}"]`).isChecked(), true);
@@ -525,7 +539,7 @@ async function checkLiveComposite(page, slug, locale, isolatedOutput) {
         assert.ok(change.mean > Math.max(0.05, drift.mean * 3) &&
           change.changedPixels > Math.max(12, drift.changedPixels * 3),
         `${stem}: ${kind} control effect must exceed natural drift: ${JSON.stringify(comparisons[kind])}`);
-        assert.ok(restored.mean < change.mean / 2,
+        if (!control.evolving) assert.ok(restored.mean < change.mean / 2,
           `${stem}: ${kind} must return toward A after restoring the control: ${JSON.stringify(comparisons[kind])}`);
       }
     }
