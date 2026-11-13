@@ -1,0 +1,808 @@
+{
+  "commit": "a7cb4ca0a598cd9b9c91d28dc28e121b7f2aea06",
+  "verifierCommit": "ef28b58244da1b10b02ee8e486a38dc6c451ebe9",
+  "environment": "GitHub-hosted Windows Server 2025 VM",
+  "display": "headless-d3d11-warp",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS live HTTPS share image, notices, robots, sitemap and 404"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "unavailable_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webnn": "disabled_off"
+    },
+    "compositeControls": {
+      "live-paper-light-zh-Hant": {
+        "control": "#light-angle",
+        "values": [
+          "0",
+          "180"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0.3322981598600094,
+              "changedPixels": 28,
+              "peak": 12.126984126984183,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 13.238732793898807,
+              "changedPixels": 2968,
+              "peak": 61.77777777777783,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 13.37665557484567,
+              "changedPixels": 3031,
+              "peak": 61.777777777777715,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.6975764543375226,
+              "changedPixels": 99,
+              "peak": 23.571428571428555,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.29084113549933854,
+              "changedPixels": 3,
+              "peak": 10.785714285714306,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 14.309375137786565,
+              "changedPixels": 3202,
+              "peak": 61.79365079365084,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 14.517508870012088,
+              "changedPixels": 3276,
+              "peak": 61.761904761904816,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.7443372636959865,
+              "changedPixels": 102,
+              "peak": 25.412698412698404,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-paper-light-zh-Hant-texture-a0.png",
+          "a0": "live-paper-light-zh-Hant-composite-a0.png",
+          "texture-a1": "live-paper-light-zh-Hant-texture-a1.png",
+          "a1": "live-paper-light-zh-Hant-composite-a1.png",
+          "texture-b": "live-paper-light-zh-Hant-texture-b.png",
+          "b": "live-paper-light-zh-Hant-composite-b.png",
+          "texture-a2": "live-paper-light-zh-Hant-texture-a2.png",
+          "a2": "live-paper-light-zh-Hant-composite-a2.png",
+          "before-native-pause": "live-paper-light-zh-Hant-composite-before-native-pause.png",
+          "native-pause": "live-paper-light-zh-Hant-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-paper-light-zh-Hant-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-paper-light-zh-Hant-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-paper-light-zh-Hant-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-paper-light-zh-Hant-texture-native-resume.png",
+          "native-resume": "live-paper-light-zh-Hant-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 18944,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 230,
+            "average": [
+              186,
+              168,
+              150,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-a0.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-a0-black.png",
+            "framesDuringInterval": 5
+          },
+          "a1": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 19024,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 238,
+            "average": [
+              186,
+              169,
+              150,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-a1.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 19120,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 254,
+            "average": [
+              186,
+              168,
+              149,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-b.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-b-black.png",
+            "framesDuringInterval": 7
+          },
+          "a2": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 19232,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 224,
+            "average": [
+              187,
+              169,
+              151,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-a2.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 20320,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 237,
+            "average": [
+              187,
+              169,
+              151,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-zh-Hant-texture-native-resume.rgba",
+            "comparisonFile": "live-paper-light-zh-Hant-texture-native-resume-black.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "isolatedOutput": {
+          "colors": 297,
+          "average": [
+            197,
+            177,
+            158
+          ],
+          "brightCenter": [
+            11.38,
+            11.23
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 276,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 276,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 764,
+                "clientY": 292,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 276,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-paper-light-zh-Hant-composite-native-resume.png",
+            "texture": "live-paper-light-zh-Hant-texture-native-resume.png",
+            "framesDuringInterval": 7
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 23.935347222222223,
+          "changedPixels": 4383,
+          "peak": 196,
+          "width": 80,
+          "height": 60
+        }
+      },
+      "live-paper-light-en": {
+        "control": "#light-angle",
+        "values": [
+          "0",
+          "180"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {
+          "composite": {
+            "drift": {
+              "mean": 0.3388129340277779,
+              "changedPixels": 40,
+              "peak": 13.48214285714289,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 13.040768039710112,
+              "changedPixels": 2944,
+              "peak": 61.79365079365084,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 13.175539796213636,
+              "changedPixels": 2996,
+              "peak": 61.761904761904816,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.6627182195216055,
+              "changedPixels": 99,
+              "peak": 23.98412698412696,
+              "width": 80,
+              "height": 60
+            }
+          },
+          "texture": {
+            "drift": {
+              "mean": 0.3502809985394619,
+              "changedPixels": 45,
+              "peak": 13.625000000000028,
+              "width": 80,
+              "height": 60
+            },
+            "forward": {
+              "mean": 14.152254825975563,
+              "changedPixels": 3182,
+              "peak": 61.80952380952385,
+              "width": 80,
+              "height": 60
+            },
+            "backward": {
+              "mean": 14.300601610725325,
+              "changedPixels": 3239,
+              "peak": 61.77777777777783,
+              "width": 80,
+              "height": 60
+            },
+            "restored": {
+              "mean": 0.6960317288084205,
+              "changedPixels": 105,
+              "peak": 25.214285714285694,
+              "width": 80,
+              "height": 60
+            }
+          }
+        },
+        "files": {
+          "texture-a0": "live-paper-light-en-texture-a0.png",
+          "a0": "live-paper-light-en-composite-a0.png",
+          "texture-a1": "live-paper-light-en-texture-a1.png",
+          "a1": "live-paper-light-en-composite-a1.png",
+          "texture-b": "live-paper-light-en-texture-b.png",
+          "b": "live-paper-light-en-composite-b.png",
+          "texture-a2": "live-paper-light-en-texture-a2.png",
+          "a2": "live-paper-light-en-composite-a2.png",
+          "before-native-pause": "live-paper-light-en-composite-before-native-pause.png",
+          "native-pause": "live-paper-light-en-composite-native-pause.png",
+          "native-pause-after-1000ms": "live-paper-light-en-composite-native-pause-after-1000ms.png",
+          "diagnostic-no-canvas": "live-paper-light-en-composite-diagnostic-no-canvas.png",
+          "diagnostic-restored": "live-paper-light-en-composite-diagnostic-restored.png",
+          "texture-native-resume": "live-paper-light-en-texture-native-resume.png",
+          "native-resume": "live-paper-light-en-composite-native-resume.png"
+        },
+        "textures": {
+          "a0": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 16896,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 229,
+            "average": [
+              186,
+              168,
+              150,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-a0.rgba",
+            "comparisonFile": "live-paper-light-en-texture-a0-black.png",
+            "framesDuringInterval": 6
+          },
+          "a1": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 16992,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 228,
+            "average": [
+              186,
+              168,
+              150,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-a1.rgba",
+            "comparisonFile": "live-paper-light-en-texture-a1-black.png",
+            "framesDuringInterval": 6
+          },
+          "b": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 17088,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 248,
+            "average": [
+              186,
+              167,
+              149,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-b.rgba",
+            "comparisonFile": "live-paper-light-en-texture-b-black.png",
+            "framesDuringInterval": 6
+          },
+          "a2": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 17184,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 227,
+            "average": [
+              186,
+              169,
+              150,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-a2.rgba",
+            "comparisonFile": "live-paper-light-en-texture-a2-black.png",
+            "framesDuringInterval": 6
+          },
+          "native-resume": {
+            "width": 671,
+            "height": 448,
+            "format": "bgra8unorm",
+            "submittedAt": 18288,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 227,
+            "average": [
+              186,
+              169,
+              151,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8",
+            "comparisonEncoding": "opaque black: Cpremult + 0 * (1 - alpha), without a transparent PNG round-trip",
+            "rawFile": "live-paper-light-en-texture-native-resume.rgba",
+            "comparisonFile": "live-paper-light-en-texture-native-resume-black.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "isolatedOutput": {
+          "colors": 301,
+          "average": [
+            197,
+            177,
+            158
+          ],
+          "brightCenter": [
+            11.38,
+            11.23
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "pause": {
+          "intervalMs": 1000,
+          "before": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 275,
+            "devices": 1,
+            "configurations": 1
+          },
+          "comparisons": {
+            "beforeToPaused": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "pausedToAfter": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            },
+            "diagnosticRestored": {
+              "mean": 0,
+              "peak": 0,
+              "changedPixels": 0,
+              "width": 671,
+              "height": 448
+            }
+          },
+          "stabilityLimits": {
+            "mean": 0.01,
+            "peak": 1
+          },
+          "acceptsM03Freeze": true,
+          "immediate": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 275,
+            "devices": 1,
+            "configurations": 1
+          },
+          "pointerChallenge": {
+            "synthetic": true,
+            "target": "window",
+            "event": "mousemove",
+            "listenerSource": "shaders@4.0.7 dist/js/bundle.js shared pointer dispatcher",
+            "sequence": [
+              {
+                "position": "center",
+                "clientX": 764,
+                "clientY": 292,
+                "isTrusted": false
+              },
+              {
+                "position": "outside",
+                "clientX": 1132,
+                "clientY": 882,
+                "isTrusted": false
+              }
+            ],
+            "passed": true
+          },
+          "clockElapsedMs": 1000,
+          "after": {
+            "visible": true,
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "width": 671,
+            "height": 448,
+            "textures": 275,
+            "devices": 1,
+            "configurations": 1
+          },
+          "queueSubmissions": 0,
+          "sameCanvas": true,
+          "diagnosticRestoreLimits": {
+            "mean": 0.05,
+            "peak": 2
+          },
+          "resume": {
+            "nativeAction": true,
+            "phase": "running",
+            "composite": "live-paper-light-en-composite-native-resume.png",
+            "texture": "live-paper-light-en-texture-native-resume.png",
+            "framesDuringInterval": 6
+          }
+        },
+        "pauseMode": "freeze",
+        "diagnosticContribution": {
+          "method": "Temporarily hide the paused canvas; not a native product action",
+          "mean": 23.942430555555557,
+          "changedPixels": 4382,
+          "peak": 196,
+          "width": 80,
+          "height": 60
+        }
+      },
+      "live-liquid-archive-zh-Hant": {
+        "control": "#object-angle",
+        "values": [
+          "0",
+          "180"
+        ],
+        "intervalMs": 100,
+        "sequence": [
+          "a0",
+          "a1",
+          "b",
+          "a2"
+        ],
+        "comparisons": {},
+        "files": {},
+        "textures": {},
+        "isolatedOutput": {
+          "colors": 383,
+          "average": [
+            66,
+            70,
+            69
+          ],
+          "brightCenter": [
+            15.68,
+            9.46
+          ]
+        },
+        "viewport": {
+          "width": 1100,
+          "height": 850
+        },
+        "scope": "desktop controls and same-frame pause",
+        "captureTiming": "GPU submittedAt identifies the readback submission near the start of the 100ms interval; the composite is captured after it. They are paired by control state, not claimed to be the same submitted frame. Pause comparisons use only composite captures with no intervening animation-clock advancement.",
+        "comparisonSampling": "80x60 area-averaged cells from original pixels; native pause uses full resolution",
+        "canvasCss": {
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block",
+          "blendMode": "normal",
+          "maskImage": "none",
+          "ancestorsVisible": true
+        },
+        "readbackFailure": {
+          "label": "a0",
+          "error": "live-liquid-archive-zh-Hant: GPU readback timed out",
+          "diagnostic": {
+            "readback": {
+              "phase": "submitted",
+              "requestedAt": 56017,
+              "submittedAt": 56048,
+              "width": 780,
+              "height": 445
+            },
+            "textures": 676,
+            "motion": "running",
+            "visibility": "visible",
+            "viewport": [
+              1100,
+              850
+            ],
+            "scroll": [
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  },
+  "screenshots": [
+    "live-paper-light-zh-Hant-isolated-output.png",
+    "live-paper-light-zh-Hant.png",
+    "live-paper-light-zh-Hant-texture-a0.png",
+    "live-paper-light-zh-Hant-composite-a0.png",
+    "live-paper-light-zh-Hant-texture-a1.png",
+    "live-paper-light-zh-Hant-composite-a1.png",
+    "live-paper-light-zh-Hant-texture-b.png",
+    "live-paper-light-zh-Hant-composite-b.png",
+    "live-paper-light-zh-Hant-texture-a2.png",
+    "live-paper-light-zh-Hant-composite-a2.png",
+    "live-paper-light-zh-Hant-composite-before-native-pause.png",
+    "live-paper-light-zh-Hant-composite-native-pause.png",
+    "live-paper-light-zh-Hant-composite-native-pause-after-1000ms.png",
+    "live-paper-light-zh-Hant-composite-diagnostic-no-canvas.png",
+    "live-paper-light-zh-Hant-composite-diagnostic-restored.png",
+    "live-paper-light-zh-Hant-texture-native-resume.png",
+    "live-paper-light-zh-Hant-composite-native-resume.png",
+    "live-paper-light-en-isolated-output.png",
+    "live-paper-light-en.png",
+    "live-paper-light-en-texture-a0.png",
+    "live-paper-light-en-composite-a0.png",
+    "live-paper-light-en-texture-a1.png",
+    "live-paper-light-en-composite-a1.png",
+    "live-paper-light-en-texture-b.png",
+    "live-paper-light-en-composite-b.png",
+    "live-paper-light-en-texture-a2.png",
+    "live-paper-light-en-composite-a2.png",
+    "live-paper-light-en-composite-before-native-pause.png",
+    "live-paper-light-en-composite-native-pause.png",
+    "live-paper-light-en-composite-native-pause-after-1000ms.png",
+    "live-paper-light-en-composite-diagnostic-no-canvas.png",
+    "live-paper-light-en-composite-diagnostic-restored.png",
+    "live-paper-light-en-texture-native-resume.png",
+    "live-paper-light-en-composite-native-resume.png",
+    "live-liquid-archive-zh-Hant-isolated-output.png",
+    "live-liquid-archive-zh-Hant.png"
+  ],
+  "lane": "live",
+  "result": "FAIL",
+  "error": "Error: live-liquid-archive-zh-Hant: GPU readback timed out\n    at Timeout.<anonymous> (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:540:53)\n    at listOnTimeout (node:internal/timers:605:17)\n    at process.processTimers (node:internal/timers:541:7)"
+}

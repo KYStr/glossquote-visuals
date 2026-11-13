@@ -896,14 +896,18 @@ async function checkLive(browser) {
         await phase(page, "running");
         await page.waitForFunction(() => window.__visualProbe.textures > 3);
         const locale = prefix ? "en" : "zh-Hant";
+        // Match the accepted candidate's order: bound GPU submissions before
+        // potentially slow software-renderer diagnostic/full-page screenshots.
+        // Every original live check is retained; screenshots follow controls.
+        const composite = await checkLiveComposite(page, releasedWork.slug, locale, null);
         const isolatedFile = `live-${releasedWork.slug}-${locale}-isolated-output.png`;
         const isolatedOutput = await pixelEvidence(page, stage(page), resolve(evidenceDir, isolatedFile));
         evidence.screenshots.push(isolatedFile);
         assert.ok(isolatedOutput.colors > 20, "The deployed shader has no structured independent output");
+        composite.isolatedOutput = isolatedOutput;
         // The isolated check above deliberately changes CSS and is not a visibility pass.
-        // Save the unmodified page before measuring actual composite control effects.
+        // Save the original-CSS page after restoring diagnostic styles.
         await screenshot(page, `live-${releasedWork.slug}-${locale}.png`);
-        await checkLiveComposite(page, releasedWork.slug, locale, isolatedOutput);
         await probe.assertPrivate(site.origin, { fontPaths });
         await page.locator(".site-footer a").first().click();
         assert.equal(page.url(), url(prefix));

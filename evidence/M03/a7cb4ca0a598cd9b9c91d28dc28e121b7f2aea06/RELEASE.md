@@ -8,3 +8,5 @@
 - [Independent HTTPS readback](https-check.json): twelve localized pages, 47 same-origin resources, receipt, sitemap, robots and actual missing-path 404 passed.
 
 Neither timeout is relabeled as a product pass. Existing evidence does not establish the exact root cause. A separate read-only isolated verifier retains the deployed SHA and records its own source SHA, checks complete stage geometry around explicit-clip screenshots and records GPU readback phases. It does not redeploy or change application sources, scores, pixel thresholds or pause gates.
+
+[Diagnostic verifier ef28 report](verifier-ef28-failed/results.json) also failed at FORME a0. Its instrumented phase is `submitted`, before `buffer.mapAsync` resolves; it recorded 676 texture acquisitions, a 780×445 target, running motion and visible document. This narrows the stage but does not prove the root cause. The next verifier moves unchanged control/pause checks before diagnostic and full-page screenshots, matching the accepted candidate order; both screenshot checks remain afterward.
