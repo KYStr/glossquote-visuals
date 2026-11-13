@@ -14,7 +14,32 @@ defaults:
 jobs:
   verify:
     runs-on: windows-2025
-    timeout-minutes: 12
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - lane: shared
+            command: npm run test:browser
+            output: .runs/browser-evidence/
+          - lane: prism
+            command: node test/browser/prism-candidate.mjs
+            output: .runs/prism-evidence/
+          - lane: aeriform-en-desktop
+            command: node test/browser/aeriform-commercial.mjs en-desktop
+            output: .runs/aeriform-evidence/
+          - lane: aeriform-zh-desktop
+            command: node test/browser/aeriform-commercial.mjs zh-desktop
+            output: .runs/aeriform-evidence/
+          - lane: aeriform-en-mobile
+            command: node test/browser/aeriform-commercial.mjs en-mobile
+            output: .runs/aeriform-evidence/
+          - lane: aeriform-zh-mobile
+            command: node test/browser/aeriform-commercial.mjs zh-mobile
+            output: .runs/aeriform-evidence/
+          - lane: aeriform-commercial
+            command: node test/browser/aeriform-commercial.mjs commercial
+            output: .runs/aeriform-evidence/
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -32,11 +57,26 @@ jobs:
       - name: Test WebGPU in the isolated VM
         env:
           DEBUG: pw:browser
-        run: npm run test:browser
+        run: ${{ matrix.command }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
-          name: visual-candidate-${{ github.sha }}-${{ runner.os }}
-          path: .runs/browser-evidence/
+          name: visual-candidate-${{ github.sha }}-${{ runner.os }}-${{ matrix.lane }}
+          path: ${{ matrix.output }}
           if-no-files-found: ignore
           retention-days: 7
+  accepted:
+    name: All candidate checks
+    if: always()
+    needs: verify
+    runs-on: windows-2025
+    timeout-minutes: 3
+    steps:
+      - name: Require every isolated candidate lane
+        env:
+          MATRIX_RESULT: ${{ needs.verify.result }}
+        run: |
+          if [ "$MATRIX_RESULT" != "success" ]; then
+            echo "Candidate incomplete: one or more browser lanes did not pass."
+            exit 1
+          fi

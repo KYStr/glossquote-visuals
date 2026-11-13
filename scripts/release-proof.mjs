@@ -79,6 +79,7 @@ async function verifyWork(work, head) {
   assert.equal(job.head_sha, work.candidateCommit);
   assert.equal(job.run_id, proof.runId);
   assert.equal(job.workflow_name, "Verify visual candidate");
+  assert.equal(job.name, "All candidate checks", "Release needs the aggregate of all seven isolated browser lanes");
   assert.ok(job.labels.includes("windows-2025"), "Acceptance requires the verified Windows renderer");
 }
 

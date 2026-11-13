@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 22,
+  "revision": 23,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.1-sol",
@@ -14,94 +14,97 @@
       "id": "V001",
       "slug": "paper-light",
       "brief": "briefs/V001-commercial.md",
-      "status": "published",
+      "status": "candidate",
       "owner": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
-      "candidateCommit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
-      "pr": "https://github.com/KYStr/glossquote-visuals/pull/7",
-      "reviewEvidence": [
-        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/acceptance.json",
-        "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md"
-      ],
+      "candidateCommit": null,
+      "pr": null,
+      "reviewEvidence": [],
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/paper-light/",
       "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
       "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
-      "blockers": [],
-      "branch": "codex/v004-commercial-integration",
-      "authorCandidateCommit": "88ec74e0da4c4062c065b56c3bf781d504043c89",
-      "authorBranch": "codex/v001-commercial",
-      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/4"
+      "blockers": [
+        "M03 integrated rendering, temporal coherence, independent design review and release pending"
+      ],
+      "branch": "codex/visuals-m03-integration",
+      "authorCandidateCommit": "9e2f1f1faa386968345b82d3f83cc1984f3aeb8a",
+      "authorBranch": "codex/v001-material-hero",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/8"
     },
     {
       "id": "V002",
       "slug": "liquid-archive",
       "brief": "briefs/V002-commercial.md",
-      "status": "published",
+      "status": "candidate",
       "owner": "01a1d0b2-3cc2-7600-bf46-2cab8dda6039",
-      "candidateCommit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
-      "pr": "https://github.com/KYStr/glossquote-visuals/pull/7",
-      "reviewEvidence": [
-        "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/acceptance.json",
-        "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md"
-      ],
+      "candidateCommit": null,
+      "pr": null,
+      "reviewEvidence": [],
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/liquid-archive/",
       "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
       "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
-      "blockers": [],
-      "branch": "codex/v004-commercial-integration",
-      "authorCandidateCommit": "918a2feef5f1de5bd85aff7fdedbbf46e1355a0c",
-      "authorBranch": "codex/v002-commercial",
-      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/6"
+      "blockers": [
+        "M03 integrated rendering, temporal coherence, independent design review and release pending"
+      ],
+      "branch": "codex/visuals-m03-integration",
+      "authorCandidateCommit": "e5db9780e247b93a6da9fe5d16e4916cf5de4df8",
+      "authorBranch": "codex/v002-material-hero",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/9"
     },
     {
       "id": "V003",
       "slug": "night-signal",
       "brief": "briefs/V003-commercial.md",
-      "status": "published",
+      "status": "candidate",
       "owner": "01a1d0b2-414c-7452-ad32-445d958fb8a1",
-      "candidateCommit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
-      "pr": "https://github.com/KYStr/glossquote-visuals/pull/7",
-      "reviewEvidence": [
-        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/acceptance.json",
-        "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md"
-      ],
+      "candidateCommit": null,
+      "pr": null,
+      "reviewEvidence": [],
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/night-signal/",
       "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
       "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
-      "blockers": [],
-      "branch": "codex/v004-commercial-integration",
-      "authorCandidateCommit": "82ba3063ec2e7bd2bddee2a6efe7307563d8a7bd",
-      "authorBranch": "codex/v003-commercial",
-      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/5"
+      "blockers": [
+        "M03 integrated rendering, temporal coherence, independent design review and release pending"
+      ],
+      "branch": "codex/visuals-m03-integration",
+      "authorCandidateCommit": "9960fae4f033d3ba7ba7bf546ed1fc5c1d7a54c7",
+      "authorBranch": "codex/v003-signal-hero",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/10"
     },
     {
       "id": "V004",
       "slug": "prism-materials",
       "brief": "briefs/V004-prism-materials.md",
-      "status": "building",
-      "owner": "/root/prism_build",
+      "status": "candidate",
+      "owner": "01a1d302-21ef-7052-92d8-1ca5a415af0a",
       "candidateCommit": null,
       "pr": null,
       "reviewEvidence": [],
       "plannedUrl": "https://kystr.github.io/glossquote-visuals/works/prism-materials/",
       "blockers": [
-        "Implementation and fixed-candidate acceptance pending"
+        "M03 integrated rendering, temporal coherence, independent design review and release pending"
       ],
-      "branch": "codex/v004-prism-materials"
+      "branch": "codex/visuals-m03-integration",
+      "authorBranch": "codex/v004-prism-materials",
+      "authorCandidateCommit": "a3ccb761c120c7d2cf9ac5b7fda634b4655a9a73",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/12"
     },
     {
       "id": "V005",
       "slug": "aeriform",
       "brief": "briefs/V005-aeriform.md",
-      "status": "building",
-      "owner": "/root/aero_build",
+      "status": "candidate",
+      "owner": "01a1d302-2c57-70c3-b388-eed0ca27e754",
       "candidateCommit": null,
       "pr": null,
       "reviewEvidence": [],
       "plannedUrl": "https://kystr.github.io/glossquote-visuals/works/aeriform/",
       "blockers": [
-        "Implementation and fixed-candidate acceptance pending"
+        "M03 integrated rendering, temporal coherence, independent design review and release pending"
       ],
-      "branch": "codex/v005-aeriform"
+      "branch": "codex/visuals-m03-integration",
+      "authorBranch": "codex/v005-aeriform",
+      "authorCandidateCommit": "ed815d6b352581c757cf6df02776fa727494200d",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/11"
     }
   ],
   "releaseHistory": [
@@ -165,6 +168,76 @@
           "releaseEvidence": "evidence/V003/2a69f0f86baf86ca8e85f846b071c0e5b82922c8/RELEASE.md",
           "blockers": [],
           "branch": "codex/v003-night-signal"
+        }
+      ]
+    },
+    {
+      "milestone": "M02",
+      "revision": 21,
+      "finalSourceCommit": "14554ed2c9a229736eb73102ef6bc352fde98adc",
+      "works": [
+        {
+          "id": "V001",
+          "slug": "paper-light",
+          "brief": "briefs/V001-commercial.md",
+          "status": "published",
+          "owner": "01a1d0b2-395e-72c2-8518-7e9a0b18ec11",
+          "candidateCommit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+          "pr": "https://github.com/KYStr/glossquote-visuals/pull/7",
+          "reviewEvidence": [
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/acceptance.json",
+            "evidence/V001/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md"
+          ],
+          "liveUrl": "https://kystr.github.io/glossquote-visuals/works/paper-light/",
+          "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+          "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
+          "blockers": [],
+          "branch": "codex/v004-commercial-integration",
+          "authorCandidateCommit": "88ec74e0da4c4062c065b56c3bf781d504043c89",
+          "authorBranch": "codex/v001-commercial",
+          "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/4"
+        },
+        {
+          "id": "V002",
+          "slug": "liquid-archive",
+          "brief": "briefs/V002-commercial.md",
+          "status": "published",
+          "owner": "01a1d0b2-3cc2-7600-bf46-2cab8dda6039",
+          "candidateCommit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+          "pr": "https://github.com/KYStr/glossquote-visuals/pull/7",
+          "reviewEvidence": [
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/acceptance.json",
+            "evidence/V002/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md"
+          ],
+          "liveUrl": "https://kystr.github.io/glossquote-visuals/works/liquid-archive/",
+          "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+          "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
+          "blockers": [],
+          "branch": "codex/v004-commercial-integration",
+          "authorCandidateCommit": "918a2feef5f1de5bd85aff7fdedbbf46e1355a0c",
+          "authorBranch": "codex/v002-commercial",
+          "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/6"
+        },
+        {
+          "id": "V003",
+          "slug": "night-signal",
+          "brief": "briefs/V003-commercial.md",
+          "status": "published",
+          "owner": "01a1d0b2-414c-7452-ad32-445d958fb8a1",
+          "candidateCommit": "40d3740761c2c8b44f41bf8efe0723e03f8a650a",
+          "pr": "https://github.com/KYStr/glossquote-visuals/pull/7",
+          "reviewEvidence": [
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/acceptance.json",
+            "evidence/V003/40d3740761c2c8b44f41bf8efe0723e03f8a650a/REVIEW.md"
+          ],
+          "liveUrl": "https://kystr.github.io/glossquote-visuals/works/night-signal/",
+          "deployedCommit": "06709c4d6ccdd60096e3e5282bcbe9b329d08c24",
+          "releaseEvidence": "evidence/M02/06709c4d6ccdd60096e3e5282bcbe9b329d08c24/RELEASE.md",
+          "blockers": [],
+          "branch": "codex/v004-commercial-integration",
+          "authorCandidateCommit": "82ba3063ec2e7bd2bddee2a6efe7307563d8a7bd",
+          "authorBranch": "codex/v003-commercial",
+          "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/5"
         }
       ]
     }

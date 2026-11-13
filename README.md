@@ -1,5 +1,7 @@
 # GlossQuote Visuals
 
+**M03 candidate in progress — not released.** This branch integrates revised material heroes for Paper & Light, FORME and Night Signal, plus PRISM Materials and AERIFORM. Five visible production chats are refining the work. Same-candidate browser lanes, temporal material review and fresh scores strictly above 9/10 are still required before deployment. The public Pages site continues to serve the M02 version below; its historical scores do not approve these new candidates. [Current brief](briefs/M03-hero-direction.md) · [Production owners](coordination/m03-plan.json).
+
 原創品牌網站作品集：以紙品訂製、金屬家飾與音樂活動為主題，將材質、光影與完整顧客流程結合。
 
 Original brand websites for bespoke stationery, steel homeware and an electronic music event. Each brings its own art direction, material language and complete customer journey.
