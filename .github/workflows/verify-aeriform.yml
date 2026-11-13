@@ -14,7 +14,11 @@ defaults:
 jobs:
   aeriform:
     runs-on: windows-2025
-    timeout-minutes: 18
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [en-desktop, zh-mobile, zh-desktop, en-mobile, commercial]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -30,11 +34,11 @@ jobs:
           npm run build
       - run: node node_modules/playwright/cli.js install chromium --no-shell
       - name: Verify AERIFORM in the isolated VM
-        run: node test/browser/aeriform-commercial.mjs
+        run: node test/browser/aeriform-commercial.mjs ${{ matrix.lane }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
-          name: aeriform-candidate-${{ github.sha }}
+          name: aeriform-${{ matrix.lane }}-${{ github.sha }}
           path: .runs/aeriform-evidence/
           if-no-files-found: ignore
           retention-days: 7

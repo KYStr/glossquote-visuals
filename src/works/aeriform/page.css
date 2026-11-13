@@ -59,6 +59,8 @@ section[id] { scroll-margin-block-start: 1rem; }
   min-block-size: 44px;
   text-decoration: none;
   width: fit-content;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
 }
 .brand-icon {
   display: inline-block;
@@ -108,7 +110,7 @@ h1 {
   position: relative;
   z-index: 1;
 }
-h1 span { display: block; width: fit-content; }
+h1 span { display: block; width: fit-content; max-inline-size: 100%; overflow-wrap: anywhere; }
 h1 span:last-child { color: #ffd8d0; }
 [lang="zh-Hant"] h1 { font-size: clamp(2.95rem, 7.1vw, 7.75rem); letter-spacing: -0.065em; line-height: 1.08; }
 .hero-intro { max-inline-size: 21rem; font-size: 1.1rem; margin-block: clamp(1.3rem, 3vw, 2.1rem) 1.2rem; }
@@ -399,4 +401,6 @@ fieldset p { font-size: 0.875rem; }
 @media (max-width: 23em) {
   .outputs, .brief-review dl div { grid-template-columns: 1fr; }
   .masthead nav { gap: 0 0.65rem; }
+  .masthead .wordmark { font-size: min(1.25rem, 7vw); }
+  .masthead .locale { font-size: min(0.875rem, 5vw); }
 }

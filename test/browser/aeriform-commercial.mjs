@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "playwright";
@@ -16,8 +17,10 @@ assert.equal(commit, process.env.GITHUB_SHA);
 const evidenceDir = resolve(root, ".runs/aeriform-evidence");
 await mkdir(evidenceDir, { recursive: true });
 const site = await serveDist();
+const lane = process.argv[2];
+assert.ok(["en-desktop", "zh-mobile", "zh-desktop", "en-mobile", "commercial"].includes(lane));
 const evidence = {
-  commit, environment: "GitHub-hosted Windows Server 2025 VM · headless Chromium D3D11 WARP",
+  commit, lane, environment: "GitHub-hosted Windows Server 2025 VM · headless Chromium D3D11 WARP",
   checks: {}, measurements: {}, screenshots: [], downloads: [],
 };
 const stage = (page) => page.locator("[data-stage]");
@@ -47,7 +50,7 @@ async function snap(page, label, { clip, fullPage } = {}) {
   const filename = label + ".png";
   const png = await page.screenshot({ path: resolve(evidenceDir, filename), clip, fullPage, timeout: 45_000 });
   evidence.screenshots.push(filename);
-  return png;
+  return createHash("sha256").update(png).digest("hex");
 }
 
 async function phase(page, target) {
@@ -76,7 +79,8 @@ async function layout(page) {
       const scroll = document.documentElement.scrollWidth;
       const outliers = scroll <= innerWidth + 1 ? [] : [...document.querySelectorAll("body *")]
         .filter((element) => element.getBoundingClientRect().right > innerWidth + 1)
-        .slice(0, 24).map((element) => [element.tagName, element.className, Math.round(element.getBoundingClientRect().right)]);
+        .slice(0, 24).map((element) => [element.tagName, element.className, element.parentElement.className,
+          Math.round(element.getBoundingClientRect().right)]);
       return { scroll, width: innerWidth, outliers };
     }, zoom);
     assert.ok(dimensions.scroll <= dimensions.width + 1, JSON.stringify({ zoom, ...dimensions }));
@@ -242,7 +246,7 @@ async function gpu(browser, lang, width, inspect) {
       await page.mouse.move(clip.x + clip.width * 0.74, clip.y + clip.height * 0.5);
       await nextFrames(page, 12);
       const scattered = await snap(page, stem + "-pointer-scatter", { clip });
-      assert.notDeepEqual(scattered, settled);
+      assert.notEqual(scattered, settled);
       await page.mouse.move(10, 10);
       await nextFrames(page, 20);
       await snap(page, stem + "-pointer-regroup", { clip });
@@ -255,10 +259,10 @@ async function gpu(browser, lang, width, inspect) {
       const frozen = await snap(page, stem + "-paused", { clip });
       await quietWithPointer(page);
       const held = await snap(page, stem + "-paused-held", { clip });
-      assert.deepEqual(held, frozen, "The presented paused artwork changed");
+      assert.equal(held, frozen, "The presented paused artwork changed");
       await pause.click();
       await nextFrames(page, 12);
-      assert.notDeepEqual(await snap(page, stem + "-resumed", { clip }), frozen);
+      assert.notEqual(await snap(page, stem + "-resumed", { clip }), frozen);
 
       for (const form of ["motion", "digital", "identity"]) {
         await page.locator(`button[data-form="${form}"]`).click();
@@ -337,27 +341,20 @@ try {
   evidence.measurements.renderer = (await cdp.send("SystemInfo.getInfo")).gpu.devices
     .map(({ vendorString, deviceString }) => ({ vendorString, deviceString }));
   await cdp.detach();
-  const outcomes = [];
-  for (const [name, run] of [
-    ["en desktop", () => gpu(browser, "en", 1440, true)],
-    ["zh-Hant mobile", () => gpu(browser, "zh-Hant", 390, true)],
-    ["zh-Hant desktop", () => gpu(browser, "zh-Hant", 1440, false)],
-    ["en mobile", () => gpu(browser, "en", 390, false)],
-    ["responsive and brief", () => responsiveAndBrief(browser)],
-  ]) {
-    try {
-      await run();
-    } catch (error) {
-      outcomes.push({ name, error: error.stack });
-      console.error(name, error);
+  const scenarios = new Map([
+    ["en-desktop", () => gpu(browser, "en", 1440, true)],
+    ["zh-mobile", () => gpu(browser, "zh-Hant", 390, true)],
+    ["zh-desktop", () => gpu(browser, "zh-Hant", 1440, false)],
+    ["en-mobile", () => gpu(browser, "en", 390, false)],
+    ["commercial", () => responsiveAndBrief(browser)],
+  ]);
+  await scenarios.get(lane)();
+  if (lane !== "commercial") {
+    evidence.checks.webgpu = "PASS live composition with non-empty WebGPU readback";
+    if (lane === "en-desktop" || lane === "zh-mobile") {
+      evidence.checks.lifecycle = "PASS exact presented pause frame, pointer-quiet pause/hidden/offscreen/pagehide, resumed rendering, actual device loss/recovery and page return";
     }
   }
-  if (outcomes.length) {
-    evidence.failures = outcomes;
-    throw new Error("One or more isolated AERIFORM checks failed");
-  }
-  evidence.checks.webgpu = "PASS four bilingual live compositions and non-empty texture readbacks, three service forms and pointer/touch/keyboard evidence";
-  evidence.checks.lifecycle = "PASS exact presented pause frame, pointer-quiet pause/hidden/offscreen/pagehide, resumed rendering, actual device loss/recovery and page return";
   evidence.checks.privacy = "PASS same-origin GET only, CSP, no telemetry/network APIs, no storage and no cookies";
   evidence.result = "PASS";
 } catch (error) {
