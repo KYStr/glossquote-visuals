@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Press TC";
+  src: url("./press-tc.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+html.press-page[lang="zh-Hant"] {
+  --sans: "Press TC", sans-serif;
+  font-family: var(--sans);
+}
+html[data-type-pending] { display: none !important; }
+html[lang="zh-Hant"] :is(.hero h1, .section-head h2, .receipt h3, .print-rules h3) {
+  font-family: var(--sans);
+  line-height: 1.1;
+}
+html[lang="zh-Hant"] .hero h1 { font-size: clamp(2.7rem, 5.4vw, 5.15rem); }
+html[lang="zh-Hant"] :is(.service, .slugline, .event p, .formats) { font-family: var(--sans); }
