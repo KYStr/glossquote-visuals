@@ -1,0 +1,68 @@
+{
+  "adapter": {
+    "vendor": "NVIDIA",
+    "architecture": "",
+    "device": "NVIDIA GeForce RTX 3060",
+    "description": "610.88",
+    "stackgroup_min_size": 4,
+    "stackgroup_max_size": 128,
+    "vendor_id": 4318,
+    "device_id": 9475,
+    "adapter_type": "DiscreteGPU",
+    "backend_type": "Vulkan"
+  },
+  "viewport": [
+    1200,
+    800
+  ],
+  "frames": [
+    {
+      "label": "low",
+      "seconds": 0.0,
+      "wetPixels": 469367,
+      "poolConnectedToSea": false,
+      "points": {
+        "A": false,
+        "B": false,
+        "C": true,
+        "isolated_pool": true
+      }
+    },
+    {
+      "label": "mid",
+      "seconds": 2.5,
+      "wetPixels": 596564,
+      "poolConnectedToSea": true,
+      "points": {
+        "A": false,
+        "B": false,
+        "C": true,
+        "isolated_pool": true
+      }
+    },
+    {
+      "label": "high",
+      "seconds": 5.0,
+      "wetPixels": 681618,
+      "poolConnectedToSea": true,
+      "points": {
+        "A": true,
+        "B": false,
+        "C": true,
+        "isolated_pool": true
+      }
+    },
+    {
+      "label": "low-return",
+      "seconds": 10.0,
+      "wetPixels": 469367,
+      "poolConnectedToSea": false,
+      "points": {
+        "A": false,
+        "B": false,
+        "C": true,
+        "isolated_pool": true
+      }
+    }
+  ]
+}
