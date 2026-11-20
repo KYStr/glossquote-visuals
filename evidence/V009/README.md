@@ -4,6 +4,7 @@
 
 - 兩語頁面位於 `works/afterimage-press/` 和 `en/works/afterimage-press/`。限量海報與活動為虛構案例。
 - `press.wgsl` 在同一個 WebGPU 繪製中使用兩份印版遮罩與四區油墨覆蓋率。8 秒週期，從 34.6% 版寬的相對錯位起步，約 1.2 秒套準，留在對位區間至約 3.4 秒，再緩慢退開。墨色依靜態校樣的 sRGB 值合成，再轉線性 RGB 交給 WebGPU 呈現。切版順序是雙版、鈷藍、螢橘。
+- GPU backing width 的目標上限為 352 px。依裝置像素比反推初始化及 resize 的邏輯尺寸，首次呈現前與裝置重建時先讓套件讀取受限的 CSS 尺寸。畫布就緒後鋪滿海報區。
 - `bake-art.py` 使用 Pillow 與 NumPy，在 repo root 產生網頁靜態校樣、三款海報與 1200 × 800 封面。圖案及字排為本件製作。校樣沿用 GPU 的版面座標和油墨色階。
 - 繁中以本件 WOFF2 及 850 ms 上限的首次排版載入方式處理。字型來自 Google Fonts 固定版本 `869789e84da92782c144d83d69b64cec54905b5f` 的 Noto Sans TC 變動字型，涵蓋繁中 HTML、執行期字串及 ASCII。OFL 隨檔。拉丁海報字沿用 repo 內的 Barlow Condensed，規格標記使用 IBM Plex Mono。
 - `flow.mjs` 提供候選審查器的色版控制和商業流程介面。計價測試涵蓋 25、150、151、250 張、空白、超出範圍及小數，並核對回改後的 UTF-8 製作單。
