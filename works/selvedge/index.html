@@ -15,17 +15,17 @@
   <meta property="og:description" content="比較三種室內織品的手感、透光與保養，搭配色號並匯出可交給客戶核對的樣本單。">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/selvedge/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/selvedge/cover.webp">
-  <meta property="og:image:alt" content="暗茜紅經線與亞麻色緯線交織的布樣，斜光掠過布面，邊緣垂下幾根鬆散紗線">
+  <meta property="og:image:alt" content="苔灰經線和銅紅緯線在寬幅特寫中交替浮沉，斜紋沿布面形成階梯狀山脊">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:locale:alternate" content="en_US">
   <link rel="icon" href="%BASE_URL%media/selvedge/icon.png" type="image/png" sizes="48x48">
-  <link rel="preload" href="%BASE_URL%fonts/studio-text-tc.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="%BASE_URL%fonts/studio-serif-tc.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/selvedge/page.css">
-  <link rel="stylesheet" href="%BASE_URL%fonts/studio-tc.css">
+  <link rel="preload" href="%BASE_URL%fonts/m05-selvedge-text.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="%BASE_URL%fonts/m05-selvedge-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="%BASE_URL%fonts/m05-selvedge-tc.css">
   <script src="%BASE_URL%fonts/studio-tc-first-layout.js" data-serif></script>
   <script type="module" src="/src/works/selvedge/page.js"></script>
 </head>
@@ -39,18 +39,19 @@
   <main id="main" tabindex="-1">
     <section class="wrap hero" aria-labelledby="hero-title">
       <figure class="specimen">
-        <div class="cloth" data-stage data-cycle-seconds="8" data-motion="still" data-weave="plain" aria-hidden="true">
-          <img src="%BASE_URL%media/selvedge/cover.webp" data-poster="plain" width="1200" height="800" alt="" fetchpriority="high">
-          <img src="%BASE_URL%media/selvedge/twill.webp" data-poster="twill" width="1200" height="800" alt="" decoding="async">
+        <div class="cloth" data-stage data-cycle-seconds="evolving" data-motion="still" data-weave="twill" aria-hidden="true">
+          <img src="%BASE_URL%media/selvedge/cover.webp" data-poster="twill" width="1200" height="800" alt="" fetchpriority="high">
+          <img src="%BASE_URL%media/selvedge/plain.webp" data-poster="plain" width="1200" height="800" alt="" decoding="async">
           <img src="%BASE_URL%media/selvedge/satin.webp" data-poster="satin" width="1200" height="800" alt="" decoding="async">
+          <img src="%BASE_URL%media/selvedge/shuttle-start.webp" data-shuttle-start width="1200" height="800" alt="" decoding="async">
           <canvas></canvas>
         </div>
         <figcaption class="plate-caption">
-          <span><b data-plate-id>SLV-101</b> / <span data-plate-name>原地平紋</span></span>
+          <span><b data-plate-id>SLV-202</b> / <span data-plate-name>折脊斜紋</span></span>
           <span class="plate-direction">方向｜經線 ↓・緯線 →</span>
           <span data-motion-status>靜態布樣</span>
         </figcaption>
-        <noscript><p class="note">目前顯示靜態平紋。下方提供三款布樣資料，可用瀏覽器列印。</p></noscript>
+        <noscript><p class="note">目前顯示已織成的斜紋。下方提供三款布樣資料，可用瀏覽器列印。</p></noscript>
       </figure>
       <div class="hero-copy">
         <p class="kicker">室內織品 · 打樣室</p>
@@ -59,11 +60,11 @@
         <a class="action" href="#weaves">挑選布樣 <span aria-hidden="true">↘</span></a>
         <div class="controls" data-controls hidden>
           <div role="group" aria-label="切換布面組織">
-            <button type="button" data-weave-control="plain" aria-pressed="true"><span class="index-id">SLV-101</span> <span data-weave-name>原地平紋</span></button>
-            <button type="button" data-weave-control="twill" aria-pressed="false"><span class="index-id">SLV-202</span> <span data-weave-name>折脊斜紋</span></button>
+            <button type="button" data-weave-control="plain" aria-pressed="false"><span class="index-id">SLV-101</span> <span data-weave-name>原地平紋</span></button>
+            <button type="button" data-weave-control="twill" aria-pressed="true"><span class="index-id">SLV-202</span> <span data-weave-name>折脊斜紋</span></button>
             <button type="button" data-weave-control="satin" aria-pressed="false"><span class="index-id">SLV-503</span> <span data-weave-name>長浮緞紋</span></button>
           </div>
-          <button type="button" class="pause" data-pause>暫停側光</button>
+          <button type="button" class="pause" data-pause>暫停織入</button>
         </div>
       </div>
     </section>
@@ -71,7 +72,7 @@
     <section class="wrap collection" id="weaves" aria-labelledby="weaves-title">
       <header class="section-head">
         <div><p class="kicker">組織對照</p><h2 id="weaves-title">三種布，一個交點。</h2></div>
-        <p>三張圖放大同一塊經緯座標。深茜紅是經線，亞麻色是緯線。比較浮沉規律，再依織品手感、遮蔽與用途選布。</p>
+        <p>三張圖放大同一塊經緯座標。茜紅、苔灰與暮墨分別標示三款的經線，暖色紗線橫跨緯向。比較浮沉規律，再依織品手感、遮蔽與用途選布。</p>
       </header>
       <div class="cards">
         <article class="card" data-fabric="plain" data-id="SLV-101">

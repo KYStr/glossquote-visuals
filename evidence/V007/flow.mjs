@@ -17,10 +17,15 @@ export async function setMaterial(page, state, input) {
   }
   const stage = page.locator("[data-stage]");
   assert.equal(await stage.getAttribute("data-weave"), weave);
+  const product = page.locator(`[data-fabric="${weave}"]`);
+  const fabricId = await product.getAttribute("data-id");
+  assert.equal(await page.locator("[data-plate-id]").textContent(), fabricId);
+  assert.equal(await page.locator("[data-plate-name]").textContent(), await product.locator("[data-name]").textContent());
+  assert.equal(await stage.locator(`[data-poster="${weave}"]`).count(), 1);
   assert.equal(await button.getAttribute("aria-pressed"), "true");
   assert.equal(await page.locator('[data-weave-control][aria-pressed="true"]').count(), 1);
   await stage.scrollIntoViewIfNeeded();
-  return { state, weave, input };
+  return { state, weave, fabricId, input };
 }
 
 export async function testFlow(page, lang) {

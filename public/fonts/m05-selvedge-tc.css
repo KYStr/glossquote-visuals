@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Studio TC Text";
+  src: url("./m05-selvedge-text.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Studio TC Serif";
+  src: url("./m05-selvedge-serif.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: block;
+}
+
+/* The startup script sets this attribute only when FontFaceSet is usable. */
+html[data-type-pending] { display: none !important; }
+
+/* Unstyled native selects and other controls follow their page's text face. */
+:where(button, input, select, option, textarea) { font-family: inherit; }
+
+html[lang="zh-Hant"] {
+  --sans: "Studio TC Text", sans-serif;
+  --serif: "Studio TC Serif", serif;
+  font-family: var(--sans);
+}

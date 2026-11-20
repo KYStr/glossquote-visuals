@@ -1,4 +1,45 @@
-# 果時 SORBET HOUR 候選交接
+# 果時 JELLY HOUR｜M05 作者交接
+
+作品入口維持 `/glossquote-visuals/works/sorbet-hour/` 和 `/glossquote-visuals/en/works/sorbet-hour/`。變更從發布基線 `085460a3884d2e826e94b71ef5a3dea74ed05908` 製作。果時英文品牌改為 Jelly Hour。共享畫廊、catalog、registry 和發布檔案由主責處理。
+
+## 首屏和配盒操作
+
+- `[data-stage]` 初次啟動播放一次落下、壓縮、回彈與收斂。約 1.21 秒後只保留緩慢反光，`data-cycle-seconds="evolving"`。暫停控制沿用 `[data-pause]`。
+- `[data-scoop-hit]` 接受滑鼠點擊、拖曳、觸控及鍵盤方向鍵加 Enter。左肩、上緣中央與右肩都可挖取一勺。舞台以 `data-hero-state`、`data-scoop-position` 和 `data-scoop-visual` 表示狀態與到位位置，`[data-scoop-reset]` 還原。
+- 同一個球形勺口從主體扣除，並與原模具取交集生成獨立的一勺。三個位置都切穿模具輪廓，凹面有陰影和受光邊。挖出的模具片保持原姿態，在盤上接地。
+- 降低動態、手動暫停後操作或即時 GPU 不可用時，可用同構圖 WebP 挖取與重設。無 JS 仍顯示海報、成分、過敏原及 `#blank-recipe`。
+- 三款果凍沿用六杯、600 毫升的離線禮盒。測試匯出 `jelly-hour-recipe-{zh-Hant|en}.txt`，含實際選擇、柑橘果膠、過敏原與冷藏保存說明。
+
+## 驗收入口
+
+`flow.mjs` 匯出 `setMaterial(page, state, input)`、`testFlow(page, lang)` 和 `testHeroInteraction(page, input, capture)`。試吃口味狀態為 0／1／2（蜜柑／覆盆莓／白芭樂）。首屏測試支援 `keyboard`、`touch`、`mouse`，依序呼叫 `capture("before")`、`capture("after")` 和 `capture("reset")`，回傳可序列化的形狀、位置、材質、動態和圖說。
+
+三種完整模型與九種挖取狀態採作品原創 WGSL，無外部素材。可用 Python 3.12、wgpu 0.31.0、Pillow 12.0.0 執行 `src/works/sorbet-hour/render-posters.py --assets --samples .runs/v008-m05-frames`，重現海報與原生落下、壓縮、反彈、靜止、挖取及重設取樣。
+
+## 作者驗證與待驗
+
+- 鎖版安裝、來源檢查、23 項單元測試和兩語候選建置完成。Vite 的既有字型資產警告保留，建置檢查確認輸出路徑可用。
+- 無 GPU 的 DOM 模擬驗證兩語三種輸入及重設、單一缺口狀態、配滿六杯後拒絕第七杯、減一再配及讀回 3／1／2 杯的配方 Blob。
+- RTX 3060 Vulkan 原生取樣確認三款模具、三處打破外輪廓的缺口與分離的一勺。0.34 秒壓扁、0.57 秒回彈，1.21 秒與 3 秒的蜜柑輪廓範圍相同。原生 D3D12 軟體轉譯於 1120×746 目標的完整／挖取狀態，100 幀的 median 為 4.72／4.48 ms，p95 為 5.23／5.15 ms。此計時為單一原生 render pass 提交到完成。
+- 網頁瀏覽器的發布首屏前三秒、畫面合成、真實輸入及下載、生命週期和 PERF-1 仍待獨立驗收。
+
+## M05 效能複測候選
+
+冷啟動先給 Shaders 已受限的元素尺寸，首幀就緒後再讓 canvas 鋪滿舞台。桌面 backing 封頂約 392×261，手機隨舞台縮小。裝置重建前撤除顯示尺寸覆寫，重新套用相同像素預算。靜止時略過形變，背景遠離接觸影的像素略過陰影運算，挖口內壁先於高光計算輸出。
+
+同一原生 Microsoft Basic Render Driver（D3D12）以 20 幀暖機、100 幀提交流程取樣。完整果凍由 760×507 目標的 2.334／2.976 ms 降至 392×261 的 0.856／1.029 ms（median／p95）。挖取版同尺寸對照由 2.298／2.556 ms 降至 0.811／0.922 ms。這是原生單一繪製工作完成的時間。瀏覽器的 34／50 ms 門檻待原環境複測。
+
+落下時壓縮峰維持約 90 ms，模型高度降至 70%、寬度增至約 116%，以原底面為錨點，約 1.21 秒收斂。392 px 原生影格已檢視落下、壓縮、回彈、穩定、三處缺口與重設。繁中頁以本地字型切換顯示，靜態產物直接提供 `lang="zh-Hant"`、正文、成分和配方，無整頁遮蔽腳本。
+
+## M05 第二次效能與暫停修訂
+
+候選 f13860b 的兩語桌面原始 768×513 PNG 中，暫停當下與一秒後只有相同 136 個像素有差，座標 x19–748、y1–79，RGB 差值也完全一致，單通道最多差 4。差異沿著舊舞台上弧，果凍與瓷盤內部未變。改用直邊舞台解除這個圓弧抗鋸齒的變因，暫停仍凍結原動態畫布。實際瀏覽器複測待主責。
+
+最大 backing 降至 288×192，較 392×261 少約 46% 像素。靜止姿態略過光線座標的形變逆轉換、溝紋方向改用等價三角恆等式，且桌面遠離盤與陰影的片段直接返回。1200×800 同尺寸前後著色對照的完整與三處缺口影格，最大單通道差 1。288×192 取樣放大至桌面後，仍可分辨瓷盤、三處凹口及分離的一勺，輪廓邊緣較軟。
+
+同一 D3D12 原生軟體轉譯測試的完整狀態 p95 從 1.176 ms 降至 0.917 ms，挖取狀態從 1.182 ms 降至 0.836 ms。瀏覽器實際呈現間隔另測。已撤除頁面 CSS 的舊「Jelly Hour TC」字型覆寫，繁中專用字型與 startup 由主責整合。
+
+# M04 歷史作者交接
 
 - 候選入口為 `/glossquote-visuals/works/sorbet-hour/` 和 `/glossquote-visuals/en/works/sorbet-hour/`。沿用 M04 registry 的 V008 記錄。測試時暫加本機 catalog 條目，其 `image` 為 `media/sorbet-hour/cover.webp`，`width` 為 1200、`height` 為 800。中英文 title 分別為「果時 SORBET HOUR」與「Sorbet Hour」。條目由主責整合。
 - `flow.mjs` 的 `testFlow(page, lang)` 預期已載入、杯數歸零且可接收下載的頁面，`lang` 為 `zh-Hant` 或 `en`。回傳每一步的杯數與配方原文。可在 GPU 初始化失敗模式重跑。

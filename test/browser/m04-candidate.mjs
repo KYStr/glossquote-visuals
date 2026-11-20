@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { chromium } from "playwright";
-import { base, root } from "../../scripts/site-map.mjs";
+import { base, registry, root } from "../../scripts/site-map.mjs";
 import { observe } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 import { captureOpening } from "./m04-opening.mjs";
@@ -15,12 +15,13 @@ if (process.platform !== "win32" || process.env.RUNNER_OS !== "Windows" ||
     process.env.GITHUB_REPOSITORY?.toLowerCase() !== "kystr/glossquote-visuals") {
   throw Error("NOT_RUN_USER_FOCUS_BOUNDARY: browser capture is restricted to the project's GitHub-hosted Windows VM");
 }
-const [work, lang, viewport] = process.argv.slice(2);
-const slugs = { V006: "tide-table", V007: "selvedge", V008: "sorbet-hour" };
-assert.ok(Object.hasOwn(slugs, work) && ["zh-Hant", "en"].includes(lang) && ["desktop", "mobile"].includes(viewport));
+const [work, lang, viewport, series = "m04"] = process.argv.slice(2);
+assert.ok(["m04", "m05"].includes(series));
+const entry = registry.works.find(candidate => candidate.id === work);
+assert.ok(entry && ["zh-Hant", "en"].includes(lang) && ["desktop", "mobile"].includes(viewport));
 const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 assert.equal(commit, process.env.GITHUB_SHA);
-const dir = join(root, ".runs", "m04-evidence", [work, lang, viewport].join("-"));
+const dir = join(root, ".runs", series + "-evidence", [work, lang, viewport].join("-"));
 await mkdir(dir, { recursive: true });
 const mobile = viewport === "mobile";
 const size = mobile ? { width: 390, height: 844 } : { width: 1440, height: 900 };
@@ -28,7 +29,7 @@ const report = { work, lang, viewport, commit, cssSize: size, runner: "GitHub-ho
   adapterMode: "D3D11 WARP (software)", emulatedMobileViewport: mobile, checks: {}, capture: {}, manual: {
     "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
     "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
-    "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
     "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
     "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
     "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief.",
@@ -49,7 +50,7 @@ async function check(name, operation) {
 const launch = { headless: true, channel: "chromium", ignoreDefaultArgs: ["--disable-back-forward-cache"],
   args: ["--enable-unsafe-webgpu", "--disable-gpu-watchdog", "--enable-gpu", "--use-angle=d3d11-warp", "--use-webgpu-adapter=d3d11"] };
 const server = await serveDist();
-const url = server.origin + base + (lang === "en" ? "en/" : "") + "works/" + slugs[work] + "/";
+const url = server.origin + base + (lang === "en" ? "en/" : "") + "works/" + entry.slug + "/";
 const scene = page => page.locator("[data-stage]");
 const phase = (page, expected) => page.waitForFunction(value =>
   document.querySelector("[data-stage]")?.dataset.motion === value, expected, { timeout: 35_000 });
@@ -117,9 +118,13 @@ async function instrument(page) {
   await page.addInitScript(installPresentationMeter);
   return probe;
 }
+// A work may ship fonts alongside its own licensed media. Only allow files
+// committed to this candidate, including those in the common font directory.
+const fontPaths = execFileSync("git", ["ls-tree", "-r", "--name-only", "HEAD", "--",
+  "public/fonts/", "public/media/" + entry.slug + "/"], { cwd: root, encoding: "utf8" })
+  .split(/\r?\n/).filter(path => /\.(?:woff2?|ttf|otf)$/i.test(path))
+  .map(path => base + path.slice("public/".length));
 async function privacy(page, probe) {
-  const fontPaths = probe.requests.filter(req => req.type === "font" && req.url.startsWith(server.origin + base + "fonts/"))
-    .map(req => new URL(req.url).pathname);
   await probe.assertPrivate(server.origin, { fontPaths });
   return probe.requests;
 }
@@ -144,7 +149,7 @@ try {
   await system.detach();
 
   await check("first-three-seconds", inPage({}, async page => {
-    await captureOpening({ browser, page, url, dir, report });
+    await captureOpening({ browser, page, url, dir, report, inspectRunningMotion: series === "m05" });
   }));
 
   await check("initial-and-material-sequence", inPage({}, async page => {
@@ -218,6 +223,42 @@ try {
     await phase(page, "running");
   }));
 
+  if (series === "m05" && work === "V008") await check("hero-interaction", inPage({}, async page => {
+    await instrument(page);
+    await open(page);
+    await phase(page, "running");
+    const { testHeroInteraction } = await authorTools();
+    const input = mobile ? "touch" : "keyboard";
+    const evidence = report.capture.heroInteraction = { input, samples: [] };
+    await page.evaluate(() => {
+      window.__m05HeroInputs = [];
+      for (const type of ["keydown", "pointerdown"]) {
+        document.addEventListener(type, event => {
+          if (event.isTrusted) window.__m05HeroInputs.push({
+            type, key: event.key, pointerType: event.pointerType, at: performance.now(),
+          });
+        }, { capture: true });
+      }
+    });
+    const checkpoints = ["before", "after", "reset"];
+    const capture = async state => {
+      assert.equal(state, checkpoints[evidence.samples.length], "Scoop and reset must both be observed");
+      await scene(page).scrollIntoViewIfNeeded();
+      const name = "interaction-" + state;
+      evidence.samples.push({ state, inputs: await page.evaluate(() => window.__m05HeroInputs.splice(0)),
+        composite: await stageImage(page, name), texture: await captureTexture(page, name) });
+    };
+    evidence.observations = await testHeroInteraction(page, input, capture);
+    assert.ok(evidence.observations && Object.keys(evidence.observations).length);
+    assert.deepEqual(evidence.samples.map(s => s.state), checkpoints);
+    for (const sample of evidence.samples.slice(1)) {
+      assert.ok(sample.inputs.some(e => mobile ? e.type === "pointerdown" && e.pointerType === "touch" :
+        e.type === "keydown" && e.key !== "Tab"), "No real " + input + " input for " + sample.state);
+    }
+    assert.notEqual(evidence.samples[0].composite.sha256, evidence.samples[1].composite.sha256, "Scoop did not change the visible hero");
+    assert.notEqual(evidence.samples[1].composite.sha256, evidence.samples[2].composite.sha256, "Reset did not change the visible hero");
+  }));
+
   await check("BIZ-2-and-privacy", inPage({}, async page => {
     report.pageProblems = collectDiagnostics(page);
     const probe = await instrument(page);
@@ -227,6 +268,7 @@ try {
     report.capture.flow = result;
     report.requests = await privacy(page, probe);
     await page.screenshot({ path: join(dir, "flow-complete.png"), fullPage: true });
+    if (series === "m05") assert.deepEqual(report.pageProblems, []);
     return result;
   }));
   for (const mode of ["no-js", "gpu-init-fail", "reduced"]) {
@@ -303,8 +345,28 @@ try {
     const layouts = report.capture.layouts = [];
     for (const width of mobile ? [320, 390] : [768, 1440]) {
       await page.setViewportSize({ width, height: size.height });
+      // A single fullPage capture does not scroll the viewport and therefore
+      // leaves distant lazy merchandise images as empty color blocks.
+      const decodedImages = await page.evaluate(async () => {
+        const images = [...document.images].filter(img => img.checkVisibility() && img.getClientRects().length);
+        const records = [];
+        for (const img of images) {
+          if (!img.getAttribute("src")?.trim()) throw Error("Visible layout image lacks its source");
+          img.scrollIntoView({ block: "center", behavior: "instant" });
+          await new Promise(resolve => requestAnimationFrame(resolve));
+          await img.decode();
+          if (!img.naturalWidth || !img.naturalHeight) throw Error("Undecoded layout image: " + img.src);
+          records.push({ src: img.currentSrc, width: img.naturalWidth, height: img.naturalHeight });
+        }
+        scrollTo({ top: 0, behavior: "instant" });
+        await document.fonts.ready;
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        if (scrollY !== 0) throw Error("Layout capture did not return to page top");
+        return records;
+      });
       const layout = await page.evaluate(layoutInventory);
       await page.screenshot({ path: join(dir, "layout-" + width + ".png"), fullPage: true });
+      layout.decodedImages = decodedImages;
       layouts.push(layout);
       assert.ok(layout.scrollWidth <= width + 1, "Horizontal overflow at " + width);
     }

@@ -1,0 +1,120 @@
+{
+  "repository": "KYStr/glossquote-visuals",
+  "commit": "c19abda5645c174c8fa6df79c06d26993cc31746",
+  "runId": 44803659273,
+  "attempt": 1,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273",
+  "jobId": 136523248460,
+  "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136523248460",
+  "conclusion": "success",
+  "sources": [
+    {
+      "lane": "V008-zh-Hant-desktop",
+      "jobId": 136521889371,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889371",
+      "artifactId": 14662601088,
+      "artifactDigest": "sha256:bf2fe18c403900b01b0782c72d1aee8b4152cb19c15afa657ac76930413c7747",
+      "measurements": {
+        "measuredMs": 10009.300000000017,
+        "medianMs": 17.29999999998836,
+        "p95Ms": 31.5,
+        "longestMs": 38.5
+      }
+    },
+    {
+      "lane": "V008-zh-Hant-mobile",
+      "jobId": 136521889007,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889007",
+      "artifactId": 14659984813,
+      "artifactDigest": "sha256:d7ab8124926c573abdf8a67d529cef85fd131dc79435acf3139e776f6523dff6",
+      "measurements": {
+        "measuredMs": 10000.900000000023,
+        "medianMs": 16.20000000006985,
+        "p95Ms": 31.300000000046566,
+        "longestMs": 32.09999999997672
+      }
+    },
+    {
+      "lane": "V008-en-desktop",
+      "jobId": 136521889184,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889184",
+      "artifactId": 14662775390,
+      "artifactDigest": "sha256:acd6e54894bb72c19717fff9e9cb937e030e211faa616f446463b60e5accd561",
+      "measurements": {
+        "measuredMs": 10001.600000000006,
+        "medianMs": 28.5,
+        "p95Ms": 29.70000000001164,
+        "longestMs": 30.599999999976717
+      }
+    },
+    {
+      "lane": "V008-en-mobile",
+      "jobId": 136521889411,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889411",
+      "artifactId": 14662226528,
+      "artifactDigest": "sha256:9db3958feaee82c7e8d2195a428a1c96731742167af7be84a010513004c453fd",
+      "measurements": {
+        "measuredMs": 10003.099999999977,
+        "medianMs": 16.10000000000582,
+        "p95Ms": 31.699999999982538,
+        "longestMs": 32.5
+      }
+    }
+  ],
+  "comparisonInputs": {
+    "desktop": [
+      {
+        "lane": "V007-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "0ee656a010475c3890f31c5fdd8bc0745d7445d38560c5c39e46046d1b0f3aea"
+      },
+      {
+        "lane": "V008-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "2a868bf9d950372195fb89f5501197b917ac18779abe06624bc7b6fc89505d83"
+      },
+      {
+        "lane": "V009-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "0afff7de658874477c1c35fa3b0ffcc40aae66f8e7e167fc2ce8b6aa536cb83d"
+      },
+      {
+        "lane": "V010-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "ab9fe86d6c50456d708baf02a8c368a7bcba7b77d103f6d048409d3473fe77ed"
+      },
+      {
+        "lane": "V011-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "e04b2dbda81680210a3e86d8a8e1c91362333a5bbabf36c8ab085c28d57e13af"
+      }
+    ],
+    "mobile": [
+      {
+        "lane": "V007-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "5e0468626052ff5f50d5cdf451860dc0335a728696b67ee78737757b0e12c99f"
+      },
+      {
+        "lane": "V008-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "04004d542a8f18e579cc33d8ca0764db9327c82b551a7428eb96b2bb0c96e669"
+      },
+      {
+        "lane": "V009-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "d2fa7552dee4ff35f46a498bee6fed2a4f95caa7c8919eff26862b5b367e7bba"
+      },
+      {
+        "lane": "V010-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "7d853d1df3f55ca17a46b03c9c0c7d62b873cce8e959b87b710f69111d698031"
+      },
+      {
+        "lane": "V011-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "a8836f1afcf45c6eb89a92adc36ab2dce8b0e8804d9c2f56af38d3160009721a"
+      }
+    ]
+  }
+}

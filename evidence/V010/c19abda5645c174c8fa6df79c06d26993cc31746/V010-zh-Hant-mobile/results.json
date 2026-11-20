@@ -1,0 +1,6733 @@
+{
+  "work": "V010",
+  "lang": "zh-Hant",
+  "viewport": "mobile",
+  "commit": "c19abda5645c174c8fa6df79c06d26993cc31746",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "zh-Hant",
+        "observations": [
+          {
+            "name": "awaiting load",
+            "enabled": false,
+            "message": "請先輸入總載重。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "solo lake kit",
+            "enabled": true,
+            "message": "選型與數量符合型錄條件。可下載清單。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "exact solo payload accepted",
+            "enabled": true,
+            "message": "選型與數量符合型錄條件。可下載清單。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "above solo payload rejected",
+            "enabled": false,
+            "message": "總載重超過此船型的 110 kg 額定值。請調整載重或回改選型。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "two paddlers with one seat rejected",
+            "enabled": false,
+            "message": "船型座位與同行人數不符。請為一人選單人艇，兩人選雙人艇。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "coastal route outside catalogue",
+            "enabled": false,
+            "message": "型錄只有湖泊與內陸水道的規劃選項。請修改路線。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "third bag rejected",
+            "enabled": false,
+            "message": "防水袋可選 0 至 2 個，請輸入整數。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "fractional equipment rejected",
+            "enabled": false,
+            "message": "浮力背心可選 0 至 2 個，請輸入整數。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "revised tandem kit at capacity",
+            "enabled": true,
+            "message": "選型與數量符合型錄條件。可下載清單。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "NT$43,210"
+          }
+        ],
+        "download": {
+          "filename": "foldline-kit-zh-Hant.txt",
+          "bytes": 475,
+          "text": "摺徑 FOLDLINE｜裝備與攜行清單\n\n船型：Tandem 370 雙人艇\n同行人數：2 人\n規劃路線：內陸水道\n總載重：205 kg / 205 kg\n攜行尺寸（長 × 寬 × 高）：106 × 41 × 34 cm\n船身重量：14.6 kg\n展開尺寸：370 × 77 cm\n四節拆式槳：2\n浮力背心：1\n防水袋：2\n示意總價：NT$43,210\n\n概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "zh-Hant",
+        "observations": [
+          {
+            "name": "awaiting load",
+            "enabled": false,
+            "message": "請先輸入總載重。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "solo lake kit",
+            "enabled": true,
+            "message": "選型與數量符合型錄條件。可下載清單。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "exact solo payload accepted",
+            "enabled": true,
+            "message": "選型與數量符合型錄條件。可下載清單。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "above solo payload rejected",
+            "enabled": false,
+            "message": "總載重超過此船型的 110 kg 額定值。請調整載重或回改選型。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "two paddlers with one seat rejected",
+            "enabled": false,
+            "message": "船型座位與同行人數不符。請為一人選單人艇，兩人選雙人艇。",
+            "model": "Solo 330 單人艇",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "coastal route outside catalogue",
+            "enabled": false,
+            "message": "型錄只有湖泊與內陸水道的規劃選項。請修改路線。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "third bag rejected",
+            "enabled": false,
+            "message": "防水袋可選 0 至 2 個，請輸入整數。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "fractional equipment rejected",
+            "enabled": false,
+            "message": "浮力背心可選 0 至 2 個，請輸入整數。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "revised tandem kit at capacity",
+            "enabled": true,
+            "message": "選型與數量符合型錄條件。可下載清單。",
+            "model": "Tandem 370 雙人艇",
+            "packed": "106 × 41 × 34 cm",
+            "price": "NT$43,210"
+          }
+        ],
+        "download": {
+          "filename": "foldline-kit-zh-Hant.txt",
+          "bytes": 475,
+          "text": "摺徑 FOLDLINE｜裝備與攜行清單\n\n船型：Tandem 370 雙人艇\n同行人數：2 人\n規劃路線：內陸水道\n總載重：205 kg / 205 kg\n攜行尺寸（長 × 寬 × 高）：106 × 41 × 34 cm\n船身重量：14.6 kg\n展開尺寸：370 × 77 cm\n四節拆式槳：2\n浮力背心：1\n防水袋：2\n示意總價：NT$43,210\n\n概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795203437763.6,
+      "anchorMs": 3536.2000000000116,
+      "view": {
+        "at": 193.70000000001164,
+        "stage": {
+          "x": 19.5,
+          "y": 269.984375,
+          "right": 370.5,
+          "bottom": 542.984375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstRunningObservedMs": 798.4000000000233,
+      "firstContentfulPaint": 200,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "zh-Hant",
+        "title": "摺徑 FOLDLINE｜可攜摺疊皮艇",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [
+          {
+            "family": "Studio TC Text",
+            "status": "loaded",
+            "weight": "100 900",
+            "style": "normal"
+          },
+          {
+            "family": "M05 Scale Mono",
+            "status": "loaded",
+            "weight": "400",
+            "style": "normal"
+          },
+          {
+            "family": "Foldline Barlow",
+            "status": "loaded",
+            "weight": "800",
+            "style": "normal"
+          }
+        ],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/fonts/m05-foldline-tc.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-D99e948b.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 1.400000000023283,
+          "requestStart": 3.5,
+          "responseStart": 17,
+          "responseEnd": 17.800000000017462,
+          "duration": 179,
+          "domInteractive": 54.90000000002328,
+          "domContentLoadedEventStart": 147.90000000002328,
+          "domContentLoadedEventEnd": 148.20000000001164,
+          "domComplete": 178.90000000002328,
+          "loadEventStart": 178.90000000002328,
+          "loadEventEnd": 179,
+          "transferSize": 12094,
+          "encodedBodySize": 11794,
+          "decodedBodySize": 11794
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 200
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 200
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/media/foldline/foldline-tc.woff2",
+            "initiator": "link",
+            "startTime": 32.60000000000582,
+            "fetchStart": 32.60000000000582,
+            "requestStart": 34.30000000001746,
+            "responseStart": 40.60000000000582,
+            "responseEnd": 41.60000000000582,
+            "duration": 9,
+            "transferSize": 106756,
+            "encodedBodySize": 106456,
+            "decodedBodySize": 106456
+          },
+          {
+            "path": "/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+            "initiator": "link",
+            "startTime": 33,
+            "fetchStart": 33,
+            "requestStart": 41.5,
+            "responseStart": 44.80000000001746,
+            "responseEnd": 45.40000000002328,
+            "duration": 12.400000000023283,
+            "transferSize": 110596,
+            "encodedBodySize": 110296,
+            "decodedBodySize": 110296
+          },
+          {
+            "path": "/glossquote-visuals/fonts/prism-plex-mono.ttf",
+            "initiator": "link",
+            "startTime": 33.10000000000582,
+            "fetchStart": 33.10000000000582,
+            "requestStart": 41.60000000000582,
+            "responseStart": 45.90000000002328,
+            "responseEnd": 46.80000000001746,
+            "duration": 13.700000000011642,
+            "transferSize": 135880,
+            "encodedBodySize": 135580,
+            "decodedBodySize": 135580
+          },
+          {
+            "path": "/glossquote-visuals/fonts/m05-foldline-tc.css",
+            "initiator": "link",
+            "startTime": 33.20000000001164,
+            "fetchStart": 33.20000000001164,
+            "requestStart": 41.20000000001164,
+            "responseStart": 43.90000000002328,
+            "responseEnd": 44.20000000001164,
+            "duration": 11,
+            "transferSize": 964,
+            "encodedBodySize": 664,
+            "decodedBodySize": 664
+          },
+          {
+            "path": "/glossquote-visuals/fonts/studio-tc-first-layout.js",
+            "initiator": "script",
+            "startTime": 33.40000000002328,
+            "fetchStart": 33.40000000002328,
+            "requestStart": 42.10000000000582,
+            "responseStart": 46.40000000002328,
+            "responseEnd": 46.70000000001164,
+            "duration": 13.299999999988358,
+            "transferSize": 1152,
+            "encodedBodySize": 852,
+            "decodedBodySize": 852
+          },
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 52.60000000000582,
+            "fetchStart": 52.60000000000582,
+            "requestStart": 53.60000000000582,
+            "responseStart": 58.20000000001164,
+            "responseEnd": 58.60000000000582,
+            "duration": 6,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-DoctZMeG.js",
+            "initiator": "script",
+            "startTime": 52.80000000001746,
+            "fetchStart": 52.80000000001746,
+            "requestStart": 54.90000000002328,
+            "responseStart": 65.30000000001746,
+            "responseEnd": 65.70000000001164,
+            "duration": 12.89999999999418,
+            "transferSize": 7414,
+            "encodedBodySize": 7114,
+            "decodedBodySize": 7114
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-D99e948b.css",
+            "initiator": "link",
+            "startTime": 52.90000000002328,
+            "fetchStart": 52.90000000002328,
+            "requestStart": 54.40000000002328,
+            "responseStart": 62.60000000000582,
+            "responseEnd": 62.90000000002328,
+            "duration": 10,
+            "transferSize": 10195,
+            "encodedBodySize": 9895,
+            "decodedBodySize": 9895
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 53.10000000000582,
+            "fetchStart": 53.10000000000582,
+            "requestStart": 54.40000000002328,
+            "responseStart": 64,
+            "responseEnd": 64.30000000001746,
+            "duration": 11.200000000011642,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/half-narrow.webp",
+            "initiator": "img",
+            "startTime": 54.5,
+            "fetchStart": 54.5,
+            "requestStart": 55.70000000001164,
+            "responseStart": 67.10000000000582,
+            "responseEnd": 67.90000000002328,
+            "duration": 13.400000000023283,
+            "transferSize": 24130,
+            "encodedBodySize": 23830,
+            "decodedBodySize": 23830
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/solo.webp",
+            "initiator": "img",
+            "startTime": 144.40000000002328,
+            "fetchStart": 144.40000000002328,
+            "requestStart": 146.10000000000582,
+            "responseStart": 148.5,
+            "responseEnd": 148.90000000002328,
+            "duration": 4.5,
+            "transferSize": 14984,
+            "encodedBodySize": 14684,
+            "decodedBodySize": 14684
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/tandem.webp",
+            "initiator": "img",
+            "startTime": 144.60000000000582,
+            "fetchStart": 144.60000000000582,
+            "requestStart": 146.60000000000582,
+            "responseStart": 147.70000000001164,
+            "responseEnd": 148.10000000000582,
+            "duration": 3.5,
+            "transferSize": 16310,
+            "encodedBodySize": 16010,
+            "decodedBodySize": 16010
+          },
+          {
+            "path": "/glossquote-visuals/assets/gpu-Cj8SZo7q.js",
+            "initiator": "script",
+            "startTime": 195,
+            "fetchStart": 195,
+            "requestStart": 195.90000000002328,
+            "responseStart": 197,
+            "responseEnd": 197.40000000002328,
+            "duration": 2.400000000023283,
+            "transferSize": 8936,
+            "encodedBodySize": 8636,
+            "decodedBodySize": 8636
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/mark.svg",
+            "initiator": "other",
+            "startTime": 667.4000000000233,
+            "fetchStart": 667.4000000000233,
+            "requestStart": 668,
+            "responseStart": 669,
+            "responseEnd": 669.3000000000175,
+            "duration": 1.8999999999941792,
+            "transferSize": 475,
+            "encodedBodySize": 175,
+            "decodedBodySize": 175
+          }
+        ],
+        "longTasks": []
+      },
+      "fromCommitReturnToTimingReadMs": 3511.8472,
+      "navigationStartMetricMs": 184623.348,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "把水路摺進旅程。",
+          "cssFamily": "\"Foldline Barlow\", \"Studio TC Text\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-ExtraBold",
+              "isCustomFont": true,
+              "glyphCount": 8
+            }
+          ]
+        },
+        {
+          "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+          "text": "船型",
+          "cssFamily": "\"Studio TC Text\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-Bold",
+              "isCustomFont": true,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "城市旅人的可攜摺疊皮艇",
+          "cssFamily": "\"M05 Scale Mono\", \"Studio TC Text\", monospace",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-Bold",
+              "isCustomFont": true,
+              "glyphCount": 11
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 184649.65,
+          "ms": 26.301999999996042
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 184771.473,
+          "ms": 148.125
+        },
+        {
+          "name": "load",
+          "traceMs": 184802.345,
+          "ms": 178.99700000000303
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 184823.25499999998,
+          "ms": 199.90699999997742
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 184823.25499999998,
+          "ms": 199.90699999997742
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 184823.25499999998,
+          "ms": 199.90699999997742
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 184823.25499999998,
+          "ms": 199.90699999997742
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 184800.587,
+          "ms": 177.2390000000014
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 184823.25499999998,
+          "ms": 199.90699999997742
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 185294.956,
+          "ms": 671.6080000000075
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3509.8980000000156,
+      "navigationStartTraceMs": 184623.348,
+      "navigationStartEventUs": 184623348,
+      "anchorTraceUs": 188159569,
+      "fcpTraceClockUs": 184823348,
+      "screenshotEvents": 120,
+      "traceImageTimesMs": [
+        13.701000000000931,
+        661.6330000000016,
+        679.8379999999888,
+        846.6579999999958,
+        852.3280000000086,
+        853.3980000000156,
+        864.5780000000086,
+        889.0050000000047,
+        912.5659999999916,
+        936.0100000000093,
+        959.9990000000107,
+        983.7740000000049,
+        1008.4489999999932,
+        1030.6259999999893,
+        1056.100999999995,
+        1079.6259999999893,
+        1103.06700000001,
+        1126.5439999999944,
+        1149.9839999999967,
+        1173.5769999999902,
+        1197.5950000000012,
+        1222.061000000016,
+        1245.4809999999998,
+        1269.386999999988,
+        1293.320000000007,
+        1316.8489999999874,
+        1340.8729999999923,
+        1364.6480000000156,
+        1388.4670000000042,
+        1412.7309999999998,
+        1435.5940000000119,
+        1460.0970000000088,
+        1483.7770000000019,
+        1507.2760000000126,
+        1530.7939999999944,
+        1554.4070000000065,
+        1577.9150000000081,
+        1601.8269999999902,
+        1625.426999999996,
+        1648.8530000000028,
+        1672.4120000000112,
+        1695.994000000006,
+        1719.445000000007,
+        1742.9869999999937,
+        1766.4640000000072,
+        1790.0769999999902,
+        1813.5260000000126,
+        1837.4489999999932,
+        1860.8060000000114,
+        1884.2369999999937,
+        1907.5659999999916,
+        1930.2790000000095,
+        1953.6050000000105,
+        1978.2490000000107,
+        2001.9189999999944,
+        2025.6730000000098,
+        2049.1909999999916,
+        2072.8369999999995,
+        2096.298999999999,
+        2120.972000000009,
+        2145.5439999999944,
+        2169.7110000000102,
+        2193.886999999988,
+        2217.7239999999874,
+        2241.402999999991,
+        2302.7239999999874,
+        2304.3610000000044,
+        2305.6689999999944,
+        2350.758999999991,
+        2353.298999999999,
+        2379.8429999999935,
+        2404.8830000000016,
+        2431.2110000000102,
+        2457.1419999999925,
+        2516.1290000000154,
+        2528.9899999999907,
+        2530.610000000015,
+        2532.235000000015,
+        2553.3090000000084,
+        2576.765000000014,
+        2600.668000000005,
+        2624.616000000009,
+        2648.3610000000044,
+        2673.095000000001,
+        2696.978000000003,
+        2720.9550000000163,
+        2744.7309999999998,
+        2768.326000000001,
+        2792.564000000013,
+        2816.3889999999956,
+        2840.1810000000114,
+        2863.893000000011,
+        2887.6780000000144,
+        2911.1820000000007,
+        2935.0469999999914,
+        2960.1050000000105,
+        2983.8360000000102,
+        3008.6630000000005,
+        3033.8040000000037,
+        3057.9649999999965,
+        3081.293000000005,
+        3105.712999999989,
+        3129.2419999999984,
+        3153.0679999999993,
+        3177.152000000002,
+        3200.8120000000054,
+        3224.3300000000163,
+        3247.904999999999,
+        3271.4189999999944,
+        3294.969000000012,
+        3318.8060000000114,
+        3342.6089999999967,
+        3366.6389999999956,
+        3390.375,
+        3414.2080000000133,
+        3437.8790000000154,
+        3461.8159999999916,
+        3485.7889999999898,
+        3509.543000000005,
+        3533.671000000002
+      ],
+      "filmstripFramesInWindow": 96,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 661.6330000000016,
+          "traceUs": 185284981,
+          "file": "opening-0.png",
+          "sha256": "0b5f876ff42aa1d8d6629fce0e3e000491e763162b64e590d4efb2b69854271c",
+          "source": "opening-0.jpg",
+          "originalSha256": "1aa7fc9eb3b0fabeec0582d0cad61ab406bb3a7208210e8955d2209a557e0b89",
+          "stageHash": "6628288b2eef3ae17a3bbe5d13be3040cb0a232921bbd55b90d1be1c19528e92",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 959.9990000000107,
+          "traceUs": 185583347,
+          "file": "opening-1.png",
+          "sha256": "61ad16f027c836af73b4d36a6387d9e67a852ee053d2586359bd63f8ed6922e3",
+          "source": "opening-1.jpg",
+          "originalSha256": "317498e1341471cb6255321089cd2f5836e2c349566bd48988d9ce7c99e40c3d",
+          "stageHash": "412db16bb36dea91ee49588f354738f3b365043b6de4025e5d50f6dea2d2187a",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1149.9839999999967,
+          "traceUs": 185773332,
+          "file": "opening-2.png",
+          "sha256": "d3d5196fc1e8bcc0b3ee731ad4118a8826c2d8a462e287e1e309e77e7e5fb3cd",
+          "source": "opening-2.jpg",
+          "originalSha256": "cbfdebb13699a5c5f01ace873c088d32464e3c1047eb37e9619548cd262f5c16",
+          "stageHash": "5084dba5630697695fd46ba2b3c18ff2a4e4d17fee941a67d0e77ced60a1a687",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1364.6480000000156,
+          "traceUs": 185987996,
+          "file": "opening-3.png",
+          "sha256": "3098adeff315aaca0dfd0ea2796edb8cb6a646f48076089de54e5924b8625f98",
+          "source": "opening-3.jpg",
+          "originalSha256": "ca566ffd0f55959261787355333aaa073c1e804cc9a8b8a36b8057fce9823ea2",
+          "stageHash": "3b7510b2cfdab710c30482baee8d5507db7bc58fe55ae9c83168be948e4732eb",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1577.9150000000081,
+          "traceUs": 186201263,
+          "file": "opening-4.png",
+          "sha256": "d2a92ebbb749a4f16b49a8d77e9948c094e1efe8d410eac5e850dfde90d59306",
+          "source": "opening-4.jpg",
+          "originalSha256": "4a3d081ea97c681f1f1a87d37483988182f39026e29dd87367d1e20c7b0eacdd",
+          "stageHash": "b9d632eca5f688509e4e714f519dbbca3b758417d413a45176cd8c5354359fe6",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1766.4640000000072,
+          "traceUs": 186389812,
+          "file": "opening-5.png",
+          "sha256": "e97eaa0e7c841f77403bde77331369535ab9fdad1b34463908a9487de4ef78ca",
+          "source": "opening-5.jpg",
+          "originalSha256": "943c84d2e893cdc36dc35e95d1b7b239b369217dd57d1306c878175cf8ef83c9",
+          "stageHash": "8f844cb1bec946f355f811226de1091464c2ed836a6ca6dc067b68cb23faef57",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1978.2490000000107,
+          "traceUs": 186601597,
+          "file": "opening-6.png",
+          "sha256": "486aa0aa4a0ae0a1a44e9060fc2049e18f187ba413447ab445d6947a01c6c6cc",
+          "source": "opening-6.jpg",
+          "originalSha256": "fd30f4af607abb706692ef0d0be2c174e5f9480bfaf2ac33aec6e32d60920632",
+          "stageHash": "0f6aa396bc45723f91ca757e8f7de55c72cad64ce9e23e0d02b993b1208d8d1d",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2169.7110000000102,
+          "traceUs": 186793059,
+          "file": "opening-7.png",
+          "sha256": "760eb214081e594e2846975752657ebb4040081005f1c4b9c6bb6b63c5df0e98",
+          "source": "opening-7.jpg",
+          "originalSha256": "d0a0ed577f54250853c63ac63929bf06b6a118a28159db823db34cc49859e1ba",
+          "stageHash": "ee45a777c74ac046eb40d0b418f157c074d534d75d6fad9c26ac47158d92770a",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2379.8429999999935,
+          "traceUs": 187003191,
+          "file": "opening-8.png",
+          "sha256": "8738d021ebdc1cc26ac66a195dd4911de4ccc4c4655272cd0eda58308c80e802",
+          "source": "opening-8.jpg",
+          "originalSha256": "9e8a71a0233e56063ea000e5d9df3535072dc5ef6eb8931e3145816fd709163e",
+          "stageHash": "ae6fd93e89af05d603f580d2e8f4d23d0cd5c7ff81171216c576163532e74466",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2576.765000000014,
+          "traceUs": 187200113,
+          "file": "opening-9.png",
+          "sha256": "9d4258970915f795ce3050f5a2878f12ca9383b545a243ae1f719adb8a2763a0",
+          "source": "opening-9.jpg",
+          "originalSha256": "70cd596137fa91c88f77a8554af03282096275fc5e8d36fd56b89b86b022ca66",
+          "stageHash": "570226cf38ce4b3ed978048b143279b5136744fb6ef129b6e323a5680731e80c",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2768.326000000001,
+          "traceUs": 187391674,
+          "file": "opening-10.png",
+          "sha256": "899716c91dda8c3dc83cd04d051ca3bcfa0cd7fac5d97b8d68e68b2f61c5ad64",
+          "source": "opening-10.jpg",
+          "originalSha256": "5af79b6f6dae3a99654dc393e29acfcc0c6656dd05ceb2c878edca4eef5b2c02",
+          "stageHash": "a08ef17fee48bf36289991ee791389b2d116bf17495563f7919fa7199c7a6c5e",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2983.8360000000102,
+          "traceUs": 187607184,
+          "file": "opening-11.png",
+          "sha256": "d1dc550757bf60a929dd1d0ca0262b1cdd4d13241eec6caf382d3882119563e6",
+          "source": "opening-11.jpg",
+          "originalSha256": "7fcd2d9df9447b45af0c0819e903da8514e2e3a47e8c9cc8f026ccfe5324a3fb",
+          "stageHash": "560e6e0d725058222e67b73dff93337e0aa0d82a3b62916e6ac4b654657e3df1",
+          "crop": [
+            11,
+            159,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input",
+      "runningMotion": {
+        "sampledStageFrames": 11,
+        "thumbnailSize": [
+          64,
+          48
+        ],
+        "strongest": {
+          "before": "opening-1.jpg",
+          "beforeMs": 959.9990000000107,
+          "after": "opening-11.jpg",
+          "afterMs": 2983.8360000000102,
+          "meanAbsoluteRgb": 7.467881944444425,
+          "fractionWithMeanRgbDeltaAtLeast16": 0.109375
+        },
+        "basis": "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material."
+      }
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 194.20000000001164,
+    "firstFoldEnd": 326.1000000000058,
+    "cycle": "8",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "e729c1219b33d55dc8e7251c30a5f558ed77139bda1ef57e8043e4e94930577e",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 364.3999999999942,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 248,
+          "average": [
+            29,
+            60,
+            77,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "b62e25e45641379b31cfa94f862b6343d2f8bde836401b97b0f7f2665f225771",
+          "start": 416.1000000000058,
+          "end": 494.70000000001164,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "45c75de7b257ab8b4756ef52c4e595115f218dcdd7dffe7c5d8da2a79521cffe",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 1284.2000000000116,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 248,
+          "average": [
+            26,
+            60,
+            78,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "b034e377073366350b240b291e1e4ad3d634f3ddb45cb11d8f4c6bbf3ad5f1bb",
+          "start": 1327,
+          "end": 1413.7999999999884,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 0.9198000000000175
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "bf0583e1fb5b58a9f97616eac79cbfbc7071fb1518a52deded5d3b93027ad24c",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 2596.7000000000116,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 249,
+          "average": [
+            27,
+            61,
+            79,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "6fbdc3e045a12a8be9e1bd7028d243adac4f123c0b4e6c333661bd7efb0702af",
+          "start": 2638.399999999994,
+          "end": 2716.2000000000116,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 2.2323000000000173
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "ed411bb922d2c8e0a98fd407d8012140e4a8b4f181cacca4f3417c3f65d67818",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 4398,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 254,
+          "average": [
+            27,
+            61,
+            79,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "9a82a87ec2c27666a49ad3a9861a8571838d3700934545bd6b3eb511222d6f15",
+          "start": 4439.5,
+          "end": 4517.5,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 4.033600000000006
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "e43e3739b576f522f1ead6df7b7ec1a1bcacb0005ca3af67cb40119482440362",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 6373.399999999994,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 253,
+          "average": [
+            26,
+            60,
+            78,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "17281e9d081f49516e1c4c40e4ef8807f0d0ac2c3a7c27d945a1eda247cdac2b",
+          "start": 6416.100000000006,
+          "end": 6506.100000000006,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 6.009
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "fe03095a9933805dccb09b7fa7cbd61424d53f4baf271b825b6eee430d965f6c",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 8418.700000000012,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 252,
+          "average": [
+            29,
+            60,
+            77,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "ebd065df6c5a5d358e66e7aab284095c5a79d529f2468d4f9643745ad7688fc2",
+          "start": 8460.399999999994,
+          "end": 8551.799999999988,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 8.054300000000017
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "318ceaf2015a2f75f3edab56ad736162a787df1d55322b312f8abc6a29989b47",
+          "start": 415.1000000000058,
+          "end": 504.8999999999942,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "98bfbb0aa6996ce3666fffbb9ec9dd435bd3622f94a76c4002b19e7da77b7311",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 517.5,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 223,
+          "average": [
+            14,
+            59,
+            81,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "8fcacad4fbc3b8e890c2e88e5ed4ee302e7156f72c77cc4ae31f793dd75739fd",
+          "start": 708.7000000000116,
+          "end": 795,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "0077567643b71446ee18e1ae26338139b167f00b2eab2bdd85aa3a6bdcd72bc8",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 805.7999999999884,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 256,
+          "average": [
+            29,
+            60,
+            77,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "6a415d2ca58565b6753c0b3f519e88a15f748618198dfc3f82e227c713a43395",
+          "start": 990.7000000000116,
+          "end": 1091.1000000000058,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "7edc644b174aede343302d932bda21b35e3ab78223449c802d6060f076c790a6",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 1092.8999999999942,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 243,
+          "average": [
+            27,
+            60,
+            79,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "0a8042d3ead0c259c7f03ebea0404d4b6bf15b1e0a66d6106187bb86d9a3e513",
+          "start": 1279.8999999999942,
+          "end": 1352.2000000000116,
+          "clip": {
+            "x": 19,
+            "y": 269,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "df720c4881f3116b94f95614f012d0395bb635d21857420eec638df67c591253",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 1360.8999999999942,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 229,
+          "average": [
+            14,
+            59,
+            81,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "21b71601d387a9ccebb33c37b8fdd8e54274a9294c3cfa533db0511bc1779639",
+        "start": 1438.6000000000058,
+        "end": 1526.3999999999942,
+        "clip": {
+          "x": 19,
+          "y": 269,
+          "width": 352,
+          "height": 274
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "c838c38df2a84db38ea9a615485c28fbc970f9ede548baa02915bd8149e67d35",
+        "start": 1606.7000000000116,
+        "end": 1703,
+        "clip": {
+          "x": 19,
+          "y": 269,
+          "width": 352,
+          "height": 274
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "c838c38df2a84db38ea9a615485c28fbc970f9ede548baa02915bd8149e67d35",
+        "start": 3067.7000000000116,
+        "end": 3161.2000000000116,
+        "clip": {
+          "x": 19,
+          "y": 269,
+          "width": 352,
+          "height": 274
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "c42ea7e4ad62dd238972677efee144a5d9f70f5be79c7639508e814560c09844",
+        "start": 3252.600000000006,
+        "end": 3340.7000000000116,
+        "clip": {
+          "x": 19,
+          "y": 269,
+          "width": 352,
+          "height": 274
+        }
+      }
+    },
+    "flow": {
+      "lang": "zh-Hant",
+      "observations": [
+        {
+          "name": "awaiting load",
+          "enabled": false,
+          "message": "請先輸入總載重。",
+          "model": "Solo 330 單人艇",
+          "packed": "90 × 36 × 30 cm",
+          "price": "—"
+        },
+        {
+          "name": "solo lake kit",
+          "enabled": true,
+          "message": "選型與數量符合型錄條件。可下載清單。",
+          "model": "Solo 330 單人艇",
+          "packed": "90 × 36 × 30 cm",
+          "price": "NT$32,730"
+        },
+        {
+          "name": "exact solo payload accepted",
+          "enabled": true,
+          "message": "選型與數量符合型錄條件。可下載清單。",
+          "model": "Solo 330 單人艇",
+          "packed": "90 × 36 × 30 cm",
+          "price": "NT$32,730"
+        },
+        {
+          "name": "above solo payload rejected",
+          "enabled": false,
+          "message": "總載重超過此船型的 110 kg 額定值。請調整載重或回改選型。",
+          "model": "Solo 330 單人艇",
+          "packed": "90 × 36 × 30 cm",
+          "price": "—"
+        },
+        {
+          "name": "two paddlers with one seat rejected",
+          "enabled": false,
+          "message": "船型座位與同行人數不符。請為一人選單人艇，兩人選雙人艇。",
+          "model": "Solo 330 單人艇",
+          "packed": "90 × 36 × 30 cm",
+          "price": "—"
+        },
+        {
+          "name": "coastal route outside catalogue",
+          "enabled": false,
+          "message": "型錄只有湖泊與內陸水道的規劃選項。請修改路線。",
+          "model": "Tandem 370 雙人艇",
+          "packed": "106 × 41 × 34 cm",
+          "price": "—"
+        },
+        {
+          "name": "third bag rejected",
+          "enabled": false,
+          "message": "防水袋可選 0 至 2 個，請輸入整數。",
+          "model": "Tandem 370 雙人艇",
+          "packed": "106 × 41 × 34 cm",
+          "price": "—"
+        },
+        {
+          "name": "fractional equipment rejected",
+          "enabled": false,
+          "message": "浮力背心可選 0 至 2 個，請輸入整數。",
+          "model": "Tandem 370 雙人艇",
+          "packed": "106 × 41 × 34 cm",
+          "price": "—"
+        },
+        {
+          "name": "revised tandem kit at capacity",
+          "enabled": true,
+          "message": "選型與數量符合型錄條件。可下載清單。",
+          "model": "Tandem 370 雙人艇",
+          "packed": "106 × 41 × 34 cm",
+          "price": "NT$43,210"
+        }
+      ],
+      "download": {
+        "filename": "foldline-kit-zh-Hant.txt",
+        "bytes": 475,
+        "text": "摺徑 FOLDLINE｜裝備與攜行清單\n\n船型：Tandem 370 雙人艇\n同行人數：2 人\n規劃路線：內陸水道\n總載重：205 kg / 205 kg\n攜行尺寸（長 × 寬 × 高）：106 × 41 × 34 cm\n船身重量：14.6 kg\n展開尺寸：370 × 77 cm\n四節拆式槳：2\n浮力背心：1\n防水袋：2\n示意總價：NT$43,210\n\n概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "規劃我的裝備\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 230.65625,
+              "width": 168,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選擇單人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1309.90625,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選擇雙人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1883.984375,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "同行人數1 人2 人",
+            "tag": "SELECT",
+            "rect": {
+              "x": 33,
+              "y": 2824.078125,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "同行人數\n1 人\n2 人",
+                "rect": {
+                  "x": 33,
+                  "y": 2796.859375,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "規劃路線湖泊短程內陸水道沿岸路線",
+            "tag": "SELECT",
+            "rect": {
+              "x": 33,
+              "y": 2908.890625,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "規劃路線\n湖泊短程\n內陸水道\n沿岸路線",
+                "rect": {
+                  "x": 33,
+                  "y": 2881.671875,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "船型Solo 330 單人艇Tandem 370 雙人艇",
+            "tag": "SELECT",
+            "rect": {
+              "x": 33,
+              "y": 2993.703125,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "船型\nSolo 330 單人艇\nTandem 370 雙人艇",
+                "rect": {
+                  "x": 33,
+                  "y": 2966.484375,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "總載重（kg）",
+            "tag": "INPUT",
+            "rect": {
+              "x": 33,
+              "y": 3078.515625,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "總載重（kg）",
+                "rect": {
+                  "x": 33,
+                  "y": 3051.296875,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "四節拆式槳 NT$1,800",
+            "tag": "INPUT",
+            "rect": {
+              "x": 213.40625,
+              "y": 3258.875,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "四節拆式槳\nNT$1,800",
+                "rect": {
+                  "x": 33,
+                  "y": 3251.6875,
+                  "width": 254,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "浮力背心 NT$1,450",
+            "tag": "INPUT",
+            "rect": {
+              "x": 213.40625,
+              "y": 3318.25,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "浮力背心\nNT$1,450",
+                "rect": {
+                  "x": 33,
+                  "y": 3311.0625,
+                  "width": 254,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "防水袋 NT$680",
+            "tag": "INPUT",
+            "rect": {
+              "x": 213.40625,
+              "y": 3377.625,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "防水袋\nNT$680",
+                "rect": {
+                  "x": 33,
+                  "y": 3370.4375,
+                  "width": 254,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "下載裝備清單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33,
+              "y": 4049.0625,
+              "width": 168,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "下載空白規劃表\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4192.765625,
+              "width": 123.046875,
+              "height": 44
+            },
+            "labels": []
+          }
+        ],
+        "text": [
+          {
+            "label": "跳到主要內容",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 128,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE\n摺徑",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 0,
+              "width": 147.796875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "船型",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 44,
+              "width": 24.640625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "收納尺寸",
+            "tag": "A",
+            "rect": {
+              "x": 52.640625,
+              "y": 44,
+              "width": 49.28125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "English",
+            "tag": "A",
+            "rect": {
+              "x": 113.921875,
+              "y": 44,
+              "width": 44.296875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "城市旅人的可攜摺疊皮艇",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 105,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "把水路摺進旅程。",
+            "tag": "H1",
+            "rect": {
+              "x": 16,
+              "y": 123.328125,
+              "width": 288,
+              "height": 37.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "30.4px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "硬殼板件沿鉸線開合，從手提尺寸展成單人或雙人船身。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 171.734375,
+              "width": 288,
+              "height": 48.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "15.36px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "規劃我的裝備\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 230.65625,
+              "width": 168,
+              "height": 44
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(169, 49, 24)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "攜行",
+            "tag": "LABEL",
+            "rect": {
+              "x": 16,
+              "y": 523.125,
+              "width": 42.234375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "半展",
+            "tag": "LABEL",
+            "rect": {
+              "x": 58.234375,
+              "y": 523.125,
+              "width": 42.234375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "成船",
+            "tag": "LABEL",
+            "rect": {
+              "x": 100.46875,
+              "y": 523.125,
+              "width": 42.234375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "船型型錄",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 633.71875,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "一人出發，兩人同行。",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 659.71875,
+              "width": 288,
+              "height": 71.65625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "32px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "兩款均含硬邊折板、座椅與攜行束帶。比較座位、路線和總載重。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 742.5625,
+              "width": 288,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "湖泊與短程水道",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 982.09375,
+              "width": 254,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Solo 330 單人艇",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 1002.96875,
+              "width": 254,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "配置一席，留有日用裝備空間。",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1035.96875,
+              "width": 254,
+              "height": 25.265625
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意售價\nNT$28,800",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1282.109375,
+              "width": 254,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選擇單人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1309.90625,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "雙人遊憩與較長行程",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1530.90625,
+              "width": 254,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tandem 370 雙人艇",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 1551.78125,
+              "width": 254,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "兩席前後排列，可作湖泊與內陸水道的行程規劃。",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1584.78125,
+              "width": 254,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意售價\nNT$36,800",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1856.1875,
+              "width": 254,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選擇雙人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1883.984375,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "攜行規格",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2016.984375,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "上車前，先量收納空間。",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2042.984375,
+              "width": 288,
+              "height": 71.65625
+            },
+            "color": "rgb(240, 243, 237)",
+            "size": "32px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "以含束帶的船身外緣計算。槳具和其他配件需另留空間。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2127.4375,
+              "width": 288,
+              "height": 50.53125
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "裝備選型",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2628.3125,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "配好再出發。",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2654.3125,
+              "width": 288,
+              "height": 35.828125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "32px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "填入同行人數與路線，再核對總載重和配件數量。下載的清單可留在手機上。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2701.328125,
+              "width": 288,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "同行人數\n1 人\n2 人",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 2796.859375,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "規劃路線\n湖泊短程\n內陸水道\n沿岸路線",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 2881.671875,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "船型\nSolo 330 單人艇\nTandem 370 雙人艇",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 2966.484375,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "總載重（kg）",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3051.296875,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "填入所有乘員與隨船裝備的合計重量。",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 3136.109375,
+              "width": 254,
+              "height": 20.984375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.28px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "槳與浮力背心最多各與乘員人數相同；防水袋每艇最多 2 個。",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 3200.75,
+              "width": 254,
+              "height": 50.9375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "四節拆式槳\nNT$1,800",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3251.6875,
+              "width": 254,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "浮力背心\nNT$1,450",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3311.0625,
+              "width": 254,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "防水袋\nNT$680",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3370.4375,
+              "width": 254,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "我的攜行清單",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 3461.8125,
+              "width": 254,
+              "height": 29.046875
+            },
+            "color": "rgb(241, 245, 239)",
+            "size": "26.4px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "請先輸入總載重。",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 3996.515625,
+              "width": 254,
+              "height": 38.15625
+            },
+            "color": "rgb(201, 224, 225)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載裝備清單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33,
+              "y": 4049.0625,
+              "width": 168,
+              "height": 44
+            },
+            "color": "rgb(209, 216, 216)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(52, 68, 75)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 4126.0625,
+              "width": 288,
+              "height": 66.703125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載空白規劃表\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4192.765625,
+              "width": 123.046875,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "14.08px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE\n摺徑",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4308.15625,
+              "width": 147.796875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "返回視覺作品集 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4364.953125,
+              "width": 115.796875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "作品原始碼 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 143.796875,
+              "y": 4364.953125,
+              "width": 87.640625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/half-narrow.webp",
+            "width": 720,
+            "height": 560
+          },
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/solo.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/tandem.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/carry.webp",
+            "width": 900,
+            "height": 540
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "規劃我的裝備\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 205.515625,
+              "width": 168,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選擇單人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1307.59375,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選擇雙人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1891.328125,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "同行人數1 人2 人",
+            "tag": "SELECT",
+            "rect": {
+              "x": 36.5,
+              "y": 2808.125,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "同行人數\n1 人\n2 人",
+                "rect": {
+                  "x": 36.5,
+                  "y": 2780.90625,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "規劃路線湖泊短程內陸水道沿岸路線",
+            "tag": "SELECT",
+            "rect": {
+              "x": 36.5,
+              "y": 2892.9375,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "規劃路線\n湖泊短程\n內陸水道\n沿岸路線",
+                "rect": {
+                  "x": 36.5,
+                  "y": 2865.71875,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "船型Solo 330 單人艇Tandem 370 雙人艇",
+            "tag": "SELECT",
+            "rect": {
+              "x": 36.5,
+              "y": 2977.75,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "船型\nSolo 330 單人艇\nTandem 370 雙人艇",
+                "rect": {
+                  "x": 36.5,
+                  "y": 2950.53125,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "總載重（kg）",
+            "tag": "INPUT",
+            "rect": {
+              "x": 36.5,
+              "y": 3062.5625,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "總載重（kg）",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3035.34375,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "四節拆式槳 NT$1,800",
+            "tag": "INPUT",
+            "rect": {
+              "x": 279.90625,
+              "y": 3242.921875,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "四節拆式槳\nNT$1,800",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3235.734375,
+                  "width": 317,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "浮力背心 NT$1,450",
+            "tag": "INPUT",
+            "rect": {
+              "x": 279.90625,
+              "y": 3302.296875,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "浮力背心\nNT$1,450",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3295.109375,
+                  "width": 317,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "防水袋 NT$680",
+            "tag": "INPUT",
+            "rect": {
+              "x": 279.90625,
+              "y": 3361.671875,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "防水袋\nNT$680",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3354.484375,
+                  "width": 317,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "下載裝備清單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 36.5,
+              "y": 4007.359375,
+              "width": 168,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "下載空白規劃表\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4128.828125,
+              "width": 123.046875,
+              "height": 44
+            },
+            "labels": []
+          }
+        ],
+        "text": [
+          {
+            "label": "跳到主要內容",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 128,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE\n摺徑",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 6.796875,
+              "width": 147.796875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "船型",
+            "tag": "A",
+            "rect": {
+              "x": 228.28125,
+              "y": 6.796875,
+              "width": 24.640625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "收納尺寸",
+            "tag": "A",
+            "rect": {
+              "x": 264.921875,
+              "y": 6.796875,
+              "width": 49.28125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "English",
+            "tag": "A",
+            "rect": {
+              "x": 326.203125,
+              "y": 6.796875,
+              "width": 44.296875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "城市旅人的可攜摺疊皮艇",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 74.59375,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "把水路摺進旅程。",
+            "tag": "H1",
+            "rect": {
+              "x": 19.5,
+              "y": 92.921875,
+              "width": 351,
+              "height": 42.484375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "34.71px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "硬殼板件沿鉸線開合，從手提尺寸展成單人或雙人船身。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 146.59375,
+              "width": 351,
+              "height": 48.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "15.36px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "規劃我的裝備\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 205.515625,
+              "width": 168,
+              "height": 44
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(169, 49, 24)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "攜行",
+            "tag": "LABEL",
+            "rect": {
+              "x": 19.5,
+              "y": 546.984375,
+              "width": 42.234375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "半展",
+            "tag": "LABEL",
+            "rect": {
+              "x": 61.734375,
+              "y": 546.984375,
+              "width": 42.234375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "成船",
+            "tag": "LABEL",
+            "rect": {
+              "x": 103.96875,
+              "y": 546.984375,
+              "width": 42.234375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "船型型錄",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 657.578125,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "一人出發，兩人同行。",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 683.578125,
+              "width": 351,
+              "height": 35.828125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "32px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "兩款均含硬邊折板、座椅與攜行束帶。比較座位、路線和總載重。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 730.59375,
+              "width": 351,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "湖泊與短程水道",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1001.625,
+              "width": 317,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Solo 330 單人艇",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 1022.5,
+              "width": 317,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "配置一席，留有日用裝備空間。",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1055.5,
+              "width": 317,
+              "height": 25.265625
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意售價\nNT$28,800",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1279.796875,
+              "width": 317,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選擇單人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1307.59375,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "雙人遊憩與較長行程",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1560.09375,
+              "width": 317,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tandem 370 雙人艇",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 1580.96875,
+              "width": 317,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "兩席前後排列，可作湖泊與內陸水道的行程規劃。",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1613.96875,
+              "width": 317,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意售價\nNT$36,800",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1863.53125,
+              "width": 317,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選擇雙人艇\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1891.328125,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "攜行規格",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2024.328125,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "上車前，先量收納空間。",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2050.328125,
+              "width": 351,
+              "height": 35.828125
+            },
+            "color": "rgb(240, 243, 237)",
+            "size": "32px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "以含束帶的船身外緣計算。槳具和其他配件需另留空間。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2098.953125,
+              "width": 351,
+              "height": 50.53125
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "裝備選型",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2612.359375,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "配好再出發。",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2638.359375,
+              "width": 351,
+              "height": 35.828125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "32px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "填入同行人數與路線，再核對總載重和配件數量。下載的清單可留在手機上。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2685.375,
+              "width": 351,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "同行人數\n1 人\n2 人",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 2780.90625,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "規劃路線\n湖泊短程\n內陸水道\n沿岸路線",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 2865.71875,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "船型\nSolo 330 單人艇\nTandem 370 雙人艇",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 2950.53125,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "總載重（kg）",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3035.34375,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "填入所有乘員與隨船裝備的合計重量。",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 3120.15625,
+              "width": 317,
+              "height": 20.984375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.28px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "槳與浮力背心最多各與乘員人數相同；防水袋每艇最多 2 個。",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 3184.796875,
+              "width": 317,
+              "height": 50.9375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "四節拆式槳\nNT$1,800",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3235.734375,
+              "width": 317,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "浮力背心\nNT$1,450",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3295.109375,
+              "width": 317,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "防水袋\nNT$680",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3354.484375,
+              "width": 317,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "我的攜行清單",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 3445.859375,
+              "width": 317,
+              "height": 29.046875
+            },
+            "color": "rgb(241, 245, 239)",
+            "size": "26.4px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "請先輸入總載重。",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 3954.8125,
+              "width": 317,
+              "height": 38.15625
+            },
+            "color": "rgb(201, 224, 225)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載裝備清單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 36.5,
+              "y": 4007.359375,
+              "width": 168,
+              "height": 44
+            },
+            "color": "rgb(209, 216, 216)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(52, 68, 75)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 4084.359375,
+              "width": 351,
+              "height": 44.46875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載空白規劃表\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4128.828125,
+              "width": 123.046875,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "14.08px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE\n摺徑",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4244.21875,
+              "width": 147.796875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "返回視覺作品集 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4301.015625,
+              "width": 115.796875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "作品原始碼 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 147.296875,
+              "y": 4301.015625,
+              "width": 87.640625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/half-narrow.webp",
+            "width": 720,
+            "height": 560
+          },
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/solo.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/tandem.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/carry.webp",
+            "width": 900,
+            "height": 540
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "跳到主要內容",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "FOLDLINE\n摺徑",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "船型",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "收納尺寸",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "English",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "規劃我的裝備\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 205.515625
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "半展",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 546.984375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "選擇單人艇\n↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1307.59375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "選擇雙人艇\n↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1891.328125
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "同行人數\n1 人\n2 人",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2808.125
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "規劃路線\n湖泊短程\n內陸水道\n沿岸路線",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2892.9375
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "船型\nSolo 330 單人艇\nTandem 370 雙人艇",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2977.75
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "總載重（kg）",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3062.5625
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "四節拆式槳\nNT$1,800",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3242.921875
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "浮力背心\nNT$1,450",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3302.296875
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "防水袋\nNT$680",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3361.671875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "下載空白規劃表\n↓",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4128.828125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "FOLDLINE\n摺徑",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4244.21875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "返回視覺作品集 ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4301.015625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "作品原始碼 ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4301.015625
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2232.1999999999825,
+    "end": 12232.599999999977,
+    "timestamps": [
+      2249.399999999994,
+      2271.5999999999767,
+      2293.899999999994,
+      2315.7999999999884,
+      2337.899999999994,
+      2359.5999999999767,
+      2381,
+      2403.6999999999825,
+      2425.5,
+      2447.7999999999884,
+      2469.399999999994,
+      2491.399999999994,
+      2513.5999999999767,
+      2536.0999999999767,
+      2557.899999999994,
+      2579.399999999994,
+      2602.0999999999767,
+      2623.7999999999884,
+      2646.1999999999825,
+      2668.399999999994,
+      2690.399999999994,
+      2712.6999999999825,
+      2735,
+      2756.7999999999884,
+      2779.0999999999767,
+      2801.1999999999825,
+      2823.399999999994,
+      2845.1999999999825,
+      2866.7999999999884,
+      2890.0999999999767,
+      2912.6999999999825,
+      2934.6999999999825,
+      2956.5,
+      2979,
+      3000.6999999999825,
+      3023.0999999999767,
+      3045.0999999999767,
+      3067.0999999999767,
+      3089.399999999994,
+      3111.6999999999825,
+      3133.7999999999884,
+      3156.5,
+      3179.0999999999767,
+      3201.0999999999767,
+      3223.399999999994,
+      3245.1999999999825,
+      3266.1999999999825,
+      3288.1999999999825,
+      3310.2999999999884,
+      3333.2999999999884,
+      3355.1999999999825,
+      3376.0999999999767,
+      3398.399999999994,
+      3420.1999999999825,
+      3442.5,
+      3464.899999999994,
+      3486.1999999999825,
+      3508.5999999999767,
+      3530.5999999999767,
+      3552.5999999999767,
+      3574.0999999999767,
+      3597.5,
+      3619.0999999999767,
+      3640.899999999994,
+      3663,
+      3684.7999999999884,
+      3706.2999999999884,
+      3728.5,
+      3750.2999999999884,
+      3771.899999999994,
+      3794.1999999999825,
+      3816.5999999999767,
+      3839.0999999999767,
+      3860.5999999999767,
+      3883.2999999999884,
+      3904.5999999999767,
+      3926.5,
+      3949.6999999999825,
+      3970.399999999994,
+      3992.5,
+      4014.2999999999884,
+      4036,
+      4058.0999999999767,
+      4079.5,
+      4101.299999999988,
+      4122.899999999994,
+      4145.1999999999825,
+      4166.399999999994,
+      4189.299999999988,
+      4211.399999999994,
+      4234.299999999988,
+      4256.5,
+      4279.399999999994,
+      4301.1999999999825,
+      4323.399999999994,
+      4345,
+      4367.099999999977,
+      4390,
+      4411.799999999988,
+      4433.899999999994,
+      4455.899999999994,
+      4477.6999999999825,
+      4499.599999999977,
+      4521.799999999988,
+      4544.6999999999825,
+      4566.099999999977,
+      4588.599999999977,
+      4610.6999999999825,
+      4632.899999999994,
+      4655.1999999999825,
+      4676.6999999999825,
+      4698.5,
+      4721.5,
+      4743.899999999994,
+      4766.099999999977,
+      4788.1999999999825,
+      4811.5,
+      4833.6999999999825,
+      4855.6999999999825,
+      4877.6999999999825,
+      4899.5,
+      4920.099999999977,
+      4942.5,
+      4964.5,
+      4986.899999999994,
+      5009,
+      5031,
+      5053.5,
+      5075.5,
+      5097.599999999977,
+      5119.1999999999825,
+      5140.5,
+      5163.299999999988,
+      5186,
+      5208.799999999988,
+      5230.399999999994,
+      5253,
+      5275,
+      5297.099999999977,
+      5319.099999999977,
+      5340.899999999994,
+      5367.299999999988,
+      5386.6999999999825,
+      5408.299999999988,
+      5430.899999999994,
+      5452.399999999994,
+      5474.6999999999825,
+      5496.799999999988,
+      5519,
+      5543,
+      5564.799999999988,
+      5587.299999999988,
+      5609,
+      5630.5,
+      5652.799999999988,
+      5674.899999999994,
+      5697.799999999988,
+      5719.299999999988,
+      5742,
+      5763.799999999988,
+      5785.799999999988,
+      5808.1999999999825,
+      5829.6999999999825,
+      5853,
+      5874.399999999994,
+      5897,
+      5919.1999999999825,
+      5941.099999999977,
+      5962.899999999994,
+      5984.899999999994,
+      6006.5,
+      6028.1999999999825,
+      6049.799999999988,
+      6072.599999999977,
+      6094.6999999999825,
+      6115.899999999994,
+      6137.6999999999825,
+      6159.899999999994,
+      6182.399999999994,
+      6204.6999999999825,
+      6226.399999999994,
+      6248.099999999977,
+      6269.5,
+      6291.299999999988,
+      6312.799999999988,
+      6334.599999999977,
+      6356.899999999994,
+      6378.899999999994,
+      6400.5,
+      6422.5,
+      6444.099999999977,
+      6465.6999999999825,
+      6488,
+      6509.599999999977,
+      6531.1999999999825,
+      6552.599999999977,
+      6574.6999999999825,
+      6596.599999999977,
+      6618.599999999977,
+      6640.5,
+      6662.399999999994,
+      6684.599999999977,
+      6707.5,
+      6729,
+      6752.1999999999825,
+      6774.1999999999825,
+      6796.6999999999825,
+      6818.6999999999825,
+      6840.6999999999825,
+      6862.599999999977,
+      6884.599999999977,
+      6905.899999999994,
+      6928,
+      6949.899999999994,
+      6971.6999999999825,
+      6993.099999999977,
+      7014.899999999994,
+      7037.1999999999825,
+      7058.899999999994,
+      7080.799999999988,
+      7102.1999999999825,
+      7124.6999999999825,
+      7146.599999999977,
+      7168.5,
+      7190.399999999994,
+      7212.299999999988,
+      7233.6999999999825,
+      7256,
+      7277.299999999988,
+      7300.6999999999825,
+      7322.1999999999825,
+      7343.299999999988,
+      7360.899999999994,
+      7383.799999999988,
+      7406,
+      7427.799999999988,
+      7449.899999999994,
+      7471.399999999994,
+      7493.5,
+      7515.5,
+      7537.5,
+      7559,
+      7581.599999999977,
+      7604.599999999977,
+      7626.599999999977,
+      7648.299999999988,
+      7670.099999999977,
+      7691.1999999999825,
+      7712.399999999994,
+      7735,
+      7756.5,
+      7778.099999999977,
+      7800.299999999988,
+      7821.6999999999825,
+      7843.1999999999825,
+      7865.599999999977,
+      7887.6999999999825,
+      7909.599999999977,
+      7931,
+      7953.299999999988,
+      7975.799999999988,
+      7998.099999999977,
+      8021.1999999999825,
+      8042.299999999988,
+      8063.5,
+      8085.399999999994,
+      8108.1999999999825,
+      8130.099999999977,
+      8152.099999999977,
+      8174.099999999977,
+      8195.699999999983,
+      8217.599999999977,
+      8239.699999999983,
+      8261.599999999977,
+      8284.199999999983,
+      8306.199999999983,
+      8328.799999999988,
+      8350.899999999994,
+      8371.899999999994,
+      8393.599999999977,
+      8415.899999999994,
+      8437.599999999977,
+      8459.899999999994,
+      8482.199999999983,
+      8505.399999999994,
+      8526.899999999994,
+      8548.5,
+      8570.299999999988,
+      8592.199999999983,
+      8615.599999999977,
+      8637.399999999994,
+      8659.699999999983,
+      8682.299999999988,
+      8704.599999999977,
+      8726.299999999988,
+      8748.099999999977,
+      8770.699999999983,
+      8792.199999999983,
+      8814.599999999977,
+      8836.699999999983,
+      8858.5,
+      8880.299999999988,
+      8902.599999999977,
+      8924.599999999977,
+      8945,
+      8967.5,
+      8988.799999999988,
+      9010.399999999994,
+      9034,
+      9055.699999999983,
+      9077.299999999988,
+      9099.299999999988,
+      9121.299999999988,
+      9142.799999999988,
+      9164.699999999983,
+      9186.099999999977,
+      9207.799999999988,
+      9229.399999999994,
+      9250.899999999994,
+      9273.399999999994,
+      9294.899999999994,
+      9317.299999999988,
+      9339,
+      9360.699999999983,
+      9382.899999999994,
+      9404.599999999977,
+      9426.399999999994,
+      9448.599999999977,
+      9470,
+      9492,
+      9507.899999999994,
+      9529.299999999988,
+      9551.099999999977,
+      9573.399999999994,
+      9595.099999999977,
+      9617.099999999977,
+      9638.899999999994,
+      9659.899999999994,
+      9682.099999999977,
+      9704.399999999994,
+      9726.5,
+      9749.599999999977,
+      9771.799999999988,
+      9793.699999999983,
+      9815.799999999988,
+      9837.599999999977,
+      9859.5,
+      9881.399999999994,
+      9903.699999999983,
+      9926.799999999988,
+      9948.699999999983,
+      9971.899999999994,
+      9992.899999999994,
+      10015.799999999988,
+      10037.699999999983,
+      10059.799999999988,
+      10081.599999999977,
+      10103.299999999988,
+      10125.099999999977,
+      10147.299999999988,
+      10168.699999999983,
+      10190.599999999977,
+      10213.099999999977,
+      10236.199999999983,
+      10258.799999999988,
+      10282.199999999983,
+      10304,
+      10328,
+      10350,
+      10371.799999999988,
+      10388.699999999983,
+      10410.599999999977,
+      10432.599999999977,
+      10454.599999999977,
+      10476.699999999983,
+      10498.599999999977,
+      10519.799999999988,
+      10541.799999999988,
+      10563.5,
+      10585.899999999994,
+      10608.899999999994,
+      10631,
+      10653.099999999977,
+      10674.899999999994,
+      10696.899999999994,
+      10719,
+      10740.699999999983,
+      10762.5,
+      10785.099999999977,
+      10807.199999999983,
+      10828.599999999977,
+      10850.899999999994,
+      10872.399999999994,
+      10894.599999999977,
+      10917,
+      10939,
+      10960.5,
+      10982.899999999994,
+      11004.799999999988,
+      11026.699999999983,
+      11048.699999999983,
+      11071.799999999988,
+      11094,
+      11116.299999999988,
+      11138.199999999983,
+      11159.699999999983,
+      11182.399999999994,
+      11204.399999999994,
+      11226.599999999977,
+      11248.099999999977,
+      11270.199999999983,
+      11291.399999999994,
+      11313.199999999983,
+      11334.699999999983,
+      11356.899999999994,
+      11378.099999999977,
+      11399.899999999994,
+      11422.399999999994,
+      11445.299999999988,
+      11467.599999999977,
+      11490.5,
+      11512.399999999994,
+      11534.099999999977,
+      11556.299999999988,
+      11578.199999999983,
+      11600,
+      11622,
+      11644,
+      11665.699999999983,
+      11687.599999999977,
+      11709.799999999988,
+      11731.699999999983,
+      11754.299999999988,
+      11776.199999999983,
+      11798.199999999983,
+      11819.899999999994,
+      11841.5,
+      11863.299999999988,
+      11885.399999999994,
+      11906.599999999977,
+      11928.799999999988,
+      11950.699999999983,
+      11971.899999999994,
+      11993.899999999994,
+      12015,
+      12037.099999999977,
+      12058.399999999994,
+      12080.599999999977,
+      12102.399999999994,
+      12124.099999999977,
+      12145.399999999994,
+      12167.5,
+      12189.899999999994,
+      12211.699999999983
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        351,
+        273
+      ]
+    ],
+    "measuredMs": 10000.399999999994,
+    "medianMs": 22,
+    "p95Ms": 23,
+    "longestMs": 26.39999999999418,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/works/foldline/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/foldline-tc.woff2",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/fonts/prism-plex-mono.ttf",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/fonts/m05-foldline-tc.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/fonts/studio-tc-first-layout.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/assets/page-DoctZMeG.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/assets/page-D99e948b.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/half-narrow.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/solo.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/tandem.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/assets/gpu-Cj8SZo7q.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/carry.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:57052/glossquote-visuals/media/foldline/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}

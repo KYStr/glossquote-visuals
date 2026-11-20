@@ -1,0 +1,6771 @@
+{
+  "work": "V010",
+  "lang": "en",
+  "viewport": "mobile",
+  "commit": "c19abda5645c174c8fa6df79c06d26993cc31746",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "awaiting load",
+            "enabled": false,
+            "message": "Enter your total payload.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "solo lake kit",
+            "enabled": true,
+            "message": "Your selections fit the catalogue limits. The list is ready to download.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "exact solo payload accepted",
+            "enabled": true,
+            "message": "Your selections fit the catalogue limits. The list is ready to download.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "above solo payload rejected",
+            "enabled": false,
+            "message": "The payload exceeds this kayak’s 110 kg rating. Adjust the payload or your selection.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "two paddlers with one seat rejected",
+            "enabled": false,
+            "message": "The kayak’s seating does not match your party. Choose Solo for one paddler or Tandem for two.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "coastal route outside catalogue",
+            "enabled": false,
+            "message": "This catalogue covers lake and inland waterway planning. Change your route to continue.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "third bag rejected",
+            "enabled": false,
+            "message": "Enter a whole number from 0 to 2 for dry bag.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "fractional equipment rejected",
+            "enabled": false,
+            "message": "Enter a whole number from 0 to 2 for buoyancy vest.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "revised tandem kit at capacity",
+            "enabled": true,
+            "message": "Your selections fit the catalogue limits. The list is ready to download.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "NT$43,210"
+          }
+        ],
+        "download": {
+          "filename": "foldline-kit-en.txt",
+          "bytes": 482,
+          "text": "FOLDLINE | Equipment and carry list\n\nKayak: Tandem 370\nParty size: 2 people\nPlanned route: Inland waterway\nTotal payload: 205 kg / 205 kg\nPacked size (L × W × H): 106 × 41 × 34 cm\nHull weight: 14.6 kg\nOpen size: 370 × 77 cm\nFour-piece paddle: 2\nBuoyancy vest: 1\nDry bag: 2\nIllustrative total: NT$43,210\n\nConcept brand. Specifications, route categories and prices are illustrative. Check the actual product, weather and local waterway rules. Use this list for offline planning.\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "awaiting load",
+            "enabled": false,
+            "message": "Enter your total payload.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "solo lake kit",
+            "enabled": true,
+            "message": "Your selections fit the catalogue limits. The list is ready to download.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "exact solo payload accepted",
+            "enabled": true,
+            "message": "Your selections fit the catalogue limits. The list is ready to download.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "NT$32,730"
+          },
+          {
+            "name": "above solo payload rejected",
+            "enabled": false,
+            "message": "The payload exceeds this kayak’s 110 kg rating. Adjust the payload or your selection.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "two paddlers with one seat rejected",
+            "enabled": false,
+            "message": "The kayak’s seating does not match your party. Choose Solo for one paddler or Tandem for two.",
+            "model": "Solo 330",
+            "packed": "90 × 36 × 30 cm",
+            "price": "—"
+          },
+          {
+            "name": "coastal route outside catalogue",
+            "enabled": false,
+            "message": "This catalogue covers lake and inland waterway planning. Change your route to continue.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "third bag rejected",
+            "enabled": false,
+            "message": "Enter a whole number from 0 to 2 for dry bag.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "fractional equipment rejected",
+            "enabled": false,
+            "message": "Enter a whole number from 0 to 2 for buoyancy vest.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "—"
+          },
+          {
+            "name": "revised tandem kit at capacity",
+            "enabled": true,
+            "message": "Your selections fit the catalogue limits. The list is ready to download.",
+            "model": "Tandem 370",
+            "packed": "106 × 41 × 34 cm",
+            "price": "NT$43,210"
+          }
+        ],
+        "download": {
+          "filename": "foldline-kit-en.txt",
+          "bytes": 482,
+          "text": "FOLDLINE | Equipment and carry list\n\nKayak: Tandem 370\nParty size: 2 people\nPlanned route: Inland waterway\nTotal payload: 205 kg / 205 kg\nPacked size (L × W × H): 106 × 41 × 34 cm\nHull weight: 14.6 kg\nOpen size: 370 × 77 cm\nFour-piece paddle: 2\nBuoyancy vest: 1\nDry bag: 2\nIllustrative total: NT$43,210\n\nConcept brand. Specifications, route categories and prices are illustrative. Check the actual product, weather and local waterway rules. Use this list for offline planning.\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795203418998.5,
+      "anchorMs": 3525.100000000006,
+      "view": {
+        "at": 382.5,
+        "stage": {
+          "x": 19.5,
+          "y": 319.421875,
+          "right": 370.5,
+          "bottom": 592.421875
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstRunningObservedMs": 431.5,
+      "firstContentfulPaint": 356,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "en",
+        "title": "FOLDLINE | Portable folding kayaks",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [
+          {
+            "family": "Studio TC Text",
+            "status": "loaded",
+            "weight": "100 900",
+            "style": "normal"
+          },
+          {
+            "family": "Foldline Barlow",
+            "status": "loaded",
+            "weight": "800",
+            "style": "normal"
+          }
+        ],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/media/foldline/foldline-tc.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-D99e948b.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 0.9000000000232831,
+          "requestStart": 3.8000000000174623,
+          "responseStart": 11.60000000000582,
+          "responseEnd": 12.300000000017462,
+          "duration": 372.9000000000233,
+          "domInteractive": 36.30000000001746,
+          "domContentLoadedEventStart": 315.70000000001164,
+          "domContentLoadedEventEnd": 315.9000000000233,
+          "domComplete": 372.80000000001746,
+          "loadEventStart": 372.9000000000233,
+          "loadEventEnd": 372.9000000000233,
+          "transferSize": 11954,
+          "encodedBodySize": 11654,
+          "decodedBodySize": 11654
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 356
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 356
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/media/foldline/foldline-tc.woff2",
+            "initiator": "link",
+            "startTime": 22.20000000001164,
+            "fetchStart": 22.20000000001164,
+            "requestStart": 23.300000000017462,
+            "responseStart": 27.10000000000582,
+            "responseEnd": 27.900000000023283,
+            "duration": 5.7000000000116415,
+            "transferSize": 106756,
+            "encodedBodySize": 106456,
+            "decodedBodySize": 106456
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/foldline-tc.css",
+            "initiator": "link",
+            "startTime": 22.5,
+            "fetchStart": 22.5,
+            "requestStart": 27.60000000000582,
+            "responseStart": 29.300000000017462,
+            "responseEnd": 29.400000000023283,
+            "duration": 6.900000000023283,
+            "transferSize": 798,
+            "encodedBodySize": 498,
+            "decodedBodySize": 498
+          },
+          {
+            "path": "/glossquote-visuals/fonts/studio-tc-first-layout.js",
+            "initiator": "script",
+            "startTime": 22.60000000000582,
+            "fetchStart": 22.60000000000582,
+            "requestStart": 27.900000000023283,
+            "responseStart": 28.900000000023283,
+            "responseEnd": 29.20000000001164,
+            "duration": 6.600000000005821,
+            "transferSize": 1152,
+            "encodedBodySize": 852,
+            "decodedBodySize": 852
+          },
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 34.70000000001164,
+            "fetchStart": 34.70000000001164,
+            "requestStart": 36.40000000002328,
+            "responseStart": 41.5,
+            "responseEnd": 41.90000000002328,
+            "duration": 7.2000000000116415,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-DoctZMeG.js",
+            "initiator": "script",
+            "startTime": 34.70000000001164,
+            "fetchStart": 34.70000000001164,
+            "requestStart": 37.90000000002328,
+            "responseStart": 43.80000000001746,
+            "responseEnd": 44,
+            "duration": 9.299999999988358,
+            "transferSize": 7414,
+            "encodedBodySize": 7114,
+            "decodedBodySize": 7114
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-D99e948b.css",
+            "initiator": "link",
+            "startTime": 34.90000000002328,
+            "fetchStart": 34.90000000002328,
+            "requestStart": 37.80000000001746,
+            "responseStart": 42.90000000002328,
+            "responseEnd": 43.20000000001164,
+            "duration": 8.299999999988358,
+            "transferSize": 10195,
+            "encodedBodySize": 9895,
+            "decodedBodySize": 9895
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 34.90000000002328,
+            "fetchStart": 34.90000000002328,
+            "requestStart": 39.70000000001164,
+            "responseStart": 44.10000000000582,
+            "responseEnd": 44.20000000001164,
+            "duration": 9.299999999988358,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/half-narrow.webp",
+            "initiator": "img",
+            "startTime": 36.10000000000582,
+            "fetchStart": 36.10000000000582,
+            "requestStart": 39.70000000001164,
+            "responseStart": 44.30000000001746,
+            "responseEnd": 44.60000000000582,
+            "duration": 8.5,
+            "transferSize": 24130,
+            "encodedBodySize": 23830,
+            "decodedBodySize": 23830
+          },
+          {
+            "path": "/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+            "initiator": "css",
+            "startTime": 126.10000000000582,
+            "fetchStart": 126.10000000000582,
+            "requestStart": 314.20000000001164,
+            "responseStart": 316.80000000001746,
+            "responseEnd": 317.6000000000058,
+            "duration": 191.5,
+            "transferSize": 110596,
+            "encodedBodySize": 110296,
+            "decodedBodySize": 110296
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/solo.webp",
+            "initiator": "img",
+            "startTime": 311.6000000000058,
+            "fetchStart": 311.6000000000058,
+            "requestStart": 313.70000000001164,
+            "responseStart": 317.80000000001746,
+            "responseEnd": 318.30000000001746,
+            "duration": 6.7000000000116415,
+            "transferSize": 14984,
+            "encodedBodySize": 14684,
+            "decodedBodySize": 14684
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/tandem.webp",
+            "initiator": "img",
+            "startTime": 311.70000000001164,
+            "fetchStart": 311.70000000001164,
+            "requestStart": 314.30000000001746,
+            "responseStart": 318.1000000000058,
+            "responseEnd": 318.4000000000233,
+            "duration": 6.7000000000116415,
+            "transferSize": 16310,
+            "encodedBodySize": 16010,
+            "decodedBodySize": 16010
+          },
+          {
+            "path": "/glossquote-visuals/assets/gpu-Cj8SZo7q.js",
+            "initiator": "script",
+            "startTime": 383.6000000000058,
+            "fetchStart": 383.6000000000058,
+            "requestStart": 384.20000000001164,
+            "responseStart": 386.20000000001164,
+            "responseEnd": 386.70000000001164,
+            "duration": 3.1000000000058208,
+            "transferSize": 8936,
+            "encodedBodySize": 8636,
+            "decodedBodySize": 8636
+          },
+          {
+            "path": "/glossquote-visuals/media/foldline/mark.svg",
+            "initiator": "other",
+            "startTime": 384,
+            "fetchStart": 384,
+            "requestStart": 384.6000000000058,
+            "responseStart": 385.9000000000233,
+            "responseEnd": 386.4000000000233,
+            "duration": 2.400000000023283,
+            "transferSize": 475,
+            "encodedBodySize": 175,
+            "decodedBodySize": 175
+          }
+        ],
+        "longTasks": [
+          {
+            "start": 37.90000000002328,
+            "duration": 83
+          },
+          {
+            "start": 313.5,
+            "duration": 58
+          }
+        ]
+      },
+      "fromCommitReturnToTimingReadMs": 3508.6957,
+      "navigationStartMetricMs": 197635.288,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "From city to water.",
+          "cssFamily": "\"Foldline Barlow\", \"Arial Narrow\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Barlow Condensed",
+              "postScriptName": "BarlowCondensed-ExtraBold",
+              "isCustomFont": true,
+              "glyphCount": 18
+            }
+          ]
+        },
+        {
+          "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+          "text": "繁體中文",
+          "cssFamily": "\"Studio TC Text\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-Bold",
+              "isCustomFont": true,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "Portable folding kayaks",
+          "cssFamily": "Consolas, \"Courier New\", monospace",
+          "fonts": [
+            {
+              "familyName": "Consolas",
+              "postScriptName": "Consolas-Bold",
+              "isCustomFont": false,
+              "glyphCount": 23
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 197652.91700000002,
+          "ms": 17.629000000015367
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 197951.156,
+          "ms": 315.86799999998766
+        },
+        {
+          "name": "load",
+          "traceMs": 198008.238,
+          "ms": 372.95000000001164
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 197988.40899999999,
+          "ms": 353.12099999998463
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 197988.40899999999,
+          "ms": 353.12099999998463
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 197988.40899999999,
+          "ms": 353.12099999998463
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 197988.40899999999,
+          "ms": 353.12099999998463
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 198008.094,
+          "ms": 372.8060000000114
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 197988.40899999999,
+          "ms": 353.12099999998463
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 198029.187,
+          "ms": 393.8990000000049
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3507.4709999999905,
+      "navigationStartTraceMs": 197635.288,
+      "navigationStartEventUs": 197635288,
+      "anchorTraceUs": 201160393,
+      "fcpTraceClockUs": 197991288,
+      "screenshotEvents": 148,
+      "traceImageTimesMs": [
+        7.100999999995111,
+        342.9780000000028,
+        394.1600000000035,
+        467.05199999999604,
+        468.34599999999045,
+        469.01600000000326,
+        503.554999999993,
+        524.5909999999858,
+        547.2870000000112,
+        566.1760000000068,
+        576.7660000000033,
+        618.5100000000093,
+        639.0270000000019,
+        644.7889999999898,
+        666.3500000000058,
+        702.2919999999867,
+        707.8310000000056,
+        728.9830000000075,
+        765.2380000000121,
+        785.5709999999963,
+        806.7919999999867,
+        827.2339999999967,
+        847.8740000000107,
+        868.6039999999921,
+        888.8090000000084,
+        894.3569999999891,
+        915.7019999999902,
+        937.9510000000009,
+        959.6080000000075,
+        995.7900000000081,
+        1021.9590000000026,
+        1022.7639999999956,
+        1053.7809999999881,
+        1089.978999999992,
+        1095.3520000000135,
+        1117.5890000000072,
+        1141.076000000001,
+        1163.1570000000065,
+        1185.453999999998,
+        1207.453999999998,
+        1228.258999999991,
+        1248.948000000004,
+        1285.783999999985,
+        1306.1879999999946,
+        1326.3150000000023,
+        1347.1570000000065,
+        1367.7170000000042,
+        1388.1689999999944,
+        1394.0799999999872,
+        1415.113000000012,
+        1437.2119999999995,
+        1458.4290000000037,
+        1478.7999999999884,
+        1515.3559999999998,
+        1535.5,
+        1541.0709999999963,
+        1577.1749999999884,
+        1582.8649999999907,
+        1604.3550000000105,
+        1625.3470000000088,
+        1645.627999999997,
+        1681.9070000000065,
+        1702.8530000000028,
+        1708.363000000012,
+        1729.8150000000023,
+        1752.1870000000054,
+        1772.9929999999877,
+        1793.627999999997,
+        1830.06700000001,
+        1835.488000000012,
+        1857.9979999999923,
+        1878.875,
+        1915.2850000000035,
+        1920.7250000000058,
+        1941.4260000000068,
+        1962.372000000003,
+        1997.9690000000119,
+        2003.396000000008,
+        2024.939000000013,
+        2046.2570000000123,
+        2066.9649999999965,
+        2089.119000000006,
+        2110.43299999999,
+        2146.0109999999986,
+        2151.1929999999993,
+        2171.890000000014,
+        2194.0810000000056,
+        2215.1879999999946,
+        2236.3770000000077,
+        2257.6639999999898,
+        2279.209999999992,
+        2300.6320000000123,
+        2321.2969999999914,
+        2343.5560000000114,
+        2365.7639999999956,
+        2387.7080000000133,
+        2409.2000000000116,
+        2430.6870000000054,
+        2452.1259999999893,
+        2474.353999999992,
+        2496.095000000001,
+        2516.2850000000035,
+        2552.5719999999856,
+        2557.94200000001,
+        2579.722999999998,
+        2601.1820000000007,
+        2622.543000000005,
+        2643.140000000014,
+        2665.3029999999853,
+        2686.6210000000137,
+        2707.42300000001,
+        2728.600999999995,
+        2750.2669999999925,
+        2771.1050000000105,
+        2792.649000000005,
+        2814.116000000009,
+        2835.3120000000054,
+        2857.576000000001,
+        2878.6939999999886,
+        2899.771999999997,
+        2920.8209999999963,
+        2941.7449999999953,
+        2963.899000000005,
+        2984.597999999998,
+        3005.6410000000033,
+        3027.7110000000102,
+        3048.515000000014,
+        3069.4439999999886,
+        3090.9530000000086,
+        3112.7479999999923,
+        3133.744000000006,
+        3154.920000000013,
+        3190.465999999986,
+        3212.4260000000068,
+        3219.7550000000047,
+        3274.241000000009,
+        3277.3029999999853,
+        3300.0409999999974,
+        3322.8520000000135,
+        3345.280999999988,
+        3366.4500000000116,
+        3388.106999999989,
+        3410.339000000007,
+        3432.2239999999874,
+        3455.1119999999937,
+        3476.3850000000093,
+        3498.1149999999907,
+        3519.9279999999853
+      ],
+      "filmstripFramesInWindow": 122,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 394.1600000000035,
+          "traceUs": 198029448,
+          "file": "opening-0.png",
+          "sha256": "fe8f7331bdeb0ebb527ddd9f179589d22a6fa3afed6d441aa89454443a8f8936",
+          "source": "opening-0.jpg",
+          "originalSha256": "9673559dc2fd566804a0b6abd5fc24ce3a0024aa12c15f04ceef48e442f35d00",
+          "stageHash": "42715bdfded46b6fd607a65b6853bc4d7efcb6a79eedfb3c152150b816d3512c",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 644.7889999999898,
+          "traceUs": 198280077,
+          "file": "opening-1.png",
+          "sha256": "f381a6d90ae31dd7989ff6bf3515d9c285b55360abd5efcb9dfc55752437a993",
+          "source": "opening-1.jpg",
+          "originalSha256": "595bad0a47308351e2cd0177039b9640ec5170d9456299d7ba464ae5dff8d5ea",
+          "stageHash": "574f565fe2c8e178c8a985826e9bdb9f8f99ab892be7b632e5a33dc90ee3cdfe",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 888.8090000000084,
+          "traceUs": 198524097,
+          "file": "opening-2.png",
+          "sha256": "d471c19c5916719ee7067e7f7b943df88277f2f0013a535285af801f5bee19d0",
+          "source": "opening-2.jpg",
+          "originalSha256": "9c589c9251fe192ce3423c6d58ae45fd1beea4f38662fb87a5fcef63e30c5799",
+          "stageHash": "b3ec8d349bc63f44fa8e62541d12470edd0162be0e64a78831377b0ba0df3193",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1117.5890000000072,
+          "traceUs": 198752877,
+          "file": "opening-3.png",
+          "sha256": "8f0b32b4509d9db6b26f65b774fb6c825a446f492c4122bb158975918b8d2144",
+          "source": "opening-3.jpg",
+          "originalSha256": "343f344ae62ce93a035d68a6b87832c79c087f6e8c031c77a7d4ed8c7cb65b2b",
+          "stageHash": "bde9b7d78cff21d39f99cfb7e1f60bfe292a868d7aecfff41d9e25964b4bd4cd",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1367.7170000000042,
+          "traceUs": 199003005,
+          "file": "opening-4.png",
+          "sha256": "278637b7e23737fbadb5a1ffb31a9dd78b63f55e80270870d806a206db8fc807",
+          "source": "opening-4.jpg",
+          "originalSha256": "79929bc12b212abedd78a05e997b5e093a1b99335080c60dd24685ad234dc313",
+          "stageHash": "39ca4274027348e1364fa782cc283bdd71924f864dcb5a730b9fbcaebbb8ae95",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1582.8649999999907,
+          "traceUs": 199218153,
+          "file": "opening-5.png",
+          "sha256": "32e476bb21a259e18b2c6081509d42ac68d9064b5013f375c4503c19800de079",
+          "source": "opening-5.jpg",
+          "originalSha256": "2b51512f9e9957fbdb81c9cba8928b97e9d572d33bc61c267fd68f1140a743c2",
+          "stageHash": "a3dd7c4e7abf127cd5c798fe417fec4baacde05f05fd8e97bdb30106674a41ce",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1830.06700000001,
+          "traceUs": 199465355,
+          "file": "opening-6.png",
+          "sha256": "99be85f939f07e841d9ec847fcc5cc81319b5bc4621e0d87366e167a730f29ae",
+          "source": "opening-6.jpg",
+          "originalSha256": "de1a7250896a6a23df8b94fc0306fc3d0eaad2f4589970939e6d42d5d48e786a",
+          "stageHash": "c95b1b32a814297a265a7dcae24f047738e84bde1b522dcce6edefcd403293fa",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2046.2570000000123,
+          "traceUs": 199681545,
+          "file": "opening-7.png",
+          "sha256": "a21758624b4d5818199173f728c9704de0d2c8a4b71fc3c128357fd0a93b5d2c",
+          "source": "opening-7.jpg",
+          "originalSha256": "be5384d973488e11808414303e50f35218ed671f44bdb2e1f0978f0f390487a7",
+          "stageHash": "cd4f198bf65d02d5b9a857a387ae8d05a874a589628a64b435d1e9ec91901d60",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2279.209999999992,
+          "traceUs": 199914498,
+          "file": "opening-8.png",
+          "sha256": "31fc467a12e010eb11161663eb50b11753f484226710afe4616a3de62c60ed59",
+          "source": "opening-8.jpg",
+          "originalSha256": "1a3fcdac6b91c8e073f7caccd0588055538e938a045bb357d3a2e5adef50a6b3",
+          "stageHash": "78e0d32edefee57015636185f48137e3b25329a68eebae24d634e50b7024c2dd",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2516.2850000000035,
+          "traceUs": 200151573,
+          "file": "opening-9.png",
+          "sha256": "06571bb7299a65038280025660e2637a4e8e25857165300286e7a5d1a747619c",
+          "source": "opening-9.jpg",
+          "originalSha256": "d486fa4c146e40764b354f57f36d8406d9dbfec3d3980ed88325eee2a9181591",
+          "stageHash": "a90f023061857d56b5c1afca6ea1a6866c19373bc1df9e5e330e392e9bbbe211",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2750.2669999999925,
+          "traceUs": 200385555,
+          "file": "opening-10.png",
+          "sha256": "ad97a7502397fb2b2c182301912bad2c848502c1cc5310449af6efae66ad605d",
+          "source": "opening-10.jpg",
+          "originalSha256": "6763f64ddcce43d4507de1342283973f73b5366d5865b061f279b7a611ef4692",
+          "stageHash": "08c4d9eeb89d36f2b828de4022af95ca26e38319f018d852ae1486e10aa87742",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2984.597999999998,
+          "traceUs": 200619886,
+          "file": "opening-11.png",
+          "sha256": "5bb650ab5d4d4b2af04bd2ca17bef99ddd125949117cb347bd8340841c79c88b",
+          "source": "opening-11.jpg",
+          "originalSha256": "8328e0b692d1d13349a99faa9ce6a89ca144feb7c146eb6aacc38eb3b07412c9",
+          "stageHash": "40863c8ac215cacfd8b1f473ad3d74f8575a2d5fc7cdfe873a5d8f181f8f69bb",
+          "crop": [
+            11,
+            188,
+            208,
+            162
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input",
+      "runningMotion": {
+        "sampledStageFrames": 11,
+        "thumbnailSize": [
+          64,
+          48
+        ],
+        "strongest": {
+          "before": "opening-1.jpg",
+          "beforeMs": 644.7889999999898,
+          "after": "opening-11.jpg",
+          "afterMs": 2984.597999999998,
+          "meanAbsoluteRgb": 7.814561631944439,
+          "fractionWithMeanRgbDeltaAtLeast16": 0.11588541666666667
+        },
+        "basis": "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material."
+      }
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 129.69999999998254,
+    "firstFoldEnd": 213,
+    "cycle": "8",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "a6324dcbaa296773ab2075c79bd3725c4668869072a579fcb76d9980dcc3e75c",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 242.39999999999418,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 254,
+          "average": [
+            29,
+            60,
+            77,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "884a8faeb2958a6e1fa4e3f8213055347ad61b78682809d7312f27e2a8c3d87e",
+          "start": 282.29999999998836,
+          "end": 356.1000000000058,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "8c9c6f4968bf5226057b011287d5be306fa75420f3547bd1a51e1a8ece354424",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 1151.8999999999942,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 246,
+          "average": [
+            26,
+            60,
+            78,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "591e30c3daeebd5c7e056487443a036a5379d654a0d777f6d0df70b41d75d2ed",
+          "start": 1186.6000000000058,
+          "end": 1239.6000000000058,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 0.9095
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "e94d961a7e8aed1da264d793a594063b722455dedea318ff17b5f86bf63a90fb",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 2473.100000000006,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 249,
+          "average": [
+            27,
+            61,
+            79,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "aaed2decd8c115c2bbeb2c5f99ea9d1e7e1c839b7d5c21b839839d8e508638ec",
+          "start": 2506.7999999999884,
+          "end": 2562.1999999999825,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 2.2307000000000117
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "326bb1d72705780ce2e3ae003f4e07b3a51e6029df8917b39c849708f684077e",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 4263.600000000006,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 255,
+          "average": [
+            27,
+            61,
+            79,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "1c9d90516003d86828b3b3da494ff1880b0fbdf4a1b915755eb8accdca3afcd2",
+          "start": 4298.799999999988,
+          "end": 4352,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 4.021200000000012
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "29970715fe45444e2c5b6b7536a4d94de6d5192a4bcf384fec16fc14b98ec22a",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 6264.1999999999825,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 254,
+          "average": [
+            27,
+            60,
+            78,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "ab6cf5444726d69cf9aba80f1cca3869814abf284ed902c5122006a9d6a3e488",
+          "start": 6298.399999999994,
+          "end": 6352.5,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 6.021799999999988
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "d17d88cb22fe287cb145859aa0185eede919b1760515f258cbdf31591ce4bb67",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 8310.5,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 247,
+          "average": [
+            29,
+            60,
+            77,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "f625166a2542d38ba2f233317c0b19860a59451e7d53185aae55fa55ab223d8e",
+          "start": 8345.5,
+          "end": 8398.299999999988,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "seconds": 8.068100000000006
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "6cdf07f195ec47f9bf26db728daff84316244122b145c002663c8e5fda8ca565",
+          "start": 346,
+          "end": 435.79999999998836,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "7a6976a1aeaa98d8bee80ee4c9f7049ace6c80547440e9816afe3e9224117c87",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 451,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 223,
+          "average": [
+            14,
+            59,
+            81,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "3fc43232051d8871098887769d274189dc332afeaa374c80f78d2132b711858b",
+          "start": 634.3999999999942,
+          "end": 707.2999999999884,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "479a4fc8764d02d83b7dec77ee360017700969f00416d7b4dfff3c4e390fcdd1",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 718.5,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 255,
+          "average": [
+            29,
+            60,
+            77,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "dcecb4266741ad2e021c92e75b0c1aa8e62b599923e0f3f7beccf5c62e9e3bcf",
+          "start": 896.1999999999825,
+          "end": 968,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "6eb1d9f20374ccc69a3aa7557bc4846495bec23a91e8eb9c5f1d9190bc64c2fd",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 984.8999999999942,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 247,
+          "average": [
+            27,
+            61,
+            79,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "91637206709a990cd8ce909e74f881f98c78276a88dc52e367cec323abe4a317",
+          "start": 1155.2999999999884,
+          "end": 1212.7999999999884,
+          "clip": {
+            "x": 19,
+            "y": 319,
+            "width": 352,
+            "height": 274
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "39f244396535dec2c60d71ffd4a65f0fa98c150daf7c50fa8dcb3717d089d6a8",
+          "width": 351,
+          "height": 273,
+          "format": "bgra8unorm",
+          "submittedAt": 1226.5,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 226,
+          "average": [
+            14,
+            59,
+            81,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "92009a2f631d91aa54c7fc20caa606f4f3288b0a5f79ac62e617bf088c422574",
+        "start": 1291.6000000000058,
+        "end": 1350.3999999999942,
+        "clip": {
+          "x": 19,
+          "y": 319,
+          "width": 352,
+          "height": 274
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "89c20d035112bc2c3e6c73e4be2141d0d26b48b62575173b26919968e903fa56",
+        "start": 1412,
+        "end": 1474,
+        "clip": {
+          "x": 19,
+          "y": 319,
+          "width": 352,
+          "height": 274
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "89c20d035112bc2c3e6c73e4be2141d0d26b48b62575173b26919968e903fa56",
+        "start": 2839.899999999994,
+        "end": 2913,
+        "clip": {
+          "x": 19,
+          "y": 319,
+          "width": 352,
+          "height": 274
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "9a99cbe51ce7c9390217aff0b7601095706f689ae94747635f1a74b59fdf8f75",
+        "start": 3005,
+        "end": 3062.600000000006,
+        "clip": {
+          "x": 19,
+          "y": 319,
+          "width": 352,
+          "height": 274
+        }
+      }
+    },
+    "flow": {
+      "lang": "en",
+      "observations": [
+        {
+          "name": "awaiting load",
+          "enabled": false,
+          "message": "Enter your total payload.",
+          "model": "Solo 330",
+          "packed": "90 × 36 × 30 cm",
+          "price": "—"
+        },
+        {
+          "name": "solo lake kit",
+          "enabled": true,
+          "message": "Your selections fit the catalogue limits. The list is ready to download.",
+          "model": "Solo 330",
+          "packed": "90 × 36 × 30 cm",
+          "price": "NT$32,730"
+        },
+        {
+          "name": "exact solo payload accepted",
+          "enabled": true,
+          "message": "Your selections fit the catalogue limits. The list is ready to download.",
+          "model": "Solo 330",
+          "packed": "90 × 36 × 30 cm",
+          "price": "NT$32,730"
+        },
+        {
+          "name": "above solo payload rejected",
+          "enabled": false,
+          "message": "The payload exceeds this kayak’s 110 kg rating. Adjust the payload or your selection.",
+          "model": "Solo 330",
+          "packed": "90 × 36 × 30 cm",
+          "price": "—"
+        },
+        {
+          "name": "two paddlers with one seat rejected",
+          "enabled": false,
+          "message": "The kayak’s seating does not match your party. Choose Solo for one paddler or Tandem for two.",
+          "model": "Solo 330",
+          "packed": "90 × 36 × 30 cm",
+          "price": "—"
+        },
+        {
+          "name": "coastal route outside catalogue",
+          "enabled": false,
+          "message": "This catalogue covers lake and inland waterway planning. Change your route to continue.",
+          "model": "Tandem 370",
+          "packed": "106 × 41 × 34 cm",
+          "price": "—"
+        },
+        {
+          "name": "third bag rejected",
+          "enabled": false,
+          "message": "Enter a whole number from 0 to 2 for dry bag.",
+          "model": "Tandem 370",
+          "packed": "106 × 41 × 34 cm",
+          "price": "—"
+        },
+        {
+          "name": "fractional equipment rejected",
+          "enabled": false,
+          "message": "Enter a whole number from 0 to 2 for buoyancy vest.",
+          "model": "Tandem 370",
+          "packed": "106 × 41 × 34 cm",
+          "price": "—"
+        },
+        {
+          "name": "revised tandem kit at capacity",
+          "enabled": true,
+          "message": "Your selections fit the catalogue limits. The list is ready to download.",
+          "model": "Tandem 370",
+          "packed": "106 × 41 × 34 cm",
+          "price": "NT$43,210"
+        }
+      ],
+      "download": {
+        "filename": "foldline-kit-en.txt",
+        "bytes": 482,
+        "text": "FOLDLINE | Equipment and carry list\n\nKayak: Tandem 370\nParty size: 2 people\nPlanned route: Inland waterway\nTotal payload: 205 kg / 205 kg\nPacked size (L × W × H): 106 × 41 × 34 cm\nHull weight: 14.6 kg\nOpen size: 370 × 77 cm\nFour-piece paddle: 2\nBuoyancy vest: 1\nDry bag: 2\nIllustrative total: NT$43,210\n\nConcept brand. Specifications, route categories and prices are illustrative. Check the actual product, weather and local waterway rules. Use this list for offline planning.\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "Build your kit\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 284.609375,
+              "width": 173.765625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose Solo 330\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1421.4375,
+              "width": 150.78125,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose Tandem 370\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 2013.84375,
+              "width": 177.234375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Party size1 person2 people",
+            "tag": "SELECT",
+            "rect": {
+              "x": 33,
+              "y": 3019.203125,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Party size\n1 person\n2 people",
+                "rect": {
+                  "x": 33,
+                  "y": 2991.984375,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Planned routeShort lake routeInland waterwayCoastal route",
+            "tag": "SELECT",
+            "rect": {
+              "x": 33,
+              "y": 3104.015625,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Planned route\nShort lake route\nInland waterway\nCoastal route",
+                "rect": {
+                  "x": 33,
+                  "y": 3076.796875,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "KayakSolo 330Tandem 370",
+            "tag": "SELECT",
+            "rect": {
+              "x": 33,
+              "y": 3188.828125,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Kayak\nSolo 330\nTandem 370",
+                "rect": {
+                  "x": 33,
+                  "y": 3161.609375,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Total payload (kg)",
+            "tag": "INPUT",
+            "rect": {
+              "x": 33,
+              "y": 3273.640625,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Total payload (kg)",
+                "rect": {
+                  "x": 33,
+                  "y": 3246.421875,
+                  "width": 254,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Four-piece paddle NT$1,800",
+            "tag": "INPUT",
+            "rect": {
+              "x": 213.40625,
+              "y": 3496.453125,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Four-piece paddle\nNT$1,800",
+                "rect": {
+                  "x": 33,
+                  "y": 3489.265625,
+                  "width": 254,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Buoyancy vest NT$1,450",
+            "tag": "INPUT",
+            "rect": {
+              "x": 213.40625,
+              "y": 3555.828125,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Buoyancy vest\nNT$1,450",
+                "rect": {
+                  "x": 33,
+                  "y": 3548.640625,
+                  "width": 254,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Dry bag NT$680",
+            "tag": "INPUT",
+            "rect": {
+              "x": 213.40625,
+              "y": 3615.203125,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Dry bag\nNT$680",
+                "rect": {
+                  "x": 33,
+                  "y": 3608.015625,
+                  "width": 254,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Download kit list\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33,
+              "y": 4286.640625,
+              "width": 191.171875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Download a blank planner\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4474.8125,
+              "width": 191.046875,
+              "height": 44
+            },
+            "labels": []
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 139.390625,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 0,
+              "width": 111.125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Kayaks",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 44,
+              "width": 40.203125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Packed sizes",
+            "tag": "A",
+            "rect": {
+              "x": 68.203125,
+              "y": 44,
+              "width": 71.125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 151.328125,
+              "y": 44,
+              "width": 49.28125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "PORTABLE FOLDING KAYAKS",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 105,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FROM CITY TO WATER.",
+            "tag": "H1",
+            "rect": {
+              "x": 16,
+              "y": 123.328125,
+              "width": 288,
+              "height": 91.171875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "46.4px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Rigid panels hinge open into a one- or two-seat kayak you can carry by hand.",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 225.6875,
+              "width": 288,
+              "height": 48.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "15.36px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build your kit\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 284.609375,
+              "width": 173.765625,
+              "height": 44
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(169, 49, 24)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Packed",
+            "tag": "LABEL",
+            "rect": {
+              "x": 16,
+              "y": 577.078125,
+              "width": 58.1875,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Half open",
+            "tag": "LABEL",
+            "rect": {
+              "x": 74.1875,
+              "y": 577.078125,
+              "width": 74.15625,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Assembled",
+            "tag": "LABEL",
+            "rect": {
+              "x": 148.34375,
+              "y": 577.078125,
+              "width": 79.984375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "KAYAK CATALOGUE",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 687.671875,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Paddle solo or bring company.",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 715.59375,
+              "width": 288,
+              "height": 76.78125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Both models include rigid folding panels, seating and carry straps. Compare seating, route",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 803.5625,
+              "width": 288,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "LAKES AND SHORT INLAND ROUTES",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1068.359375,
+              "width": 254,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Solo 330",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 1089.234375,
+              "width": 254,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "One seat with space for a day’s gear.",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1122.234375,
+              "width": 254,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Illustrative price\nNT$28,800",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1393.640625,
+              "width": 254,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose Solo 330\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1421.4375,
+              "width": 150.78125,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TWO PADDLERS AND LONGER OUTINGS",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1642.4375,
+              "width": 254,
+              "height": 36.65625
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tandem 370",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 1681.640625,
+              "width": 254,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Two seats in line for planning lake and inland waterway outings.",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1714.640625,
+              "width": 254,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Illustrative price\nNT$36,800",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1986.046875,
+              "width": 254,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose Tandem 370\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 2013.84375,
+              "width": 177.234375,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TRANSPORT DIMENSIONS",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2146.84375,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Measure your space before you go.",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2174.765625,
+              "width": 288,
+              "height": 76.78125
+            },
+            "color": "rgb(240, 243, 237)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Measurements include the carry straps. Allow additional room for paddles and loose equipme",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2267.546875,
+              "width": 288,
+              "height": 75.796875
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "KIT PLANNER",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2768.421875,
+              "width": 288,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pack for your route.",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2796.34375,
+              "width": 288,
+              "height": 38.390625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose your party size and route, then check payload and equipment quantities. Download a ",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2845.921875,
+              "width": 288,
+              "height": 101.0625
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Party size\n1 person\n2 people",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 2991.984375,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Planned route\nShort lake route\nInland waterway\nCoastal route",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3076.796875,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Kayak\nSolo 330\nTandem 370",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3161.609375,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Total payload (kg)",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3246.421875,
+              "width": 254,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Enter the combined weight of all paddlers and equipment on board.",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 3331.234375,
+              "width": 254,
+              "height": 41.96875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.28px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Up to one paddle and one buoyancy vest per paddler. Up to two dry bags per kayak.",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 3416.859375,
+              "width": 254,
+              "height": 72.40625
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Four-piece paddle\nNT$1,800",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3489.265625,
+              "width": 254,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Buoyancy vest\nNT$1,450",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3548.640625,
+              "width": 254,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Dry bag\nNT$680",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3608.015625,
+              "width": 254,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Your carry list",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 3699.390625,
+              "width": 254,
+              "height": 29.046875
+            },
+            "color": "rgb(241, 245, 239)",
+            "size": "26.4px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Enter your total payload.",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 4234.09375,
+              "width": 254,
+              "height": 38.15625
+            },
+            "color": "rgb(201, 224, 225)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download kit list\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33,
+              "y": 4286.640625,
+              "width": 191.171875,
+              "height": 44
+            },
+            "color": "rgb(209, 216, 216)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(52, 68, 75)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Concept brand. Specifications, route categories and prices are illustrative. Check the act",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 4363.640625,
+              "width": 288,
+              "height": 111.171875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download a blank planner\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4474.8125,
+              "width": 191.046875,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "14.08px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4590.203125,
+              "width": 111.125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the visual showcase ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4647,
+              "width": 185.515625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Website source ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4691,
+              "width": 108.75,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/half-narrow.webp",
+            "width": 720,
+            "height": 560
+          },
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/solo.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/tandem.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/carry.webp",
+            "width": 900,
+            "height": 540
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "Build your kit\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 254.953125,
+              "width": 173.765625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose Solo 330\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1425.171875,
+              "width": 150.78125,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose Tandem 370\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 2008.90625,
+              "width": 177.234375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Party size1 person2 people",
+            "tag": "SELECT",
+            "rect": {
+              "x": 36.5,
+              "y": 3026.796875,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Party size\n1 person\n2 people",
+                "rect": {
+                  "x": 36.5,
+                  "y": 2999.578125,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Planned routeShort lake routeInland waterwayCoastal route",
+            "tag": "SELECT",
+            "rect": {
+              "x": 36.5,
+              "y": 3111.609375,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Planned route\nShort lake route\nInland waterway\nCoastal route",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3084.390625,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "KayakSolo 330Tandem 370",
+            "tag": "SELECT",
+            "rect": {
+              "x": 36.5,
+              "y": 3196.421875,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Kayak\nSolo 330\nTandem 370",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3169.203125,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Total payload (kg)",
+            "tag": "INPUT",
+            "rect": {
+              "x": 36.5,
+              "y": 3281.234375,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Total payload (kg)",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3254.015625,
+                  "width": 317,
+                  "height": 71.21875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Four-piece paddle NT$1,800",
+            "tag": "INPUT",
+            "rect": {
+              "x": 279.90625,
+              "y": 3482.578125,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Four-piece paddle\nNT$1,800",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3475.390625,
+                  "width": 317,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Buoyancy vest NT$1,450",
+            "tag": "INPUT",
+            "rect": {
+              "x": 279.90625,
+              "y": 3541.953125,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Buoyancy vest\nNT$1,450",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3534.765625,
+                  "width": 317,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Dry bag NT$680",
+            "tag": "INPUT",
+            "rect": {
+              "x": 279.90625,
+              "y": 3601.328125,
+              "width": 73.59375,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Dry bag\nNT$680",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3594.140625,
+                  "width": 317,
+                  "height": 59.375
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Download kit list\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 36.5,
+              "y": 4247.015625,
+              "width": 191.171875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Download a blank planner\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4412.953125,
+              "width": 191.046875,
+              "height": 44
+            },
+            "labels": []
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 139.390625,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 6.796875,
+              "width": 111.125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Kayaks",
+            "tag": "A",
+            "rect": {
+              "x": 185.890625,
+              "y": 6.796875,
+              "width": 40.203125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Packed sizes",
+            "tag": "A",
+            "rect": {
+              "x": 238.09375,
+              "y": 6.796875,
+              "width": 71.125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 321.21875,
+              "y": 6.796875,
+              "width": 49.28125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.32px",
+            "weight": "680",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "PORTABLE FOLDING KAYAKS",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 74.59375,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FROM CITY TO WATER.",
+            "tag": "H1",
+            "rect": {
+              "x": 19.5,
+              "y": 92.921875,
+              "width": 351,
+              "height": 91.921875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "46.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Rigid panels hinge open into a one- or two-seat kayak you can carry by hand.",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 196.03125,
+              "width": 347.75,
+              "height": 48.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "15.36px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build your kit\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 254.953125,
+              "width": 173.765625,
+              "height": 44
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(169, 49, 24)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Packed",
+            "tag": "LABEL",
+            "rect": {
+              "x": 19.5,
+              "y": 596.421875,
+              "width": 58.1875,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Half open",
+            "tag": "LABEL",
+            "rect": {
+              "x": 77.6875,
+              "y": 596.421875,
+              "width": 74.15625,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Assembled",
+            "tag": "LABEL",
+            "rect": {
+              "x": 151.84375,
+              "y": 596.421875,
+              "width": 79.984375,
+              "height": 48.59375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "KAYAK CATALOGUE",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 707.015625,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Paddle solo or bring company.",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 734.9375,
+              "width": 351,
+              "height": 76.78125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Both models include rigid folding panels, seating and carry straps. Compare seating, route",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 822.90625,
+              "width": 351,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "LAKES AND SHORT INLAND ROUTES",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1119.203125,
+              "width": 317,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Solo 330",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 1140.078125,
+              "width": 317,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "One seat with space for a day’s gear.",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1173.078125,
+              "width": 317,
+              "height": 25.265625
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Illustrative price\nNT$28,800",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1397.375,
+              "width": 317,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose Solo 330\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1425.171875,
+              "width": 150.78125,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TWO PADDLERS AND LONGER OUTINGS",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1677.671875,
+              "width": 317,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tandem 370",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 1698.546875,
+              "width": 317,
+              "height": 29.421875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "25.6px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Two seats in line for planning lake and inland waterway outings.",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1731.546875,
+              "width": 317,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Illustrative price\nNT$36,800",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1981.109375,
+              "width": 317,
+              "height": 27.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose Tandem 370\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 2008.90625,
+              "width": 177.234375,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TRANSPORT DIMENSIONS",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2141.90625,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Measure your space before you go.",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2169.828125,
+              "width": 351,
+              "height": 76.78125
+            },
+            "color": "rgb(240, 243, 237)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Measurements include the carry straps. Allow additional room for paddles and loose equipme",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2262.609375,
+              "width": 351,
+              "height": 75.796875
+            },
+            "color": "rgb(190, 211, 213)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "KIT PLANNER",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2801.28125,
+              "width": 351,
+              "height": 18.328125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pack for your route.",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2829.203125,
+              "width": 351,
+              "height": 38.390625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose your party size and route, then check payload and equipment quantities. Download a ",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2878.78125,
+              "width": 351,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Party size\n1 person\n2 people",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 2999.578125,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Planned route\nShort lake route\nInland waterway\nCoastal route",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3084.390625,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Kayak\nSolo 330\nTandem 370",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3169.203125,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Total payload (kg)",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3254.015625,
+              "width": 317,
+              "height": 71.21875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.4px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Enter the combined weight of all paddlers and equipment on board.",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 3338.828125,
+              "width": 317,
+              "height": 41.96875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.28px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Up to one paddle and one buoyancy vest per paddler. Up to two dry bags per kayak.",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 3424.453125,
+              "width": 317,
+              "height": 50.9375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Four-piece paddle\nNT$1,800",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3475.390625,
+              "width": 317,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Buoyancy vest\nNT$1,450",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3534.765625,
+              "width": 317,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Dry bag\nNT$680",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3594.140625,
+              "width": 317,
+              "height": 59.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "650",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Your carry list",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 3685.515625,
+              "width": 317,
+              "height": 29.046875
+            },
+            "color": "rgb(241, 245, 239)",
+            "size": "26.4px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Enter your total payload.",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 4194.46875,
+              "width": 317,
+              "height": 38.15625
+            },
+            "color": "rgb(201, 224, 225)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(13, 44, 59)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download kit list\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 36.5,
+              "y": 4247.015625,
+              "width": 191.171875,
+              "height": 44
+            },
+            "color": "rgb(209, 216, 216)",
+            "size": "16px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(52, 68, 75)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Concept brand. Specifications, route categories and prices are illustrative. Check the act",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 4324.015625,
+              "width": 351,
+              "height": 88.9375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download a blank planner\n↓",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4412.953125,
+              "width": 191.046875,
+              "height": 44
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "14.08px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FOLDLINE",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4528.34375,
+              "width": 111.125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "20.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the visual showcase ↗",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4585.140625,
+              "width": 185.515625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Website source ↗",
+            "tag": "A",
+            "rect": {
+              "x": 217.015625,
+              "y": 4585.140625,
+              "width": 108.75,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/half-narrow.webp",
+            "width": 720,
+            "height": 560
+          },
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/solo.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/tandem.webp",
+            "width": 900,
+            "height": 450
+          },
+          {
+            "src": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/carry.webp",
+            "width": 900,
+            "height": 540
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Skip to content",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "FOLDLINE",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Kayaks",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Packed sizes",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "繁體中文",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Build your kit\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 254.953125
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Half open",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 596.421875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Choose Solo 330\n↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1425.171875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Choose Tandem 370\n↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2008.90625
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "Party size\n1 person\n2 people",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3026.796875
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "Planned route\nShort lake route\nInland waterway\nCoastal route",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3111.609375
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "Kayak\nSolo 330\nTandem 370",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3196.421875
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Total payload (kg)",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3281.234375
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Four-piece paddle\nNT$1,800",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3482.578125
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Buoyancy vest\nNT$1,450",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3541.953125
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Dry bag\nNT$680",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3601.328125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Download a blank planner\n↓",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4412.953125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "FOLDLINE",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4528.34375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Back to the visual showcase ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4585.140625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Website source ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4585.140625
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2148.7000000000116,
+    "end": 12150.600000000006,
+    "timestamps": [
+      2164.2000000000116,
+      2184.5,
+      2205.100000000006,
+      2225.600000000006,
+      2245.4000000000233,
+      2265.7000000000116,
+      2287.2000000000116,
+      2307.8000000000175,
+      2328.4000000000233,
+      2348.9000000000233,
+      2369.600000000006,
+      2390.3000000000175,
+      2410.9000000000233,
+      2432,
+      2452.7000000000116,
+      2473.100000000006,
+      2493.2000000000116,
+      2514.7000000000116,
+      2535.2000000000116,
+      2556,
+      2576.100000000006,
+      2597.5,
+      2618.3000000000175,
+      2639,
+      2659.9000000000233,
+      2680.8000000000175,
+      2702.4000000000233,
+      2723.3000000000175,
+      2744.2000000000116,
+      2765.4000000000233,
+      2785.8000000000175,
+      2807.2000000000116,
+      2828.600000000006,
+      2849.600000000006,
+      2871,
+      2891.2000000000116,
+      2912,
+      2932,
+      2952.5,
+      2973.2000000000116,
+      2993.7000000000116,
+      3017.2000000000116,
+      3038.5,
+      3058.8000000000175,
+      3079.7000000000116,
+      3100.600000000006,
+      3121.4000000000233,
+      3141.9000000000233,
+      3162.3000000000175,
+      3182.600000000006,
+      3203.8000000000175,
+      3224.8000000000175,
+      3245.7000000000116,
+      3266.600000000006,
+      3287.2000000000116,
+      3307.8000000000175,
+      3328.8000000000175,
+      3350.2000000000116,
+      3370.7000000000116,
+      3391.5,
+      3412.3000000000175,
+      3432.8000000000175,
+      3455.2000000000116,
+      3475.7000000000116,
+      3496.7000000000116,
+      3517.600000000006,
+      3539.600000000006,
+      3560.5,
+      3581.2000000000116,
+      3602,
+      3623,
+      3643.100000000006,
+      3663.5,
+      3684,
+      3704.5,
+      3725.4000000000233,
+      3746.2000000000116,
+      3766.600000000006,
+      3787,
+      3807.4000000000233,
+      3827.600000000006,
+      3848.4000000000233,
+      3869.5,
+      3889.9000000000233,
+      3910.9000000000233,
+      3932.5,
+      3952.8000000000175,
+      3973.100000000006,
+      3994.600000000006,
+      4015.600000000006,
+      4036.8000000000175,
+      4057.4000000000233,
+      4078.7000000000116,
+      4096,
+      4116.900000000023,
+      4138.200000000012,
+      4158.700000000012,
+      4179.5,
+      4200.600000000006,
+      4222.100000000006,
+      4242.900000000023,
+      4263.8000000000175,
+      4285.200000000012,
+      4306.200000000012,
+      4327,
+      4347.5,
+      4367.5,
+      4387.900000000023,
+      4408.600000000006,
+      4429.100000000006,
+      4449.5,
+      4470.5,
+      4491.100000000006,
+      4511.900000000023,
+      4532.8000000000175,
+      4553.600000000006,
+      4574.400000000023,
+      4595.400000000023,
+      4616,
+      4636.400000000023,
+      4657.8000000000175,
+      4678.3000000000175,
+      4698.900000000023,
+      4719,
+      4740.100000000006,
+      4760.600000000006,
+      4782.100000000006,
+      4802,
+      4822.700000000012,
+      4843.600000000006,
+      4864.100000000006,
+      4885.5,
+      4905.5,
+      4926.8000000000175,
+      4947.200000000012,
+      4967.700000000012,
+      4988.3000000000175,
+      5010,
+      5031,
+      5051.5,
+      5072.5,
+      5094.200000000012,
+      5114.200000000012,
+      5134.400000000023,
+      5154.600000000006,
+      5175.400000000023,
+      5196,
+      5217,
+      5238.100000000006,
+      5259,
+      5279.3000000000175,
+      5300.100000000006,
+      5320.5,
+      5340.700000000012,
+      5361.900000000023,
+      5383.400000000023,
+      5404.5,
+      5424.700000000012,
+      5444.700000000012,
+      5465.8000000000175,
+      5486,
+      5505.400000000023,
+      5525.5,
+      5545.200000000012,
+      5566.400000000023,
+      5586.8000000000175,
+      5607.400000000023,
+      5628,
+      5649.100000000006,
+      5670.8000000000175,
+      5692.700000000012,
+      5713.8000000000175,
+      5735.400000000023,
+      5756.3000000000175,
+      5776.8000000000175,
+      5797.5,
+      5818.3000000000175,
+      5839.200000000012,
+      5859.600000000006,
+      5880.600000000006,
+      5901.400000000023,
+      5922.100000000006,
+      5942.200000000012,
+      5963,
+      5983.700000000012,
+      6004.400000000023,
+      6025.200000000012,
+      6046.3000000000175,
+      6068,
+      6088.600000000006,
+      6109.5,
+      6130.100000000006,
+      6150.8000000000175,
+      6171.400000000023,
+      6192,
+      6212.900000000023,
+      6233.600000000006,
+      6254.900000000023,
+      6275.700000000012,
+      6296.8000000000175,
+      6317.700000000012,
+      6338.400000000023,
+      6359.100000000006,
+      6380.200000000012,
+      6400.700000000012,
+      6421.8000000000175,
+      6442.8000000000175,
+      6463.8000000000175,
+      6484.8000000000175,
+      6505.200000000012,
+      6526,
+      6546.200000000012,
+      6566.700000000012,
+      6587.400000000023,
+      6607.900000000023,
+      6627.900000000023,
+      6648.8000000000175,
+      6669.600000000006,
+      6690,
+      6711,
+      6731.900000000023,
+      6753.700000000012,
+      6774.600000000006,
+      6795.400000000023,
+      6816.200000000012,
+      6837,
+      6857.900000000023,
+      6878.100000000006,
+      6898.3000000000175,
+      6918.400000000023,
+      6939.100000000006,
+      6959.900000000023,
+      6980.700000000012,
+      7001.5,
+      7022.400000000023,
+      7043.3000000000175,
+      7063.700000000012,
+      7084.700000000012,
+      7105.700000000012,
+      7126.3000000000175,
+      7146.600000000006,
+      7167.8000000000175,
+      7188.200000000012,
+      7209.100000000006,
+      7230,
+      7250.8000000000175,
+      7271.8000000000175,
+      7293.100000000006,
+      7313.900000000023,
+      7334.8000000000175,
+      7355.8000000000175,
+      7376.8000000000175,
+      7399,
+      7419.8000000000175,
+      7440.600000000006,
+      7461.700000000012,
+      7482.8000000000175,
+      7503.600000000006,
+      7524.400000000023,
+      7545.200000000012,
+      7565.900000000023,
+      7586.900000000023,
+      7608.100000000006,
+      7629,
+      7650.100000000006,
+      7670.600000000006,
+      7691.8000000000175,
+      7712.600000000006,
+      7733.700000000012,
+      7755.700000000012,
+      7776.400000000023,
+      7797.400000000023,
+      7818.3000000000175,
+      7839.3000000000175,
+      7860.200000000012,
+      7882,
+      7902.8000000000175,
+      7923.900000000023,
+      7945.100000000006,
+      7966.200000000012,
+      7987.200000000012,
+      8007.900000000023,
+      8029.100000000006,
+      8050.100000000006,
+      8070.8000000000175,
+      8091.700000000012,
+      8112.600000000006,
+      8133.5,
+      8154.200000000012,
+      8174.8000000000175,
+      8195.600000000006,
+      8216.900000000023,
+      8237.5,
+      8258.200000000012,
+      8278.700000000012,
+      8299.600000000006,
+      8320.600000000006,
+      8341.5,
+      8362.5,
+      8383.400000000023,
+      8404.400000000023,
+      8425.600000000006,
+      8448,
+      8468.700000000012,
+      8489.400000000023,
+      8510,
+      8530.700000000012,
+      8551.400000000023,
+      8572.200000000012,
+      8593.100000000006,
+      8614.300000000017,
+      8635.200000000012,
+      8656.200000000012,
+      8677.300000000017,
+      8699.300000000017,
+      8720.100000000006,
+      8741.200000000012,
+      8761.800000000017,
+      8782.200000000012,
+      8803.200000000012,
+      8823.900000000023,
+      8844.600000000006,
+      8865.5,
+      8886.100000000006,
+      8906.700000000012,
+      8927.700000000012,
+      8948.700000000012,
+      8969.600000000006,
+      8990.600000000006,
+      9011.5,
+      9032.400000000023,
+      9053.100000000006,
+      9073.600000000006,
+      9094.300000000017,
+      9115.200000000012,
+      9136,
+      9156.700000000012,
+      9178.100000000006,
+      9199.100000000006,
+      9220,
+      9241.100000000006,
+      9263.200000000012,
+      9284.100000000006,
+      9305.300000000017,
+      9326.600000000006,
+      9347.800000000017,
+      9368.800000000017,
+      9389.800000000017,
+      9410.600000000006,
+      9431.5,
+      9452.300000000017,
+      9473.300000000017,
+      9493.800000000017,
+      9514.900000000023,
+      9536.300000000017,
+      9557.100000000006,
+      9579.100000000006,
+      9600.900000000023,
+      9621.700000000012,
+      9642.300000000017,
+      9663.700000000012,
+      9684.800000000017,
+      9706.600000000006,
+      9727.700000000012,
+      9749.700000000012,
+      9770.400000000023,
+      9791.100000000006,
+      9811.900000000023,
+      9832.700000000012,
+      9853.800000000017,
+      9874.900000000023,
+      9896.100000000006,
+      9917.300000000017,
+      9938.300000000017,
+      9959.100000000006,
+      9980.200000000012,
+      10002.400000000023,
+      10024.100000000006,
+      10045,
+      10065.900000000023,
+      10087.300000000017,
+      10109.300000000017,
+      10131.300000000017,
+      10152.300000000017,
+      10173.700000000012,
+      10194.400000000023,
+      10215.200000000012,
+      10236.200000000012,
+      10257.700000000012,
+      10278.5,
+      10299.700000000012,
+      10320.5,
+      10341.300000000017,
+      10362,
+      10383,
+      10403.800000000017,
+      10424.900000000023,
+      10445.600000000006,
+      10466.5,
+      10487.300000000017,
+      10508.300000000017,
+      10529.100000000006,
+      10550.300000000017,
+      10571.300000000017,
+      10592.200000000012,
+      10613.100000000006,
+      10633.700000000012,
+      10654.800000000017,
+      10675.5,
+      10696.600000000006,
+      10717.100000000006,
+      10738,
+      10759,
+      10779.700000000012,
+      10800.700000000012,
+      10821.800000000017,
+      10843,
+      10864.100000000006,
+      10885.200000000012,
+      10906,
+      10927.100000000006,
+      10947.900000000023,
+      10968.900000000023,
+      10989.900000000023,
+      11010.800000000017,
+      11031.600000000006,
+      11052.400000000023,
+      11073.5,
+      11094.400000000023,
+      11115.300000000017,
+      11136.100000000006,
+      11157.700000000012,
+      11178.700000000012,
+      11199.900000000023,
+      11220.600000000006,
+      11241.600000000006,
+      11262.100000000006,
+      11283.200000000012,
+      11304.200000000012,
+      11325.100000000006,
+      11346.5,
+      11367.100000000006,
+      11388,
+      11408.800000000017,
+      11430.200000000012,
+      11451.200000000012,
+      11471.700000000012,
+      11493.800000000017,
+      11514.800000000017,
+      11535.700000000012,
+      11556.800000000017,
+      11577.5,
+      11598.300000000017,
+      11618.800000000017,
+      11639.400000000023,
+      11660.300000000017,
+      11681.200000000012,
+      11702.200000000012,
+      11723.400000000023,
+      11745.5,
+      11767.100000000006,
+      11789.300000000017,
+      11809.900000000023,
+      11830.900000000023,
+      11851.700000000012,
+      11872.900000000023,
+      11893.900000000023,
+      11914.800000000017,
+      11935.300000000017,
+      11956.600000000006,
+      11977.300000000017,
+      11998.300000000017,
+      12018.600000000006,
+      12039.700000000012,
+      12060.5,
+      12081.5,
+      12102.600000000006,
+      12123.200000000012,
+      12143.700000000012
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        351,
+        273
+      ]
+    ],
+    "measuredMs": 10001.899999999994,
+    "medianMs": 20.89999999999418,
+    "p95Ms": 21.699999999982538,
+    "longestMs": 23.5,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/en/works/foldline/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/foldline-tc.woff2",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/foldline-tc.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/fonts/studio-tc-first-layout.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/assets/page-DoctZMeG.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/assets/page-D99e948b.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/half-narrow.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/solo.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/tandem.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/assets/gpu-Cj8SZo7q.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/carry.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:65001/glossquote-visuals/media/foldline/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}

@@ -1,5 +1,29 @@
 # 官方 Shaders skill 與固定來源
 
+## M05 繁中字型與渲染
+
+繁中每頁先載入本件需要的同源字型。字型就緒、請求失敗或達 850 ms 的截止時間時，啟動腳本就讓頁面排版。關閉 JavaScript 時 HTML 會直接顯示。英文沿用各品牌的字體設計。
+
+| 作品 | 中文正文、標題與標記 |
+|---|---|
+| V007 布邊 | 布樣冊的說明用無襯線，主標與布樣單標題用襯線。兩份變動字重檔各涵蓋本次 404 個字碼。 |
+| V008 果時 | 使用這一版果凍禮盒的 359 字無襯線子集。粗黑主標、口味標籤與輔助文字保留原設計的字重和間距。 |
+| V009 疊印 | 使用作品的 Press TC 子集。海報的大型英文圖案用 Barlow Condensed，規格標記用 IBM Plex Mono。 |
+| V010 摺徑 | 沿用作者的 Foldline 中文子集。英文品牌與型號用 Barlow Condensed，尺寸、載重與刻度用 IBM Plex Mono。漢字由本件的內文字型補足。 |
+| V011 食刻 | 沿用作者的無襯線正文，增加涵蓋同一組 402 字碼的襯線主標與節目標題。拉丁刻度使用 IBM Plex Mono。 |
+
+布邊、果時與食刻新增的字型使用 Google Fonts commit `869789e84da92782c144d83d69b64cec54905b5f` 的 Noto Sans TC 與 Noto Serif TC。上游原始 TTF 的 SHA-256 分別為 `864727d210d54f2537bbe23b3a839436c3992af72de9322af5270897246bd44f`、`0077e18f57c6908f4a000969880940bdb0dad057c0e8d98b49dc364c3d1b09c6`。OFL 與原始版權欄位隨檔保留。[上游固定版本](https://github.com/google/fonts/tree/869789e84da92782c144d83d69b64cec54905b5f/ofl) · [Sans OFL](../public/fonts/studio-text-tc-OFL.txt) · [Serif OFL](../public/fonts/studio-serif-tc-OFL.txt)
+
+每份 `public/fonts/m05-<slug>-unicode.txt` 為該作建置時的完整字碼清單，包含繁中內文、表單與可及性標籤、商品操作文案、標點與可列印 ASCII。使用 fontTools 4.59.2 與 Brotli 1.1.0 搭配對應的上游 TTF 執行以下命令，可重建對應 WOFF2。使用新文案時須重新核對 cmap，全頁動態文字也必須有相應字形。
+
+```sh
+python -m fontTools.subset "$SOURCE_TTF" --unicodes-file="$UNICODE_FILE" --flavor=woff2 --no-recalc-timestamp --name-IDs=0,1,2,3,4,5,6,13,14,16,17,25,256,257,258 '--name-languages=*' --output-file="$OUTPUT_WOFF2"
+```
+
+V009 疊印與 V011 食刻在固定版 `shaders@4.0.7` standalone 中註冊作品的 WGSL。V010 摺徑則直接以原生 WebGPU mesh 畫出剛性摺板；水面使用獨立的繪製管線，船體摺板以 `depth24plus` 深度緩衝判定前後遮擋，使轉動後的板件能正確交疊。兩條路徑都採單一活動畫布，接受相同的隔離 GPU 取證、實際畫面提交間隔、隱私、暫停、離屏停止、裝置遺失和無 GPU 備援檢查。[摺徑繪製程式](../src/works/foldline/gpu.js)
+
+## M04 繁中字型
+
 M04 繁中作品使用自託管 Noto Sans TC（100–900）及 Noto Serif TC（200–900）變動字重。來源為 [Google Fonts 固定版本](https://github.com/google/fonts/tree/869789e84da92782c144d83d69b64cec54905b5f/ofl)，以三件頁面與操作提示用到的字碼製作 WOFF2 子集。繁中頁的內文、拉丁產品編號及表單控制使用自託管字型，潮間帶和布邊的標題使用襯線字；英文頁延用各品牌原有字體。[Sans 授權](../public/fonts/studio-text-tc-OFL.txt) 和 [Serif 授權](../public/fonts/studio-serif-tc-OFL.txt) 隨站附上。
 
 - Repo: https://github.com/shader-effects-inc/shaders

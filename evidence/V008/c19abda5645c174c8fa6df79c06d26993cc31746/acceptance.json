@@ -1,0 +1,580 @@
+{
+  "work": "V008",
+  "commit": "c19abda5645c174c8fa6df79c06d26993cc31746",
+  "author": "01a1f9ca-69a4-7252-9543-d0335c67631c",
+  "reviewer": "GlossQuote Visuals 工作室美術主責（非製作者）",
+  "runId": 44803659273,
+  "jobId": 136523248460,
+  "gates": {
+    "visual": "PASS",
+    "interaction": "PASS",
+    "shader": "PASS",
+    "lifecycle": "PASS",
+    "accessibility": "PASS",
+    "performance": "PASS",
+    "privacy": "PASS",
+    "seo": "PASS",
+    "reproducibility": "PASS"
+  },
+  "provenance": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/CI.json",
+  "ruleReview": {
+    "version": "commercial-rules-v1",
+    "environment": "GitHub-hosted windows-2025, Chromium 158.0.8127.18, D3D11 WARP (software)",
+    "rules": [
+      {
+        "id": "ART-1",
+        "status": "PASS",
+        "reason": "奶油色背景上，果時品牌、配禮盒入口與盤上完整的蜜柑色果凍同屏。手機仍保留大輪廓與可操作的口味標籤或指引。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/first-fold.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/first-fold.png"
+        ]
+      },
+      {
+        "id": "ART-2",
+        "status": "PASS",
+        "reason": "首訪只讓圓頂落下、橫向展開再彈回，瓷盤及接觸影留在原位；後續影格的果凍保持完整。使用者選擇上緣位置後，可同時看到輪廓缺口與盤上分離的一勺。重設可回復，換口味也保有原來的立體形狀。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-0.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-1.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-10.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-11.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-2.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-3.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-4.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-5.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-6.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-7.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-8.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/opening-9.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-0.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-1.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-10.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-11.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-2.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-3.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-4.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-5.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-6.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-7.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-8.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/opening-9.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-0-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-1-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-2-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-3-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-4-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-5-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-0.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-1.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-10.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-10.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-11.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-11.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-2.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-3.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-3.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-4.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-4.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-5.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-5.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-6.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-6.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-7.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-7.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-8.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-8.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-9.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/opening-9.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-0-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-1-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-2-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-3-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-4-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-5-composite.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-0.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-1.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-10.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-10.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-11.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-11.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-2.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-3.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-3.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-4.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-4.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-5.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-5.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-6.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-6.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-7.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-7.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-8.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-8.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-9.jpg",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/opening-9.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "ART-3",
+        "status": "PASS",
+        "reason": "圓頂透明果凍、瓷盤、莓紅圓角標籤讓它與布邊的纖維與印務的平面幾何區隔。三口味型錄沿用盤與透光材質，六杯禮盒用六個圓位回應成品形狀。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/first-fold.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-1440.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/first-fold.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/compare-desktop.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/compare-mobile.png"
+        ]
+      },
+      {
+        "id": "GPU-1",
+        "status": "PASS",
+        "reason": "zh-Hant-desktop　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 350–376。 裸 Edge 157.0.4341.60 的實際模式是 static fallback。\n\nzh-Hant-mobile　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 351–372。\n\nen-desktop　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 351–365。\n\nen-mobile　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 351–369。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-0-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-0-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "GPU-2",
+        "status": "PASS",
+        "reason": "zh-Hant-desktop　控制順序 [0, 1, 2, 0]，鍵盤。首次暫停擷取結束到複驗開始 1372.5 ms；相同影格 是，恢復後改變 是。 挖取與重設：PASS。 before (0 個瀏覽器輸入事件), after (2 個瀏覽器輸入事件), reset (1 個瀏覽器輸入事件)。\n\nzh-Hant-mobile　控制順序 [0, 1, 2, 0]，觸控。首次暫停擷取結束到複驗開始 1362.0 ms；相同影格 是，恢復後改變 是。 挖取與重設：PASS。 before (0 個瀏覽器輸入事件), after (1 個瀏覽器輸入事件), reset (1 個瀏覽器輸入事件)。\n\nen-desktop　控制順序 [0, 1, 2, 0]，鍵盤。首次暫停擷取結束到複驗開始 1369.8 ms；相同影格 是，恢復後改變 是。 挖取與重設：PASS。 before (0 個瀏覽器輸入事件), after (2 個瀏覽器輸入事件), reset (1 個瀏覽器輸入事件)。\n\nen-mobile　控制順序 [0, 1, 2, 0]，觸控。首次暫停擷取結束到複驗開始 1380.1 ms；相同影格 是，恢復後改變 是。 挖取與重設：PASS。 before (0 個瀏覽器輸入事件), after (1 個瀏覽器輸入事件), reset (1 個瀏覽器輸入事件)。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-3.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-after-1s.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-immediate.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-resumed.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-3.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-after-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-after.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-before-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-reset-texture.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/interaction-reset.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-after-1s.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-before.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-immediate.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-resumed.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-1",
+        "status": "PASS",
+        "reason": "zh-Hant-desktop　478 次提交／10.009 秒；median / p95 / max 17.30 / 31.50 / 38.50 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [1440, 900]、canvas [[288, 192]]、DPR 1。\n\nzh-Hant-mobile　583 次提交／10.001 秒；median / p95 / max 16.20 / 31.30 / 32.10 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [390, 844]、canvas [[288, 192]]、DPR 1。\n\nen-desktop　349 次提交／10.002 秒；median / p95 / max 28.50 / 29.70 / 30.60 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [1440, 900]、canvas [[288, 192]]、DPR 1。\n\nen-mobile　586 次提交／10.003 秒；median / p95 / max 16.10 / 31.70 / 32.50 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [390, 844]、canvas [[288, 192]]、DPR 1。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-2",
+        "status": "PASS",
+        "reason": "zh-Hant-desktop　含 lazy chunks 首載 889,049 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。\n\nzh-Hant-mobile　含 lazy chunks 首載 889,049 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。\n\nen-desktop　含 lazy chunks 首載 794,384 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。\n\nen-mobile　含 lazy chunks 首載 794,384 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/build.txt",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-1",
+        "status": "PASS",
+        "reason": "檢視雙語完整型錄、回改表單與窄版畫面，四種寬度及真正 200% 的完整頁面均保有可讀標題、圖說、選項、行動按鈕及結果。\n\nzh-Hant-desktop　viewport 寬／實際 scrollWidth 768/768 px, 1440/1440 px。真實 200% tab zoom：720/720 px。\n\nzh-Hant-mobile　viewport 寬／實際 scrollWidth 320/320 px, 390/390 px。\n\nen-desktop　viewport 寬／實際 scrollWidth 768/768 px, 1440/1440 px。真實 200% tab zoom：720/720 px。\n\nen-mobile　viewport 寬／實際 scrollWidth 320/320 px, 390/390 px。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-1440.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-768.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-10.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-11.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-6.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-7.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-8.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200-viewport-9.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-zoom-200.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/layout-320.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/layout-390.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-1440.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-768.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-10.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-6.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-7.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-8.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200-viewport-9.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-zoom-200.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/layout-320.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/layout-390.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-2",
+        "status": "PASS",
+        "reason": "核對按鈕、商業表單、焦點順序、選中狀態及錯誤提示。各寬度實際啟用的控制均可觸按，Tab 焦點清楚。另檢視 10 組須從截圖取色的文字，最低對比 5.80:1。取樣例為 Reset the jelly 5.94:1（前景像素 [627, 1022]、背景 [623, 1018]）。\n\nzh-Hant-desktop　17/17 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 24 次，熱區不足 44×44 的有 0 次；可計算純色對比 144 次，待人工取色 3 次，低於門檻候選 0 次；門檻 3:1 群最小為 7.05:1, 門檻 4.5:1 群最小為 6.45:1。\n\nzh-Hant-mobile　17/17 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 16 次，熱區不足 44×44 的有 0 次；可計算純色對比 96 次，待人工取色 2 次，低於門檻候選 0 次；門檻 3:1 群最小為 7.05:1, 門檻 4.5:1 群最小為 6.45:1。\n\nen-desktop　17/17 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 24 次，熱區不足 44×44 的有 0 次；可計算純色對比 144 次，待人工取色 3 次，低於門檻候選 0 次；門檻 3:1 群最小為 7.05:1, 門檻 4.5:1 群最小為 6.45:1。\n\nen-mobile　17/17 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 16 次，熱區不足 44×44 的有 0 次；可計算純色對比 96 次，待人工取色 2 次，低於門檻候選 0 次；門檻 3:1 群最小為 7.05:1, 門檻 4.5:1 群最小為 6.45:1。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/flow-complete.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/flow-complete.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "BIZ-1",
+        "status": "PASS",
+        "reason": "蜜柑、覆盆莓及白芭樂各有成分。六杯、每杯 100 mL、保存、共用設備過敏原和示意價格在雙語頁都可找到，可在配滿後下載配方。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/layout-1440.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/layout-1440.png"
+        ]
+      },
+      {
+        "id": "BIZ-2",
+        "status": "PASS",
+        "reason": "zh-Hant-desktop　實際匯出 jelly-hour-recipe-zh-Hant.txt，710 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「果時 JELLY HOUR｜果凍禮盒配方 ｜ 蜜柑果凍：3 杯 × 100 毫升 ｜ 覆盆莓果凍：1 杯 × 100 毫升 ｜ 白芭樂果凍：2 杯 × 100 毫升 ｜ 合計：6 杯 × 100 毫升 = 600 毫升 ｜ 成分 ｜ 蜜柑果凍 — 蜜柑汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 覆盆莓果凍 — 過篩覆盆莓汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 白芭樂果凍 — 白芭樂汁、水、蔗糖、柑橘果膠、萊姆汁。 ｜ 過敏原 ｜ 示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。 ｜ 保存方式 ｜ 冷藏保存，依實際商品標示上的期限享用。 ｜ 季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。」。\n\nzh-Hant-mobile　實際匯出 jelly-hour-recipe-zh-Hant.txt，710 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「果時 JELLY HOUR｜果凍禮盒配方 ｜ 蜜柑果凍：3 杯 × 100 毫升 ｜ 覆盆莓果凍：1 杯 × 100 毫升 ｜ 白芭樂果凍：2 杯 × 100 毫升 ｜ 合計：6 杯 × 100 毫升 = 600 毫升 ｜ 成分 ｜ 蜜柑果凍 — 蜜柑汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 覆盆莓果凍 — 過篩覆盆莓汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 白芭樂果凍 — 白芭樂汁、水、蔗糖、柑橘果膠、萊姆汁。 ｜ 過敏原 ｜ 示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。 ｜ 保存方式 ｜ 冷藏保存，依實際商品標示上的期限享用。 ｜ 季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。」。\n\nen-desktop　實際匯出 jelly-hour-recipe-en.txt，762 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「Jelly Hour | Fruit jelly gift box recipe ｜ Mandarin jelly: 3 × 100 mL ｜ Raspberry jelly: 1 × 100 mL ｜ White guava jelly: 2 × 100 mL ｜ Total: 6 cups × 100 mL = 600 mL ｜ Ingredients ｜ Mandarin jelly — Mandarin juice, water, cane sugar, citrus pectin, lemon juice. ｜ Raspberry jelly — Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice. ｜ White guava jelly — White guava juice, water, cane sugar, citrus pectin, lime juice」。\n\nen-mobile　實際匯出 jelly-hour-recipe-en.txt，762 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「Jelly Hour | Fruit jelly gift box recipe ｜ Mandarin jelly: 3 × 100 mL ｜ Raspberry jelly: 1 × 100 mL ｜ White guava jelly: 2 × 100 mL ｜ Total: 6 cups × 100 mL = 600 mL ｜ Ingredients ｜ Mandarin jelly — Mandarin juice, water, cane sugar, citrus pectin, lemon juice. ｜ Raspberry jelly — Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice. ｜ White guava jelly — White guava juice, water, cane sugar, citrus pectin, lime juice」。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/flow-complete.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/flow-complete.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/flow-complete.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/flow-complete.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-1",
+        "status": "PASS",
+        "reason": "三種降級情境的原始首屏均保留品牌、材質與主行動。對照正常頁，商業內容和下一步仍能辨認。\n\nzh-Hant-desktop　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 jelly-hour-recipe-zh-Hant.txt，710 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「果時 JELLY HOUR｜果凍禮盒配方 ｜ 蜜柑果凍：3 杯 × 100 毫升 ｜ 覆盆莓果凍：1 杯 × 100 毫升 ｜ 白芭樂果凍：2 杯 × 100 毫升 ｜ 合計：6 杯 × 100 毫升 = 600 毫升 ｜ 成分 ｜ 蜜柑果凍 — 蜜柑汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 覆盆莓果凍 — 過篩覆盆莓汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 白芭樂果凍 — 白芭樂汁、水、蔗糖、柑橘果膠、萊姆汁。 ｜ 過敏原 ｜ 示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。 ｜ 保存方式 ｜ 冷藏保存，依實際商品標示上的期限享用。 ｜ 季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。」。 使用預設 GPU 選擇的 Edge：static fallback。\n\nzh-Hant-mobile　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 jelly-hour-recipe-zh-Hant.txt，710 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「果時 JELLY HOUR｜果凍禮盒配方 ｜ 蜜柑果凍：3 杯 × 100 毫升 ｜ 覆盆莓果凍：1 杯 × 100 毫升 ｜ 白芭樂果凍：2 杯 × 100 毫升 ｜ 合計：6 杯 × 100 毫升 = 600 毫升 ｜ 成分 ｜ 蜜柑果凍 — 蜜柑汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 覆盆莓果凍 — 過篩覆盆莓汁、水、蔗糖、柑橘果膠、檸檬汁。 ｜ 白芭樂果凍 — 白芭樂汁、水、蔗糖、柑橘果膠、萊姆汁。 ｜ 過敏原 ｜ 示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。 ｜ 保存方式 ｜ 冷藏保存，依實際商品標示上的期限享用。 ｜ 季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。」。\n\nen-desktop　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 jelly-hour-recipe-en.txt，762 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「Jelly Hour | Fruit jelly gift box recipe ｜ Mandarin jelly: 3 × 100 mL ｜ Raspberry jelly: 1 × 100 mL ｜ White guava jelly: 2 × 100 mL ｜ Total: 6 cups × 100 mL = 600 mL ｜ Ingredients ｜ Mandarin jelly — Mandarin juice, water, cane sugar, citrus pectin, lemon juice. ｜ Raspberry jelly — Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice. ｜ White guava jelly — White guava juice, water, cane sugar, citrus pectin, lime juice」。\n\nen-mobile　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 jelly-hour-recipe-en.txt，762 bytes。empty {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；empty removal blocked {\"cups\":[0,0,0],\"total\":0,\"downloadEnabled\":false}；five {\"cups\":[2,2,1],\"total\":5,\"downloadEnabled\":false}；full {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；seventh rejected {\"cups\":[2,2,2],\"total\":6,\"downloadEnabled\":true}；reopened {\"cups\":[2,1,2],\"total\":5,\"downloadEnabled\":false}；remixed {\"cups\":[3,1,2],\"total\":6,\"downloadEnabled\":true}；實際檔案摘錄「Jelly Hour | Fruit jelly gift box recipe ｜ Mandarin jelly: 3 × 100 mL ｜ Raspberry jelly: 1 × 100 mL ｜ White guava jelly: 2 × 100 mL ｜ Total: 6 cups × 100 mL = 600 mL ｜ Ingredients ｜ Mandarin jelly — Mandarin juice, water, cane sugar, citrus pectin, lemon juice. ｜ Raspberry jelly — Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice. ｜ White guava jelly — White guava juice, water, cane sugar, citrus pectin, lime juice」。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/gpu-init-fail.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/no-js.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/reduced.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/gpu-init-fail.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/no-js.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/reduced.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-2",
+        "status": "PASS",
+        "reason": "zh-Hant-desktop　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png\n\nzh-Hant-mobile　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png\n\nen-desktop　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png\n\nen-mobile　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/after-device-loss.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/after-device-loss.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "SHIP-1",
+        "status": "PASS",
+        "reason": "zh-Hant-desktop　原始流程記錄 15 筆請求、1 個來源、方法 {'GET': 15}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。\n\nzh-Hant-mobile　原始流程記錄 15 筆請求、1 個來源、方法 {'GET': 15}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。\n\nen-desktop　原始流程記錄 12 筆請求、1 個來源、方法 {'GET': 12}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。\n\nen-mobile　原始流程記錄 12 筆請求、1 個來源、方法 {'GET': 12}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。",
+        "evidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-en-mobile/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/build.txt",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/results.json",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/results.json"
+        ]
+      }
+    ]
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "c19abda5645c174c8fa6df79c06d26993cc31746",
+    "reviewer": "GlossQuote Visuals 工作室美術主責（非製作者）",
+    "views": [
+      {
+        "viewport": "desktop",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "同一只瓷盤上果凍壓扁再站回原高，之後只有緩慢的光線變化。鍵盤從左側挖取，重設後恢復。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-0-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-0-composite.png",
+            "compositeStartMs": 825.4000000000233,
+            "compositeEndMs": 1070.3000000000175
+          },
+          {
+            "seconds": 0.9066000000000058,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-1-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-1-composite.png",
+            "compositeStartMs": 1585.6000000000058,
+            "compositeEndMs": 1831.6000000000058
+          },
+          {
+            "seconds": 2.2315,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-2-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-2-composite.png",
+            "compositeStartMs": 3015,
+            "compositeEndMs": 3228.7000000000116
+          },
+          {
+            "seconds": 4.0373999999999945,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-3-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-3-composite.png",
+            "compositeStartMs": 4663.400000000023,
+            "compositeEndMs": 4877.900000000023
+          },
+          {
+            "seconds": 6.011,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-4-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-4-composite.png",
+            "compositeStartMs": 6717.100000000006,
+            "compositeEndMs": 6945.8000000000175
+          },
+          {
+            "seconds": 8.05,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-5-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/frame-5-composite.png",
+            "compositeStartMs": 8852.700000000012,
+            "compositeEndMs": 9099.400000000023
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-before.png",
+          "paused": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-immediate.png",
+          "stillPaused": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-after-1s.png",
+          "resumed": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "同一只瓷盤上果凍壓扁再站回原高，之後只有緩慢的光線變化。鍵盤從左側挖取，重設後恢復。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "蜜柑的金橙圓頂緊貼瓷盤",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-0.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "覆盆莓的玫紅色透過邊緣",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-1.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "白芭樂的淡青綠與較亮邊緣",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-2.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "回到完整蜜柑圓頂",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-3.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-desktop/control-3-texture.png"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "mobile",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "手指點選上緣右側，在對應位置留下一個缺口，盤上有分離的小塊；復原後沒有殘留溝槽。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-0-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-0-composite.png",
+            "compositeStartMs": 822,
+            "compositeEndMs": 971.1999999999534
+          },
+          {
+            "seconds": 0.9305,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-1-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-1-composite.png",
+            "compositeStartMs": 1522.5,
+            "compositeEndMs": 1597.3999999999069
+          },
+          {
+            "seconds": 2.228,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-2-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-2-composite.png",
+            "compositeStartMs": 2869.5,
+            "compositeEndMs": 3030.29999999993
+          },
+          {
+            "seconds": 4.02579999999993,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-3-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-3-composite.png",
+            "compositeStartMs": 4564.5,
+            "compositeEndMs": 4699.599999999977
+          },
+          {
+            "seconds": 6.02479999999993,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-4-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-4-composite.png",
+            "compositeStartMs": 6631.5,
+            "compositeEndMs": 6799.599999999977
+          },
+          {
+            "seconds": 8.0585,
+            "evidence": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-5-texture.png",
+            "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/frame-5-composite.png",
+            "compositeStartMs": 8698,
+            "compositeEndMs": 8887.5
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-0.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-1.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-2.png",
+          "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-before.png",
+          "paused": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-immediate.png",
+          "stillPaused": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-after-1s.png",
+          "resumed": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "手指點選上緣右側，在對應位置留下一個缺口，盤上有分離的小塊；復原後沒有殘留溝槽。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "蜜柑的金橙圓頂緊貼瓷盤",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-0.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "覆盆莓的玫紅色透過邊緣",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-1.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "白芭樂的淡青綠與較亮邊緣",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-2.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "回到完整蜜柑圓頂",
+              "composite": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-3.png",
+              "texture": "evidence/V008/c19abda5645c174c8fa6df79c06d26993cc31746/V008-zh-Hant-mobile/control-3-texture.png"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

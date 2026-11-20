@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" class="umbra-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <meta name="theme-color" content="#08070b">
+  <title>UMBRA DIAL | A touring dome cinema</title>
+  <meta name="description" content="Bring an eclipse to your school or venue. Explore three fulldome films, build a running order and download a venue proposal.">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/en/works/umbra-dial/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/umbra-dial/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/umbra-dial/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/umbra-dial/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UMBRA DIAL | A touring dome cinema">
+  <meta property="og:description" content="Bring an eclipse to your school or venue. Explore three fulldome films, build a running order and download a venue proposal.">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/umbra-dial/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/umbra-dial/cover.webp">
+  <meta property="og:image:alt" content="The Moon covers the right side of the Sun, leaving an ivory crescent fringed by a violet corona.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <link rel="icon" href="/media/umbra-dial/icon.png" type="image/png" sizes="64x64">
+  <link rel="preload" href="%BASE_URL%media/umbra-dial/ingress.webp" as="image">
+  <link rel="stylesheet" href="/src/works/umbra-dial/page.css">
+  <script type="module" src="/src/works/umbra-dial/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="mast frame">
+    <a class="wordmark" href="#top" aria-label="UMBRA DIAL"><i class="logo" aria-hidden="true"></i><b lang="en">UMBRA DIAL</b></a>
+    <nav aria-label="Main navigation">
+      <a href="#programs">Films</a>
+      <a href="#venue">Venue spec</a>
+      <a href="%BASE_URL%works/umbra-dial/" hreflang="zh-Hant" lang="zh-Hant">繁中</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero frame" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker"><i aria-hidden="true"></i>Touring dome cinema</p>
+        <h1 id="hero-title">An eclipse<br>at your door.</h1>
+        <p class="intro">A pop-up planetarium for schools and venues. Take a seat inside the Moon’s shadow with three films made for the fulldome.</p>
+        <a class="button primary" href="#programs">Explore the films <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="instrument">
+        <div class="viewfinder">
+          <div class="stage" data-stage data-cycle-seconds="10" data-material="0" data-motion="still">
+            <img data-poster src="%BASE_URL%media/umbra-dial/ingress.webp" width="1200" height="800" fetchpriority="high" alt="">
+            <canvas aria-hidden="true" data-canvas></canvas>
+          </div>
+          <span class="reticle" aria-hidden="true"></span>
+          <span class="field-caption">SUN / MOON ALIGNMENT</span>
+          <button class="pause" type="button" data-pause data-play="Resume motion" aria-pressed="false" hidden>Pause motion</button>
+        </div>
+        <figcaption class="instrument-bar">
+          <fieldset class="phases" data-instrument hidden>
+            <legend class="sr">Eclipse phase</legend>
+            <label class="phase">
+              <input type="radio" name="eclipse-phase" value="0" checked>
+              <span class="phase-icon phase-0" aria-hidden="true"></span>
+              <span>Ingress</span>
+            </label>
+            <label class="phase">
+              <input type="radio" name="eclipse-phase" value="1">
+              <span class="phase-icon phase-1" aria-hidden="true"></span>
+              <span>Totality</span>
+            </label>
+            <label class="phase">
+              <input type="radio" name="eclipse-phase" value="2">
+              <span class="phase-icon phase-2" aria-hidden="true"></span>
+              <span>Egress</span>
+            </label>
+          </fieldset>
+          <p data-motion-status class="sr" role="status">A still of the eclipse at ingress.</p>
+        </figcaption>
+        <noscript><p class="static-caption">Ingress · The Moon moves in from the right.</p></noscript>
+      </figure>
+    </section>
+
+    <section class="programs" id="programs" aria-labelledby="films-title">
+      <div class="frame">
+        <header class="section-head">
+          <div><p class="kicker">Fulldome screenings</p><h2 id="films-title">The programme.</h2></div>
+          <p>Each running time includes a live introduction and short talk. The sample rates are per screening.</p>
+        </header>
+        <div class="tickets">
+          <article class="ticket" data-program="shadow" data-minutes="22" data-price="18000">
+            <div class="ticket-art">
+              <img src="%BASE_URL%media/umbra-dial/ingress.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true">UD–01</span>
+            </div>
+            <div class="ticket-copy">
+              <div class="ticket-meta"><span data-age>Ages 7+</span><span>22 min</span></div>
+              <h3 data-name>Chasing the Shadow</h3>
+              <p>Follow the Moon’s shadow across Earth. Four changes of perspective show why totality travels along such a narrow path.</p>
+            </div>
+            <footer class="ticket-stub"><span>Sample rate<strong>NT$ 18,000</strong></span><a href="#planner" data-choose="shadow" aria-label="Select Chasing the Shadow" class="ticket-link">Select <span aria-hidden="true">↗</span></a></footer>
+          </article>
+          <article class="ticket" data-program="totality" data-minutes="30" data-price="22000">
+            <div class="ticket-art">
+              <img src="%BASE_URL%media/umbra-dial/total.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true">UD–02</span>
+            </div>
+            <div class="ticket-copy">
+              <div class="ticket-meta"><span data-age>Ages 10+</span><span>30 min</span></div>
+              <h3 data-name>Beyond the Ring</h3>
+              <p>Read the Sun’s atmosphere in silhouette as the corona, chromosphere and Baily’s beads emerge in the brief darkness of totality.</p>
+            </div>
+            <footer class="ticket-stub"><span>Sample rate<strong>NT$ 22,000</strong></span><a href="#planner" data-choose="totality" aria-label="Select Beyond the Ring" class="ticket-link">Select <span aria-hidden="true">↗</span></a></footer>
+          </article>
+          <article class="ticket" data-program="orbit" data-minutes="38" data-price="26000">
+            <div class="ticket-art">
+              <img src="%BASE_URL%media/umbra-dial/egress.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true">UD–03</span>
+            </div>
+            <div class="ticket-copy">
+              <div class="ticket-meta"><span data-age>Ages 13+</span><span>38 min</span></div>
+              <h3 data-name>The Next Eclipse</h3>
+              <p>Trace a sighting back to orbit. Follow lunar nodes and the Saros cycle to work out the conditions for the next eclipse.</p>
+            </div>
+            <footer class="ticket-stub"><span>Sample rate<strong>NT$ 26,000</strong></span><a href="#planner" data-choose="orbit" aria-label="Select The Next Eclipse" class="ticket-link">Select <span aria-hidden="true">↗</span></a></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="venue frame" id="venue" aria-labelledby="venue-title">
+      <header class="section-head"><div><p class="kicker">Before doors open</p><h2 id="venue-title">Fit the dome.</h2></div>
+        <p>We need level indoor space, a nearby outlet and step-free load-in. The venue confirms clear exits and its accessibility arrangements.</p>
+      </header>
+      <div class="spec-grid">
+        <article data-spec="compact">
+          <p class="kicker">Compact dome</p><h3>24 <small>per screening</small></h3>
+          <p data-requirement>7 × 7 m clear floor and 3.8 m height. One dedicated grounded 110 V / 15 A circuit.</p>
+        </article>
+        <article data-spec="hall">
+          <p class="kicker">Hall dome</p><h3>36 <small>per screening</small></h3>
+          <p data-requirement>9 × 9 m clear floor and 5 m height. Two dedicated grounded 110 V / 15 A circuits.</p>
+        </article>
+      </div>
+      <p class="equipment" data-equipment>Touring kit: inflatable dome, fulldome projector and surround sound. Allow 60 minutes before the first screening for setup and 45 minutes after the last for strike.</p>
+    </section>
+
+    <section class="planner" id="planner" aria-labelledby="plan-title">
+      <div class="frame planner-grid">
+        <header>
+          <p class="kicker">Venue proposal</p>
+          <h2 id="plan-title">Make a<br>running order.</h2>
+          <p>Choose one film and plan up to three screenings. Share the result with your venue for review and budgeting.</p>
+          <p class="notice" data-concept>Concept service. Sample times and prices only. Downloading a proposal does not book a screening.</p>
+        </header>
+        <div class="planning-ticket">
+          <form data-planner hidden novalidate>
+            <label>Film<select name="film"><option value="shadow">Chasing the Shadow</option><option value="totality">Beyond the Ring</option><option value="orbit">The Next Eclipse</option></select></label>
+            <label>Total audience<input name="audience" type="number" step="1" min="12" max="108" value="48" required aria-describedby="capacity"></label>
+            <label class="span">Clearances and power
+              <select name="venue">
+                <option value="compact">Meets compact dome spec</option>
+                <option value="hall">Meets hall dome spec</option>
+                <option value="unknown">Unconfirmed or below spec</option>
+              </select>
+            </label>
+            <p class="help span" id="capacity">Minimum 12 guests and up to three screenings per proposal.</p>
+            <button class="button primary span" type="submit">Build a running order <span aria-hidden="true">↘</span></button>
+          </form>
+          <p data-feedback role="status" hidden></p>
+          <section class="result" data-result hidden tabindex="-1" aria-labelledby="result-title">
+            <h3 id="result-title">Sample running order</h3>
+            <p data-summary></p>
+            <ol data-screenings></ol>
+            <p data-space></p>
+            <p data-estimate></p>
+            <div class="result-actions">
+              <button type="button" class="button primary" data-download>Download proposal <span aria-hidden="true">↓</span></button>
+              <button type="button" class="button secondary" data-edit>Edit details</button>
+            </div>
+            <p role="status" data-download-status></p>
+          </section>
+          <noscript>
+            <h3>Plan by hand</h3>
+            <p>Start with at least 12 guests. Pick a film, divide the audience by dome capacity and round up, with up to three screenings. Use 09:30 for the sample start, add the running time and allow 15 minutes between screenings. Multiply the rate by the screening count.</p>
+            <a class="button secondary" href="#venue">View venue and equipment specs</a>
+          </noscript>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer frame">
+    <a class="wordmark" href="#top"><i class="logo" aria-hidden="true"></i><b lang="en">UMBRA DIAL</b></a>
+    <a href="%BASE_URL%en/">Back to the gallery ↗</a>
+    <a href="<!-- work-source -->">Source code ↗</a>
+  </footer>
+</body>
+</html>

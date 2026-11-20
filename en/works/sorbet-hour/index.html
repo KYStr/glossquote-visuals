@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- discoverability -->
-  <title>Sorbet Hour | Seasonal sorbet gift box</title>
-  <meta name="description" content="Mandarin, raspberry and white guava. Read the ingredients, allergen and storage notes, then build and download your six-cup gift box recipe.">
+  <title>Jelly Hour | Seasonal fruit jelly gift box</title>
+  <meta name="description" content="Scoop a mandarin, raspberry or white guava jelly, then choose six cups and download your fruit jelly gift box recipe.">
   <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/en/works/sorbet-hour/">
   <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/sorbet-hour/">
   <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/sorbet-hour/">
   <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/sorbet-hour/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sorbet Hour | Seasonal sorbet gift box">
-  <meta property="og:description" content="Mandarin, raspberry and white guava. Read the ingredients, allergen and storage notes, then build and download your six-cup gift box recipe.">
+  <meta property="og:title" content="Jelly Hour | Seasonal fruit jelly gift box">
+  <meta property="og:description" content="Scoop a mandarin, raspberry or white guava jelly, then choose six cups and download your fruit jelly gift box recipe.">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/sorbet-hour/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/sorbet-hour/cover.webp">
-  <meta property="og:image:alt" content="An arc scooped into mandarin sorbet exposes golden pulp.">
+  <meta property="og:image:alt" content="A glossy mandarin jelly refracts the rim of its porcelain plate.">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <link rel="icon" href="%BASE_URL%media/sorbet-hour/mark.svg" type="image/svg+xml">
@@ -26,7 +26,7 @@
 <body id="top">
   <a class="skip" href="#main">Skip to main content</a>
   <header class="frame masthead">
-    <a class="brand" href="#top"><span lang="zh-Hant">果時</span><span lang="en">SORBET<br>HOUR</span></a>
+    <a class="brand" href="#top"><span lang="zh-Hant">果時</span><span lang="en">JELLY<br>HOUR</span></a>
     <nav aria-label="Site navigation">
       <a href="#flavors">Flavors</a>
       <a href="#box">Build a box</a>
@@ -37,19 +37,20 @@
   <main id="main" tabindex="-1">
     <section class="frame hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="season-label">Seasonal sorbet gift box</p>
-        <h1 id="hero-title"><span>Summer</span> by the scoop.</h1>
-        <p class="hero-intro">Mandarin, raspberry and white guava. Pick six cups of fruit sorbet for someone you’re thinking of.</p>
+        <p class="season-label">Seasonal fruit jelly gift box</p>
+        <h1 id="hero-title"><span>Summer jiggles.</span> Take a scoop.</h1>
+        <p class="hero-intro">Mandarin, raspberry and white guava jellies with a delicate bounce. Choose six cups for someone you’re thinking of.</p>
         <a class="button" href="#box">Build a box<span aria-hidden="true">↘</span></a>
       </div>
       <figure class="sorbets">
-        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="8">
-          <img src="%BASE_URL%media/sorbet-hour/cover.webp" alt="An arc scooped into mandarin sorbet exposes golden pulp." width="1200" height="800" fetchpriority="high" data-poster>
+        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="intact" data-scoop-aim="center" data-scoop-position="none" data-scoop-visual="ready">
+          <img src="%BASE_URL%media/sorbet-hour/cover.webp" alt="A glossy mandarin jelly refracts the rim of its porcelain plate." width="1200" height="800" fetchpriority="high" data-poster>
           <canvas aria-hidden="true"></canvas>
+          <button type="button" class="scoop-hit" data-scoop-hit aria-label="Take a scoop of jelly" aria-describedby="scoop-help" aria-disabled="false" hidden><span aria-hidden="true"></span></button>
         </div>
         <figcaption class="inspector">
           <fieldset data-instrument hidden>
-            <legend class="visually-hidden">Sorbet cut flavor</legend>
+            <legend class="visually-hidden">Tasting flavor</legend>
             <div class="slice-choices">
               <label class="sun"><input name="sorbet-flavor" type="radio" value="0" checked><span>Mandarin</span></label>
               <label class="rose"><input name="sorbet-flavor" type="radio" value="1"><span>Raspberry</span></label>
@@ -57,39 +58,44 @@
             </div>
           </fieldset>
           <button class="pause" type="button" data-pause aria-pressed="false" hidden>Pause motion</button>
-          <span class="visually-hidden" data-motion-status role="status">Showing the still sorbet cut.</span>
+          <span class="visually-hidden" data-motion-status role="status">Showing the still fruit jelly.</span>
+          <div class="scoop-controls" data-scoop-controls hidden>
+            <p id="scoop-help">Tap or drag on the jelly to scoop from its upper edge. With a keyboard, choose a spot with the arrow keys and press Enter.</p>
+            <button type="button" class="pause reset-scoop" data-scoop-reset disabled>Reset the jelly</button>
+            <span class="visually-hidden" data-scoop-status role="status"></span>
+          </div>
         </figcaption>
       </figure>
     </section>
 
     <section class="frame flavor-section" id="flavors" aria-labelledby="flavors-title">
       <header class="section-header">
-        <h2 id="flavors-title">Three seasonal flavors</h2>
+        <h2 id="flavors-title">Three fruit jellies</h2>
         <p>100 mL per cup</p>
       </header>
       <div class="flavor-grid">
         <article id="flavor-citrus" class="flavor-card sun" data-product="citrus">
-          <img src="%BASE_URL%media/sorbet-hour/cover.webp" width="1200" height="800" loading="lazy" alt="An arc scooped into mandarin sorbet exposes golden pulp.">
+          <img src="%BASE_URL%media/sorbet-hour/cover.webp" width="1200" height="800" loading="lazy" alt="A glossy mandarin jelly refracts the rim of its porcelain plate.">
           <div class="flavor-body">
-            <h3 data-name>Mandarin</h3>
+            <h3 data-name>Mandarin jelly</h3>
             <p>Bright and tangy, for lovers of tart citrus.</p>
-            <dl><dt>Ingredients</dt><dd data-ingredients>Mandarin pulp, mandarin juice, water, cane sugar, lemon juice.</dd></dl>
+            <dl><dt>Ingredients</dt><dd data-ingredients>Mandarin juice, water, cane sugar, citrus pectin, lemon juice.</dd></dl>
           </div>
         </article>
         <article id="flavor-berry" class="flavor-card rose" data-product="berry">
-          <img src="%BASE_URL%media/sorbet-hour/berry.webp" width="1200" height="800" loading="lazy" alt="Dark seeds appear in the red cut surface of raspberry sorbet.">
+          <img src="%BASE_URL%media/sorbet-hour/berry.webp" width="1200" height="800" loading="lazy" alt="Ruby raspberry jelly on a porcelain plate.">
           <div class="flavor-body">
-            <h3 data-name>Raspberry</h3>
-            <p>Sweet-tart berries with a distinct seed texture.</p>
-            <dl><dt>Ingredients</dt><dd data-ingredients>Raspberries, water, cane sugar, lemon juice.</dd></dl>
+            <h3 data-name>Raspberry jelly</h3>
+            <p>Bright, tart raspberry juice strained for a smooth bite.</p>
+            <dl><dt>Ingredients</dt><dd data-ingredients>Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice.</dd></dl>
           </div>
         </article>
         <article id="flavor-guava" class="flavor-card leaf" data-product="guava">
-          <img src="%BASE_URL%media/sorbet-hour/guava.webp" width="1200" height="800" loading="lazy" alt="Fine ice crystals fleck the cut surface of white guava sorbet.">
+          <img src="%BASE_URL%media/sorbet-hour/guava.webp" width="1200" height="800" loading="lazy" alt="Pale green white guava jelly on a porcelain plate.">
           <div class="flavor-body">
-            <h3 data-name>White guava</h3>
-            <p>A floral finish and crisp, fine ice crystals.</p>
-            <dl><dt>Ingredients</dt><dd data-ingredients>White guava purée, water, cane sugar, lime juice.</dd></dl>
+            <h3 data-name>White guava jelly</h3>
+            <p>A soft set with a light, floral finish.</p>
+            <dl><dt>Ingredients</dt><dd data-ingredients>White guava juice, water, cane sugar, citrus pectin, lime juice.</dd></dl>
           </div>
         </article>
       </div>
@@ -102,7 +108,7 @@
           <h2 id="box-title">Build a box</h2>
           <p>Choose any mix from our three flavors. Fill all six cups to download your recipe.</p>
           <div class="box-price"><span>Illustrative gift box price</span><strong>NT$680</strong><span>Six 100 mL cups</span></div>
-          <p data-concept>A seasonal sorbet brand concept. The recipe is created in this page for offline use and sharing.</p>
+          <p data-concept>A seasonal fruit jelly brand concept. The recipe is created in this page for offline use and sharing.</p>
         </div>
         <div class="box-panel" data-builder hidden>
           <div class="box-slots" role="img" aria-label="Selected cup positions" data-slots>
@@ -117,55 +123,55 @@
           <fieldset class="quantity">
             <legend class="visually-hidden">Cups by flavor</legend>
             <div class="portion sun" data-portion="citrus">
-              <span class="portion-name" id="portion-citrus">Mandarin</span>
+              <span class="portion-name" id="portion-citrus">Mandarin jelly</span>
               <div class="stepper">
-                <button type="button" data-remove="citrus" aria-label="Remove one cup of Mandarin" aria-disabled="true">−</button>
+                <button type="button" data-remove="citrus" aria-label="Remove one cup of Mandarin jelly" aria-disabled="true">−</button>
                 <output aria-labelledby="portion-citrus" data-count="citrus">0</output>
-                <button type="button" data-add="citrus" aria-label="Add one cup of Mandarin" aria-disabled="false">+</button>
+                <button type="button" data-add="citrus" aria-label="Add one cup of Mandarin jelly" aria-disabled="false">+</button>
               </div>
             </div>
             <div class="portion rose" data-portion="berry">
-              <span class="portion-name" id="portion-berry">Raspberry</span>
+              <span class="portion-name" id="portion-berry">Raspberry jelly</span>
               <div class="stepper">
-                <button type="button" data-remove="berry" aria-label="Remove one cup of Raspberry" aria-disabled="true">−</button>
+                <button type="button" data-remove="berry" aria-label="Remove one cup of Raspberry jelly" aria-disabled="true">−</button>
                 <output aria-labelledby="portion-berry" data-count="berry">0</output>
-                <button type="button" data-add="berry" aria-label="Add one cup of Raspberry" aria-disabled="false">+</button>
+                <button type="button" data-add="berry" aria-label="Add one cup of Raspberry jelly" aria-disabled="false">+</button>
               </div>
             </div>
             <div class="portion leaf" data-portion="guava">
-              <span class="portion-name" id="portion-guava">White guava</span>
+              <span class="portion-name" id="portion-guava">White guava jelly</span>
               <div class="stepper">
-                <button type="button" data-remove="guava" aria-label="Remove one cup of White guava" aria-disabled="true">−</button>
+                <button type="button" data-remove="guava" aria-label="Remove one cup of White guava jelly" aria-disabled="true">−</button>
                 <output aria-labelledby="portion-guava" data-count="guava">0</output>
-                <button type="button" data-add="guava" aria-label="Add one cup of White guava" aria-disabled="false">+</button>
+                <button type="button" data-add="guava" aria-label="Add one cup of White guava jelly" aria-disabled="false">+</button>
               </div>
             </div>
           </fieldset>
-          <button class="button download" type="button" data-download disabled>Download box recipe<span aria-hidden="true">↓</span></button>
+          <button class="button download" type="button" data-download disabled>Download jelly box recipe<span aria-hidden="true">↓</span></button>
           <p class="feedback" data-feedback role="status"></p>
         </div>
-        <noscript><p>Use the blank recipe sheet below to write in your six cups by hand. <a href="#blank-recipe">Blank gift box recipe ↘</a></p></noscript>
+        <noscript><p>Use the blank recipe sheet below to write in your six cups by hand. <a href="#blank-recipe">Blank jelly box recipe ↘</a></p></noscript>
       </div>
     </section>
 
     <section class="frame care" aria-labelledby="care-title">
       <h2 id="care-title">Keep it cold</h2>
       <div>
-        <h3>Store frozen</h3><p data-storage>The intended storage temperature is −18 °C or below. Take out just what you’ll serve and follow the label on the actual product.</p>
-        <h3>Give it a moment</h3><p>Let the sorbet soften slightly out of the freezer until it yields to a spoon.</p>
+        <h3>Keep refrigerated</h3><p data-storage>Refrigerate and follow the use-by date on the product label.</p>
+        <h3>Serve straight from the cup</h3><p>Spoon it straight from the chilled cup or turn the jelly out onto a plate.</p>
       </div>
     </section>
 
     <section class="frame blank" id="blank-recipe" aria-labelledby="blank-title">
-      <h2 id="blank-title">Blank gift box recipe</h2>
+      <h2 id="blank-title">Blank jelly box recipe</h2>
       <p>Write in 0 to 6 cups per flavor, for a total of 6. Use your browser’s print command to print this sheet.</p>
       <table>
         <caption>100 mL per cup, 600 mL total</caption>
         <thead><tr><th scope="col">Flavor</th><th scope="col">Cups</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Mandarin</th><td></td></tr>
-          <tr><th scope="row">Raspberry</th><td></td></tr>
-          <tr><th scope="row">White guava</th><td></td></tr>
+          <tr><th scope="row">Mandarin jelly</th><td></td></tr>
+          <tr><th scope="row">Raspberry jelly</th><td></td></tr>
+          <tr><th scope="row">White guava jelly</th><td></td></tr>
         </tbody>
         <tfoot><tr><th scope="row">Total</th><td>6</td></tr></tfoot>
       </table>
@@ -174,7 +180,7 @@
   </main>
 
   <footer class="frame sorbet-footer">
-    <a class="brand" href="#top"><span lang="zh-Hant">果時</span><span lang="en">SORBET<br>HOUR</span></a>
+    <a class="brand" href="#top"><span lang="zh-Hant">果時</span><span lang="en">JELLY<br>HOUR</span></a>
     <a href="%BASE_URL%en/">Back to the visual gallery ↗</a>
     <a href="<!-- work-source -->">Source code ↗</a>
   </footer>

@@ -1,0 +1,6088 @@
+{
+  "work": "V011",
+  "lang": "en",
+  "viewport": "mobile",
+  "commit": "c19abda5645c174c8fa6df79c06d26993cc31746",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "normal compact screening",
+            "labels": [
+              "Screening 1 · 24 guests",
+              "Screening 2 · 24 guests"
+            ],
+            "times": [
+              "09:30–09:52",
+              "10:07–10:29"
+            ],
+            "summary": "Chasing the Shadow · 48 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "below minimum",
+            "message": "Enter a whole number of guests, at least 12."
+          },
+          {
+            "name": "fractional count",
+            "message": "Enter a whole number of guests, at least 12."
+          },
+          {
+            "name": "minimum",
+            "labels": [
+              "Screening 1 · 12 guests"
+            ],
+            "times": [
+              "09:30–09:52"
+            ],
+            "summary": "Chasing the Shadow · 12 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "compact overflow",
+            "message": "This dome can seat up to 72 guests across three screenings."
+          },
+          {
+            "name": "compact maximum",
+            "labels": [
+              "Screening 1 · 24 guests",
+              "Screening 2 · 24 guests",
+              "Screening 3 · 24 guests"
+            ],
+            "times": [
+              "09:30–09:52",
+              "10:07–10:29",
+              "10:44–11:06"
+            ],
+            "summary": "Chasing the Shadow · 72 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "unconfirmed venue",
+            "message": "Confirm the clear floor, height and power requirements before building your proposal."
+          },
+          {
+            "name": "hall overflow",
+            "message": "This dome can seat up to 108 guests across three screenings."
+          },
+          {
+            "name": "hall maximum",
+            "labels": [
+              "Screening 1 · 36 guests",
+              "Screening 2 · 36 guests",
+              "Screening 3 · 36 guests"
+            ],
+            "times": [
+              "09:30–09:52",
+              "10:07–10:29",
+              "10:44–11:06"
+            ],
+            "summary": "Chasing the Shadow · 108 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "revised hall proposal",
+            "labels": [
+              "Screening 1 · 25 guests",
+              "Screening 2 · 24 guests",
+              "Screening 3 · 24 guests"
+            ],
+            "times": [
+              "09:30–10:08",
+              "10:23–11:01",
+              "11:16–11:54"
+            ],
+            "summary": "The Next Eclipse · 73 guests · Ages 13+ · 38 min"
+          }
+        ],
+        "download": {
+          "filename": "umbra-dial-proposal-en.txt",
+          "bytes": 643,
+          "text": "UMBRA DIAL | Venue proposal\nConcept service. Sample times and prices only. Downloading a proposal does not book a screening.\n\nThe Next Eclipse · 73 guests · Ages 13+ · 38 min\nScreening 1 · 25 guests | 09:30–10:08\nScreening 2 · 24 guests | 10:23–11:01\nScreening 3 · 24 guests | 11:16–11:54\n\nHall dome · 9 × 9 m clear floor and 5 m height. Two dedicated grounded 110 V / 15 A circuits. Venue access 08:30–12:39 including setup and strike.\nTouring kit: inflatable dome, fulldome projector and surround sound. Allow 60 minutes before the first screening for setup and 45 minutes after the last for strike.\nSample total: NT$ 78,000\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "normal compact screening",
+            "labels": [
+              "Screening 1 · 24 guests",
+              "Screening 2 · 24 guests"
+            ],
+            "times": [
+              "09:30–09:52",
+              "10:07–10:29"
+            ],
+            "summary": "Chasing the Shadow · 48 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "below minimum",
+            "message": "Enter a whole number of guests, at least 12."
+          },
+          {
+            "name": "fractional count",
+            "message": "Enter a whole number of guests, at least 12."
+          },
+          {
+            "name": "minimum",
+            "labels": [
+              "Screening 1 · 12 guests"
+            ],
+            "times": [
+              "09:30–09:52"
+            ],
+            "summary": "Chasing the Shadow · 12 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "compact overflow",
+            "message": "This dome can seat up to 72 guests across three screenings."
+          },
+          {
+            "name": "compact maximum",
+            "labels": [
+              "Screening 1 · 24 guests",
+              "Screening 2 · 24 guests",
+              "Screening 3 · 24 guests"
+            ],
+            "times": [
+              "09:30–09:52",
+              "10:07–10:29",
+              "10:44–11:06"
+            ],
+            "summary": "Chasing the Shadow · 72 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "unconfirmed venue",
+            "message": "Confirm the clear floor, height and power requirements before building your proposal."
+          },
+          {
+            "name": "hall overflow",
+            "message": "This dome can seat up to 108 guests across three screenings."
+          },
+          {
+            "name": "hall maximum",
+            "labels": [
+              "Screening 1 · 36 guests",
+              "Screening 2 · 36 guests",
+              "Screening 3 · 36 guests"
+            ],
+            "times": [
+              "09:30–09:52",
+              "10:07–10:29",
+              "10:44–11:06"
+            ],
+            "summary": "Chasing the Shadow · 108 guests · Ages 7+ · 22 min"
+          },
+          {
+            "name": "revised hall proposal",
+            "labels": [
+              "Screening 1 · 25 guests",
+              "Screening 2 · 24 guests",
+              "Screening 3 · 24 guests"
+            ],
+            "times": [
+              "09:30–10:08",
+              "10:23–11:01",
+              "11:16–11:54"
+            ],
+            "summary": "The Next Eclipse · 73 guests · Ages 13+ · 38 min"
+          }
+        ],
+        "download": {
+          "filename": "umbra-dial-proposal-en.txt",
+          "bytes": 643,
+          "text": "UMBRA DIAL | Venue proposal\nConcept service. Sample times and prices only. Downloading a proposal does not book a screening.\n\nThe Next Eclipse · 73 guests · Ages 13+ · 38 min\nScreening 1 · 25 guests | 09:30–10:08\nScreening 2 · 24 guests | 10:23–11:01\nScreening 3 · 24 guests | 11:16–11:54\n\nHall dome · 9 × 9 m clear floor and 5 m height. Two dedicated grounded 110 V / 15 A circuits. Venue access 08:30–12:39 including setup and strike.\nTouring kit: inflatable dome, fulldome projector and surround sound. Allow 60 minutes before the first screening for setup and 45 minutes after the last for strike.\nSample total: NT$ 78,000\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795203431974.6,
+      "anchorMs": 3533,
+      "view": {
+        "at": 972.0999999999767,
+        "stage": {
+          "x": 19.71875,
+          "y": 422.75,
+          "right": 370.265625,
+          "bottom": 656.4375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstRunningObservedMs": 1236.0999999999767,
+      "firstContentfulPaint": 1048,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "en",
+        "title": "UMBRA DIAL | A touring dome cinema",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/assets/page-DNAQ5X7Y.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 1,
+          "requestStart": 4.400000000023283,
+          "responseStart": 13.299999999988358,
+          "responseEnd": 13.900000000023283,
+          "duration": 964.4000000000233,
+          "domInteractive": 28.70000000001164,
+          "domContentLoadedEventStart": 954.9000000000233,
+          "domContentLoadedEventEnd": 955.7999999999884,
+          "domComplete": 964.2999999999884,
+          "loadEventStart": 964.4000000000233,
+          "loadEventEnd": 964.4000000000233,
+          "transferSize": 13085,
+          "encodedBodySize": 12785,
+          "decodedBodySize": 12785
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 1048
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 1048
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/media/umbra-dial/ingress.webp",
+            "initiator": "link",
+            "startTime": 26.400000000023283,
+            "fetchStart": 26.400000000023283,
+            "requestStart": 27.400000000023283,
+            "responseStart": 33.40000000002328,
+            "responseEnd": 34,
+            "duration": 7.599999999976717,
+            "transferSize": 24930,
+            "encodedBodySize": 24630,
+            "decodedBodySize": 24630
+          },
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 26.79999999998836,
+            "fetchStart": 26.79999999998836,
+            "requestStart": 34.20000000001164,
+            "responseStart": 35.70000000001164,
+            "responseEnd": 35.90000000002328,
+            "duration": 9.100000000034925,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-DNAQ5X7Y.css",
+            "initiator": "link",
+            "startTime": 26.900000000023283,
+            "fetchStart": 26.900000000023283,
+            "requestStart": 33.90000000002328,
+            "responseStart": 36,
+            "responseEnd": 36.09999999997672,
+            "duration": 9.199999999953434,
+            "transferSize": 11247,
+            "encodedBodySize": 10947,
+            "decodedBodySize": 10947
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-D6kUXF9D.js",
+            "initiator": "script",
+            "startTime": 26.900000000023283,
+            "fetchStart": 26.900000000023283,
+            "requestStart": 34.20000000001164,
+            "responseStart": 35.20000000001164,
+            "responseEnd": 35.5,
+            "duration": 8.599999999976717,
+            "transferSize": 7116,
+            "encodedBodySize": 6816,
+            "decodedBodySize": 6816
+          },
+          {
+            "path": "/glossquote-visuals/media/umbra-dial/total.webp",
+            "initiator": "img",
+            "startTime": 950.9000000000233,
+            "fetchStart": 950.9000000000233,
+            "requestStart": 952.5,
+            "responseStart": 957.7999999999884,
+            "responseEnd": 958.2000000000116,
+            "duration": 7.2999999999883585,
+            "transferSize": 26366,
+            "encodedBodySize": 26066,
+            "decodedBodySize": 26066
+          },
+          {
+            "path": "/glossquote-visuals/media/umbra-dial/egress.webp",
+            "initiator": "img",
+            "startTime": 950.9000000000233,
+            "fetchStart": 950.9000000000233,
+            "requestStart": 953.0999999999767,
+            "responseStart": 959.5,
+            "responseEnd": 960.0999999999767,
+            "duration": 9.199999999953434,
+            "transferSize": 31696,
+            "encodedBodySize": 31396,
+            "decodedBodySize": 31396
+          },
+          {
+            "path": "/glossquote-visuals/assets/shader-DEIQrKxt.js",
+            "initiator": "script",
+            "startTime": 973.2000000000116,
+            "fetchStart": 973.2000000000116,
+            "requestStart": 974.2999999999884,
+            "responseStart": 977,
+            "responseEnd": 977.2999999999884,
+            "duration": 4.099999999976717,
+            "transferSize": 5610,
+            "encodedBodySize": 5310,
+            "decodedBodySize": 5310
+          },
+          {
+            "path": "/glossquote-visuals/media/umbra-dial/icon.png",
+            "initiator": "other",
+            "startTime": 974.2999999999884,
+            "fetchStart": 974.2999999999884,
+            "requestStart": 974.5999999999767,
+            "responseStart": 977.5,
+            "responseEnd": 977.7000000000116,
+            "duration": 3.400000000023283,
+            "transferSize": 4351,
+            "encodedBodySize": 4051,
+            "decodedBodySize": 4051
+          },
+          {
+            "path": "/glossquote-visuals/assets/standalone-DX-vHLon.js",
+            "initiator": "script",
+            "startTime": 979.5,
+            "fetchStart": 979.5,
+            "requestStart": 980.5,
+            "responseStart": 987.5999999999767,
+            "responseEnd": 996,
+            "duration": 16.5,
+            "transferSize": 2571858,
+            "encodedBodySize": 2571558,
+            "decodedBodySize": 2571558
+          }
+        ],
+        "longTasks": [
+          {
+            "start": 1127.2999999999884,
+            "duration": 56
+          }
+        ]
+      },
+      "fromCommitReturnToTimingReadMs": 3514.2691999999997,
+      "navigationStartMetricMs": 349380.985,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "An eclipseat your door.",
+          "cssFamily": "Georgia, \"Times New Roman\", serif",
+          "fonts": [
+            {
+              "familyName": "Georgia",
+              "postScriptName": "Georgia",
+              "isCustomFont": false,
+              "glyphCount": 23
+            }
+          ]
+        },
+        {
+          "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+          "text": "繁中",
+          "cssFamily": "Arial, sans-serif",
+          "fonts": [
+            {
+              "familyName": "微軟正黑體",
+              "postScriptName": "MicrosoftJhengHeiRegular",
+              "isCustomFont": false,
+              "glyphCount": 2
+            }
+          ]
+        },
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "Touring dome cinema",
+          "cssFamily": "\"Courier New\", monospace",
+          "fonts": [
+            {
+              "familyName": "Courier New",
+              "postScriptName": "CourierNewPS-BoldMT",
+              "isCustomFont": false,
+              "glyphCount": 19
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 349401.853,
+          "ms": 20.868000000016764
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 350336.77499999997,
+          "ms": 955.789999999979
+        },
+        {
+          "name": "load",
+          "traceMs": 350345.416,
+          "ms": 964.4310000000405
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 350426.933,
+          "ms": 1045.948000000033
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 350426.933,
+          "ms": 1045.948000000033
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 350426.933,
+          "ms": 1045.948000000033
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 350426.933,
+          "ms": 1045.948000000033
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 350343.847,
+          "ms": 962.8620000000228
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 350426.933,
+          "ms": 1045.948000000033
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 350508.253,
+          "ms": 1127.26800000004
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3512.1319999999832,
+      "navigationStartTraceMs": 349380.985,
+      "navigationStartEventUs": 349380985,
+      "anchorTraceUs": 352914007,
+      "fcpTraceClockUs": 350428985,
+      "screenshotEvents": 99,
+      "traceImageTimesMs": [
+        10.350000000034925,
+        1033.5260000000126,
+        1058.655000000028,
+        1297.2069999999949,
+        1302.9870000000228,
+        1319.1350000000093,
+        1326.7540000000154,
+        1350.3510000000242,
+        1374.155000000028,
+        1398.1270000000368,
+        1421.8890000000247,
+        1445.6350000000093,
+        1469.4290000000037,
+        1493.2630000000354,
+        1517.2080000000424,
+        1541.8649999999907,
+        1565.9040000000386,
+        1589.466000000015,
+        1613.3280000000377,
+        1637.030000000028,
+        1660.810999999987,
+        1684.4130000000005,
+        1708.1639999999898,
+        1731.2490000000107,
+        1755.198000000033,
+        1779.0020000000368,
+        1802.1010000000242,
+        1825.3190000000177,
+        1849.149000000034,
+        1872.826000000001,
+        1896.5160000000033,
+        1920.265000000014,
+        1944.011999999988,
+        1967.8550000000396,
+        1991.6010000000242,
+        2015.3120000000345,
+        2039.0009999999893,
+        2062.5229999999865,
+        2085.8699999999953,
+        2109.6180000000168,
+        2133.295000000042,
+        2157.14300000004,
+        2178.829000000027,
+        2204.8890000000247,
+        2228.771000000008,
+        2252.478000000003,
+        2276.3520000000135,
+        2300.911000000022,
+        2324.25900000002,
+        2347.837999999989,
+        2371.4619999999995,
+        2396.121000000043,
+        2420.9530000000377,
+        2444.6969999999856,
+        2468.308000000019,
+        2492.168000000005,
+        2515.997000000032,
+        2540.3369999999995,
+        2564.616000000038,
+        2588.222999999998,
+        2612.26800000004,
+        2636.1909999999916,
+        2660.7090000000317,
+        2684.8589999999967,
+        2708.716000000015,
+        2732.7660000000033,
+        2756.6410000000033,
+        2780.695000000007,
+        2823.808000000019,
+        2824.7239999999874,
+        2850.6639999999898,
+        2874.927000000025,
+        2898.8060000000405,
+        2923.5190000000293,
+        2948.5530000000144,
+        2971.3300000000163,
+        2995.4920000000275,
+        3019.2640000000247,
+        3043.0950000000303,
+        3066.7300000000396,
+        3090.7669999999925,
+        3114.7270000000135,
+        3138.460000000021,
+        3162.2420000000275,
+        3186.5130000000354,
+        3210.8940000000293,
+        3235.2200000000303,
+        3258.929999999993,
+        3282.7690000000293,
+        3309.0080000000307,
+        3335.176000000036,
+        3361.5860000000102,
+        3386.6600000000326,
+        3412.1849999999977,
+        3436.3880000000354,
+        3460.3850000000093,
+        3484.4000000000233,
+        3508.1689999999944,
+        3531.8800000000047
+      ],
+      "filmstripFramesInWindow": 75,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 1058.655000000028,
+          "traceUs": 350439640,
+          "file": "opening-0.png",
+          "sha256": "dfef5bff288faa0505e047eabbab3b85cdf4bf71372ae79926609bd8c7d6df21",
+          "source": "opening-0.jpg",
+          "originalSha256": "3c04365f6622c3f8fd262fc7927ce9fff82df29f91092b0db238ba4f2d9385d5",
+          "stageHash": "8649b0238a530a62149c6fbaf75a42b940809146b648f38df140b72e2566d996",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1398.1270000000368,
+          "traceUs": 350779112,
+          "file": "opening-1.png",
+          "sha256": "be36aaf95ef35c83d20543f3b5f5ec1fbebb6a8d7645e50f0946a2cc4ff62db1",
+          "source": "opening-1.jpg",
+          "originalSha256": "50846310532a4000a3568a31040fec447aae227da73f0554f0ce73c9ee8eb954",
+          "stageHash": "f71ab2c3b62b493777e4b7abdb9fa6d25d4379684ffabf900d91036421f2881e",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1541.8649999999907,
+          "traceUs": 350922850,
+          "file": "opening-2.png",
+          "sha256": "1f68f3259a3c0055003bbbb9049458415c3d1ca444d07d39af02e0c01e7b6b69",
+          "source": "opening-2.jpg",
+          "originalSha256": "eb23a76be68defaeb394257361fd989cd41d30d7c603e81905f0fb7d83c2d6d3",
+          "stageHash": "f5b225f3956375243695a361dd202e2a2a75701eb43f11a98aba248249bbc84b",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1708.1639999999898,
+          "traceUs": 351089149,
+          "file": "opening-3.png",
+          "sha256": "d618914d7df66febc552d9a384f50b478f6aaec73aa54eaf7f35ec7e651aa720",
+          "source": "opening-3.jpg",
+          "originalSha256": "a0f12890f911fd17f9d5b437d14bc5a0c6e94b8e507d8bfdf6fd2e6b15f05e74",
+          "stageHash": "3663ff661cebcad73780e9dce798b6bbd5c8e9d6ff354559c408a7fb15356ef3",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1872.826000000001,
+          "traceUs": 351253811,
+          "file": "opening-4.png",
+          "sha256": "4f079e34b8713c4de1e642f5a5699050d6f5e7f781a388e897d0aaafbbc4c74c",
+          "source": "opening-4.jpg",
+          "originalSha256": "d43ecaef1da81f5af6bd45d06501402e150ba71815f2ee636942339063c97896",
+          "stageHash": "4c2845c0d802e94d4dbba2b4db56d1bb653edb57b7ddc59129749d371c42b51a",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2039.0009999999893,
+          "traceUs": 351419986,
+          "file": "opening-5.png",
+          "sha256": "1180f6b113739dbe853be1ffb9f512380c225db124eec24de1c13e2790490a90",
+          "source": "opening-5.jpg",
+          "originalSha256": "801b69b227f380cf4f2df1af9afbb883035ee6af8fa80fa51a957d5f6f89a0a2",
+          "stageHash": "eefada8f2ee5bcfdac5eea83881ebdb3fe4cef059df2ac4d6dbab8f7e1753b21",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2178.829000000027,
+          "traceUs": 351559814,
+          "file": "opening-6.png",
+          "sha256": "84e404271ee8d4de589bcae2d6d409b0a4e5112c11b8542170cfdcfe9e6e2722",
+          "source": "opening-6.jpg",
+          "originalSha256": "728444a75779bb70de84080af556bd5caa272702754d97f3f390ed6d168eb1f4",
+          "stageHash": "7d28262b70da52bb26cce5fa27d073c87aa7df161d56a7bea86d0365f4d6d745",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2347.837999999989,
+          "traceUs": 351728823,
+          "file": "opening-7.png",
+          "sha256": "37a23bb8cdcff6174d49b4eaa7b74f110426faab0b447df06802631e1fac5f1d",
+          "source": "opening-7.jpg",
+          "originalSha256": "a6c91cf7d3edcc74778534212b7b95e9c3b50f3febdb8e5e49f4ecbbd6f8316f",
+          "stageHash": "b6faecfeef0af4264226fb6bf766194a7873a49b9cf88a35b684d2c50a20906d",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2515.997000000032,
+          "traceUs": 351896982,
+          "file": "opening-8.png",
+          "sha256": "e8af32b1d8a52d1b5272842dfd716af44c0db937a8f203f17b2b5cd257322028",
+          "source": "opening-8.jpg",
+          "originalSha256": "f68e53e28219c109ad85f76e5042ba2716171ef9985ba623a382c879c31193a5",
+          "stageHash": "cb724bae68deb6218fdc7068f04be4de7c537721bfc4d807fc89897b05f9ca47",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2684.8589999999967,
+          "traceUs": 352065844,
+          "file": "opening-9.png",
+          "sha256": "6e58079f66aabe898fbb7c201b026bde9db13e3f0d8d76385b4088753cc1c086",
+          "source": "opening-9.jpg",
+          "originalSha256": "017a82e85992106138babbd335b7e6db74ea92ab79f1cf238a2209e4c14c0391",
+          "stageHash": "26aeda9a7e152230e139c8616f41f7d604444aebae6e0aa367d804882f5b96d8",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2824.7239999999874,
+          "traceUs": 352205709,
+          "file": "opening-10.png",
+          "sha256": "c88eb51ac05bfa16c56af59861106a02cc9d24d376287900c4cf0fafb77792f8",
+          "source": "opening-10.jpg",
+          "originalSha256": "6faeeb60ba2fff42f7b727bdf5ed9971a143773818e6a6cdb7c544a6454e29cf",
+          "stageHash": "d49333fe1059da0b62dc7c4f947e42816b7e8a37464ce2535d96abed94794505",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2995.4920000000275,
+          "traceUs": 352376477,
+          "file": "opening-11.png",
+          "sha256": "d77dbcd0ad6a811944cfbd463ed687b867f4a47eb19f6c43e3433dff1a4caa6e",
+          "source": "opening-11.jpg",
+          "originalSha256": "c5dd05d9ba447c73366dcfe4512b143d530b5dcdb013ce53baa2c6782a8d708d",
+          "stageHash": "41f27da3a7de592b750671d6e132a4ab7ca3867aec57c75ba84704361de553ee",
+          "crop": [
+            11,
+            249,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input",
+      "runningMotion": {
+        "sampledStageFrames": 11,
+        "thumbnailSize": [
+          64,
+          48
+        ],
+        "strongest": {
+          "before": "opening-1.jpg",
+          "beforeMs": 1398.1270000000368,
+          "after": "opening-7.jpg",
+          "afterMs": 2347.837999999989,
+          "meanAbsoluteRgb": 27.207031250000046,
+          "fractionWithMeanRgbDeltaAtLeast16": 0.16927083333333334
+        },
+        "basis": "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material."
+      }
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 140.90000000002328,
+    "firstFoldEnd": 213.70000000001164,
+    "cycle": "10",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "7ba353b9b141961282bccbba6d8353022c3ba63e76c07bdd383ab11bd6cd6c4c",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 373.4000000000233,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 118,
+          "average": [
+            41,
+            36,
+            40,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "253dce069a77c30d01cd7a54942a512f8ab80083be25b3dce079f84c50e7178b",
+          "start": 450,
+          "end": 510.30000000004657,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "16d7064c48ccdc88c0483dfae09225de89153e88cb5ba679e6c784aaa1c3e8d3",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 1297.5,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 123,
+          "average": [
+            18,
+            13,
+            26,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "f80ba8659f25a9e735d0325a6be1b270c6d153425d1481990a92b74b75cd0cfe",
+          "start": 1334.9000000000233,
+          "end": 1397.9000000000233,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0.9240999999999767
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "acfbb7bd60b566cc0b2058ae1332ee477ff1dd39df1136a3f2c752832b9b2346",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 2595.3000000000466,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 118,
+          "average": [
+            18,
+            13,
+            26,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "e982f6a862fc26347c95793fb86690e0cf1b56f051d112e6be55f8fd9fdb329a",
+          "start": 2632.100000000035,
+          "end": 2696.8000000000466,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 2.2219000000000233
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "a99ba3eaa470dd996f49a665c923377aba123e0bb9f0595ceeb439dd9efd3e42",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 5397.300000000047,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 116,
+          "average": [
+            52,
+            47,
+            49,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "1b696316e76f2b9ae3616887fbdcb85fce88356a9869cfb05c3d836bc8190c34",
+          "start": 5433.5,
+          "end": 5498.200000000012,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 5.023900000000023
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "9af91de35059709dad510647ba0e61979dc217fd92bd9b21e56d50100e150870",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 7909.100000000035,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 122,
+          "average": [
+            52,
+            47,
+            49,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "16cd44ca311695b1caf75a23ca40b52c6a56f89775ffb65a07dec0c864332c48",
+          "start": 7945,
+          "end": 8008.400000000023,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 7.535700000000012
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "4c701de0db0ce572cd397767557c6fd2c0ae8795690c5e3bfbdd32f424b72258",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 10423.400000000023,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 118,
+          "average": [
+            40,
+            36,
+            40,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "67d5c8c45cc96f11f3a76dd71c407e8cb1f7092475933d464ed5e554910b74da",
+          "start": 10458.5,
+          "end": 10503.100000000035,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 10.05
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "e0801853018061f08e82659810ba858f0908b72f2c346d3182bc90ae80376b31",
+          "start": 506,
+          "end": 567.7000000000116,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "d0b8d7b480abb951c9a12f6c3a0929a4d23bfe365764dd6bec965bc785ea1818",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 574.1000000000349,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 111,
+          "average": [
+            34,
+            30,
+            35,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "8c81b61d1be15148b88896f784799eb41f736b06fdc0978a5f51822759fe9bc3",
+          "start": 728.4000000000233,
+          "end": 790.7999999999884,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "9f5d26766a6038a7f9d833804c1a3c280d66bd412ce27b35dddcd2aeef0ece43",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 796.2000000000116,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            18,
+            13,
+            26,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "fd13a8a4a86f9ed632d03960deda7706a6025bf94023bdb2e61242f5eca64035",
+          "start": 934.2000000000116,
+          "end": 998.7999999999884,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "7011bb6036233cecf4fc95c7d8fbbe8d804a87a9d03d3ea47c716abfef4971d1",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 1001.2999999999884,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 134,
+          "average": [
+            64,
+            59,
+            59,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "d1548b3bc90a876ba12a1914df7d69ee00ead3d0ec16512468ff31bb9285ccee",
+          "start": 1134.4000000000233,
+          "end": 1197.9000000000233,
+          "clip": {
+            "x": 19,
+            "y": 422,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "1eb5afd02a39788d88295186b58781621d48ffe23ecf8a6763ab1ce95b0c233b",
+          "width": 263,
+          "height": 176,
+          "format": "bgra8unorm",
+          "submittedAt": 1204.600000000035,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            41,
+            37,
+            40,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "8a295501a0c30f7980bac29888006caf9721099361cdac6b7b0c2bf273bd4792",
+        "start": 1275,
+        "end": 1341.2999999999884,
+        "clip": {
+          "x": 19,
+          "y": 422,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "b854f57e80107bfea08fec6d5cb697a558d3752a6a200563486b073773b83536",
+        "start": 1395.4000000000233,
+        "end": 1435.2999999999884,
+        "clip": {
+          "x": 19,
+          "y": 422,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "b854f57e80107bfea08fec6d5cb697a558d3752a6a200563486b073773b83536",
+        "start": 2801.7000000000116,
+        "end": 2866.2000000000116,
+        "clip": {
+          "x": 19,
+          "y": 422,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "87442de2d1104e86cfa0e2a2355f87aaeaaa0c022320328f9b2c2b835fdef98b",
+        "start": 2965.2999999999884,
+        "end": 3032.2000000000116,
+        "clip": {
+          "x": 19,
+          "y": 422,
+          "width": 352,
+          "height": 235
+        }
+      }
+    },
+    "flow": {
+      "lang": "en",
+      "observations": [
+        {
+          "name": "normal compact screening",
+          "labels": [
+            "Screening 1 · 24 guests",
+            "Screening 2 · 24 guests"
+          ],
+          "times": [
+            "09:30–09:52",
+            "10:07–10:29"
+          ],
+          "summary": "Chasing the Shadow · 48 guests · Ages 7+ · 22 min"
+        },
+        {
+          "name": "below minimum",
+          "message": "Enter a whole number of guests, at least 12."
+        },
+        {
+          "name": "fractional count",
+          "message": "Enter a whole number of guests, at least 12."
+        },
+        {
+          "name": "minimum",
+          "labels": [
+            "Screening 1 · 12 guests"
+          ],
+          "times": [
+            "09:30–09:52"
+          ],
+          "summary": "Chasing the Shadow · 12 guests · Ages 7+ · 22 min"
+        },
+        {
+          "name": "compact overflow",
+          "message": "This dome can seat up to 72 guests across three screenings."
+        },
+        {
+          "name": "compact maximum",
+          "labels": [
+            "Screening 1 · 24 guests",
+            "Screening 2 · 24 guests",
+            "Screening 3 · 24 guests"
+          ],
+          "times": [
+            "09:30–09:52",
+            "10:07–10:29",
+            "10:44–11:06"
+          ],
+          "summary": "Chasing the Shadow · 72 guests · Ages 7+ · 22 min"
+        },
+        {
+          "name": "unconfirmed venue",
+          "message": "Confirm the clear floor, height and power requirements before building your proposal."
+        },
+        {
+          "name": "hall overflow",
+          "message": "This dome can seat up to 108 guests across three screenings."
+        },
+        {
+          "name": "hall maximum",
+          "labels": [
+            "Screening 1 · 36 guests",
+            "Screening 2 · 36 guests",
+            "Screening 3 · 36 guests"
+          ],
+          "times": [
+            "09:30–09:52",
+            "10:07–10:29",
+            "10:44–11:06"
+          ],
+          "summary": "Chasing the Shadow · 108 guests · Ages 7+ · 22 min"
+        },
+        {
+          "name": "revised hall proposal",
+          "labels": [
+            "Screening 1 · 25 guests",
+            "Screening 2 · 24 guests",
+            "Screening 3 · 24 guests"
+          ],
+          "times": [
+            "09:30–10:08",
+            "10:23–11:01",
+            "11:16–11:54"
+          ],
+          "summary": "The Next Eclipse · 73 guests · Ages 13+ · 38 min"
+        }
+      ],
+      "download": {
+        "filename": "umbra-dial-proposal-en.txt",
+        "bytes": 643,
+        "text": "UMBRA DIAL | Venue proposal\nConcept service. Sample times and prices only. Downloading a proposal does not book a screening.\n\nThe Next Eclipse · 73 guests · Ages 13+ · 38 min\nScreening 1 · 25 guests | 09:30–10:08\nScreening 2 · 24 guests | 10:23–11:01\nScreening 3 · 24 guests | 11:16–11:54\n\nHall dome · 9 × 9 m clear floor and 5 m height. Two dedicated grounded 110 V / 15 A circuits. Venue access 08:30–12:39 including setup and strike.\nTouring kit: inflatable dome, fulldome projector and surround sound. Allow 60 minutes before the first screening for setup and 45 minutes after the last for strike.\nSample total: NT$ 78,000\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "Explore the films\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 18,
+              "y": 350.984375,
+              "width": 192.234375,
+              "height": 48.375
+            },
+            "labels": []
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 172.46875,
+              "y": 434.75,
+              "width": 115.53125,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Ingress",
+            "tag": "INPUT",
+            "rect": {
+              "x": 65.828125,
+              "y": 637.75,
+              "width": 1,
+              "height": 1
+            },
+            "labels": [
+              {
+                "text": "Ingress",
+                "rect": {
+                  "x": 18,
+                  "y": 611.75,
+                  "width": 94.65625,
+                  "height": 48
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Totality",
+            "tag": "INPUT",
+            "rect": {
+              "x": 160.984375,
+              "y": 637.75,
+              "width": 1,
+              "height": 1
+            },
+            "labels": [
+              {
+                "text": "Totality",
+                "rect": {
+                  "x": 112.65625,
+                  "y": 611.75,
+                  "width": 94.671875,
+                  "height": 48
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Egress",
+            "tag": "INPUT",
+            "rect": {
+              "x": 255.65625,
+              "y": 637.75,
+              "width": 1,
+              "height": 1
+            },
+            "labels": [
+              {
+                "text": "Egress",
+                "rect": {
+                  "x": 207.328125,
+                  "y": 611.75,
+                  "width": 94.65625,
+                  "height": 48
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Select Chasing the Shadow",
+            "tag": "A",
+            "rect": {
+              "x": 220.0625,
+              "y": 1281.5625,
+              "width": 66.859375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Select Beyond the Ring",
+            "tag": "A",
+            "rect": {
+              "x": 220.0625,
+              "y": 1724.6875,
+              "width": 66.859375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Select The Next Eclipse",
+            "tag": "A",
+            "rect": {
+              "x": 220.0625,
+              "y": 2143.8125,
+              "width": 66.859375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "FilmChasing the ShadowBeyond the RingThe Next Eclipse",
+            "tag": "SELECT",
+            "rect": {
+              "x": 31,
+              "y": 3484.203125,
+              "width": 258,
+              "height": 46
+            },
+            "labels": [
+              {
+                "text": "Film\nChasing the Shadow\nBeyond the Ring\nThe Next Eclipse",
+                "rect": {
+                  "x": 31,
+                  "y": 3455.40625,
+                  "width": 258,
+                  "height": 74.796875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Total audience",
+            "tag": "INPUT",
+            "rect": {
+              "x": 31,
+              "y": 3575,
+              "width": 258,
+              "height": 46
+            },
+            "labels": [
+              {
+                "text": "Total audience",
+                "rect": {
+                  "x": 31,
+                  "y": 3546.203125,
+                  "width": 258,
+                  "height": 74.796875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Clearances and power\n              \n                Meets compact dome spec\n              ",
+            "tag": "SELECT",
+            "rect": {
+              "x": 31,
+              "y": 3665.796875,
+              "width": 258,
+              "height": 46
+            },
+            "labels": [
+              {
+                "text": "Clearances and power\nMeets compact dome spec\nMeets hall dome spec\nUnconfirmed or below spe",
+                "rect": {
+                  "x": 31,
+                  "y": 3637,
+                  "width": 258,
+                  "height": 74.796875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Build a running order\n↘",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 31,
+              "y": 3785.078125,
+              "width": 258,
+              "height": 48.375
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 8,
+              "y": -59.171875,
+              "width": 126.625,
+              "height": 44.78125
+            },
+            "color": "rgb(8, 7, 11)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(250, 245, 233)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "UMBRA DIAL",
+            "tag": "A",
+            "rect": {
+              "x": 18,
+              "y": 7.09375,
+              "width": 131.203125,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.76px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Films",
+            "tag": "A",
+            "rect": {
+              "x": 223.140625,
+              "y": 7.09375,
+              "width": 32.109375,
+              "height": 44
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "13.44px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁中",
+            "tag": "A",
+            "rect": {
+              "x": 262.921875,
+              "y": 7.09375,
+              "width": 39.078125,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.44px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TOURING DOME CINEMA",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 91.1875,
+              "width": 284,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "An eclipse\nat your door.",
+            "tag": "H1",
+            "rect": {
+              "x": 18,
+              "y": 119.578125,
+              "width": 284,
+              "height": 103.78125
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "55.2px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A pop-up planetarium for schools and venues. Take a seat inside the Moon’s shadow with thr",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 236.59375,
+              "width": 284,
+              "height": 96
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Explore the films\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 18,
+              "y": 350.984375,
+              "width": 192.234375,
+              "height": 48.375
+            },
+            "color": "rgb(8, 7, 11)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(190, 154, 255)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 172.46875,
+              "y": 434.75,
+              "width": 115.53125,
+              "height": 44
+            },
+            "color": "rgb(157, 146, 170)",
+            "size": "11.2px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(23, 18, 30)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Ingress",
+            "tag": "LABEL",
+            "rect": {
+              "x": 18,
+              "y": 611.75,
+              "width": 94.65625,
+              "height": 48
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "11.84px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(28, 20, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Totality",
+            "tag": "LABEL",
+            "rect": {
+              "x": 112.65625,
+              "y": 611.75,
+              "width": 94.671875,
+              "height": 48
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "11.84px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Egress",
+            "tag": "LABEL",
+            "rect": {
+              "x": 207.328125,
+              "y": 611.75,
+              "width": 94.65625,
+              "height": 48
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "11.84px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Reduced motion is on. Use the phase dial to view eclipse stills.",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 659.75,
+              "width": 1,
+              "height": 1
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FULLDOME SCREENINGS",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 756.75,
+              "width": 269.8125,
+              "height": 17.90625
+            },
+            "color": "rgb(85, 52, 135)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(241, 236, 227)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The programme.",
+            "tag": "H2",
+            "rect": {
+              "x": 18,
+              "y": 780.5625,
+              "width": 269.8125,
+              "height": 40.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "40.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(241, 236, 227)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Each running time includes a live introduction and short talk. The sample rates are per sc",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 837.359375,
+              "width": 284,
+              "height": 72
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(241, 236, 227)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Chasing the Shadow",
+            "tag": "H3",
+            "rect": {
+              "x": 33.078125,
+              "y": 1117.0625,
+              "width": 253.84375,
+              "height": 25.375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "22.08px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Follow the Moon’s shadow across Earth. Four changes of perspective show why totality trave",
+            "tag": "P",
+            "rect": {
+              "x": 33.078125,
+              "y": 1149.046875,
+              "width": 253.84375,
+              "height": 96
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Select Chasing the Shadow",
+            "tag": "A",
+            "rect": {
+              "x": 220.0625,
+              "y": 1281.5625,
+              "width": 66.859375,
+              "height": 44
+            },
+            "color": "rgb(73, 37, 120)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Beyond the Ring",
+            "tag": "H3",
+            "rect": {
+              "x": 33.078125,
+              "y": 1536.1875,
+              "width": 253.84375,
+              "height": 25.375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "22.08px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Read the Sun’s atmosphere in silhouette as the corona, chromosphere and Baily’s beads emer",
+            "tag": "P",
+            "rect": {
+              "x": 33.078125,
+              "y": 1568.171875,
+              "width": 253.84375,
+              "height": 120
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Select Beyond the Ring",
+            "tag": "A",
+            "rect": {
+              "x": 220.0625,
+              "y": 1724.6875,
+              "width": 66.859375,
+              "height": 44
+            },
+            "color": "rgb(73, 37, 120)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The Next Eclipse",
+            "tag": "H3",
+            "rect": {
+              "x": 33.078125,
+              "y": 1979.3125,
+              "width": 253.84375,
+              "height": 25.375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "22.08px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Trace a sighting back to orbit. Follow lunar nodes and the Saros cycle to work out the con",
+            "tag": "P",
+            "rect": {
+              "x": 33.078125,
+              "y": 2011.296875,
+              "width": 253.84375,
+              "height": 96
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Select The Next Eclipse",
+            "tag": "A",
+            "rect": {
+              "x": 220.0625,
+              "y": 2143.8125,
+              "width": 66.859375,
+              "height": 44
+            },
+            "color": "rgb(73, 37, 120)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "BEFORE DOORS OPEN",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 2312.328125,
+              "width": 210.640625,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Fit the dome.",
+            "tag": "H2",
+            "rect": {
+              "x": 18,
+              "y": 2336.140625,
+              "width": 210.640625,
+              "height": 40.796875
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "40.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "We need level indoor space, a nearby outlet and step-free load-in. The venue confirms clea",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 2392.9375,
+              "width": 284,
+              "height": 96
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "COMPACT DOME",
+            "tag": "P",
+            "rect": {
+              "x": 34,
+              "y": 2528.328125,
+              "width": 252,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "24 per screening",
+            "tag": "H3",
+            "rect": {
+              "x": 34,
+              "y": 2552.953125,
+              "width": 252,
+              "height": 50.390625
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "48px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "7 × 7 m clear floor and 3.8 m height. One dedicated grounded 110 V / 15 A circuit.",
+            "tag": "P",
+            "rect": {
+              "x": 34,
+              "y": 2610.0625,
+              "width": 252,
+              "height": 72
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "HALL DOME",
+            "tag": "P",
+            "rect": {
+              "x": 34,
+              "y": 2715.0625,
+              "width": 252,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "36 per screening",
+            "tag": "H3",
+            "rect": {
+              "x": 34,
+              "y": 2739.6875,
+              "width": 252,
+              "height": 50.390625
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "48px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "9 × 9 m clear floor and 5 m height. Two dedicated grounded 110 V / 15 A circuits.",
+            "tag": "P",
+            "rect": {
+              "x": 34,
+              "y": 2796.796875,
+              "width": 252,
+              "height": 72
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Touring kit: inflatable dome, fulldome projector and surround sound. Allow 60 minutes befo",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 2904.984375,
+              "width": 284,
+              "height": 120
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "VENUE PROPOSAL",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 3136.984375,
+              "width": 284,
+              "height": 17.90625
+            },
+            "color": "rgb(85, 52, 135)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Make a\nrunning order.",
+            "tag": "H2",
+            "rect": {
+              "x": 18,
+              "y": 3160.796875,
+              "width": 284,
+              "height": 81.59375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "40.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose one film and plan up to three screenings. Share the result with your venue for revi",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 3259.984375,
+              "width": 284,
+              "height": 72
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Concept service. Sample times and prices only. Downloading a proposal does not book a scre",
+            "tag": "P",
+            "rect": {
+              "x": 18,
+              "y": 3349.578125,
+              "width": 272.28125,
+              "height": 64.828125
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Film\nChasing the Shadow\nBeyond the Ring\nThe Next Eclipse",
+            "tag": "LABEL",
+            "rect": {
+              "x": 31,
+              "y": 3455.40625,
+              "width": 258,
+              "height": 74.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Total audience",
+            "tag": "LABEL",
+            "rect": {
+              "x": 31,
+              "y": 3546.203125,
+              "width": 258,
+              "height": 74.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Clearances and power\nMeets compact dome spec\nMeets hall dome spec\nUnconfirmed or below spe",
+            "tag": "LABEL",
+            "rect": {
+              "x": 31,
+              "y": 3637,
+              "width": 258,
+              "height": 74.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "12–72 guests across up to three screenings.",
+            "tag": "P",
+            "rect": {
+              "x": 31,
+              "y": 3727.796875,
+              "width": 258,
+              "height": 41.28125
+            },
+            "color": "rgb(89, 77, 99)",
+            "size": "13.76px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a running order\n↘",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 31,
+              "y": 3785.078125,
+              "width": 258,
+              "height": 48.375
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(76, 40, 123)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "UMBRA DIAL",
+            "tag": "A",
+            "rect": {
+              "x": 18,
+              "y": 3928.84375,
+              "width": 131.203125,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.76px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the gallery ↗",
+            "tag": "A",
+            "rect": {
+              "x": 173.421875,
+              "y": 3928.84375,
+              "width": 128.578125,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.92px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code ↗",
+            "tag": "A",
+            "rect": {
+              "x": 18,
+              "y": 3974.4375,
+              "width": 92.21875,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.92px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/ingress.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/ingress.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/total.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/egress.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "Explore the films\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 18.71875,
+              "y": 350.984375,
+              "width": 192.234375,
+              "height": 48.375
+            },
+            "labels": []
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 241.734375,
+              "y": 434.75,
+              "width": 115.53125,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Ingress",
+            "tag": "INPUT",
+            "rect": {
+              "x": 77.96875,
+              "y": 683.4375,
+              "width": 1,
+              "height": 1
+            },
+            "labels": [
+              {
+                "text": "Ingress",
+                "rect": {
+                  "x": 18.71875,
+                  "y": 657.4375,
+                  "width": 117.515625,
+                  "height": 48
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Totality",
+            "tag": "INPUT",
+            "rect": {
+              "x": 195.984375,
+              "y": 683.4375,
+              "width": 1,
+              "height": 1
+            },
+            "labels": [
+              {
+                "text": "Totality",
+                "rect": {
+                  "x": 136.234375,
+                  "y": 657.4375,
+                  "width": 117.515625,
+                  "height": 48
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Egress",
+            "tag": "INPUT",
+            "rect": {
+              "x": 313.5,
+              "y": 683.4375,
+              "width": 1,
+              "height": 1
+            },
+            "labels": [
+              {
+                "text": "Egress",
+                "rect": {
+                  "x": 253.75,
+                  "y": 657.4375,
+                  "width": 117.515625,
+                  "height": 48
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Select Chasing the Shadow",
+            "tag": "A",
+            "rect": {
+              "x": 289.328125,
+              "y": 1337.515625,
+              "width": 66.859375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Select Beyond the Ring",
+            "tag": "A",
+            "rect": {
+              "x": 289.328125,
+              "y": 1766.90625,
+              "width": 66.859375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Select The Next Eclipse",
+            "tag": "A",
+            "rect": {
+              "x": 289.328125,
+              "y": 2196.296875,
+              "width": 66.859375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "FilmChasing the ShadowBeyond the RingThe Next Eclipse",
+            "tag": "SELECT",
+            "rect": {
+              "x": 35.71875,
+              "y": 3424.34375,
+              "width": 318.546875,
+              "height": 46
+            },
+            "labels": [
+              {
+                "text": "Film\nChasing the Shadow\nBeyond the Ring\nThe Next Eclipse",
+                "rect": {
+                  "x": 35.71875,
+                  "y": 3395.546875,
+                  "width": 318.546875,
+                  "height": 74.796875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Total audience",
+            "tag": "INPUT",
+            "rect": {
+              "x": 35.71875,
+              "y": 3515.140625,
+              "width": 318.546875,
+              "height": 46
+            },
+            "labels": [
+              {
+                "text": "Total audience",
+                "rect": {
+                  "x": 35.71875,
+                  "y": 3486.34375,
+                  "width": 318.546875,
+                  "height": 74.796875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Clearances and power\n              \n                Meets compact dome spec\n              ",
+            "tag": "SELECT",
+            "rect": {
+              "x": 35.71875,
+              "y": 3605.9375,
+              "width": 318.546875,
+              "height": 46
+            },
+            "labels": [
+              {
+                "text": "Clearances and power\nMeets compact dome spec\nMeets hall dome spec\nUnconfirmed or below spe",
+                "rect": {
+                  "x": 35.71875,
+                  "y": 3577.140625,
+                  "width": 318.546875,
+                  "height": 74.796875
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Build a running order\n↘",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 35.71875,
+              "y": 3704.578125,
+              "width": 318.546875,
+              "height": 48.375
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 8,
+              "y": -59.171875,
+              "width": 126.625,
+              "height": 44.78125
+            },
+            "color": "rgb(8, 7, 11)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(250, 245, 233)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "UMBRA DIAL",
+            "tag": "A",
+            "rect": {
+              "x": 18.71875,
+              "y": 7.09375,
+              "width": 136.71875,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.76px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Films",
+            "tag": "A",
+            "rect": {
+              "x": 287.28125,
+              "y": 7.09375,
+              "width": 32.109375,
+              "height": 44
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "13.44px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁中",
+            "tag": "A",
+            "rect": {
+              "x": 332.1875,
+              "y": 7.09375,
+              "width": 39.078125,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.44px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TOURING DOME CINEMA",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 91.1875,
+              "width": 352.546875,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "An eclipse\nat your door.",
+            "tag": "H1",
+            "rect": {
+              "x": 18.71875,
+              "y": 119.578125,
+              "width": 352.546875,
+              "height": 103.78125
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "55.2px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A pop-up planetarium for schools and venues. Take a seat inside the Moon’s shadow with thr",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 236.59375,
+              "width": 311.4375,
+              "height": 96
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Explore the films\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 18.71875,
+              "y": 350.984375,
+              "width": 192.234375,
+              "height": 48.375
+            },
+            "color": "rgb(8, 7, 11)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(190, 154, 255)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 241.734375,
+              "y": 434.75,
+              "width": 115.53125,
+              "height": 44
+            },
+            "color": "rgb(157, 146, 170)",
+            "size": "11.2px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(23, 18, 30)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Ingress",
+            "tag": "LABEL",
+            "rect": {
+              "x": 18.71875,
+              "y": 657.4375,
+              "width": 117.515625,
+              "height": 48
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "11.84px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(28, 20, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Totality",
+            "tag": "LABEL",
+            "rect": {
+              "x": 136.234375,
+              "y": 657.4375,
+              "width": 117.515625,
+              "height": 48
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "11.84px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Egress",
+            "tag": "LABEL",
+            "rect": {
+              "x": 253.75,
+              "y": 657.4375,
+              "width": 117.515625,
+              "height": 48
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "11.84px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Reduced motion is on. Use the phase dial to view eclipse stills.",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 705.4375,
+              "width": 1,
+              "height": 1
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FULLDOME SCREENINGS",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 802.4375,
+              "width": 269.8125,
+              "height": 17.90625
+            },
+            "color": "rgb(85, 52, 135)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(241, 236, 227)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The programme.",
+            "tag": "H2",
+            "rect": {
+              "x": 18.71875,
+              "y": 826.25,
+              "width": 269.8125,
+              "height": 40.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "40.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(241, 236, 227)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Each running time includes a live introduction and short talk. The sample rates are per sc",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 883.046875,
+              "width": 293.640625,
+              "height": 72
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(241, 236, 227)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Chasing the Shadow",
+            "tag": "H3",
+            "rect": {
+              "x": 33.796875,
+              "y": 1197.015625,
+              "width": 322.390625,
+              "height": 25.375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "22.08px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Follow the Moon’s shadow across Earth. Four changes of perspective show why totality trave",
+            "tag": "P",
+            "rect": {
+              "x": 33.796875,
+              "y": 1229,
+              "width": 322.390625,
+              "height": 72
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Select Chasing the Shadow",
+            "tag": "A",
+            "rect": {
+              "x": 289.328125,
+              "y": 1337.515625,
+              "width": 66.859375,
+              "height": 44
+            },
+            "color": "rgb(73, 37, 120)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Beyond the Ring",
+            "tag": "H3",
+            "rect": {
+              "x": 33.796875,
+              "y": 1626.40625,
+              "width": 322.390625,
+              "height": 25.375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "22.08px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Read the Sun’s atmosphere in silhouette as the corona, chromosphere and Baily’s beads emer",
+            "tag": "P",
+            "rect": {
+              "x": 33.796875,
+              "y": 1658.390625,
+              "width": 322.390625,
+              "height": 72
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Select Beyond the Ring",
+            "tag": "A",
+            "rect": {
+              "x": 289.328125,
+              "y": 1766.90625,
+              "width": 66.859375,
+              "height": 44
+            },
+            "color": "rgb(73, 37, 120)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The Next Eclipse",
+            "tag": "H3",
+            "rect": {
+              "x": 33.796875,
+              "y": 2055.796875,
+              "width": 322.390625,
+              "height": 25.375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "22.08px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Trace a sighting back to orbit. Follow lunar nodes and the Saros cycle to work out the con",
+            "tag": "P",
+            "rect": {
+              "x": 33.796875,
+              "y": 2087.78125,
+              "width": 322.390625,
+              "height": 72
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Select The Next Eclipse",
+            "tag": "A",
+            "rect": {
+              "x": 289.328125,
+              "y": 2196.296875,
+              "width": 66.859375,
+              "height": 44
+            },
+            "color": "rgb(73, 37, 120)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "BEFORE DOORS OPEN",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 2364.8125,
+              "width": 210.640625,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Fit the dome.",
+            "tag": "H2",
+            "rect": {
+              "x": 18.71875,
+              "y": 2388.625,
+              "width": 210.640625,
+              "height": 40.796875
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "40.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "We need level indoor space, a nearby outlet and step-free load-in. The venue confirms clea",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 2445.421875,
+              "width": 293.640625,
+              "height": 96
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "COMPACT DOME",
+            "tag": "P",
+            "rect": {
+              "x": 34.71875,
+              "y": 2580.8125,
+              "width": 144.265625,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "24 per screening",
+            "tag": "H3",
+            "rect": {
+              "x": 34.71875,
+              "y": 2605.4375,
+              "width": 144.265625,
+              "height": 100.78125
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "48px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "7 × 7 m clear floor and 3.8 m height. One dedicated grounded 110 V / 15 A circuit.",
+            "tag": "P",
+            "rect": {
+              "x": 34.71875,
+              "y": 2712.9375,
+              "width": 144.265625,
+              "height": 120
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "HALL DOME",
+            "tag": "P",
+            "rect": {
+              "x": 211.984375,
+              "y": 2580.8125,
+              "width": 143.28125,
+              "height": 17.90625
+            },
+            "color": "rgb(190, 154, 255)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "36 per screening",
+            "tag": "H3",
+            "rect": {
+              "x": 211.984375,
+              "y": 2605.4375,
+              "width": 143.28125,
+              "height": 100.78125
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "48px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "9 × 9 m clear floor and 5 m height. Two dedicated grounded 110 V / 15 A circuits.",
+            "tag": "P",
+            "rect": {
+              "x": 211.984375,
+              "y": 2712.9375,
+              "width": 143.28125,
+              "height": 120
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Touring kit: inflatable dome, fulldome projector and surround sound. Allow 60 minutes befo",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 2869.125,
+              "width": 352.546875,
+              "height": 96
+            },
+            "color": "rgb(188, 181, 194)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "VENUE PROPOSAL",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 3077.125,
+              "width": 352.546875,
+              "height": 17.90625
+            },
+            "color": "rgb(85, 52, 135)",
+            "size": "12.8px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Make a\nrunning order.",
+            "tag": "H2",
+            "rect": {
+              "x": 18.71875,
+              "y": 3100.9375,
+              "width": 352.546875,
+              "height": 81.59375
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "40.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose one film and plan up to three screenings. Share the result with your venue for revi",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 3200.125,
+              "width": 302.546875,
+              "height": 72
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Concept service. Sample times and prices only. Downloading a proposal does not book a scre",
+            "tag": "P",
+            "rect": {
+              "x": 18.71875,
+              "y": 3289.71875,
+              "width": 272.28125,
+              "height": 64.828125
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(233, 222, 246)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Film\nChasing the Shadow\nBeyond the Ring\nThe Next Eclipse",
+            "tag": "LABEL",
+            "rect": {
+              "x": 35.71875,
+              "y": 3395.546875,
+              "width": 318.546875,
+              "height": 74.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Total audience",
+            "tag": "LABEL",
+            "rect": {
+              "x": 35.71875,
+              "y": 3486.34375,
+              "width": 318.546875,
+              "height": 74.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Clearances and power\nMeets compact dome spec\nMeets hall dome spec\nUnconfirmed or below spe",
+            "tag": "LABEL",
+            "rect": {
+              "x": 35.71875,
+              "y": 3577.140625,
+              "width": 318.546875,
+              "height": 74.796875
+            },
+            "color": "rgb(33, 25, 42)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "12–72 guests across up to three screenings.",
+            "tag": "P",
+            "rect": {
+              "x": 35.71875,
+              "y": 3667.9375,
+              "width": 318.546875,
+              "height": 20.640625
+            },
+            "color": "rgb(89, 77, 99)",
+            "size": "13.76px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(250, 247, 240)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a running order\n↘",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 35.71875,
+              "y": 3704.578125,
+              "width": 318.546875,
+              "height": 48.375
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(76, 40, 123)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "UMBRA DIAL",
+            "tag": "A",
+            "rect": {
+              "x": 18.71875,
+              "y": 3848.34375,
+              "width": 136.71875,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.76px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the gallery ↗",
+            "tag": "A",
+            "rect": {
+              "x": 242.6875,
+              "y": 3848.34375,
+              "width": 128.578125,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.92px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code ↗",
+            "tag": "A",
+            "rect": {
+              "x": 18.71875,
+              "y": 3893.9375,
+              "width": 92.21875,
+              "height": 44
+            },
+            "color": "rgb(250, 245, 233)",
+            "size": "13.92px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(8, 7, 11)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/ingress.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/ingress.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/total.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/egress.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Skip to content",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(8, 7, 11)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 8
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "UMBRA DIAL",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(250, 245, 233)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 7.09375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Films",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(188, 181, 194)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 7.09375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "繁中",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(250, 245, 233)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 7.09375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Explore the films\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(250, 245, 233)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 350.984375
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Ingress",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 255, 255)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 683.4375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Select Chasing the Shadow",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(73, 37, 120)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1337.515625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Select Beyond the Ring",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(73, 37, 120)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1766.90625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Select The Next Eclipse",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(73, 37, 120)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2196.296875
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "Film\nChasing the Shadow\nBeyond the Ring\nThe Next Eclipse",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(33, 25, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3424.34375
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Total audience",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(33, 25, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3515.140625
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "Clearances and power\nMeets compact dome spec\nMeets hall dome spec\nUnconfirmed or below spec",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(33, 25, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3605.9375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Build a running order\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(76, 40, 123)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3704.578125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "UMBRA DIAL",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(250, 245, 233)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3848.34375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Back to the gallery ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(250, 245, 233)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3848.34375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Source code ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(250, 245, 233)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3893.9375
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2448.2999999999884,
+    "end": 12448.799999999988,
+    "timestamps": [
+      2459,
+      2481.600000000035,
+      2504.2000000000116,
+      2526.7999999999884,
+      2549.600000000035,
+      2572.5,
+      2595.2999999999884,
+      2617.7999999999884,
+      2640.2000000000116,
+      2662.7000000000116,
+      2685.2000000000116,
+      2708.100000000035,
+      2731,
+      2753.7000000000116,
+      2776.2000000000116,
+      2798.7000000000116,
+      2821.4000000000233,
+      2843.9000000000233,
+      2866.5,
+      2889.100000000035,
+      2911.600000000035,
+      2934.100000000035,
+      2956.7000000000116,
+      2979.2999999999884,
+      3001.7999999999884,
+      3024.4000000000233,
+      3046.7000000000116,
+      3069.100000000035,
+      3091.5,
+      3113.7000000000116,
+      3131.4000000000233,
+      3154.4000000000233,
+      3176.7000000000116,
+      3200.2000000000116,
+      3222,
+      3244.7000000000116,
+      3267.2999999999884,
+      3289.7999999999884,
+      3312.5,
+      3335,
+      3357.4000000000233,
+      3380,
+      3402.600000000035,
+      3425.2999999999884,
+      3448,
+      3470.7000000000116,
+      3493.4000000000233,
+      3516.100000000035,
+      3538.7999999999884,
+      3561.5,
+      3584.4000000000233,
+      3607,
+      3629.7000000000116,
+      3652.2999999999884,
+      3675.7000000000116,
+      3697.4000000000233,
+      3719,
+      3741.4000000000233,
+      3763.9000000000233,
+      3786.600000000035,
+      3809.2000000000116,
+      3832,
+      3854.7000000000116,
+      3877.2999999999884,
+      3899.9000000000233,
+      3922.5,
+      3944.9000000000233,
+      3967.4000000000233,
+      3989.9000000000233,
+      4012.4000000000233,
+      4035.100000000035,
+      4057.7999999999884,
+      4080.100000000035,
+      4103.700000000012,
+      4126.299999999988,
+      4149,
+      4171.5,
+      4194.900000000023,
+      4217.600000000035,
+      4240.400000000023,
+      4263.200000000012,
+      4285.5,
+      4308,
+      4330.700000000012,
+      4354.100000000035,
+      4376.700000000012,
+      4399.400000000023,
+      4422,
+      4444.5,
+      4467.100000000035,
+      4490.700000000012,
+      4513.299999999988,
+      4535.799999999988,
+      4558.5,
+      4580.900000000023,
+      4603.5,
+      4626,
+      4648.799999999988,
+      4671.400000000023,
+      4693.799999999988,
+      4716.600000000035,
+      4739.100000000035,
+      4761.799999999988,
+      4784.799999999988,
+      4808.299999999988,
+      4830.600000000035,
+      4853.400000000023,
+      4875.799999999988,
+      4898.400000000023,
+      4920.700000000012,
+      4943.299999999988,
+      4965.600000000035,
+      4987.700000000012,
+      5010.400000000023,
+      5033,
+      5055.700000000012,
+      5079.100000000035,
+      5101.799999999988,
+      5124.400000000023,
+      5147.200000000012,
+      5169.900000000023,
+      5192.700000000012,
+      5214.700000000012,
+      5238.200000000012,
+      5260.900000000023,
+      5283.5,
+      5306.400000000023,
+      5330.400000000023,
+      5353.100000000035,
+      5375.799999999988,
+      5398.400000000023,
+      5421.100000000035,
+      5443.900000000023,
+      5466.799999999988,
+      5489.400000000023,
+      5512.200000000012,
+      5534.900000000023,
+      5557.5,
+      5580.100000000035,
+      5602.600000000035,
+      5625.200000000012,
+      5647.900000000023,
+      5670.5,
+      5693.100000000035,
+      5715.400000000023,
+      5738,
+      5760.700000000012,
+      5783.400000000023,
+      5805.799999999988,
+      5828.5,
+      5851.200000000012,
+      5873.799999999988,
+      5896.799999999988,
+      5919.400000000023,
+      5942,
+      5964.5,
+      5987.100000000035,
+      6009.600000000035,
+      6033.200000000012,
+      6055.799999999988,
+      6078.200000000012,
+      6100.100000000035,
+      6122.200000000012,
+      6144.299999999988,
+      6166.200000000012,
+      6188.400000000023,
+      6210.200000000012,
+      6233,
+      6255,
+      6277,
+      6298.900000000023,
+      6321.400000000023,
+      6344.200000000012,
+      6367.100000000035,
+      6389.5,
+      6412.200000000012,
+      6435,
+      6457.799999999988,
+      6480.299999999988,
+      6502.700000000012,
+      6525.200000000012,
+      6547.600000000035,
+      6570.200000000012,
+      6592.600000000035,
+      6615.400000000023,
+      6638.100000000035,
+      6660.799999999988,
+      6683.600000000035,
+      6706,
+      6728.900000000023,
+      6751.299999999988,
+      6774,
+      6796.799999999988,
+      6819.299999999988,
+      6842,
+      6864.5,
+      6887.200000000012,
+      6909.900000000023,
+      6932.400000000023,
+      6955.100000000035,
+      6978.799999999988,
+      7001.600000000035,
+      7024.200000000012,
+      7046.700000000012,
+      7069.299999999988,
+      7091.900000000023,
+      7114.5,
+      7137.200000000012,
+      7159.900000000023,
+      7182.600000000035,
+      7205.200000000012,
+      7227.900000000023,
+      7250.600000000035,
+      7273.200000000012,
+      7296,
+      7318.600000000035,
+      7341.200000000012,
+      7363.799999999988,
+      7386.5,
+      7409,
+      7431.600000000035,
+      7454.299999999988,
+      7477,
+      7499.600000000035,
+      7522.299999999988,
+      7544.700000000012,
+      7567.5,
+      7589.5,
+      7611.900000000023,
+      7634.600000000035,
+      7657.100000000035,
+      7679.600000000035,
+      7703.100000000035,
+      7725.200000000012,
+      7747.600000000035,
+      7770,
+      7792.299999999988,
+      7814.600000000035,
+      7837.400000000023,
+      7859.900000000023,
+      7882.600000000035,
+      7905.400000000023,
+      7927.900000000023,
+      7951.5,
+      7973.799999999988,
+      7996.400000000023,
+      8019.100000000035,
+      8041.900000000023,
+      8064.700000000012,
+      8087.400000000023,
+      8110.299999999988,
+      8133.100000000035,
+      8155.799999999988,
+      8178.299999999988,
+      8201,
+      8223.700000000012,
+      8246.400000000023,
+      8269,
+      8291.900000000023,
+      8314.400000000023,
+      8337.100000000035,
+      8359.600000000035,
+      8382.200000000012,
+      8404.400000000023,
+      8427.600000000035,
+      8450.200000000012,
+      8472.700000000012,
+      8495.200000000012,
+      8517.700000000012,
+      8540.200000000012,
+      8562.5,
+      8585.100000000035,
+      8607.5,
+      8630.100000000035,
+      8652.600000000035,
+      8675.100000000035,
+      8697,
+      8719.700000000012,
+      8742.900000000023,
+      8766.200000000012,
+      8788.600000000035,
+      8811.100000000035,
+      8833.600000000035,
+      8856.200000000012,
+      8878.799999999988,
+      8901.299999999988,
+      8923.700000000012,
+      8946.299999999988,
+      8968.700000000012,
+      8991.200000000012,
+      9013.700000000012,
+      9036.299999999988,
+      9058.799999999988,
+      9081.299999999988,
+      9103.900000000023,
+      9126.299999999988,
+      9149.799999999988,
+      9172.400000000023,
+      9195.200000000012,
+      9218,
+      9240.700000000012,
+      9263,
+      9285.200000000012,
+      9307.400000000023,
+      9328.900000000023,
+      9352.100000000035,
+      9374.400000000023,
+      9396.799999999988,
+      9419,
+      9441.100000000035,
+      9463.100000000035,
+      9486.400000000023,
+      9508.799999999988,
+      9531.299999999988,
+      9553.600000000035,
+      9576.5,
+      9598.799999999988,
+      9620.700000000012,
+      9643.299999999988,
+      9665.900000000023,
+      9688.600000000035,
+      9712.400000000023,
+      9735.900000000023,
+      9758.5,
+      9781.400000000023,
+      9803.700000000012,
+      9825.5,
+      9847.799999999988,
+      9870.400000000023,
+      9892.900000000023,
+      9916.200000000012,
+      9939.700000000012,
+      9962.200000000012,
+      9984.600000000035,
+      10007.200000000012,
+      10029.799999999988,
+      10052.400000000023,
+      10074.400000000023,
+      10097.100000000035,
+      10119.700000000012,
+      10142.900000000023,
+      10165.400000000023,
+      10188,
+      10210.700000000012,
+      10233.600000000035,
+      10256.600000000035,
+      10279.299999999988,
+      10303,
+      10325.700000000012,
+      10348.600000000035,
+      10371,
+      10393.400000000023,
+      10415.799999999988,
+      10438.299999999988,
+      10460.5,
+      10483.900000000023,
+      10506.200000000012,
+      10528.600000000035,
+      10551,
+      10573.5,
+      10595.799999999988,
+      10618.299999999988,
+      10640.600000000035,
+      10662.900000000023,
+      10685.200000000012,
+      10707.200000000012,
+      10729.5,
+      10752.100000000035,
+      10774.400000000023,
+      10797,
+      10819.5,
+      10841.900000000023,
+      10864.700000000012,
+      10888.100000000035,
+      10910.5,
+      10933.200000000012,
+      10956.400000000023,
+      10978.799999999988,
+      11001.200000000012,
+      11023.900000000023,
+      11046.200000000012,
+      11068.799999999988,
+      11091.299999999988,
+      11113.799999999988,
+      11136.5,
+      11159.100000000035,
+      11181.700000000012,
+      11204.200000000012,
+      11227,
+      11249.799999999988,
+      11272.5,
+      11295.200000000012,
+      11318.700000000012,
+      11340.700000000012,
+      11363.299999999988,
+      11385.799999999988,
+      11408.400000000023,
+      11431,
+      11453.400000000023,
+      11476,
+      11498.299999999988,
+      11520.900000000023,
+      11543.600000000035,
+      11566.200000000012,
+      11588.600000000035,
+      11611.100000000035,
+      11633.799999999988,
+      11656.299999999988,
+      11679,
+      11701.600000000035,
+      11723.400000000023,
+      11746,
+      11768.600000000035,
+      11791.200000000012,
+      11813.799999999988,
+      11836.600000000035,
+      11859.200000000012,
+      11881.700000000012,
+      11904.400000000023,
+      11927,
+      11949.700000000012,
+      11973.799999999988,
+      11997.700000000012,
+      12019.299999999988,
+      12041.600000000035,
+      12063.799999999988,
+      12086.299999999988,
+      12108.799999999988,
+      12131.100000000035,
+      12153.5,
+      12175.700000000012,
+      12198.100000000035,
+      12221,
+      12243.799999999988,
+      12265.400000000023,
+      12287.799999999988,
+      12310.200000000012,
+      12332.700000000012,
+      12355.400000000023,
+      12377.799999999988,
+      12400.299999999988,
+      12422.700000000012,
+      12445.400000000023
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        263,
+        176
+      ]
+    ],
+    "measuredMs": 10000.5,
+    "medianMs": 22.599999999976717,
+    "p95Ms": 23.400000000023283,
+    "longestMs": 24.099999999976717,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/en/works/umbra-dial/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/ingress.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/assets/page-D6kUXF9D.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/assets/page-DNAQ5X7Y.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/total.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/egress.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/assets/shader-DEIQrKxt.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/icon.png",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/assets/standalone-DX-vHLon.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:56613/glossquote-visuals/media/umbra-dial/icon.png",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}

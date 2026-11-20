@@ -14,8 +14,8 @@ export function firstVisitFrames(events, navigationStartMs, visibleAt) {
     .sort((left, right) => left.ms - right.ms);
 }
 
-async function decodeFrame(page, jpeg, view) {
-  return page.evaluate(async ({ encoded, view }) => {
+async function decodeFrame(page, jpeg, view, measureMotion) {
+  return page.evaluate(async ({ encoded, view, measureMotion }) => {
     const bytes = Uint8Array.fromBase64(encoded);
     const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/jpeg" }));
     const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
@@ -30,11 +30,19 @@ async function decodeFrame(page, jpeg, view) {
     const pixels = context.getImageData(x, y, right-x, bottom-y).data;
     const digest = await crypto.subtle.digest("SHA-256", pixels);
     const png = await canvas.convertToBlob({ type: "image/png" });
+    let stageThumbnail;
+    if (measureMotion) {
+      const reduced = new OffscreenCanvas(64, 48);
+      const ctx = reduced.getContext("2d", { willReadFrequently: true });
+      ctx.drawImage(bitmap, x, y, right-x, bottom-y, 0, 0, reduced.width, reduced.height);
+      const rgba = ctx.getImageData(0, 0, reduced.width, reduced.height).data;
+      stageThumbnail = new Uint8Array(rgba.buffer).toBase64();
+    }
     bitmap.close();
     return { png: new Uint8Array(await png.arrayBuffer()).toBase64(),
-      stageHash: new Uint8Array(digest).toHex(), crop: [x,y,right-x,bottom-y],
+      stageThumbnail, stageHash: new Uint8Array(digest).toHex(), crop: [x,y,right-x,bottom-y],
       jpegSize: [canvas.width, canvas.height] };
-  }, { encoded: jpeg, view });
+  }, { encoded: jpeg, view, measureMotion });
 }
 
 async function prepareNeutralTab(page) {
@@ -53,6 +61,15 @@ async function prepareNeutralTab(page) {
       const stage = document.querySelector("[data-stage]");
       const title = document.querySelector("h1");
       if (!stage || !title) return;
+      const recordRunning = () => {
+        if (stage.dataset.motion === "running") {
+          window.__m05FirstRunningObserved = performance.now();
+          changes.disconnect();
+        }
+      };
+      const changes = new MutationObserver(recordRunning);
+      changes.observe(stage, { attributes: true, attributeFilter: ["data-motion"] });
+      recordRunning();
       const io = new IntersectionObserver(entries => {
         const entry = entries.at(-1);
         const style = getComputedStyle(stage);
@@ -77,6 +94,7 @@ const documentTiming = page => page.evaluate(() => {
     "loadEventStart", "loadEventEnd", "transferSize", "encodedBodySize", "decodedBodySize"];
   const fields = entry => Object.fromEntries(keys.filter(k => Number.isFinite(entry?.[k])).map(k => [k,entry[k]]));
   return { origin: performance.timeOrigin, anchorMs, view: window.__m04InitialView ?? null,
+    firstRunningObservedMs: window.__m05FirstRunningObserved ?? null,
     firstContentfulPaint: performance.getEntriesByName("first-contentful-paint")[0]?.startTime ?? null,
     documentAtAnchor: { readyState: document.readyState, visibility: document.visibilityState, hidden: document.hidden,
       lang: document.documentElement.lang, title: document.title, hasH1: Boolean(document.querySelector("h1")),
@@ -221,30 +239,62 @@ async function captureJpegs(page, url) {
   } finally { await cdp.detach(); }
 }
 
-async function saveFrames(page, dir, captured, frames) {
+function strongestStageDifference(frames) {
+  let best = null;
+  for (let i = 0; i < frames.length; i++) {
+    for (const after of frames.slice(i + 1)) {
+      const before = frames[i];
+      let sum = 0, changed = 0;
+      for (let p = 0; p < before.rgba.length; p += 4) {
+        const delta = (Math.abs(after.rgba[p] - before.rgba[p]) + Math.abs(after.rgba[p+1] - before.rgba[p+1]) +
+          Math.abs(after.rgba[p+2] - before.rgba[p+2])) / 3;
+        sum += delta;
+        if (delta >= 16) changed++;
+      }
+      const count = before.rgba.length / 4;
+      if (!best || sum / count > best.meanAbsoluteRgb) {
+        best = { before: before.file, beforeMs: before.ms, after: after.file, afterMs: after.ms,
+          meanAbsoluteRgb: sum / count, fractionWithMeanRgbDeltaAtLeast16: changed / count };
+      }
+    }
+  }
+  return best;
+}
+
+async function saveFrames(page, dir, captured, frames, measureMotion) {
   // Keep evenly distributed observations including both ends. No frame after
   // the three-second window is eligible even if the renderer starts late.
   const selected = Math.min(frames.length, 12);
+  const running = [];
   for (let i=0; i<selected; i++) {
     const frame = frames[Math.round(i * (frames.length - 1) / Math.max(1, selected - 1))];
     const source = "opening-" + i + ".jpg", file = "opening-" + i + ".png";
     const jpg = Buffer.from(frame.jpeg, "base64");
-    const decoded = await decodeFrame(page, frame.jpeg, captured.view);
+    const decoded = await decodeFrame(page, frame.jpeg, captured.view, measureMotion);
     const png = Buffer.from(decoded.png, "base64");
     await Promise.all([writeFile(join(dir, source), jpg), writeFile(join(dir, file), png)]);
     captured.frames.push({ start: frame.start, ms: frame.ms, traceUs: frame.traceUs, file, sha256: sha256(png), source,
       originalSha256: sha256(jpg), stageHash: decoded.stageHash, crop: decoded.crop, jpegSize: decoded.jpegSize });
+    if (measureMotion && Number.isFinite(captured.firstRunningObservedMs) &&
+        (frame.start ?? frame.ms) >= captured.firstRunningObservedMs) {
+      running.push({ file: source, ms: frame.ms, rgba: Buffer.from(decoded.stageThumbnail, "base64") });
+    }
   }
+  if (measureMotion) captured.runningMotion = {
+    sampledStageFrames: running.length, thumbnailSize: [64, 48],
+    strongest: strongestStageDifference(running),
+    basis: "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material.",
+  };
   assert.ok(captured.frames.length >= 2 && new Set(captured.frames.map(frame => frame.stageHash)).size >= 2,
     "Need two distinct, visible stage images from the first three navigation seconds");
 }
 
-export async function captureOpening({ browser, page, url, dir, report }) {
+export async function captureOpening({ browser, page, url, dir, report, inspectRunningMotion = false }) {
   const first = await captureTrace(browser, page, url);
   const captured = report.capture.opening = { ...first.detail, frames: [],
     scenario: "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input" };
   if (first.detail.screenshotEvents > 0) {
-    try { await saveFrames(page, dir, captured, first.frames); }
+    try { await saveFrames(page, dir, captured, first.frames, inspectRunningMotion); }
     catch (error) {
       // These raw frames may depict the prior neutral tab, unpainted document,
       // or a late frame. None qualifies retroactively as three-second evidence.
@@ -266,6 +316,6 @@ export async function captureOpening({ browser, page, url, dir, report }) {
     const fresh = await context.newPage();
     const second = await captureJpegs(fresh, url);
     Object.assign(captured, second.detail);
-    await saveFrames(fresh, dir, captured, second.frames);
+    await saveFrames(fresh, dir, captured, second.frames, inspectRunningMotion);
   } finally { await context.close(); }
 }

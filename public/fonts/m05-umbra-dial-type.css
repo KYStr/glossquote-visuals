@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Studio TC Text";
+  src: url("../media/umbra-dial/umbra-tc.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Studio TC Serif";
+  src: url("./m05-umbra-dial-serif.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "M05 Scale Mono";
+  src: url("./prism-plex-mono.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+html.umbra-page[lang="zh-Hant"] {
+  --sans: "Studio TC Text", sans-serif;
+  --display: "Studio TC Serif", serif;
+  --mono: "M05 Scale Mono", "Studio TC Text", monospace;
+}
+html[data-type-pending] { display: none !important; }
+:where(button, input, select, option, textarea) { font-family: inherit; }

@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Studio TC Text";
+  src: url("./umbra-tc.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+html[lang="zh-Hant"] {
+  --sans: "Studio TC Text", sans-serif;
+  --mono: var(--sans);
+  --display: var(--sans);
+}
+html[data-type-pending] { display: none !important; }

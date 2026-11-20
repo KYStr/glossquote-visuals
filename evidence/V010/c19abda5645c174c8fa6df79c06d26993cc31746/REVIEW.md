@@ -1,0 +1,136 @@
+# V010 固定候選驗收
+
+候選 c19abda5645c174c8fa6df79c06d26993cc31746。主責 GlossQuote Visuals 工作室美術主責（非製作者）。製作 01a1fa4c-f093-7943-9078-154c5d03d14f。
+
+[隔離環境與來源](CI.json) · [逐條原始證據](acceptance.json) · [Actions run](https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273)
+
+## ART-1　PASS
+
+橘紅折板船身橫過深藍水面。標題、代表攜行用途的 FOLDLINE 品牌及配艇入口位於上方。窄屏仍把整個船身與首要行動收進第一眼。
+
+## ART-2　PASS
+
+開場的橙色端板有一片直立、一片傾斜，沿各自鉸線旋入成船，側舷改變對內側座艙的遮擋。水面接觸影貼著船殼。切到攜行、半展和成船時，外形面積及板件露出程度都不同。
+
+## ART-3　PASS
+
+寬景水面完全橫跨版心；船殼以有厚度的折板構成，搭配緊縮工業字與船體橙。單／雙人船型錄和收納尺寸圖沿用相同輪廓、色彩與工程刻度。
+
+## GPU-1　PASS
+
+zh-Hant-desktop　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 253–266。 裸 Edge 157.0.4341.60 的實際模式是 static fallback。
+
+zh-Hant-mobile　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 248–254。
+
+en-desktop　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 252–266。
+
+en-mobile　Chromium 158.0.8127.18，adapter google / swiftshader，裝置數 1；6 個原始 GPU 影格，6 個不同雜湊；每張取樣的顏色種類範圍 246–255。
+
+## GPU-2　PASS
+
+zh-Hant-desktop　控制順序 [0, 1, 2, 0]，鍵盤。首次暫停擷取結束到複驗開始 1372.2 ms；相同影格 是，恢復後改變 是。
+
+zh-Hant-mobile　控制順序 [0, 1, 2, 0]，觸控。首次暫停擷取結束到複驗開始 1364.7 ms；相同影格 是，恢復後改變 是。
+
+en-desktop　控制順序 [0, 1, 2, 0]，鍵盤。首次暫停擷取結束到複驗開始 1365.2 ms；相同影格 是，恢復後改變 是。
+
+en-mobile　控制順序 [0, 1, 2, 0]，觸控。首次暫停擷取結束到複驗開始 1365.9 ms；相同影格 是，恢復後改變 是。
+
+## PERF-1　PASS
+
+zh-Hant-desktop　344 次提交／10.001 秒；median / p95 / max 29.30 / 30.40 / 31.30 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [1440, 900]、canvas [[1040, 465]]、DPR 1。
+
+zh-Hant-mobile　454 次提交／10.000 秒；median / p95 / max 22.00 / 23.00 / 26.40 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [390, 844]、canvas [[351, 273]]、DPR 1。
+
+en-desktop　343 次提交／10.001 秒；median / p95 / max 30.50 / 31.30 / 33.90 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [1440, 900]、canvas [[1040, 465]]、DPR 1。
+
+en-mobile　479 次提交／10.002 秒；median / p95 / max 20.90 / 21.70 / 23.50 ms。三項值皆在 34 / 50 / 150 ms 內。 CSS [390, 844]、canvas [[351, 273]]、DPR 1。
+
+## PERF-2　PASS
+
+zh-Hant-desktop　含 lazy chunks 首載 322,792 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。
+
+zh-Hant-mobile　含 lazy chunks 首載 322,792 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。
+
+en-desktop　含 lazy chunks 首載 212,802 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。
+
+en-mobile　含 lazy chunks 首載 212,802 / 2,097,152 gzip bytes。 離屏、背景停送與回返由 FALL-2-and-PERF-2 記錄 PASS；隱藏方法為 synthetic visibilitychange。
+
+## UI-1　PASS
+
+檢視雙語完整型錄、回改表單與窄版畫面，四種寬度及真正 200% 的完整頁面均保有可讀標題、圖說、選項、行動按鈕及結果。
+
+zh-Hant-desktop　viewport 寬／實際 scrollWidth 768/768 px, 1440/1440 px。真實 200% tab zoom：720/720 px。
+
+zh-Hant-mobile　viewport 寬／實際 scrollWidth 320/320 px, 390/390 px。
+
+en-desktop　viewport 寬／實際 scrollWidth 768/768 px, 1440/1440 px。真實 200% tab zoom：720/720 px。
+
+en-mobile　viewport 寬／實際 scrollWidth 320/320 px, 390/390 px。
+
+## UI-2　PASS
+
+核對按鈕、商業表單、焦點順序、選中狀態及錯誤提示。各寬度實際啟用的控制均可觸按，Tab 焦點清楚。原始畫面與可計算的背景色一致。
+
+zh-Hant-desktop　20/20 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 33 次，熱區不足 44×44 的有 0 次；可計算純色對比 144 次，待人工取色 0 次，低於門檻候選 0 次；門檻 3:1 群最小為 13.01:1, 門檻 4.5:1 群最小為 6.69:1。
+
+zh-Hant-mobile　20/20 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 22 次，熱區不足 44×44 的有 0 次；可計算純色對比 96 次，待人工取色 0 次，低於門檻候選 0 次；門檻 3:1 群最小為 13.01:1, 門檻 4.5:1 群最小為 6.69:1。
+
+en-desktop　20/20 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 33 次，熱區不足 44×44 的有 0 次；可計算純色對比 144 次，待人工取色 0 次，低於門檻候選 0 次；門檻 3:1 群最小為 13.01:1, 門檻 4.5:1 群最小為 6.69:1。
+
+en-mobile　20/20 個 Tab 停點符合 :focus-visible；已啟用主要控制取樣 22 次，熱區不足 44×44 的有 0 次；可計算純色對比 96 次，待人工取色 0 次，低於門檻候選 0 次；門檻 3:1 群最小為 13.01:1, 門檻 4.5:1 群最小為 6.69:1。
+
+## BIZ-1　PASS
+
+兩種船型在中英皆列乘員、載重、收納尺寸及價格。裝備清單依水域、人數、重量和配件回饋；顧客能辨識此為概念型錄。
+
+## BIZ-2　PASS
+
+zh-Hant-desktop　實際匯出 foldline-kit-zh-Hant.txt，475 bytes。awaiting load {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「摺徑 FOLDLINE｜裝備與攜行清單 ｜ 船型：Tandem 370 雙人艇 ｜ 同行人數：2 人 ｜ 規劃路線：內陸水道 ｜ 總載重：205 kg / 205 kg ｜ 攜行尺寸（長 × 寬 × 高）：106 × 41 × 34 cm ｜ 船身重量：14.6 kg ｜ 展開尺寸：370 × 77 cm ｜ 四節拆式槳：2 ｜ 浮力背心：1 ｜ 防水袋：2 ｜ 示意總價：NT$43,210 ｜ 概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。」。
+
+zh-Hant-mobile　實際匯出 foldline-kit-zh-Hant.txt，475 bytes。awaiting load {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「摺徑 FOLDLINE｜裝備與攜行清單 ｜ 船型：Tandem 370 雙人艇 ｜ 同行人數：2 人 ｜ 規劃路線：內陸水道 ｜ 總載重：205 kg / 205 kg ｜ 攜行尺寸（長 × 寬 × 高）：106 × 41 × 34 cm ｜ 船身重量：14.6 kg ｜ 展開尺寸：370 × 77 cm ｜ 四節拆式槳：2 ｜ 浮力背心：1 ｜ 防水袋：2 ｜ 示意總價：NT$43,210 ｜ 概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。」。
+
+en-desktop　實際匯出 foldline-kit-en.txt，482 bytes。awaiting load {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「FOLDLINE | Equipment and carry list ｜ Kayak: Tandem 370 ｜ Party size: 2 people ｜ Planned route: Inland waterway ｜ Total payload: 205 kg / 205 kg ｜ Packed size (L × W × H): 106 × 41 × 34 cm ｜ Hull weight: 14.6 kg ｜ Open size: 370 × 77 cm ｜ Four-piece paddle: 2 ｜ Buoyancy vest: 1 ｜ Dry bag: 2 ｜ Illustrative total: NT$43,210 ｜ Concept brand. Specifications, route categories and prices are illustrative. Check the actual product, weather and」。
+
+en-mobile　實際匯出 foldline-kit-en.txt，482 bytes。awaiting load {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「FOLDLINE | Equipment and carry list ｜ Kayak: Tandem 370 ｜ Party size: 2 people ｜ Planned route: Inland waterway ｜ Total payload: 205 kg / 205 kg ｜ Packed size (L × W × H): 106 × 41 × 34 cm ｜ Hull weight: 14.6 kg ｜ Open size: 370 × 77 cm ｜ Four-piece paddle: 2 ｜ Buoyancy vest: 1 ｜ Dry bag: 2 ｜ Illustrative total: NT$43,210 ｜ Concept brand. Specifications, route categories and prices are illustrative. Check the actual product, weather and」。
+
+## FALL-1　PASS
+
+三種降級情境的原始首屏均保留品牌、材質與主行動。對照正常頁，商業內容和下一步仍能辨認。
+
+zh-Hant-desktop　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 foldline-kit-zh-Hant.txt，475 bytes。awaiting load {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「摺徑 FOLDLINE｜裝備與攜行清單 ｜ 船型：Tandem 370 雙人艇 ｜ 同行人數：2 人 ｜ 規劃路線：內陸水道 ｜ 總載重：205 kg / 205 kg ｜ 攜行尺寸（長 × 寬 × 高）：106 × 41 × 34 cm ｜ 船身重量：14.6 kg ｜ 展開尺寸：370 × 77 cm ｜ 四節拆式槳：2 ｜ 浮力背心：1 ｜ 防水袋：2 ｜ 示意總價：NT$43,210 ｜ 概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。」。 使用預設 GPU 選擇的 Edge：static fallback。
+
+zh-Hant-mobile　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 foldline-kit-zh-Hant.txt，475 bytes。awaiting load {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330 單人艇","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370 雙人艇","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「摺徑 FOLDLINE｜裝備與攜行清單 ｜ 船型：Tandem 370 雙人艇 ｜ 同行人數：2 人 ｜ 規劃路線：內陸水道 ｜ 總載重：205 kg / 205 kg ｜ 攜行尺寸（長 × 寬 × 高）：106 × 41 × 34 cm ｜ 船身重量：14.6 kg ｜ 展開尺寸：370 × 77 cm ｜ 四節拆式槳：2 ｜ 浮力背心：1 ｜ 防水袋：2 ｜ 示意總價：NT$43,210 ｜ 概念品牌。規格、路線分類和價格均為示意，請依實際船款、天候及水域規範評估；本頁清單供離線規劃。」。
+
+en-desktop　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 foldline-kit-en.txt，482 bytes。awaiting load {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「FOLDLINE | Equipment and carry list ｜ Kayak: Tandem 370 ｜ Party size: 2 people ｜ Planned route: Inland waterway ｜ Total payload: 205 kg / 205 kg ｜ Packed size (L × W × H): 106 × 41 × 34 cm ｜ Hull weight: 14.6 kg ｜ Open size: 370 × 77 cm ｜ Four-piece paddle: 2 ｜ Buoyancy vest: 1 ｜ Dry bag: 2 ｜ Illustrative total: NT$43,210 ｜ Concept brand. Specifications, route categories and prices are illustrative. Check the actual product, weather and」。
+
+en-mobile　三模式實存首屏 3/3。GPU 失敗模式客戶流程：實際匯出 foldline-kit-en.txt，482 bytes。awaiting load {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；solo lake kit {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；exact solo payload accepted {"enabled":true,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"NT$32,730"}；above solo payload rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；two paddlers with one seat rejected {"enabled":false,"model":"Solo 330","packed":"90 × 36 × 30 cm","price":"—"}；coastal route outside catalogue {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；third bag rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；fractional equipment rejected {"enabled":false,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"—"}；revised tandem kit at capacity {"enabled":true,"model":"Tandem 370","packed":"106 × 41 × 34 cm","price":"NT$43,210"}；實際檔案摘錄「FOLDLINE | Equipment and carry list ｜ Kayak: Tandem 370 ｜ Party size: 2 people ｜ Planned route: Inland waterway ｜ Total payload: 205 kg / 205 kg ｜ Packed size (L × W × H): 106 × 41 × 34 cm ｜ Hull weight: 14.6 kg ｜ Open size: 370 × 77 cm ｜ Four-piece paddle: 2 ｜ Buoyancy vest: 1 ｜ Dry bag: 2 ｜ Illustrative total: NT$43,210 ｜ Concept brand. Specifications, route categories and prices are illustrative. Check the actual product, weather and」。
+
+## FALL-2　PASS
+
+zh-Hant-desktop　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png
+
+zh-Hant-mobile　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png
+
+en-desktop　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png
+
+en-mobile　裝置失去後 running；背景事件 synthetic visibilitychange；離頁返回 actual away/back。實存恢復畫面與紋理：after-device-loss.png, device-recovered-texture.png, navigation-return-texture.png
+
+## SHIP-1　PASS
+
+zh-Hant-desktop　原始流程記錄 17 筆請求、1 個來源、方法 {'GET': 17}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。
+
+zh-Hant-mobile　原始流程記錄 17 筆請求、1 個來源、方法 {'GET': 17}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。
+
+en-desktop　原始流程記錄 16 筆請求、1 個來源、方法 {'GET': 16}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。
+
+en-mobile　原始流程記錄 16 筆請求、1 個來源、方法 {'GET': 16}；runtime 隱私及 storage 探針結果 PASS。build.txt 記載 emitted telemetry opt-out：是；記載 canonical/互返 metadata、CSP 與分享資源檢查：是。
+
+## desktop 動態貼合
+
+八秒內展開與返回的動作，硬板始終從固定接縫翻轉；透過前後遮擋及貼水陰影可以讀出船艙深度。
+
+## mobile 動態貼合
+
+攜行時在水面上是一小個橙色折包，半展有突出端板，成船則水平延展，側舷仍和船底對齊。
+
