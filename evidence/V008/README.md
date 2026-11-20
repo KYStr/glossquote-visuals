@@ -1,4 +1,29 @@
-# 果時 SORBET HOUR 候選交接
+# 果時 JELLY HOUR｜M05 作者交接
+
+作品入口維持 `/glossquote-visuals/works/sorbet-hour/` 和 `/glossquote-visuals/en/works/sorbet-hour/`。變更從發布基線 `085460a3884d2e826e94b71ef5a3dea74ed05908` 製作。果時英文品牌改為 Jelly Hour。共享畫廊、catalog、registry 和發布檔案由主責處理。
+
+## 首屏和配盒操作
+
+- `[data-stage]` 初次啟動播放一次落下、壓縮、回彈與收斂。約 1.21 秒後只保留緩慢反光，`data-cycle-seconds="evolving"`。暫停控制沿用 `[data-pause]`。
+- `[data-scoop-hit]` 接受滑鼠點擊、拖曳、觸控及鍵盤方向鍵加 Enter。左肩、上緣中央與右肩都可挖取一勺。舞台以 `data-hero-state`、`data-scoop-position` 和 `data-scoop-visual` 表示狀態與到位位置，`[data-scoop-reset]` 還原。
+- 同一個球形勺口從主體扣除，並與原模具取交集生成獨立的一勺。三個位置都切穿模具輪廓，凹面有陰影和受光邊。挖出的模具片保持原姿態，在盤上接地。
+- 降低動態、手動暫停後操作或即時 GPU 不可用時，可用同構圖 WebP 挖取與重設。無 JS 仍顯示海報、成分、過敏原及 `#blank-recipe`。
+- 三款果凍沿用六杯、600 毫升的離線禮盒。測試匯出 `jelly-hour-recipe-{zh-Hant|en}.txt`，含實際選擇、柑橘果膠、過敏原與冷藏保存說明。
+
+## 驗收入口
+
+`flow.mjs` 匯出 `setMaterial(page, state, input)`、`testFlow(page, lang)` 和 `testHeroInteraction(page, input, capture)`。試吃口味狀態為 0／1／2（蜜柑／覆盆莓／白芭樂）。首屏測試支援 `keyboard`、`touch`、`mouse`，依序呼叫 `capture("before")`、`capture("after")` 和 `capture("reset")`，回傳可序列化的形狀、位置、材質、動態和圖說。
+
+三種完整模型與九種挖取狀態採作品原創 WGSL，無外部素材。可用 Python 3.12、wgpu 0.31.0、Pillow 12.0.0 執行 `src/works/sorbet-hour/render-posters.py --assets --samples .runs/v008-m05-frames`，重現海報與原生落下、壓縮、反彈、靜止、挖取及重設取樣。
+
+## 作者驗證與待驗
+
+- 鎖版安裝、來源檢查、23 項單元測試和兩語候選建置完成。Vite 的既有字型資產警告保留，建置檢查確認輸出路徑可用。
+- 無 GPU 的 DOM 模擬驗證兩語三種輸入及重設、單一缺口狀態、配滿六杯後拒絕第七杯、減一再配及讀回 3／1／2 杯的配方 Blob。
+- RTX 3060 Vulkan 原生取樣確認三款模具、三處打破外輪廓的缺口與分離的一勺。0.34 秒壓扁、0.57 秒回彈，1.21 秒與 3 秒的蜜柑輪廓範圍相同。原生 D3D12 軟體轉譯於 1120×746 目標的完整／挖取狀態，100 幀的 median 為 4.72／4.48 ms，p95 為 5.23／5.15 ms。此計時為單一原生 render pass 提交到完成。
+- 網頁瀏覽器的發布首屏前三秒、畫面合成、真實輸入及下載、生命週期和 PERF-1 仍待獨立驗收。
+
+# M04 歷史作者交接
 
 - 候選入口為 `/glossquote-visuals/works/sorbet-hour/` 和 `/glossquote-visuals/en/works/sorbet-hour/`。沿用 M04 registry 的 V008 記錄。測試時暫加本機 catalog 條目，其 `image` 為 `media/sorbet-hour/cover.webp`，`width` 為 1200、`height` 為 800。中英文 title 分別為「果時 SORBET HOUR」與「Sorbet Hour」。條目由主責整合。
 - `flow.mjs` 的 `testFlow(page, lang)` 預期已載入、杯數歸零且可接收下載的頁面，`lang` 為 `zh-Hant` 或 `en`。回傳每一步的杯數與配方原文。可在 GPU 初始化失敗模式重跑。
