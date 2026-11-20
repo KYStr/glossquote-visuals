@@ -2,7 +2,7 @@ name: Verify visual candidate
 
 on:
   push:
-    branches: ['codex/v*']
+    branches: ['codex/v*', 'codex/m04-commercial-series']
 
 permissions:
   contents: read

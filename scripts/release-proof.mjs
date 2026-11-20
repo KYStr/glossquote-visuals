@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, lstatSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
-import { registry, releaseWorkIds, root, worksFor } from "./site-map.mjs";
+import { existsSync, lstatSync, readFileSync, realpathSync } from "node:fs";
+import { relative, resolve } from "node:path";
+import { base, isPublished, origin, registry, releaseWorkIds, root, worksFor } from "./site-map.mjs";
 
 const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 const sha = /^[a-f0-9]{40}$/;
@@ -21,7 +21,9 @@ export async function releaseProof() {
   const ids = releaseWorkIds();
   assert.ok(ids.length > 0, "Select at least one reviewed work");
   assert.equal(new Set(ids).size, ids.length, "Release work IDs must be unique");
-  verifyReleaseSelection(ids, worksFor("release"));
+  const outputWorks = worksFor("release");
+  const carriedWorks = await verifyCarriedWorks(outputWorks.filter((work) => !ids.includes(work.id)), head);
+  verifyReleaseSelection(ids, outputWorks, carriedWorks);
   const works = [];
   for (const id of ids) {
     assert.match(id, /^V\d{3}$/);
@@ -29,7 +31,7 @@ export async function releaseProof() {
     await verifyWork(work, head);
     works.push({ work: work.id, slug: work.slug, candidate: work.candidateCommit });
   }
-  return { commit: head, ...works[0], works };
+  return { commit: head, ...works[0], works, carriedWorks };
 }
 
 async function verifyWork(work, head) {
@@ -43,23 +45,10 @@ async function verifyWork(work, head) {
   assert.equal(proof.author, work.owner);
   assert.ok(proof.reviewer && proof.reviewer !== proof.author);
   for (const gate of gates) assert.equal(proof.gates[gate], "PASS", gate);
-  verifyDesignScores(proof.scores, proof.designReview);
+  verifyCommercialReview(work, proof);
   verifyTemporalReview(proof.temporalReview, proof);
-  for (const criteria of Object.values(proof.designReview.categories)) {
-    for (const criterion of criteria) {
-      for (const evidence of criterion.evidence) {
-        assert.ok(evidence.startsWith(`evidence/${work.id}/${work.candidateCommit}/`),
-          "Design evidence must belong to this work and candidate");
-        const file = resolve(root, evidence);
-        assert.ok(existsSync(file) && lstatSync(file).isFile(), `Missing design evidence file: ${evidence}`);
-      }
-    }
-  }
   for (const evidence of temporalEvidence(proof.temporalReview)) {
-    assert.ok(evidence.startsWith(`evidence/${work.id}/${work.candidateCommit}/`),
-      "Temporal evidence must belong to this work and candidate");
-    const file = resolve(root, evidence);
-    assert.ok(existsSync(file) && lstatSync(file).isFile(), `Missing temporal evidence: ${evidence}`);
+    verifyEvidenceFile(work, evidence);
   }
   assert.ok(Number.isSafeInteger(proof.jobId) && proof.jobId > 0);
   assert.ok(Number.isSafeInteger(proof.runId) && proof.runId > 0);
@@ -78,9 +67,90 @@ async function verifyWork(work, head) {
   assert.equal(job.conclusion, "success");
   assert.equal(job.head_sha, work.candidateCommit);
   assert.equal(job.run_id, proof.runId);
-  assert.equal(job.workflow_name, "Verify visual candidate");
-  assert.equal(job.name, "All candidate checks", "Release needs the aggregate of all eight isolated browser lanes");
+  const rules = usesRules(work, proof);
+  assert.equal(job.workflow_name, rules ? "Verify M04 candidate" : "Verify visual candidate");
+  assert.equal(job.name, rules ? "All M04 candidate checks" : "All candidate checks");
   assert.ok(job.labels.includes("windows-2025"), "Acceptance requires the verified Windows renderer");
+}
+
+export const commercialRules = [
+  "ART-1", "ART-2", "ART-3", "GPU-1", "GPU-2", "PERF-1", "PERF-2",
+  "UI-1", "UI-2", "BIZ-1", "BIZ-2", "FALL-1", "FALL-2", "SHIP-1",
+];
+
+function usesRules(work, proof) {
+  return Number(work.id.slice(1)) >= 6 || proof.ruleReview !== undefined;
+}
+
+function verifyEvidenceFile(work, path, repoRoot = root) {
+  const prefix = `evidence/${work.id}/${work.candidateCommit}/`;
+  assert.ok(typeof path === "string" && path.startsWith(prefix), "Evidence must belong to this work and candidate");
+  const parts = path.split("/");
+  assert.ok(parts.every((part) => part && part !== "." && part !== ".." && !/[\\:]/.test(part)));
+  const file = resolve(repoRoot, path);
+  assert.ok(existsSync(file) && lstatSync(file).isFile() && lstatSync(file).size > 0, `Missing or empty evidence: ${path}`);
+  assert.equal(relative(realpathSync(repoRoot), realpathSync(file)).split("\\").join("/"), path,
+    "Evidence must be a local regular file under the exact candidate directory");
+  assert.notEqual(path, prefix + "acceptance.json", "Acceptance cannot serve as its own evidence");
+}
+
+export function verifyCommercialReview(work, proof, repoRoot = root) {
+  assert.match(work.id, /^V\d{3}$/);
+  assert.match(work.candidateCommit, sha);
+  assert.equal(proof.commit, work.candidateCommit);
+  assert.equal(proof.author, work.owner);
+  assert.ok(proof.author && proof.reviewer && proof.reviewer !== proof.author);
+  if (!usesRules(work, proof)) {
+    verifyDesignScores(proof.scores, proof.designReview);
+    for (const criterion of Object.values(proof.designReview.categories).flat()) {
+      for (const path of criterion.evidence) verifyEvidenceFile(work, path, repoRoot);
+    }
+    return;
+  }
+  const review = proof.ruleReview;
+  assert.equal(review?.version, "commercial-rules-v1", "New works require the rule-by-rule review");
+  assert.ok(typeof review.environment === "string" && review.environment.trim(), "Record the review environment");
+  assert.deepEqual(review.rules.map(({ id }) => id).sort(), [...commercialRules].sort(),
+    "Every rule must appear exactly once");
+  for (const rule of review.rules) {
+    assert.equal(rule.status, "PASS", rule.id);
+    assert.ok(typeof rule.reason === "string" && rule.reason.trim(), `Missing observation for ${rule.id}`);
+    assert.ok(Array.isArray(rule.evidence) && rule.evidence.length > 0, `Missing evidence for ${rule.id}`);
+    for (const path of rule.evidence) verifyEvidenceFile(work, path, repoRoot);
+    if (rule.id === "PERF-1") {
+      const captures = rule.evidence.filter((path) => path.endsWith("/results.json"))
+        .map((path) => JSON.parse(readFileSync(resolve(repoRoot, path), "utf8")));
+      verifyFrameMeasurements(work, captures);
+    }
+  }
+}
+
+function verifyFrameMeasurements(work, captures) {
+  const viewports = new Set();
+  for (const capture of captures) {
+    assert.equal(capture.work, work.id);
+    assert.equal(capture.commit, work.candidateCommit);
+    const data = capture.performance;
+    assert.ok(["mobile", "desktop"].includes(capture.viewport));
+    assert.deepEqual(data.cssSize, capture.viewport === "mobile" ? [390, 844] : [1440, 900]);
+    assert.ok(data.adapter && Number.isFinite(data.dpr) && data.dpr > 0);
+    assert.equal(data.canvasSize.length, 1);
+    assert.ok(data.canvasSize[0].length === 2 && data.canvasSize[0].every((n) => Number.isInteger(n) && n > 0));
+    assert.ok(data.method.includes("presentation-texture queue submissions"));
+    assert.ok(Number.isFinite(data.start) && Number.isFinite(data.end) && data.end - data.start >= 10_000);
+    assert.ok(Array.isArray(data.timestamps) && data.timestamps.length >= 2);
+    const times = [data.start, ...data.timestamps, data.end];
+    const gaps = times.slice(1).map((time, i) => {
+      assert.ok(Number.isFinite(time) && time >= times[i], "Submission times must be ordered inside the window");
+      return time - times[i];
+    }).sort((a, b) => a - b);
+    for (const [fraction, limit] of [[0.50, 34], [0.95, 50], [1, 150]]) {
+      assert.ok(gaps[Math.ceil(gaps.length * fraction) - 1] <= limit,
+        `PERF-1 ${capture.viewport}: raw submission interval exceeds ${limit} ms`);
+    }
+    viewports.add(capture.viewport);
+  }
+  assert.deepEqual([...viewports].sort(), ["desktop", "mobile"], "PERF-1 needs both raw viewport measurements");
 }
 
 export const designCriteria = {
@@ -147,11 +217,88 @@ export function verifyTemporalReview(review, proof) {
   }
 }
 
-export function verifyReleaseSelection(ids, outputWorks) {
+// A carried page must match the actual Pages deployment, including runtime chunks
+// reached by dynamic imports and assets resolved from public/ by application code.
+export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist")) {
+  if (works.length === 0) return [];
+  const manifest = JSON.parse(readFileSync(resolve(dist, ".vite/manifest.json"), "utf8"));
+  const readLive = async (file) => {
+    const response = await fetch(origin + base + file, { redirect: "error", cache: "no-store", signal: AbortSignal.timeout(30_000) });
+    assert.equal(response.status, 200, `Previously deployed file unavailable: ${file}`);
+    return response;
+  };
+  const previous = await (await readLive("release.json")).json();
+  const carried = [];
+  const files = new Set();
+  const deployments = new Map();
+  for (const work of works) {
+    assert.ok(isPublished(work) && work.blockers.length === 0, `Pending work cannot be carried: ${work.id}`);
+    const deployment = work.deployedCommit;
+    assert.match(deployment, sha);
+    assert.match(work.candidateCommit, sha);
+    assert.match(work.slug, /^[a-z]+(?:-[a-z]+)*$/);
+    const prior = previous.works.find((entry) => entry.work === work.id);
+    const proven = prior ? { ...prior, deployedCommit: previous.commit } :
+      previous.carriedWorks?.find((entry) => entry.work === work.id);
+    const receipt = { work: work.id, slug: work.slug, candidate: work.candidateCommit, deployedCommit: deployment };
+    assert.deepEqual(proven, receipt, `The live release must attest the carried work: ${work.id}`);
+    if (!deployments.has(deployment)) {
+      git("merge-base", "--is-ancestor", deployment, head);
+      deployments.set(deployment, JSON.parse(git("show", deployment + ":coordination/work-registry.json")));
+      // public/ permits computed URLs, e.g. switching a product finish after load.
+      for (const path of git("ls-tree", "-r", "--name-only", deployment, "--", "public/").split("\n")) {
+        assert.ok(path.startsWith("public/"));
+        files.add(path.slice("public/".length));
+      }
+    }
+    const original = deployments.get(deployment).works.find((entry) => entry.id === work.id);
+    assert.equal(original?.status, "reviewed");
+    assert.equal(original.candidateCommit, work.candidateCommit);
+    assert.equal(original.slug, work.slug);
+    for (const prefix of ["", "en/"]) {
+      const page = prefix + "works/" + work.slug + "/index.html";
+      files.add(page);
+      const html = readFileSync(resolve(dist, page), "utf8");
+      for (const asset of carriedRuntimeAssets(html, manifest)) files.add(asset);
+    }
+    carried.push(receipt);
+  }
+  for (const file of files) {
+    const output = readFileSync(resolve(dist, file));
+    const url = file.endsWith("/index.html") ? file.slice(0, -"index.html".length) : file;
+    const deployed = Buffer.from(await (await readLive(url)).arrayBuffer());
+    assert.ok(output.equals(deployed), `Published bytes changed; an independent review is required: ${file}`);
+  }
+  console.log(`PASS matched ${files.size} deployed files for ${carried.map((work) => work.work).join(", ")}`);
+  return carried;
+}
+
+export function carriedRuntimeAssets(html, manifest) {
+  const keys = new Map(Object.entries(manifest).map(([key, chunk]) => [chunk.file, key]));
+  const assets = new Set();
+  const visited = new Set();
+  function visit(key) {
+    if (visited.has(key)) return;
+    visited.add(key);
+    const chunk = manifest[key];
+    assert.ok(chunk, `Unknown asset in built manifest: ${key}`);
+    for (const file of [chunk.file, ...chunk.css ?? [], ...chunk.assets ?? []]) assets.add(file);
+    for (const dependency of [...chunk.imports ?? [], ...chunk.dynamicImports ?? []]) visit(dependency);
+  }
+  for (const [, url] of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
+    if (url.startsWith(base + "assets/")) visit(keys.get(url.slice(base.length)));
+  }
+  assert.ok(assets.size > 0, "A carried page needs a complete Vite entry");
+  return assets;
+}
+
+export function verifyReleaseSelection(ids, outputWorks, carriedWorks = []) {
   assert.ok(ids.length > 0);
   assert.equal(new Set(ids).size, ids.length);
-  assert.deepEqual([...ids].sort(), outputWorks.map(({ id }) => id).sort(),
-    "Every work rebuilt into the Pages artifact needs this release's candidate review; include all output works");
+  const covered = [...ids, ...carriedWorks.map((work) => work.work)];
+  assert.equal(new Set(covered).size, covered.length);
+  assert.deepEqual(covered.sort(), outputWorks.map(({ id }) => id).sort(),
+    "Every output needs candidate review or a byte-for-byte match to its reviewed deployment");
 }
 
 export function verifyDesignScores(scores, review) {
@@ -194,6 +341,14 @@ export function verifyReleaseReceipt(release, expectedIds) {
     assert.ok(expected);
     assert.equal(work.slug, expected.slug);
     assert.equal(work.candidate, expected.candidateCommit);
+  }
+  if (release.carriedWorks !== undefined) {
+    const carried = registry.works.filter((work) => isPublished(work) && !ids.includes(work.id));
+    const expected = carried.map((work) => ({
+      work: work.id, slug: work.slug, candidate: work.candidateCommit, deployedCommit: work.deployedCommit,
+    }));
+    const byId = (a, b) => a.work.localeCompare(b.work);
+    assert.deepEqual([...release.carriedWorks].sort(byId), expected.sort(byId));
   }
   return works;
 }
