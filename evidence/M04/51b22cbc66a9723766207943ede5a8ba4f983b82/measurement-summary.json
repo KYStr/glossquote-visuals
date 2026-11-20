@@ -1,0 +1,887 @@
+[
+  {
+    "lane": "V006-en-desktop",
+    "measurements": {
+      "medianMs": 27.5,
+      "p95Ms": 29,
+      "longestMs": 30.39999999999418,
+      "measuredMs": 10001
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V006-en-desktop\\results.json"
+  },
+  {
+    "lane": "V006-en-mobile",
+    "measurements": {
+      "medianMs": 23.29999999998836,
+      "p95Ms": 24.29999999998836,
+      "longestMs": 25.599999999976717,
+      "measuredMs": 10001.5
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V006-en-mobile\\results.json"
+  },
+  {
+    "lane": "V006-zh-Hant-desktop",
+    "measurements": {
+      "medianMs": 29.5,
+      "p95Ms": 30.5,
+      "longestMs": 32.19999999998254,
+      "measuredMs": 10001.899999999994
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      },
+      "Edge-default-render-and-flow": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1,GPU-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V006-zh-Hant-desktop\\results.json"
+  },
+  {
+    "lane": "V006-zh-Hant-mobile",
+    "measurements": {
+      "medianMs": 21.399999999965075,
+      "p95Ms": 22.5,
+      "longestMs": 24,
+      "measuredMs": 10000.199999999953
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V006-zh-Hant-mobile\\results.json"
+  },
+  {
+    "lane": "V007-en-desktop",
+    "measurements": {
+      "medianMs": 21.699999999982538,
+      "p95Ms": 30.599999999976717,
+      "longestMs": 48.70000000001164,
+      "measuredMs": 10004.199999999983
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V007-en-desktop\\results.json"
+  },
+  {
+    "lane": "V007-en-mobile",
+    "measurements": {
+      "medianMs": 23.39999999999418,
+      "p95Ms": 24.300000000017462,
+      "longestMs": 26,
+      "measuredMs": 10001.5
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V007-en-mobile\\results.json"
+  },
+  {
+    "lane": "V007-zh-Hant-desktop",
+    "measurements": {
+      "medianMs": 21.89999999999418,
+      "p95Ms": 28.800000000017462,
+      "longestMs": 38.29999999998836,
+      "measuredMs": 10019.600000000006
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      },
+      "Edge-default-render-and-flow": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1,GPU-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V007-zh-Hant-desktop\\results.json"
+  },
+  {
+    "lane": "V007-zh-Hant-mobile",
+    "measurements": {
+      "medianMs": 21.800000000046566,
+      "p95Ms": 23,
+      "longestMs": 31.099999999976717,
+      "measuredMs": 10000.29999999993
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V007-zh-Hant-mobile\\results.json"
+  },
+  {
+    "lane": "V008-en-desktop",
+    "measurements": {
+      "medianMs": 28.10000000000582,
+      "p95Ms": 29.20000000001164,
+      "longestMs": 30.39999999999418,
+      "measuredMs": 10003.100000000006
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V008-en-desktop\\results.json"
+  },
+  {
+    "lane": "V008-en-mobile",
+    "measurements": {
+      "medianMs": 20.10000000000582,
+      "p95Ms": 21.10000000000582,
+      "longestMs": 22.199999999982538,
+      "measuredMs": 10000.599999999977
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V008-en-mobile\\results.json"
+  },
+  {
+    "lane": "V008-zh-Hant-desktop",
+    "measurements": {
+      "medianMs": 29.900000000023283,
+      "p95Ms": 30.800000000046566,
+      "longestMs": 31.70000000001164,
+      "measuredMs": 10001.099999999977
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      },
+      "Edge-default-render-and-flow": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1,GPU-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V008-zh-Hant-desktop\\results.json"
+  },
+  {
+    "lane": "V008-zh-Hant-mobile",
+    "measurements": {
+      "medianMs": 20.20000000001164,
+      "p95Ms": 21.400000000023283,
+      "longestMs": 23.29999999998836,
+      "measuredMs": 10001.900000000023
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-51b\\V008-zh-Hant-mobile\\results.json"
+  }
+]
