@@ -14,7 +14,7 @@ const coast = registerShader(defineShader({
 }));
 
 const tides = { low: -0.055, mid: 0.2675, high: 0.59 };
-const renderWidthLimit = 640;
+const renderWidthLimit = 576;
 
 function props({ level }) {
   return level === "cycle"
@@ -26,20 +26,23 @@ export function applyTide(renderer, settings) {
   renderer.update("shore", props(settings));
 }
 
+function rasterSize(width, height) {
+  const scale = Math.min(1, renderWidthLimit / width);
+  return { width: Math.round(width * scale), height: Math.round(height * scale) };
+}
+
 export async function initializeTide(canvas, options) {
+  // Bound the logical raster independently of the chart's CSS box. The
+  // renderer still applies its own DPR so high-density displays retain detail.
+  const initial = rasterSize(options.width, options.height);
   const renderer = await initializeStandalone(canvas, [
     { id: "shore", type: coast.name, props: props(options.settings) },
-  ], options);
-
-  // The chart fills its usual CSS box. Bound the raster sent to the software
-  // adapter separately, using the same scale on both axes to preserve the UVs.
-  function resize(width, height) {
-    const scale = Math.min(1, renderWidthLimit / width);
-    renderer.resize(Math.round(width * scale), Math.round(height * scale));
-  }
-
-  if (!options.signal.aborted && options.width > renderWidthLimit) {
-    resize(options.width, options.height);
-  }
-  return { ...renderer, resize };
+  ], { ...options, ...initial });
+  return {
+    ...renderer,
+    resize(width, height) {
+      const raster = rasterSize(width, height);
+      renderer.resize(raster.width, raster.height);
+    },
+  };
 }
