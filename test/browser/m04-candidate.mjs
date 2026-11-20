@@ -7,6 +7,7 @@ import { chromium } from "playwright";
 import { base, root } from "../../scripts/site-map.mjs";
 import { observe } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
+import { captureOpening } from "./m04-opening.mjs";
 import { captureBrowserZoom, checkPerformance, installPresentationMeter, layoutInventory, measureSubmissions } from "./m04-measure.mjs";
 
 if (process.platform !== "win32" || process.env.RUNNER_OS !== "Windows" ||
@@ -143,31 +144,7 @@ try {
   await system.detach();
 
   await check("first-three-seconds", inPage({}, async page => {
-    // Measure ordinary first navigation without a continuous screencast. Encoding
-    // every presented frame in the driver can itself delay first paint on WARP.
-    await open(page);
-    const captured = report.capture.opening = {
-      basis: "Bracketing performance.now() samples since initial navigation, milliseconds",
-      frames: [],
-    };
-    for (const target of [0, 500, 1050, 1650, 2200, 2650]) {
-      await page.waitForTimeout(Math.max(0, target - await timer(page)));
-      if (await timer(page) >= 3000) break;
-      const before = await page.evaluate(() => ({
-        start: performance.now(), phase: document.querySelector("[data-stage]").dataset.motion,
-        visibleTitle: document.querySelector("h1").checkVisibility({ visibilityProperty: true }),
-      }));
-      const file = "opening-" + captured.frames.length + ".png";
-      const png = await page.screenshot({ path: join(dir, file), timeout: 10_000 });
-      captured.frames.push({ ...before, ms: await timer(page), file, sha256: hash(png) });
-    }
-    const timing = await page.evaluate(() => ({ origin: performance.timeOrigin,
-      firstContentfulPaint: performance.getEntriesByName("first-contentful-paint")[0]?.startTime ?? null }));
-    Object.assign(captured, timing);
-    const withinWindow = captured.frames.filter(item => item.visibleTitle && item.ms <= 3000 &&
-      (timing.firstContentfulPaint === null || item.start >= timing.firstContentfulPaint));
-    assert.ok(withinWindow.length >= 2 && new Set(withinWindow.map(item => item.sha256)).size >= 2,
-      "Need distinct visible, timestamped opening images fully inside first three navigation seconds");
+    await captureOpening({ browser, page, url, dir, report });
   }));
 
   await check("initial-and-material-sequence", inPage({}, async page => {
