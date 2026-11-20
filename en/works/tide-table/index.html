@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>TIDE TABLE | Coastal walks and trip checklist</title>
+  <meta name="description" content="Compare three coastal walks, explore a model tide chart and download a trip checklist with group size and gear.">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/en/works/tide-table/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/tide-table/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/tide-table/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/tide-table/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TIDE TABLE | Coastal walks and trip checklist">
+  <meta property="og:description" content="Compare three coastal walks, explore a model tide chart and download a trip checklist with group size and gear.">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/tide-table/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/tide-table/cover.webp">
+  <meta property="og:image:alt" content="A low-tide terrain chart with indigo water, pale rock and orange walking routes">
+  <link rel="icon" href="%BASE_URL%media/tide-table/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/tide-table/page.css">
+  <script type="module" src="/src/works/tide-table/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="frame site-header">
+    <a class="wordmark" href="#top"><img src="%BASE_URL%media/tide-table/mark.svg" alt="" width="33" height="33">TIDE TABLE</a>
+    <nav aria-label="Site navigation">
+      <a href="#chart">Tide chart</a>
+      <a href="#routes">Coastal walks</a>
+      <a href="#planner">Trip checklist</a>
+    </nav>
+    <a class="locale" href="%BASE_URL%works/tide-table/" lang="zh-Hant" hreflang="zh-Hant">繁體中文 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="frame hero" aria-labelledby="hero-title">
+      <div class="introduction">
+        <p class="kicker">A coastal guiding concept</p>
+        <h1 id="hero-title"><span>TIDE</span> <span>TABLE</span></h1>
+        <p class="lede">Take the family rock pooling for the first time. See how the water moves, then find a coastal walk that suits your group.</p>
+        <a class="action" href="#routes">Compare the walks <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="chart" id="chart" aria-labelledby="chart-title">
+        <div class="chart-header"><strong id="chart-title">Intertidal chart</strong><span>Fixed observation model</span></div>
+        <div class="coast" data-stage data-motion="still" data-level="low" data-cycle-seconds="10" role="img" aria-label="Model coastal terrain. A is the low North Reef, B is the higher South Reef, and C marks the channel between them.">
+          <img data-still="low" src="%BASE_URL%media/tide-table/cover.webp" width="1200" height="800" alt="" fetchpriority="high">
+          <img data-still="mid" src="%BASE_URL%media/tide-table/mid.webp" width="1200" height="800" alt="" loading="lazy">
+          <img data-still="high" src="%BASE_URL%media/tide-table/high.webp" width="1200" height="800" alt="" loading="lazy">
+          <canvas></canvas>
+          <span class="compass" aria-hidden="true"><span>N</span>↑</span>
+          <span class="pin pin--a" aria-hidden="true">A</span>
+          <span class="pin pin--b" aria-hidden="true">B</span>
+          <span class="pin pin--c" aria-hidden="true">C</span>
+        </div>
+        <div class="controls" data-controls hidden>
+          <div class="levels" role="group" aria-label="Select tide level">
+            <button type="button" data-tide="0" aria-pressed="true"><strong>Low</strong><span>+0.3 m</span></button>
+            <button type="button" data-tide="1" aria-pressed="false"><strong>Mid</strong><span>+0.9 m</span></button>
+            <button type="button" data-tide="2" aria-pressed="false"><strong>High</strong><span>+1.5 m</span></button>
+          </div>
+          <div class="motion-controls">
+            <button type="button" data-cycle aria-pressed="false">Tide cycle</button>
+            <button type="button" data-pause aria-pressed="false">Pause</button>
+          </div>
+        </div>
+        <figcaption>
+          <div class="map-key"><span>A North Reef</span><span>B South Reef</span><span>C Channel</span><span class="line-key">Dashes show exposed trail</span></div>
+          <p>Illustrative tides and routes. Check local tide tables and site access before setting out. <span data-motion-status></span></p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="routes-section" id="routes" aria-labelledby="routes-title">
+      <div class="frame">
+        <header class="section-heading"><h2 id="routes-title">Find your stretch of coast.</h2><p>These itineraries are planning examples. Distances are round trip, and prices are illustrative per group.</p></header>
+        <div class="route-grid">
+          <article class="route" data-route="pool">
+            <header><span class="route-letter">+0.3 m</span><p class="kicker">Low tide</p></header>
+            <h3>Pool Walk</h3>
+            <p>For families new to rock pooling. Follow the outer edge of North Reef and look for small pools and shore life from dry rock.</p>
+            <dl><div><dt>Round trip</dt><dd>0.6 km</dd></div><div><dt>Walking time</dt><dd>35 min</dd></div><div><dt>Terrain</dt><dd>Exposed rock, slippery patches</dd></div><div><dt>Example group fee</dt><dd>NT$1,200</dd></div></dl>
+            <p class="essentials"><strong>Essential gear</strong> <span data-requirements>Closed-toe grippy shoes, Drinking water, Spare socks</span></p>
+            <a href="#planner" data-pick="pool">Choose this walk <span aria-hidden="true">↘</span></a>
+          </article>
+          <article class="route" data-route="shelf">
+            <header><span class="route-letter">+0.9 m</span><p class="kicker">Mid tide</p></header>
+            <h3>Rock Shelf Walk</h3>
+            <p>For groups comfortable on uneven ground. Look into the channel from South Reef and watch water connect the rock pools.</p>
+            <dl><div><dt>Round trip</dt><dd>1.2 km</dd></div><div><dt>Walking time</dt><dd>60 min</dd></div><div><dt>Terrain</dt><dd>Uneven shelf, low ledges</dd></div><div><dt>Example group fee</dt><dd>NT$1,800</dd></div></dl>
+            <p class="essentials"><strong>Essential gear</strong> <span data-requirements>Closed-toe grippy shoes, Drinking water, Light rain jacket</span></p>
+            <a href="#planner" data-pick="shelf">Choose this walk <span aria-hidden="true">↘</span></a>
+          </article>
+          <article class="route" data-route="ridge">
+            <header><span class="route-letter">+1.5 m</span><p class="kicker">High tide</p></header>
+            <h3>Ridgeline Walk</h3>
+            <p>For families who prefer the upper path. Watch the tideline and shorebirds from above, then return along the same trail.</p>
+            <dl><div><dt>Round trip</dt><dd>1.8 km</dd></div><div><dt>Walking time</dt><dd>75 min</dd></div><div><dt>Terrain</dt><dd>Upland path, gentle slopes</dd></div><div><dt>Example group fee</dt><dd>NT$2,200</dd></div></dl>
+            <p class="essentials"><strong>Essential gear</strong> <span data-requirements>Closed-toe walking shoes, Drinking water, Sun hat</span></p>
+            <a href="#planner" data-pick="ridge">Choose this walk <span aria-hidden="true">↘</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="frame planning" id="planner" aria-labelledby="plan-title">
+      <header class="section-heading"><h2 id="plan-title">Pack for<br>your walk.</h2><p>Choose a walk and group size, then tick the gear you want to bring. Your checklist is created on this device.</p></header>
+      <div class="plan-box">
+        <form data-plan-form hidden>
+          <div class="fields">
+            <label>Coastal walks<select name="route"><option value="pool">Pool Walk</option><option value="shelf">Rock Shelf Walk</option><option value="ridge">Ridgeline Walk</option></select></label>
+            <label>Group size (including you)<input name="group" type="number" inputmode="numeric" value="1" min="1" max="8" step="1" required aria-describedby="group-hint"></label>
+          </div>
+          <p id="group-hint">Plans are designed for groups of 1–8.</p>
+          <div class="walk-summary" aria-live="polite"><p data-walking></p><p><strong>Essential gear</strong> <span data-needed></span></p></div>
+          <fieldset>
+            <legend>Extra gear</legend>
+            <div class="gear"><label><input type="checkbox" name="gear" value="binoculars"><span>Binoculars</span></label><label><input type="checkbox" name="gear" value="notebook"><span>Field notebook</span></label><label><input type="checkbox" name="gear" value="towel"><span>Small towel</span></label><label><input type="checkbox" name="gear" value="bag"><span>Dry bag</span></label></div>
+          </fieldset>
+          <button class="action" type="submit">Preview checklist <span aria-hidden="true">→</span></button>
+        </form>
+        <section data-preview hidden aria-labelledby="trip-title">
+          <h3 id="trip-title" tabindex="-1">Your trip checklist</h3>
+          <dl class="trip-detail">
+            <div><dt>Coastal walks</dt><dd data-trip="route"></dd></div>
+            <div><dt>Group size (including you)</dt><dd data-trip="group"></dd></div>
+            <div><dt>Round trip</dt><dd data-trip="distance"></dd></div>
+            <div><dt>Walking time</dt><dd data-trip="duration"></dd></div>
+            <div><dt>Terrain</dt><dd data-trip="terrain"></dd></div>
+            <div><dt>Essential gear</dt><dd data-trip="required"></dd></div>
+            <div><dt>Extra gear</dt><dd data-trip="extras"></dd></div>
+          </dl>
+          <div class="preview-actions">
+            <button class="action" type="button" data-download>Download checklist (.txt) <span aria-hidden="true">↓</span></button>
+            <button class="secondary" type="button" data-edit>Back to edit</button>
+          </div>
+          <p data-download-status role="status"></p>
+        </section>
+        <div class="basic" data-basic>
+          <h3>Basic checklist</h3>
+          <ul><li>Check official tide times and local site access</li><li>Pack suitable footwear, water and the essentials for your walk</li><li>Confirm your group size and meeting point</li></ul>
+          <p class="print-hint">Print this basic checklist from your browser.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="frame site-footer">
+    <p>TIDE TABLE · A coastal guiding concept</p>
+    <nav aria-label="Site navigation"><a href="%BASE_URL%en/">Visual showcase</a><a href="<!-- work-source -->">Source code</a><a href="#top">Back to top ↑</a></nav>
+  </footer>
+</body>
+</html>

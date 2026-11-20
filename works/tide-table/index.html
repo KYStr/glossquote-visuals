@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <title>潮間帶 TIDE TABLE｜海岸觀察與行前清單</title>
+  <meta name="description" content="比較三條海岸觀察路線，用示意潮位認識潮池地形，下載包含同行人數和裝備的行前單。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/tide-table/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/tide-table/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/tide-table/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/tide-table/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="潮間帶 TIDE TABLE｜海岸觀察與行前清單">
+  <meta property="og:description" content="比較三條海岸觀察路線，用示意潮位認識潮池地形，下載包含同行人數和裝備的行前單。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/tide-table/">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/tide-table/cover.webp">
+  <meta property="og:image:alt" content="深靛海水、米色礁岩與橙色步行路徑的低潮地形圖">
+  <link rel="icon" href="%BASE_URL%media/tide-table/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/src/shared/site.css">
+  <link rel="stylesheet" href="/src/works/tide-table/page.css">
+  <script type="module" src="/src/works/tide-table/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳到主要內容</a>
+  <header class="frame site-header">
+    <a class="wordmark" href="#top"><img src="%BASE_URL%media/tide-table/mark.svg" alt="" width="33" height="33">潮間帶</a>
+    <nav aria-label="站內導覽">
+      <a href="#chart">潮位剖面</a>
+      <a href="#routes">觀察路線</a>
+      <a href="#planner">行前單</a>
+    </nav>
+    <a class="locale" href="%BASE_URL%en/works/tide-table/" lang="en" hreflang="en">English <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="frame hero" aria-labelledby="hero-title">
+      <div class="introduction">
+        <p class="kicker">海岸導覽・概念品牌</p>
+        <h1 id="hero-title"><span>潮間帶</span> <span>TIDE TABLE</span></h1>
+        <p class="lede">帶家人第一次看潮池。先看海水如何進出礁岸，再選一段適合你們的海岸路線。</p>
+        <a class="action" href="#routes">比較三條路線 <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="chart" id="chart" aria-labelledby="chart-title">
+        <div class="chart-header"><strong id="chart-title">潮間帶示意剖面</strong><span>固定觀察範例</span></div>
+        <div class="coast" data-stage data-motion="still" data-level="low" data-cycle-seconds="10" role="img" aria-label="示意海岸地形。A 為北側低礁，B 為南側高礁，C 為兩者之間向內陸延伸的水道。">
+          <img data-still="low" src="%BASE_URL%media/tide-table/cover.webp" width="1200" height="800" alt="" fetchpriority="high">
+          <img data-still="mid" src="%BASE_URL%media/tide-table/mid.webp" width="1200" height="800" alt="" loading="lazy">
+          <img data-still="high" src="%BASE_URL%media/tide-table/high.webp" width="1200" height="800" alt="" loading="lazy">
+          <canvas></canvas>
+          <span class="compass" aria-hidden="true"><span>北</span>↑</span>
+          <span class="pin pin--a" aria-hidden="true">A</span>
+          <span class="pin pin--b" aria-hidden="true">B</span>
+          <span class="pin pin--c" aria-hidden="true">C</span>
+        </div>
+        <div class="controls" data-controls hidden>
+          <div class="levels" role="group" aria-label="切換潮位">
+            <button type="button" data-tide="0" aria-pressed="true"><strong>低潮</strong><span>+0.3 m</span></button>
+            <button type="button" data-tide="1" aria-pressed="false"><strong>中潮</strong><span>+0.9 m</span></button>
+            <button type="button" data-tide="2" aria-pressed="false"><strong>高潮</strong><span>+1.5 m</span></button>
+          </div>
+          <div class="motion-controls">
+            <button type="button" data-cycle aria-pressed="false">漲落循環</button>
+            <button type="button" data-pause aria-pressed="false">暫停</button>
+          </div>
+        </div>
+        <figcaption>
+          <div class="map-key"><span>A 北礁</span><span>B 南礁</span><span>C 水道</span><span class="line-key">虛線為露出的路段</span></div>
+          <p>潮位及路線為示意，出發前請查實際潮汐與現場開放資訊。 <span data-motion-status></span></p>
+        </figcaption>
+      </figure>
+    </section>
+    <section class="routes-section" id="routes" aria-labelledby="routes-title">
+      <div class="frame">
+        <header class="section-heading"><h2 id="routes-title">選一段海岸。</h2><p>以下是導覽規劃範例。三條路線均採原路折返，距離含來回，費用以每團計。</p></header>
+        <div class="route-grid">
+          <article class="route" data-route="pool">
+            <header><span class="route-letter">+0.3 m</span><p class="kicker">低潮觀察</p></header>
+            <h3>潮池短線</h3>
+            <p>適合第一次看潮池的家庭。沿北礁外側慢走，在乾燥岩面觀察小水窪與附著生物。</p>
+            <dl><div><dt>來回距離</dt><dd>0.6 公里</dd></div><div><dt>步行時間</dt><dd>35 分鐘</dd></div><div><dt>地形</dt><dd>裸露礁面、短段濕滑</dd></div><div><dt>示意團費</dt><dd>NT$1,200</dd></div></dl>
+            <p class="essentials"><strong>必備裝備</strong> <span data-requirements>包覆式防滑鞋、飲用水、備用襪</span></p>
+            <a href="#planner" data-pick="pool">選擇路線 <span aria-hidden="true">↘</span></a>
+          </article>
+          <article class="route" data-route="shelf">
+            <header><span class="route-letter">+0.9 m</span><p class="kicker">中潮觀察</p></header>
+            <h3>岩棚環視</h3>
+            <p>適合能在不平地面穩定行走的同行者。從南礁岩棚望向水道，觀察水面如何把礁池連在一起。</p>
+            <dl><div><dt>來回距離</dt><dd>1.2 公里</dd></div><div><dt>步行時間</dt><dd>60 分鐘</dd></div><div><dt>地形</dt><dd>不平岩棚、短階差</dd></div><div><dt>示意團費</dt><dd>NT$1,800</dd></div></dl>
+            <p class="essentials"><strong>必備裝備</strong> <span data-requirements>包覆式防滑鞋、飲用水、輕便雨衣</span></p>
+            <a href="#planner" data-pick="shelf">選擇路線 <span aria-hidden="true">↘</span></a>
+          </article>
+          <article class="route" data-route="ridge">
+            <header><span class="route-letter">+1.5 m</span><p class="kicker">高潮觀察</p></header>
+            <h3>望潮高徑</h3>
+            <p>適合想留在上方步道的家庭。從高處看潮線與海鳥，全程沿高地原路折返。</p>
+            <dl><div><dt>來回距離</dt><dd>1.8 公里</dd></div><div><dt>步行時間</dt><dd>75 分鐘</dd></div><div><dt>地形</dt><dd>高地步道、緩坡</dd></div><div><dt>示意團費</dt><dd>NT$2,200</dd></div></dl>
+            <p class="essentials"><strong>必備裝備</strong> <span data-requirements>包覆式步行鞋、飲用水、遮陽帽</span></p>
+            <a href="#planner" data-pick="ridge">選擇路線 <span aria-hidden="true">↘</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="frame planning" id="planner" aria-labelledby="plan-title">
+      <header class="section-heading"><h2 id="plan-title">把裝備列好，<br>再出發。</h2><p>選擇路線與同行人數，再勾選你想帶的裝備。行前單會在這台裝置生成。</p></header>
+      <div class="plan-box">
+        <form data-plan-form hidden>
+          <div class="fields">
+            <label>觀察路線<select name="route"><option value="pool">潮池短線</option><option value="shelf">岩棚環視</option><option value="ridge">望潮高徑</option></select></label>
+            <label>同行人數（含自己）<input name="group" type="number" inputmode="numeric" value="1" min="1" max="8" step="1" required aria-describedby="group-hint"></label>
+          </div>
+          <p id="group-hint">規劃範例適用 1–8 人。</p>
+          <div class="walk-summary" aria-live="polite"><p data-walking></p><p><strong>必備裝備</strong> <span data-needed></span></p></div>
+          <fieldset>
+            <legend>自選裝備</legend>
+            <div class="gear"><label><input type="checkbox" name="gear" value="binoculars"><span>望遠鏡</span></label><label><input type="checkbox" name="gear" value="notebook"><span>觀察筆記本</span></label><label><input type="checkbox" name="gear" value="towel"><span>小毛巾</span></label><label><input type="checkbox" name="gear" value="bag"><span>防水袋</span></label></div>
+          </fieldset>
+          <button class="action" type="submit">預覽行前單 <span aria-hidden="true">→</span></button>
+        </form>
+        <section data-preview hidden aria-labelledby="trip-title">
+          <h3 id="trip-title" tabindex="-1">你的行前單</h3>
+          <dl class="trip-detail">
+            <div><dt>觀察路線</dt><dd data-trip="route"></dd></div>
+            <div><dt>同行人數（含自己）</dt><dd data-trip="group"></dd></div>
+            <div><dt>來回距離</dt><dd data-trip="distance"></dd></div>
+            <div><dt>步行時間</dt><dd data-trip="duration"></dd></div>
+            <div><dt>地形</dt><dd data-trip="terrain"></dd></div>
+            <div><dt>必備裝備</dt><dd data-trip="required"></dd></div>
+            <div><dt>自選裝備</dt><dd data-trip="extras"></dd></div>
+          </dl>
+          <div class="preview-actions">
+            <button class="action" type="button" data-download>下載行前單（.txt） <span aria-hidden="true">↓</span></button>
+            <button class="secondary" type="button" data-edit>返回編輯</button>
+          </div>
+          <p data-download-status role="status"></p>
+        </section>
+        <div class="basic" data-basic>
+          <h3>基本清單</h3>
+          <ul><li>核對官方潮汐與現場開放資訊</li><li>依路線備妥鞋具、飲水與必備裝備</li><li>確認同行人數與集合位置</li></ul>
+          <p class="print-hint">可以直接用瀏覽器列印這份基本清單。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="frame site-footer">
+    <p>潮間帶 TIDE TABLE・海岸導覽概念品牌</p>
+    <nav aria-label="站內導覽"><a href="%BASE_URL%">視覺作品集</a><a href="<!-- work-source -->">原始碼</a><a href="#top">回到頂端 ↑</a></nav>
+  </footer>
+</body>
+</html>
