@@ -1,5 +1,7 @@
 # GlossQuote Visuals
 
+M04 製作中。三件新作的 [作品清單與 brief](coordination/m04-plan.json) 和 [逐條驗收規則](docs/M04-ACCEPTANCE.md) 已登記。主責依固定候選逐條判斷是否通過，以下是已發布的 M03 紀錄。
+
 五個原創雙語商業網站作品：紙品訂製、不鏽鋼家飾、電子音樂活動、建築玻璃及動態設計服務。每件都有獨立的品牌、WebGPU 主視覺、產品或服務資訊，以及能選配、修改和下載的顧客需求流程。
 
 Five original bilingual concept websites, combining distinct brand identities, shader-led art direction and complete local customer journeys.
@@ -16,7 +18,7 @@ Five original bilingual concept websites, combining distinct brand identities, s
 | 折光材料室 / PRISM Materials | 9.2 | 9.3 | 9.4 | [Review](evidence/V004/ba1cffaad8b678f26a147403a36ed20197b27c36/REVIEW.md) |
 | 空型動態設計 / AERIFORM | 9.1 | 9.2 | 9.3 | [Review](evidence/V005/ba1cffaad8b678f26a147403a36ed20197b27c36/REVIEW.md) |
 
-Every category must independently exceed 9/10 under the fixed [commercial design rubric](docs/M02-ART-DIRECTION.md). These scores are non-author design judgments, not market certification or measured conversion rates. The review covers original desktop/mobile frames, material coherence through complete motion cycles, controls and a pause that preserves the current rendered frame.
+For the historical M03 release, every category had to independently exceed 9/10 under the fixed [commercial design rubric](docs/M02-ART-DIRECTION.md). These scores are non-author design judgments, not market certification or measured conversion rates. The review covers original desktop/mobile frames, material coherence through complete motion cycles, controls and a pause that preserves the current rendered frame.
 
 The five sites are concept brands. Customer flows produce local briefs, sample lists, product inquiries or itineraries. They do not submit orders, collect payments or reserve tickets.
 

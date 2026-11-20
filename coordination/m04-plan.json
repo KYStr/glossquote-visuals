@@ -1,0 +1,38 @@
+{
+  "milestone": "M04",
+  "requestedModel": "gpt-6.2-sol",
+  "requestedReasoning": "medium",
+  "creationApiAccepted": true,
+  "backendModelVerified": false,
+  "acceptance": "docs/M04-ACCEPTANCE.md",
+  "reviewer": "studio director",
+  "jobs": [
+    {
+      "id": "V006",
+      "slug": "tide-table",
+      "name": "潮間帶 TIDE TABLE",
+      "branch": "codex/v006-tide-table",
+      "brief": "briefs/V006-tide-table.md",
+      "threadId": "01a1f9ca-6761-7bd1-8165-5ef3ff6b1f26",
+      "hostId": "local"
+    },
+    {
+      "id": "V007",
+      "slug": "selvedge",
+      "name": "布邊 SELVEDGE",
+      "branch": "codex/v007-selvedge",
+      "brief": "briefs/V007-selvedge.md",
+      "threadId": "01a1f9ca-68b3-70e1-a9d4-377a38ec6f38",
+      "hostId": "local"
+    },
+    {
+      "id": "V008",
+      "slug": "sorbet-hour",
+      "name": "果時 SORBET HOUR",
+      "branch": "codex/v008-sorbet-hour",
+      "brief": "briefs/V008-sorbet-hour.md",
+      "threadId": "01a1f9ca-69a4-7252-9543-d0335c67631c",
+      "hostId": "local"
+    }
+  ]
+}
