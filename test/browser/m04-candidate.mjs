@@ -122,6 +122,17 @@ async function privacy(page, probe) {
   await probe.assertPrivate(server.origin, { fontPaths });
   return probe.requests;
 }
+function collectDiagnostics(page) {
+  const problems = [];
+  page.on("console", message => {
+    if (message.type() === "error") problems.push({ kind: "console", message: message.text(), location: message.location() });
+  });
+  page.on("response", response => {
+    if (response.status() >= 400) problems.push({ kind: "http", status: response.status(), url: response.url() });
+  });
+  page.on("pageerror", error => problems.push({ kind: "script", message: error.message }));
+  return problems;
+}
 const inPage = (options, fn) => () => withPage(options, fn);
 try {
   browser = await chromium.launch(launch);
@@ -132,38 +143,31 @@ try {
   await system.detach();
 
   await check("first-three-seconds", inPage({}, async page => {
-    // Capture before navigation. A timeline starting only after "running"
-    // would hide a slow first paint or a silent first three seconds.
-    const cdp = await page.context().newCDPSession(page);
-    const frames = [];
-    cdp.on("Page.screencastFrame", event => {
-      void cdp.send("Page.screencastFrameAck", { sessionId: event.sessionId }).catch(() => {});
-      const epoch = event.metadata.timestamp * 1000;
-      if (Number.isFinite(epoch) && (!frames.length || epoch - frames.at(-1).epoch >= 250)) {
-        frames.push({ epoch, png: event.data });
-      }
-    });
-    try {
-      await cdp.send("Page.startScreencast", { format: "png", everyNthFrame: 1 });
-      await open(page);
-      await page.waitForTimeout(Math.max(0, 3300 - await timer(page)));
-      await cdp.send("Page.stopScreencast");
-      const timing = await page.evaluate(() => ({ origin: performance.timeOrigin,
-        firstContentfulPaint: performance.getEntriesByName("first-contentful-paint")[0]?.startTime ?? null }));
-      const captured = report.capture.opening = { ...timing, basis: "Screencast frame epoch minus navigation timeOrigin, milliseconds", frames: [] };
-      for (const { epoch, png } of frames) {
-        const ms = epoch - timing.origin;
-        if (ms < 0 || ms > 3000) continue;
-        const file = "opening-" + captured.frames.length + ".png";
-        const bytes = Buffer.from(png, "base64");
-        await writeFile(join(dir, file), bytes);
-        captured.frames.push({ ms, file, sha256: hash(bytes) });
-      }
-      assert.ok(captured.frames.filter(frame => timing.firstContentfulPaint !== null && frame.ms >= timing.firstContentfulPaint).length >= 2,
-        "Insufficient displayed frames in first three navigation seconds to review opening motion");
-    } finally {
-      await cdp.detach();
+    // Measure ordinary first navigation without a continuous screencast. Encoding
+    // every presented frame in the driver can itself delay first paint on WARP.
+    await open(page);
+    const captured = report.capture.opening = {
+      basis: "Bracketing performance.now() samples since initial navigation, milliseconds",
+      frames: [],
+    };
+    for (const target of [0, 500, 1050, 1650, 2200, 2650]) {
+      await page.waitForTimeout(Math.max(0, target - await timer(page)));
+      if (await timer(page) >= 3000) break;
+      const before = await page.evaluate(() => ({
+        start: performance.now(), phase: document.querySelector("[data-stage]").dataset.motion,
+        visibleTitle: document.querySelector("h1").checkVisibility({ visibilityProperty: true }),
+      }));
+      const file = "opening-" + captured.frames.length + ".png";
+      const png = await page.screenshot({ path: join(dir, file), timeout: 10_000 });
+      captured.frames.push({ ...before, ms: await timer(page), file, sha256: hash(png) });
     }
+    const timing = await page.evaluate(() => ({ origin: performance.timeOrigin,
+      firstContentfulPaint: performance.getEntriesByName("first-contentful-paint")[0]?.startTime ?? null }));
+    Object.assign(captured, timing);
+    const withinWindow = captured.frames.filter(item => item.visibleTitle && item.ms <= 3000 &&
+      (timing.firstContentfulPaint === null || item.start >= timing.firstContentfulPaint));
+    assert.ok(withinWindow.length >= 2 && new Set(withinWindow.map(item => item.sha256)).size >= 2,
+      "Need distinct visible, timestamped opening images fully inside first three navigation seconds");
   }));
 
   await check("initial-and-material-sequence", inPage({}, async page => {
@@ -238,6 +242,7 @@ try {
   }));
 
   await check("BIZ-2-and-privacy", inPage({}, async page => {
+    report.pageProblems = collectDiagnostics(page);
     const probe = await instrument(page);
     await open(page);
     await phase(page, "running");
@@ -304,7 +309,12 @@ try {
     await frame(page, "after-device-loss");
     const next = await page.goto(server.origin + base);
     assert.equal(next.status(), 200);
-    await page.goBack();
+    // A BFCache restoration commits the previous page without a fresh load.
+    // Assert the actual returned page and subsequent rendering independently.
+    await page.goBack({ waitUntil: "commit" });
+    assert.equal(page.url(), url);
+    assert.ok(await scene(page).isVisible());
+    await scene(page).scrollIntoViewIfNeeded();
     await phase(page, "running");
     assert.equal(await scene(page).locator("canvas").count(), 1);
     await captureTexture(page, "navigation-return");
@@ -346,12 +356,13 @@ try {
     try {
       const context = await edge.newContext({ viewport: size, reducedMotion: "no-preference" });
       const page = await context.newPage();
+      const problems = collectDiagnostics(page);
       const probe = await observe(page);
       await page.addInitScript(installPresentationMeter);
       await open(page);
       const details = report.capture.edge = { channel: "msedge", version: edge.version(),
         runtime: "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
-        requestedGraphicsFlags: [], url: page.url() };
+        requestedGraphicsFlags: [], url: page.url(), problems };
       await frame(page, "edge-first-fold");
       await page.waitForFunction(() => ["running", "unavailable"].includes(
         document.querySelector("[data-stage]")?.dataset.motion), null, { timeout: 35_000 });
