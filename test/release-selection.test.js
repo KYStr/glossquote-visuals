@@ -87,3 +87,17 @@ test("only selected reviewed works enter the release build", () => {
     else process.env.GQ_RELEASE_WORK = previous;
   }
 });
+
+test("an independent live recheck uses the registry from the actual deployed source", () => {
+  const deployedWorks = [
+    { id: "V007", slug: "selvedge", candidateCommit: "a".repeat(40), status: "reviewed" },
+    { id: "V006", slug: "tide-table", candidateCommit: "b".repeat(40), status: "published",
+      liveUrl: "https://example.invalid/tide-table/", deployedCommit: "c".repeat(40) },
+  ];
+  const receipt = {
+    works: [{ work: "V007", slug: "selvedge", candidate: "a".repeat(40) }],
+    carriedWorks: [{ work: "V006", slug: "tide-table", candidate: "b".repeat(40), deployedCommit: "c".repeat(40) }],
+  };
+  assert.deepEqual(verifyReleaseReceipt(receipt, ["V007"], deployedWorks), receipt.works);
+  assert.throws(() => verifyReleaseReceipt({ ...receipt, carriedWorks: [] }, ["V007"], deployedWorks));
+});

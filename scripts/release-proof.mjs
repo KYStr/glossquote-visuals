@@ -25,16 +25,29 @@ export async function releaseProof() {
   const carriedWorks = await verifyCarriedWorks(outputWorks.filter((work) => !ids.includes(work.id)), head);
   verifyReleaseSelection(ids, outputWorks, carriedWorks);
   const works = [];
+  const actionReports = new Map();
   for (const id of ids) {
     assert.match(id, /^V\d{3}$/);
     const work = registry.works.find((entry) => entry.id === id);
-    await verifyWork(work, head);
+    await verifyWork(work, head, actionReports);
     works.push({ work: work.id, slug: work.slug, candidate: work.candidateCommit });
   }
   return { commit: head, ...works[0], works, carriedWorks };
 }
 
-async function verifyWork(work, head) {
+async function readAction(path, cache) {
+  if (!cache.has(path)) {
+    const response = await fetch(`https://api.github.com/repos/${registry.repository}/actions/${path}`, {
+      headers: { Accept: "application/vnd.github+json" },
+      signal: AbortSignal.timeout(15_000),
+    });
+    assert.ok(response.ok, `Unable to verify public Actions evidence for ${path}: HTTP ${response.status}`);
+    cache.set(path, await response.json());
+  }
+  return cache.get(path);
+}
+
+async function verifyWork(work, head, actionReports) {
   assert.ok(work && work.status === "reviewed" && work.blockers.length === 0, "Work needs a passing candidate review");
   assert.match(work.candidateCommit, sha);
   assert.match(work.id, /^V\d{3}$/);
@@ -58,19 +71,38 @@ async function verifyWork(work, head) {
     assert.ok(change.startsWith("evidence/") || approvedMetadata.has(change), `Source changed after candidate review: ${change}`);
   }
 
-  const response = await fetch(`https://api.github.com/repos/${registry.repository}/actions/jobs/${proof.jobId}`, {
-    headers: { Accept: "application/vnd.github+json" },
-    signal: AbortSignal.timeout(15_000),
-  });
-  assert.ok(response.ok, `Unable to verify public Actions evidence: HTTP ${response.status}`);
-  const job = await response.json();
+  const job = await readAction(`jobs/${proof.jobId}`, actionReports);
   assert.equal(job.conclusion, "success");
   assert.equal(job.head_sha, work.candidateCommit);
   assert.equal(job.run_id, proof.runId);
   const rules = usesRules(work, proof);
-  assert.equal(job.workflow_name, rules ? "Verify M04 candidate" : "Verify visual candidate");
-  assert.equal(job.name, rules ? "All M04 candidate checks" : "All candidate checks");
+  if (rules) {
+    const workflow = job.workflow_name?.match(/^Verify (M04|M05) candidate$/)?.[1];
+    assert.ok(workflow, "Unrecognized rule-based candidate workflow");
+    assert.equal(job.name, `All ${workflow} candidate checks`);
+    const report = await readAction(`runs/${job.run_id}/attempts/${job.run_attempt}/jobs?per_page=100`, actionReports);
+    verifyCandidateLanes(work, job, report.jobs);
+  } else {
+    assert.equal(job.workflow_name, "Verify visual candidate");
+    assert.equal(job.name, "All candidate checks");
+  }
   assert.ok(job.labels.includes("windows-2025"), "Acceptance requires the verified Windows renderer");
+}
+
+export function verifyCandidateLanes(work, aggregate, jobs) {
+  for (const lang of ["zh-Hant", "en"]) {
+    for (const viewport of ["desktop", "mobile"]) {
+      const name = `evidence (${work.id}, ${lang}, ${viewport})`;
+      const matches = jobs.filter(job => job.name === name);
+      assert.equal(matches.length, 1, `Missing unique candidate job: ${name}`);
+      const [job] = matches;
+      assert.equal(job.run_id, aggregate.run_id);
+      assert.equal(job.run_attempt, aggregate.run_attempt);
+      assert.equal(job.head_sha, work.candidateCommit);
+      assert.equal(job.conclusion, "success", name);
+      assert.ok(job.labels.includes("windows-2025"), name);
+    }
+  }
 }
 
 export const commercialRules = [
@@ -219,7 +251,7 @@ export function verifyTemporalReview(review, proof) {
 
 // A carried page must match the actual Pages deployment, including runtime chunks
 // reached by dynamic imports and assets resolved from public/ by application code.
-export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist")) {
+export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist"), selected = releaseWorkIds()) {
   if (works.length === 0) return [];
   const manifest = JSON.parse(readFileSync(resolve(dist, ".vite/manifest.json"), "utf8"));
   const readLive = async (file) => {
@@ -230,6 +262,8 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
   const previous = await (await readLive("release.json")).json();
   const carried = [];
   const files = new Set();
+  const previousPublic = new Set();
+  const replacing = new Set(registry.works.filter(work => selected.includes(work.id)).map(work => work.slug));
   const deployments = new Map();
   for (const work of works) {
     assert.ok(isPublished(work) && work.blockers.length === 0, `Pending work cannot be carried: ${work.id}`);
@@ -248,7 +282,7 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
       // public/ permits computed URLs, e.g. switching a product finish after load.
       for (const path of git("ls-tree", "-r", "--name-only", deployment, "--", "public/").split("\n")) {
         assert.ok(path.startsWith("public/"));
-        files.add(path.slice("public/".length));
+        previousPublic.add(path.slice("public/".length));
       }
     }
     const original = deployments.get(deployment).works.find((entry) => entry.id === work.id);
@@ -263,6 +297,14 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
     }
     carried.push(receipt);
   }
+  // The work registry owns media/<slug>/. Previously shipped global assets
+  // and every carried work's own assets are compared, including dynamic URLs.
+  // A reference from carried HTML, lazy JS/CSS or a shared text asset protects
+  // the entire referenced work directory, including computed sibling filenames.
+  const readDependencyText = path => /\.(?:css|m?js|svg|json|html)$/i.test(path)
+    ? readFileSync(resolve(dist, path), "utf8") : "";
+  const runtimeText = [...files].map(readDependencyText);
+  for (const path of carriedPublicAssets(previousPublic, replacing, runtimeText, readDependencyText)) files.add(path);
   for (const file of files) {
     const output = readFileSync(resolve(dist, file));
     const url = file.endsWith("/index.html") ? file.slice(0, -"index.html".length) : file;
@@ -271,6 +313,26 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
   }
   console.log(`PASS matched ${files.size} deployed files for ${carried.map((work) => work.work).join(", ")}`);
   return carried;
+}
+
+export function carriedPublicAssets(paths, replacing, runtimeText, readDependencyText = () => "") {
+  const pending = new Map([...replacing].map(slug => [slug, []]));
+  const retained = [];
+  for (const path of paths) {
+    const [directory, slug, ...file] = path.split("/");
+    if (directory === "media" && file.length && pending.has(slug)) pending.get(slug).push(path);
+    else retained.push(path);
+  }
+  const queue = [...runtimeText, ...retained.map(readDependencyText)];
+  for (const text of queue) {
+    for (const [slug, media] of pending) {
+      if (!text.includes(slug)) continue;
+      pending.delete(slug);
+      retained.push(...media);
+      queue.push(...media.map(readDependencyText));
+    }
+  }
+  return retained;
 }
 
 export function carriedRuntimeAssets(html, manifest) {
@@ -329,7 +391,7 @@ export function verifyDesignScores(scores, review) {
   }
 }
 
-export function verifyReleaseReceipt(release, expectedIds) {
+export function verifyReleaseReceipt(release, expectedIds, deployedWorks = registry.works) {
   assert.ok(expectedIds.length > 0, "Live verification needs the requested work IDs");
   const works = release.works ?? [release];
   assert.ok(Array.isArray(works) && works.length > 0);
@@ -337,13 +399,13 @@ export function verifyReleaseReceipt(release, expectedIds) {
   assert.equal(new Set(ids).size, ids.length);
   assert.deepEqual([...ids].sort(), [...expectedIds].sort());
   for (const work of works) {
-    const expected = registry.works.find(({ id }) => id === work.work);
+    const expected = deployedWorks.find(({ id }) => id === work.work);
     assert.ok(expected);
     assert.equal(work.slug, expected.slug);
     assert.equal(work.candidate, expected.candidateCommit);
   }
   if (release.carriedWorks !== undefined) {
-    const carried = registry.works.filter((work) => isPublished(work) && !ids.includes(work.id));
+    const carried = deployedWorks.filter((work) => isPublished(work) && !ids.includes(work.id));
     const expected = carried.map((work) => ({
       work: work.id, slug: work.slug, candidate: work.candidateCommit, deployedCommit: work.deployedCommit,
     }));

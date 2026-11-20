@@ -922,7 +922,7 @@ async function checkLive(browser) {
   const deployedRegistry = JSON.parse(execFileSync("git", ["show", commit + ":coordination/work-registry.json"], { encoding: "utf8" }));
   const selectedIds = releaseWorkIds();
   const expected = selectedIds.length ? selectedIds : deployedRegistry.works.filter(work => work.status === "reviewed").map(work => work.id);
-  const releasedWorks = verifyReleaseReceipt(release, expected);
+  const releasedWorks = verifyReleaseReceipt(release, expected, deployedRegistry.works);
   const allWorks = [...releasedWorks, ...(release.carriedWorks ?? [])];
   const expectedOutput = deployedRegistry.works.filter(work => expected.includes(work.id) ||
     (["published", "external-reviewed"].includes(work.status) && work.deployedCommit && work.liveUrl));

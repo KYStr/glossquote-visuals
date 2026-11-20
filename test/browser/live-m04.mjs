@@ -6,7 +6,7 @@ import { resolve } from "node:path";
 /** Exercise the deployed material controls and customer flow under normal wall-clock animation. */
 export async function checkM04Live({ page, work, locale, evidenceDir, evidence, phase }) {
   assert.match(work.work, /^V\d{3}$/);
-  const { setMaterial, testFlow } = await import(`../../evidence/${work.work}/flow.mjs`);
+  const { setMaterial, testFlow, testHeroInteraction } = await import(`../../evidence/${work.work}/flow.mjs`);
   const stem = `live-${work.slug}-${locale}`;
   const canvas = page.locator("[data-stage] canvas");
   assert.equal(await canvas.count(), 1);
@@ -38,7 +38,23 @@ export async function checkM04Live({ page, work, locale, evidenceDir, evidence, 
   await pause.evaluate(button => button.click());
   await phase(page, "running");
   await page.waitForFunction(count => window.__visualProbe.textures > count, textures);
+  let heroInteraction;
+  if (testHeroInteraction) {
+    const images = [];
+    const states = ["before", "after", "reset"];
+    const observations = await testHeroInteraction(page, "keyboard", async state => {
+      assert.equal(state, states[images.length]);
+      const file = `${stem}-interaction-${state}.png`;
+      const bytes = await page.locator("[data-stage]").screenshot({ path: resolve(evidenceDir, file) });
+      evidence.screenshots.push(file);
+      images.push({ state, file, sha256: createHash("sha256").update(bytes).digest("hex") });
+    });
+    assert.equal(images.length, states.length);
+    assert.ok(observations && Object.keys(observations).length, "Record the pressed, scooped and reset states");
+    assert.notEqual(images[0].sha256, images[1].sha256, "The scoop should visibly change the product");
+    heroInteraction = { observations, images };
+  }
   const order = await testFlow(page, locale);
   assert.ok(order && typeof order === "object" && Object.keys(order).length, "Commercial flow needs concrete observations");
-  return { frames, frozenFile, order };
+  return { frames, frozenFile, order, ...(heroInteraction && { heroInteraction }) };
 }

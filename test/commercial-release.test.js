@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { carriedRuntimeAssets, commercialRules, verifyCommercialReview, verifyReleaseSelection } from "../scripts/release-proof.mjs";
+import { carriedPublicAssets, carriedRuntimeAssets, commercialRules, verifyCandidateLanes, verifyCommercialReview, verifyReleaseSelection } from "../scripts/release-proof.mjs";
 import { base } from "../scripts/site-map.mjs";
 
 test("published rule IDs match the written acceptance contract", () => {
@@ -77,4 +77,37 @@ test("carried pages include nested lazy imports, assets and CSS; receipt covers 
   assert.doesNotThrow(() => verifyReleaseSelection(["V006"], outputs, [{ work: "V001" }]));
   assert.throws(() => verifyReleaseSelection(["V006"], outputs, []));
   assert.throws(() => verifyReleaseSelection(["V006"], outputs, [{ work: "V006" }]));
+});
+
+test("a revised work can replace its private media while carried and shared assets stay pinned", () => {
+  const paths = ["media/tide-table/cover.webp", "media/sorbet-hour/cover.webp", "media/sorbet-hour/berry.webp",
+    "media/sorbet-hour-old.svg", "media/selvedge/plain.webp", "fonts/studio-tc.css", "licenses/NOTICES.txt"];
+  const replacing = new Set(["sorbet-hour", "selvedge"]);
+  assert.deepEqual(carriedPublicAssets(paths, replacing, ["media/tide-table/cover.webp"]),
+    ["media/tide-table/cover.webp", "media/sorbet-hour-old.svg", "fonts/studio-tc.css", "licenses/NOTICES.txt"]);
+  // A cross-work reference from a lazy chunk also protects all computed variants.
+  assert.deepEqual(carriedPublicAssets(paths, replacing, ['const dir = "sorbet-hour";']).sort(),
+    paths.filter(path => !path.includes("/selvedge/")).sort());
+  // A shared stylesheet can import a namespaced image which references another work.
+  const cross = { "fonts/studio-tc.css": "url(../media/selvedge/cloth.svg)",
+    "media/selvedge/cloth.svg": '<image href="../sorbet-hour/berry.webp"/>' };
+  const linkedPaths = [...paths, "media/selvedge/cloth.svg"];
+  assert.deepEqual(carriedPublicAssets(linkedPaths, replacing, [], path => cross[path] ?? "").sort(), linkedPaths.sort());
+});
+
+test("an aggregate must cover this work, both locales and both viewports in the same successful attempt", () => {
+  const work = { id: "V009", candidateCommit: "e".repeat(40) };
+  const aggregate = { run_id: 47, run_attempt: 2 };
+  const jobs = ["zh-Hant", "en"].flatMap(lang => ["desktop", "mobile"].map(view => ({
+    ...aggregate, name: `evidence (V009, ${lang}, ${view})`, head_sha: work.candidateCommit,
+    conclusion: "success", labels: ["windows-2025"],
+  })));
+  assert.doesNotThrow(() => verifyCandidateLanes(work, aggregate, jobs));
+  assert.throws(() => verifyCandidateLanes({ ...work, id: "V011" }, aggregate, jobs));
+  assert.throws(() => verifyCandidateLanes(work, aggregate, jobs.slice(1)));
+  assert.throws(() => verifyCandidateLanes(work, aggregate, [...jobs, jobs[0]]));
+  for (const change of [{ run_id: 48 }, { run_attempt: 1 }, { head_sha: "a".repeat(40) },
+    { conclusion: "failure" }, { labels: ["ubuntu-latest"] }]) {
+    assert.throws(() => verifyCandidateLanes(work, aggregate, [{ ...jobs[0], ...change }, ...jobs.slice(1)]));
+  }
 });
