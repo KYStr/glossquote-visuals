@@ -118,9 +118,13 @@ async function instrument(page) {
   await page.addInitScript(installPresentationMeter);
   return probe;
 }
+// A work may ship fonts alongside its own licensed media. Only allow files
+// committed to this candidate, including those in the common font directory.
+const fontPaths = execFileSync("git", ["ls-tree", "-r", "--name-only", "HEAD", "--",
+  "public/fonts/", "public/media/" + slugs[work] + "/"], { cwd: root, encoding: "utf8" })
+  .split(/\r?\n/).filter(path => /\.(?:woff2?|ttf|otf)$/i.test(path))
+  .map(path => base + path.slice("public/".length));
 async function privacy(page, probe) {
-  const fontPaths = probe.requests.filter(req => req.type === "font" && req.url.startsWith(server.origin + base + "fonts/"))
-    .map(req => new URL(req.url).pathname);
   await probe.assertPrivate(server.origin, { fontPaths });
   return probe.requests;
 }

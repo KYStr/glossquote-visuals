@@ -1,0 +1,182 @@
+{
+  "sha": "6393cd742f92be57c25a9cc29b1cdba1d675ef65",
+  "run": 44799612467,
+  "decision": "FAIL",
+  "lanes": {
+    "V007-en-desktop": {
+      "failed": {},
+      "medianMs": 17.300000000046566,
+      "p95Ms": 30.300000000046566,
+      "maxMs": 36.89999999990687,
+      "FCPms": 620
+    },
+    "V007-en-mobile": {
+      "failed": {},
+      "medianMs": 21.60000000000582,
+      "p95Ms": 22.70000000001164,
+      "maxMs": 25.60000000000582,
+      "FCPms": 744
+    },
+    "V007-zh-Hant-desktop": {
+      "failed": {},
+      "medianMs": 16.300000000017462,
+      "p95Ms": 30.29999999998836,
+      "maxMs": 32.30000000001746,
+      "FCPms": 480
+    },
+    "V007-zh-Hant-mobile": {
+      "failed": {},
+      "medianMs": 25.70000000001164,
+      "p95Ms": 26.70000000001164,
+      "maxMs": 27.5,
+      "FCPms": 544
+    },
+    "V008-en-desktop": {
+      "failed": {
+        "PERF-1": "AssertionError [ERR_ASSERTION]: {\"medianMs\":44.59999999997672,\"p95Ms\":90.09999999997672,\"longestMs\":106.20000000006985}"
+      },
+      "medianMs": 44.59999999997672,
+      "p95Ms": 90.09999999997672,
+      "maxMs": 106.20000000006985,
+      "FCPms": 804
+    },
+    "V008-en-mobile": {
+      "failed": {},
+      "medianMs": 22,
+      "p95Ms": 29.300000000046566,
+      "maxMs": 49.10000000009313,
+      "FCPms": 488
+    },
+    "V008-zh-Hant-desktop": {
+      "failed": {
+        "PERF-1": "AssertionError [ERR_ASSERTION]: {\"medianMs\":40.59999999997672,\"p95Ms\":86.70000000006985,\"longestMs\":96.5}",
+        "FALL-1-no-js": "locator.getAttribute: Timeout 10000ms exceeded."
+      },
+      "medianMs": 40.59999999997672,
+      "p95Ms": 86.70000000006985,
+      "maxMs": 96.5,
+      "FCPms": 872
+    },
+    "V008-zh-Hant-mobile": {
+      "failed": {},
+      "medianMs": 16.599999999976717,
+      "p95Ms": 31.399999999906868,
+      "maxMs": 35.699999999953434,
+      "FCPms": 484
+    },
+    "V009-en-desktop": {
+      "failed": {},
+      "medianMs": 31,
+      "p95Ms": 31.400000000023283,
+      "maxMs": 32.09999999997672,
+      "FCPms": 964
+    },
+    "V009-en-mobile": {
+      "failed": {},
+      "medianMs": 20.699999999953434,
+      "p95Ms": 21.599999999976717,
+      "maxMs": 22.800000000046566,
+      "FCPms": 1048
+    },
+    "V009-zh-Hant-desktop": {
+      "failed": {
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:53943/glossquote-visuals/media/afterimage-press/press-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:53943/glossquote-visuals/media/afterimage-press/press-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "Edge-default-render-and-flow": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:53943/glossquote-visuals/media/afterimage-press/press-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}"
+      },
+      "medianMs": 29.20000000001164,
+      "p95Ms": 30.400000000023283,
+      "maxMs": 31.20000000001164,
+      "FCPms": 768
+    },
+    "V009-zh-Hant-mobile": {
+      "failed": {
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:51602/glossquote-visuals/media/afterimage-press/press-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:51602/glossquote-visuals/media/afterimage-press/press-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}"
+      },
+      "medianMs": 20.699999999953434,
+      "p95Ms": 21.600000000093132,
+      "maxMs": 23.600000000093132,
+      "FCPms": 1488
+    },
+    "V010-en-desktop": {
+      "failed": {
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:52177/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:52177/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}"
+      },
+      "medianMs": 28.900000000023283,
+      "p95Ms": 30.100000000093132,
+      "maxMs": 31,
+      "FCPms": 704
+    },
+    "V010-en-mobile": {
+      "failed": {
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:54206/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:54206/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}"
+      },
+      "medianMs": 20.900000000023283,
+      "p95Ms": 21.599999999976717,
+      "maxMs": 22.5,
+      "FCPms": 1496
+    },
+    "V010-zh-Hant-desktop": {
+      "failed": {
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:50738/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:50738/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "Edge-default-render-and-flow": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:50738/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}"
+      },
+      "medianMs": 16.29999999998836,
+      "p95Ms": 31.60000000000582,
+      "maxMs": 33.69999999998254,
+      "FCPms": 776
+    },
+    "V010-zh-Hant-mobile": {
+      "failed": {
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:50103/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:50103/glossquote-visuals/media/foldline/foldline-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}"
+      },
+      "medianMs": 22.100000000034925,
+      "p95Ms": 23.199999999953434,
+      "maxMs": 24.099999999976717,
+      "FCPms": 196
+    },
+    "V011-en-desktop": {
+      "failed": {},
+      "medianMs": 18.39999999999418,
+      "p95Ms": 31.39999999999418,
+      "maxMs": 40.29999999998836,
+      "FCPms": 568
+    },
+    "V011-en-mobile": {
+      "failed": {
+        "GPU-2-controls-and-pause": "AssertionError [ERR_ASSERTION]: Frozen composite changed"
+      },
+      "medianMs": 23.400000000023283,
+      "p95Ms": 24.5,
+      "maxMs": 25.800000000017462,
+      "FCPms": 908
+    },
+    "V011-zh-Hant-desktop": {
+      "failed": {
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:65237/glossquote-visuals/media/umbra-dial/umbra-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:65237/glossquote-visuals/media/umbra-dial/umbra-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "Edge-default-render-and-flow": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:"
+      },
+      "medianMs": 29.4000000001397,
+      "p95Ms": 30.5,
+      "maxMs": 31.199999999953434,
+      "FCPms": 428
+    },
+    "V011-zh-Hant-mobile": {
+      "failed": {
+        "GPU-2-controls-and-pause": "AssertionError [ERR_ASSERTION]: Frozen composite changed",
+        "BIZ-2-and-privacy": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:50222/glossquote-visuals/media/umbra-dial/umbra-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}",
+        "FALL-2-and-PERF-2": "AssertionError [ERR_ASSERTION]: {\"url\":\"http://127.0.0.1:50222/glossquote-visuals/media/umbra-dial/umbra-tc.woff2\",\"type\":\"font\",\"method\":\"GET\"}"
+      },
+      "medianMs": 22.800000000017462,
+      "p95Ms": 24,
+      "maxMs": 26.199999999982538,
+      "FCPms": 300
+    }
+  }
+}
