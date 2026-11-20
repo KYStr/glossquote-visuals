@@ -73,7 +73,7 @@ jobs:
   live:
     needs: deploy
     runs-on: windows-2025
-    timeout-minutes: 15
+    timeout-minutes: 30
     env:
       GQ_RELEASE_WORK: ${{ inputs.work }}
     steps:

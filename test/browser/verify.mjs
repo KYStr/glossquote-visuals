@@ -4,13 +4,14 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { chromium } from "playwright";
-import { base, isPublished, origin, registry, releaseWorkIds, root, worksFor } from "../../scripts/site-map.mjs";
+import { base, origin, releaseWorkIds, root, worksFor } from "../../scripts/site-map.mjs";
 import { verifyReleaseReceipt } from "../../scripts/release-proof.mjs";
 import { checkPaperCommercial } from "./paper-commercial.mjs";
 import { checkPaperMaterial } from "./paper-material.mjs";
 import { observe, pixelEvidence } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 import { checkSignal, signalFontPaths } from "./signal-commercial.mjs";
+import { checkM04Live } from "./live-m04.mjs";
 
 const windows = process.platform === "win32" && process.env.RUNNER_OS === "Windows";
 const linux = process.platform === "linux" && process.env.RUNNER_OS === "Linux";
@@ -45,6 +46,7 @@ const site = live ? { origin, close() {} } : await serveDist();
 const url = (path = "") => site.origin + base + path;
 const stage = (page) => page.locator("[data-stage]");
 const work = "works/paper-light/";
+const legacyWorkIds = new Set(["V001", "V002", "V003", "V004", "V005"]);
 const settings = (page) => page.locator("#light-angle");
 const paperLightDetails = (page) => page.locator("[data-controls] details");
 async function openPaperLightDetails(page) {
@@ -879,7 +881,7 @@ async function checkPaperPausedCaption(page, locale) {
 }
 
 async function checkCandidateComposites(browser) {
-  for (const work of worksFor("candidate").filter(({ slug }) => !paperOnly || slug === "paper-light")) {
+  for (const work of worksFor("candidate").filter(({ id }) => paperOnly ? id === "V001" : legacyWorkIds.has(id))) {
     const views = [
       { prefix: "", width: 1100, height: 850 },
       { prefix: "en/", width: 1100, height: 850 },
@@ -915,30 +917,42 @@ async function checkLive(browser) {
   assert.equal(receipt.status, 200);
   const release = await receipt.json();
   assert.equal(release.commit, commit);
-  const releasedWorks = verifyReleaseReceipt(release, releaseWorkIds());
+  // A later verifier can run after the registry changed reviewed works to published.
+  // Use the registry at the deployed SHA as the independent source for the release scope.
+  const deployedRegistry = JSON.parse(execFileSync("git", ["show", commit + ":coordination/work-registry.json"], { encoding: "utf8" }));
+  const selectedIds = releaseWorkIds();
+  const expected = selectedIds.length ? selectedIds : deployedRegistry.works.filter(work => work.status === "reviewed").map(work => work.id);
+  const releasedWorks = verifyReleaseReceipt(release, expected);
+  const allWorks = [...releasedWorks, ...(release.carriedWorks ?? [])];
+  const expectedOutput = deployedRegistry.works.filter(work => expected.includes(work.id) ||
+    (["published", "external-reviewed"].includes(work.status) && work.deployedCommit && work.liveUrl));
+  assert.deepEqual(allWorks.map(work => work.work).sort(), expectedOutput.map(work => work.id).sort());
+  const localFonts = execFileSync("git", ["ls-tree", "-r", "--name-only", commit, "public"], { encoding: "utf8" })
+    .split(/\r?\n/).filter(path => /\.(?:ttf|otf|woff2?)$/i.test(path)).map(path => base + path.slice("public/".length));
   const workFonts = {
     "night-signal": signalFontPaths,
     "liquid-archive": [base + "fonts/liquid-geist.ttf"],
     "prism-materials": [base + "fonts/prism-archivo-black.ttf", base + "fonts/prism-plex-mono.ttf"],
     "aeriform": [base + "fonts/aero-bricolage.woff2"],
   };
-  for (const work of registry.works.filter(isPublished)) {
-    for (const prefix of ["", "en/"]) {
-      assert.equal((await fetch(url(`${prefix}works/${work.slug}/`))).status, 200);
-    }
-  }
-  for (const releasedWork of releasedWorks) {
+  for (const releasedWork of allWorks) {
+    const deployedWork = expectedOutput.find(work => work.id === releasedWork.work);
+    const isLegacy = legacyWorkIds.has(releasedWork.work);
+    const source = expected.includes(deployedWork.id) ? commit : deployedWork.deployedCommit;
+    assert.equal(releasedWork.slug, deployedWork.slug);
+    assert.equal(releasedWork.candidate, deployedWork.candidateCommit);
+    if (!expected.includes(deployedWork.id)) assert.equal(releasedWork.deployedCommit, source);
     const route = `works/${releasedWork.slug}/`;
-    const fontPaths = workFonts[releasedWork.slug] ?? [];
+    const fontPaths = isLegacy ? workFonts[releasedWork.slug] ?? [] : localFonts;
     for (const prefix of ["", "en/"]) {
       await withPage(browser, { viewport: { width: 1100, height: 850 } }, async (page) => {
-        await page.clock.install();
+        if (isLegacy) await page.clock.install();
         const probe = await observe(page, { readPixels: true });
         await open(page, prefix);
         await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
         assert.equal(page.url(), url(prefix + route));
         assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "index, follow");
-        const sourceLink = page.locator(`footer a[href="https://github.com/KYStr/glossquote-visuals/tree/${commit}"]`);
+        const sourceLink = page.locator(`footer a[href="https://github.com/KYStr/glossquote-visuals/tree/${source}"]`);
         assert.equal(await sourceLink.count(), 1, "Footer must link to the exact deployed source");
         const shareImage = await page.locator('meta[property="og:image"]').getAttribute("content");
         assert.ok(shareImage.startsWith(site.origin + base));
@@ -949,27 +963,35 @@ async function checkLive(browser) {
         // Match the accepted candidate's order: bound GPU submissions before
         // potentially slow software-renderer diagnostic/full-page screenshots.
         // Every original live check is retained; screenshots follow controls.
-        const composite = await checkLiveComposite(page, releasedWork.slug, locale, null);
-        if (releasedWork.slug === "paper-light") await checkPaperPausedCaption(page, locale);
-        // The native pause has already passed same-frame/zero-submission gates.
-        // Hold that actual GPU frame while the software compositor takes stills;
-        // these are explicitly paused diagnostic stills, not temporal evidence.
-        await page.locator("[data-pause]").evaluate(button => button.click());
-        await phase(page, "paused");
-        composite.diagnosticCapture = { nativePaused: true, phase: "paused",
-          note: "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences." };
-        try {
-          const isolatedFile = `live-${releasedWork.slug}-${locale}-isolated-output.png`;
-          const isolatedOutput = await pixelEvidence(page, stage(page), resolve(evidenceDir, isolatedFile));
-          evidence.screenshots.push(isolatedFile);
-          assert.ok(isolatedOutput.colors > 20, "The deployed shader has no structured independent output");
-          composite.isolatedOutput = isolatedOutput;
-          // The isolated check deliberately changes CSS and is not a visibility pass.
-          // Save the original-CSS page after restoring diagnostic styles.
+        if (!isLegacy) {
+          evidence.measurements.liveM04 ??= {};
+          evidence.measurements.liveM04[releasedWork.work + "-" + locale] = await checkM04Live({
+            page, work: releasedWork, locale, evidenceDir, evidence, phase,
+          });
           await screenshot(page, `live-${releasedWork.slug}-${locale}.png`);
-        } finally {
+        } else {
+          const composite = await checkLiveComposite(page, releasedWork.slug, locale, null);
+          if (releasedWork.slug === "paper-light") await checkPaperPausedCaption(page, locale);
+          // The native pause has already passed same-frame/zero-submission gates.
+          // Hold that actual GPU frame while the software compositor takes stills;
+          // these are explicitly paused diagnostic stills, not temporal evidence.
           await page.locator("[data-pause]").evaluate(button => button.click());
-          await phase(page, "running");
+          await phase(page, "paused");
+          composite.diagnosticCapture = { nativePaused: true, phase: "paused",
+            note: "Post-control diagnostic and full-page stills use native pause; temporal acceptance uses the separately recorded original sequences." };
+          try {
+            const isolatedFile = `live-${releasedWork.slug}-${locale}-isolated-output.png`;
+            const isolatedOutput = await pixelEvidence(page, stage(page), resolve(evidenceDir, isolatedFile));
+            evidence.screenshots.push(isolatedFile);
+            assert.ok(isolatedOutput.colors > 20, "The deployed shader has no structured independent output");
+            composite.isolatedOutput = isolatedOutput;
+            // The isolated check deliberately changes CSS and is not a visibility pass.
+            // Save the original-CSS page after restoring diagnostic styles.
+            await screenshot(page, `live-${releasedWork.slug}-${locale}.png`);
+          } finally {
+            await page.locator("[data-pause]").evaluate(button => button.click());
+            await phase(page, "running");
+          }
         }
         await probe.assertPrivate(site.origin, { fontPaths });
         const galleryBacklink = page.locator(`footer a[href="${base}${prefix}"]`);

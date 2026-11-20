@@ -1,0 +1,1300 @@
+[
+  {
+    "lane": "V006-en-desktop",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS",
+      "desktop-real-200-percent-zoom": "PASS"
+    },
+    "errors": {},
+    "oldFcp": 1112,
+    "fcp": 536,
+    "eligible": 82,
+    "screenshots": 102,
+    "anchorMs": 3570,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 503.29999999998836,
+    "responseEnd": 20.5,
+    "loadEnd": 520.7999999999884,
+    "fontFaces": [],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "TIDE TABLE",
+        "cssFamily": "\"Instrument Serif\", \"Noto Serif TC\", \"Songti TC\", PMingLiU, Georgia, serif",
+        "fonts": [
+          {
+            "familyName": "PMingLiU",
+            "postScriptName": "PMingLiU",
+            "isCustomFont": false,
+            "glyphCount": 9
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > a:nth-of-type(2)",
+        "text": "繁體中文 ↗",
+        "cssFamily": "ui-monospace, \"Cascadia Code\", Consolas, monospace",
+        "fonts": [
+          {
+            "familyName": "MingLiU",
+            "postScriptName": "MingLiU",
+            "isCustomFont": false,
+            "glyphCount": 5
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "A coastal guiding concept",
+        "cssFamily": "ui-monospace, \"Cascadia Code\", Consolas, monospace",
+        "fonts": [
+          {
+            "familyName": "Cascadia Code",
+            "postScriptName": "CascadiaCodeRoman-Bold",
+            "isCustomFont": false,
+            "glyphCount": 25
+          }
+        ]
+      }
+    ],
+    "fontResources": [],
+    "longTasks": [
+      {
+        "start": 708.8999999999651,
+        "duration": 57
+      }
+    ],
+    "diagnostic": [],
+    "median": 28.79999999998836,
+    "p95": 29.900000000023283,
+    "max": 30.900000000023283,
+    "oldP95": 51
+  },
+  {
+    "lane": "V006-en-mobile",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS"
+    },
+    "errors": {},
+    "oldFcp": 1032,
+    "fcp": 736,
+    "eligible": 74,
+    "screenshots": 98,
+    "anchorMs": 3555.100000000006,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 699.3999999999942,
+    "responseEnd": 17.29999999998836,
+    "loadEnd": 730,
+    "fontFaces": [],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "TIDE TABLE",
+        "cssFamily": "\"Instrument Serif\", \"Noto Serif TC\", \"Songti TC\", PMingLiU, Georgia, serif",
+        "fonts": [
+          {
+            "familyName": "PMingLiU",
+            "postScriptName": "PMingLiU",
+            "isCustomFont": false,
+            "glyphCount": 10
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > a:nth-of-type(2)",
+        "text": "繁體中文 ↗",
+        "cssFamily": "ui-monospace, \"Cascadia Code\", Consolas, monospace",
+        "fonts": [
+          {
+            "familyName": "MingLiU",
+            "postScriptName": "MingLiU",
+            "isCustomFont": false,
+            "glyphCount": 5
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "A coastal guiding concept",
+        "cssFamily": "ui-monospace, \"Cascadia Code\", Consolas, monospace",
+        "fonts": [
+          {
+            "familyName": "Cascadia Code",
+            "postScriptName": "CascadiaCodeRoman-Bold",
+            "isCustomFont": false,
+            "glyphCount": 25
+          }
+        ]
+      }
+    ],
+    "fontResources": [],
+    "longTasks": [
+      {
+        "start": 925.6999999999825,
+        "duration": 70
+      }
+    ],
+    "diagnostic": [],
+    "median": 25.60000000000582,
+    "p95": 26.60000000000582,
+    "max": 27.20000000001164,
+    "oldP95": 27.5
+  },
+  {
+    "lane": "V006-zh-Hant-desktop",
+    "checks": {
+      "first-three-seconds": "FAIL",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS",
+      "desktop-real-200-percent-zoom": "PASS",
+      "Edge-default-render-and-flow": "PASS"
+    },
+    "errors": {
+      "first-three-seconds": [
+        "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "    at saveFrames (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:238:10)",
+        "    at captureOpening (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:247:17)"
+      ]
+    },
+    "oldFcp": null,
+    "fcp": null,
+    "eligible": 0,
+    "screenshots": 1,
+    "anchorMs": 7218.700000000012,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 75.29999999998836,
+    "responseEnd": 19.89999999999418,
+    "loadEnd": 7217.700000000012,
+    "fontFaces": [
+      {
+        "family": "Studio TC Text",
+        "status": "loaded",
+        "weight": "100 900",
+        "style": "normal"
+      },
+      {
+        "family": "Studio TC Serif",
+        "status": "loaded",
+        "weight": "200 900",
+        "style": "normal"
+      }
+    ],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "潮間帶 TIDE TABLE",
+        "cssFamily": "\"Studio TC Serif\", Georgia, \"Noto Serif TC\", \"Songti TC\", PMingLiU, serif",
+        "fonts": [
+          {
+            "familyName": "Cascadia Code",
+            "postScriptName": "CascadiaCodeRoman-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          },
+          {
+            "familyName": "GQ Studio Serif TC",
+            "postScriptName": "GQStudioSerifTC-Medium",
+            "isCustomFont": true,
+            "glyphCount": 3
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > a:nth-of-type(1)",
+        "text": "潮間帶",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Black",
+            "isCustomFont": true,
+            "glyphCount": 3
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "海岸導覽・概念品牌",
+        "cssFamily": "\"Studio TC Text\", ui-monospace, \"Cascadia Code\", Consolas, monospace",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Bold",
+            "isCustomFont": true,
+            "glyphCount": 9
+          }
+        ]
+      }
+    ],
+    "fontResources": [
+      {
+        "path": "/glossquote-visuals/fonts/studio-text-tc.woff2",
+        "initiator": "link",
+        "startTime": 40.29999999998836,
+        "fetchStart": 40.29999999998836,
+        "requestStart": 46.10000000000582,
+        "responseStart": 54.29999999998836,
+        "responseEnd": 56.29999999998836,
+        "duration": 16,
+        "transferSize": 169884,
+        "encodedBodySize": 169584,
+        "decodedBodySize": 169584
+      },
+      {
+        "path": "/glossquote-visuals/fonts/studio-serif-tc.woff2",
+        "initiator": "link",
+        "startTime": 40.70000000001164,
+        "fetchStart": 40.70000000001164,
+        "requestStart": 55.39999999999418,
+        "responseStart": 62.70000000001164,
+        "responseEnd": 74.10000000000582,
+        "duration": 33.39999999999418,
+        "transferSize": 227856,
+        "encodedBodySize": 227556,
+        "decodedBodySize": 227556
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 72.79999999998836,
+        "duration": 7060
+      }
+    ],
+    "diagnostic": [
+      {
+        "file": "diagnostic-filmstrip-0.jpg",
+        "sha256": "7445a49579a29fcd4e60035e15fc0d4f956059aec34a7aa646b663ed81001212",
+        "traceUs": 245918947,
+        "ms": 26.955999999976484,
+        "forDiagnosisOnly": true
+      }
+    ],
+    "median": 19.100000000034925,
+    "p95": 31.5,
+    "max": 48.20000000001164,
+    "oldP95": 31.29999999998836
+  },
+  {
+    "lane": "V006-zh-Hant-mobile",
+    "checks": {
+      "first-three-seconds": "FAIL",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS"
+    },
+    "errors": {
+      "first-three-seconds": [
+        "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "    at saveFrames (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:238:10)",
+        "    at captureOpening (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:247:17)"
+      ]
+    },
+    "oldFcp": null,
+    "fcp": null,
+    "eligible": 0,
+    "screenshots": 1,
+    "anchorMs": 8996.299999999988,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 59.70000000001164,
+    "responseEnd": 18,
+    "loadEnd": 8917.600000000006,
+    "fontFaces": [
+      {
+        "family": "Studio TC Text",
+        "status": "loaded",
+        "weight": "100 900",
+        "style": "normal"
+      },
+      {
+        "family": "Studio TC Serif",
+        "status": "loaded",
+        "weight": "200 900",
+        "style": "normal"
+      }
+    ],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "潮間帶 TIDE TABLE",
+        "cssFamily": "\"Studio TC Serif\", Georgia, \"Noto Serif TC\", \"Songti TC\", PMingLiU, serif",
+        "fonts": [
+          {
+            "familyName": "Cascadia Code",
+            "postScriptName": "CascadiaCodeRoman-Bold",
+            "isCustomFont": false,
+            "glyphCount": 10
+          },
+          {
+            "familyName": "GQ Studio Serif TC",
+            "postScriptName": "GQStudioSerifTC-Medium",
+            "isCustomFont": true,
+            "glyphCount": 3
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > a:nth-of-type(1)",
+        "text": "潮間帶",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Black",
+            "isCustomFont": true,
+            "glyphCount": 3
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "海岸導覽・概念品牌",
+        "cssFamily": "\"Studio TC Text\", ui-monospace, \"Cascadia Code\", Consolas, monospace",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Bold",
+            "isCustomFont": true,
+            "glyphCount": 9
+          }
+        ]
+      }
+    ],
+    "fontResources": [
+      {
+        "path": "/glossquote-visuals/fonts/studio-text-tc.woff2",
+        "initiator": "link",
+        "startTime": 31.89999999999418,
+        "fetchStart": 31.89999999999418,
+        "requestStart": 33.39999999999418,
+        "responseStart": 40.60000000000582,
+        "responseEnd": 42,
+        "duration": 10.10000000000582,
+        "transferSize": 169884,
+        "encodedBodySize": 169584,
+        "decodedBodySize": 169584
+      },
+      {
+        "path": "/glossquote-visuals/fonts/studio-serif-tc.woff2",
+        "initiator": "link",
+        "startTime": 32.29999999998836,
+        "fetchStart": 32.29999999998836,
+        "requestStart": 41.5,
+        "responseStart": 43.79999999998836,
+        "responseEnd": 46,
+        "duration": 13.700000000011642,
+        "transferSize": 227856,
+        "encodedBodySize": 227556,
+        "decodedBodySize": 227556
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 56.39999999999418,
+        "duration": 8859
+      },
+      {
+        "start": 8917,
+        "duration": 66
+      }
+    ],
+    "diagnostic": [
+      {
+        "file": "diagnostic-filmstrip-0.jpg",
+        "sha256": "9abf552d1383066a2837ffdce039870ce2401265a6244f4e180b5632c87f1238",
+        "traceUs": 161467520,
+        "ms": 13.00899999999092,
+        "forDiagnosisOnly": true
+      }
+    ],
+    "median": 25.20000000001164,
+    "p95": 26.39999999999418,
+    "max": 27.599999999976717,
+    "oldP95": 26.89999999999418
+  },
+  {
+    "lane": "V007-en-desktop",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS",
+      "desktop-real-200-percent-zoom": "PASS"
+    },
+    "errors": {},
+    "oldFcp": 836,
+    "fcp": 992,
+    "eligible": 62,
+    "screenshots": 89,
+    "anchorMs": 3594.5999999999767,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 77.29999999993015,
+    "responseEnd": 29.699999999953434,
+    "loadEnd": 875.1999999999534,
+    "fontFaces": [],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "Cloth,thread by thread.",
+        "cssFamily": "\"Instrument Serif\", \"Noto Serif TC\", \"Songti TC\", PMingLiU, Georgia, serif",
+        "fonts": [
+          {
+            "familyName": "PMingLiU",
+            "postScriptName": "PMingLiU",
+            "isCustomFont": false,
+            "glyphCount": 23
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > a:nth-of-type(2)",
+        "text": "繁體中文 ↗",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "微軟正黑體",
+            "postScriptName": "MicrosoftJhengHeiRegular",
+            "isCustomFont": false,
+            "glyphCount": 4
+          },
+          {
+            "familyName": "Segoe UI",
+            "postScriptName": "SegoeUI",
+            "isCustomFont": false,
+            "glyphCount": 1
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "Interior textiles · Sample studio",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "Segoe UI",
+            "postScriptName": "SegoeUI-Bold",
+            "isCustomFont": false,
+            "glyphCount": 33
+          }
+        ]
+      }
+    ],
+    "fontResources": [],
+    "longTasks": [
+      {
+        "start": 74,
+        "duration": 801
+      },
+      {
+        "start": 1094.5999999999767,
+        "duration": 72
+      }
+    ],
+    "diagnostic": [],
+    "median": 21.70000000006985,
+    "p95": 30.29999999993015,
+    "max": 42.40000000002328,
+    "oldP95": 29.60000000000582
+  },
+  {
+    "lane": "V007-en-mobile",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS"
+    },
+    "errors": {},
+    "oldFcp": 364,
+    "fcp": 1128,
+    "eligible": 61,
+    "screenshots": 82,
+    "anchorMs": 3547.4000000000233,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 1029,
+    "responseEnd": 19.5,
+    "loadEnd": 1103.9000000000233,
+    "fontFaces": [],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "Cloth,thread by thread.",
+        "cssFamily": "\"Instrument Serif\", \"Noto Serif TC\", \"Songti TC\", PMingLiU, Georgia, serif",
+        "fonts": [
+          {
+            "familyName": "PMingLiU",
+            "postScriptName": "PMingLiU",
+            "isCustomFont": false,
+            "glyphCount": 23
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > a:nth-of-type(2)",
+        "text": "繁體中文 ↗",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "微軟正黑體",
+            "postScriptName": "MicrosoftJhengHeiRegular",
+            "isCustomFont": false,
+            "glyphCount": 4
+          },
+          {
+            "familyName": "Segoe UI",
+            "postScriptName": "SegoeUI",
+            "isCustomFont": false,
+            "glyphCount": 1
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "Interior textiles · Sample studio",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "Segoe UI",
+            "postScriptName": "SegoeUI-Bold",
+            "isCustomFont": false,
+            "glyphCount": 33
+          }
+        ]
+      }
+    ],
+    "fontResources": [],
+    "longTasks": [
+      {
+        "start": 1026.3000000000175,
+        "duration": 78
+      },
+      {
+        "start": 1276.5,
+        "duration": 70
+      }
+    ],
+    "diagnostic": [],
+    "median": 25.79999999998836,
+    "p95": 26.599999999976717,
+    "max": 26.89999999999418,
+    "oldP95": 23.29999999998836
+  },
+  {
+    "lane": "V007-zh-Hant-desktop",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS",
+      "desktop-real-200-percent-zoom": "PASS",
+      "Edge-default-render-and-flow": "PASS"
+    },
+    "errors": {},
+    "oldFcp": null,
+    "fcp": 344,
+    "eligible": 89,
+    "screenshots": 116,
+    "anchorMs": 3555.2999999999884,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 249.29999999998836,
+    "responseEnd": 26.899999999965075,
+    "loadEnd": 264.8999999999651,
+    "fontFaces": [
+      {
+        "family": "Studio TC Text",
+        "status": "loaded",
+        "weight": "100 900",
+        "style": "normal"
+      },
+      {
+        "family": "Studio TC Serif",
+        "status": "loaded",
+        "weight": "200 900",
+        "style": "normal"
+      }
+    ],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "讓布說話。從一線開始。",
+        "cssFamily": "\"Studio TC Serif\", Georgia, \"Noto Serif TC\", \"Songti TC\", PMingLiU, serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Serif TC",
+            "postScriptName": "GQStudioSerifTC",
+            "isCustomFont": true,
+            "glyphCount": 11
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+        "text": "組織對照",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC",
+            "isCustomFont": true,
+            "glyphCount": 4
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "室內織品 · 打樣室",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Bold",
+            "isCustomFont": true,
+            "glyphCount": 8
+          },
+          {
+            "familyName": "Segoe UI",
+            "postScriptName": "SegoeUI-Bold",
+            "isCustomFont": false,
+            "glyphCount": 2
+          }
+        ]
+      }
+    ],
+    "fontResources": [
+      {
+        "path": "/glossquote-visuals/fonts/studio-text-tc.woff2",
+        "initiator": "link",
+        "startTime": 43.59999999997672,
+        "fetchStart": 43.59999999997672,
+        "requestStart": 45.79999999998836,
+        "responseStart": 54.5,
+        "responseEnd": 56.399999999965075,
+        "duration": 12.799999999988358,
+        "transferSize": 169884,
+        "encodedBodySize": 169584,
+        "decodedBodySize": 169584
+      },
+      {
+        "path": "/glossquote-visuals/fonts/studio-serif-tc.woff2",
+        "initiator": "link",
+        "startTime": 44.09999999997672,
+        "fetchStart": 44.09999999997672,
+        "requestStart": 55.699999999953434,
+        "responseStart": 61.29999999998836,
+        "responseEnd": 63.899999999965075,
+        "duration": 19.79999999998836,
+        "transferSize": 227856,
+        "encodedBodySize": 227556,
+        "decodedBodySize": 227556
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 517,
+        "duration": 65
+      }
+    ],
+    "diagnostic": [],
+    "median": 21.70000000006985,
+    "p95": 29.20000000006985,
+    "max": 33.800000000046566,
+    "oldP95": 30.199999999982538
+  },
+  {
+    "lane": "V007-zh-Hant-mobile",
+    "checks": {
+      "first-three-seconds": "FAIL",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS"
+    },
+    "errors": {
+      "first-three-seconds": [
+        "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "    at saveFrames (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:238:10)",
+        "    at captureOpening (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:247:17)"
+      ]
+    },
+    "oldFcp": null,
+    "fcp": null,
+    "eligible": 0,
+    "screenshots": 1,
+    "anchorMs": 5045.099999999977,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 44,
+    "responseEnd": 10.899999999965075,
+    "loadEnd": 5044.399999999965,
+    "fontFaces": [
+      {
+        "family": "Studio TC Text",
+        "status": "loaded",
+        "weight": "100 900",
+        "style": "normal"
+      },
+      {
+        "family": "Studio TC Serif",
+        "status": "loaded",
+        "weight": "200 900",
+        "style": "normal"
+      }
+    ],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "讓布說話。從一線開始。",
+        "cssFamily": "\"Studio TC Serif\", Georgia, \"Noto Serif TC\", \"Songti TC\", PMingLiU, serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Serif TC",
+            "postScriptName": "GQStudioSerifTC",
+            "isCustomFont": true,
+            "glyphCount": 11
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+        "text": "組織對照",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": []
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "室內織品 · 打樣室",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Bold",
+            "isCustomFont": true,
+            "glyphCount": 8
+          },
+          {
+            "familyName": "Segoe UI",
+            "postScriptName": "SegoeUI-Bold",
+            "isCustomFont": false,
+            "glyphCount": 2
+          }
+        ]
+      }
+    ],
+    "fontResources": [
+      {
+        "path": "/glossquote-visuals/fonts/studio-text-tc.woff2",
+        "initiator": "link",
+        "startTime": 24.599999999976717,
+        "fetchStart": 24.599999999976717,
+        "requestStart": 25.599999999976717,
+        "responseStart": 32,
+        "responseEnd": 33.29999999998836,
+        "duration": 8.700000000011642,
+        "transferSize": 169884,
+        "encodedBodySize": 169584,
+        "decodedBodySize": 169584
+      },
+      {
+        "path": "/glossquote-visuals/fonts/studio-serif-tc.woff2",
+        "initiator": "link",
+        "startTime": 24.899999999965075,
+        "fetchStart": 24.899999999965075,
+        "requestStart": 32.899999999965075,
+        "responseStart": 37.79999999998836,
+        "responseEnd": 38.399999999965075,
+        "duration": 13.5,
+        "transferSize": 227856,
+        "encodedBodySize": 227556,
+        "decodedBodySize": 227556
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 42.199999999953434,
+        "duration": 4940
+      }
+    ],
+    "diagnostic": [
+      {
+        "file": "diagnostic-filmstrip-0.jpg",
+        "sha256": "9abf552d1383066a2837ffdce039870ce2401265a6244f4e180b5632c87f1238",
+        "traceUs": 297461349,
+        "ms": 12.51699999999255,
+        "forDiagnosisOnly": true
+      }
+    ],
+    "median": 22.70000000001164,
+    "p95": 24.099999999976717,
+    "max": 31.400000000023283,
+    "oldP95": 24.5
+  },
+  {
+    "lane": "V008-en-desktop",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS",
+      "desktop-real-200-percent-zoom": "PASS"
+    },
+    "errors": {},
+    "oldFcp": 488,
+    "fcp": 340,
+    "eligible": 97,
+    "screenshots": 119,
+    "anchorMs": 3543.0999999999767,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 254.70000000001164,
+    "responseEnd": 18.29999999998836,
+    "loadEnd": 255.39999999996508,
+    "fontFaces": [],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "Summer by the scoop.",
+        "cssFamily": "ui-rounded, \"Arial Rounded MT Bold\", \"Trebuchet MS\", \"Microsoft JhengHei\", system-ui, sans-serif",
+        "fonts": [
+          {
+            "familyName": "Trebuchet MS",
+            "postScriptName": "TrebuchetMS-Bold",
+            "isCustomFont": false,
+            "glyphCount": 19
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+        "text": "繁體中文",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "微軟正黑體",
+            "postScriptName": "MicrosoftJhengHeiBold",
+            "isCustomFont": false,
+            "glyphCount": 4
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "Seasonal sorbet gift box",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "Segoe UI Black",
+            "postScriptName": "SegoeUIBlack",
+            "isCustomFont": false,
+            "glyphCount": 24
+          }
+        ]
+      }
+    ],
+    "fontResources": [],
+    "longTasks": [],
+    "diagnostic": [],
+    "median": 26.20000000001164,
+    "p95": 27.400000000023283,
+    "max": 28.79999999998836,
+    "oldP95": 31.199999999982538
+  },
+  {
+    "lane": "V008-en-mobile",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS"
+    },
+    "errors": {},
+    "oldFcp": 504,
+    "fcp": 464,
+    "eligible": 105,
+    "screenshots": 130,
+    "anchorMs": 3537.5,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 346.5,
+    "responseEnd": 14.89999999999418,
+    "loadEnd": 347.6000000000058,
+    "fontFaces": [],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "Summer by the scoop.",
+        "cssFamily": "ui-rounded, \"Arial Rounded MT Bold\", \"Trebuchet MS\", \"Microsoft JhengHei\", system-ui, sans-serif",
+        "fonts": [
+          {
+            "familyName": "Trebuchet MS",
+            "postScriptName": "TrebuchetMS-Bold",
+            "isCustomFont": false,
+            "glyphCount": 19
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+        "text": "繁體中文",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "微軟正黑體",
+            "postScriptName": "MicrosoftJhengHeiBold",
+            "isCustomFont": false,
+            "glyphCount": 4
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "Seasonal sorbet gift box",
+        "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "Segoe UI Black",
+            "postScriptName": "SegoeUIBlack",
+            "isCustomFont": false,
+            "glyphCount": 24
+          }
+        ]
+      }
+    ],
+    "fontResources": [],
+    "longTasks": [
+      {
+        "start": 555.1999999999825,
+        "duration": 70
+      }
+    ],
+    "diagnostic": [],
+    "median": 22.199999999982538,
+    "p95": 23.10000000000582,
+    "max": 23.900000000023283,
+    "oldP95": 22.400000000023283
+  },
+  {
+    "lane": "V008-zh-Hant-desktop",
+    "checks": {
+      "first-three-seconds": "FAIL",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS",
+      "desktop-real-200-percent-zoom": "PASS",
+      "Edge-default-render-and-flow": "PASS"
+    },
+    "errors": {
+      "first-three-seconds": [
+        "AssertionError [ERR_ASSERTION]: Need two distinct, visible stage images from the first three navigation seconds",
+        "    at saveFrames (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:238:10)",
+        "    at captureOpening (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/m04-opening.mjs:247:17)"
+      ]
+    },
+    "oldFcp": 1228,
+    "fcp": null,
+    "eligible": 0,
+    "screenshots": 3,
+    "anchorMs": 6096.300000000047,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 47.800000000046566,
+    "responseEnd": 17.5,
+    "loadEnd": 5934.800000000047,
+    "fontFaces": [
+      {
+        "family": "Studio TC Text",
+        "status": "loaded",
+        "weight": "100 900",
+        "style": "normal"
+      },
+      {
+        "family": "Studio TC Serif",
+        "status": "unloaded",
+        "weight": "200 900",
+        "style": "normal"
+      }
+    ],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "把盛夏 舀進禮盒。",
+        "cssFamily": "\"Studio TC Text\", ui-rounded, \"Arial Rounded MT Bold\", \"Trebuchet MS\", system-ui, sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Black",
+            "isCustomFont": true,
+            "glyphCount": 8
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+        "text": "看口味",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Bold",
+            "isCustomFont": true,
+            "glyphCount": 3
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "季節果冰禮盒",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-ExtraBold",
+            "isCustomFont": true,
+            "glyphCount": 6
+          }
+        ]
+      }
+    ],
+    "fontResources": [
+      {
+        "path": "/glossquote-visuals/fonts/studio-text-tc.woff2",
+        "initiator": "link",
+        "startTime": 28.600000000034925,
+        "fetchStart": 28.600000000034925,
+        "requestStart": 29.70000000001164,
+        "responseStart": 35.20000000001164,
+        "responseEnd": 36.40000000002328,
+        "duration": 7.7999999999883585,
+        "transferSize": 169884,
+        "encodedBodySize": 169584,
+        "decodedBodySize": 169584
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 45.300000000046566,
+        "duration": 303
+      },
+      {
+        "start": 350.70000000001164,
+        "duration": 5579
+      },
+      {
+        "start": 5934.800000000047,
+        "duration": 52
+      }
+    ],
+    "diagnostic": [
+      {
+        "file": "diagnostic-filmstrip-0.jpg",
+        "sha256": "7445a49579a29fcd4e60035e15fc0d4f956059aec34a7aa646b663ed81001212",
+        "traceUs": 284734006,
+        "ms": 16.401000000012573,
+        "forDiagnosisOnly": true
+      },
+      {
+        "file": "diagnostic-filmstrip-1.jpg",
+        "sha256": "cdaf38ddd3c7a6d00ca89e4a7de0dddf33851348bcc5670ad226c5073eee602c",
+        "traceUs": 290851801,
+        "ms": 6134.195999999996,
+        "forDiagnosisOnly": true
+      }
+    ],
+    "median": 29.400000000023283,
+    "p95": 30.399999999965075,
+    "max": 31.5,
+    "oldP95": 31
+  },
+  {
+    "lane": "V008-zh-Hant-mobile",
+    "checks": {
+      "first-three-seconds": "PASS",
+      "initial-and-material-sequence": "PASS",
+      "PERF-1": "PASS",
+      "GPU-2-controls-and-pause": "PASS",
+      "BIZ-2-and-privacy": "PASS",
+      "FALL-1-no-js": "PASS",
+      "FALL-1-gpu-init-fail": "PASS",
+      "FALL-1-reduced": "PASS",
+      "FALL-2-and-PERF-2": "PASS",
+      "responsive-and-focus": "PASS"
+    },
+    "errors": {},
+    "oldFcp": null,
+    "fcp": 412,
+    "eligible": 105,
+    "screenshots": 131,
+    "anchorMs": 3529.5,
+    "ready": "complete",
+    "visibility": "visible",
+    "DCL": 43.5,
+    "responseEnd": 12.60000000000582,
+    "loadEnd": 110.5,
+    "fontFaces": [
+      {
+        "family": "Studio TC Text",
+        "status": "loaded",
+        "weight": "100 900",
+        "style": "normal"
+      },
+      {
+        "family": "Studio TC Serif",
+        "status": "unloaded",
+        "weight": "200 900",
+        "style": "normal"
+      }
+    ],
+    "platform": [
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+        "text": "把盛夏 舀進禮盒。",
+        "cssFamily": "\"Studio TC Text\", ui-rounded, \"Arial Rounded MT Bold\", \"Trebuchet MS\", system-ui, sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Black",
+            "isCustomFont": true,
+            "glyphCount": 8
+          }
+        ]
+      },
+      {
+        "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+        "text": "看口味",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-Bold",
+            "isCustomFont": true,
+            "glyphCount": 3
+          }
+        ]
+      },
+      {
+        "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "季節果冰禮盒",
+        "cssFamily": "\"Studio TC Text\", \"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+        "fonts": [
+          {
+            "familyName": "GQ Studio Sans TC",
+            "postScriptName": "GQStudioSansTC-ExtraBold",
+            "isCustomFont": true,
+            "glyphCount": 6
+          }
+        ]
+      }
+    ],
+    "fontResources": [
+      {
+        "path": "/glossquote-visuals/fonts/studio-text-tc.woff2",
+        "initiator": "link",
+        "startTime": 24.199999999982538,
+        "fetchStart": 24.199999999982538,
+        "requestStart": 25.199999999982538,
+        "responseStart": 30.699999999982538,
+        "responseEnd": 32,
+        "duration": 7.800000000017462,
+        "transferSize": 169884,
+        "encodedBodySize": 169584,
+        "decodedBodySize": 169584
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 41.19999999998254,
+        "duration": 67
+      },
+      {
+        "start": 110.39999999999418,
+        "duration": 124
+      },
+      {
+        "start": 404,
+        "duration": 57
+      }
+    ],
+    "diagnostic": [],
+    "median": 21.70000000001164,
+    "p95": 22.5,
+    "max": 24.800000000017462,
+    "oldP95": 24.29999999998836
+  }
+]

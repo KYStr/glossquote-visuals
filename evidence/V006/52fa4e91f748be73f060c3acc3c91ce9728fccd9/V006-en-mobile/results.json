@@ -1,0 +1,5556 @@
+{
+  "work": "V006",
+  "lang": "en",
+  "viewport": "mobile",
+  "commit": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "rejected": [
+          "0",
+          "9",
+          "1.5",
+          ""
+        ],
+        "accepted": [
+          1,
+          8
+        ],
+        "routes": [
+          "pool",
+          "ridge",
+          "shelf"
+        ],
+        "filename": "tide-table-en.txt",
+        "bytes": 366,
+        "exported": "TIDE TABLE — Your trip checklist\n\nCoastal walks: Rock Shelf Walk\nGroup size (including you): 8\nRound trip: 1.2 km\nWalking time: 60 min\nTerrain: Uneven shelf, low ledges\nEssential gear: Closed-toe grippy shoes, Drinking water, Light rain jacket\nExtra gear: Field notebook, Dry bag\n\nIllustrative walk. Check official tide times and local site access before leaving.\n"
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "rejected": [
+          "0",
+          "9",
+          "1.5",
+          ""
+        ],
+        "accepted": [
+          1,
+          8
+        ],
+        "routes": [
+          "pool",
+          "ridge",
+          "shelf"
+        ],
+        "filename": "tide-table-en.txt",
+        "bytes": 366,
+        "exported": "TIDE TABLE — Your trip checklist\n\nCoastal walks: Rock Shelf Walk\nGroup size (including you): 8\nRound trip: 1.2 km\nWalking time: 60 min\nTerrain: Uneven shelf, low ledges\nEssential gear: Closed-toe grippy shoes, Drinking water, Light rain jacket\nExtra gear: Field notebook, Dry bag\n\nIllustrative walk. Check official tide times and local site access before leaving.\n"
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795195841364.4,
+      "anchorMs": 3538.399999999965,
+      "view": {
+        "at": 405.5,
+        "stage": {
+          "x": 20.5,
+          "y": 391.28125,
+          "right": 369.5,
+          "bottom": 623.9375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstContentfulPaint": 428,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "en",
+        "title": "TIDE TABLE | Coastal walks and trip checklist",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/assets/page-Dnui4yTB.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 0.7999999999883585,
+          "requestStart": 2.2999999999883585,
+          "responseStart": 12.099999999976717,
+          "responseEnd": 12.599999999976717,
+          "duration": 399.79999999998836,
+          "domInteractive": 25.29999999998836,
+          "domContentLoadedEventStart": 386.20000000001164,
+          "domContentLoadedEventEnd": 386.29999999998836,
+          "domComplete": 399.70000000001164,
+          "loadEventStart": 399.70000000001164,
+          "loadEventEnd": 399.79999999998836,
+          "transferSize": 12167,
+          "encodedBodySize": 11867,
+          "decodedBodySize": 11867
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 428
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 428
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 23.399999999965075,
+            "fetchStart": 23.399999999965075,
+            "requestStart": 27.5,
+            "responseStart": 29.899999999965075,
+            "responseEnd": 30.29999999998836,
+            "duration": 6.900000000023283,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-DTO1PNZ8.js",
+            "initiator": "script",
+            "startTime": 23.70000000001164,
+            "fetchStart": 23.70000000001164,
+            "requestStart": 29.399999999965075,
+            "responseStart": 31.599999999976717,
+            "responseEnd": 32,
+            "duration": 8.299999999988358,
+            "transferSize": 4503,
+            "encodedBodySize": 4203,
+            "decodedBodySize": 4203
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-Dnui4yTB.css",
+            "initiator": "link",
+            "startTime": 23.79999999998836,
+            "fetchStart": 23.79999999998836,
+            "requestStart": 29.20000000001164,
+            "responseStart": 31.099999999976717,
+            "responseEnd": 31.399999999965075,
+            "duration": 7.599999999976717,
+            "transferSize": 9963,
+            "encodedBodySize": 9663,
+            "decodedBodySize": 9663
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 23.79999999998836,
+            "fetchStart": 23.79999999998836,
+            "requestStart": 29.29999999998836,
+            "responseStart": 31.399999999965075,
+            "responseEnd": 31.5,
+            "duration": 7.7000000000116415,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/tide-table/mark.svg",
+            "initiator": "img",
+            "startTime": 24.599999999976717,
+            "fetchStart": 24.599999999976717,
+            "requestStart": 30.5,
+            "responseStart": 31.70000000001164,
+            "responseEnd": 32,
+            "duration": 7.400000000023283,
+            "transferSize": 552,
+            "encodedBodySize": 252,
+            "decodedBodySize": 252
+          },
+          {
+            "path": "/glossquote-visuals/media/tide-table/cover.webp",
+            "initiator": "img",
+            "startTime": 24.599999999976717,
+            "fetchStart": 24.599999999976717,
+            "requestStart": 30.70000000001164,
+            "responseStart": 31.899999999965075,
+            "responseEnd": 32.20000000001164,
+            "duration": 7.600000000034925,
+            "transferSize": 89642,
+            "encodedBodySize": 89342,
+            "decodedBodySize": 89342
+          },
+          {
+            "path": "/glossquote-visuals/media/tide-table/mid.webp",
+            "initiator": "img",
+            "startTime": 383,
+            "fetchStart": 383,
+            "requestStart": 384.8999999999651,
+            "responseStart": 386.79999999998836,
+            "responseEnd": 387.0999999999767,
+            "duration": 4.099999999976717,
+            "transferSize": 63320,
+            "encodedBodySize": 63020,
+            "decodedBodySize": 63020
+          },
+          {
+            "path": "/glossquote-visuals/media/tide-table/high.webp",
+            "initiator": "img",
+            "startTime": 383.0999999999767,
+            "fetchStart": 383.0999999999767,
+            "requestStart": 385.20000000001164,
+            "responseStart": 387.20000000001164,
+            "responseEnd": 387.3999999999651,
+            "duration": 4.2999999999883585,
+            "transferSize": 48626,
+            "encodedBodySize": 48326,
+            "decodedBodySize": 48326
+          },
+          {
+            "path": "/glossquote-visuals/assets/shader-ClSvCMVM.js",
+            "initiator": "script",
+            "startTime": 406.5,
+            "fetchStart": 406.5,
+            "requestStart": 407.0999999999767,
+            "responseStart": 408.5999999999767,
+            "responseEnd": 409.0999999999767,
+            "duration": 2.599999999976717,
+            "transferSize": 6762,
+            "encodedBodySize": 6462,
+            "decodedBodySize": 6462
+          },
+          {
+            "path": "/glossquote-visuals/media/tide-table/mark.svg",
+            "initiator": "other",
+            "startTime": 406.70000000001164,
+            "fetchStart": 406.70000000001164,
+            "requestStart": 407.5,
+            "responseStart": 409.20000000001164,
+            "responseEnd": 409.3999999999651,
+            "duration": 2.699999999953434,
+            "transferSize": 552,
+            "encodedBodySize": 252,
+            "decodedBodySize": 252
+          },
+          {
+            "path": "/glossquote-visuals/assets/standalone-DX-vHLon.js",
+            "initiator": "script",
+            "startTime": 412.29999999998836,
+            "fetchStart": 412.29999999998836,
+            "requestStart": 413.8999999999651,
+            "responseStart": 420.70000000001164,
+            "responseEnd": 442.5999999999767,
+            "duration": 30.29999999998836,
+            "transferSize": 2571858,
+            "encodedBodySize": 2571558,
+            "decodedBodySize": 2571558
+          }
+        ],
+        "longTasks": []
+      },
+      "fromCommitReturnToTimingReadMs": 3519.9846,
+      "navigationStartMetricMs": 273895.132,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "TIDE TABLE",
+          "cssFamily": "\"Instrument Serif\", \"Noto Serif TC\", \"Songti TC\", PMingLiU, Georgia, serif",
+          "fonts": [
+            {
+              "familyName": "PMingLiU",
+              "postScriptName": "PMingLiU",
+              "isCustomFont": false,
+              "glyphCount": 10
+            }
+          ]
+        },
+        {
+          "selector": "body > header:nth-of-type(1) > a:nth-of-type(2)",
+          "text": "繁體中文 ↗",
+          "cssFamily": "ui-monospace, \"Cascadia Code\", Consolas, monospace",
+          "fonts": [
+            {
+              "familyName": "MingLiU",
+              "postScriptName": "MingLiU",
+              "isCustomFont": false,
+              "glyphCount": 5
+            }
+          ]
+        },
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "A coastal guiding concept",
+          "cssFamily": "ui-monospace, \"Cascadia Code\", Consolas, monospace",
+          "fonts": [
+            {
+              "familyName": "Cascadia Code",
+              "postScriptName": "CascadiaCodeRoman-Bold",
+              "isCustomFont": false,
+              "glyphCount": 25
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 273913.821,
+          "ms": 18.68900000001304
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 274281.55199999997,
+          "ms": 386.4199999999837
+        },
+        {
+          "name": "load",
+          "traceMs": 274295.032,
+          "ms": 399.9000000000233
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 274323.105,
+          "ms": 427.97299999999814
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 274323.105,
+          "ms": 427.97299999999814
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 274323.105,
+          "ms": 427.97299999999814
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 274323.105,
+          "ms": 427.97299999999814
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 274293.526,
+          "ms": 398.39400000002934
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 274323.105,
+          "ms": 427.97299999999814
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 274411.10400000005,
+          "ms": 515.972000000067
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3519.710999999952,
+      "navigationStartTraceMs": 273895.132,
+      "navigationStartEventUs": 273895132,
+      "anchorTraceUs": 277433615,
+      "fcpTraceClockUs": 274323132,
+      "screenshotEvents": 123,
+      "traceImageTimesMs": [
+        9.775000000023283,
+        432.8640000000014,
+        439.1689999999944,
+        655.8800000000047,
+        662.3090000000084,
+        663.3560000000289,
+        674.3429999999935,
+        700.4370000000345,
+        725.0929999999935,
+        749.7430000000168,
+        774.4500000000116,
+        799.3960000000079,
+        824.4090000000433,
+        851.3060000000405,
+        866.5119999999879,
+        891.1520000000019,
+        917.1840000000084,
+        942.2160000000149,
+        968.2000000000116,
+        993.0620000000345,
+        1017.4480000000331,
+        1042.5009999999893,
+        1068.2370000000228,
+        1092.929999999993,
+        1117.7470000000321,
+        1142.3730000000214,
+        1166.7240000000456,
+        1191.4710000000196,
+        1216.4590000000317,
+        1240.8110000000452,
+        1267.0140000000247,
+        1291.6480000000447,
+        1316.5540000000037,
+        1342.5389999999898,
+        1367.1630000000005,
+        1393.2550000000047,
+        1417.9629999999888,
+        1442.6650000000373,
+        1468.9170000000158,
+        1493.7669999999925,
+        1518.9519999999902,
+        1544.6210000000428,
+        1569.8099999999977,
+        1594.13400000002,
+        1619.1149999999907,
+        1643.5979999999981,
+        1669.030000000028,
+        1693.9380000000237,
+        1718.6650000000373,
+        1743.951000000001,
+        1768.253000000026,
+        1793.6590000000433,
+        1818.3040000000037,
+        1842.2550000000047,
+        1867.0499999999884,
+        1892.2129999999888,
+        1917.433000000019,
+        1942.8070000000298,
+        1968.4100000000326,
+        1993.4100000000326,
+        2018.649000000034,
+        2043.7460000000428,
+        2068.601000000024,
+        2094.7399999999907,
+        2119.737000000023,
+        2144.8090000000084,
+        2169.537000000011,
+        2194.3940000000293,
+        2219.476000000024,
+        2244.628000000026,
+        2269.1900000000023,
+        2294.171000000031,
+        2319.1140000000014,
+        2344.183000000019,
+        2369.152999999991,
+        2394.4830000000075,
+        2419.8190000000177,
+        2445.7970000000205,
+        2470.5810000000056,
+        2496.1639999999898,
+        2521.570000000007,
+        2547.4470000000438,
+        2571.405000000028,
+        2601.094000000041,
+        2666.7140000000363,
+        2673.2970000000205,
+        2674.3520000000135,
+        2689.4310000000405,
+        2691.627000000037,
+        2718.296000000031,
+        2741.9980000000214,
+        2767.2630000000354,
+        2792.9400000000023,
+        2807.878000000026,
+        2832.8740000000107,
+        2859.3800000000047,
+        2884.5929999999935,
+        2910.0250000000233,
+        2935.386999999988,
+        2960.5540000000037,
+        2986.042000000016,
+        3012.4770000000135,
+        3037.92300000001,
+        3062.918000000005,
+        3087.436000000045,
+        3112.287000000011,
+        3137.350000000035,
+        3162.378000000026,
+        3186.9590000000317,
+        3211.597000000009,
+        3236.7339999999967,
+        3262.070000000007,
+        3287.8310000000056,
+        3312.6660000000265,
+        3337.222999999998,
+        3363.9740000000456,
+        3388.2360000000335,
+        3413.6500000000233,
+        3438.265000000014,
+        3462.377000000037,
+        3488.6050000000396,
+        3513.107000000018,
+        3539.6259999999893
+      ],
+      "filmstripFramesInWindow": 100,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 432.8640000000014,
+          "traceUs": 274327996,
+          "file": "opening-0.png",
+          "sha256": "3727e316bc66684f2cbe18a79fe62da92c25828df259a67dbedd782af7b3b011",
+          "source": "opening-0.jpg",
+          "originalSha256": "b7bd8cdb12180602f73447654f97c62c26085d5b643113b5a8b42b07cda51245",
+          "stageHash": "df7ed5be8aaeefe5802af3cdb8a8c5f31f49beeb59a09055b5c506acc0c184df",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 774.4500000000116,
+          "traceUs": 274669582,
+          "file": "opening-1.png",
+          "sha256": "d547527a4b3b0a5848470cafacd15281665e6cb127279eada6bf8fb973f214f1",
+          "source": "opening-1.jpg",
+          "originalSha256": "673a0b8c3d2e7189c032f8b03fae9ebc2b20d960c49a1289418b74fc35293b42",
+          "stageHash": "2d3083b849bf4faa9bafc5a21ed6beef81d9bc9f658cd1e25ea6fbb13e165a17",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 993.0620000000345,
+          "traceUs": 274888194,
+          "file": "opening-2.png",
+          "sha256": "4e3e94d63ee6c291639dfd2ae71eac8c29b511ae3eacc66f29e07de1c843d63b",
+          "source": "opening-2.jpg",
+          "originalSha256": "7550b6415de061fd7359e37280b4333e1b2f6f7e1bcd23a8e7bdae14bb456e2b",
+          "stageHash": "078fce079785e52040aa4d2327d21841aeac8259cbc3b6c8bc92f851902e852e",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1216.4590000000317,
+          "traceUs": 275111591,
+          "file": "opening-3.png",
+          "sha256": "ced78ea6ca7ef9f9d20e18ca99775988b0fdc9c4c43432550f94c801f26059b9",
+          "source": "opening-3.jpg",
+          "originalSha256": "19c70571af1baf36c4be4296869d2d4334189cb8518f385a692aaf252d4a9ab9",
+          "stageHash": "1fb8ba5ec3048f5eba2db9afe856dfc913a8f6e3337a5159ad76cd94cd18d7af",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1442.6650000000373,
+          "traceUs": 275337797,
+          "file": "opening-4.png",
+          "sha256": "c1f18144528d34241d276c185f7afe332304ec4810df18f75604a7bf3b916917",
+          "source": "opening-4.jpg",
+          "originalSha256": "9f20150d360e4452b5d0b25ce228f9cee7046f4cc0c18bcc8eedcca3271fd4a4",
+          "stageHash": "a625fbb3bb0e384f3d7e860a3d96d64191c74b7eb04e6baf41a98cfb124e353f",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1669.030000000028,
+          "traceUs": 275564162,
+          "file": "opening-5.png",
+          "sha256": "7d0378a3e64f690be437ad03445c314a0b56375b9aba81b5f1262e8ba5c5923f",
+          "source": "opening-5.jpg",
+          "originalSha256": "6e6cd57e8ef7466065eb1fcc15a8fecfc6ff15b4ae9efebe4195dec7140ef004",
+          "stageHash": "b830fefe287685698c205d711820a37f71abc3e0f666843c042b0a27210d2cee",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1892.2129999999888,
+          "traceUs": 275787345,
+          "file": "opening-6.png",
+          "sha256": "36e316f3499b523f75824d103ef40934afcd9aee2ac444c60f726e8792331b72",
+          "source": "opening-6.jpg",
+          "originalSha256": "c0763f0b70cd0eb658e94f28499c4e57f850087e82041cd4557b701afbca2ff1",
+          "stageHash": "fb5446263e304788fc5d111baa6efbd689328d6d91c9deb483d0f17a12053638",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2119.737000000023,
+          "traceUs": 276014869,
+          "file": "opening-7.png",
+          "sha256": "ff8d1db5ed6ee3dc478cee21d914be72e77621b9f9cea60c68bf3aff6526f851",
+          "source": "opening-7.jpg",
+          "originalSha256": "b5eec3d2a296da49e8951a5a6b1d4734b6e4a422e74da05250cb72d5c26b9859",
+          "stageHash": "119340c95e603daa13ab83897ae067e53f7ec4b41499bc4160a628efe9befc6f",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2344.183000000019,
+          "traceUs": 276239315,
+          "file": "opening-8.png",
+          "sha256": "a3c748d43c403c988deeb2bbea7d772a5af3e5bb48396d037dcd175add22e2cf",
+          "source": "opening-8.jpg",
+          "originalSha256": "ec528909cc01d10ea9b9f3c3153d595f15406e478665b349129962dcfa943d97",
+          "stageHash": "054550e3341a3c76aa51312fc3107fdbbedd48aa3930eef2768cfc3e7ed9394c",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2571.405000000028,
+          "traceUs": 276466537,
+          "file": "opening-9.png",
+          "sha256": "d00932cd317a3f9b97f4c6e3e72f874e18c0442570327db66b4747ea8ad98573",
+          "source": "opening-9.jpg",
+          "originalSha256": "080ad8876e22583f36375ea970d9b3a2a3a2479cbd71fd240d17bfa6047c3d71",
+          "stageHash": "cc4d69b681caa3d935155720ae939f5f6b8507862ab971251ee5ff3270cc8cd2",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2767.2630000000354,
+          "traceUs": 276662395,
+          "file": "opening-10.png",
+          "sha256": "c77a5a468224645be13d031a1244a1569296d04689db5d169839909524c3e267",
+          "source": "opening-10.jpg",
+          "originalSha256": "a4b44f0e7a5d4fc46e93ddf06fcb3e0b20c3cd51e007ec8f40ef5a1832485178",
+          "stageHash": "5519121855c74778f7a287e41701a3d2a7a230e62b0f899401ea04a0bfdc6f23",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2986.042000000016,
+          "traceUs": 276881174,
+          "file": "opening-11.png",
+          "sha256": "7d183f04fdb8b58a7334585ae330ec8d8673a69e24b9782399558ed4f19bd8ae",
+          "source": "opening-11.jpg",
+          "originalSha256": "8f9e9b291518a82dbeecbb41eed2c7a2a741127e1cd3a672131d540150a91aa3",
+          "stageHash": "5373da8ab9202d7f0e690b0962128c27483ba0c3903e157b27c880fc05ff6922",
+          "crop": [
+            12,
+            230,
+            206,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input"
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 131.90000000002328,
+    "firstFoldEnd": 177.40000000002328,
+    "cycle": "10",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "79e98a91a65c9b74a07c7ee172f4e863940bfd41e09d289ccc965c3839877871",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 349.29999999998836,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 351,
+          "average": [
+            110,
+            107,
+            100,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "13a863ed14b488531af1fef3de712863f7b1413470025a2dce0ecc4cfba4476f",
+          "start": 377.5999999999767,
+          "end": 426.29999999998836,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "3e2d4196e8fa035db7b2ab163e7a7040720b6c62424bc7127794c5d62d076401",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 1274.5,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 343,
+          "average": [
+            106,
+            105,
+            98,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "bb820535d01dfe41848b35e19eed48247cad1b5bd75c0f2262a108f9edd98c75",
+          "start": 1312.7999999999884,
+          "end": 1359,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "seconds": 0.9252000000000117
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "e8e263081d7c0a21256f33ca55302c54d09294e2bcb1034f2113078c8d310442",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 2567,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 298,
+          "average": [
+            94,
+            95,
+            92,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "b51bfc6d9c281d114cc4b87db2216ec8aba2d9eb50085825173254feeebd3b17",
+          "start": 2604.0999999999767,
+          "end": 2650.9000000000233,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "seconds": 2.2177000000000118
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "702e1ba4a8d68cb5a6625771340c0fc6e1fd18308172bb8b75a265d0984f5435",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 5375.099999999977,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 222,
+          "average": [
+            75,
+            77,
+            80,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "3c749c7743e1276feb0da5bbe403980c765bb7c1dac2671ecd19500544135852",
+          "start": 5411.799999999988,
+          "end": 5457.5,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "seconds": 5.025799999999989
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "942ed302bfe3062ba26818a546480ad547dce5104dd2772dca424cf176f332e4",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 7862,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 295,
+          "average": [
+            93,
+            94,
+            91,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "c1310c7bcd0c0d9922ecaf86bdeec778e43ba8bce35e670a2ea0fe0202b92be9",
+          "start": 7914.799999999988,
+          "end": 7969.5,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "seconds": 7.512700000000011
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "e4512cc10501b4dc3fcafdb219aed3ec6154960414931e56ca0d5952c18b271d",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 10420.799999999988,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 352,
+          "average": [
+            109,
+            107,
+            100,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "e3a4914eafbab845bcb847e515b5863d185f90c27418189cba0ed191887068e4",
+          "start": 10458.200000000012,
+          "end": 10509.700000000012,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "seconds": 10.0715
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "065ab32cc9f99cea882ea7290652e5a9ae9ff70934308d269af18e8055e03d7c",
+          "start": 501.5,
+          "end": 558.7000000000116,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "01a4f7c15cdd0e2dc85ab2f292620ea3fb408b9eef0b050b5289ab5967ad3512",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 570.5999999999767,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 354,
+          "average": [
+            110,
+            108,
+            100,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "e815560c070c1445b3e632df47c18b35ba846d7b1c20dd74effeda96bc02d195",
+          "start": 780.5,
+          "end": 855.9000000000233,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "34b27f2ee7b86f66331b1701e2dbc3c471ff1df6ca187f35158fb16439a37870",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 859.5999999999767,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 298,
+          "average": [
+            92,
+            93,
+            91,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "cbcf9ffbb1298a0a50e60ae341e8c2623f5c12975983aa64d06cc8ba3b77b45a",
+          "start": 1066.5,
+          "end": 1116.2000000000116,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "4659cfd1a7bef1ae5f72f81aa033ad02c39da6345cbfec36e19e9e6be96756fc",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 1138.0999999999767,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 228,
+          "average": [
+            75,
+            77,
+            79,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "7ebbd6738ee231264b7f242aba6c07a6b54d9d4f509cca1b8301332b8f7fd1d9",
+          "start": 1328.5999999999767,
+          "end": 1403.5,
+          "clip": {
+            "x": 20,
+            "y": 391,
+            "width": 350,
+            "height": 233
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "645349d3f1ae0cc785133b9d2d2b643ab5771c26c29150e28d3a03589989a80b",
+          "width": 349,
+          "height": 233,
+          "format": "bgra8unorm",
+          "submittedAt": 1414.7000000000116,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 352,
+          "average": [
+            110,
+            108,
+            100,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "5dd39eeefacf69cb32c7cbbd2bd391b5035c53687d10354855efd356d5fd3418",
+        "start": 1536.2000000000116,
+        "end": 1602.0999999999767,
+        "clip": {
+          "x": 20,
+          "y": 391,
+          "width": 350,
+          "height": 233
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "e6c7af69aabed9d6a811aee7ce2727664771ab4e480da55e4248c001221fcd52",
+        "start": 1677.5999999999767,
+        "end": 1728.4000000000233,
+        "clip": {
+          "x": 20,
+          "y": 391,
+          "width": 350,
+          "height": 233
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "e6c7af69aabed9d6a811aee7ce2727664771ab4e480da55e4248c001221fcd52",
+        "start": 3088.5,
+        "end": 3164.7000000000116,
+        "clip": {
+          "x": 20,
+          "y": 391,
+          "width": 350,
+          "height": 233
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "6a687ec5f677349876e73ac43a438f018fc460fbc0951504d85d90231fca2b97",
+        "start": 3261.2000000000116,
+        "end": 3320,
+        "clip": {
+          "x": 20,
+          "y": 391,
+          "width": 350,
+          "height": 233
+        }
+      }
+    },
+    "flow": {
+      "lang": "en",
+      "rejected": [
+        "0",
+        "9",
+        "1.5",
+        ""
+      ],
+      "accepted": [
+        1,
+        8
+      ],
+      "routes": [
+        "pool",
+        "ridge",
+        "shelf"
+      ],
+      "filename": "tide-table-en.txt",
+      "bytes": 366,
+      "exported": "TIDE TABLE — Your trip checklist\n\nCoastal walks: Rock Shelf Walk\nGroup size (including you): 8\nRound trip: 1.2 km\nWalking time: 60 min\nTerrain: Uneven shelf, low ledges\nEssential gear: Closed-toe grippy shoes, Drinking water, Light rain jacket\nExtra gear: Field notebook, Dry bag\n\nIllustrative walk. Check official tide times and local site access before leaving.\n"
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "Compare the walks\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 342.234375,
+              "width": 205.765625,
+              "height": 48.046875
+            },
+            "labels": []
+          },
+          {
+            "label": "Low\n+0.3 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 25,
+              "y": 649.75,
+              "width": 90,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Mid\n+0.9 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 115,
+              "y": 649.75,
+              "width": 90,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "High\n+1.5 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 205,
+              "y": 649.75,
+              "width": 90,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1580.453125,
+              "width": 143.90625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 2129.4375,
+              "width": 143.90625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 2678.421875,
+              "width": 143.90625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Coastal walksPool WalkRock Shelf WalkRidgeline Walk",
+            "tag": "SELECT",
+            "rect": {
+              "x": 33,
+              "y": 3103.5625,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Coastal walks\nPool Walk\nRock Shelf Walk\nRidgeline Walk",
+                "rect": {
+                  "x": 33,
+                  "y": 3073.5,
+                  "width": 254,
+                  "height": 74.0625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Group size (including you)",
+            "tag": "INPUT",
+            "rect": {
+              "x": 33,
+              "y": 3186.421875,
+              "width": 254,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Group size (including you)",
+                "rect": {
+                  "x": 33,
+                  "y": 3156.359375,
+                  "width": 254,
+                  "height": 74.0625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Binoculars",
+            "tag": "INPUT",
+            "rect": {
+              "x": 34.59375,
+              "y": 3488.734375,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Binoculars",
+                "rect": {
+                  "x": 33,
+                  "y": 3472.265625,
+                  "width": 122.203125,
+                  "height": 50.53125
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Field notebook",
+            "tag": "INPUT",
+            "rect": {
+              "x": 166.390625,
+              "y": 3488.734375,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Field notebook",
+                "rect": {
+                  "x": 164.796875,
+                  "y": 3472.265625,
+                  "width": 122.203125,
+                  "height": 50.53125
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Small towel",
+            "tag": "INPUT",
+            "rect": {
+              "x": 34.59375,
+              "y": 3536,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Small towel",
+                "rect": {
+                  "x": 33,
+                  "y": 3522.796875,
+                  "width": 122.203125,
+                  "height": 44
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Dry bag",
+            "tag": "INPUT",
+            "rect": {
+              "x": 166.390625,
+              "y": 3536,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Dry bag",
+                "rect": {
+                  "x": 164.796875,
+                  "y": 3522.796875,
+                  "width": 122.203125,
+                  "height": 44
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Preview checklist\n→",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33,
+              "y": 3582.796875,
+              "width": 189.375,
+              "height": 48.046875
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 139.390625,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TIDE TABLE",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 8.796875,
+              "width": 150.046875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "15.36px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tide chart",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 52.796875,
+              "width": 61.25,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Coastal walks",
+            "tag": "A",
+            "rect": {
+              "x": 98.84375,
+              "y": 52.796875,
+              "width": 82.5625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Trip checklist",
+            "tag": "A",
+            "rect": {
+              "x": 203,
+              "y": 52.796875,
+              "width": 79.046875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 96.796875,
+              "width": 64.984375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.48px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A COASTAL GUIDING CONCEPT",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 168.984375,
+              "width": 288,
+              "height": 19.96875
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TIDE TABLE",
+            "tag": "H1",
+            "rect": {
+              "x": 16,
+              "y": 198.515625,
+              "width": 288,
+              "height": 48.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "50.4px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Take the family rock pooling for the first time. See how the water moves, then find a coas",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 254.4375,
+              "width": 288,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Compare the walks\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 342.234375,
+              "width": 205.765625,
+              "height": 48.046875
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(150, 52, 42)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Low\n+0.3 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 25,
+              "y": 649.75,
+              "width": 90,
+              "height": 44
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(150, 52, 42)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mid\n+0.9 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 115,
+              "y": 649.75,
+              "width": 90,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "High\n+1.5 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 205,
+              "y": 649.75,
+              "width": 90,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Illustrative tides and routes. Check local tide tables and site access before setting out.",
+            "tag": "P",
+            "rect": {
+              "x": 29,
+              "y": 757.890625,
+              "width": 262,
+              "height": 56.109375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "11.84px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Find your stretch of coast.",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 891.78125,
+              "width": 288,
+              "height": 81.5
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "41.6px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "These itineraries are planning examples. Distances are round trip, and prices are illustra",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 989.28125,
+              "width": 288,
+              "height": 75.796875
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "LOW TIDE",
+            "tag": "P",
+            "rect": {
+              "x": 105.328125,
+              "y": 1109.21875,
+              "width": 66.84375,
+              "height": 19.96875
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pool Walk",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 1145.9375,
+              "width": 254,
+              "height": 27.359375
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "24px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "For families new to rock pooling. Follow the outer edge of North Reef and look for small p",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1183.203125,
+              "width": 254,
+              "height": 101.0625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear\nClosed-toe grippy shoes, Drinking water, Spare socks",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1504.046875,
+              "width": 254,
+              "height": 64.40625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 1580.453125,
+              "width": 143.90625,
+              "height": 44
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "MID TIDE",
+            "tag": "P",
+            "rect": {
+              "x": 105.328125,
+              "y": 1658.203125,
+              "width": 66.84375,
+              "height": 19.96875
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Rock Shelf Walk",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 1694.921875,
+              "width": 254,
+              "height": 27.359375
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "24px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "For groups comfortable on uneven ground. Look into the channel from South Reef and watch w",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 1732.1875,
+              "width": 254,
+              "height": 101.0625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear\nClosed-toe grippy shoes, Drinking water, Light rain jacket",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 2053.03125,
+              "width": 254,
+              "height": 64.40625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 2129.4375,
+              "width": 143.90625,
+              "height": 44
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "HIGH TIDE",
+            "tag": "P",
+            "rect": {
+              "x": 105.328125,
+              "y": 2207.1875,
+              "width": 75.203125,
+              "height": 19.96875
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Ridgeline Walk",
+            "tag": "H3",
+            "rect": {
+              "x": 33,
+              "y": 2243.90625,
+              "width": 254,
+              "height": 27.359375
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "24px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "For families who prefer the upper path. Watch the tideline and shorebirds from above, then",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 2281.171875,
+              "width": 254,
+              "height": 101.0625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear\nClosed-toe walking shoes, Drinking water, Sun hat",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 2602.015625,
+              "width": 254,
+              "height": 64.40625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 33,
+              "y": 2678.421875,
+              "width": 143.90625,
+              "height": 44
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pack for\nyour walk.",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2831.421875,
+              "width": 288,
+              "height": 81.5
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "41.6px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose a walk and group size, then tick the gear you want to bring. Your checklist is crea",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2928.921875,
+              "width": 288,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Coastal walks\nPool Walk\nRock Shelf Walk\nRidgeline Walk",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3073.5,
+              "width": 254,
+              "height": 74.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Group size (including you)",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3156.359375,
+              "width": 254,
+              "height": 74.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Plans are designed for groups of 1–8.",
+            "tag": "P",
+            "rect": {
+              "x": 33,
+              "y": 3236.015625,
+              "width": 254,
+              "height": 21.46875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "0.6 km · 35 min · Exposed rock, slippery patches",
+            "tag": "P",
+            "rect": {
+              "x": 48,
+              "y": 3287.078125,
+              "width": 227,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear Closed-toe grippy shoes, Drinking water, Spare socks",
+            "tag": "P",
+            "rect": {
+              "x": 48,
+              "y": 3341.609375,
+              "width": 227,
+              "height": 75.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Binoculars",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3472.265625,
+              "width": 122.203125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Field notebook",
+            "tag": "LABEL",
+            "rect": {
+              "x": 164.796875,
+              "y": 3472.265625,
+              "width": 122.203125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Small towel",
+            "tag": "LABEL",
+            "rect": {
+              "x": 33,
+              "y": 3522.796875,
+              "width": 122.203125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Dry bag",
+            "tag": "LABEL",
+            "rect": {
+              "x": 164.796875,
+              "y": 3522.796875,
+              "width": 122.203125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Preview checklist\n→",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33,
+              "y": 3582.796875,
+              "width": 189.375,
+              "height": 48.046875
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(150, 52, 42)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TIDE TABLE · A coastal guiding concept",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3720.84375,
+              "width": 239.859375,
+              "height": 22.109375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Visual showcase",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 3742.953125,
+              "width": 99.34375,
+              "height": 44
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code",
+            "tag": "A",
+            "rect": {
+              "x": 135.34375,
+              "y": 3742.953125,
+              "width": 76.296875,
+              "height": 44
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to top ↑",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 3786.953125,
+              "width": 80.828125,
+              "height": 44
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "Compare the walks\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 298.234375,
+              "width": 205.765625,
+              "height": 48.046875
+            },
+            "labels": []
+          },
+          {
+            "label": "Low\n+0.3 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 28.5,
+              "y": 629.53125,
+              "width": 111,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Mid\n+0.9 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 139.5,
+              "y": 629.53125,
+              "width": 111,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "High\n+1.5 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 250.5,
+              "y": 629.53125,
+              "width": 111,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1512.859375,
+              "width": 143.90625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1992.359375,
+              "width": 143.90625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 2450.390625,
+              "width": 143.90625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Coastal walksPool WalkRock Shelf WalkRidgeline Walk",
+            "tag": "SELECT",
+            "rect": {
+              "x": 36.5,
+              "y": 2880.4375,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Coastal walks\nPool Walk\nRock Shelf Walk\nRidgeline Walk",
+                "rect": {
+                  "x": 36.5,
+                  "y": 2850.375,
+                  "width": 317,
+                  "height": 74.0625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Group size (including you)",
+            "tag": "INPUT",
+            "rect": {
+              "x": 36.5,
+              "y": 2963.296875,
+              "width": 317,
+              "height": 44
+            },
+            "labels": [
+              {
+                "text": "Group size (including you)",
+                "rect": {
+                  "x": 36.5,
+                  "y": 2933.234375,
+                  "width": 317,
+                  "height": 74.0625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Binoculars",
+            "tag": "INPUT",
+            "rect": {
+              "x": 38.09375,
+              "y": 3237.078125,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Binoculars",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3223.875,
+                  "width": 153.703125,
+                  "height": 44
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Field notebook",
+            "tag": "INPUT",
+            "rect": {
+              "x": 201.390625,
+              "y": 3237.078125,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Field notebook",
+                "rect": {
+                  "x": 199.796875,
+                  "y": 3223.875,
+                  "width": 153.703125,
+                  "height": 44
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Small towel",
+            "tag": "INPUT",
+            "rect": {
+              "x": 38.09375,
+              "y": 3281.078125,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Small towel",
+                "rect": {
+                  "x": 36.5,
+                  "y": 3267.875,
+                  "width": 153.703125,
+                  "height": 44
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Dry bag",
+            "tag": "INPUT",
+            "rect": {
+              "x": 201.390625,
+              "y": 3281.078125,
+              "width": 17.59375,
+              "height": 17.59375
+            },
+            "labels": [
+              {
+                "text": "Dry bag",
+                "rect": {
+                  "x": 199.796875,
+                  "y": 3267.875,
+                  "width": 153.703125,
+                  "height": 44
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Preview checklist\n→",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 36.5,
+              "y": 3327.875,
+              "width": 189.375,
+              "height": 48.046875
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 139.390625,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TIDE TABLE",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 8.796875,
+              "width": 150.046875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "15.36px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tide chart",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 52.796875,
+              "width": 61.25,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Coastal walks",
+            "tag": "A",
+            "rect": {
+              "x": 102.34375,
+              "y": 52.796875,
+              "width": 82.5625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Trip checklist",
+            "tag": "A",
+            "rect": {
+              "x": 206.5,
+              "y": 52.796875,
+              "width": 79.046875,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文\n↗",
+            "tag": "A",
+            "rect": {
+              "x": 305.515625,
+              "y": 52.796875,
+              "width": 64.984375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.48px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A COASTAL GUIDING CONCEPT",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 124.984375,
+              "width": 351,
+              "height": 19.96875
+            },
+            "color": "rgb(150, 52, 42)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TIDE TABLE",
+            "tag": "H1",
+            "rect": {
+              "x": 19.5,
+              "y": 154.515625,
+              "width": 351,
+              "height": 48.375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "50.4px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Take the family rock pooling for the first time. See how the water moves, then find a coas",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 210.4375,
+              "width": 293.25,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Compare the walks\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 298.234375,
+              "width": 205.765625,
+              "height": 48.046875
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(150, 52, 42)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Low\n+0.3 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 28.5,
+              "y": 629.53125,
+              "width": 111,
+              "height": 44
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(150, 52, 42)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mid\n+0.9 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 139.5,
+              "y": 629.53125,
+              "width": 111,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "High\n+1.5 m",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 250.5,
+              "y": 629.53125,
+              "width": 111,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Illustrative tides and routes. Check local tide tables and site access before setting out.",
+            "tag": "P",
+            "rect": {
+              "x": 32.5,
+              "y": 737.671875,
+              "width": 325,
+              "height": 56.109375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "11.84px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Find your stretch of coast.",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 871.5625,
+              "width": 351,
+              "height": 81.5
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "41.6px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "These itineraries are planning examples. Distances are round trip, and prices are illustra",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 969.0625,
+              "width": 351,
+              "height": 75.796875
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "LOW TIDE",
+            "tag": "P",
+            "rect": {
+              "x": 108.828125,
+              "y": 1089,
+              "width": 66.84375,
+              "height": 19.96875
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pool Walk",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 1125.71875,
+              "width": 317,
+              "height": 27.359375
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "24px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "For families new to rock pooling. Follow the outer edge of North Reef and look for small p",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1162.984375,
+              "width": 317,
+              "height": 75.796875
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear\nClosed-toe grippy shoes, Drinking water, Spare socks",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1436.453125,
+              "width": 317,
+              "height": 64.40625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1512.859375,
+              "width": 143.90625,
+              "height": 44
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "MID TIDE",
+            "tag": "P",
+            "rect": {
+              "x": 108.828125,
+              "y": 1590.609375,
+              "width": 66.84375,
+              "height": 19.96875
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Rock Shelf Walk",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 1627.328125,
+              "width": 317,
+              "height": 27.359375
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "24px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "For groups comfortable on uneven ground. Look into the channel from South Reef and watch w",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1664.59375,
+              "width": 317,
+              "height": 75.796875
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear\nClosed-toe grippy shoes, Drinking water, Light rain jacket",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 1915.953125,
+              "width": 317,
+              "height": 64.40625
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 1992.359375,
+              "width": 143.90625,
+              "height": 44
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "HIGH TIDE",
+            "tag": "P",
+            "rect": {
+              "x": 108.828125,
+              "y": 2070.109375,
+              "width": 75.203125,
+              "height": 19.96875
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "12.64px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Ridgeline Walk",
+            "tag": "H3",
+            "rect": {
+              "x": 36.5,
+              "y": 2106.828125,
+              "width": 317,
+              "height": 27.359375
+            },
+            "color": "rgb(255, 245, 226)",
+            "size": "24px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "For families who prefer the upper path. Watch the tideline and shorebirds from above, then",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 2144.09375,
+              "width": 317,
+              "height": 75.796875
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear\nClosed-toe walking shoes, Drinking water, Sun hat",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 2395.453125,
+              "width": 317,
+              "height": 42.9375
+            },
+            "color": "rgb(224, 216, 201)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose this walk\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 36.5,
+              "y": 2450.390625,
+              "width": 143.90625,
+              "height": 44
+            },
+            "color": "rgb(255, 196, 151)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 38, 58)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pack for\nyour walk.",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2603.390625,
+              "width": 351,
+              "height": 81.5
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "41.6px",
+            "weight": "500",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose a walk and group size, then tick the gear you want to bring. Your checklist is crea",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2700.890625,
+              "width": 351,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Coastal walks\nPool Walk\nRock Shelf Walk\nRidgeline Walk",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 2850.375,
+              "width": 317,
+              "height": 74.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Group size (including you)",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 2933.234375,
+              "width": 317,
+              "height": 74.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Plans are designed for groups of 1–8.",
+            "tag": "P",
+            "rect": {
+              "x": 36.5,
+              "y": 3012.890625,
+              "width": 317,
+              "height": 21.46875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.6px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "0.6 km · 35 min · Exposed rock, slippery patches",
+            "tag": "P",
+            "rect": {
+              "x": 51.5,
+              "y": 3063.953125,
+              "width": 290,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Essential gear Closed-toe grippy shoes, Drinking water, Spare socks",
+            "tag": "P",
+            "rect": {
+              "x": 51.5,
+              "y": 3118.484375,
+              "width": 290,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(234, 226, 208)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Binoculars",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3223.875,
+              "width": 153.703125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Field notebook",
+            "tag": "LABEL",
+            "rect": {
+              "x": 199.796875,
+              "y": 3223.875,
+              "width": 153.703125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Small towel",
+            "tag": "LABEL",
+            "rect": {
+              "x": 36.5,
+              "y": 3267.875,
+              "width": 153.703125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Dry bag",
+            "tag": "LABEL",
+            "rect": {
+              "x": 199.796875,
+              "y": 3267.875,
+              "width": 153.703125,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 248, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Preview checklist\n→",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 36.5,
+              "y": 3327.875,
+              "width": 189.375,
+              "height": 48.046875
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgb(150, 52, 42)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TIDE TABLE · A coastal guiding concept",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3465.921875,
+              "width": 239.859375,
+              "height": 22.109375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Visual showcase",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 3488.03125,
+              "width": 99.34375,
+              "height": 44
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code",
+            "tag": "A",
+            "rect": {
+              "x": 138.84375,
+              "y": 3488.03125,
+              "width": 76.296875,
+              "height": 44
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to top ↑",
+            "tag": "A",
+            "rect": {
+              "x": 235.140625,
+              "y": 3488.03125,
+              "width": 80.828125,
+              "height": 44
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "14px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Skip to content",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "TIDE TABLE",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 8.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Tide chart",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 52.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Coastal walks",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 52.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Trip checklist",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 52.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "繁體中文\n↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 52.796875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Compare the walks\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 298.234375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Low\n+0.3 m",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 629.53125
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Mid\n+0.9 m",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 629.53125
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "High\n+1.5 m",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 629.53125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Choose this walk\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 196, 151)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1512.859375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Choose this walk\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 196, 151)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1992.359375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Choose this walk\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 196, 151)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2450.390625
+      },
+      {
+        "tag": "SELECT",
+        "id": "",
+        "text": "Coastal walks\nPool Walk\nRock Shelf Walk\nRidgeline Walk",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2880.4375
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Group size (including you)",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2963.296875
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Binoculars",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3237.078125
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Field notebook",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3237.078125
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Small towel",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3281.078125
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Dry bag",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3281.078125
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Preview checklist\n→",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3327.875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Visual showcase",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3488.03125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Source code",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3488.03125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Back to top ↑",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3488.03125
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2302.600000000035,
+    "end": 12302.799999999988,
+    "timestamps": [
+      2319.7000000000116,
+      2343.600000000035,
+      2366.2999999999884,
+      2388.600000000035,
+      2411.2000000000116,
+      2433.600000000035,
+      2455.2000000000116,
+      2478.4000000000233,
+      2501.4000000000233,
+      2523.7999999999884,
+      2546,
+      2569.2000000000116,
+      2591.9000000000233,
+      2614.100000000035,
+      2637.7000000000116,
+      2660.7000000000116,
+      2683.2999999999884,
+      2706.100000000035,
+      2729.4000000000233,
+      2751.7000000000116,
+      2773.2999999999884,
+      2796.100000000035,
+      2818.7000000000116,
+      2841.2999999999884,
+      2863.2999999999884,
+      2886.2999999999884,
+      2908.7999999999884,
+      2931.7999999999884,
+      2954.4000000000233,
+      2976.600000000035,
+      3000,
+      3022,
+      3044.2000000000116,
+      3066.600000000035,
+      3089.4000000000233,
+      3111.600000000035,
+      3133.9000000000233,
+      3156.600000000035,
+      3178.7999999999884,
+      3201,
+      3223.7999999999884,
+      3246,
+      3267.7999999999884,
+      3290.2999999999884,
+      3313.2999999999884,
+      3336.2000000000116,
+      3358.4000000000233,
+      3380.5,
+      3403,
+      3425.5,
+      3447.4000000000233,
+      3470.100000000035,
+      3493.7000000000116,
+      3516.100000000035,
+      3538.2999999999884,
+      3560.100000000035,
+      3582.2999999999884,
+      3603.9000000000233,
+      3625.600000000035,
+      3647.9000000000233,
+      3670,
+      3692.600000000035,
+      3716.100000000035,
+      3738.4000000000233,
+      3761.100000000035,
+      3785.5,
+      3807.100000000035,
+      3829.7000000000116,
+      3851.7999999999884,
+      3874.2000000000116,
+      3896.9000000000233,
+      3919.5,
+      3941.7000000000116,
+      3963.9000000000233,
+      3986.4000000000233,
+      4009,
+      4031.600000000035,
+      4054.2000000000116,
+      4076.9000000000233,
+      4099.100000000035,
+      4121.600000000035,
+      4143.700000000012,
+      4166,
+      4187.799999999988,
+      4209.900000000023,
+      4232.200000000012,
+      4254.799999999988,
+      4277.400000000023,
+      4300,
+      4322.400000000023,
+      4345.900000000023,
+      4368,
+      4390.400000000023,
+      4412.200000000012,
+      4435.200000000012,
+      4458.600000000035,
+      4481.5,
+      4504.5,
+      4527.400000000023,
+      4549.700000000012,
+      4572.200000000012,
+      4594.400000000023,
+      4616.700000000012,
+      4638.700000000012,
+      4660.600000000035,
+      4682.900000000023,
+      4705,
+      4728.299999999988,
+      4750.100000000035,
+      4773.600000000035,
+      4794.600000000035,
+      4816.600000000035,
+      4839,
+      4861.100000000035,
+      4883.299999999988,
+      4905.200000000012,
+      4927.400000000023,
+      4950.600000000035,
+      4972.600000000035,
+      4994.700000000012,
+      5016.700000000012,
+      5040,
+      5062.100000000035,
+      5084.400000000023,
+      5107,
+      5129.700000000012,
+      5152.100000000035,
+      5175.299999999988,
+      5198,
+      5220.200000000012,
+      5242.200000000012,
+      5264.700000000012,
+      5287,
+      5310.100000000035,
+      5332.299999999988,
+      5354.299999999988,
+      5376.299999999988,
+      5398.600000000035,
+      5421.200000000012,
+      5443.400000000023,
+      5465.5,
+      5487.700000000012,
+      5510.200000000012,
+      5531.900000000023,
+      5554.799999999988,
+      5576.400000000023,
+      5599.200000000012,
+      5622.400000000023,
+      5644.100000000035,
+      5666.100000000035,
+      5688.799999999988,
+      5711,
+      5733.200000000012,
+      5755.900000000023,
+      5778,
+      5800,
+      5822.299999999988,
+      5844.5,
+      5866.700000000012,
+      5889.299999999988,
+      5911.799999999988,
+      5934.700000000012,
+      5957.100000000035,
+      5979.700000000012,
+      6002.100000000035,
+      6024.600000000035,
+      6048.900000000023,
+      6070.400000000023,
+      6092.600000000035,
+      6114.900000000023,
+      6137.299999999988,
+      6159.799999999988,
+      6181.900000000023,
+      6203.600000000035,
+      6226.700000000012,
+      6248.900000000023,
+      6271.299999999988,
+      6294.100000000035,
+      6316.200000000012,
+      6339.600000000035,
+      6362,
+      6384.700000000012,
+      6407.299999999988,
+      6429.600000000035,
+      6452,
+      6474.5,
+      6497,
+      6520.200000000012,
+      6542.900000000023,
+      6566.200000000012,
+      6588.200000000012,
+      6610.400000000023,
+      6632,
+      6654,
+      6676.700000000012,
+      6699,
+      6721.400000000023,
+      6743.700000000012,
+      6765.5,
+      6787.900000000023,
+      6811.100000000035,
+      6834.400000000023,
+      6856.799999999988,
+      6879.200000000012,
+      6901,
+      6923.700000000012,
+      6946.600000000035,
+      6968.5,
+      6990.600000000035,
+      7013.5,
+      7036.299999999988,
+      7058.5,
+      7081.799999999988,
+      7104.100000000035,
+      7126.100000000035,
+      7149.5,
+      7171.799999999988,
+      7193.799999999988,
+      7216.5,
+      7238.400000000023,
+      7261,
+      7282.900000000023,
+      7305.900000000023,
+      7329.400000000023,
+      7352.5,
+      7375.600000000035,
+      7397.400000000023,
+      7419.700000000012,
+      7441.900000000023,
+      7464.600000000035,
+      7487.100000000035,
+      7509.900000000023,
+      7532.400000000023,
+      7554.900000000023,
+      7577.700000000012,
+      7600.200000000012,
+      7622.200000000012,
+      7644.200000000012,
+      7667.799999999988,
+      7689.900000000023,
+      7712.900000000023,
+      7735.200000000012,
+      7757.5,
+      7779.5,
+      7802.799999999988,
+      7824.900000000023,
+      7847,
+      7869.5,
+      7891.799999999988,
+      7914,
+      7937.700000000012,
+      7959.799999999988,
+      7983.600000000035,
+      8005.600000000035,
+      8028,
+      8050.900000000023,
+      8073.600000000035,
+      8095.900000000023,
+      8118.299999999988,
+      8140.900000000023,
+      8163.200000000012,
+      8185.600000000035,
+      8208.100000000035,
+      8230.600000000035,
+      8252.799999999988,
+      8275,
+      8297,
+      8319,
+      8342.900000000023,
+      8365.200000000012,
+      8387.100000000035,
+      8409.5,
+      8432.299999999988,
+      8455.100000000035,
+      8478,
+      8501.900000000023,
+      8524.700000000012,
+      8547.600000000035,
+      8570.5,
+      8593.100000000035,
+      8616.299999999988,
+      8639.100000000035,
+      8661.5,
+      8684.700000000012,
+      8707.799999999988,
+      8731.200000000012,
+      8754,
+      8777.799999999988,
+      8801.900000000023,
+      8823.900000000023,
+      8846.100000000035,
+      8868.600000000035,
+      8890.299999999988,
+      8912.400000000023,
+      8935.900000000023,
+      8958.299999999988,
+      8980.400000000023,
+      9003.600000000035,
+      9025.600000000035,
+      9048.600000000035,
+      9071,
+      9093.400000000023,
+      9115.400000000023,
+      9138.100000000035,
+      9161.299999999988,
+      9183.5,
+      9206.600000000035,
+      9230.200000000012,
+      9252.5,
+      9274.600000000035,
+      9297.200000000012,
+      9320.100000000035,
+      9342.200000000012,
+      9364.400000000023,
+      9386.799999999988,
+      9408.700000000012,
+      9430.400000000023,
+      9453.600000000035,
+      9475.400000000023,
+      9497.299999999988,
+      9520.100000000035,
+      9543.5,
+      9567.400000000023,
+      9590.299999999988,
+      9612.400000000023,
+      9634.299999999988,
+      9656.799999999988,
+      9679,
+      9700.900000000023,
+      9722.700000000012,
+      9744.900000000023,
+      9767.299999999988,
+      9789.700000000012,
+      9813.400000000023,
+      9835.799999999988,
+      9857.5,
+      9881.600000000035,
+      9903.600000000035,
+      9926,
+      9948.299999999988,
+      9970.700000000012,
+      9992.600000000035,
+      10015.200000000012,
+      10037.700000000012,
+      10060.299999999988,
+      10083.5,
+      10107.100000000035,
+      10130.200000000012,
+      10152.799999999988,
+      10175.799999999988,
+      10199.700000000012,
+      10221.900000000023,
+      10244.5,
+      10266.700000000012,
+      10290.299999999988,
+      10312.700000000012,
+      10336.200000000012,
+      10358.400000000023,
+      10380.900000000023,
+      10403.600000000035,
+      10426.5,
+      10448.600000000035,
+      10471.799999999988,
+      10495,
+      10517.799999999988,
+      10541.100000000035,
+      10563.799999999988,
+      10586.299999999988,
+      10609.200000000012,
+      10632.100000000035,
+      10654.600000000035,
+      10678.5,
+      10702.400000000023,
+      10726.700000000012,
+      10749.400000000023,
+      10773.900000000023,
+      10796.700000000012,
+      10819.700000000012,
+      10842.600000000035,
+      10865.400000000023,
+      10888,
+      10910.700000000012,
+      10933.600000000035,
+      10956.200000000012,
+      10979.5,
+      11003,
+      11025.100000000035,
+      11047.400000000023,
+      11069.5,
+      11091.200000000012,
+      11113.400000000023,
+      11135.299999999988,
+      11157.400000000023,
+      11179.700000000012,
+      11202.299999999988,
+      11228,
+      11251.400000000023,
+      11273.5,
+      11295.600000000035,
+      11318.200000000012,
+      11340.900000000023,
+      11363.700000000012,
+      11387.200000000012,
+      11410,
+      11432.400000000023,
+      11455,
+      11477.100000000035,
+      11500.100000000035,
+      11523.299999999988,
+      11546.400000000023,
+      11568.799999999988,
+      11590.700000000012,
+      11612.900000000023,
+      11634.799999999988,
+      11658,
+      11680.700000000012,
+      11702.900000000023,
+      11725.400000000023,
+      11747.5,
+      11769.900000000023,
+      11793.900000000023,
+      11817.5,
+      11839.600000000035,
+      11862.5,
+      11885,
+      11907.299999999988,
+      11931.100000000035,
+      11954.5,
+      11977,
+      12000,
+      12022.600000000035,
+      12045.400000000023,
+      12068.200000000012,
+      12091,
+      12114,
+      12136.400000000023,
+      12158.5,
+      12180.600000000035,
+      12203,
+      12225.400000000023,
+      12247.700000000012,
+      12270.100000000035,
+      12293
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        349,
+        233
+      ]
+    ],
+    "measuredMs": 10000.199999999953,
+    "medianMs": 22.5,
+    "p95Ms": 23.599999999976717,
+    "longestMs": 25.70000000001164,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/en/works/tide-table/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/assets/page-DTO1PNZ8.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/assets/page-Dnui4yTB.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/media/tide-table/mark.svg",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/media/tide-table/cover.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/media/tide-table/mid.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/media/tide-table/high.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/assets/shader-ClSvCMVM.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/media/tide-table/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/assets/standalone-DX-vHLon.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:53090/glossquote-visuals/media/tide-table/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}

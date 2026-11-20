@@ -1,5 +1,7 @@
 # 作品驗收矩陣
 
+自 2026-11-21 M04 起，新商業網站由主責先寫 brief、每件另開側欄製作對話，指定 gpt-6.2-sol / medium。主責按 docs/M04-ACCEPTANCE.md 逐條獨立驗收，各項均須 PASS。歷史批次的分數與製作設定僅適用於當時版本。
+
 固定 candidate SHA、作者、reviewer、環境、日期與證據路徑。尚未進行寫 NOT_RUN，不得沿用不同 commit 的完整通過。
 
 M02 商業網站依使用者 Goal 加上美術、UI、商業完整度三項評分，每件每項嚴格 >9/10。詳見 docs/M02-ART-DIRECTION.md 的固定子項；每個子項需畫面或流程證據，缺證據標 NOT_RUN，主觀評分不可替代以下必要技術 gates。

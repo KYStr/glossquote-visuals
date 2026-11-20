@@ -1,5 +1,13 @@
 # 免費發布
 
+## M04 起的發布資格
+
+每件新作品先依 [逐條規則](M04-ACCEPTANCE.md) 完成固定候選驗收。主責比對桌面與手機的原始影格、流暢度時間序列、客戶輸出及降級畫面，在該作品的 `evidence/<ID>/<candidate SHA>/acceptance.json` 記錄各條判斷。任一項 FAIL 或 NOT_RUN 時保留來源候選與具體退修原因，待原作者修訂後再驗收。
+
+發布程式核對「Verify M04 candidate」彙總結果、證據所屬 SHA、非作者身分及各項 PASS，並以原始提交間隔重算流暢度。發布清單列本次新核准的作品。舊作品可沿用既有驗收的條件為正式部署收據吻合、此版兩語 HTML、執行時相依檔案與舊版素材逐位元一致。新版在部署後讀回所有作品的兩語頁面。
+
+## 既有發布架構與歷史驗收
+
 採單一公開 repo + GitHub Pages（靜態 artifact）。初期計畫網址 `https://kystr.github.io/glossquote-visuals/`。只有 Pages API/正式 GET 證明成功後才寫成 live；不使用 Labs Cloudflare token、不改 DNS 或 Labs 首頁。
 
 實作時建立經審查的 `.github/workflows/pages.yml`：以 lockfile 安裝、執行 check/test/build，再上傳 artifact；Actions 版本固定到可信的完整 commit。workflow_dispatch 或已驗收的主線 commit 才部署，PR 只檢查。不要讓 bootstrap/未驗候選 push 自動發布。權限限定本 repo 的 contents:read、pages:write、id-token:write，無私人 secret。若既有連線無法啟用 Pages，記錄可重現的權限錯誤，不自行更改帳號權限。

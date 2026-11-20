@@ -24,7 +24,7 @@ const policy = [
 function exhibitionIndex(lang, works, mode) {
   const labels = copy[lang];
   if (!works.length) return `<p>${labels.empty}</p>`;
-  const cards = works.map((work) => {
+  const cards = [...works].sort((a, b) => b.id.localeCompare(a.id)).map((work) => {
     const entry = catalog[work.slug];
     const title = escape(entry[lang].title);
     const path = `${base}${languages[lang]}works/${work.slug}/`;

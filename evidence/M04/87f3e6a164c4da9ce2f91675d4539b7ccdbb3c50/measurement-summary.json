@@ -1,0 +1,887 @@
+[
+  {
+    "lane": "V006-en-desktop",
+    "measurements": {
+      "medianMs": 16.599999999976717,
+      "p95Ms": 30,
+      "longestMs": 39.199999999953434,
+      "measuredMs": 10011.200000000012
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:61630/glossquote-visuals/en/works/tide-table/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V006-en-desktop\\results.json"
+  },
+  {
+    "lane": "V006-en-mobile",
+    "measurements": {
+      "medianMs": 26.300000000017462,
+      "p95Ms": 27.39999999999418,
+      "longestMs": 28.5,
+      "measuredMs": 10000.299999999988
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:50038/glossquote-visuals/en/works/tide-table/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V006-en-mobile\\results.json"
+  },
+  {
+    "lane": "V006-zh-Hant-desktop",
+    "measurements": {
+      "medianMs": 32.899999999965075,
+      "p95Ms": 59.79999999998836,
+      "longestMs": 83.10000000003492,
+      "measuredMs": 10013.899999999965
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:64075/glossquote-visuals/works/tide-table/\", waiting until \"domcontentloaded\"\n",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: {\"medianMs\":32.899999999965075,\"p95Ms\":59.79999999998836,\"longestMs\":83.10000000003492}",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:64075/glossquote-visuals/works/tide-table/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      },
+      "Edge-default-render-and-flow": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1,GPU-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V006-zh-Hant-desktop\\results.json"
+  },
+  {
+    "lane": "V006-zh-Hant-mobile",
+    "measurements": {
+      "medianMs": 23.900000000023283,
+      "p95Ms": 24.70000000001164,
+      "longestMs": 25.5,
+      "measuredMs": 10001
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:52058/glossquote-visuals/works/tide-table/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V006-zh-Hant-mobile\\results.json"
+  },
+  {
+    "lane": "V007-en-desktop",
+    "measurements": {
+      "medianMs": 35.20000000001164,
+      "p95Ms": 58.39999999999418,
+      "longestMs": 81.60000000000582,
+      "measuredMs": 10000.5
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: {\"medianMs\":35.20000000001164,\"p95Ms\":58.39999999999418,\"longestMs\":81.60000000000582}",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:55457/glossquote-visuals/en/works/selvedge/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V007-en-desktop\\results.json"
+  },
+  {
+    "lane": "V007-en-mobile",
+    "measurements": {
+      "medianMs": 23.800000000046566,
+      "p95Ms": 24.600000000034925,
+      "longestMs": 31.5,
+      "measuredMs": 10000.699999999953
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:55776/glossquote-visuals/en/works/selvedge/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V007-en-mobile\\results.json"
+  },
+  {
+    "lane": "V007-zh-Hant-desktop",
+    "measurements": {
+      "medianMs": 23.099999999976717,
+      "p95Ms": 31.70000000001164,
+      "longestMs": 38,
+      "measuredMs": 10007
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Insufficient displayed frames in first three navigation seconds to review opening motion",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:62628/glossquote-visuals/works/selvedge/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      },
+      "Edge-default-render-and-flow": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'Failed to load resource: the server responded with a status of 404 (Not Found)'\n+ ]\n- []\n",
+        "rules": "FALL-1,GPU-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V007-zh-Hant-desktop\\results.json"
+  },
+  {
+    "lane": "V007-zh-Hant-mobile",
+    "measurements": {
+      "medianMs": 25.599999999976717,
+      "p95Ms": 26.5,
+      "longestMs": 27.20000000001164,
+      "measuredMs": 10001.200000000012
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Insufficient displayed frames in first three navigation seconds to review opening motion",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:49354/glossquote-visuals/works/selvedge/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V007-zh-Hant-mobile\\results.json"
+  },
+  {
+    "lane": "V008-en-desktop",
+    "measurements": {
+      "medianMs": 37.100000000034925,
+      "p95Ms": 76.70000000001164,
+      "longestMs": 83.70000000001164,
+      "measuredMs": 10016
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "page.goto: Timeout 10000ms exceeded.\nCall log:\n  - navigating to \"http://127.0.0.1:59159/glossquote-visuals/en/works/sorbet-hour/\", waiting until \"domcontentloaded\"\n",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: {\"medianMs\":37.100000000034925,\"p95Ms\":76.70000000001164,\"longestMs\":83.70000000001164}",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:59159/glossquote-visuals/en/works/sorbet-hour/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V008-en-desktop\\results.json"
+  },
+  {
+    "lane": "V008-en-mobile",
+    "measurements": {
+      "medianMs": 23.20000000006985,
+      "p95Ms": 24.5,
+      "longestMs": 25.400000000023283,
+      "measuredMs": 10000.800000000047
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:53693/glossquote-visuals/en/works/sorbet-hour/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V008-en-mobile\\results.json"
+  },
+  {
+    "lane": "V008-zh-Hant-desktop",
+    "measurements": {
+      "medianMs": 37.70000000001164,
+      "p95Ms": 76.20000000001164,
+      "longestMs": 98.79999999998836,
+      "measuredMs": 10015
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Insufficient displayed frames in first three navigation seconds to review opening motion",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: {\"medianMs\":37.70000000001164,\"p95Ms\":76.20000000001164,\"longestMs\":98.79999999998836}",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:54527/glossquote-visuals/works/sorbet-hour/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      },
+      "desktop-real-200-percent-zoom": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1"
+      },
+      "Edge-default-render-and-flow": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'Failed to load resource: the server responded with a status of 404 (Not Found)'\n+ ]\n- []\n",
+        "rules": "FALL-1,GPU-1"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V008-zh-Hant-desktop\\results.json"
+  },
+  {
+    "lane": "V008-zh-Hant-mobile",
+    "measurements": {
+      "medianMs": 27,
+      "p95Ms": 28.300000000017462,
+      "longestMs": 29.20000000001164,
+      "measuredMs": 10004.699999999983
+    },
+    "checks": {
+      "first-three-seconds": {
+        "status": "FAIL",
+        "error": "AssertionError [ERR_ASSERTION]: Insufficient displayed frames in first three navigation seconds to review opening motion",
+        "rules": "ART-2"
+      },
+      "initial-and-material-sequence": {
+        "status": "PASS",
+        "error": "",
+        "rules": "ART-1,ART-2,GPU-1"
+      },
+      "PERF-1": {
+        "status": "PASS",
+        "error": "",
+        "rules": "PERF-1"
+      },
+      "GPU-2-controls-and-pause": {
+        "status": "PASS",
+        "error": "",
+        "rules": "GPU-2"
+      },
+      "BIZ-2-and-privacy": {
+        "status": "PASS",
+        "error": "",
+        "rules": "BIZ-2,SHIP-1"
+      },
+      "FALL-1-no-js": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-gpu-init-fail": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-1-reduced": {
+        "status": "PASS",
+        "error": "",
+        "rules": "FALL-1"
+      },
+      "FALL-2-and-PERF-2": {
+        "status": "FAIL",
+        "error": "page.goBack: Timeout 10000ms exceeded.\nCall log:\n  - waiting for navigation until \"load\"\n    - navigated to \"http://127.0.0.1:63804/glossquote-visuals/works/sorbet-hour/\"\n",
+        "rules": "FALL-2,PERF-2"
+      },
+      "responsive-and-focus": {
+        "status": "PASS",
+        "error": "",
+        "rules": "UI-1,UI-2"
+      }
+    },
+    "manual": {
+      "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+      "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+      "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+      "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+      "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+      "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+    },
+    "source": "C:\\Users\\123ik\\Documents\\Codex\\2026-11-12\\glossquote-visuals\\.runs\\m04-probe-87f\\V008-zh-Hant-mobile\\results.json"
+  }
+]

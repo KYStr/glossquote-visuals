@@ -1,5 +1,7 @@
 # 製作與接續
 
+自 2026-11-21 M04 起，新商業網站由主責先寫 brief、每件另開側欄製作對話，指定 gpt-6.2-sol / medium。主責按 docs/M04-ACCEPTANCE.md 逐條獨立驗收，各項均須 PASS。歷史批次的分數與製作設定僅適用於當時版本。
+
 ## 每輪的可追溯單位
 
 每件有固定 ID、slug、brief、實際承接者、分支、candidate commit、PR、驗收證據、阻塞、live URL 與 deployed commit。不要拿聊天中的「好了」當完成證據。

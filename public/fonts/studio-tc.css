@@ -1,0 +1,37 @@
+/* The subsets include Latin labels, punctuation and customer-flow text too.
+   Claiming the full repertoire avoids a synchronous Windows typeface lookup
+   when Chinese copy and Latin product IDs share the first layout. */
+@font-face {
+  font-family: "Studio TC Text";
+  src: url("./studio-text-tc.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Studio TC Serif";
+  src: url("./studio-serif-tc.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: block;
+}
+
+html[lang="zh-Hant"] {
+  --sans: "Studio TC Text", sans-serif;
+  --serif: "Studio TC Serif", serif;
+  --mono: var(--sans);
+  --display: var(--sans);
+  font-family: var(--sans);
+}
+
+html[data-type-pending] { display: none !important; }
+
+/* Native controls and generated labels also participate in first layout.
+   Keep their typeface inside the same two already-loaded font families. */
+html[lang="zh-Hant"], html[lang="zh-Hant"] *,
+html[lang="zh-Hant"] ::before, html[lang="zh-Hant"] ::after {
+  font-family: var(--studio-typeface, "Studio TC Text") !important;
+}
+
+html:not(.sorbet-page) :is(h1, h2, h3) {
+  --studio-typeface: "Studio TC Serif";
+}

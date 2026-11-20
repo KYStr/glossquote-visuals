@@ -34,7 +34,9 @@ const notices = read("public/licenses/NOTICES.txt").toString();
 for (const dependency of ["shaders", "colorjs.io", "typegpu", "tinyest", "typed-binary", "tsover-runtime"]) {
   assert.ok(notices.includes(`\n${dependency} `), `Missing notice for ${dependency}`);
 }
-assert.ok(registry.works.filter((work) => work.status === "building").length <= 1);
+const buildingOwners = registry.works.filter((work) => work.status === "building").map((work) => work.owner);
+assert.ok(buildingOwners.every(Boolean), "Every work in production needs an owner");
+assert.equal(new Set(buildingOwners).size, buildingOwners.length, "One active work per production chat");
 for (const { route } of routesFor("candidate")) {
   assert.ok(existsSync(resolve(root, route, "index.html")), `Missing route ${route}`);
 }

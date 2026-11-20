@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 30,
+  "revision": 35,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
-  "requestedModel": "gpt-6.1-sol",
-  "requestedReasoning": "high",
+  "requestedModel": "gpt-6.2-sol",
+  "requestedReasoning": "medium",
   "backendModelVerified": false,
-  "milestone": "M03",
+  "milestone": "M04",
   "works": [
     {
       "id": "V001",
@@ -114,6 +114,66 @@
       "deployedCommit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9",
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/aeriform/",
       "releaseEvidence": "evidence/M03/33d0aee9006b2b76f02a58c9ddd575571a4704b9/RELEASE.md"
+    },
+    {
+      "id": "V006",
+      "slug": "tide-table",
+      "brief": "briefs/V006-tide-table.md",
+      "status": "reviewed",
+      "owner": "01a1f9ca-6761-7bd1-8165-5ef3ff6b1f26",
+      "branch": "codex/m04-commercial-series",
+      "candidateCommit": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/16",
+      "reviewEvidence": [
+        "evidence/V006/52fa4e91f748be73f060c3acc3c91ce9728fccd9/acceptance.json",
+        "evidence/V006/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md"
+      ],
+      "liveUrl": null,
+      "deployedCommit": null,
+      "blockers": [],
+      "authorBranch": "codex/v006-tide-table",
+      "authorCandidateCommit": "2ebd517c4147f1eb665013e37d678b084ff71a41",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/18"
+    },
+    {
+      "id": "V007",
+      "slug": "selvedge",
+      "brief": "briefs/V007-selvedge.md",
+      "status": "reviewed",
+      "owner": "01a1f9ca-68b3-70e1-a9d4-377a38ec6f38",
+      "branch": "codex/m04-commercial-series",
+      "candidateCommit": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/16",
+      "reviewEvidence": [
+        "evidence/V007/52fa4e91f748be73f060c3acc3c91ce9728fccd9/acceptance.json",
+        "evidence/V007/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md"
+      ],
+      "liveUrl": null,
+      "deployedCommit": null,
+      "blockers": [],
+      "authorBranch": "codex/v007-selvedge",
+      "authorCandidateCommit": "1c5ca04ffe3566e78cb6b42119ce95b087afc7f9",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/17"
+    },
+    {
+      "id": "V008",
+      "slug": "sorbet-hour",
+      "brief": "briefs/V008-sorbet-hour.md",
+      "status": "reviewed",
+      "owner": "01a1f9ca-69a4-7252-9543-d0335c67631c",
+      "branch": "codex/m04-commercial-series",
+      "candidateCommit": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/16",
+      "reviewEvidence": [
+        "evidence/V008/52fa4e91f748be73f060c3acc3c91ce9728fccd9/acceptance.json",
+        "evidence/V008/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md"
+      ],
+      "liveUrl": null,
+      "deployedCommit": null,
+      "blockers": [],
+      "authorBranch": "codex/v008-sorbet-hour",
+      "authorCandidateCommit": "cc304ce81260f5459a37dbfea49e59347daab79a",
+      "authorPr": "https://github.com/KYStr/glossquote-visuals/pull/19"
     }
   ],
   "releaseHistory": [
