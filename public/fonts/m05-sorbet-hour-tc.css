@@ -5,6 +5,9 @@
   font-display: block;
 }
 
+/* The startup script sets this attribute only when FontFaceSet is usable. */
+html[data-type-pending] { display: none !important; }
+
 /* Unstyled native selects and other controls follow their page's text face. */
 :where(button, input, select, option, textarea) { font-family: inherit; }
 

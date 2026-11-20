@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { basename, dirname, join } from "node:path";
+import { PNG } from "playwright-core/lib/utilsBundle";
 
 // This hook records the first successful queue submission after a presentation
 // texture is acquired. Compute-only submissions and readback copies are excluded.
@@ -123,10 +124,55 @@ export async function captureBrowserZoom(chromium, options, url, file) {
     }, url);
     assert.equal(zoom, 2);
     await page.waitForFunction(() => innerWidth <= 721);
-    await page.screenshot({ path: file, fullPage: true });
+    await page.waitForFunction(() => !document.documentElement.hasAttribute("data-type-pending"));
+    await page.evaluate(async () => { await document.fonts.ready; });
+    const scrollToPosition = position => page.evaluate(async y => {
+      scrollTo({ top: y, behavior: "instant" });
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      await Promise.all([...document.images].filter(img => {
+        const r = img.getBoundingClientRect();
+        return r.bottom > 0 && r.top < innerHeight;
+      }).map(img => img.decode()));
+      return { y: scrollY, width: innerWidth, height: innerHeight, dpr: devicePixelRatio };
+    }, position);
+    const bottom = await scrollToPosition(10_000_000);
+    await scrollToPosition(0);
     const layout = await page.evaluate(layoutInventory);
     assert.ok(layout.scrollWidth <= layout.viewport[0] + 1);
-    return { zoom, layout };
+    // A fullPage CSS clip loses the right half under native tab zoom. Capture
+    // Chromium's original un-clipped compositor viewport at each scroll offset.
+    // Preserve the raw PNGs and join their unique rows at 1:1 pixel resolution.
+    const cdp = await context.newCDPSession(page);
+    const { width, height } = page.viewportSize();
+    assert.equal(bottom.width * bottom.dpr, width);
+    assert.equal(bottom.height * bottom.dpr, height);
+    const pageHeight = Math.round((bottom.y + bottom.height) * bottom.dpr);
+    const joined = new PNG({ width, height: pageHeight });
+    const tiles = [];
+    let writtenRows = 0;
+    while (writtenRows < pageHeight) {
+      const y = Math.min(bottom.y, Math.max(0, writtenRows / bottom.dpr - 16));
+      const viewport = await scrollToPosition(y);
+      assert.deepEqual([viewport.width, viewport.height, viewport.dpr], [bottom.width, bottom.height, bottom.dpr]);
+      const capture = await cdp.send("Page.captureScreenshot", { format: "png", fromSurface: true });
+      const bytes = Buffer.from(capture.data, "base64");
+      const tile = PNG.sync.read(bytes);
+      assert.deepEqual([tile.width, tile.height], [width, height], "Native screenshot must cover the entire physical viewport");
+      const name = basename(file, ".png") + "-viewport-" + tiles.length + ".png";
+      await writeFile(join(dirname(file), name), bytes);
+      const top = Math.round(viewport.y * viewport.dpr);
+      const skip = writtenRows - top;
+      assert.ok(skip >= 0 && skip < tile.height, "Viewport strips must overlap or abut and advance");
+      const rows = Math.min(tile.height - skip, pageHeight - writtenRows);
+      const stride = width * 4;
+      tile.data.copy(joined.data, writtenRows * stride, skip * stride, (skip + rows) * stride);
+      tiles.push({ name, cssY: viewport.y, top, copiedFromRow: skip, copiedRows: rows });
+      writtenRows += rows;
+    }
+    assert.equal(writtenRows, pageHeight);
+    await writeFile(file, PNG.sync.write(joined));
+    return { zoom, layout, capture: { method: "Native un-clipped compositor viewport PNGs, lossless 1:1 row assembly",
+      width, height: pageHeight, viewportHeight: height, devicePixelRatio: bottom.dpr, tiles } };
   } finally {
     await context.close();
   }
