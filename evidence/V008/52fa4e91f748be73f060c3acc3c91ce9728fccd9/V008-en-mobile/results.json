@@ -1,0 +1,5707 @@
+{
+  "work": "V008",
+  "lang": "en",
+  "viewport": "mobile",
+  "commit": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "empty",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "empty removal blocked",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "five",
+            "cups": [
+              2,
+              2,
+              1
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "full",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "seventh rejected",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "reopened",
+            "cups": [
+              2,
+              1,
+              2
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "remixed",
+            "cups": [
+              3,
+              1,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          }
+        ],
+        "download": {
+          "filename": "sorbet-hour-recipe-en.txt",
+          "bytes": 741,
+          "text": "Sorbet Hour | Gift box recipe\n\nMandarin: 3 × 100 mL\nRaspberry: 1 × 100 mL\nWhite guava: 2 × 100 mL\nTotal: 6 cups × 100 mL = 600 mL\n\nIngredients\nMandarin — Mandarin pulp, mandarin juice, water, cane sugar, lemon juice.\nRaspberry — Raspberries, water, cane sugar, lemon juice.\nWhite guava — White guava purée, water, cane sugar, lime juice.\n\nAllergens\nThe concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may come into contact with milk, peanuts and tree nuts.\n\nStorage\nThe intended storage temperature is −18 °C or below. Take out just what you’ll serve and follow the label on the actual product.\n\nA seasonal sorbet brand concept. The recipe is created in this page for offline use and sharing.\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "empty",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "empty removal blocked",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "five",
+            "cups": [
+              2,
+              2,
+              1
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "full",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "seventh rejected",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "reopened",
+            "cups": [
+              2,
+              1,
+              2
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "remixed",
+            "cups": [
+              3,
+              1,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          }
+        ],
+        "download": {
+          "filename": "sorbet-hour-recipe-en.txt",
+          "bytes": 741,
+          "text": "Sorbet Hour | Gift box recipe\n\nMandarin: 3 × 100 mL\nRaspberry: 1 × 100 mL\nWhite guava: 2 × 100 mL\nTotal: 6 cups × 100 mL = 600 mL\n\nIngredients\nMandarin — Mandarin pulp, mandarin juice, water, cane sugar, lemon juice.\nRaspberry — Raspberries, water, cane sugar, lemon juice.\nWhite guava — White guava purée, water, cane sugar, lime juice.\n\nAllergens\nThe concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may come into contact with milk, peanuts and tree nuts.\n\nStorage\nThe intended storage temperature is −18 °C or below. Take out just what you’ll serve and follow the label on the actual product.\n\nA seasonal sorbet brand concept. The recipe is created in this page for offline use and sharing.\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795195853313.1,
+      "anchorMs": 3519.3000000000466,
+      "view": {
+        "at": 756.3000000000466,
+        "stage": {
+          "x": 19.5,
+          "y": 440.125,
+          "right": 370.5,
+          "bottom": 674.125
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstContentfulPaint": 756,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "en",
+        "title": "Sorbet Hour | Seasonal sorbet gift box",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/assets/page-y7LYuWi9.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 0.8000000000465661,
+          "requestStart": 2,
+          "responseStart": 5.2000000000116415,
+          "responseEnd": 5.7000000000116415,
+          "duration": 735.4000000000233,
+          "domInteractive": 18.20000000001164,
+          "domContentLoadedEventStart": 734.5,
+          "domContentLoadedEventEnd": 734.8000000000466,
+          "domComplete": 735.4000000000233,
+          "loadEventStart": 735.4000000000233,
+          "loadEventEnd": 735.4000000000233,
+          "transferSize": 12026,
+          "encodedBodySize": 11726,
+          "decodedBodySize": 11726
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 756
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 756
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 16.300000000046566,
+            "fetchStart": 16.300000000046566,
+            "requestStart": 25.100000000034925,
+            "responseStart": 32.70000000001164,
+            "responseEnd": 32.800000000046566,
+            "duration": 16.5,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-y7LYuWi9.css",
+            "initiator": "link",
+            "startTime": 16.600000000034925,
+            "fetchStart": 16.600000000034925,
+            "requestStart": 25.5,
+            "responseStart": 32.20000000001164,
+            "responseEnd": 32.5,
+            "duration": 15.899999999965075,
+            "transferSize": 7916,
+            "encodedBodySize": 7616,
+            "decodedBodySize": 7616
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-5OSYUKIz.js",
+            "initiator": "script",
+            "startTime": 16.600000000034925,
+            "fetchStart": 16.600000000034925,
+            "requestStart": 25.70000000001164,
+            "responseStart": 34.5,
+            "responseEnd": 34.90000000002328,
+            "duration": 18.29999999998836,
+            "transferSize": 5487,
+            "encodedBodySize": 5187,
+            "decodedBodySize": 5187
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 16.800000000046566,
+            "fetchStart": 16.800000000046566,
+            "requestStart": 25.600000000034925,
+            "responseStart": 33,
+            "responseEnd": 33.100000000034925,
+            "duration": 16.29999999998836,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "initiator": "img",
+            "startTime": 17.600000000034925,
+            "fetchStart": 17.600000000034925,
+            "requestStart": 26.400000000023283,
+            "responseStart": 36,
+            "responseEnd": 45.90000000002328,
+            "duration": 28.29999999998836,
+            "transferSize": 151100,
+            "encodedBodySize": 150800,
+            "decodedBodySize": 150800
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/berry.webp",
+            "initiator": "img",
+            "startTime": 730.4000000000233,
+            "fetchStart": 730.4000000000233,
+            "requestStart": 731.4000000000233,
+            "responseStart": 739.5,
+            "responseEnd": 741.5,
+            "duration": 11.099999999976717,
+            "transferSize": 167836,
+            "encodedBodySize": 167536,
+            "decodedBodySize": 167536
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/guava.webp",
+            "initiator": "img",
+            "startTime": 730.6000000000349,
+            "fetchStart": 730.6000000000349,
+            "requestStart": 732.1000000000349,
+            "responseStart": 741.5,
+            "responseEnd": 757.9000000000233,
+            "duration": 27.29999999998836,
+            "transferSize": 141820,
+            "encodedBodySize": 141520,
+            "decodedBodySize": 141520
+          },
+          {
+            "path": "/glossquote-visuals/assets/shader-CuLz8RdB.js",
+            "initiator": "script",
+            "startTime": 757.1000000000349,
+            "fetchStart": 757.1000000000349,
+            "requestStart": 768.8000000000466,
+            "responseStart": 770.4000000000233,
+            "responseEnd": 770.8000000000466,
+            "duration": 13.700000000011642,
+            "transferSize": 9671,
+            "encodedBodySize": 9371,
+            "decodedBodySize": 9371
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/mark.svg",
+            "initiator": "other",
+            "startTime": 759.8000000000466,
+            "fetchStart": 759.8000000000466,
+            "requestStart": 769.1000000000349,
+            "responseStart": 770.9000000000233,
+            "responseEnd": 771,
+            "duration": 11.199999999953434,
+            "transferSize": 649,
+            "encodedBodySize": 349,
+            "decodedBodySize": 349
+          },
+          {
+            "path": "/glossquote-visuals/assets/standalone-DX-vHLon.js",
+            "initiator": "script",
+            "startTime": 772.2000000000116,
+            "fetchStart": 772.2000000000116,
+            "requestStart": 773,
+            "responseStart": 775.5,
+            "responseEnd": 801,
+            "duration": 28.79999999998836,
+            "transferSize": 2571858,
+            "encodedBodySize": 2571558,
+            "decodedBodySize": 2571558
+          }
+        ],
+        "longTasks": [
+          {
+            "start": 907.2000000000116,
+            "duration": 50
+          }
+        ]
+      },
+      "fromCommitReturnToTimingReadMs": 3513.6293000000005,
+      "navigationStartMetricMs": 357454.138,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "Summer by the scoop.",
+          "cssFamily": "ui-rounded, \"Arial Rounded MT Bold\", \"Trebuchet MS\", \"Microsoft JhengHei\", system-ui, sans-serif",
+          "fonts": [
+            {
+              "familyName": "Trebuchet MS",
+              "postScriptName": "TrebuchetMS-Bold",
+              "isCustomFont": false,
+              "glyphCount": 19
+            }
+          ]
+        },
+        {
+          "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+          "text": "繁體中文",
+          "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "微軟正黑體",
+              "postScriptName": "MicrosoftJhengHeiBold",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "Seasonal sorbet gift box",
+          "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Segoe UI Black",
+              "postScriptName": "SegoeUIBlack",
+              "isCustomFont": false,
+              "glyphCount": 24
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 357465.126,
+          "ms": 10.988000000012107
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 358188.825,
+          "ms": 734.6870000000345
+        },
+        {
+          "name": "load",
+          "traceMs": 358189.59,
+          "ms": 735.4520000000484
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 358208.275,
+          "ms": 754.1370000000461
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 358208.275,
+          "ms": 754.1370000000461
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 358208.275,
+          "ms": 754.1370000000461
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 358303.47599999997,
+          "ms": 849.3379999999888
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 358222.447,
+          "ms": 768.3090000000084
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 358208.275,
+          "ms": 754.1370000000461
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 358361.265,
+          "ms": 907.1270000000368
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3508.3120000000345,
+      "navigationStartTraceMs": 357454.138,
+      "navigationStartEventUs": 357454138,
+      "anchorTraceUs": 360973398,
+      "fcpTraceClockUs": 358210138,
+      "screenshotEvents": 111,
+      "traceImageTimesMs": [
+        757.1730000000098,
+        841.3800000000047,
+        853.2300000000396,
+        868.4440000000177,
+        1067.5380000000005,
+        1075.774000000034,
+        1096.6440000000293,
+        1122.0810000000056,
+        1145.0670000000391,
+        1167.887000000046,
+        1190.6600000000326,
+        1211.7310000000289,
+        1236.7020000000484,
+        1259.6610000000219,
+        1282.5320000000065,
+        1306.5170000000508,
+        1329.314000000013,
+        1352.5010000000475,
+        1376.015000000014,
+        1399.9250000000466,
+        1423.5819999999949,
+        1445.6880000000237,
+        1468.298999999999,
+        1491.3330000000424,
+        1514.1220000000321,
+        1536.6660000000265,
+        1559.469000000041,
+        1582.414000000048,
+        1604.8640000000014,
+        1627.558000000019,
+        1650.5109999999986,
+        1673.2640000000247,
+        1695.9780000000028,
+        1718.5819999999949,
+        1741.5430000000051,
+        1764.2220000000088,
+        1786.9810000000289,
+        1811.0869999999995,
+        1833.88400000002,
+        1856.4720000000088,
+        1879.25,
+        1902.3460000000196,
+        1924.975000000035,
+        1947.5360000000219,
+        1970.3010000000359,
+        1993.0460000000312,
+        2015.5900000000256,
+        2038.3540000000503,
+        2061.1180000000168,
+        2084.0200000000186,
+        2106.8310000000056,
+        2129.3730000000214,
+        2152.213000000047,
+        2175.0630000000237,
+        2197.5500000000466,
+        2220.3130000000237,
+        2243.2390000000014,
+        2267.240000000049,
+        2287.94100000005,
+        2313.0200000000186,
+        2335.8180000000284,
+        2359.246000000043,
+        2382.0200000000186,
+        2404.8699999999953,
+        2427.738000000012,
+        2451.515000000014,
+        2474.469000000041,
+        2497.9010000000126,
+        2520.646000000008,
+        2543.5599999999977,
+        2567.622000000032,
+        2590.50900000002,
+        2613.030000000028,
+        2635.8880000000354,
+        2658.646999999997,
+        2681.542000000016,
+        2704.3340000000317,
+        2727.070000000007,
+        2750.9700000000303,
+        2773.5310000000172,
+        2796.55700000003,
+        2820.6320000000414,
+        2843.3740000000107,
+        2866.7290000000503,
+        2889.490000000049,
+        2912.2449999999953,
+        2935.3400000000256,
+        2959.3800000000047,
+        2982.3490000000456,
+        3005.1560000000172,
+        3027.8450000000303,
+        3050.7270000000135,
+        3073.5840000000317,
+        3097.831999999995,
+        3119.140000000014,
+        3144.3360000000102,
+        3171.3209999999963,
+        3194.092000000004,
+        3217.640000000014,
+        3240.4610000000102,
+        3263.4290000000037,
+        3289.0439999999944,
+        3312.487000000023,
+        3336.4250000000466,
+        3361.0410000000265,
+        3386.4710000000196,
+        3409.9090000000433,
+        3434.1570000000065,
+        3458.206999999995,
+        3483.5810000000056,
+        3507.7180000000517
+      ],
+      "filmstripFramesInWindow": 89,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 757.1730000000098,
+          "traceUs": 358211311,
+          "file": "opening-0.png",
+          "sha256": "372aefc6374ac4815e7a8bb2bb18c67a058988996e93f6ca07d31738877c7d8c",
+          "source": "opening-0.jpg",
+          "originalSha256": "b15c62a91d18fd45348b456810fb596eb2fc8873b8ca0efa33ce3c85da42136b",
+          "stageHash": "aa7bb757898af469379eac5c357f45dc3d02195bf5613b61c5e97a052ecb6db6",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1145.0670000000391,
+          "traceUs": 358599205,
+          "file": "opening-1.png",
+          "sha256": "322dde4b9959691dcb203617852e0e7aa1daa2779188444d476934f170fe73cb",
+          "source": "opening-1.jpg",
+          "originalSha256": "cb826027890f004d7520409f59fc5017bed0642dc1a76dc751e6a8f2a294ea5f",
+          "stageHash": "54011b883012d248fff4516b46f30af5408619e834832189056b973601d77690",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1329.314000000013,
+          "traceUs": 358783452,
+          "file": "opening-2.png",
+          "sha256": "48760736dba3bb84533b608379e697bd3d65120389047e2a2059e334c0b8664f",
+          "source": "opening-2.jpg",
+          "originalSha256": "6a4fc04a2f29db9f2b07106e83d43eb0e0e277752253739e4126e4ff0d717264",
+          "stageHash": "3a3cd2cb4e8bba470dbdc16d0cdbc87fc4a5dc5c80b408e6af595b2cdeb77590",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1514.1220000000321,
+          "traceUs": 358968260,
+          "file": "opening-3.png",
+          "sha256": "fee211d08650e325001e067fb9f4f19a4b3b8b9ea0fd91b8734525c5f890e8e5",
+          "source": "opening-3.jpg",
+          "originalSha256": "d2a26f089303b565d9f05d0c302a7ef22f43392a27e2148635e5aec95cbb5e8a",
+          "stageHash": "f569b73ccaa7f6e7e5023416924ee040b2af85c57331e8778d53c28828193c5a",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1695.9780000000028,
+          "traceUs": 359150116,
+          "file": "opening-4.png",
+          "sha256": "3baf0e0fd1bf40ddd6011b9c840915d849afa695e2ac5df8a686029a668755d9",
+          "source": "opening-4.jpg",
+          "originalSha256": "37af2ae279cbdaed03c3c120c10445242eb647d9b9a5e58b22f4b9b7cfdecea4",
+          "stageHash": "088234803029ca06622ee03cef411bec8c5e0e972656b45cc4f13e71f1cbca08",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1879.25,
+          "traceUs": 359333388,
+          "file": "opening-5.png",
+          "sha256": "57f915764aa6b2a1560f0a050696b9aa9ab151c5469a5edc93d2bb83710b9d2e",
+          "source": "opening-5.jpg",
+          "originalSha256": "e17efb8b4cd278a13867420cc5dabaee1877bf8ddd9690cc3451e8de7210da50",
+          "stageHash": "c90278143601cdbdf8519dbcb617b7a78466e3153f44f3b32a6f97d88724023d",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2061.1180000000168,
+          "traceUs": 359515256,
+          "file": "opening-6.png",
+          "sha256": "e95791761cd5b6e1b78f47c702dbb55e4757ed4175be5b8ce6bd14a8ff241dab",
+          "source": "opening-6.jpg",
+          "originalSha256": "52e5f0742ae782cb78ac63d936ad09bf5b8c90e73d7455ff01b500bc8bf33415",
+          "stageHash": "694a762ecb6ef928a8071579d1354cbb31404260018118337fb2b82ee51514c8",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2243.2390000000014,
+          "traceUs": 359697377,
+          "file": "opening-7.png",
+          "sha256": "f6d00aa9ec46c669494cfc1c3794bb4fc809a3736dd9bbe4ad3232f83c67250f",
+          "source": "opening-7.jpg",
+          "originalSha256": "31d3d612ab845c9790a0fc328c783c40acba17a88f050343256cb171539464d3",
+          "stageHash": "e9c032b583831b352f182343f67ffa8687f245953d7427437b8fbd05a71f02fa",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2427.738000000012,
+          "traceUs": 359881876,
+          "file": "opening-8.png",
+          "sha256": "b66615abd311411028d6aa4842ab272a7ac902f6c1542adcd0dee8978bfded24",
+          "source": "opening-8.jpg",
+          "originalSha256": "c935599a0f5535e0b23389181e398a1f86b3d21ea044b4d64a6dd49d2414f58c",
+          "stageHash": "32569c526741619e7bfdd424075e1cf7620583c3b415ca11ff3d8c3396ba9da4",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2613.030000000028,
+          "traceUs": 360067168,
+          "file": "opening-9.png",
+          "sha256": "ea1ee4911ca394295f1a8b2813ea4f89dcd56aeb4a5530a2a1b6495f26fae026",
+          "source": "opening-9.jpg",
+          "originalSha256": "abcbc125978b0b04921f44aebd104543695f773441daa2c03deefeaf5fe140d6",
+          "stageHash": "be72658af1c2591cfd6e40306647532dd5c8aae4fc2a10fdf50b0eb299c93089",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2796.55700000003,
+          "traceUs": 360250695,
+          "file": "opening-10.png",
+          "sha256": "7d6c240de3343a07cdee98e83031f9b0ec6194b8230126bab2499d945ea1915f",
+          "source": "opening-10.jpg",
+          "originalSha256": "45f36f19d836ff19efce9d3571c52fb7a6f37275dfb8796c2188e35ca1d57ece",
+          "stageHash": "077765eb96987eb051401c09d78b2a0a2903c4b2937e04efb51647d308a9b31c",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2982.3490000000456,
+          "traceUs": 360436487,
+          "file": "opening-11.png",
+          "sha256": "5c3c6271037f61beee694b966148af09bfa3783574387d842d7f2268fec40632",
+          "source": "opening-11.jpg",
+          "originalSha256": "4b4c840a915b4ee8b0ab72bdb3fb1daf930a51b2fa0652486590395958254507",
+          "stageHash": "4cd645ca43614989043ad6def87f9d89a7f4bcff6885cc0981a70f54d6061dad",
+          "crop": [
+            11,
+            259,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input"
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 139,
+    "firstFoldEnd": 203.40000000002328,
+    "cycle": "8",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "6e4a786381538aa7f5fbf243c637a7e912781aab6c6947e7a367412f86dadcc2",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 413.30000000004657,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 193,
+          "average": [
+            75,
+            50,
+            25,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "f07b9c1cced4c27c7753561fa6a4df208a7508b2914065f2633e554ba9bc5b86",
+          "start": 449.70000000001164,
+          "end": 516.6000000000349,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "b1094994f1d78379a5a1e4cf1f1aa0300caa4d67fafbafc3b934ed3cf5878b6d",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 1321.600000000035,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 201,
+          "average": [
+            74,
+            49,
+            25,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "23af6dc79d9540445c8c6383cb23dea20cf19e83d80afbec2593350c96f29de6",
+          "start": 1356.4000000000233,
+          "end": 1423,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0.9082999999999883
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "1eaf4ef0457b88446f8ee6636eabe6b3c9a913a748d4a4f4efc83a47939fdc51",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 2638.600000000035,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 202,
+          "average": [
+            72,
+            47,
+            24,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "142e6a0277320faa27c7381980ff10c03c29e05af59e68c05af893a594b95204",
+          "start": 2670.8000000000466,
+          "end": 2738.5,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 2.2252999999999883
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "9ae75466dafc30d47d59db861683fbc793f5e9f9d264c678b78e4978a51385c5",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 4430.700000000012,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 202,
+          "average": [
+            71,
+            47,
+            24,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "95a79165b89abc55ae9fc3b29df0025b2224cda5f042ed96732323c3163846c8",
+          "start": 4462.800000000047,
+          "end": 4515.900000000023,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 4.017399999999965
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "b24ccb07bd1e3230a07b7fa0f327e62fe77f242b8f7694fd70cb73d45e72908f",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 6441.200000000012,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 201,
+          "average": [
+            72,
+            48,
+            25,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "b5f81cbd0d796b778c71263cbc88a209af3d42e8364df321453eb64c52fd7ce1",
+          "start": 6474.700000000012,
+          "end": 6542.400000000023,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 6.027899999999965
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "06544721d93aef278dcd5affda2fb6fd3fecd24ee674dc1d80ed4f6010a41724",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 8466.200000000012,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 196,
+          "average": [
+            75,
+            50,
+            25,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "c40ab30d4f225eb3de25315bf90fa6f0fd4a1790ebae59c1eb9ff4a0a7e42f70",
+          "start": 8498.400000000023,
+          "end": 8551,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 8.052899999999966
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "54f4aee3baa2713f9629cadef8f99a018ba49129d0842b164790f009e6974ed9",
+          "start": 500.29999999998836,
+          "end": 569.7000000000116,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "d299c99af12a7abe6038c45cdcd9302d89a3d7a670108fdc9591b9459ca4dbd2",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 587.9000000000233,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 194,
+          "average": [
+            74,
+            50,
+            25,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "a7c5d876940b2133800b143e7a96f9e56cbfa50bed3e06c287a713c914724178",
+          "start": 730,
+          "end": 795.4000000000233,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "d45e16ef80e4579c0006d7d9a24208c93471457ef791c94dc3fc50e594a28863",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 812.2999999999884,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 199,
+          "average": [
+            61,
+            27,
+            31,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "2bde0efff77ac6215cf32b202c4bb2451720daf4e0f44867ba061b7836b4508f",
+          "start": 943.5,
+          "end": 1009.5999999999767,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "b39b685b0f31cb7ae2cf1ba1b955fcdf4b877095fdaa2e1c180a4645f07cbf4d",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 1011.0999999999767,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 197,
+          "average": [
+            61,
+            64,
+            44,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "4ddb0267889dd15c195f547b61cc2c8b015239c07655d492920cf1812889cbc6",
+          "start": 1143.7000000000116,
+          "end": 1199.5,
+          "clip": {
+            "x": 19,
+            "y": 440,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "989561fde8df311e07d728eecaef1425f7ee83afdc0d98743a994c3204db85d0",
+          "width": 179,
+          "height": 119,
+          "format": "bgra8unorm",
+          "submittedAt": 1206.4000000000233,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 199,
+          "average": [
+            74,
+            49,
+            25,
+            78
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "605b165f95e005b04ef34dcf127b6656c228629fda0d6f14de961ba9f8a3e28d",
+        "start": 1275.5,
+        "end": 1325.7999999999884,
+        "clip": {
+          "x": 19,
+          "y": 440,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "e00c6f0885543304ff4bc0ccc32a76a049754843637ec41521b8004361d42230",
+        "start": 1397.2999999999884,
+        "end": 1453.4000000000233,
+        "clip": {
+          "x": 19,
+          "y": 440,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "e00c6f0885543304ff4bc0ccc32a76a049754843637ec41521b8004361d42230",
+        "start": 2817,
+        "end": 2869.0999999999767,
+        "clip": {
+          "x": 19,
+          "y": 440,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "e7140f554b1fb0a543569e753afd1c4e8ce2505ec00139ec0953686244756e13",
+        "start": 2956.4000000000233,
+        "end": 3013.9000000000233,
+        "clip": {
+          "x": 19,
+          "y": 440,
+          "width": 352,
+          "height": 235
+        }
+      }
+    },
+    "flow": {
+      "lang": "en",
+      "observations": [
+        {
+          "name": "empty",
+          "cups": [
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "downloadEnabled": false,
+          "text": "0 of 6 cups selected. 6 slots left."
+        },
+        {
+          "name": "empty removal blocked",
+          "cups": [
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "downloadEnabled": false,
+          "text": "0 of 6 cups selected. 6 slots left."
+        },
+        {
+          "name": "five",
+          "cups": [
+            2,
+            2,
+            1
+          ],
+          "total": 5,
+          "downloadEnabled": false,
+          "text": "5 of 6 cups selected. 1 slot left."
+        },
+        {
+          "name": "full",
+          "cups": [
+            2,
+            2,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "6 of 6 cups selected. Your recipe is ready."
+        },
+        {
+          "name": "seventh rejected",
+          "cups": [
+            2,
+            2,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "6 of 6 cups selected. Your recipe is ready."
+        },
+        {
+          "name": "reopened",
+          "cups": [
+            2,
+            1,
+            2
+          ],
+          "total": 5,
+          "downloadEnabled": false,
+          "text": "5 of 6 cups selected. 1 slot left."
+        },
+        {
+          "name": "remixed",
+          "cups": [
+            3,
+            1,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "6 of 6 cups selected. Your recipe is ready."
+        }
+      ],
+      "download": {
+        "filename": "sorbet-hour-recipe-en.txt",
+        "bytes": 741,
+        "text": "Sorbet Hour | Gift box recipe\n\nMandarin: 3 × 100 mL\nRaspberry: 1 × 100 mL\nWhite guava: 2 × 100 mL\nTotal: 6 cups × 100 mL = 600 mL\n\nIngredients\nMandarin — Mandarin pulp, mandarin juice, water, cane sugar, lemon juice.\nRaspberry — Raspberries, water, cane sugar, lemon juice.\nWhite guava — White guava purée, water, cane sugar, lime juice.\n\nAllergens\nThe concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may come into contact with milk, peanuts and tree nuts.\n\nStorage\nThe intended storage temperature is −18 °C or below. Take out just what you’ll serve and follow the label on the actual product.\n\nA seasonal sorbet brand concept. The recipe is created in this page for offline use and sharing.\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 343.96875,
+              "width": 159,
+              "height": 49.75
+            },
+            "labels": []
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 669.703125,
+              "width": 109.03125,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Remove one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2806.5625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2806.5625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2862.75,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2862.75,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2918.9375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2918.9375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Download box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 2984.53125,
+              "width": 228.546875,
+              "height": 49.75
+            },
+            "labels": [],
+            "disabled": true
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to main content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 178.625,
+              "height": 44.78125
+            },
+            "color": "rgb(255, 249, 236)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(83, 23, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nSORBET\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 7.1875,
+              "width": 90,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "21.6px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Flavors",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 51.1875,
+              "width": 46.625,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "A",
+            "rect": {
+              "x": 73.015625,
+              "y": 51.1875,
+              "width": 74.03125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 157.4375,
+              "y": 51.1875,
+              "width": 56,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Seasonal sorbet gift box",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 123.171875,
+              "width": 288,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Summer\nby the scoop.",
+            "tag": "H1",
+            "rect": {
+              "x": 16,
+              "y": 153.5625,
+              "width": 288,
+              "height": 93.625
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "44.8px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin, raspberry and white guava. Pick six cups of fruit sorbet for someone you’re thin",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 258.375,
+              "width": 258.75,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 343.96875,
+              "width": 159,
+              "height": 49.75
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(148, 22, 56)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin",
+            "tag": "LABEL",
+            "rect": {
+              "x": 16,
+              "y": 619.3125,
+              "width": 83.03125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry",
+            "tag": "LABEL",
+            "rect": {
+              "x": 103.828125,
+              "y": 619.3125,
+              "width": 86.359375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava",
+            "tag": "LABEL",
+            "rect": {
+              "x": 194.984375,
+              "y": 619.3125,
+              "width": 102.234375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 669.703125,
+              "width": 109.03125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Three seasonal flavors",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 769.703125,
+              "width": 288,
+              "height": 66.875
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "100 mL per cup",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 846.171875,
+              "width": 109.53125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1079.75,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Bright and tangy, for lovers of tart citrus.",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1108.765625,
+              "width": 259.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1473.734375,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Sweet-tart berries with a distinct seed texture.",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1502.75,
+              "width": 259.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1867.71875,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A floral finish and crisp, fine ice crystals.",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1896.734375,
+              "width": 259.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Allergens and shared equipment",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 2105.109375,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2134.125,
+              "width": 288,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2321.3125,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose any mix from our three flavors. Fill all six cups to download your recipe.",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2370.75,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A seasonal sorbet brand concept. The recipe is created in this page for offline use and sh",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2587.84375,
+              "width": 288,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "0 of 6 cups selected. 6 slots left.",
+            "tag": "P",
+            "rect": {
+              "x": 29.59375,
+              "y": 2758.375,
+              "width": 260.8125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2806.5625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2806.5625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2862.75,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2862.75,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2918.9375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2918.9375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 2984.53125,
+              "width": 228.546875,
+              "height": 49.75
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(245, 227, 222)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "tag": "P",
+            "rect": {
+              "x": 29.59375,
+              "y": 3039.078125,
+              "width": 260.8125,
+              "height": 22.546875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "15.04px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Keep it cold",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 3166.40625,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Store frozen",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 3223.84375,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The intended storage temperature is −18 °C or below. Take out just what you’ll serve and f",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3250.453125,
+              "width": 288,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Give it a moment",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 3367.25,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Let the sorbet soften slightly out of the freezer until it yields to a spoon.",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3393.859375,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Blank gift box recipe",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 3513.859375,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Write in 0 to 6 cups per flavor, for a total of 6. Use your browser’s print command to pri",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3560.09375,
+              "width": 288,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3922.796875,
+              "width": 288,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nSORBET\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4095.796875,
+              "width": 114.078125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the visual gallery ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4150.984375,
+              "width": 190.3125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4206.171875,
+              "width": 103.296875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 366.375,
+              "width": 159,
+              "height": 49.75
+            },
+            "labels": []
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 734.109375,
+              "width": 114.46875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Remove one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2889.1875,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2889.1875,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2945.375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2945.375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3001.5625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3001.5625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Download box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33.09375,
+              "y": 3067.15625,
+              "width": 228.546875,
+              "height": 49.75
+            },
+            "labels": [],
+            "disabled": true
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to main content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 178.625,
+              "height": 44.78125
+            },
+            "color": "rgb(255, 249, 236)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(83, 23, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nSORBET\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 14.390625,
+              "width": 114.078125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Flavors",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 66.390625,
+              "width": 53.28125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "A",
+            "rect": {
+              "x": 84.78125,
+              "y": 66.390625,
+              "width": 84.59375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 181.375,
+              "y": 66.390625,
+              "width": 64,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Seasonal sorbet gift box",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 145.578125,
+              "width": 351,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Summer\nby the scoop.",
+            "tag": "H1",
+            "rect": {
+              "x": 19.5,
+              "y": 175.96875,
+              "width": 351,
+              "height": 93.625
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "44.8px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin, raspberry and white guava. Pick six cups of fruit sorbet for someone you’re thin",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 280.78125,
+              "width": 258.75,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 366.375,
+              "width": 159,
+              "height": 49.75
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(148, 22, 56)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin",
+            "tag": "LABEL",
+            "rect": {
+              "x": 19.5,
+              "y": 683.71875,
+              "width": 88.46875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry",
+            "tag": "LABEL",
+            "rect": {
+              "x": 112.765625,
+              "y": 683.71875,
+              "width": 91.796875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava",
+            "tag": "LABEL",
+            "rect": {
+              "x": 209.359375,
+              "y": 683.71875,
+              "width": 107.671875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 734.109375,
+              "width": 114.46875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Three seasonal flavors",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 834.109375,
+              "width": 289.765625,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "100 mL per cup",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 877.140625,
+              "width": 109.53125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1148.515625,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Bright and tangy, for lovers of tart citrus.",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1177.53125,
+              "width": 322.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1556.296875,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Sweet-tart berries with a distinct seed texture.",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1585.3125,
+              "width": 322.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1964.078125,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A floral finish and crisp, fine ice crystals.",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1993.09375,
+              "width": 322.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Allergens and shared equipment",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 2177.46875,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2206.484375,
+              "width": 351,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2393.671875,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose any mix from our three flavors. Fill all six cups to download your recipe.",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2443.109375,
+              "width": 327.75,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A seasonal sorbet brand concept. The recipe is created in this page for offline use and sh",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2660.203125,
+              "width": 327.75,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "0 of 6 cups selected. 6 slots left.",
+            "tag": "P",
+            "rect": {
+              "x": 33.09375,
+              "y": 2841,
+              "width": 323.8125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2889.1875,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Mandarin",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2889.1875,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2945.375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Raspberry",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2945.375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3001.5625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of White guava",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3001.5625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33.09375,
+              "y": 3067.15625,
+              "width": 228.546875,
+              "height": 49.75
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(245, 227, 222)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "tag": "P",
+            "rect": {
+              "x": 33.09375,
+              "y": 3121.703125,
+              "width": 323.8125,
+              "height": 22.546875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "15.04px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Keep it cold",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 3249.03125,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Store frozen",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 3306.46875,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The intended storage temperature is −18 °C or below. Take out just what you’ll serve and f",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3333.078125,
+              "width": 351,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Give it a moment",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 3425.875,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Let the sorbet soften slightly out of the freezer until it yields to a spoon.",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3452.484375,
+              "width": 351,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Blank gift box recipe",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 3572.484375,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Write in 0 to 6 cups per flavor, for a total of 6. Use your browser’s print command to pri",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3618.71875,
+              "width": 351,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3981.421875,
+              "width": 351,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nSORBET\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4154.421875,
+              "width": 114.078125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the visual gallery ↗",
+            "tag": "A",
+            "rect": {
+              "x": 180.1875,
+              "y": 4154.421875,
+              "width": 190.3125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code ↗",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4209.609375,
+              "width": 103.296875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Skip to main content",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "果時\nSORBET\nHOUR",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Flavors",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 66.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Build a box",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 66.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "繁體中文",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 66.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Build a box\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 366.375
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Mandarin",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 683.71875
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Remove one cup of Mandarin",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2889.1875
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Add one cup of Mandarin",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2889.1875
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Remove one cup of Raspberry",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2945.375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Add one cup of Raspberry",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2945.375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Remove one cup of White guava",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3001.5625
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Add one cup of White guava",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3001.5625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "果時\nSORBET\nHOUR",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4154.421875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Back to the visual gallery ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4154.421875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Source code ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4209.609375
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares three works and two inner sections.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2349.399999999965,
+    "end": 12357.799999999988,
+    "timestamps": [
+      2367.0999999999767,
+      2388.5,
+      2409.7999999999884,
+      2431.899999999965,
+      2453.2000000000116,
+      2474.5999999999767,
+      2496,
+      2517.2000000000116,
+      2538.7000000000116,
+      2561.2000000000116,
+      2582.5,
+      2604.7000000000116,
+      2625.899999999965,
+      2647.399999999965,
+      2669.0999999999767,
+      2691.2999999999884,
+      2712.7999999999884,
+      2733.2000000000116,
+      2754.399999999965,
+      2775.5,
+      2796.899999999965,
+      2817.899999999965,
+      2838.5,
+      2860.7999999999884,
+      2882.2000000000116,
+      2903.5,
+      2925,
+      2947.0999999999767,
+      2968.399999999965,
+      2989.2999999999884,
+      3011.0999999999767,
+      3031.5999999999767,
+      3052.899999999965,
+      3074.399999999965,
+      3096.7000000000116,
+      3118.0999999999767,
+      3139.399999999965,
+      3160.5,
+      3181.5,
+      3204.0999999999767,
+      3225.5999999999767,
+      3247,
+      3268.5,
+      3290.7000000000116,
+      3312.2000000000116,
+      3332.5999999999767,
+      3353.899999999965,
+      3375.2999999999884,
+      3396.899999999965,
+      3418.0999999999767,
+      3439.399999999965,
+      3460.899999999965,
+      3482.399999999965,
+      3504.5999999999767,
+      3525.7999999999884,
+      3548.0999999999767,
+      3569.5999999999767,
+      3590.7999999999884,
+      3612.2999999999884,
+      3633.7000000000116,
+      3655.0999999999767,
+      3677.5,
+      3698.899999999965,
+      3720.2999999999884,
+      3740.7999999999884,
+      3761.899999999965,
+      3783.2000000000116,
+      3804.7000000000116,
+      3825.899999999965,
+      3848,
+      3869.5999999999767,
+      3891.5999999999767,
+      3912.7999999999884,
+      3934.399999999965,
+      3956.5999999999767,
+      3977.2000000000116,
+      3999.5999999999767,
+      4020.899999999965,
+      4042.7000000000116,
+      4064.399999999965,
+      4085.2999999999884,
+      4106.599999999977,
+      4128.599999999977,
+      4150,
+      4172.200000000012,
+      4193.099999999977,
+      4214.399999999965,
+      4236.5,
+      4258.599999999977,
+      4279.799999999988,
+      4300.899999999965,
+      4323,
+      4344.5,
+      4365.899999999965,
+      4387.200000000012,
+      4409.399999999965,
+      4430.700000000012,
+      4452.099999999977,
+      4473.099999999977,
+      4494.299999999988,
+      4515.700000000012,
+      4537.700000000012,
+      4558.899999999965,
+      4579.700000000012,
+      4600.899999999965,
+      4621.599999999977,
+      4644.399999999965,
+      4666.299999999988,
+      4688.299999999988,
+      4709.5,
+      4730.700000000012,
+      4752.700000000012,
+      4774.799999999988,
+      4797,
+      4818.799999999988,
+      4840.299999999988,
+      4862,
+      4883.399999999965,
+      4904.799999999988,
+      4926.200000000012,
+      4946.599999999977,
+      4968.099999999977,
+      4990.5,
+      5012.599999999977,
+      5034,
+      5055.299999999988,
+      5076.399999999965,
+      5097.599999999977,
+      5118.799999999988,
+      5140.200000000012,
+      5161.299999999988,
+      5183.5,
+      5204.5,
+      5226.299999999988,
+      5247.799999999988,
+      5269.200000000012,
+      5290.5,
+      5311.899999999965,
+      5333.099999999977,
+      5354.5,
+      5376.599999999977,
+      5398,
+      5419.399999999965,
+      5441.599999999977,
+      5462.899999999965,
+      5484.399999999965,
+      5506.5,
+      5527.399999999965,
+      5548.700000000012,
+      5570,
+      5591.299999999988,
+      5612.799999999988,
+      5634.200000000012,
+      5656.399999999965,
+      5677.5,
+      5698.899999999965,
+      5721,
+      5742.5,
+      5763.5,
+      5784.899999999965,
+      5806.099999999977,
+      5827,
+      5849.5,
+      5871,
+      5893.200000000012,
+      5914.5,
+      5935.5,
+      5956.5,
+      5977.700000000012,
+      5998.799999999988,
+      6020.299999999988,
+      6042.200000000012,
+      6064.700000000012,
+      6086.899999999965,
+      6108.299999999988,
+      6129.599999999977,
+      6151,
+      6172.200000000012,
+      6193.099999999977,
+      6215.5,
+      6236.799999999988,
+      6258.200000000012,
+      6279.200000000012,
+      6300.5,
+      6322.5,
+      6343.700000000012,
+      6364.5,
+      6385.599999999977,
+      6406.200000000012,
+      6427.5,
+      6448.899999999965,
+      6470.299999999988,
+      6491.299999999988,
+      6512.700000000012,
+      6533.599999999977,
+      6555,
+      6576.599999999977,
+      6598.399999999965,
+      6619.599999999977,
+      6640.599999999977,
+      6662.899999999965,
+      6684.099999999977,
+      6705.299999999988,
+      6726.299999999988,
+      6748.5,
+      6769.599999999977,
+      6791,
+      6813.099999999977,
+      6835.700000000012,
+      6857.099999999977,
+      6878.200000000012,
+      6899.399999999965,
+      6921.599999999977,
+      6942.899999999965,
+      6965.299999999988,
+      6987.5,
+      7008.5,
+      7029,
+      7050.299999999988,
+      7071.700000000012,
+      7094,
+      7114.399999999965,
+      7135.799999999988,
+      7157.200000000012,
+      7178.799999999988,
+      7200.099999999977,
+      7221.399999999965,
+      7243,
+      7264.899999999965,
+      7286.799999999988,
+      7308.399999999965,
+      7331,
+      7352.599999999977,
+      7373.899999999965,
+      7395.399999999965,
+      7416.599999999977,
+      7438.200000000012,
+      7460,
+      7481.799999999988,
+      7503.200000000012,
+      7525.5,
+      7547.700000000012,
+      7569.099999999977,
+      7590.399999999965,
+      7611.599999999977,
+      7633.200000000012,
+      7654.399999999965,
+      7675,
+      7696.200000000012,
+      7717.599999999977,
+      7738.899999999965,
+      7761.099999999977,
+      7783.299999999988,
+      7804.399999999965,
+      7825.799999999988,
+      7847.899999999965,
+      7870.099999999977,
+      7891.399999999965,
+      7912.899999999965,
+      7934.099999999977,
+      7956.299999999988,
+      7977.599999999977,
+      7999.899999999965,
+      8021.399999999965,
+      8042.899999999965,
+      8064,
+      8085.599999999977,
+      8106.799999999988,
+      8127.799999999988,
+      8149.099999999977,
+      8170.299999999988,
+      8192.299999999988,
+      8213.799999999988,
+      8235.399999999965,
+      8256.599999999977,
+      8277.599999999977,
+      8298.799999999988,
+      8319.700000000012,
+      8341.200000000012,
+      8362.5,
+      8383.599999999977,
+      8404.599999999977,
+      8425.799999999988,
+      8447.399999999965,
+      8469.700000000012,
+      8490.899999999965,
+      8513.200000000012,
+      8534.399999999965,
+      8555.799999999988,
+      8577.099999999977,
+      8598.299999999988,
+      8619.200000000012,
+      8640.399999999965,
+      8661.5,
+      8683.5,
+      8704.799999999988,
+      8726.399999999965,
+      8747.899999999965,
+      8770.200000000012,
+      8791.700000000012,
+      8813,
+      8834.099999999977,
+      8854.5,
+      8875.5,
+      8897.899999999965,
+      8919.200000000012,
+      8940.599999999977,
+      8961.200000000012,
+      8982.399999999965,
+      9003.799999999988,
+      9024.799999999988,
+      9046.599999999977,
+      9068.899999999965,
+      9090.299999999988,
+      9111.599999999977,
+      9132.5,
+      9154.899999999965,
+      9176.399999999965,
+      9198.700000000012,
+      9220.200000000012,
+      9241.5,
+      9262.899999999965,
+      9283.899999999965,
+      9305.099999999977,
+      9327.299999999988,
+      9349.5,
+      9370.799999999988,
+      9391.700000000012,
+      9413,
+      9435.200000000012,
+      9456.399999999965,
+      9477.799999999988,
+      9498.799999999988,
+      9519.899999999965,
+      9540.899999999965,
+      9562.099999999977,
+      9583.5,
+      9605,
+      9626.5,
+      9648.200000000012,
+      9670,
+      9692.599999999977,
+      9713.899999999965,
+      9735.899999999965,
+      9757.299999999988,
+      9778.5,
+      9799.5,
+      9821.099999999977,
+      9842.5,
+      9863.799999999988,
+      9884.899999999965,
+      9906.099999999977,
+      9927.299999999988,
+      9948.399999999965,
+      9970.599999999977,
+      9992,
+      10013,
+      10034.099999999977,
+      10056.399999999965,
+      10078.5,
+      10099.899999999965,
+      10121.399999999965,
+      10142.700000000012,
+      10164.099999999977,
+      10185.200000000012,
+      10206.299999999988,
+      10227.200000000012,
+      10248.599999999977,
+      10270.599999999977,
+      10293.099999999977,
+      10314.399999999965,
+      10336.399999999965,
+      10357.599999999977,
+      10379.099999999977,
+      10400.599999999977,
+      10421.700000000012,
+      10443.099999999977,
+      10464.5,
+      10486.399999999965,
+      10508.700000000012,
+      10531,
+      10553,
+      10574.200000000012,
+      10595,
+      10617.399999999965,
+      10638.399999999965,
+      10660.700000000012,
+      10682,
+      10704.099999999977,
+      10725,
+      10746.299999999988,
+      10767.799999999988,
+      10789.099999999977,
+      10810.099999999977,
+      10832,
+      10853.299999999988,
+      10875.399999999965,
+      10895.700000000012,
+      10916.899999999965,
+      10938.299999999988,
+      10959.5,
+      10980,
+      11001.5,
+      11022.799999999988,
+      11044.899999999965,
+      11066.299999999988,
+      11087.599999999977,
+      11109,
+      11130.399999999965,
+      11151.599999999977,
+      11172.799999999988,
+      11194.099999999977,
+      11215.5,
+      11236.899999999965,
+      11258.299999999988,
+      11279.599999999977,
+      11301.299999999988,
+      11324.700000000012,
+      11347.5,
+      11368.299999999988,
+      11388.799999999988,
+      11410,
+      11431.399999999965,
+      11452.5,
+      11473.399999999965,
+      11494.799999999988,
+      11517,
+      11539.299999999988,
+      11561.5,
+      11582.599999999977,
+      11603.899999999965,
+      11625.200000000012,
+      11646.599999999977,
+      11668.200000000012,
+      11689.200000000012,
+      11710.099999999977,
+      11731.200000000012,
+      11752.200000000012,
+      11773.5,
+      11794.899999999965,
+      11816.700000000012,
+      11839,
+      11860.700000000012,
+      11882.200000000012,
+      11904.200000000012,
+      11926.200000000012,
+      11947.399999999965,
+      11968.5,
+      11989.700000000012,
+      12010.899999999965,
+      12033.299999999988,
+      12055.799999999988,
+      12077,
+      12099.099999999977,
+      12120,
+      12141,
+      12162.200000000012,
+      12183.5,
+      12205.700000000012,
+      12227.5,
+      12248.700000000012,
+      12269.799999999988,
+      12291.700000000012,
+      12313.099999999977,
+      12334.399999999965,
+      12355.5
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        179,
+        119
+      ]
+    ],
+    "measuredMs": 10008.400000000023,
+    "medianMs": 21.399999999965075,
+    "p95Ms": 22.300000000046566,
+    "longestMs": 23.400000000023283,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/en/works/sorbet-hour/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/assets/page-5OSYUKIz.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/assets/page-y7LYuWi9.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/media/sorbet-hour/cover.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/media/sorbet-hour/berry.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/media/sorbet-hour/guava.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/media/sorbet-hour/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/assets/shader-CuLz8RdB.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/assets/standalone-DX-vHLon.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:63975/glossquote-visuals/media/sorbet-hour/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}

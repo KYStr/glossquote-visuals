@@ -1,5 +1,9 @@
 # Evidence status
 
+## M04 逐條驗收
+
+本批三件固定候選 `52fa4e91f748be73f060c3acc3c91ce9728fccd9` 已依 14 條規則各自完成複核。[V006](V006/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md) · [V007](V007/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md) · [V008](V008/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md)。
+
 ## M03 — corrected release published and verified
 
 Five complete bilingual commercial websites passed non-author design and temporal review at `ba1cffaad8b678f26a147403a36ed20197b27c36`; all fifteen scores exceed 9/10. Eight isolated lanes and aggregate passed. [Integration and limits](M03/ba1cffaad8b678f26a147403a36ed20197b27c36/INTEGRATION.md). Corrected source `33d0aee9006b2b76f02a58c9ddd575571a4704b9` is deployed; build/deploy/live jobs, ten localized GPU controls and 12-page/47-resource HTTPS readback passed. [Release and preserved failures](M03/33d0aee9006b2b76f02a58c9ddd575571a4704b9/RELEASE.md). Software GPU proof does not establish physical-device or external user acceptance.

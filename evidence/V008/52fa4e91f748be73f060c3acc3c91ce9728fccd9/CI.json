@@ -1,0 +1,100 @@
+{
+  "repository": "KYStr/glossquote-visuals",
+  "commit": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+  "runId": 44783845662,
+  "attempt": 1,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662",
+  "jobId": 136454684728,
+  "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662/job/136454684728",
+  "conclusion": "success",
+  "sources": [
+    {
+      "lane": "V008-zh-Hant-desktop",
+      "jobId": 136453349696,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662/job/136453349696",
+      "artifactId": 14654285079,
+      "artifactDigest": "sha256:84357c64c55d179f0e57f000fee1399a40de751a98a9ebf47a22d22b2a6659ce",
+      "measurements": {
+        "measuredMs": 10002.599999999977,
+        "medianMs": 26.599999999976717,
+        "p95Ms": 27.900000000023283,
+        "longestMs": 28.900000000023283
+      }
+    },
+    {
+      "lane": "V008-zh-Hant-mobile",
+      "jobId": 136453349571,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662/job/136453349571",
+      "artifactId": 14653351487,
+      "artifactDigest": "sha256:72a49a99de60749a66cf89f75b88de0f33794637539bde910b4eba3d70166f64",
+      "measurements": {
+        "measuredMs": 10001.200000000012,
+        "medianMs": 22.5,
+        "p95Ms": 23.60000000000582,
+        "longestMs": 24.60000000000582
+      }
+    },
+    {
+      "lane": "V008-en-desktop",
+      "jobId": 136453349818,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662/job/136453349818",
+      "artifactId": 14652624985,
+      "artifactDigest": "sha256:4e54bd97245ed67a4beccd5ef656f0fbdb0e04546b3f82e44b86a7a009d78bc9",
+      "measurements": {
+        "measuredMs": 10006.200000000012,
+        "medianMs": 30,
+        "p95Ms": 30.89999999999418,
+        "longestMs": 31.60000000000582
+      }
+    },
+    {
+      "lane": "V008-en-mobile",
+      "jobId": 136453349733,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662/job/136453349733",
+      "artifactId": 14651544069,
+      "artifactDigest": "sha256:d5407e795ddca0fc97b6314a9e8475318fec1302f06dd5f712e41f47b9663504",
+      "measurements": {
+        "measuredMs": 10008.400000000023,
+        "medianMs": 21.399999999965075,
+        "p95Ms": 22.300000000046566,
+        "longestMs": 23.400000000023283
+      }
+    }
+  ],
+  "comparisonInputs": {
+    "desktop": [
+      {
+        "lane": "V006-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "c2fba886355ab93ce50354e566e8716f1b742f8e0c47fbbdacaaec699fd4721d"
+      },
+      {
+        "lane": "V007-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "caa93bc6efcff100e80ec8eecf6687bb8d827f7d0b2a0eda2bd0a68792b57c08"
+      },
+      {
+        "lane": "V008-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "cea67d2d15c1607ebafe33990c0c821a32ccc80e154f1a9df36e3eed221ae5a3"
+      }
+    ],
+    "mobile": [
+      {
+        "lane": "V006-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "4eca29923cfe1c76ef2b55cb39f6031f6a637063bbd2fc009799261b88e5fa34"
+      },
+      {
+        "lane": "V007-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "7d5e55667a6eca5aa2712e9e835a4cd97dcb30d09f1973bf41dfeec8699bfe25"
+      },
+      {
+        "lane": "V008-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "e828a19f92334321abe98de885cd71cf6d99effa015fa923589a7b051cafb675"
+      }
+    ]
+  }
+}
