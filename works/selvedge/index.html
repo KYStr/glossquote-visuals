@@ -20,6 +20,7 @@
   <meta property="og:image:height" content="800">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:locale:alternate" content="en_US">
+  <link rel="icon" href="%BASE_URL%media/selvedge/icon.png" type="image/png" sizes="48x48">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/selvedge/page.css">
   <script type="module" src="/src/works/selvedge/page.js"></script>
@@ -33,14 +34,7 @@
   </header>
   <main id="main" tabindex="-1">
     <section class="wrap hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="kicker">室內織品 · 打樣室</p>
-        <h1 id="hero-title">讓布說話。<br>從一線開始。</h1>
-        <p class="hero-lead">為窗簾與軟裝選布。循著經緯讀懂組織、透光與手感，再把適合的布樣帶進提案。</p>
-        <a class="action" href="#weaves">挑選布樣 <span aria-hidden="true">↘</span></a>
-      </div>
       <figure class="specimen">
-        <div class="plate-header"><span>組織標本</span><span>方向｜經線 ↓・緯線 →</span></div>
         <div class="cloth" data-stage data-cycle-seconds="8" data-motion="still" data-weave="plain" aria-hidden="true">
           <img src="%BASE_URL%media/selvedge/cover.webp" data-poster="plain" width="1200" height="800" alt="" fetchpriority="high">
           <img src="%BASE_URL%media/selvedge/twill.webp" data-poster="twill" width="1200" height="800" alt="" decoding="async">
@@ -48,19 +42,26 @@
           <canvas></canvas>
         </div>
         <figcaption class="plate-caption">
-          <span><b data-plate-id>SLV-101</b> / <span data-plate-name>平紋</span></span>
+          <span><b data-plate-id>SLV-101</b> / <span data-plate-name>原地平紋</span></span>
+          <span class="plate-direction">方向｜經線 ↓・緯線 →</span>
           <span data-motion-status>靜態布樣</span>
         </figcaption>
+        <noscript><p class="note">目前顯示靜態平紋。下方提供三款布樣資料，可用瀏覽器列印。</p></noscript>
+      </figure>
+      <div class="hero-copy">
+        <p class="kicker">室內織品 · 打樣室</p>
+        <h1 id="hero-title">讓布說話。<br>從一線開始。</h1>
+        <p class="hero-lead">為窗簾與軟裝選布。循著經緯讀懂組織、透光與手感，再把適合的布樣帶進提案。</p>
+        <a class="action" href="#weaves">挑選布樣 <span aria-hidden="true">↘</span></a>
         <div class="controls" data-controls hidden>
           <div role="group" aria-label="切換布面組織">
-            <button type="button" data-weave-control="plain" aria-pressed="true">平紋</button>
-            <button type="button" data-weave-control="twill" aria-pressed="false">斜紋</button>
-            <button type="button" data-weave-control="satin" aria-pressed="false">緞紋</button>
+            <button type="button" data-weave-control="plain" aria-pressed="true"><span class="index-id">SLV-101</span> <span data-weave-name>原地平紋</span></button>
+            <button type="button" data-weave-control="twill" aria-pressed="false"><span class="index-id">SLV-202</span> <span data-weave-name>折脊斜紋</span></button>
+            <button type="button" data-weave-control="satin" aria-pressed="false"><span class="index-id">SLV-503</span> <span data-weave-name>長浮緞紋</span></button>
           </div>
           <button type="button" class="pause" data-pause>暫停側光</button>
         </div>
-        <noscript><p class="note">目前顯示靜態平紋。下方提供三款布樣資料，可用瀏覽器列印。</p></noscript>
-      </figure>
+      </div>
     </section>
 
     <section class="wrap collection" id="weaves" aria-labelledby="weaves-title">
@@ -180,6 +181,7 @@
   <footer class="wrap footer">
     <p><b>SELVEDGE</b> · 室內織品打樣概念品牌</p>
     <a href="%BASE_URL%">返回作品畫廊 <span aria-hidden="true">↗</span></a>
+    <a href="<!-- work-source -->">作品原始碼 <span aria-hidden="true">↗</span></a>
     <a href="#top">回頁首 <span aria-hidden="true">↑</span></a>
   </footer>
 </body>

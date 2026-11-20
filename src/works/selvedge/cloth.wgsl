@@ -12,9 +12,9 @@
   let warp = g.x - col - 0.052 * sin(1.38 * g.y + seed * 6.28);
   let weft = g.y - row - 0.040 * sin(1.63 * g.x + seedY * 6.28);
   let phase = 0.5 - 0.5 * cos(fract(time) * 6.2831853);
-  let lightDist = abs(uv.x - uv.y * 0.58 - mix(-0.12, 0.76, phase));
+  let lightDist = uv.x - uv.y * 0.58 - mix(-0.12, 0.76, phase);
   let beam = exp(-31.0 * lightDist * lightDist);
-  let lightSide = smoothstep(-0.06, 0.06, (uv.x - uv.y * 0.58) - mix(-0.12, 0.76, phase));
+  let lightSide = smoothstep(-0.06, 0.06, lightDist);
   let grain = 0.5 * sin(291.0 * uv.x + 193.0 * uv.y) * sin(233.0 * uv.y - 102.0 * uv.x);
   var paper = vec3f(0.91, 0.85, 0.76) + vec3f(0.023 * grain + 0.047 * beam);
   let end = 37.6 + 0.49 * sin(0.21 * col) + 0.31 * sin(0.9 * col);
@@ -24,11 +24,16 @@
   let weftFootprint = 55.0 * (pixel.y + abs(0.16 - 0.11 * u) * pixel.x);
   let aa = clamp(max(warpFootprint, weftFootprint) * 0.60, 0.015, 0.24);
   paper *= 1.0 - 0.23 * (1.0 - smoothstep(-0.6, 1.50, edge)) * (0.86 + 0.14 * beam);
+  if (edge > 1.50 && (col < 0.0 || col > 50.0 || g.y < 0.0 || g.y > end + 8.15)) {
+    return vec4f(paper, 1.0);
+  }
   let cloth = 1.0 - smoothstep(-aa, aa, edge);
   let warpCover = 1.0 - smoothstep(0.395 - aa, 0.395 + aa, abs(warp));
   let weftCover = 1.0 - smoothstep(0.420 - aa, 0.420 + aa, abs(weft));
-  let warpRound = sqrt(max(0.0, 1.0 - pow(clamp(abs(warp) / 0.45, 0.0, 1.0), 2.0)));
-  let weftRound = sqrt(max(0.0, 1.0 - pow(clamp(abs(weft) / 0.46, 0.0, 1.0), 2.0)));
+  let warpProfile = warp / 0.45;
+  let weftProfile = weft / 0.46;
+  let warpRound = sqrt(max(0.0, 1.0 - warpProfile * warpProfile));
+  let weftRound = sqrt(max(0.0, 1.0 - weftProfile * weftProfile));
 
   // A cell records which yarn lies on top. Negative indices are normalized
   // before applying the draft, including at the first and last warp threads.
