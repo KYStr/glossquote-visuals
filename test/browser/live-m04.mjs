@@ -42,7 +42,7 @@ export async function checkM04Live({ page, work, locale, evidenceDir, evidence, 
   if (testHeroInteraction) {
     const images = [];
     const states = ["before", "after", "reset"];
-    const observations = await testHeroInteraction(page, "keyboard", async state => {
+    const observations = await testHeroInteraction(page, "mouse", async state => {
       assert.equal(state, states[images.length]);
       const file = `${stem}-interaction-${state}.png`;
       const bytes = await page.locator("[data-stage]").screenshot({ path: resolve(evidenceDir, file) });
@@ -52,7 +52,7 @@ export async function checkM04Live({ page, work, locale, evidenceDir, evidence, 
     assert.equal(images.length, states.length);
     assert.ok(observations && Object.keys(observations).length, "Record the pressed, scooped and reset states");
     assert.notEqual(images[0].sha256, images[1].sha256, "The scoop should visibly change the product");
-    heroInteraction = { observations, images };
+    heroInteraction = { input: "mouse", observations, images };
   }
   const order = await testFlow(page, locale);
   assert.ok(order && typeof order === "object" && Object.keys(order).length, "Commercial flow needs concrete observations");
