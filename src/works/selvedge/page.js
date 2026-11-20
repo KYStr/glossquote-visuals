@@ -61,7 +61,7 @@ for (const [pattern, button] of buttons.entries()) {
     if (stage.dataset.motion !== "running") delete stage.dataset.live;
     stage.dataset.weave = weave;
     plateId.textContent = document.querySelector(`[data-fabric="${weave}"]`).dataset.id;
-    plateName.textContent = button.textContent;
+    plateName.textContent = button.querySelector("[data-weave-name]").textContent;
     for (const choice of buttons) choice.setAttribute("aria-pressed", String(choice === button));
     motion.setSettings({ pattern });
   });

@@ -20,6 +20,7 @@
   <meta property="og:image:height" content="800">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="zh_TW">
+  <link rel="icon" href="%BASE_URL%media/selvedge/icon.png" type="image/png" sizes="48x48">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/selvedge/page.css">
   <script type="module" src="/src/works/selvedge/page.js"></script>
@@ -33,14 +34,7 @@
   </header>
   <main id="main" tabindex="-1">
     <section class="wrap hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="kicker">Interior textiles · Sample studio</p>
-        <h1 id="hero-title">Cloth,<br>thread by thread.</h1>
-        <p class="hero-lead">Textiles for curtains and soft furnishings. Follow the warp and weft to compare texture and light, then build a sample sheet for your client.</p>
-        <a class="action" href="#weaves">Choose samples <span aria-hidden="true">↘</span></a>
-      </div>
       <figure class="specimen">
-        <div class="plate-header"><span>Weave specimen</span><span>Direction / warp ↓ · weft →</span></div>
         <div class="cloth" data-stage data-cycle-seconds="8" data-motion="still" data-weave="plain" aria-hidden="true">
           <img src="%BASE_URL%media/selvedge/cover.webp" data-poster="plain" width="1200" height="800" alt="" fetchpriority="high">
           <img src="%BASE_URL%media/selvedge/twill.webp" data-poster="twill" width="1200" height="800" alt="" decoding="async">
@@ -48,19 +42,26 @@
           <canvas></canvas>
         </div>
         <figcaption class="plate-caption">
-          <span><b data-plate-id>SLV-101</b> / <span data-plate-name>Plain</span></span>
+          <span><b data-plate-id>SLV-101</b> / <span data-plate-name>Ground Plain</span></span>
+          <span class="plate-direction">Direction / warp ↓ · weft →</span>
           <span data-motion-status>Still swatch</span>
         </figcaption>
+        <noscript><p class="note">The plain weave is shown as a still. All three fabric specifications below can be printed from your browser.</p></noscript>
+      </figure>
+      <div class="hero-copy">
+        <p class="kicker">Interior textiles · Sample studio</p>
+        <h1 id="hero-title">Cloth,<br>thread by thread.</h1>
+        <p class="hero-lead">Textiles for curtains and soft furnishings. Follow the warp and weft to compare texture and light, then build a sample sheet for your client.</p>
+        <a class="action" href="#weaves">Choose samples <span aria-hidden="true">↘</span></a>
         <div class="controls" data-controls hidden>
           <div role="group" aria-label="Switch weave structure">
-            <button type="button" data-weave-control="plain" aria-pressed="true">Plain</button>
-            <button type="button" data-weave-control="twill" aria-pressed="false">Twill</button>
-            <button type="button" data-weave-control="satin" aria-pressed="false">Satin</button>
+            <button type="button" data-weave-control="plain" aria-pressed="true"><span class="index-id">SLV-101</span> <span data-weave-name>Ground Plain</span></button>
+            <button type="button" data-weave-control="twill" aria-pressed="false"><span class="index-id">SLV-202</span> <span data-weave-name>Ridge Twill</span></button>
+            <button type="button" data-weave-control="satin" aria-pressed="false"><span class="index-id">SLV-503</span> <span data-weave-name>Long Float Satin</span></button>
           </div>
           <button type="button" class="pause" data-pause>Pause light</button>
         </div>
-        <noscript><p class="note">The plain weave is shown as a still. All three fabric specifications below can be printed from your browser.</p></noscript>
-      </figure>
+      </div>
     </section>
 
     <section class="wrap collection" id="weaves" aria-labelledby="weaves-title">

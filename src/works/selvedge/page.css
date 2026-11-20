@@ -6,6 +6,9 @@
   --rule: #a6917e;
   --accent: #782e30;
   --light: #fff7e9;
+  --index: #54232a;
+  --index-muted: #ead4c3;
+  --index-rule: #be9a93;
   --serif: Georgia, "Noto Serif TC", "Songti TC", PMingLiU, serif;
 }
 
@@ -16,7 +19,7 @@ button { cursor: pointer; }
 button:disabled { cursor: default; }
 a, button, select { touch-action: manipulation; }
 .wrap { width: min(92%, 83rem); margin-inline: auto; }
-.kicker, .plate-header, .plate-caption, .footer {
+.kicker, .plate-caption, .footer {
   font-size: 0.76rem;
   letter-spacing: 0.10em;
 }
@@ -51,20 +54,28 @@ a, button, select { touch-action: manipulation; }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.48fr) minmax(0, 1fr);
-  gap: clamp(1.4rem, 3.25vw, 3rem);
-  align-items: start;
-  padding-block: clamp(2.5rem, 5vw, 4.4rem) clamp(3.5rem, 7vw, 6.25rem);
+  grid-template-columns: minmax(0, 2.16fr) minmax(0, 1fr);
+  gap: clamp(0.5rem, 1vw, 1rem);
+  align-items: stretch;
+  padding-block: clamp(1rem, 3vw, 2.75rem) clamp(2.5rem, 6vw, 5.25rem);
 }
-.hero-copy {
-  border-block-start: 3px solid var(--accent);
-  padding-block-start: clamp(0.85rem, 2vw, 1.25rem);
-  margin-block-start: clamp(1rem, 8vw, 7.5rem);
+.specimen { min-inline-size: 0; }
+.hero-copy, .sheet-heading, .fabric-head {
+  background: var(--index);
+  color: var(--light);
 }
-.hero h1 { font-size: clamp(2.65rem, 4.55vw, 4.65rem); margin-block: 0.46em 0.35em; letter-spacing: -0.052em; }
-:lang(zh-Hant) .hero h1 { letter-spacing: -0.095em; font-size: clamp(2.6rem, 4.55vw, 4.5rem); }
-.hero-lead { max-inline-size: 27ch; color: var(--muted); margin-block-end: 1.65rem; }
+.hero-copy, .sheet-heading { padding: clamp(1.15rem, 2.4vw, 2.3rem); }
+.hero-copy { align-self: stretch; display: flex; flex-direction: column; align-items: flex-start; }
+.hero-copy .kicker, .sheet-heading .kicker, .fabric-head .kicker { color: var(--index-muted); }
+.hero h1 {
+  font-size: clamp(2rem, 3.65vw, 3.65rem);
+  margin-block: 0.38em 0.32em;
+  letter-spacing: -0.055em;
+}
+:lang(zh-Hant) .hero h1 { letter-spacing: -0.08em; }
+.hero-lead { max-inline-size: 29ch; color: var(--index-muted); margin-block-end: 1rem; }
 :lang(zh-Hant) .hero-lead { max-inline-size: 23em; }
+.hero-copy :focus-visible { outline-color: var(--light); }
 .action {
   display: inline-flex;
   min-block-size: 48px;
@@ -80,16 +91,22 @@ a, button, select { touch-action: manipulation; }
 }
 .action:hover { color: white; background: #582021; }
 .action:disabled { background: transparent; color: var(--muted); border-color: var(--rule); }
-.plate-header, .plate-caption {
+.hero-copy .action {
+  background: var(--light);
+  border-color: var(--light);
+  color: var(--index);
+}
+.hero-copy .action:hover { background: #e8cbbb; border-color: #e8cbbb; }
+
+.plate-caption {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.2em 0.9em;
+  padding-block: 0.55rem;
   color: var(--muted);
 }
-.plate-header { padding-block-end: 0.55rem; border-block-end: 1px solid var(--rule); }
-.plate-caption { padding-block: 0.55rem; border-block-end: 1px solid var(--rule); }
 .plate-caption b { color: var(--ink); }
 .cloth { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: #e6d9c1; }
 .cloth img, .cloth canvas { position: absolute; inset: 0; }
@@ -98,19 +115,61 @@ a, button, select { touch-action: manipulation; }
 .cloth[data-weave="twill"] [data-poster="twill"],
 .cloth[data-weave="satin"] [data-poster="satin"] { display: block; }
 .cloth canvas { visibility: hidden; pointer-events: none; }
-.cloth[data-live="true"] canvas { visibility: visible; }
-.controls { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.42rem; margin-block-start: 0.6rem; }
-.controls [role="group"] { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-.controls button, .picker button, .sheet-list button, .print, .cancel {
+/* Keep the pre-live canvas at its requested render size for initializeStandalone. */
+.cloth[data-live="true"] canvas {
+  visibility: visible;
+  inline-size: 100% !important;
+  block-size: 100% !important;
+}
+.controls { align-self: stretch; margin-block-start: auto; padding-block-start: 1.3rem; }
+.controls [role="group"] {
+  display: grid;
+  border-block-start: 1px solid var(--index-rule);
+}
+.controls button {
+  border: 0;
+  min-inline-size: 44px;
+  background: transparent;
+  color: var(--light);
+}
+.controls [data-weave-control] {
+  display: grid;
+  grid-template-columns: minmax(5rem, 0.46fr) 1fr;
+  align-items: center;
+  text-align: start;
+  gap: 0.3rem;
+  padding: 0.38rem 0.45rem;
+  border-block-end: 1px solid var(--index-rule);
+  font-family: var(--serif);
+  font-size: 1.07rem;
+}
+.index-id {
+  font: 0.75rem/1.2 var(--sans);
+  letter-spacing: 0.06em;
+}
+.controls [data-weave-control][aria-pressed="true"] {
+  color: var(--index);
+  background: #f3e5d3;
+}
+.controls button:focus-visible { outline-offset: -3px; }
+.controls [data-weave-control][aria-pressed="true"]:focus-visible { outline-color: var(--index); }
+.controls button:hover:not([aria-pressed="true"]) { background: #73343c; }
+.controls .pause {
+  display: block;
+  margin-block-start: 0.4rem;
+  margin-inline-start: auto;
+  padding-inline: 0.5rem;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.picker button, .sheet-list button, .print {
   border: 1px solid var(--rule);
   background: transparent;
   padding: 0.38em 0.67em;
   font-size: 0.875rem;
 }
-.controls button { min-inline-size: 44px; }
-.controls button[aria-pressed="true"] { color: var(--light); background: var(--accent); border-color: var(--accent); }
-.pause { margin-inline-start: auto; }
-.controls button:hover:not([aria-pressed="true"]), .picker button:hover, .sheet-list button:hover, .print:hover, .cancel:hover {
+.picker button:hover, .sheet-list button:hover, .print:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -124,13 +183,13 @@ a, button, select { touch-action: manipulation; }
   margin-block-end: clamp(1.5rem, 3vw, 2.6rem);
 }
 .section-head h2, .sheet-heading h2 { font-size: clamp(2.35rem, 5vw, 4.25rem); margin-block-start: 0.22em; letter-spacing: -0.045em; }
-.section-head > p, .sheet-heading > p:not(.kicker) { color: var(--muted); max-inline-size: 37ch; }
+.section-head > p { color: var(--muted); max-inline-size: 37ch; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2.1vw, 2rem); }
 .card { border-block-end: 1px solid var(--rule); min-inline-size: 0; }
 .detail { position: relative; }
 .detail img { width: 100%; background: #9d5c49; }
 .detail figcaption { padding: 0.6rem 0.7rem; border: 1px solid var(--rule); border-block-start: 0; font-size: 0.875rem; }
-.fabric-head { padding-block: 1.2rem 0.85rem; }
+.fabric-head { padding: 0.85rem 0.7rem; }
 .fabric-head h3 { font-size: clamp(1.65rem, 2.55vw, 2.3rem); margin-block-start: 0.15em; }
 .specs > div { border-block-start: 1px solid var(--rule); padding-block: 0.48em; font-size: 0.93rem; }
 .specs dt, .colour-title { color: var(--muted); font-size: 0.78rem; font-weight: 650; }
@@ -165,7 +224,11 @@ a, button, select { touch-action: manipulation; }
   border-block-start: 3px solid var(--accent);
   padding-block: clamp(2rem, 5vw, 4.25rem);
 }
-.sheet-heading > p:not(.kicker) { margin-block-start: 0.9rem; }
+.sheet-heading > p:not(.kicker) {
+  max-inline-size: 37ch;
+  margin-block-start: 0.9rem;
+  color: var(--index-muted);
+}
 .note { color: var(--muted); font-size: 0.86rem; }
 .sheet-paper { border: 1px solid var(--rule); background: #f8f1e6; padding: clamp(0.85rem, 3vw, 2.25rem); }
 .sheet-paper [data-empty] { margin-block: 0.65rem; }
@@ -188,9 +251,23 @@ a, button, select { touch-action: manipulation; }
 }
 .footer p { align-self: center; }
 
-@media (max-width: 64rem) {
-  .hero { grid-template-columns: minmax(0, 0.60fr) minmax(0, 1fr); }
-  .hero-copy { margin-block-start: 2rem; }
+@media (max-width: 58rem) {
+  .hero { grid-template-columns: minmax(0, 1fr); max-inline-size: 44rem; }
+  .hero h1 { font-size: clamp(2.1rem, 8.2vw, 3rem); }
+  .hero-copy { padding-block: 0.95rem; }
+  .hero-lead { max-inline-size: 38ch; }
+  .controls { padding-block-start: 0.85rem; }
+  .controls [role="group"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .controls [data-weave-control] {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    text-align: center;
+    line-height: 1.14;
+    font-size: 0.94rem;
+    padding: 0.42rem 0.24rem;
+  }
+  .controls [data-weave-control] + [data-weave-control] { border-inline-start: 1px solid var(--index-rule); }
+  .controls .pause { margin-block-start: 0.1rem; }
 }
 
 @media (max-width: 47rem) {
@@ -198,13 +275,11 @@ a, button, select { touch-action: manipulation; }
   .masthead { grid-template-columns: minmax(0, 1fr) auto; gap: 0; min-block-size: 54px; }
   .masthead nav { display: none; }
   .brand { font-size: 1rem; }
-  .hero, .section-head, .samples { grid-template-columns: minmax(0, 1fr); }
-  .hero { padding-block: 1.65rem 3.2rem; }
-  .hero-copy { margin-block-start: 0; }
-  .hero h1, :lang(zh-Hant) .hero h1 { font-size: clamp(2.35rem, 9.1vw, 3.65rem); }
-  .hero-lead { margin-block-end: 1rem; }
-  .hero h1 { margin-block: 0.31em 0.28em; }
-  .plate-header, .plate-caption { font-size: 0.69rem; }
+  .section-head, .samples { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-block: 0.75rem 2.8rem; }
+  .hero-lead { margin-block-end: 0.72rem; }
+  .plate-caption { font-size: 0.69rem; letter-spacing: 0.055em; }
+  .plate-direction { display: none; }
   .cards { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; }
   .section-head > p { max-inline-size: none; }
 }
@@ -216,6 +291,8 @@ a, button, select { touch-action: manipulation; }
   .masthead nav, .locale, .hero, .picker, .footer, button, .skip, .sheet-message { display: none !important; }
   .collection, .samples { border: none; padding: 1rem 0; }
   .section-head { display: block; }
+  .fabric-head, .sheet-heading { padding: 0.25rem 0; color: black; background: white; }
+  .fabric-head .kicker, .sheet-heading .kicker, .sheet-heading > p:not(.kicker) { color: black; }
   .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5cm; }
   .card, .condition, .sheet-paper { break-inside: avoid; }
   .detail img { width: 100%; max-height: 4cm; object-fit: cover; }

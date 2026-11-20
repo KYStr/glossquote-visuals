@@ -4,7 +4,7 @@
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageDraw
 
 OUTPUT = Path(__file__).resolve().parents[3] / "public/media/selvedge"
 PATTERNS = ("plain", "twill", "satin")
@@ -105,7 +105,20 @@ def paint(width, height, pattern, macro=False):
     return Image.fromarray(np.uint8(np.clip(color, 0, 1) * 255))
 
 
+def render_icon():
+    """A 4 × 4 plain-weave brand mark, rasterized for browser chrome."""
+    image = Image.new("RGB", (192, 192), "#54232a")
+    draw = ImageDraw.Draw(image)
+    for row in range(4):
+        for col in range(4):
+            x, y = 24 + 36 * col, 24 + 36 * row
+            shape = (x + 5, y, x + 30, y + 36) if (row + col) % 2 == 0 else (x, y + 5, x + 36, y + 30)
+            draw.rounded_rectangle(shape, radius=3, fill="#f3e5d3")
+    image.resize((48, 48), Image.Resampling.LANCZOS).save(OUTPUT / "icon.png", optimize=True)
+
+
 if __name__ == "__main__":
+    render_icon()
     for name in PATTERNS:
         poster = "cover" if name == "plain" else name
         paint(1200, 800, name).save(OUTPUT / f"{poster}.webp", quality=89, method=6)
