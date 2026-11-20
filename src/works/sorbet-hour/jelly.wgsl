@@ -10,21 +10,27 @@
   let intro = time + introOffset;
   var lift = 0.0;
   var squash = 0.0;
-  if (scooped < 0.5) {
-    lift = 0.143 * (1.0 - pow(clamp(intro / 0.29, 0.0, 1.0), 2.0));
-    squash = -0.24 * smoothstep(0.27, 0.34, intro) * (1.0 - smoothstep(0.34, 0.55, intro))
-      + 0.111 * smoothstep(0.39, 0.57, intro) * (1.0 - smoothstep(0.57, 0.79, intro))
-      - 0.042 * smoothstep(0.64, 0.82, intro) * (1.0 - smoothstep(0.83, 1.21, intro));
+  if (scooped < 0.5 && intro < 1.21) {
+    let fall = clamp(intro / 0.29, 0.0, 1.0);
+    lift = 0.143 * (1.0 - fall * fall);
+    squash = -0.30 * smoothstep(0.29, 0.36, intro) * (1.0 - smoothstep(0.45, 0.61, intro))
+      + 0.16 * smoothstep(0.49, 0.65, intro) * (1.0 - smoothstep(0.69, 0.85, intro))
+      - 0.055 * smoothstep(0.76, 0.90, intro) * (1.0 - smoothstep(0.92, 1.21, intro));
   }
-  let scale = vec3f(1.0 - squash * 0.46, 1.0 + squash, 1.0 - squash * 0.46);
+  let scale = vec3f(1.0 - squash * 0.54, 1.0 + squash, 1.0 - squash * 0.54);
   let anchor = gelOrigin + vec3f(0.0, 0.018, 0.0);
   let gelRay = ray / scale;
   let gelEye = (origin - anchor - vec3f(0.0, lift, 0.0)) / scale + vec3f(0.0, 0.022, 0.0);
   let cut = vec3f(cutX, 0.424, cutZ);
   let pieceDestination = vec3f(0.534, 0.0, 0.230);
-  let travel = smoothstep(0.0, 1.0, scoopProgress);
-  let pieceShift = vec3f((pieceDestination.x - gelOrigin.x - cut.x) * travel,
-    -0.204 * travel + sin(3.14159265 * travel) * 0.155, (pieceDestination.z - gelOrigin.z - cut.z) * travel);
+  var travel = 0.0;
+  var pieceShift = vec3f(0.0);
+  if (scooped > 0.5) {
+    travel = smoothstep(0.0, 1.0, scoopProgress);
+    let arc = select(sin(3.14159265 * travel) * 0.155, 0.0, travel >= 1.0);
+    pieceShift = (pieceDestination - gelOrigin - vec3f(cut.x, 0.204, cut.z)) * travel
+      + vec3f(0.0, arc, 0.0);
+  }
 
   let foot = (0.018 + lift) * 0.83516465 - gelOrigin.z * 0.55;
   let mainBounds = abs(screen.x - gelOrigin.x) < 0.475 * scale.x
@@ -135,10 +141,17 @@
   var color = mix(table * (1.0 - shadow), cream, 1.0 - smoothstep(0.993, 1.006, r));
   if (!hitsGel) {
     let shadowPos = (floorPos - gelOrigin.xz - vec2f(0.021, 0.027)) / (0.53 + lift * 0.46);
-    let footprint = length(shadowPos);
-    let contact = (1.0 - smoothstep(0.65, 1.08, footprint)) * (0.55 - 1.5 * lift);
+    let footprint = dot(shadowPos, shadowPos);
     let glowPoint = (floorPos - gelOrigin.xz - vec2f(0.11, 0.14)) / vec2f(0.42, 0.40);
-    let caustic = exp(-dot(glowPoint, glowPoint) * 3.0) * (0.14 - 0.47 * lift);
+    let glowDistance = dot(glowPoint, glowPoint);
+    var contact = 0.0;
+    var caustic = 0.0;
+    if (footprint < 1.08 * 1.08) {
+      contact = (1.0 - smoothstep(0.65, 1.08, sqrt(footprint))) * (0.55 - 1.5 * lift);
+    }
+    if (glowDistance < 3.5) {
+      caustic = exp(-glowDistance * 3.0) * (0.14 - 0.47 * lift);
+    }
     let floorHue = array<vec3f, 3>(vec3f(0.92, 0.48, 0.032), vec3f(0.64, 0.069, 0.135), vec3f(0.46, 0.61, 0.13))[j];
     color = color * (1.0 - contact) + floorHue * caustic;
     if (scooped > 0.5) {
@@ -156,14 +169,23 @@
   let plateSample = color;
   let light = normalize(vec3f(-0.64, 0.78, 0.57));
   let cosine = max(dot(normal, -ray), 0.0);
-  let fresnel = 0.034 + 0.36 * pow(1.0 - cosine, 4.0);
+  let grazing = (1.0 - cosine) * (1.0 - cosine);
+  let fresnel = 0.034 + 0.36 * grazing * grazing;
   let softDiffuse = 0.53 + 0.47 * max(0.0, dot(normal, light));
   let transmitted = plateSample * exp(-absorption * (0.52 + path * 1.23));
   let through = transmitted * (0.80 + 0.18 * softDiffuse);
   let internalGlow = juice * (0.18 + 0.17 * max(0.0, dot(normal, -light)));
   let base = mix(through + internalGlow, vec3f(0.96, 0.79, 0.58), fresnel);
-  let reflected = reflect(ray, normal);
   let sky = vec3f(1.0, 0.960, 0.875);
+  if (concave) {
+    // Shade the recessed wall before evaluating the reflected softboxes.
+    let depth = smoothstep(0.0, 0.155, 0.397 - localPosition.y);
+    let wallShade = (0.70 - 0.36 * depth) * (0.81 + 0.19 * softDiffuse);
+    let edgeGlint = (1.0 - smoothstep(0.001, 0.018, abs(localPosition.y - 0.397)))
+      * max(0.0, dot(normal, light));
+    return vec4f(base * wallShade + juice * (0.047 + 0.064 * depth) + sky * edgeGlint * 0.23, 1.0);
+  }
+  let reflected = reflect(ray, normal);
   // Reflected rectangular softboxes leave a rounded stripe and a small rim glint.
   let softbox = smoothstep(-0.78, -0.53, reflected.x) * (1.0 - smoothstep(-0.31, -0.03, reflected.x))
     * smoothstep(0.34, 0.55, reflected.y) * (1.0 - smoothstep(0.82, 0.98, reflected.y)) * step(-0.4, reflected.z);
@@ -171,14 +193,5 @@
   let topGlint = exp(-24.0 * abs(localPosition.x + 0.17 + shift + localPosition.z * 0.28))
     * smoothstep(-0.19, -0.10, localPosition.z) * (1.0 - smoothstep(0.07, 0.18, localPosition.z))
     * smoothstep(0.89, 0.995, normal.y) * 0.065;
-  if (concave) {
-    // On the recessed wall we see the rim shadow and darker gel at depth.
-    // Only the sliced lip and a small grazing edge catch the key light.
-    let depth = smoothstep(0.0, 0.155, 0.397 - localPosition.y);
-    let wallShade = (0.70 - 0.36 * depth) * (0.81 + 0.19 * softDiffuse);
-    let edgeGlint = (1.0 - smoothstep(0.001, 0.018, abs(localPosition.y - 0.397)))
-      * max(0.0, dot(normal, light));
-    return vec4f(base * wallShade + juice * (0.047 + 0.064 * depth) + sky * edgeGlint * 0.23, 1.0);
-  }
   let fill = select(0.0, 0.024, cavity);
   return vec4f(base + sky * (0.49 * softbox + 0.31 * rimLight + topGlint + fill), 1.0);
