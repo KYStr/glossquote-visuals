@@ -11,7 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        mode: [baseline, no-js, single-font, font-ready]
+        mode: [baseline, single-font, font-ready, two-font-ready, zh-browser]
+        sample: [1, 2]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -25,11 +26,11 @@ jobs:
           npm ci --ignore-scripts --no-audit --no-fund
           npm run build
           node node_modules/playwright/cli.js install chromium --no-shell
-          node test/browser/diagnose-cjk.mjs "${{ matrix.mode }}"
+          node test/browser/diagnose-cjk.mjs "${{ matrix.mode }}" "${{ matrix.sample }}"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
-          name: cjk-${{ matrix.mode }}
+          name: cjk-${{ matrix.mode }}-${{ matrix.sample }}
           path: .runs/diagnosis/
           if-no-files-found: warn
           retention-days: 7

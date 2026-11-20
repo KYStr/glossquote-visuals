@@ -2,10 +2,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import { join } from "node:path";
 import { gzipSync } from "node:zlib";
+import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { setTimeout as wait } from "node:timers/promises";
 import { chromium } from "playwright";
 import { serveDist } from "./server.mjs";
 import { base, root } from "../../scripts/site-map.mjs";
+import { testFlow } from "../../evidence/V007/flow.mjs";
 
 assert.equal(process.env.GITHUB_ACTIONS, "true");
 assert.equal(process.env.RUNNER_ENVIRONMENT, "github-hosted");
@@ -13,32 +16,39 @@ assert.equal(process.env.RUNNER_OS, "Windows");
 assert.equal(process.env.GITHUB_REPOSITORY.toLowerCase(), "kystr/glossquote-visuals");
 assert.equal(process.env.GITHUB_REF, "refs/heads/codex/diagnose-cjk-cold-v007");
 const mode = process.argv[2];
-assert.ok(["baseline","no-js","single-font","font-ready"].includes(mode));
-const js = mode !== "no-js", oneFont = ["single-font","font-ready"].includes(mode);
-const dir = join(root,".runs","diagnosis",mode);
+assert.ok(["baseline","single-font","font-ready","two-font-ready","zh-browser"].includes(mode));
+const sample=process.argv[3];
+assert.ok(["1","2"].includes(sample));
+const js=true, oneFont=["single-font","font-ready"].includes(mode), twoFonts=mode==="two-font-ready";
+const dir = join(root,".runs","diagnosis",mode+"-"+sample);
 await fs.mkdir(dir,{recursive:true});
 const save = (name,value) => fs.writeFile(join(dir,name),JSON.stringify(value,null,2));
-if (oneFont) {
+if (oneFont||twoFonts) {
   const file=join(root,"dist","works","selvedge","index.html");
   let html=await fs.readFile(file,"utf8");
-  html=html.replace(/<link\b[^>]*rel="preload"[^>]*studio-serif-tc\.woff2[^>]*>/g,"");
+  if(oneFont) html=html.replace(/<link\b[^>]*rel="preload"[^>]*studio-serif-tc\.woff2[^>]*>/g,"");
   assert.ok(html.includes("studio-text-tc.woff2"));
   const css=`@font-face{font-family:ProbeMonoTC;src:url("${base}fonts/studio-text-tc.woff2") format("woff2");font-style:normal;font-display:block;font-weight:100 900}html,body,*,*:before,*:after,form,button,input,select,option,textarea{font-family:ProbeMonoTC!important}`;
   await fs.writeFile(join(root,"dist","diagnostic-font.css"),css);
+  if(twoFonts){
+    await fs.appendFile(join(root,"dist","diagnostic-font.css"),`@font-face{font-family:ProbeSerifTC;src:url("${base}fonts/studio-serif-tc.woff2") format("woff2");font-weight:200 900;font-display:block} :is(h1,h2,h3,.sheet-list strong),:is(h1,h2,h3,.sheet-list strong) *,:is(h1,h2,h3):before,:is(h1,h2,h3):after{font-family:ProbeSerifTC!important}`);
+  }
   html=html.replace("</head>",`<link rel="stylesheet" href="${base}diagnostic-font.css"></head>`);
-  if(mode==="font-ready"){
+  if(mode==="font-ready"||twoFonts){
     html=html.replace("<html ","<html data-diagnostic-font-wait ");
     await fs.appendFile(join(root,"dist","diagnostic-font.css"),"html[data-diagnostic-font-wait]{display:none!important}");
-    const boot=`window.__fontBarrier={started:performance.now()};document.fonts.load('400 16px ProbeMonoTC','中文字123').then(faces=>{window.__fontBarrier.loaded=performance.now();window.__fontBarrier.faces=faces.map(f=>({family:f.family,status:f.status}));}).catch(error=>{window.__fontBarrier.error=String(error)}).finally(()=>{document.documentElement.removeAttribute('data-diagnostic-font-wait');window.__fontBarrier.revealed=performance.now()});`;
+    const families=twoFonts?["ProbeMonoTC","ProbeSerifTC"]:["ProbeMonoTC"];
+    const boot=`window.__fontBarrier={started:performance.now()};Promise.all(${JSON.stringify(families)}.map(f=>document.fonts.load('400 16px '+f,'中文字123'))).then(sets=>{window.__fontBarrier.loaded=performance.now();window.__fontBarrier.faces=sets.flat().map(f=>({family:f.family,status:f.status}));}).catch(error=>{window.__fontBarrier.error=String(error)}).finally(()=>{document.documentElement.removeAttribute('data-diagnostic-font-wait');window.__fontBarrier.revealed=performance.now()});`;
     await fs.writeFile(join(root,"dist","diagnostic-font-ready.js"),boot);
     html=html.replace("</head>",`<script src="${base}diagnostic-font-ready.js"></script></head>`);
   }
   await fs.writeFile(file,html);
 }
 const site=await serveDist();
-const browser=await chromium.launch({headless:true,channel:"chromium",ignoreDefaultArgs:["--disable-back-forward-cache"],args:["--enable-unsafe-webgpu","--disable-gpu-watchdog","--enable-gpu","--use-angle=d3d11-warp","--use-webgpu-adapter=d3d11"]});
+const localeArgs=mode==="zh-browser"?["--lang=zh-TW","--accept-lang=zh-TW,zh"]:[];
+const browser=await chromium.launch({headless:true,channel:"chromium",ignoreDefaultArgs:["--disable-back-forward-cache"],args:["--enable-unsafe-webgpu","--disable-gpu-watchdog","--enable-gpu","--use-angle=d3d11-warp","--use-webgpu-adapter=d3d11",...localeArgs]});
 try{
- const context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,hasTouch:true,javaScriptEnabled:js});
+ const context=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,hasTouch:true,javaScriptEnabled:js,...(mode==="zh-browser"?{locale:"zh-TW"}:{})});
  const page=await context.newPage();
  await page.setContent('<html lang="en"><title>Initial tab</title><body style="background:#ddd">Initial tab</body></html>');
  await page.screenshot({type:"jpeg",quality:40});
@@ -84,7 +94,15 @@ try{
  await cdp.send("DOM.enable");await cdp.send("CSS.enable");const {root:documentRoot}=await cdp.send("DOM.getDocument");const fontNodes={};
  for(const selector of ["h1",".hero-lead","header","select","button",".hero-copy"]){const {nodeId}=await cdp.send("DOM.querySelector",{nodeId:documentRoot.nodeId,selector});if(nodeId)fontNodes[selector]=(await cdp.send("CSS.getPlatformFontsForNode",{nodeId})).fonts;}
  const output={mode,js,oneFont,browser:browser.version(),url,source:"c7628d44b396696323b65b3478d22033757f66c7",runner:"isolated GitHub-hosted Windows 2025; fresh browser process, 390x844; English neutral tab first",processes,main,fonts:fontNodes,requestedCategories:selected,knownFontCategories:available.filter(v=>/font/i.test(v)),navigation:JSON.parse(getHTML.result.value),requests,lifecycle,filmstripMs:trace.filter(e=>e.name==="Screenshot"&&e.args?.snapshot).map(e=>offset(e.ts)),longestMain:mainSpans.slice(0,28).map(event),relatedSpansByPeak:[...groups.values()].sort((a,b)=>b.peakUs-a.peakUs).slice(0,35),relatedSpansByInclusiveTotal:[...groups.values()].sort((a,b)=>b.us-a.us).slice(0,35),longTaskJsSamples:[...stacks].sort((a,b)=>b[1]-a[1]).slice(0,20),cpuTiming:{startTime:profile.startTime,endTime:profile.endTime,navUs:nav.ts,windowStartUs:longest?.ts,windowEndUs:longest?.ts+longest?.dur}};
- if(mode==="font-ready") output.fontBarrier=(await cdp.send("Runtime.evaluate",{expression:"window.__fontBarrier",returnByValue:true})).result.value;
+ output.source="51b22cbc66a9723766207943ede5a8ba4f983b82";
+ output.sample=sample;
+ output.locale={host:execFileSync("pwsh",["-NoProfile","-Command","@{culture=(Get-Culture).Name; uiCulture=(Get-UICulture).Name; systemLocale=(Get-WinSystemLocale).Name} | ConvertTo-Json -Compress"],{encoding:"utf8"}).trim(),browser:await page.evaluate(()=>({language:navigator.language,languages:navigator.languages,intl:Intl.DateTimeFormat().resolvedOptions().locale}))};
+ const firstPaint=output.navigation.paint.find(e=>e.name==="first-contentful-paint")?.startTime??Infinity;
+ const early=trace.filter(e=>e.name==="Screenshot"&&e.args?.snapshot&&offset(e.ts)>=firstPaint&&offset(e.ts)<=3000);
+ output.earlyPageFrames={count:early.length,distinctJpegs:new Set(early.map(e=>createHash("sha256").update(e.args.snapshot).digest("hex"))).size};
+ if(mode==="font-ready"||twoFonts) output.fontBarrier=(await cdp.send("Runtime.evaluate",{expression:"window.__fontBarrier",returnByValue:true})).result.value;
+ await save("summary.json",output);
+ output.flow=await testFlow(page,"zh-Hant");
  await save("summary.json",output);
  console.log(JSON.stringify({mode,main:output.longestMain.slice(0,8),paint:output.navigation.paint,js:output.longTaskJsSamples.slice(0,7),related:output.relatedSpansByPeak.slice(0,8)}));
 } finally{await browser.close();await site.close();}
