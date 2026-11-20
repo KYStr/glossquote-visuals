@@ -1,5 +1,11 @@
 # GlossQuote Visuals
 
+<!-- M05 release -->
+## M05 商業作品
+
+新增 [疊印 AFTERIMAGE PRESS](https://kystr.github.io/glossquote-visuals/works/afterimage-press/)、[摺徑 FOLDLINE](https://kystr.github.io/glossquote-visuals/works/foldline/)、[食刻 UMBRA DIAL](https://kystr.github.io/glossquote-visuals/works/umbra-dial/)，同步更新[布邊](https://kystr.github.io/glossquote-visuals/works/selvedge/)與[果時](https://kystr.github.io/glossquote-visuals/works/sorbet-hour/)。五件作品均通過 14 條逐項驗收，完成中英兩語的正式站操作與下載。[發布證據與限制](evidence/M05/d28a1030bdd348c2733a644027ca35d782d00c9d/RELEASE.md)。
+<!-- /M05 release -->
+
 三件 M04 作品已發布，可由 [繁中畫廊](https://kystr.github.io/glossquote-visuals/) 或 [English gallery](https://kystr.github.io/glossquote-visuals/en/) 進入。[發布驗證與限制](evidence/M04/873d07650ee107e465ab163f6a1df050b928f114/RELEASE.md)。
 
 M04 新增三件雙語商業網站：海岸導覽「潮間帶」、室內織品樣本室「布邊」與季節果冰禮盒「果時」。三件都已依 [14 條驗收規則](docs/M04-ACCEPTANCE.md) 完成主責逐條審查。作品證據：[V006](evidence/V006/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md) · [V007](evidence/V007/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md) · [V008](evidence/V008/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md)。

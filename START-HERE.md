@@ -1,5 +1,11 @@
 # 接續入口
 
+<!-- M05 release -->
+## 本期作品與接續入口
+
+新增 [疊印 AFTERIMAGE PRESS](https://kystr.github.io/glossquote-visuals/works/afterimage-press/)、[摺徑 FOLDLINE](https://kystr.github.io/glossquote-visuals/works/foldline/)、[食刻 UMBRA DIAL](https://kystr.github.io/glossquote-visuals/works/umbra-dial/)，同步更新[布邊](https://kystr.github.io/glossquote-visuals/works/selvedge/)與[果時](https://kystr.github.io/glossquote-visuals/works/sorbet-hour/)。五件作品均通過 14 條逐項驗收，完成中英兩語的正式站操作與下載。[發布證據與限制](evidence/M05/d28a1030bdd348c2733a644027ca35d782d00c9d/RELEASE.md)。
+<!-- /M05 release -->
+
 三件 M04 作品已發布，可由 [繁中畫廊](https://kystr.github.io/glossquote-visuals/) 或 [English gallery](https://kystr.github.io/glossquote-visuals/en/) 進入。[發布驗證與限制](evidence/M04/873d07650ee107e465ab163f6a1df050b928f114/RELEASE.md)。
 
 自 2026-11-21 M04 起，新商業網站由主責先寫 brief、每件另開側欄製作對話，指定 gpt-6.2-sol / medium。主責按 docs/M04-ACCEPTANCE.md 逐條獨立驗收，各項均須 PASS。歷史批次的分數與製作設定僅適用於當時版本。

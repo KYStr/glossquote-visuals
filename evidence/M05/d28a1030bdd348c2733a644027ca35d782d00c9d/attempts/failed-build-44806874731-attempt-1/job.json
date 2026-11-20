@@ -1,0 +1,13 @@
+{
+  "runId": 44806874731,
+  "attempt": 1,
+  "jobId": 136533092261,
+  "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44806874731/job/136533092261",
+  "conclusion": "failure",
+  "headSha": "d28a1030bdd348c2733a644027ca35d782d00c9d",
+  "logSha256": "469bbe7c8f0521ff82e66e39acf1ee3f9f8e57d2fc601b8a0b0b3f6886dee90a",
+  "errors": [
+    "2026-11-20T20:03:05.9969488Z AssertionError [ERR_ASSERTION]: candidate-night-signal-zh-Hant: pause after advancing the clock by 1000ms must preserve the presented frame: {\"mean\":0.010338804713804713,\"peak\":1,\"changedPixels\":0,\"width\":1100,\"height\":576}",
+    "2026-11-20T20:03:06.0339933Z ##[error]Process completed with exit code 1."
+  ]
+}
