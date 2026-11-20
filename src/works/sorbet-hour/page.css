@@ -1,0 +1,178 @@
+html.sorbet-page {
+  --paper: #fff9ec;
+  --ink: #531727;
+  --accent: #941638;
+  --rule: #d6b4af;
+  --gutter: clamp(1rem, 5vw, 4.75rem);
+  --display: ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", "Microsoft JhengHei", system-ui, sans-serif;
+}
+.sorbet-page body { line-height: 1.5; }
+.sorbet-page .frame { max-inline-size: 88rem; }
+.sorbet-page :is(h1, h2, h3, p, figure, dl, dd) { margin: 0; }
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.masthead, .sorbet-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem 1rem;
+  padding-block: .9rem;
+}
+.masthead nav { display: flex; flex-wrap: wrap; gap: 0 clamp(.75rem, 2.5vw, 2.5rem); font-weight: 700; }
+.masthead a, .sorbet-footer a { min-block-size: 44px; display: inline-flex; align-items: center; }
+.brand {
+  font: 900 1.75rem/1 var(--display);
+  letter-spacing: -.08em;
+  text-decoration: none;
+  gap: .55rem;
+}
+.brand span:last-child { font-size: .52em; line-height: .92; letter-spacing: .015em; }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  align-items: center;
+  column-gap: clamp(1rem, 4vw, 4.5rem);
+  padding-block: clamp(2.25rem, 5vw, 5rem) clamp(3.5rem, 8vw, 7rem);
+}
+.hero-copy { min-inline-size: 0; }
+.hero-copy .season-label { margin-block-end: .75rem; font-weight: 800; }
+.hero h1, .sorbet-page h2 { font-family: var(--display); font-weight: 900; line-height: 1.045; color: var(--accent); }
+.hero h1 { font-size: clamp(2.7rem, 5.6vw, 5.5rem); letter-spacing: -.075em; }
+.hero h1 span { display: block; }
+:lang(zh-Hant) > body .hero h1 { font-size: clamp(2.6rem, 5.15vw, 5rem); letter-spacing: -.08em; line-height: 1.15; }
+.hero-copy .hero-intro { margin-block: 1.15rem 1.55rem; max-inline-size: 30ch; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  padding: .68rem 1.15rem;
+  min-block-size: 48px;
+  border: 2px solid var(--accent);
+  border-radius: 100vmax;
+  background: var(--accent);
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:not(:disabled):hover { background: var(--ink); border-color: var(--ink); color: white; }
+.button:disabled { background: #f5e3de; border-color: #d6b4af; color: #654951; cursor: default; }
+.stage {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 46% 46% 1rem 1rem / 23% 23% 1rem 1rem;
+  background: #f8d38e;
+}
+.stage img, .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stage canvas { visibility: hidden; pointer-events: none; }
+.stage[data-rendered] canvas { visibility: visible; }
+.inspector { display: flex; align-items: flex-start; flex-wrap: wrap; justify-content: space-between; gap: .4rem; padding-block-start: .6rem; }
+.sorbet-page fieldset { border: 0; min-inline-size: 0; margin: 0; padding: 0; }
+.slice-choices { display: flex; flex-wrap: wrap; gap: .3rem; }
+.sun { --flavor: #ffdb76; }
+.rose { --flavor: #f7b4c0; }
+.leaf { --flavor: #dbe8a9; }
+.slice-choices label { position: relative; display: inline-flex; }
+.slice-choices input { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.slice-choices span, .pause {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding-inline: .65rem;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  background: var(--flavor, transparent);
+  color: var(--ink);
+  font-size: .875rem;
+  font-weight: 750;
+}
+.slice-choices :checked + span { border-color: var(--ink); }
+.slice-choices :focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pause { text-decoration: underline; cursor: pointer; }
+
+.flavor-section { padding-block-end: clamp(3rem, 7vw, 7rem); }
+.section-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .6rem 1rem; margin-block-end: 1.4rem; }
+.sorbet-page h2 { font-size: clamp(2rem, 5.1vw, 4.5rem); letter-spacing: -.065em; }
+.sorbet-page h3 { font: 850 clamp(1.1rem, 2.4vw, 1.7rem)/1.15 var(--display); letter-spacing: -.025em; }
+.flavor-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 2.1vw, 1.7rem); }
+.flavor-card { min-inline-size: 0; background: var(--flavor); border-radius: 1.15rem; overflow: hidden; }
+.flavor-card img { inline-size: 100%; aspect-ratio: 5 / 3; object-fit: cover; }
+.flavor-body { padding: clamp(.9rem, 2.65vw, 2.2rem); }
+.flavor-body :is(p, dl) { margin-block-start: .55rem; }
+.flavor-body dl { margin-block-start: 1rem; padding-block-start: .65rem; border-block-start: 1px solid #53172758; }
+.flavor-body dt { font-weight: 800; }
+.allergy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: .55rem 1.5rem; border-block-start: 1px solid var(--rule); margin-block-start: 1.5rem; padding-block-start: 1.35rem; }
+
+.box-section { background: #fce2e4; }
+.box-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); gap: 2rem clamp(1rem, 8vw, 8rem); padding-block: clamp(2.7rem, 7vw, 7rem); }
+.box-copy > p { margin-block-start: 1rem; max-inline-size: 38ch; }
+.box-price { display: grid; margin-block: 1.75rem; width: fit-content; border-block: 1px solid #b97b84; padding-block: .65rem; padding-inline-end: 2rem; }
+.box-price strong { font: 900 clamp(2.3rem, 4.4vw, 4rem)/1.15 var(--display); letter-spacing: -.06em; }
+.box-panel { min-inline-size: 0; background: var(--paper); border-radius: 1.2rem; padding: clamp(.85rem, 3vw, 2rem); }
+.box-slots { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(.25rem, 1.1vw, .75rem); }
+.box-slots span { aspect-ratio: 1; border: 2px dashed #ab7280; border-radius: 50%; }
+.box-slots span[data-filled] { border-style: solid; border-color: var(--ink); background: var(--flavor); }
+.box-panel .box-count { margin-block: .8rem 1.1rem; font-weight: 800; }
+.portion { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .25rem .5rem; border-block-start: 1px solid var(--rule); padding-block: .35rem; }
+.portion-name { font-weight: 800; }
+.stepper { display: flex; gap: .3rem; align-items: center; }
+.stepper output { min-inline-size: 1.6rem; font-variant-numeric: tabular-nums; text-align: center; }
+.stepper button {
+  inline-size: 44px;
+  min-block-size: 44px;
+  padding: 0;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--flavor);
+  font-weight: 800;
+  cursor: pointer;
+}
+.stepper button[aria-disabled="true"] { background: #f0e8df; border-color: #b99da1; color: #654951; cursor: default; }
+.download { margin-block: 1rem .3rem; }
+.feedback { min-block-size: 1.5em; font-size: .94rem; }
+.care { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; padding-block: clamp(3rem, 8vw, 6rem); }
+.care p { margin-block-start: .4rem; }
+.care p + h3 { margin-block-start: 1.3rem; }
+.blank { padding-block: 1.5rem 3.5rem; }
+.blank p { margin-block-start: .8rem; }
+.blank table { border-collapse: collapse; inline-size: min(100%, 38rem); margin-block-start: 1rem; }
+.blank caption { text-align: start; font-weight: 750; padding-block-end: .5rem; }
+.blank :is(th, td) { padding: .65rem; text-align: start; border: 1px solid var(--rule); }
+.sorbet-footer { justify-content: flex-start; gap: .7rem 1.6rem; border-block-start: 1px solid var(--rule); padding-block: 1.25rem; }
+.sorbet-footer .brand { margin-inline-end: auto; }
+
+@media (max-width: 52rem) {
+  .hero { grid-template-columns: 1fr; row-gap: 1.5rem; padding-block-start: 1.3rem; }
+  .hero h1 { font-size: clamp(2.8rem, 10.3vw, 5rem); }
+  :lang(zh-Hant) > body .hero h1 { font-size: clamp(2.7rem, 9vw, 4.6rem); }
+  .hero-copy .hero-intro { margin-block: .7rem .85rem; }
+  .hero-copy .season-label { margin-block-end: .4rem; }
+  .stage { border-radius: 42% 42% .7rem .7rem / 15% 15% .7rem .7rem; }
+  .flavor-grid, .allergy, .box-grid, .care { grid-template-columns: 1fr; }
+  .flavor-grid { gap: 1rem; }
+}
+@media (max-width: 24rem) {
+  .masthead { gap: 0 .75rem; padding-block: .45rem; }
+  .masthead nav { font-size: .875rem; gap: 0 .65rem; }
+  .masthead .brand { font-size: 1.35rem; }
+  .slice-choices span, .pause { padding-inline: .48rem; }
+}
+@media print {
+  .sorbet-page, .sorbet-page body { background: white; color: black; }
+  .sorbet-page body > :not(main), #main > :not(.blank) { display: none !important; }
+  .blank { padding: 0; }
+  .blank h2 { color: black; }
+  .blank :is(th, td) { border-color: black; }
+}
