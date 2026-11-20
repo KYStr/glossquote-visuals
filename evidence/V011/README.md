@@ -6,8 +6,14 @@
 
 ## 製作驗證
 
-- `npm ci --ignore-scripts --no-audit --no-fund`、`npm run check`、`npm test` 已執行，既有測試 23 項通過。使用現有候選配置指定 V011 雙語入口完成 scoped build。將各頁資產及 GPU lazy chunk 同時計入，繁中 913,810 bytes gzip，英文 806,114 bytes gzip。
+- `npm ci --ignore-scripts --no-audit --no-fund`、`npm run check`、`npm test` 已執行，既有測試 23 項通過。使用現有候選配置指定 V011 雙語入口完成 scoped build。將各頁資產及 GPU lazy chunk 同時計入，繁中 917,940 bytes gzip，英文 810,238 bytes gzip。
 - 以 `python src/works/umbra-dial/render-posters.py --samples <目錄>` 離屏編譯及執行正式 WGSL，輸出三張食相與一張獨立社群封面，都是 1200 × 800 WebP。製作環境 wgpu 0.31.0、Pillow 12.0.0、GeForce RTX 3060／Vulkan。以同一組象牙色像素門檻檢視 0、1.5、2.86、3 秒，其數量分別為 121,194、63,261、8,659、5,250，對應大弦月、窄弦月、亮珠及細光環。這組影格由原生離屏畫布產出。
 - 兩語 DOM 模擬驗證正常排場、低於下限、非整數、兩種穹頂上下界、場地未確認、保留輸入回改、平均分場及 Blob 內容。最後一組改為大型穹頂 73 人和第三部片，三場為 25、24、24 人。繁中提案 589 bytes，英文 643 bytes。`flow.mjs` 提供隔離瀏覽器驗證所需的 `setMaterial` 與 `testFlow`。
 - 繁中在 head preload 此作品的 Noto Sans TC 變動字重子集，沿用 Studio TC 首次排版腳本。WOFF2 為 106,404 bytes，包含繁中 HTML、操作文案及可列印 ASCII 字碼。同版上游原檔 SHA-256 為 `864727d210d54f2537bbe23b3a839436c3992af72de9322af5270897246bd44f`，子集使用 fontTools 4.63.0。OFL 與字型一併存放。 [Google Fonts 固定字型來源](https://github.com/google/fonts/tree/869789e84da92782c144d83d69b64cec54905b5f/ofl/notosanstc)
-- 瀏覽器首屏與排版截圖、鍵盤及觸控實際操作、裝置中斷與恢復、瀏覽器網路／儲存檢查及實際送幀效能為 NOT_RUN，由主責鎖定整合候選後在隔離環境留證。
+- 瀏覽器版面、操作、裝置復原、請求及實際送幀效能由主責在隔離環境針對整合候選留證。
+
+## 手機暫停複合影像
+
+針對整合候選 `6393cd7` 的 `pause-immediate.png` 與 `pause-after-1s.png` 比對 RGB。兩語取景皆為 352 × 235，且各自的裁切座標前後一致。繁中兩張開拍相差 1,425.9 ms，3,124 個變動像素全部在暫停按鈕矩形內（相對裁切左上角 x 267–337、y 13–56）。英文相差 1,410.9 ms，5,412 個變動像素也全部在按鈕內（x 215–337、y 13–56）。按鈕外的日輪、月影、日冕與背景逐像素相同。即時擷取的整個按鈕矩形短暫變暗，符合 Chromium 觸控反白。
+
+停用暫停按鈕的觸控反白，繼續使用按鈕文字與鍵盤焦點框回饋狀態。兩語建置也已確認都指向有效的同源 64 × 64 PNG favicon。修正後的手機截圖仍待隔離瀏覽器重跑。

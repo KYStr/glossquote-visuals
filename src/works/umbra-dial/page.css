@@ -159,6 +159,8 @@ h3 { margin: 0; }
   padding-inline: .65rem;
   background: var(--ink);
   border: 1px solid #716582;
+  /* The updated label is the tap feedback. Keep the overlay stable once paused. */
+  -webkit-tap-highlight-color: transparent;
 }
 .pause:not(:disabled):hover { color: var(--white); }
 .pause:disabled { opacity: .62; cursor: default; }
