@@ -113,9 +113,16 @@ body { background: var(--dark); }
   overflow: hidden;
   background: var(--paper);
 }
-.stage img, .stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+.stage img, .stage canvas { position: absolute; inset: 0; }
+.stage img { width: 100%; height: 100%; }
 .stage canvas { display: block; visibility: hidden; pointer-events: none; }
-.stage[data-rendered] canvas { visibility: visible; }
+/* Shaders reads the canvas rect before its first frame and on device rebuild.
+   At that point the inline dimensions define the render budget. */
+.stage[data-rendered] canvas {
+  width: 100% !important;
+  height: 100% !important;
+  visibility: visible;
+}
 .stage[data-rendered] img { visibility: hidden; }
 .ticket {
   display: flex;
