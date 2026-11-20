@@ -5,7 +5,7 @@ import paint from "./jelly.wgsl?raw";
 const id = "jelly-surface";
 const settledIntro = 1.23;
 const travelMs = 480;
-const maxBackingWidth = 392;
+const maxBackingWidth = 288;
 const surface = registerShader(defineShader({
   name: "JellyHourMold",
   animatedTime: { speed: "speed" },

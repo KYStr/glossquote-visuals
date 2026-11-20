@@ -19,8 +19,12 @@
   }
   let scale = vec3f(1.0 - squash * 0.54, 1.0 + squash, 1.0 - squash * 0.54);
   let anchor = gelOrigin + vec3f(0.0, 0.018, 0.0);
-  let gelRay = ray / scale;
-  let gelEye = (origin - anchor - vec3f(0.0, lift, 0.0)) / scale + vec3f(0.0, 0.022, 0.0);
+  var gelRay = ray;
+  var gelEye = origin - anchor + vec3f(0.0, 0.022, 0.0);
+  if (squash != 0.0 || lift != 0.0) {
+    gelRay = ray / scale;
+    gelEye = (origin - anchor - vec3f(0.0, lift, 0.0)) / scale + vec3f(0.0, 0.022, 0.0);
+  }
   let cut = vec3f(cutX, 0.424, cutZ);
   let pieceDestination = vec3f(0.534, 0.0, 0.230);
   var travel = 0.0;
@@ -108,10 +112,13 @@
     if (cutSurface) {
       surface = normalize((localPosition - cut) * select(-1.0, 1.0, isPiece));
     } else if (localPosition.y <= 0.39695) {
-      let azimuth = atan2(localPosition.x, localPosition.z);
       let radial = normalize(localPosition.xz);
       let tangential = vec2f(radial.y, -radial.x);
-      let flute = 0.094 * sin(azimuth * 18.0) * smoothstep(0.022, 0.095, localPosition.y)
+      // sin(18a) via double and triple angles, without inverse or forward trig.
+      let sin2 = 2.0 * radial.x * radial.y;
+      let sin6 = sin2 * (3.0 - 4.0 * sin2 * sin2);
+      let sin18 = sin6 * (3.0 - 4.0 * sin6 * sin6);
+      let flute = 0.094 * sin18 * smoothstep(0.022, 0.095, localPosition.y)
         * (1.0 - smoothstep(0.32, 0.397, localPosition.y));
       let direction = radial + tangential * flute;
       let bevel = mix(0.28, 0.82, smoothstep(0.31, 0.397, localPosition.y))
@@ -132,7 +139,12 @@
   let r = length(p);
   let table = mix(vec3f(0.93, 0.69, 0.39), vec3f(1.0, 0.89, 0.68),
     clamp(0.55 - 0.32 * xz.x - 0.23 * xz.y, 0.0, 1.0));
-  let shadowDist = length((xz - vec2f(0.052, 0.065)) / vec2f(0.797, 0.806));
+  let toPlateShadow = xz - vec2f(0.052, 0.065);
+  // Outside the plate, all contact shadows and the caustic, only the table is visible.
+  if (!hitsGel && any(abs(toPlateShadow) >= vec2f(0.91, 0.92))) {
+    return vec4f(table, 1.0);
+  }
+  let shadowDist = length(toPlateShadow / vec2f(0.797, 0.806));
   let shadow = (1.0 - smoothstep(0.83, 1.13, shadowDist)) * 0.42;
   let porcelain = vec3f(0.970, 0.925, 0.818) * (1.0 - 0.24 * smoothstep(0.69, 1.02, r));
   let rim = smoothstep(0.910, 0.959, r) * (1.0 - smoothstep(0.962, 0.990, r));
