@@ -163,7 +163,12 @@ h3 { margin: 0; }
   -webkit-tap-highlight-color: transparent;
 }
 .pause:not(:disabled):hover { color: var(--white); }
-.pause:disabled { opacity: .62; cursor: default; }
+.pause:disabled {
+  color: #9d92aa;
+  background: #17121e;
+  border-style: dashed;
+  cursor: default;
+}
 .instrument-bar {
   border-bottom: 1px solid var(--rule);
 }
