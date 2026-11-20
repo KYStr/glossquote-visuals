@@ -131,6 +131,41 @@ try {
   report.renderer = gpu.devices.map(({ vendorString, deviceString }) => ({ vendorString, deviceString }));
   await system.detach();
 
+  await check("first-three-seconds", inPage({}, async page => {
+    // Capture before navigation. A timeline starting only after "running"
+    // would hide a slow first paint or a silent first three seconds.
+    const cdp = await page.context().newCDPSession(page);
+    const frames = [];
+    cdp.on("Page.screencastFrame", event => {
+      void cdp.send("Page.screencastFrameAck", { sessionId: event.sessionId }).catch(() => {});
+      const epoch = event.metadata.timestamp * 1000;
+      if (Number.isFinite(epoch) && (!frames.length || epoch - frames.at(-1).epoch >= 250)) {
+        frames.push({ epoch, png: event.data });
+      }
+    });
+    try {
+      await cdp.send("Page.startScreencast", { format: "png", everyNthFrame: 1 });
+      await open(page);
+      await page.waitForTimeout(Math.max(0, 3300 - await timer(page)));
+      await cdp.send("Page.stopScreencast");
+      const timing = await page.evaluate(() => ({ origin: performance.timeOrigin,
+        firstContentfulPaint: performance.getEntriesByName("first-contentful-paint")[0]?.startTime ?? null }));
+      const captured = report.capture.opening = { ...timing, basis: "Screencast frame epoch minus navigation timeOrigin, milliseconds", frames: [] };
+      for (const { epoch, png } of frames) {
+        const ms = epoch - timing.origin;
+        if (ms < 0 || ms > 3000) continue;
+        const file = "opening-" + captured.frames.length + ".png";
+        const bytes = Buffer.from(png, "base64");
+        await writeFile(join(dir, file), bytes);
+        captured.frames.push({ ms, file, sha256: hash(bytes) });
+      }
+      assert.ok(captured.frames.filter(frame => timing.firstContentfulPaint !== null && frame.ms >= timing.firstContentfulPaint).length >= 2,
+        "Insufficient displayed frames in first three navigation seconds to review opening motion");
+    } finally {
+      await cdp.detach();
+    }
+  }));
+
   await check("initial-and-material-sequence", inPage({}, async page => {
     await instrument(page);
     await open(page);
