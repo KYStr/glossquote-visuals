@@ -317,6 +317,9 @@ noscript .button { margin-top: 1rem; }
 .site-footer .wordmark { margin-right: auto; }
 .site-footer a:not(.wordmark) { font-size: .87rem; text-underline-offset: .2em; }
 
+@media (max-width: 70rem) {
+  form { grid-template-columns: minmax(0, 1fr); }
+}
 @media (max-width: 63rem) {
   .hero { grid-template-columns: minmax(0, .88fr) minmax(0, 1fr); }
   .hero h1 { font-size: clamp(2.9rem, 6.5vw, 5.1rem); }
@@ -334,8 +337,9 @@ noscript .button { margin-top: 1rem; }
   .section-head { align-items: start; flex-direction: column; }
 }
 @media (max-width: 24rem) {
-  .spec-grid, form { grid-template-columns: 1fr; }
+  .spec-grid { grid-template-columns: 1fr; }
   .spec-grid article + article { border-left: 0; border-top: 1px solid var(--rule); }
+  .planning-ticket { padding-inline: .75rem; }
   .mast nav { gap: .48rem; }
   .wordmark { letter-spacing: .055em; }
 }
