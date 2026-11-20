@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-Hant" class="umbra-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <meta name="theme-color" content="#08070b">
+  <title>食刻 UMBRA DIAL｜巡迴穹頂電影院</title>
+  <meta name="description" content="把日食帶進學校與場館。比較三場球幕節目，試排場次並下載場館提案。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/umbra-dial/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/umbra-dial/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/umbra-dial/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/umbra-dial/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="食刻 UMBRA DIAL｜巡迴穹頂電影院">
+  <meta property="og:description" content="把日食帶進學校與場館。比較三場球幕節目，試排場次並下載場館提案。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/umbra-dial/">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/umbra-dial/cover.webp">
+  <meta property="og:image:alt" content="巨大的月影掩住日輪右側，象牙色弦月外圍有一道紫色日冕。">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <link rel="preload" href="%BASE_URL%media/umbra-dial/ingress.webp" as="image">
+  <link rel="stylesheet" href="/src/works/umbra-dial/page.css">
+  <link rel="preload" href="%BASE_URL%media/umbra-dial/umbra-tc.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/media/umbra-dial/type.css">
+  <script vite-ignore src="%BASE_URL%fonts/studio-tc-first-layout.js"></script>
+  <script type="module" src="/src/works/umbra-dial/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳至主要內容</a>
+  <header class="mast frame">
+    <a class="wordmark" href="#top" aria-label="食刻 UMBRA DIAL"><i class="logo" aria-hidden="true"></i><span>食刻</span> <b lang="en">UMBRA DIAL</b></a>
+    <nav aria-label="主選單">
+      <a href="#programs">放映片單</a>
+      <a href="#venue">場地規格</a>
+      <a href="%BASE_URL%en/works/umbra-dial/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero frame" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker"><i aria-hidden="true"></i>巡迴穹頂電影院</p>
+        <h1 id="hero-title">日食<br>近在眼前</h1>
+        <p class="intro">為學校與場館搭起一座臨時球幕，讓全場坐進月影裡。三支全穹頂影片，一場從日光走進全食的體驗。</p>
+        <a class="button primary" href="#programs">選擇節目 <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="instrument">
+        <div class="viewfinder">
+          <div class="stage" data-stage data-cycle-seconds="10" data-material="0" data-motion="still">
+            <img data-poster src="%BASE_URL%media/umbra-dial/ingress.webp" width="1200" height="800" fetchpriority="high" alt="">
+            <canvas aria-hidden="true" data-canvas></canvas>
+          </div>
+          <span class="reticle" aria-hidden="true"></span>
+          <span class="field-caption">日月相對位置示意</span>
+          <button class="pause" type="button" data-pause data-play="繼續動態" aria-pressed="false" hidden>暫停動態</button>
+        </div>
+        <figcaption class="instrument-bar">
+          <fieldset class="phases" data-instrument hidden>
+            <legend class="sr">日食階段</legend>
+            <label class="phase">
+              <input type="radio" name="eclipse-phase" value="0" checked>
+              <span class="phase-icon phase-0" aria-hidden="true"></span>
+              <span>初虧</span>
+            </label>
+            <label class="phase">
+              <input type="radio" name="eclipse-phase" value="1">
+              <span class="phase-icon phase-1" aria-hidden="true"></span>
+              <span>食甚</span>
+            </label>
+            <label class="phase">
+              <input type="radio" name="eclipse-phase" value="2">
+              <span class="phase-icon phase-2" aria-hidden="true"></span>
+              <span>復圓</span>
+            </label>
+          </fieldset>
+          <p data-motion-status class="sr" role="status">日食初虧的靜態畫面。</p>
+        </figcaption>
+        <noscript><p class="static-caption">初虧｜月影從右側切入日輪。</p></noscript>
+      </figure>
+    </section>
+
+    <section class="programs" id="programs" aria-labelledby="films-title">
+      <div class="frame">
+        <header class="section-head">
+          <div><p class="kicker">穹頂放映</p><h2 id="films-title">放映片單</h2></div>
+          <p>每場含導入與短講，片長即一場放映時間。價格為每場示意費用。</p>
+        </header>
+        <div class="tickets">
+          <article class="ticket" data-program="shadow" data-minutes="22" data-price="18000">
+            <div class="ticket-art">
+              <img src="%BASE_URL%media/umbra-dial/ingress.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true">UD–01</span>
+            </div>
+            <div class="ticket-copy">
+              <div class="ticket-meta"><span data-age>7 歲以上</span><span>22 分鐘</span></div>
+              <h3 data-name>追光入影</h3>
+              <p>從地球出發，用身體丈量月影。透過四次視角轉換，看懂日食何以只在一條窄帶裡發生。</p>
+            </div>
+            <footer class="ticket-stub"><span>示意場費<strong>NT$ 18,000</strong></span><a href="#planner" data-choose="shadow" aria-label="選擇追光入影" class="ticket-link">選這場 <span aria-hidden="true">↗</span></a></footer>
+          </article>
+          <article class="ticket" data-program="totality" data-minutes="30" data-price="22000">
+            <div class="ticket-art">
+              <img src="%BASE_URL%media/umbra-dial/total.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true">UD–02</span>
+            </div>
+            <div class="ticket-copy">
+              <div class="ticket-meta"><span data-age>10 歲以上</span><span>30 分鐘</span></div>
+              <h3 data-name>日環之外</h3>
+              <p>在全食的短暫黑夜中辨認日冕、色球層與倍里珠，從日輪的輪廓讀出太陽大氣。</p>
+            </div>
+            <footer class="ticket-stub"><span>示意場費<strong>NT$ 22,000</strong></span><a href="#planner" data-choose="totality" aria-label="選擇日環之外" class="ticket-link">選這場 <span aria-hidden="true">↗</span></a></footer>
+          </article>
+          <article class="ticket" data-program="orbit" data-minutes="38" data-price="26000">
+            <div class="ticket-art">
+              <img src="%BASE_URL%media/umbra-dial/egress.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              <span aria-hidden="true">UD–03</span>
+            </div>
+            <div class="ticket-copy">
+              <div class="ticket-meta"><span data-age>13 歲以上</span><span>38 分鐘</span></div>
+              <h3 data-name>下一道月影</h3>
+              <p>把地面觀測接回軌道，沿著節點與沙羅週期，找出下一次日月重疊前需要知道的條件。</p>
+            </div>
+            <footer class="ticket-stub"><span>示意場費<strong>NT$ 26,000</strong></span><a href="#planner" data-choose="orbit" aria-label="選擇下一道月影" class="ticket-link">選這場 <span aria-hidden="true">↗</span></a></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="venue frame" id="venue" aria-labelledby="venue-title">
+      <header class="section-head"><div><p class="kicker">進場前</p><h2 id="venue-title">場地規格</h2></div>
+        <p>室內平坦淨空、鄰近插座與無階器材動線。主辦方需確認逃生通道及現場無障礙安排。</p>
+      </header>
+      <div class="spec-grid">
+        <article data-spec="compact">
+          <p class="kicker">小型穹頂</p><h3>24 <small>人／場</small></h3>
+          <p data-requirement>淨空 7 × 7 公尺、高 3.8 公尺；獨立接地 110 V／15 A 插座一組。</p>
+        </article>
+        <article data-spec="hall">
+          <p class="kicker">大型穹頂</p><h3>36 <small>人／場</small></h3>
+          <p data-requirement>淨空 9 × 9 公尺、高 5 公尺；獨立接地 110 V／15 A 插座兩組。</p>
+        </article>
+      </div>
+      <p class="equipment" data-equipment>隨團設備：充氣穹頂、全穹頂投影機、環繞音響。首場前預留 60 分鐘架設，末場後預留 45 分鐘撤場。</p>
+    </section>
+
+    <section class="planner" id="planner" aria-labelledby="plan-title">
+      <div class="frame planner-grid">
+        <header>
+          <p class="kicker">場館提案</p>
+          <h2 id="plan-title">試排放映</h2>
+          <p>選一支影片，試排最多三場。輸出僅供場館估算與討論。</p>
+          <p class="notice" data-concept>概念展演。時段與金額皆為示意，下載提案不代表已預約。</p>
+        </header>
+        <div class="planning-ticket">
+          <form data-planner hidden novalidate>
+            <label>節目<select name="film"><option value="shadow">追光入影</option><option value="totality">日環之外</option><option value="orbit">下一道月影</option></select></label>
+            <label>觀眾總人數<input name="audience" type="number" step="1" min="12" max="108" value="48" required aria-describedby="capacity"></label>
+            <label class="span">淨空尺寸與電源
+              <select name="venue">
+                <option value="compact">符合小型穹頂規格</option>
+                <option value="hall">符合大型穹頂規格</option>
+                <option value="unknown">尚未確認或不符合</option>
+              </select>
+            </label>
+            <p class="help span" id="capacity">最少 12 人，每次試排至多三場。</p>
+            <button class="button primary span" type="submit">產生場次提案 <span aria-hidden="true">↘</span></button>
+          </form>
+          <p data-feedback role="status" hidden></p>
+          <section class="result" data-result hidden tabindex="-1" aria-labelledby="result-title">
+            <h3 id="result-title">示意場次</h3>
+            <p data-summary></p>
+            <ol data-screenings></ol>
+            <p data-space></p>
+            <p data-estimate></p>
+            <div class="result-actions">
+              <button type="button" class="button primary" data-download>下載提案 <span aria-hidden="true">↓</span></button>
+              <button type="button" class="button secondary" data-edit>修改條件</button>
+            </div>
+            <p role="status" data-download-status></p>
+          </section>
+          <noscript>
+            <h3>手動試排</h3>
+            <p>最少 12 人。選片後，將總人數除以穹頂每場容量並無條件進位，最多排三場。示意首場 09:30，依片長計算散場時間，場間留 15 分鐘。場費乘以場次即為示意總額。</p>
+            <a class="button secondary" href="#venue">查看場地與設備</a>
+          </noscript>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer frame">
+    <a class="wordmark" href="#top"><i class="logo" aria-hidden="true"></i><b lang="en">UMBRA DIAL</b></a>
+    <a href="%BASE_URL%">返回視覺作品集 ↗</a>
+    <a href="<!-- work-source -->">作品原始碼 ↗</a>
+  </footer>
+</body>
+</html>
