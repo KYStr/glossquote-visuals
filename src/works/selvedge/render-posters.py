@@ -9,9 +9,9 @@ from PIL import Image, ImageDraw
 OUTPUT = Path(__file__).resolve().parents[3] / "public/media/selvedge"
 PATTERNS = ("plain", "twill", "satin")
 DYES = {
-    "plain": ((0.57, 0.18, 0.16), (0.91, 0.73, 0.53), (0.99, 0.74, 0.45)),
-    "twill": ((0.24, 0.37, 0.28), (0.75, 0.69, 0.48), (0.99, 0.72, 0.28)),
-    "satin": ((0.30, 0.23, 0.43), (0.71, 0.52, 0.33), (0.98, 0.64, 0.39)),
+    "plain": ((0.57, 0.18, 0.16), (0.91, 0.73, 0.53), (0.99, 0.56, 0.27)),
+    "twill": ((0.24, 0.37, 0.28), (0.75, 0.69, 0.48), (1.0, 0.32, 0.105)),
+    "satin": ((0.30, 0.23, 0.43), (0.71, 0.52, 0.33), (1.0, 0.49, 0.24)),
 }
 
 
@@ -34,7 +34,7 @@ def warp_on_top(col, row, pattern):
 
 def pick_position(seconds):
     """The live cloth takes up one row per six-second shuttle stroke."""
-    stroke = seconds / 6 + 0.316
+    stroke = seconds / 6 + 0.235
     pick = np.floor(stroke)
     beat = stroke - pick
     advance = smooth(0.04, 0.62, beat)
@@ -58,20 +58,26 @@ def paint(width, height, pattern, *, macro=False, seconds=None):
     takeup = smooth(0.76, 0.98, beat) if live else 0
     gy += takeup
     col, row = np.floor(gx + 0.5), np.floor(gy + 0.5)
+    if live:
+        row = np.minimum(row, active)
     draft = row + pick
     seam = gy - active
     along = gx if pick % 2 == 0 else 17 - gx
     ahead = along - head
-    nose = 1 - smooth(0.08, 0.82, abs(ahead)) if live else np.zeros_like(gx)
-    joined = 1 - smooth(-0.13, 0.05, ahead) if live else np.ones_like(gx)
+    nose = 1 - smooth(0.08, 0.95, abs(ahead + 0.16)) if live else np.zeros_like(gx)
+    joined = 1 - smooth(-0.16, 0.14, ahead) if live else np.ones_like(gx)
+    suspended = 1 - smooth(0.60, 0.73, beat) if live else 0
+    pick_drop = suspended * (0.84 + 0.24 * nose)
     raised = warp_on_top(col, active + pick, pattern)
-    spread = smooth(-0.48, 0.28, seam) * (1 - smooth(2.15, 4.1, seam))
-    spread *= smooth(0.02, 0.13, beat) * (1 - smooth(0.60, 0.75, beat)) if live else 0
+    around_shuttle = 0.50 + 0.50 * (1 - smooth(0.45, 3.35, abs(ahead)))
+    spread = smooth(-0.34, 0.48, seam) * (1 - smooth(2.15, 4.1, seam))
+    spread *= smooth(0.02, 0.13, beat) * suspended * around_shuttle
     split = np.where(raised, 1.0, -1.0)
-    warp_x = gx - col - split * spread * 0.13 - 0.032 * np.sin(2.5 * (gy + pick) + col * 2.17)
-    weft_y = gy - row - 0.030 * np.sin(2.65 * gx + draft * 2.1) - (row == active) * 0.18 * nose
+    warp_x = gx - col - split * spread * 0.24 - 0.032 * np.sin(2.5 * (gy + pick) + col * 2.17)
+    weft_y = gy - row - 0.030 * np.sin(2.65 * gx + draft * 2.1) - (row == active) * pick_drop
     laid = np.where(row < active, 1.0, np.where(row == active, joined, 0.0))
     warp_press = (1 - smooth(0.05, 0.37, abs(gy - row))) * laid
+    warp_press *= np.where(row == active, 1 - suspended, 1.0)
     weft_press = 1 - smooth(0.03, 0.35, abs(gx - col))
     aa = min(0.105, max(0.014, 11.2 / height))
     edge_detail = 1 - smooth(0.027, 0.085, aa)
@@ -79,8 +85,10 @@ def paint(width, height, pattern, *, macro=False, seconds=None):
     nap_f = 0.0075 * np.sin(39 * gx + 1.9 * draft) * edge_detail
     warp_width = {"plain": 0.365, "twill": 0.43, "satin": 0.46}[pattern] * (1 - 0.32 * spread)
     warp_width = warp_width * (1 + 0.080 * warp_press) + nap_w
-    weft_width = (0.34 if pattern == "satin" else 0.39) * (1 + 0.072 * weft_press)
-    weft_width += (row == active) * 0.065 * nose + nap_f
+    weft_base = (0.34 if pattern == "satin" else 0.39) * (1 + 0.072 * weft_press) + nap_f
+    tip_taper = 1 - 0.42 * smooth(-0.42, 0.14, ahead)
+    shuttle_width = mix(weft_base, (weft_base + 0.14 + 0.07 * nose) * tip_taper, suspended)
+    weft_width = np.where(row == active, shuttle_width, weft_base)
     wx, wy = warp_x / warp_width, weft_y / weft_width
     wu, wv = wx * wx, wy * wy
     warp_round = np.sqrt(np.maximum(0, 1 - wu * (0.54 + 0.46 * wu)))
@@ -91,7 +99,7 @@ def paint(width, height, pattern, *, macro=False, seconds=None):
 
     warp_dye, weft_dye, accent = np.asarray(DYES[pattern], dtype=np.float32)
     tracer = draft % 5 == 1
-    beam = u + 0.70 * v - (0.91 + 0.15 * np.cos(2 * np.pi * (beat - 0.316)))
+    beam = u + 0.70 * v - (0.99 + 0.065 * np.cos(2 * np.pi * (beat - 0.235)))
     light = 0.60 + 0.40 * np.exp(-4.5 * beam * beam)
     ridge_center = gx - gy - pick - 0.44
     ridge_highlight = 0.5 + 0.5 * np.cos(np.pi * 0.5 * ridge_center)
@@ -110,7 +118,7 @@ def paint(width, height, pattern, *, macro=False, seconds=None):
     weft_shade *= light * ridge
     sheen = (0.145 if pattern == "satin" else 0.026) * warp_round ** 2 * light
     warp_color = warp_dye * warp_shade[..., None] + (sheen * (1 - 0.5 * spread))[..., None]
-    weft_color = mix(weft_dye, accent, (0.81 * tracer + 0.19 * nose * (row == active))[..., None])
+    weft_color = mix(weft_dye, accent, (0.88 * tracer + 0.12 * nose * suspended * (row == active))[..., None])
     weft_color *= weft_shade[..., None]
 
     laid_edge = seam + (1 - joined)
@@ -125,7 +133,8 @@ def paint(width, height, pattern, *, macro=False, seconds=None):
     weft_layer = mix(mix(ground, warp_color * (1 - 0.40 * weft_cover), warp_cover), weft_color, weft_cover)
     woven = np.where(warp_on_top(col, draft, pattern)[..., None], warp_layer, weft_layer)
     loose_thread = mix(paper * (1 - 0.20 * warp_cover), warp_color, warp_cover * 0.95)
-    art = mix(woven, loose_thread, y_edge)
+    visible_pick = ((row == active) * suspended)[..., None] * weft_cover
+    art = mix(woven, loose_thread, y_edge * (1 - visible_pick))
     falloff = ((1 - 0.82 * smooth(1, 5.7, laid_edge)) * x_edge)[..., None]
     return Image.fromarray(np.uint8(np.clip(mix(paper, art, falloff), 0, 1) * 255))
 

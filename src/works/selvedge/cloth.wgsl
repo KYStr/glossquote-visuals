@@ -1,6 +1,6 @@
   // One six-second stroke, then take up one pick. Advancing the draft row
   // index when take-up wraps keeps every previously woven intersection intact.
-  let stroke = time + 0.316;
+  let stroke = time + 0.235;
   let pick = floor(stroke);
   let beat = fract(stroke);
   let reverse = pick - 2.0 * floor(pick * 0.5) >= 1.0;
@@ -11,14 +11,17 @@
   let gx = uv.x * 18.7 + 1.15 * py - 0.70;
   let gy = uv.y * 12.3 + 2.4 * px - 0.78 + takeup;
   let col = floor(gx + 0.5);
-  let row = floor(gy + 0.5);
+  let row = min(floor(gy + 0.5), 6.0);
   let draft = row + pick;
   let seam = gy - 6.0;
   let along = select(gx, 17.0 - gx, reverse);
   let head = mix(-1.40, 18.45, advance);
   let ahead = along - head;
-  let nose = 1.0 - smoothstep(0.08, 0.82, abs(ahead));
-  let joined = 1.0 - smoothstep(-0.13, 0.05, ahead);
+  let nose = 1.0 - smoothstep(0.08, 0.95, abs(ahead + 0.16));
+  let joined = 1.0 - smoothstep(-0.16, 0.14, ahead);
+  // Beat the suspended pick back into the fell once the shuttle clears.
+  let suspended = 1.0 - smoothstep(0.60, 0.73, beat);
+  let pickDrop = suspended * (0.84 + 0.24 * nose);
   let twill = pattern == 1.0;
   let satin = pattern == 2.0;
   let diagonal = col - draft;
@@ -34,15 +37,17 @@
     select(col + activeRow - 2.0 * floor((col + activeRow) * 0.5) == 0.0,
       shedDiagonal - 4.0 * floor(shedDiagonal * 0.25) < 2.0, twill),
     shedNode - 5.0 * floor(shedNode * 0.2) != 0.0, satin);
-  let open = smoothstep(-0.48, 0.28, seam)
+  let aroundShuttle = 0.50 + 0.50 * (1.0 - smoothstep(0.45, 3.35, abs(ahead)));
+  let open = smoothstep(-0.34, 0.48, seam)
     * (1.0 - smoothstep(2.15, 4.1, seam))
-    * smoothstep(0.02, 0.13, beat) * (1.0 - smoothstep(0.60, 0.75, beat));
+    * smoothstep(0.02, 0.13, beat) * suspended * aroundShuttle;
   let split = select(-1.0, 1.0, raised);
-  let warpX = gx - col - split * open * 0.13 - 0.032 * sin(2.5 * (gy + pick) + col * 2.17);
+  let warpX = gx - col - split * open * 0.24 - 0.032 * sin(2.5 * (gy + pick) + col * 2.17);
   let weftY = gy - row - 0.030 * sin(2.65 * gx + draft * 2.1)
-    - select(0.0, 0.18 * nose, row == 6.0);
-  let laid = select(select(0.0, joined, row == 6.0), 1.0, row < 6.0);
-  let warpPress = (1.0 - smoothstep(0.05, 0.37, abs(gy - row))) * laid;
+    - select(0.0, pickDrop, row == 6.0);
+  let laid = select(joined, 1.0, row < 6.0);
+  let warpPress = (1.0 - smoothstep(0.05, 0.37, abs(gy - row))) * laid
+    * select(1.0 - suspended, 1.0, row < 6.0);
   let weftPress = 1.0 - smoothstep(0.03, 0.35, abs(gx - col));
   // The warp and weft flatten against one another at the crossing; frayed
   // plies give each edge a shallow, spatially fixed irregularity.
@@ -52,8 +57,10 @@
   let napF = 0.0075 * sin(39.0 * gx + 1.9 * draft) * edgeDetail;
   let warpWidth = select(select(0.365, 0.43, twill), 0.46, satin)
     * (1.0 - 0.32 * open) * (1.0 + 0.080 * warpPress) + napW;
-  let weftWidth = select(0.39, 0.34, satin) * (1.0 + 0.072 * weftPress)
-    + select(0.0, 0.065 * nose, row == 6.0) + napF;
+  let weftBase = select(0.39, 0.34, satin) * (1.0 + 0.072 * weftPress) + napF;
+  let tipTaper = 1.0 - 0.42 * smoothstep(-0.42, 0.14, ahead);
+  let shuttleWidth = mix(weftBase, (weftBase + 0.14 + 0.07 * nose) * tipTaper, suspended);
+  let weftWidth = select(weftBase, shuttleWidth, row == 6.0);
   let wx = warpX / warpWidth;
   let wy = weftY / weftWidth;
   let wu = wx * wx;
@@ -68,10 +75,10 @@
     vec3f(0.30, 0.23, 0.43), satin);
   let weftDye = select(select(vec3f(0.91, 0.73, 0.53), vec3f(0.75, 0.69, 0.48), twill),
     vec3f(0.71, 0.52, 0.33), satin);
-  let accent = select(select(vec3f(0.99, 0.74, 0.45), vec3f(0.99, 0.72, 0.28), twill),
-    vec3f(0.98, 0.64, 0.39), satin);
+  let accent = select(select(vec3f(0.99, 0.56, 0.27), vec3f(1.0, 0.32, 0.105), twill),
+    vec3f(1.0, 0.49, 0.24), satin);
   let tracer = draft - 5.0 * floor(draft * 0.2) == 1.0;
-  let beam = uv.x + 0.70 * uv.y - (0.91 + 0.15 * cos(6.2831853 * (beat - 0.316)));
+  let beam = uv.x + 0.70 * uv.y - (0.99 + 0.065 * cos(6.2831853 * (beat - 0.235)));
   let light = 0.60 + 0.40 * exp(-4.5 * beam * beam);
   let ridgeCenter = gx - gy - pick - 0.44;
   let ridgeHighlight = 0.5 + 0.5 * cos(1.5707963 * ridgeCenter);
@@ -91,7 +98,7 @@
     * light * ridge;
   let sheen = select(0.026, 0.145, satin) * warpRound * warpRound * light;
   let warpColor = warpDye * warpShade + vec3f(sheen * (1.0 - 0.5 * open));
-  let weftColor = mix(weftDye, accent, select(0.0, 0.81, tracer) + select(0.0, 0.19 * nose, row == 6.0))
+  let weftColor = mix(weftDye, accent, select(0.0, 0.88, tracer) + select(0.0, 0.12 * nose * suspended, row == 6.0))
     * weftShade;
   let yEdge = smoothstep(0.2, 1.4, laidEdge);
   let xEdge = smoothstep(-0.53, -0.36, gx) * (1.0 - smoothstep(17.33, 17.58, gx));
@@ -102,6 +109,12 @@
   let weftLayer = mix(mix(ground, warpColor * (1.0 - 0.40 * weftCover), warpCover), weftColor, weftCover);
   let woven = select(weftLayer, warpLayer, warpTop);
   let looseThread = mix(paper * (1.0 - 0.20 * warpCover), warpColor, warpCover * 0.95);
-  let art = mix(woven, looseThread, yEdge);
+  let visiblePick = select(0.0, suspended * weftCover, row == 6.0);
+  let art = mix(woven, looseThread, yEdge * (1.0 - visiblePick));
   let falloff = (1.0 - 0.82 * fade) * xEdge;
-  return vec4f(clamp(mix(paper, art, falloff), vec3f(0.0), vec3f(1.0)), 1.0);
+
+  // The authored colors and CPU stills are sRGB. The Shaders compositor
+  // applies the output transfer curve, so hand it linear light here.
+  let rgb = clamp(mix(paper, art, falloff), vec3f(0.0), vec3f(1.0));
+  let linear = select(rgb / 12.92, pow((rgb + vec3f(0.055)) / 1.055, vec3f(2.4)), rgb > vec3f(0.04045));
+  return vec4f(linear, 1.0);
