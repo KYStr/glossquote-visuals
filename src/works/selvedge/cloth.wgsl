@@ -1,79 +1,107 @@
-
-  // The transform and yarn centerlines stay constant throughout the light cycle.
-  let u = uv.x - 0.5;
-  let v = uv.y - 0.5;
-  let x = u + 0.12 * v;
-  let y = v + 0.16 * u - 0.055 * u * u;
-  let g = vec2f((x + 0.47) * 54.0, (y + 0.355) * 55.0);
-  let col = floor(g.x + 0.5);
-  let row = floor(g.y + 0.5);
-  let seed = fract(sin(col * 23.71 + 14.02) * 314.17);
-  let seedY = fract(sin(row * 18.31 + 21.12) * 215.37);
-  let warp = g.x - col - 0.052 * sin(1.38 * g.y + seed * 6.28);
-  let weft = g.y - row - 0.040 * sin(1.63 * g.x + seedY * 6.28);
-  let phase = 0.5 - 0.5 * cos(fract(time) * 6.2831853);
-  let lightDist = uv.x - uv.y * 0.58 - mix(-0.12, 0.76, phase);
-  let beam = exp(-31.0 * lightDist * lightDist);
-  let lightSide = smoothstep(-0.06, 0.06, lightDist);
-  let grain = 0.5 * sin(291.0 * uv.x + 193.0 * uv.y) * sin(233.0 * uv.y - 102.0 * uv.x);
-  var paper = vec3f(0.91, 0.85, 0.76) + vec3f(0.023 * grain + 0.047 * beam);
-  let end = 37.6 + 0.49 * sin(0.21 * col) + 0.31 * sin(0.9 * col);
-  let edge = max(max(-g.x, g.x - 50.0), max(-g.y, g.y - end));
-  let pixel = vec2f(1.0) / max(viewport, vec2f(1.0));
-  let warpFootprint = 54.0 * (pixel.x + 0.12 * pixel.y);
-  let weftFootprint = 55.0 * (pixel.y + abs(0.16 - 0.11 * u) * pixel.x);
-  let aa = clamp(max(warpFootprint, weftFootprint) * 0.60, 0.015, 0.24);
-  paper *= 1.0 - 0.23 * (1.0 - smoothstep(-0.6, 1.50, edge)) * (0.86 + 0.14 * beam);
-  if (edge > 1.50 && (col < 0.0 || col > 50.0 || g.y < 0.0 || g.y > end + 8.15)) {
-    return vec4f(paper, 1.0);
-  }
-  let cloth = 1.0 - smoothstep(-aa, aa, edge);
-  let warpCover = 1.0 - smoothstep(0.395 - aa, 0.395 + aa, abs(warp));
-  let weftCover = 1.0 - smoothstep(0.420 - aa, 0.420 + aa, abs(weft));
-  let warpProfile = warp / 0.45;
-  let weftProfile = weft / 0.46;
-  let warpRound = sqrt(max(0.0, 1.0 - warpProfile * warpProfile));
-  let weftRound = sqrt(max(0.0, 1.0 - weftProfile * weftProfile));
-
-  // A cell records which yarn lies on top. Negative indices are normalized
-  // before applying the draft, including at the first and last warp threads.
-  let twillIndex = col - row;
-  let satinIndex = col - 2.0 * row;
+  // One six-second stroke, then take up one pick. Advancing the draft row
+  // index when take-up wraps keeps every previously woven intersection intact.
+  let stroke = time + 0.316;
+  let pick = floor(stroke);
+  let beat = fract(stroke);
+  let reverse = pick - 2.0 * floor(pick * 0.5) >= 1.0;
+  let advance = smoothstep(0.04, 0.62, beat);
+  let takeup = smoothstep(0.76, 0.98, beat);
+  let px = uv.x - 0.5;
+  let py = uv.y - 0.5;
+  let gx = uv.x * 18.7 + 1.15 * py - 0.70;
+  let gy = uv.y * 12.3 + 2.4 * px - 0.78 + takeup;
+  let col = floor(gx + 0.5);
+  let row = floor(gy + 0.5);
+  let draft = row + pick;
+  let seam = gy - 6.0;
+  let along = select(gx, 17.0 - gx, reverse);
+  let head = mix(-1.40, 18.45, advance);
+  let ahead = along - head;
+  let nose = 1.0 - smoothstep(0.08, 0.82, abs(ahead));
+  let joined = 1.0 - smoothstep(-0.13, 0.05, ahead);
+  let twill = pattern == 1.0;
+  let satin = pattern == 2.0;
+  let diagonal = col - draft;
+  let node = col - 2.0 * draft;
   let warpTop = select(
-    select(col + row - 2.0 * floor((col + row) / 2.0) == 0.0,
-      twillIndex - 4.0 * floor(twillIndex / 4.0) < 2.0, pattern == 1.0),
-    satinIndex - 5.0 * floor(satinIndex / 5.0) != 0.0, pattern == 2.0);
-  let warpDye = select(vec3f(0.47, 0.178, 0.169), vec3f(0.67, 0.46, 0.39), seed > 0.83);
-  let weftDye = mix(vec3f(0.48, 0.28, 0.22), vec3f(0.79, 0.65, 0.49), 0.56 + 0.41 * seedY);
-  let warpTwist = sin(warp * 16.0 + g.y * 8.4) * min(1.0, 0.05 / aa);
-  let weftTwist = sin(weft * 18.0 - g.x * 9.4) * min(1.0, 0.05 / aa);
-  let warpShade = (0.47 + 0.49 * warpRound + 0.12 * seed + 0.045 * warpTwist
-    + 0.43 * beam * max(0.0, warpRound + 1.39 * warp * (lightSide - 0.73)));
-  let weftShade = (0.45 + 0.42 * weftRound + 0.10 * seedY + 0.048 * weftTwist
-    + 0.36 * beam * max(0.0, weftRound - 1.60 * weft));
-  let warpColor = warpDye * warpShade;
-  let weftColor = weftDye * weftShade;
-  let recessed = vec3f(0.23, 0.105, 0.095) * (0.66 + 0.22 * beam);
-  let warpLayer = mix(mix(recessed, weftColor * 0.72, weftCover), warpColor, warpCover);
-  let weftLayer = mix(mix(recessed, warpColor * 0.72, warpCover), weftColor, weftCover);
-  let woven = select(weftLayer, warpLayer, warpTop);
-  let bound = smoothstep(47.7, 48.2, g.x) * (1.0 - smoothstep(49.65, 50.05, g.x));
-  var color = mix(paper, woven * mix(vec3f(1.0), vec3f(0.85, 0.63, 0.58), bound), cloth);
+    select(col + draft - 2.0 * floor((col + draft) * 0.5) == 0.0,
+      diagonal - 4.0 * floor(diagonal * 0.25) < 2.0, twill),
+    node - 5.0 * floor(node * 0.2) != 0.0, satin);
+  let activeRow = 6.0 + pick;
+  let shedDiagonal = col - activeRow;
+  let shedNode = col - 2.0 * activeRow;
+  let raised = select(
+    select(col + activeRow - 2.0 * floor((col + activeRow) * 0.5) == 0.0,
+      shedDiagonal - 4.0 * floor(shedDiagonal * 0.25) < 2.0, twill),
+    shedNode - 5.0 * floor(shedNode * 0.2) != 0.0, satin);
+  let open = smoothstep(-0.48, 0.28, seam)
+    * (1.0 - smoothstep(2.15, 4.1, seam))
+    * smoothstep(0.02, 0.13, beat) * (1.0 - smoothstep(0.60, 0.75, beat));
+  let split = select(-1.0, 1.0, raised);
+  let warpX = gx - col - split * open * 0.13 - 0.032 * sin(2.5 * (gy + pick) + col * 2.17);
+  let weftY = gy - row - 0.030 * sin(2.65 * gx + draft * 2.1)
+    - select(0.0, 0.18 * nose, row == 6.0);
+  let laid = select(select(0.0, joined, row == 6.0), 1.0, row < 6.0);
+  let warpPress = (1.0 - smoothstep(0.05, 0.37, abs(gy - row))) * laid;
+  let weftPress = 1.0 - smoothstep(0.03, 0.35, abs(gx - col));
+  // The warp and weft flatten against one another at the crossing; frayed
+  // plies give each edge a shallow, spatially fixed irregularity.
+  let aa = clamp(11.2 / max(viewport.y, 1.0), 0.014, 0.105);
+  let edgeDetail = 1.0 - smoothstep(0.027, 0.085, aa);
+  let napW = 0.0090 * sin(35.0 * (gy + pick) + 1.7 * col) * edgeDetail;
+  let napF = 0.0075 * sin(39.0 * gx + 1.9 * draft) * edgeDetail;
+  let warpWidth = select(select(0.365, 0.43, twill), 0.46, satin)
+    * (1.0 - 0.32 * open) * (1.0 + 0.080 * warpPress) + napW;
+  let weftWidth = select(0.39, 0.34, satin) * (1.0 + 0.072 * weftPress)
+    + select(0.0, 0.065 * nose, row == 6.0) + napF;
+  let wx = warpX / warpWidth;
+  let wy = weftY / weftWidth;
+  let wu = wx * wx;
+  let wv = wy * wy;
+  let warpRound = sqrt(max(0.0, 1.0 - wu * (0.54 + 0.46 * wu)));
+  let weftRound = sqrt(max(0.0, 1.0 - wv * (0.54 + 0.46 * wv)));
+  let softEdge = aa + 0.024;
+  let warpCover = 1.0 - smoothstep(warpWidth - softEdge, warpWidth + softEdge, abs(warpX));
+  let weftCover = (1.0 - smoothstep(weftWidth - softEdge, weftWidth + softEdge, abs(weftY))) * laid;
 
-  // A short irregular fringe extends the actual warp, with longer loose ends
-  // in the middle and separate, lower-contrast shadows offset onto the backing.
-  let fringeLength = 0.30 + 1.16 * seed + select(0.0, 2.1 + 4.3 * seed, col == 15.0 || col == 27.0 || col == 37.0);
-  let dy = g.y - end;
-  let hanging = warp - sin(dy * 0.76 + seed * 3.6) * min(0.35, dy * 0.16);
-  let fringe = smoothstep(-aa, aa, dy) * (1.0 - smoothstep(fringeLength - aa, fringeLength + aa, dy));
-  let valid = select(0.0, 1.0, col >= 0.0 && col <= 50.0);
-  let shadow = 1.0 - smoothstep(0.06, 0.59, abs(hanging - 0.27 - 0.14 * beam));
-  let strand = 1.0 - smoothstep(0.17 - aa, 0.19 + aa, abs(hanging));
-  color *= 1.0 - 0.25 * valid * fringe * shadow;
-  color = mix(color, warpDye * (0.56 + 0.56 * beam + 0.48 * (1.0 - abs(hanging))), valid * fringe * strand);
-  let fiberSpread = clamp(dy / max(fringeLength, 0.3), 0.0, 1.0);
-  let fiberOffset = 0.15 + 0.21 * fiberSpread * (0.35 + 0.65 * seed);
-  let fine = 1.0 - smoothstep(0.018, 0.035 + aa, abs(abs(hanging + 0.05 * sin(g.y * 3.0)) - fiberOffset));
-  let fuzz = fringe * fine * smoothstep(0.03, 0.35, dy);
-  color = mix(color, warpDye * (0.76 + 0.74 * beam), 0.53 * valid * fuzz);
-  return vec4f(clamp(color, vec3f(0.0), vec3f(1.0)), 1.0);
+  let warpDye = select(select(vec3f(0.57, 0.18, 0.16), vec3f(0.24, 0.37, 0.28), twill),
+    vec3f(0.30, 0.23, 0.43), satin);
+  let weftDye = select(select(vec3f(0.91, 0.73, 0.53), vec3f(0.75, 0.69, 0.48), twill),
+    vec3f(0.71, 0.52, 0.33), satin);
+  let accent = select(select(vec3f(0.99, 0.74, 0.45), vec3f(0.99, 0.72, 0.28), twill),
+    vec3f(0.98, 0.64, 0.39), satin);
+  let tracer = draft - 5.0 * floor(draft * 0.2) == 1.0;
+  let beam = uv.x + 0.70 * uv.y - (0.91 + 0.15 * cos(6.2831853 * (beat - 0.316)));
+  let light = 0.60 + 0.40 * exp(-4.5 * beam * beam);
+  let ridgeCenter = gx - gy - pick - 0.44;
+  let ridgeHighlight = 0.5 + 0.5 * cos(1.5707963 * ridgeCenter);
+  let centralRidge = gx - gy + takeup - 4.44;
+  let ridge = select(1.0, (0.73 + 0.38 * smoothstep(0.04, 0.85, ridgeHighlight))
+    * (0.93 + 0.17 * exp(-0.085 * centralRidge * centralRidge)), twill);
+  let warpTwist = gy + pick;
+  let plyW = 47.0 * warpX + 5.2 * warpTwist + 0.71 * col + 0.55 * sin(3.0 * warpTwist + col);
+  let plyF = 52.0 * weftY - 5.0 * gx + 0.62 * draft + 0.55 * sin(3.1 * gx - draft);
+  let fibreWarp = (0.053 * sin(plyW) + 0.020 * sin(plyW * 1.82 + warpTwist) * edgeDetail) * edgeDetail;
+  let fibreWeft = (0.058 * sin(plyF) + 0.021 * sin(plyF * 1.77 - gx) * edgeDetail) * edgeDetail;
+  let laidEdge = seam + (1.0 - joined);
+  let fade = smoothstep(1.0, 5.7, laidEdge);
+  let warpShade = (0.34 + warpRound * 0.57 - 0.11 * wx * warpRound + fibreWarp - 0.057 * warpPress)
+    * light * ridge * (1.0 + 0.42 * split * open);
+  let weftShade = (0.34 + weftRound * 0.59 - 0.08 * wy * weftRound + fibreWeft - 0.045 * weftPress)
+    * light * ridge;
+  let sheen = select(0.026, 0.145, satin) * warpRound * warpRound * light;
+  let warpColor = warpDye * warpShade + vec3f(sheen * (1.0 - 0.5 * open));
+  let weftColor = mix(weftDye, accent, select(0.0, 0.81, tracer) + select(0.0, 0.19 * nose, row == 6.0))
+    * weftShade;
+  let yEdge = smoothstep(0.2, 1.4, laidEdge);
+  let xEdge = smoothstep(-0.53, -0.36, gx) * (1.0 - smoothstep(17.33, 17.58, gx));
+  let paper = vec3f(0.86, 0.80, 0.70) * (0.89 + 0.10 * light + 0.026 * sin(11.0 * px - 8.0 * py));
+  let recess = vec3f(0.11, 0.085, 0.064) * (0.8 + 0.2 * light);
+  let ground = mix(recess, paper, yEdge);
+  let warpLayer = mix(mix(ground, weftColor * (1.0 - 0.59 * warpCover), weftCover), warpColor, warpCover);
+  let weftLayer = mix(mix(ground, warpColor * (1.0 - 0.40 * weftCover), warpCover), weftColor, weftCover);
+  let woven = select(weftLayer, warpLayer, warpTop);
+  let looseThread = mix(paper * (1.0 - 0.20 * warpCover), warpColor, warpCover * 0.95);
+  let art = mix(woven, looseThread, yEdge);
+  let falloff = (1.0 - 0.82 * fade) * xEdge;
+  return vec4f(clamp(mix(paper, art, falloff), vec3f(0.0), vec3f(1.0)), 1.0);
