@@ -1,57 +1,78 @@
   // p is measured in image heights. Keep this projection for the offline poster.
-  let p = (uv - vec2f(0.50, 0.43)) * vec2f(1.50, 1.0);
+  let position = patchOrigin + uv * patchSize;
+  let p = (position - vec2f(0.50, 0.43)) * vec2f(1.50, 1.0);
   let turn = mat2x2f(0.986, 0.167, -0.167, 0.986);
   let q = turn * p;
   let dimensions = vec2f(0.650, 0.335);
-  let cupRadius = length(q / dimensions);
-  let footRadius = length((q - vec2f(0.0, 0.175)) / (dimensions * vec2f(0.88, 0.83)));
-  // The interpolated ellipse leaves a tapered paper wall under the curled rim.
-  let cupDepth = clamp((q.y - 0.055) * 3.3, 0.0, 1.0);
-  let wallRadius = length((q - vec2f(0.0, 0.175 * cupDepth)) / (dimensions * (1.0 - 0.13 * cupDepth)));
-  let silhouette = min(min(cupRadius, footRadius), wallRadius);
-  let backdrop = vec3f(1.0, 0.73, 0.365);
-  let corner = clamp(0.65 + 0.29 * p.x + 0.41 * p.y, 0.0, 1.0);
+  let arc = q - vec2f(0.0, -0.302);
+  var opacity = 1.0;
+  if (livePatch) {
+    // Feather the stationary overlap and reject distant pixels before evaluating
+    // crystallization and lighting. The original still fills the cleared pixels.
+    let fromOpening = dot(arc, vec2f(0.724836, -0.688921));
+    let radialMargin = abs(length(arc) - 0.478);
+    let margin = min(min(uv.x, 1.0 - uv.x), min(uv.y, 1.0 - uv.y));
+    opacity = smoothstep(-0.028, 0.010, fromOpening)
+      * (1.0 - smoothstep(0.185, 0.240, radialMargin)) * smoothstep(0.0, 0.056, margin);
+    if (opacity <= 0.0) { return vec4f(0.0); }
+  }
+  let radius = length(q / vec2f(0.621, 0.308))
+    + 0.017 * sin(q.x * 63.0 + q.y * 81.0) + 0.010 * sin(q.y * 147.0 - q.x * 31.0);
+  let ice = 1.0 - smoothstep(0.981, 1.006, radius);
+  if (livePatch && ice <= 0.0) { return vec4f(0.0); }
+
+  // Static object-space grain shared by the paper and cut ice.
+  let gritCell = floor(q * 530.0);
+  let h = fract(vec3f(gritCell.xyx) * vec3f(0.1031, 0.1030, 0.0973));
+  let j = h + dot(h, h.yzx + 33.33);
+  let grit = fract((j.x + j.y) * j.z);
+  var top = vec3f(0.0);
+  if (ice < 1.0) {
+    let cupRadius = length(q / dimensions);
+    let footRadius = length((q - vec2f(0.0, 0.175)) / (dimensions * vec2f(0.88, 0.83)));
+    let cupDepth = clamp((q.y - 0.055) * 3.3, 0.0, 1.0);
+    let wallRadius = length((q - vec2f(0.0, 0.175 * cupDepth)) / (dimensions * (1.0 - 0.13 * cupDepth)));
+    let silhouette = min(min(cupRadius, footRadius), wallRadius);
+    let backdrop = vec3f(1.0, 0.73, 0.365);
+    let corner = clamp(0.65 + 0.29 * p.x + 0.41 * p.y, 0.0, 1.0);
+    let paper = mix(backdrop, vec3f(0.79, 0.39, 0.20), corner * 0.26);
+    let castShadow = 1.0 - smoothstep(0.85, 1.21, length((q - vec2f(0.045, 0.153)) / dimensions));
+    let background = mix(paper, vec3f(0.21, 0.081, 0.023), castShadow * 0.56);
+    if (silhouette > 1.008) {
+      return vec4f(background * (0.984 + 0.029 * grit), 1.0);
+    }
+    let ripple = q.x * 97.0 + 1.5 * sin(q.y * 33.0) + 0.8 * sin(q.y * 115.0);
+    let streak = 0.5 + 0.5 * sin(ripple);
+    let strata = length(q / vec2f(0.653, 0.331));
+    let band = smoothstep(1.17, 1.19, strata);
+    let layerShade = 0.93 - 0.35 * smoothstep(-0.35, 0.64, q.x);
+    let cupPaper = mix(vec3f(0.97, 0.89, 0.69), vec3f(0.38, 0.039, 0.083), band);
+    let sideOcclusion = 0.60 + 0.40 * smoothstep(0.992, 1.08, cupRadius);
+    let side = cupPaper * sideOcclusion * layerShade * (0.97 + 0.044 * grit + 0.03 * streak);
+    let lower = mix(background, side, 1.0 - smoothstep(0.995, 1.006, silhouette));
+    let rim = mix(vec3f(0.73, 0.60, 0.40), vec3f(1.0, 0.95, 0.80), exp(-abs(cupRadius - 0.973) * 105.0));
+    top = mix(lower, rim * (1.0 - 0.16 * smoothstep(-0.3, 0.65, q.x)), 1.0 - smoothstep(0.99, 1.003, cupRadius));
+    if (ice <= 0.0) { return vec4f(top, 1.0); }
+  }
+
   let palettes = array<vec3f, 3>(
     vec3f(0.91, 0.30, 0.017), vec3f(0.53, 0.031, 0.075), vec3f(0.51, 0.59, 0.220)
   );
   let kind = u32(clamp(flavor, 0.0, 2.0));
   let base = palettes[kind];
-  let paper = mix(backdrop, vec3f(0.79, 0.39, 0.20), corner * 0.26);
-  let castShadow = 1.0 - smoothstep(0.85, 1.21, length((q - vec2f(0.045, 0.153)) / dimensions));
-  let background = mix(paper, vec3f(0.21, 0.081, 0.023), castShadow * 0.56);
-
-  // Three scales of static, object-space crystallization.
-  let gritCell = floor(q * 530.0);
-  let h = fract(vec3f(gritCell.xyx) * vec3f(0.1031, 0.1030, 0.0973));
-  let j = h + dot(h, h.yzx + 33.33);
-  let grit = fract((j.x + j.y) * j.z);
-  if (silhouette > 1.008) {
-    return vec4f(background * (0.984 + 0.029 * grit), 1.0);
-  }
-
   let coarseness = array<f32, 3>(57.0, 43.0, 85.0)[kind];
   let cell = floor(q * coarseness);
   let j2 = fract(cell * vec2f(0.1031, 0.11369));
   let marble = fract((j2.x + j2.y) * (13.13 + j2.x) * (19.19 + j2.y));
-  let ripple = q.x * 97.0 + 1.5 * sin(q.y * 33.0) + 0.8 * sin(q.y * 115.0);
-  let streak = 0.5 + 0.5 * sin(ripple);
-  let strata = length(q / vec2f(0.653, 0.331));
-  let band = smoothstep(1.17, 1.19, strata);
-  let layerShade = 0.93 - 0.35 * smoothstep(-0.35, 0.64, q.x);
-  let cupPaper = mix(vec3f(0.97, 0.89, 0.69), vec3f(0.38, 0.039, 0.083), band);
-  let sideOcclusion = 0.60 + 0.40 * smoothstep(0.992, 1.08, cupRadius);
-  let side = cupPaper * sideOcclusion * layerShade * (0.97 + 0.044 * grit + 0.03 * streak);
-  let lower = mix(background, side, 1.0 - smoothstep(0.995, 1.006, silhouette));
-  let rim = mix(vec3f(0.73, 0.60, 0.40), vec3f(1.0, 0.95, 0.80), exp(-abs(cupRadius - 0.973) * 105.0));
-  let top = mix(lower, rim * (1.0 - 0.16 * smoothstep(-0.3, 0.65, q.x)), 1.0 - smoothstep(0.99, 1.003, cupRadius));
-  let radius = length(q / vec2f(0.621, 0.308))
-    + 0.017 * sin(q.x * 63.0 + q.y * 81.0) + 0.010 * sin(q.y * 147.0 - q.x * 31.0);
 
   // The spoon bowl sweeps a finite arc. Nearest position gives the same metric
   // for the bowl, its rounded caps, the pushed bank and the contact shadow.
-  let arc = q - vec2f(0.0, -0.302);
   let start = -1.16;
-  let reach = 0.5 - 0.5 * cos(6.2831853 * time);
+  // The cut is already visible at phase zero. Advance it smoothly without
+  // lingering at the opening while Shaders initializes on a slower adapter.
+  let leg = 1.0 - abs(2.0 * fract(time) - 1.0);
+  let easing = leg * leg * (3.0 - 2.0 * leg);
+  let reach = easing * (1.4 - 0.4 * easing);
   let finish = mix(0.76, 1.09, reach);
   let a = clamp(atan2(arc.x, arc.y), start, finish);
   let radial = vec2f(sin(a), cos(a));
@@ -109,15 +130,18 @@
   let twist = select(5.6 * ran, a + 0.63 * ran, kind == 0u);
   let skew = mat2x2f(cos(twist), sin(twist), -sin(twist), cos(twist));
   let chip = skew * shift / (axes[kind] * (0.69 + ran * 0.40));
-  let chipR = length(chip) + 0.048 * cos(6.0 * atan2(chip.x, chip.y));
+  let chipR = length(chip);
   let show = smoothstep(0.38 - 0.31 * exposed, 0.54 - 0.33 * exposed, ran);
-  let inclusion = (1.0 - smoothstep(0.78, 1.00, chipR)) * show;
-  let tangent = transpose(skew) * chip;
-  let grainNormal = normalize(normal + vec3f(0.33 * tangent, 0.0));
-  let glint = pow(max(0.0, dot(grainNormal, halfVector)), 26.0);
-  let transmission = max(0.0, dot(grainNormal, light));
-  let bi = hues[kind] * (0.53 + 0.61 * transmission)
-    + vec3f(1.0, 0.80, 0.56) * (glint * 0.24 + exposed * 0.065);
-  sorbet = mix(sorbet, bi, inclusion * (0.45 + 0.55 * exposed));
+  if (chipR < 1.048 && show > 0.0) {
+    let facets = chipR + 0.048 * cos(6.0 * atan2(chip.x, chip.y));
+    let inclusion = (1.0 - smoothstep(0.78, 1.00, facets)) * show;
+    let tangent = transpose(skew) * chip;
+    let grainNormal = normalize(normal + vec3f(0.33 * tangent, 0.0));
+    let glint = pow(max(0.0, dot(grainNormal, halfVector)), 26.0);
+    let transmission = max(0.0, dot(grainNormal, light));
+    let bi = hues[kind] * (0.53 + 0.61 * transmission)
+      + vec3f(1.0, 0.80, 0.56) * (glint * 0.24 + exposed * 0.065);
+    sorbet = mix(sorbet, bi, inclusion * (0.45 + 0.55 * exposed));
+  }
   let rimShade = 1.0 - 0.44 * smoothstep(0.955, 1.017, radius) * smoothstep(-0.02, 0.15, q.y);
-  return vec4f(mix(top, sorbet * rimShade, 1.0 - smoothstep(0.981, 1.006, radius)), 1.0);
+  return vec4f(mix(top, sorbet * rimShade, ice), opacity);

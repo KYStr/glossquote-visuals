@@ -124,45 +124,78 @@ renderBox();
 find("[data-builder]").hidden = false;
 
 const stage = find("[data-stage]");
-const poster = find("[data-poster]");
+let poster = find("[data-poster]");
 const canvas = stage.querySelector("canvas");
 const pause = find("[data-pause]");
 const motionStatus = find("[data-motion-status]");
+const controls = [...document.querySelectorAll("[name=sorbet-flavor]")];
 const supportsObservers = "IntersectionObserver" in window && "ResizeObserver" in window;
-let flavor = 0;
+let settings = { flavor: 0, poster };
+const posters = [poster];
 let paused = false;
 let rendered = false;
 let shader;
 
+function showPoster(next) {
+  if (next.poster !== poster) {
+    poster.replaceWith(next.poster);
+    poster = next.poster;
+  }
+  stage.dataset.material = String(next.flavor);
+}
+
+async function decodePoster(source) {
+  const image = new Image(1200, 800);
+  image.alt = source.alt;
+  image.dataset.poster = "";
+  image.src = source.src;
+  await image.decode();
+  return image;
+}
+
+// Begin decoding the two selectable stills alongside shader initialization.
+// Each control becomes available with its decoded still, so selecting a flavor
+// can update the baked surface and live uniforms together.
+const posterReady = Promise.allSettled(flavors.slice(1).map(item => decodePoster(item.poster)))
+  .then(results => {
+    results.forEach((result, index) => {
+      if (result.status === "fulfilled") posters[index + 1] = result.value;
+      else controls[index + 1].disabled = true;
+    });
+    find("[data-instrument]").hidden = false;
+  });
+
 const motion = createMotion({
   supported: Boolean(navigator.gpu) && supportsObservers,
-  initialSettings: { flavor },
+  initialSettings: settings,
   async initialize(options) {
-    shader = await import("./shader.js");
+    [shader] = await Promise.all([import("./shader.js"), posterReady]);
     if (options.signal.aborted) return null;
     return shader.initializeSorbet(canvas, options);
   },
   applySettings(renderer, next) {
     shader.updateSorbet(renderer, next);
+    showPoster(next);
   },
   renderState(phase) {
     stage.dataset.motion = phase;
     if (phase === "running") rendered = true;
     if (["starting", "reduced", "unavailable"].includes(phase)) rendered = false;
+    if (!rendered) showPoster(settings);
     stage.toggleAttribute("data-rendered", rendered);
     pause.disabled = phase === "reduced" || phase === "unavailable";
     motionStatus.textContent = copy[phase];
   },
 });
 
-for (const control of document.querySelectorAll("[name=sorbet-flavor]")) {
+for (const control of controls) {
   control.addEventListener("change", () => {
-    flavor = Number(control.value);
-    const selected = flavors[flavor].poster;
-    poster.src = selected.src;
-    poster.alt = selected.alt;
-    stage.dataset.material = control.value;
-    motion.setSettings({ flavor });
+    const flavor = Number(control.value);
+    if (!posters[flavor]) return;
+    settings = { flavor, poster: posters[flavor] };
+    // A live poster and its patch advance together, including on resume.
+    if (!rendered) showPoster(settings);
+    motion.setSettings(settings);
   });
 }
 pause.addEventListener("click", () => {
@@ -171,7 +204,6 @@ pause.addEventListener("click", () => {
   pause.setAttribute("aria-pressed", String(paused));
   motion.update({ paused });
 });
-find("[data-instrument]").hidden = false;
 pause.hidden = !navigator.gpu || !supportsObservers;
 if (supportsObservers) observeMotion(stage, motion, matchMedia("(prefers-reduced-motion: reduce)"));
 else motion.update({ active: true });
