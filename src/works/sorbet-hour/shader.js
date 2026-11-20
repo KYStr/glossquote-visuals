@@ -5,6 +5,7 @@ import paint from "./jelly.wgsl?raw";
 const id = "jelly-surface";
 const settledIntro = 1.23;
 const travelMs = 480;
+const maxBackingWidth = 392;
 const surface = registerShader(defineShader({
   name: "JellyHourMold",
   animatedTime: { speed: "speed" },
@@ -20,10 +21,19 @@ const surface = registerShader(defineShader({
   paint: wgsl(paint),
 }));
 
-function renderSize(width, height) {
-  // The soft reflections tolerate a fixed upper pixel budget on wide stages.
-  const scale = Math.min(1, 560 / width);
-  return { width: Math.round(width * scale), height: Math.round(height * scale) };
+function backingRatio() {
+  // Match the pixel ratio applied by the pinned Shaders standalone renderer.
+  const viewportLength = Math.max(innerWidth, innerHeight);
+  const mobile = matchMedia("(pointer: coarse)").matches && viewportLength > 0 && viewportLength <= 1366;
+  return Math.min(devicePixelRatio || 1, mobile ? 1.5 : 2);
+}
+
+function renderSize(width, height, ratio) {
+  const scale = Math.min(1, maxBackingWidth / width) / ratio;
+  return {
+    width: Math.max(1, Math.floor(width * scale)),
+    height: Math.max(1, Math.floor(height * scale)),
+  };
 }
 
 export async function initializeJelly(canvas, options) {
@@ -34,6 +44,12 @@ export async function initializeJelly(canvas, options) {
   let frame;
   let lastFrame;
   let playing = true;
+  let ratio = backingRatio();
+  let { width, height } = options;
+  const initialSize = renderSize(width, height, ratio);
+  // Core reads the actual rectangle during each device initialization.
+  // Expand it for display only after the renderer has sized its backing store.
+  delete canvas.dataset.displaySize;
 
   let ready = false;
   let skipRecoveredOpening = false;
@@ -45,18 +61,24 @@ export async function initializeJelly(canvas, options) {
     } },
   ], {
     ...options,
-    ...renderSize(options.width, options.height),
+    ...initialSize,
     onReady() {
       if (ready) {
         skipRecoveredOpening = true;
         raw?.update(id, { introOffset: settledIntro });
         if (playing && elapsed < travelMs && frame === undefined) frame = requestAnimationFrame(tick);
       }
+      canvas.dataset.displaySize = "";
       ready = true;
       options.onReady();
     },
     onError(reason) {
       stop();
+      delete canvas.dataset.displaySize;
+      ratio = backingRatio();
+      const size = renderSize(width, height, ratio);
+      canvas.style.width = `${size.width}px`;
+      canvas.style.height = `${size.height}px`;
       options.onError(reason);
     },
   });
@@ -79,8 +101,10 @@ export async function initializeJelly(canvas, options) {
 
   return {
     getFailureReason: raw.getFailureReason,
-    resize(width, height) {
-      const size = renderSize(width, height);
+    resize(nextWidth, nextHeight) {
+      width = nextWidth;
+      height = nextHeight;
+      const size = renderSize(width, height, ratio);
       raw.resize(size.width, size.height);
     },
     select(next) {
@@ -115,6 +139,7 @@ export async function initializeJelly(canvas, options) {
     },
     destroy() {
       stop();
+      delete canvas.dataset.displaySize;
       raw.destroy();
     },
   };
