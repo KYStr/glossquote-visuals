@@ -345,8 +345,28 @@ try {
     const layouts = report.capture.layouts = [];
     for (const width of mobile ? [320, 390] : [768, 1440]) {
       await page.setViewportSize({ width, height: size.height });
+      // A single fullPage capture does not scroll the viewport and therefore
+      // leaves distant lazy merchandise images as empty color blocks.
+      const decodedImages = await page.evaluate(async () => {
+        const images = [...document.images].filter(img => img.checkVisibility() && img.getClientRects().length);
+        const records = [];
+        for (const img of images) {
+          if (!img.getAttribute("src")?.trim()) throw Error("Visible layout image lacks its source");
+          img.scrollIntoView({ block: "center", behavior: "instant" });
+          await new Promise(resolve => requestAnimationFrame(resolve));
+          await img.decode();
+          if (!img.naturalWidth || !img.naturalHeight) throw Error("Undecoded layout image: " + img.src);
+          records.push({ src: img.currentSrc, width: img.naturalWidth, height: img.naturalHeight });
+        }
+        scrollTo({ top: 0, behavior: "instant" });
+        await document.fonts.ready;
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        if (scrollY !== 0) throw Error("Layout capture did not return to page top");
+        return records;
+      });
       const layout = await page.evaluate(layoutInventory);
       await page.screenshot({ path: join(dir, "layout-" + width + ".png"), fullPage: true });
+      layout.decodedImages = decodedImages;
       layouts.push(layout);
       assert.ok(layout.scrollWidth <= width + 1, "Horizontal overflow at " + width);
     }
