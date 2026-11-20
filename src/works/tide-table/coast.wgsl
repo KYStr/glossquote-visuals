@@ -57,8 +57,13 @@
     let ocean = mix(vec3f(0.039, 0.085, 0.19), vec3f(0.018, 0.043, 0.115), smoothstep(0.02, 0.72, depth));
     let shallows = vec3f(0.28, 0.44, 0.41) + vec3f(strata * 0.56 - contour * 0.062);
     let submerged = max(depth, 0.0);
-    water = mix(ocean, shallows, exp(-submerged * 8.1)) +
-      vec3f(0.12, 0.29, 0.31) * ripples * (0.28 + 0.52 * exp(-submerged * 4.0));
+    let attenuation = exp(-submerged * 4.0);
+    let correction = submerged * 0.1;
+    // Reuse the wave attenuation: exp(-8.1*d) = exp(-4*d)^2 * exp(-0.1*d).
+    // The last factor's quadratic expansion changes the final color by < 1/255.
+    let seabed = attenuation * attenuation * (1.0 - correction * (1.0 - correction * 0.5));
+    water = mix(ocean, shallows, seabed) +
+      vec3f(0.12, 0.29, 0.31) * ripples * (0.28 + 0.52 * attenuation);
     if (abs(depth) < 0.028 + pixel) {
       let broken = smoothstep(-0.46, 0.78, swell * 0.58 + ribbons * 0.33 + grain * 0.39);
       foam = wet * (1.0 - smoothstep(pixel, 0.028 + pixel, abs(depth))) * (0.38 + 0.61 * broken);
@@ -66,24 +71,36 @@
   }
 
   var color = mix(mix(exposed, water, wet), vec3f(0.88, 0.94, 0.80), foam);
-  // Survey trails are cut at the waterline, never drawn over submerged ground.
-  if (wet < 1.0 && x > 0.415 && x < 0.980) {
-    let trailY = vec3f(0.26, 0.83, 0.15) + vec3f(0.039, 0.031, 0.049) * sin(x * vec3f(9.0, 11.0, 13.0));
-    let distanceToTrail = abs(vec3f(y) - trailY);
-    let trailWindow = vec3f(
-      smoothstep(0.415, 0.425, x) * (1.0 - smoothstep(0.585, 0.595, x)),
-      smoothstep(0.535, 0.545, x) * (1.0 - smoothstep(0.625, 0.635, x)),
-      smoothstep(0.816, 0.826, x) * (1.0 - smoothstep(0.970, 0.980, x))
-    );
-    let dashed = smoothstep(0.26, 0.41, fract(x * 101.0));
-    let trails = (vec3f(1.0) - smoothstep(vec3f(0.001), vec3f(0.0048), distanceToTrail)) * trailWindow * dashed;
-    let mark = max(trails.x, max(trails.y, trails.z)) * (1.0 - wet);
-    color = mix(color, vec3f(0.64, 0.21, 0.069), mark);
+  // Route bands are disjoint. Most rock pixels never need a trail evaluation.
+  if (wet < 1.0) {
+    var trailY = 0.0;
+    var endPoints = vec2f(0.0);
+    if (x > 0.415 && x < 0.595 && y > 0.216 && y < 0.304) {
+      trailY = 0.26 + 0.039 * sin(x * 9.0);
+      endPoints = vec2f(0.415, 0.595);
+    } else if (x > 0.535 && x < 0.635 && y > 0.794 && y < 0.866) {
+      trailY = 0.83 + 0.031 * sin(x * 11.0);
+      endPoints = vec2f(0.535, 0.635);
+    } else if (x > 0.816 && x < 0.980 && y > 0.096 && y < 0.204) {
+      trailY = 0.15 + 0.049 * sin(x * 13.0);
+      endPoints = vec2f(0.816, 0.980);
+    }
+    if (endPoints.y > 0.0) {
+      let fadeIn = smoothstep(endPoints.x, endPoints.x + 0.01, x);
+      let fadeOut = 1.0 - smoothstep(endPoints.y - 0.01, endPoints.y, x);
+      let dashed = smoothstep(0.26, 0.41, fract(x * 101.0));
+      let line = 1.0 - smoothstep(0.001, 0.0048, abs(y - trailY));
+      let mark = line * fadeIn * fadeOut * dashed * (1.0 - wet);
+      color = mix(color, vec3f(0.64, 0.21, 0.069), mark);
+    }
   }
   let gridDistance = abs(fract(uv * vec2f(10.0, 8.0) + 0.5) - vec2f(0.5));
   let grid = 1.0 - smoothstep(0.002, 0.010, min(gridDistance.x, gridDistance.y));
   color = mix(color, vec3f(0.68, 0.76, 0.71), grid * 0.096);
-  // Palette values are authored in sRGB. Shaders composites in linear light.
+  // Shaders composites in linear light. This fit of the curved IEC sRGB segment
+  // has <0.2 code-value error after conversion back to 8-bit sRGB.
   let srgb = clamp(color, vec3f(0.0), vec3f(1.0));
-  let linear = select(srgb / 12.92, pow((srgb + 0.055) / 1.055, vec3f(2.4)), srgb > vec3f(0.04045));
+  let curve = 0.00109637 + srgb * (0.02867760 + srgb * (0.54650238 +
+    srgb * (0.59495913 + srgb * (-0.22566287 + srgb * 0.05445988))));
+  let linear = select(srgb / 12.92, curve, srgb > vec3f(0.04045));
   return vec4f(linear, 1.0);

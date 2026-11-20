@@ -98,13 +98,14 @@ section[id], figure[id] { scroll-margin-block-start: 1rem; }
 .coast[data-level="low"] [data-still="low"],
 .coast[data-level="mid"] [data-still="mid"],
 .coast[data-level="high"] [data-still="high"] { visibility: visible; }
-.coast canvas {
-  /* Shaders writes raster sizing inline. Keep the chart at the stage's CSS size. */
+.coast canvas { visibility: hidden; }
+.coast[data-live="true"] canvas {
+  /* During startup Shaders measures the inline raster size. Present the
+     finished frame at the stage size once the renderer is ready. */
   width: 100% !important;
   height: 100% !important;
-  visibility: hidden;
+  visibility: visible;
 }
-.coast[data-live="true"] canvas { visibility: visible; }
 .compass, .pin { position: absolute; pointer-events: none; z-index: 1; font-family: var(--mono); font-weight: 700; }
 .compass { inset: 5% auto auto 5%; color: var(--light); display: grid; text-align: center; line-height: 1; gap: .15em; font-size: 1.1rem; }
 .compass span { font-size: .68rem; }
