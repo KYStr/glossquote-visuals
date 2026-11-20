@@ -66,11 +66,11 @@ def bake(sample_dir):
 
     for preset, name in enumerate(("ingress", "total", "egress")):
         frame(preset, 0.0).save(media / f"{name}.webp", quality=89, method=6)
-    frame(-1, 1.08).save(media / "cover.webp", quality=90, method=6)
+    frame(-1, 0.33).save(media / "cover.webp", quality=90, method=6)
 
     if sample_dir:
         sample_dir.mkdir(parents=True, exist_ok=True)
-        for seconds in (0, 1.5, 2.86, 3, 5, 7, 9.99):
+        for seconds in (0, 0.33, 0.65, 0.83, 1.04, 1.5, 2.25, 3, 4.5, 6.65, 8, 9.99, 10):
             frame(-1, seconds).save(sample_dir / f"eclipse-{seconds:05.2f}s.png")
 
 if __name__ == "__main__":

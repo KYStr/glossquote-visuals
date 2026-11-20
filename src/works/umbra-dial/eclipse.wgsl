@@ -4,12 +4,17 @@
   let slope = vec2f(1.0, -0.115);
   let radius = length(p);
   let t = fract(time * 0.1) * 10.0;
-  var displacement = 0.8 - t * (1.6 / 6.0);
-  if (t > 6.0) {
-    let u = (t - 6.0) * 0.25;
-    // Hermite return with the same velocity at each end as the transit.
-    displacement = -0.8 + 1.6 * u * u * (3.0 - 2.0 * u)
-      - (16.0 / 15.0) * u * (1.0 - u) * (1.0 - 2.0 * u);
+  // Ease through the narrow contact window so the bead is visible before
+  // full alignment. The ring holds while the corona continues to breathe.
+  var displacement = mix(0.8, 0.044, smoothstep(0.0, 0.78, t));
+  if (t >= 0.78) {
+    displacement = mix(0.044, 0.0, smoothstep(0.78, 1.04, t));
+  }
+  if (t >= 2.25) {
+    displacement = mix(0.0, -1.57, smoothstep(2.25, 6.65, t));
+  }
+  if (t >= 6.65) {
+    displacement = mix(-1.57, 0.8, smoothstep(6.65, 10.0, t));
   }
   if (preset >= 0.0) {
     let positions = array<f32, 3>(0.8, 0.0, -1.57);
