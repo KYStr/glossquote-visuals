@@ -25,9 +25,21 @@ for (const [slug, entry] of Object.entries(catalog)) {
   for (const locale of ["zh-Hant", "en"]) {
     assert.ok(entry[locale].title && entry[locale].description);
   }
-  const shader = read(`src/works/${slug}/shader.js`).toString();
-  assert.match(shader, /initializeStandalone\(/);
-  assert.doesNotMatch(shader, /rendererSettings|createPreview\(|createShader\(/);
+  if (slug === "foldline") {
+    // This mesh needs a depth attachment for the panels that cross the hull.
+    const mesh = read("src/works/foldline/gpu.js").toString();
+    const program = read("src/works/foldline/foldline.wgsl").toString();
+    assert.match(read("src/works/foldline/page.js").toString(), /import\("\.\/gpu\.js"\)/);
+    assert.match(mesh, /navigator\.gpu\.requestAdapter\(/);
+    assert.match(mesh, /depthStencil:/);
+    assert.match(program, /@vertex fn panelVertex/);
+    assert.match(program, /@fragment fn waterFragment/);
+    assert.doesNotMatch(mesh, /\b(?:fetch|WebSocket|XMLHttpRequest|sendBeacon|createShader)\b/);
+  } else {
+    const shader = read(`src/works/${slug}/shader.js`).toString();
+    assert.match(shader, /initializeStandalone\(/);
+    assert.doesNotMatch(shader, /rendererSettings|createPreview\(|createShader\(/);
+  }
 }
 
 const notices = read("public/licenses/NOTICES.txt").toString();
