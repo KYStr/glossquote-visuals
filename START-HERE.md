@@ -1,8 +1,12 @@
 # 接續入口
 
+三件 M04 作品已發布，可由 [繁中畫廊](https://kystr.github.io/glossquote-visuals/) 或 [English gallery](https://kystr.github.io/glossquote-visuals/en/) 進入。[發布驗證與限制](evidence/M04/873d07650ee107e465ab163f6a1df050b928f114/RELEASE.md)。
+
 自 2026-11-21 M04 起，新商業網站由主責先寫 brief、每件另開側欄製作對話，指定 gpt-6.2-sol / medium。主責按 docs/M04-ACCEPTANCE.md 逐條獨立驗收，各項均須 PASS。歷史批次的分數與製作設定僅適用於當時版本。
 
 這是獨立的 GlossQuote Visuals。M03 已完成三件商業網站版頭重做與折光材料室、空型動態設計兩件新作，五件均已發布並通過美術、UI、商業完整度各嚴格 >9/10 的非作者驗收。[正式發布證據](evidence/M03/33d0aee9006b2b76f02a58c9ddd575571a4704b9/RELEASE.md)。五個側欄可見製作對話各持有一件作品，主責負責美術、整合、共享畫廊與發布。下一個新作品依使用者新任務寫 brief，開新的製作對話；M01/M02 與本輪被退回的證據保留為歷史。
+
+## M03 歷史流程
 
 1. 讀 AGENTS.md、GOAL.md、docs/WORKFLOW.md、docs/ACCEPTANCE.md。
 2. 讀 `.agents/skills/shaders/SKILL.md` 和 docs/UPSTREAM.md；不要執行 skill 裡涉及登入、遠端專案或付費預設的命令。

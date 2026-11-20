@@ -1,0 +1,233 @@
+{
+  "conclusion": "failure",
+  "headSha": "873d07650ee107e465ab163f6a1df050b928f114",
+  "jobs": [
+    {
+      "completedAt": "2026-11-20T17:50:24Z",
+      "conclusion": "success",
+      "databaseId": 136466163838,
+      "name": "build",
+      "startedAt": "2026-11-20T17:42:14Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-20T17:42:16Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-20T17:42:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:42:34Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "startedAt": "2026-11-20T17:42:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:42:44Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 3,
+          "startedAt": "2026-11-20T17:42:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:43:20Z",
+          "conclusion": "success",
+          "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+          "number": 4,
+          "startedAt": "2026-11-20T17:42:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:43:31Z",
+          "conclusion": "success",
+          "name": "Run node node_modules/playwright/cli.js install chromium --no-shell",
+          "number": 5,
+          "startedAt": "2026-11-20T17:43:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:11Z",
+          "conclusion": "success",
+          "name": "Run npm run test:browser -- --shared",
+          "number": 6,
+          "startedAt": "2026-11-20T17:43:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:18Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "number": 7,
+          "startedAt": "2026-11-20T17:50:11Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:20Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9",
+          "number": 8,
+          "startedAt": "2026-11-20T17:50:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:20Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 15,
+          "startedAt": "2026-11-20T17:50:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:22Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 16,
+          "startedAt": "2026-11-20T17:50:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:22Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "startedAt": "2026-11-20T17:50:22Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136466163838"
+    },
+    {
+      "completedAt": "2026-11-20T17:54:04Z",
+      "conclusion": "failure",
+      "databaseId": 136466164044,
+      "name": "live",
+      "startedAt": "2026-11-20T17:53:07Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-20T17:53:09Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-20T17:53:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:53:27Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 2,
+          "startedAt": "2026-11-20T17:53:09Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:53:33Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 3,
+          "startedAt": "2026-11-20T17:53:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:53:38Z",
+          "conclusion": "success",
+          "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+          "number": 4,
+          "startedAt": "2026-11-20T17:53:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:53:46Z",
+          "conclusion": "success",
+          "name": "Run node node_modules/playwright/cli.js install chromium --no-shell",
+          "number": 5,
+          "startedAt": "2026-11-20T17:53:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:54:00Z",
+          "conclusion": "failure",
+          "name": "Run npm run test:browser -- --live",
+          "number": 6,
+          "startedAt": "2026-11-20T17:53:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:54:01Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "number": 7,
+          "startedAt": "2026-11-20T17:54:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:54:01Z",
+          "conclusion": "skipped",
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 13,
+          "startedAt": "2026-11-20T17:54:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:54:02Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 14,
+          "startedAt": "2026-11-20T17:54:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:54:02Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-11-20T17:54:02Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136466164044"
+    },
+    {
+      "completedAt": "2026-11-20T17:50:37Z",
+      "conclusion": "success",
+      "databaseId": 136466165711,
+      "name": "deploy",
+      "startedAt": "2026-11-20T17:50:29Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-20T17:50:30Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-20T17:50:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:36Z",
+          "conclusion": "success",
+          "name": "Run actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+          "number": 2,
+          "startedAt": "2026-11-20T17:50:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-20T17:50:36Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 3,
+          "startedAt": "2026-11-20T17:50:36Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136466165711"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933"
+}

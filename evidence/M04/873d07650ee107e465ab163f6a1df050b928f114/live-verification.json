@@ -1,0 +1,410 @@
+{
+  "result": "PASS",
+  "sourceCommit": "873d07650ee107e465ab163f6a1df050b928f114",
+  "candidateCommit": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+  "runId": 44785808933,
+  "attempt": 2,
+  "runUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933",
+  "publishConclusion": "failure",
+  "failedPublisherJobs": [
+    {
+      "id": 136464870674,
+      "name": "live",
+      "run_attempt": 1,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136464870674",
+      "completed_at": "2026-11-20T17:52:24Z"
+    },
+    {
+      "id": 136466164044,
+      "name": "live",
+      "run_attempt": 2,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136466164044",
+      "completed_at": "2026-11-20T17:54:04Z"
+    }
+  ],
+  "jobs": [
+    {
+      "name": "build",
+      "id": 136460245000,
+      "run_attempt": 1,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136460245000",
+      "conclusion": "success",
+      "completed_at": "2026-11-20T17:50:24Z",
+      "reusedIn": [
+        {
+          "attempt": 2,
+          "jobId": 136466163838
+        }
+      ]
+    },
+    {
+      "name": "deploy",
+      "id": 136464758817,
+      "run_attempt": 1,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136464758817",
+      "conclusion": "success",
+      "completed_at": "2026-11-20T17:50:37Z",
+      "reusedIn": [
+        {
+          "attempt": 2,
+          "jobId": 136466165711
+        }
+      ]
+    },
+    {
+      "name": "live",
+      "id": 136466164044,
+      "run_attempt": 2,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44785808933/job/136466164044",
+      "conclusion": "failure",
+      "completed_at": "2026-11-20T17:54:04Z"
+    }
+  ],
+  "liveVerification": {
+    "runId": 44787603552,
+    "runUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44787603552",
+    "headSha": "847d2c7311d8635f921220ec7e2e51ff17db5008",
+    "jobId": 136466482051,
+    "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44787603552/job/136466482051",
+    "conclusion": "success",
+    "separate": true,
+    "changedPathsSinceDeployment": [
+      "test/browser/verify.mjs"
+    ]
+  },
+  "artifact": {
+    "id": 14654109875,
+    "name": "deployed-live-847d2c7311d8635f921220ec7e2e51ff17db5008",
+    "digest": "sha256:9517e5958a951307952c6de53d7da343e045a1ff1efb5c02024edec9471d843f",
+    "size_in_bytes": 102304907
+  },
+  "resultsSha256": "d50f677be3d5871c91ba38b1711ebc4dd0c43d981baf65db8b7eeea76614ac1e",
+  "flows": 6,
+  "materialCaptures": 24,
+  "observations": [
+    {
+      "work": "V006",
+      "locale": "zh-Hant",
+      "slug": "tide-table",
+      "url": "https://kystr.github.io/glossquote-visuals/works/tide-table/",
+      "export": {
+        "filename": "tide-table-zh-Hant.txt",
+        "bytes": 352,
+        "sha256": "781efdf430f62e4eb5cebac49cd752adc2da79b59016a4d1fc4ff752a2ac06cf",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-tide-table-zh-Hant-material-0.png",
+          "sha256": "230377f384dd07b584299aa4f46a1ac8471920409bce428812cb6dfe6460db35",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 1,
+          "file": "live-tide-table-zh-Hant-material-1.png",
+          "sha256": "d39485ea4d54c6f2ec2c0e60bbe7650b441d896108d107d2f0034091daec2688",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 2,
+          "file": "live-tide-table-zh-Hant-material-2.png",
+          "sha256": "0a88ce6f2e04a18c6aa1064c43d5525a41b5d480edbe89a63681f0e851787cb4",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 0,
+          "file": "live-tide-table-zh-Hant-material-3.png",
+          "sha256": "f92b2cb7cebef3d5e02272bd80c945c4b6bb74705ebeaf8b994e3367fed1ceae",
+          "width": 576,
+          "height": 384
+        }
+      ],
+      "frozen": {
+        "file": "live-tide-table-zh-Hant-frozen.png",
+        "sha256": "cd4fd80fb737a419ec2e7c7117bcaf9a0913df902574c1ddd42e802541b35802",
+        "width": 600,
+        "height": 401
+      },
+      "pageScreenshot": {
+        "file": "live-tide-table-zh-Hant.png",
+        "sha256": "8d949f5202d6eb786feea6f4037d4388bd368c65930fd79c1924b8884721bcbe",
+        "width": 1100,
+        "height": 2260
+      }
+    },
+    {
+      "work": "V006",
+      "locale": "en",
+      "slug": "tide-table",
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/tide-table/",
+      "export": {
+        "filename": "tide-table-en.txt",
+        "bytes": 366,
+        "sha256": "dab41b8d6d39488f8ecf5cfdce18cc5a4c306b6f69a77eb5ae7d18684254ec70",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-tide-table-en-material-0.png",
+          "sha256": "7542f8d062324bf77ae0e7aa2a46535e92cf9722bac33510cc61c5ab5cdd4a62",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 1,
+          "file": "live-tide-table-en-material-1.png",
+          "sha256": "a51f26b54e03ec1607200e4a984f0b63aa7414f29353b5271221bd975e037873",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 2,
+          "file": "live-tide-table-en-material-2.png",
+          "sha256": "bff9c7fdc5d80d63f45db3d8de86ed5f876543e528bccfb7742f7f19ba4f6abb",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 0,
+          "file": "live-tide-table-en-material-3.png",
+          "sha256": "2ccb6e7411c212b2760193ac90308f70567e7b7d8c7c872c977229e4e7172f34",
+          "width": 576,
+          "height": 384
+        }
+      ],
+      "frozen": {
+        "file": "live-tide-table-en-frozen.png",
+        "sha256": "0644c639b0d87ef19a98b89ed56ee9ab4053c9b52fd81f5c2a4a8fc536056cdb",
+        "width": 600,
+        "height": 401
+      },
+      "pageScreenshot": {
+        "file": "live-tide-table-en.png",
+        "sha256": "b20b37a3accc7d98ed4ac3ae041e3467eca642ca82da8f63dea06f42b2200eef",
+        "width": 1100,
+        "height": 2337
+      }
+    },
+    {
+      "work": "V007",
+      "locale": "zh-Hant",
+      "slug": "selvedge",
+      "url": "https://kystr.github.io/glossquote-visuals/works/selvedge/",
+      "export": {
+        "filename": "selvedge-samples-zh-Hant.txt",
+        "bytes": 467,
+        "sha256": "a6ec9f91550ae2fadaa50a40e13eac1079be1ff35225222bca08a175868cea44",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-selvedge-zh-Hant-material-0.png",
+          "sha256": "1209deb56b68c25b5fe73fce753fd9d03bf3224fe7d9423d411263ae9bd7ffe5",
+          "width": 640,
+          "height": 427
+        },
+        {
+          "state": 1,
+          "file": "live-selvedge-zh-Hant-material-1.png",
+          "sha256": "177da547be31e0e2ce2376b3812e6cb3ffa315c6262828eb6b045e3fdf7e28ae",
+          "width": 640,
+          "height": 427
+        },
+        {
+          "state": 2,
+          "file": "live-selvedge-zh-Hant-material-2.png",
+          "sha256": "4f8427e1840e5170c35afab5be8bd3e24f6c263e52e0885b6f3a4686e5cc2509",
+          "width": 640,
+          "height": 427
+        },
+        {
+          "state": 0,
+          "file": "live-selvedge-zh-Hant-material-3.png",
+          "sha256": "44dc68b0bc59f83f869df4075d469b71eb508e7ae5a0a4a772517898f482ba91",
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "frozen": {
+        "file": "live-selvedge-zh-Hant-frozen.png",
+        "sha256": "a5badb0062915563241e2a179b786882f71373d163f61a5de6b92544ae2c1b18",
+        "width": 685,
+        "height": 457
+      },
+      "pageScreenshot": {
+        "file": "live-selvedge-zh-Hant.png",
+        "sha256": "71c36bb7d5e109e1c2d770e0ad14b1711c69180f727d297726b86f8acd6f3de6",
+        "width": 1100,
+        "height": 2406
+      }
+    },
+    {
+      "work": "V007",
+      "locale": "en",
+      "slug": "selvedge",
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/selvedge/",
+      "export": {
+        "filename": "selvedge-samples-en.txt",
+        "bytes": 527,
+        "sha256": "d2757229b7ca0b7ad8c380528cd71949da77fed50cc9e1caf1993bc9ef12e3f3",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-selvedge-en-material-0.png",
+          "sha256": "2cfd122caf422f20f8c24611a8aa9185bf1941059962a77dbd0293f4329d28b5",
+          "width": 640,
+          "height": 427
+        },
+        {
+          "state": 1,
+          "file": "live-selvedge-en-material-1.png",
+          "sha256": "b54c4af08993fbf1fed6d92ef555c844f82b7b901392bb6c5feda27414f0db62",
+          "width": 640,
+          "height": 427
+        },
+        {
+          "state": 2,
+          "file": "live-selvedge-en-material-2.png",
+          "sha256": "0df5ac1100bc0d6dddfd0e6f02453c2628b7ba5e31265d4e4dbc519e02353ae3",
+          "width": 640,
+          "height": 427
+        },
+        {
+          "state": 0,
+          "file": "live-selvedge-en-material-3.png",
+          "sha256": "5a1a7ba61141b61e02625fc4096579d10c9798ebe16c30276ef6afe0dc11f884",
+          "width": 640,
+          "height": 427
+        }
+      ],
+      "frozen": {
+        "file": "live-selvedge-en-frozen.png",
+        "sha256": "eb2ee6c3811e1f6f97ed088834e5ec402c77c95b9e3109116e1b6b0d0d86a2e5",
+        "width": 685,
+        "height": 457
+      },
+      "pageScreenshot": {
+        "file": "live-selvedge-en.png",
+        "sha256": "1cad75433c5bb854404f3eb41f074f38a401bf602da64a14a0355b8ebd573db7",
+        "width": 1100,
+        "height": 2612
+      }
+    },
+    {
+      "work": "V008",
+      "locale": "zh-Hant",
+      "slug": "sorbet-hour",
+      "url": "https://kystr.github.io/glossquote-visuals/works/sorbet-hour/",
+      "export": {
+        "filename": "sorbet-hour-recipe-zh-Hant.txt",
+        "bytes": 680,
+        "sha256": "15c1112eb8840a5f3ae11863755e7299c3558061967f1ed40814e7afe0847869",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-zh-Hant-material-0.png",
+          "sha256": "56de481abaed60f44f7f26d5be196190029279e3e283027f58bf4734ad262e0f",
+          "width": 307,
+          "height": 205
+        },
+        {
+          "state": 1,
+          "file": "live-sorbet-hour-zh-Hant-material-1.png",
+          "sha256": "dd2c57ba31bc8a98277ec423bd49f0de7b5eead6bc7b6456cee08390d73315c2",
+          "width": 307,
+          "height": 205
+        },
+        {
+          "state": 2,
+          "file": "live-sorbet-hour-zh-Hant-material-2.png",
+          "sha256": "db9d7fafa8b6e93d47e7f8e41f83fe44fa7572bb29ad0849ce62a660f8755be8",
+          "width": 307,
+          "height": 205
+        },
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-zh-Hant-material-3.png",
+          "sha256": "636fdb0ca31eb09b73be7ba2a5103434e0451726e5e5d34ff1ab3ff3a0ceeae2",
+          "width": 307,
+          "height": 205
+        }
+      ],
+      "frozen": {
+        "file": "live-sorbet-hour-zh-Hant-frozen.png",
+        "sha256": "9e5b7a6a55149b09fa1c7f35cd994c1684804d378bf8bf2f4cd0729a0d486a4c",
+        "width": 308,
+        "height": 206
+      },
+      "pageScreenshot": {
+        "file": "live-sorbet-hour-zh-Hant.png",
+        "sha256": "463a939852ee583ca440e1c25419f506e31733797488f003a2f07c60c452aece",
+        "width": 1100,
+        "height": 2830
+      }
+    },
+    {
+      "work": "V008",
+      "locale": "en",
+      "slug": "sorbet-hour",
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/sorbet-hour/",
+      "export": {
+        "filename": "sorbet-hour-recipe-en.txt",
+        "bytes": 741,
+        "sha256": "3440fad41c2c1f76450b0ef59e3ba93536b4f08d7398df5749772dd0bd9d9cbd",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-en-material-0.png",
+          "sha256": "3eedc58618606d539a0732789453bf13175c411fc1b90c2ca0aa8efc27cc6351",
+          "width": 307,
+          "height": 205
+        },
+        {
+          "state": 1,
+          "file": "live-sorbet-hour-en-material-1.png",
+          "sha256": "862f2494dd988c39c3724bb8b5f03d96e2acdb01a1c091d75d02d04adbf6b3cc",
+          "width": 307,
+          "height": 205
+        },
+        {
+          "state": 2,
+          "file": "live-sorbet-hour-en-material-2.png",
+          "sha256": "c6b807bd9738f6649ed5ca6b41992ddca26ec519fea4e64d15ad968c48a28244",
+          "width": 307,
+          "height": 205
+        },
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-en-material-3.png",
+          "sha256": "b0e701a1b211fd10a0596120dce0d8e1bfc9cfcec7bca36d2a85ff1a52a2cd4b",
+          "width": 307,
+          "height": 205
+        }
+      ],
+      "frozen": {
+        "file": "live-sorbet-hour-en-frozen.png",
+        "sha256": "05869fb5e26f6d4a589cf348389b188e563a8805cffa1d5a0be48b9029ff24bf",
+        "width": 308,
+        "height": 206
+      },
+      "pageScreenshot": {
+        "file": "live-sorbet-hour-en.png",
+        "sha256": "0051a379bbaa6394b1878dd927e3d1b2e047c2885064800ebeaeeeff0a9babe9",
+        "width": 1100,
+        "height": 2932
+      }
+    }
+  ]
+}

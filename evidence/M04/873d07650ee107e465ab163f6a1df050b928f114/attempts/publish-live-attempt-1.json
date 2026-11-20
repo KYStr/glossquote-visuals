@@ -1,0 +1,41 @@
+{
+  "commit": "873d07650ee107e465ab163f6a1df050b928f114",
+  "verifierCommit": "873d07650ee107e465ab163f6a1df050b928f114",
+  "environment": "GitHub-hosted Windows Server 2025 VM",
+  "display": "headless-d3d11-warp",
+  "browser": "158.0.8127.18",
+  "checks": {
+    "http": "PASS live HTTPS share image, notices, robots, sitemap and 404"
+  },
+  "measurements": {
+    "renderer": [
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      },
+      {
+        "vendorString": "",
+        "deviceString": "Microsoft Basic Render Driver"
+      }
+    ],
+    "browserFeatures": {
+      "2d_canvas": "enabled",
+      "direct_rendering_display_compositor": "disabled_off_ok",
+      "gpu_compositing": "enabled",
+      "multiple_raster_threads": "enabled_on",
+      "opengl": "enabled_on",
+      "rasterization": "enabled",
+      "skia_graphite": "unavailable_off",
+      "trees_in_viz": "disabled_off",
+      "video_decode": "enabled",
+      "video_encode": "enabled",
+      "webgl": "enabled",
+      "webgpu": "unavailable_software",
+      "webnn": "disabled_off"
+    }
+  },
+  "screenshots": [],
+  "lane": "live",
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Footer must link to the exact deployed source\n\n0 !== 1\n\n    at file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:956:16\n    at async withPage (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:163:5)\n    at async checkLive (file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:948:7)\n    at async file:///D:/a/glossquote-visuals/glossquote-visuals/test/browser/verify.mjs:1638:5"
+}

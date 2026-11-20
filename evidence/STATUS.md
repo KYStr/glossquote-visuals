@@ -2,6 +2,8 @@
 
 ## M04 逐條驗收
 
+三件 M04 作品已發布，可由 [繁中畫廊](https://kystr.github.io/glossquote-visuals/) 或 [English gallery](https://kystr.github.io/glossquote-visuals/en/) 進入。[發布驗證與限制](M04/873d07650ee107e465ab163f6a1df050b928f114/RELEASE.md)。
+
 本批三件固定候選 `52fa4e91f748be73f060c3acc3c91ce9728fccd9` 已依 14 條規則各自完成複核。[V006](V006/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md) · [V007](V007/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md) · [V008](V008/52fa4e91f748be73f060c3acc3c91ce9728fccd9/REVIEW.md)。
 
 ## M03 — corrected release published and verified
