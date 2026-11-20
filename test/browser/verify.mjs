@@ -952,8 +952,12 @@ async function checkLive(browser) {
         await page.locator(`.exhibition-card[href="${base}${prefix}${route}"]`).click();
         assert.equal(page.url(), url(prefix + route));
         assert.equal(await page.locator('meta[name="robots"]').getAttribute("content"), "index, follow");
-        const sourceLink = page.locator(`footer a[href="https://github.com/KYStr/glossquote-visuals/tree/${source}"]`);
-        assert.equal(await sourceLink.count(), 1, "Footer must link to the exact deployed source");
+        // Navigation may commit before the parser reaches the footer.
+        await page.waitForLoadState("domcontentloaded");
+        const footerLinks = await page.locator("footer a").evaluateAll(links => links.map(link => link.href));
+        const expectedSource = `https://github.com/KYStr/glossquote-visuals/tree/${source}`;
+        assert.equal(footerLinks.filter(href => href === expectedSource).length, 1,
+          `Expected exactly one link to ${expectedSource} on ${page.url()}. Found ${JSON.stringify(footerLinks)}`);
         const shareImage = await page.locator('meta[property="og:image"]').getAttribute("content");
         assert.ok(shareImage.startsWith(site.origin + base));
         assert.equal((await fetch(shareImage)).status, 200);
