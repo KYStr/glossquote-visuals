@@ -98,7 +98,12 @@ section[id], figure[id] { scroll-margin-block-start: 1rem; }
 .coast[data-level="low"] [data-still="low"],
 .coast[data-level="mid"] [data-still="mid"],
 .coast[data-level="high"] [data-still="high"] { visibility: visible; }
-.coast canvas { visibility: hidden; }
+.coast canvas {
+  /* Shaders writes raster sizing inline. Keep the chart at the stage's CSS size. */
+  width: 100% !important;
+  height: 100% !important;
+  visibility: hidden;
+}
 .coast[data-live="true"] canvas { visibility: visible; }
 .compass, .pin { position: absolute; pointer-events: none; z-index: 1; font-family: var(--mono); font-weight: 700; }
 .compass { inset: 5% auto auto 5%; color: var(--light); display: grid; text-align: center; line-height: 1; gap: .15em; font-size: 1.1rem; }
