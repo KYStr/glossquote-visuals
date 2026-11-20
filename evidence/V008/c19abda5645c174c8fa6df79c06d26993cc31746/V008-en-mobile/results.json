@@ -1,0 +1,6402 @@
+{
+  "work": "V008",
+  "lang": "en",
+  "viewport": "mobile",
+  "commit": "c19abda5645c174c8fa6df79c06d26993cc31746",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "hero-interaction": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "empty",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "empty removal blocked",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "five",
+            "cups": [
+              2,
+              2,
+              1
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "full",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "seventh rejected",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "reopened",
+            "cups": [
+              2,
+              1,
+              2
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "remixed",
+            "cups": [
+              3,
+              1,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          }
+        ],
+        "download": {
+          "filename": "jelly-hour-recipe-en.txt",
+          "bytes": 762,
+          "text": "Jelly Hour | Fruit jelly gift box recipe\n\nMandarin jelly: 3 × 100 mL\nRaspberry jelly: 1 × 100 mL\nWhite guava jelly: 2 × 100 mL\nTotal: 6 cups × 100 mL = 600 mL\n\nIngredients\nMandarin jelly — Mandarin juice, water, cane sugar, citrus pectin, lemon juice.\nRaspberry jelly — Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice.\nWhite guava jelly — White guava juice, water, cane sugar, citrus pectin, lime juice.\n\nAllergens\nThe concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may come into contact with milk, peanuts and tree nuts.\n\nStorage\nRefrigerate and follow the use-by date on the product label.\n\nA seasonal fruit jelly brand concept. The recipe is created in this page for offline use and sharing.\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "empty",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "empty removal blocked",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "0 of 6 cups selected. 6 slots left."
+          },
+          {
+            "name": "five",
+            "cups": [
+              2,
+              2,
+              1
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "full",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "seventh rejected",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          },
+          {
+            "name": "reopened",
+            "cups": [
+              2,
+              1,
+              2
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "5 of 6 cups selected. 1 slot left."
+          },
+          {
+            "name": "remixed",
+            "cups": [
+              3,
+              1,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "6 of 6 cups selected. Your recipe is ready."
+          }
+        ],
+        "download": {
+          "filename": "jelly-hour-recipe-en.txt",
+          "bytes": 762,
+          "text": "Jelly Hour | Fruit jelly gift box recipe\n\nMandarin jelly: 3 × 100 mL\nRaspberry jelly: 1 × 100 mL\nWhite guava jelly: 2 × 100 mL\nTotal: 6 cups × 100 mL = 600 mL\n\nIngredients\nMandarin jelly — Mandarin juice, water, cane sugar, citrus pectin, lemon juice.\nRaspberry jelly — Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice.\nWhite guava jelly — White guava juice, water, cane sugar, citrus pectin, lime juice.\n\nAllergens\nThe concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may come into contact with milk, peanuts and tree nuts.\n\nStorage\nRefrigerate and follow the use-by date on the product label.\n\nA seasonal fruit jelly brand concept. The recipe is created in this page for offline use and sharing.\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795203434368.3,
+      "anchorMs": 3567.600000000006,
+      "view": {
+        "at": 817.2999999999884,
+        "stage": {
+          "x": 19.5,
+          "y": 412.125,
+          "right": 370.5,
+          "bottom": 646.125
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstRunningObservedMs": 1091.5,
+      "firstContentfulPaint": 868,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "en",
+        "title": "Jelly Hour | Seasonal fruit jelly gift box",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/assets/page-DIRAyoku.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 1.1999999999825377,
+          "requestStart": 3.8999999999941792,
+          "responseStart": 16.39999999999418,
+          "responseEnd": 17.10000000000582,
+          "duration": 771.5,
+          "domInteractive": 34.60000000000582,
+          "domContentLoadedEventStart": 768.6999999999825,
+          "domContentLoadedEventEnd": 769.1000000000058,
+          "domComplete": 771.5,
+          "loadEventStart": 771.5,
+          "loadEventEnd": 771.5,
+          "transferSize": 12836,
+          "encodedBodySize": 12536,
+          "decodedBodySize": 12536
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 868
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 868
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 31.89999999999418,
+            "fetchStart": 31.89999999999418,
+            "requestStart": 38.39999999999418,
+            "responseStart": 40.69999999998254,
+            "responseEnd": 41.60000000000582,
+            "duration": 9.700000000011642,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-Fyba3zxv.js",
+            "initiator": "script",
+            "startTime": 32.39999999999418,
+            "fetchStart": 32.39999999999418,
+            "requestStart": 41.69999999998254,
+            "responseStart": 43.79999999998836,
+            "responseEnd": 44,
+            "duration": 11.60000000000582,
+            "transferSize": 7738,
+            "encodedBodySize": 7438,
+            "decodedBodySize": 7438
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-DIRAyoku.css",
+            "initiator": "link",
+            "startTime": 32.5,
+            "fetchStart": 32.5,
+            "requestStart": 41.39999999999418,
+            "responseStart": 43.19999999998254,
+            "responseEnd": 43.5,
+            "duration": 11,
+            "transferSize": 8703,
+            "encodedBodySize": 8403,
+            "decodedBodySize": 8403
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 32.60000000000582,
+            "fetchStart": 32.60000000000582,
+            "requestStart": 41.5,
+            "responseStart": 43.60000000000582,
+            "responseEnd": 43.79999999998836,
+            "duration": 11.199999999982538,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "initiator": "img",
+            "startTime": 33.69999999998254,
+            "fetchStart": 33.69999999998254,
+            "requestStart": 42.19999999998254,
+            "responseStart": 44.10000000000582,
+            "responseEnd": 44.29999999998836,
+            "duration": 10.60000000000582,
+            "transferSize": 23074,
+            "encodedBodySize": 22774,
+            "decodedBodySize": 22774
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/berry.webp",
+            "initiator": "img",
+            "startTime": 763.7999999999884,
+            "fetchStart": 763.7999999999884,
+            "requestStart": 765.7999999999884,
+            "responseStart": 772.2999999999884,
+            "responseEnd": 772.7999999999884,
+            "duration": 9,
+            "transferSize": 23516,
+            "encodedBodySize": 23216,
+            "decodedBodySize": 23216
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/guava.webp",
+            "initiator": "img",
+            "startTime": 764,
+            "fetchStart": 764,
+            "requestStart": 766.3999999999942,
+            "responseStart": 774.1999999999825,
+            "responseEnd": 774.5,
+            "duration": 10.5,
+            "transferSize": 21672,
+            "encodedBodySize": 21372,
+            "decodedBodySize": 21372
+          },
+          {
+            "path": "/glossquote-visuals/assets/shader-BJbOJibb.js",
+            "initiator": "script",
+            "startTime": 818.6000000000058,
+            "fetchStart": 818.6000000000058,
+            "requestStart": 819.6999999999825,
+            "responseStart": 821.3999999999942,
+            "responseEnd": 821.7999999999884,
+            "duration": 3.1999999999825377,
+            "transferSize": 12383,
+            "encodedBodySize": 12083,
+            "decodedBodySize": 12083
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/mark.svg",
+            "initiator": "other",
+            "startTime": 819.1999999999825,
+            "fetchStart": 819.1999999999825,
+            "requestStart": 820.1000000000058,
+            "responseStart": 822.6000000000058,
+            "responseEnd": 822.8999999999942,
+            "duration": 3.7000000000116415,
+            "transferSize": 699,
+            "encodedBodySize": 399,
+            "decodedBodySize": 399
+          },
+          {
+            "path": "/glossquote-visuals/assets/standalone-DX-vHLon.js",
+            "initiator": "script",
+            "startTime": 823.1999999999825,
+            "fetchStart": 823.1999999999825,
+            "requestStart": 823.7999999999884,
+            "responseStart": 827.7999999999884,
+            "responseEnd": 850.7999999999884,
+            "duration": 27.60000000000582,
+            "transferSize": 2571858,
+            "encodedBodySize": 2571558,
+            "decodedBodySize": 2571558
+          }
+        ],
+        "longTasks": [
+          {
+            "start": 974.7999999999884,
+            "duration": 67
+          }
+        ]
+      },
+      "fromCommitReturnToTimingReadMs": 3610.9017999999996,
+      "navigationStartMetricMs": 166519.092,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "Summer jiggles. Take a scoop.",
+          "cssFamily": "ui-rounded, \"Arial Rounded MT Bold\", \"Trebuchet MS\", \"Microsoft JhengHei\", system-ui, sans-serif",
+          "fonts": [
+            {
+              "familyName": "Trebuchet MS",
+              "postScriptName": "TrebuchetMS-Bold",
+              "isCustomFont": false,
+              "glyphCount": 28
+            }
+          ]
+        },
+        {
+          "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(3)",
+          "text": "繁體中文",
+          "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "微軟正黑體",
+              "postScriptName": "MicrosoftJhengHeiBold",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "Seasonal fruit jelly gift box",
+          "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Segoe UI Black",
+              "postScriptName": "SegoeUIBlack",
+              "isCustomFont": false,
+              "glyphCount": 29
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 166544.685,
+          "ms": 25.59299999999348
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 167288.129,
+          "ms": 769.0369999999821
+        },
+        {
+          "name": "load",
+          "traceMs": 167290.63700000002,
+          "ms": 771.5450000000128
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 167384.733,
+          "ms": 865.6410000000033
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 167384.733,
+          "ms": 865.6410000000033
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 167384.733,
+          "ms": 865.6410000000033
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 167384.733,
+          "ms": 865.6410000000033
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 167289.593,
+          "ms": 770.5009999999893
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 167384.733,
+          "ms": 865.6410000000033
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 167493.707,
+          "ms": 974.6149999999907
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3542.0070000000123,
+      "navigationStartTraceMs": 166519.092,
+      "navigationStartEventUs": 166519092,
+      "anchorTraceUs": 170086753,
+      "fcpTraceClockUs": 167387092,
+      "screenshotEvents": 141,
+      "traceImageTimesMs": [
+        12.25,
+        868.5409999999974,
+        870.7909999999974,
+        897.0510000000068,
+        1224.5299999999988,
+        1242.2799999999988,
+        1259.2820000000065,
+        1289.7630000000063,
+        1294.1639999999898,
+        1326.2779999999912,
+        1328.671000000002,
+        1361.1419999999925,
+        1377.7900000000081,
+        1379.5959999999905,
+        1397.0719999999856,
+        1428.875,
+        1430.252999999997,
+        1448.0279999999912,
+        1465.8679999999877,
+        1484.4750000000058,
+        1502.8399999999965,
+        1521.7539999999863,
+        1525.5020000000077,
+        1559.05799999999,
+        1582.3369999999995,
+        1618.0469999999914,
+        1666.9150000000081,
+        1687.2999999999884,
+        1689.054999999993,
+        1690.7030000000086,
+        1691.9100000000035,
+        1693.4659999999858,
+        1732.2449999999953,
+        1766.6469999999972,
+        1798.4989999999816,
+        1815.9729999999981,
+        1832.9599999999919,
+        1835.0149999999849,
+        1850.8549999999814,
+        1853.5469999999914,
+        1871.0109999999986,
+        1888.5309999999881,
+        1905.7229999999981,
+        1922.783999999985,
+        1940.6080000000075,
+        1969.688999999984,
+        1987.3379999999888,
+        2005.0939999999828,
+        2026.0160000000033,
+        2041.6730000000098,
+        2062.7669999999925,
+        2082.8179999999993,
+        2100.3090000000084,
+        2121.161999999982,
+        2138.8699999999953,
+        2157.535999999993,
+        2175.277999999991,
+        2192.6689999999944,
+        2227.032999999996,
+        2229.06700000001,
+        2259.282999999996,
+        2264.633999999991,
+        2282.4709999999905,
+        2300.7790000000095,
+        2317.8159999999916,
+        2335.589000000007,
+        2353.646999999997,
+        2371.5139999999956,
+        2400.4959999999846,
+        2406.5080000000016,
+        2424.747000000003,
+        2441.741000000009,
+        2458.911999999982,
+        2491.4489999999932,
+        2493.1229999999923,
+        2526.8649999999907,
+        2577.1300000000047,
+        2611.790000000008,
+        2613.448000000004,
+        2630.842000000004,
+        2632.4349999999977,
+        2650.2630000000063,
+        2666.392999999982,
+        2669.1630000000005,
+        2686.3910000000033,
+        2688.2820000000065,
+        2707.157999999996,
+        2726.3219999999856,
+        2760.5739999999932,
+        2776.274000000005,
+        2779.5190000000002,
+        2796.4949999999953,
+        2814.4349999999977,
+        2845.9959999999846,
+        2848.209999999992,
+        2865.5709999999963,
+        2882.660999999993,
+        2900.6909999999916,
+        2918.8439999999828,
+        2936.536999999982,
+        2954.3029999999853,
+        2972.301999999996,
+        3001.9130000000005,
+        3006.704999999987,
+        3023.8129999999946,
+        3042.29800000001,
+        3074.4429999999993,
+        3091.7630000000063,
+        3108.642999999982,
+        3126.320000000007,
+        3161.0739999999932,
+        3178.142999999982,
+        3179.954999999987,
+        3200.130999999994,
+        3201.899000000005,
+        3203.57699999999,
+        3248.3940000000002,
+        3281.1820000000007,
+        3298.511999999988,
+        3300.5599999999977,
+        3318.2919999999867,
+        3337.1870000000054,
+        3355.05799999999,
+        3372.241000000009,
+        3389.7790000000095,
+        3408.146000000008,
+        3428.030999999988,
+        3445.8640000000014,
+        3463.7309999999998,
+        3481.665000000008,
+        3498.8830000000016,
+        3516.1049999999814,
+        3534.673999999999,
+        3552.264999999985,
+        3570.2690000000002,
+        3604.2269999999844,
+        3605.926999999996,
+        3623.0899999999965,
+        3655.798999999999,
+        3670.173999999999,
+        3674.0439999999944
+      ],
+      "filmstripFramesInWindow": 101,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 868.5409999999974,
+          "traceUs": 167387633,
+          "file": "opening-0.png",
+          "sha256": "b1e9a3968e94351a41c0a8e26c46d4b7e3727f34c7ec3a59d25d9ed79f63add4",
+          "source": "opening-0.jpg",
+          "originalSha256": "a6c203c56a11b6d00dcf80d5554d56c53e1395c6e749b13c400ce1d2a1c18b70",
+          "stageHash": "9689f20af9c80815dba373e76f19727a63e40b24c7c9fcd203c61e6aca2ea8a0",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1328.671000000002,
+          "traceUs": 167847763,
+          "file": "opening-1.png",
+          "sha256": "11ed4aa9c3f64d7ee84e2202aa11dbaf924bc2ab8782a63856edbc4eda8c7ec6",
+          "source": "opening-1.jpg",
+          "originalSha256": "ad89ece40f3d0bcaf0952c4e3e99476ce5322ac02f1d990751fa8a3327dee859",
+          "stageHash": "d75ac4b3000ca1575b17d3adc6162f4abcf3eb4e4db18f2f1513b2bfbe470862",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1484.4750000000058,
+          "traceUs": 168003567,
+          "file": "opening-2.png",
+          "sha256": "4ac3f50dce47a2d41ecbea2cb0ed628f2b36a66e2fbef8f419c2bed1fe667889",
+          "source": "opening-2.jpg",
+          "originalSha256": "fb3709a06e8c39628fefbb4437997a4eeceb7d0df8c2d3040c282fafb1048b84",
+          "stageHash": "269039bf30adbf72fcd2dc020671f2a49eaed8e7706be34121fbbcac075e3519",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1689.054999999993,
+          "traceUs": 168208147,
+          "file": "opening-3.png",
+          "sha256": "01d323abe9b8a8a6730919f682ae02dac2e6e979aeba5b37fe856e9eb2da8dec",
+          "source": "opening-3.jpg",
+          "originalSha256": "c7d379690bf73e4e89be0efcfc070a4daee701f25d0ee4c862ab6948f1548bcf",
+          "stageHash": "61b31c71801979b2d85157f05ec56f1953528be7dd2aec3fd1af5cadecb9cba2",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1835.0149999999849,
+          "traceUs": 168354107,
+          "file": "opening-4.png",
+          "sha256": "fcb9442543dd76fb5e78efb76149208ad27f497527e2237de4a8f31cf062abe1",
+          "source": "opening-4.jpg",
+          "originalSha256": "fc674b726a2a9b9dcde07e91f5f7b7e9bfc7cb97377f6a86cd6fce3bafc87a68",
+          "stageHash": "0342a1badc056473b611413c6aeb0ba8272760cf5ac4358603b78cdecab06fd5",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1987.3379999999888,
+          "traceUs": 168506430,
+          "file": "opening-5.png",
+          "sha256": "235de221aa43d4c0826906a43563bf15fae9a4522c9fa0412f177655e206c845",
+          "source": "opening-5.jpg",
+          "originalSha256": "c392dc325074318061920e511f7632e84e3c8790214c8ca5a1f3bf2461ef83ca",
+          "stageHash": "20d66925872c487da2cffaa11f36b3e9792d3f48a5704f54ca17b7cdc368a71d",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2175.277999999991,
+          "traceUs": 168694370,
+          "file": "opening-6.png",
+          "sha256": "aac4f4c3801f2ac0ca4b9f74b67a671816389a5a8a36089b58b8584b52cbb1a8",
+          "source": "opening-6.jpg",
+          "originalSha256": "8894bbf0c5b19d57fcd80d54317fb4a666272095ac2b58bf4abc6e3f152213d2",
+          "stageHash": "dd81bc560ce9e592bd296a3bfd5d8a74e327c16e78db63c9a903832ae1854ede",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2335.589000000007,
+          "traceUs": 168854681,
+          "file": "opening-7.png",
+          "sha256": "72b5dee26be0f98df5d05aa40ee52ac4ed8d0b0a7fe713903d06c8f4c9ea48a0",
+          "source": "opening-7.jpg",
+          "originalSha256": "726ba965bd8b5be1376f37e1432523830fb1473bbdc1ebaeb8d5c8115e19b654",
+          "stageHash": "6f59361547610412361a971ebe737beb4c8304a93eb2a939e5e77faf10ad650f",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2493.1229999999923,
+          "traceUs": 169012215,
+          "file": "opening-8.png",
+          "sha256": "909d963e80e87cfa8dda67b7d281acbd2dff95f1ed52bc20363b0a42c8048486",
+          "source": "opening-8.jpg",
+          "originalSha256": "1b2000fdd9db136d3802cad333fbf8be4cc67e04fdb2bd76cd3075d492f1463d",
+          "stageHash": "a59bd1fb332efa1b94f7d1285ca0f362e923fcf5b5af119b93cf910c20c288ec",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2669.1630000000005,
+          "traceUs": 169188255,
+          "file": "opening-9.png",
+          "sha256": "5ba3457146a09268bcb5433a2e99e99434e4114c138b2bd474e5a66dbeaac186",
+          "source": "opening-9.jpg",
+          "originalSha256": "801a364c4dcac47b05c30201c17bfc4948c309a5f0ee6d1012f45ab26115fb9f",
+          "stageHash": "af4370e78edeb5a6b8a5e055102d897333560b404d584325c4a3e0b6bedbb84c",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2814.4349999999977,
+          "traceUs": 169333527,
+          "file": "opening-10.png",
+          "sha256": "f62faf34adae1f02e6986e956250893789120400b20e5515c0eb73743ffdbe3b",
+          "source": "opening-10.jpg",
+          "originalSha256": "fcb93b024d5097e5d3fbf1cd652cf6408e3effc14ad9a6ad0a2eeee17d9c30a5",
+          "stageHash": "5b288ab33563a68f25d766d4f4809574f39429f77eedcdb89543b769627025f3",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2972.301999999996,
+          "traceUs": 169491394,
+          "file": "opening-11.png",
+          "sha256": "ec5a99a893ca301e4970749135be6bc69464cfae647054a2da1f5d2dc301280e",
+          "source": "opening-11.jpg",
+          "originalSha256": "4e5f96e5f67c3e3e6f6b4f98664d1ebf1040c7dff16f61872f29d4e568a44e42",
+          "stageHash": "b4a3ca5d146ab922701dbf542be090fac910b93148cde5ba2eed8d2e0c7dd69b",
+          "crop": [
+            11,
+            243,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input",
+      "runningMotion": {
+        "sampledStageFrames": 11,
+        "thumbnailSize": [
+          64,
+          48
+        ],
+        "strongest": {
+          "before": "opening-1.jpg",
+          "beforeMs": 1328.671000000002,
+          "after": "opening-2.jpg",
+          "afterMs": 1484.4750000000058,
+          "meanAbsoluteRgb": 9.79296875,
+          "fractionWithMeanRgbDeltaAtLeast16": 0.1513671875
+        },
+        "basis": "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material."
+      }
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 169,
+    "firstFoldEnd": 223.5,
+    "cycle": "evolving",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "d1929694caef1b8a8bfd4991fe84c9cfea284b334d503a46373f42dcba09db09",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 427.30000000001746,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 369,
+          "average": [
+            241,
+            207,
+            163,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "688f9371df0b1775da0119e701e6ead0c6a55f09a9d354f32159ee9c2d8ee72f",
+          "start": 698,
+          "end": 857.6000000000058,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "8c64a2bea87fad536d4ef8b1381d0f42f07ae60a1157b2eabb74b2d1c4ac0fc9",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 1336.9000000000233,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 352,
+          "average": [
+            244,
+            209,
+            163,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "3a707b8b6bd00068119760e2b3396af28cef713cf7444e12f2e1741904982663",
+          "start": 1466.7000000000116,
+          "end": 1567.6000000000058,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0.9096000000000058
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "30ea3f7469c8aba0f4c029d872f0731dd80627112b8ee8254d75836d6cfca135",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 2633,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 353,
+          "average": [
+            244,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "6829a2c5f87b2c64210bfbb1ca1a4923b77d1b4a439ce679e42441256fa9c0b9",
+          "start": 2692.7000000000116,
+          "end": 2832.7000000000116,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 2.2056999999999825
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "6391f4bbe6da294fbf6ed1f5814c42c26f4034a13c49e9325fc00f31552a8768",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 4510.5,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 351,
+          "average": [
+            244,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "eb8376d4682326d86a0626e2ebbf6295aad26081ffd8154e0fa0ea1749cfe8b5",
+          "start": 4757.200000000012,
+          "end": 4981,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 4.083199999999983
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "9fb3bed522185e50408949627db04fa8955ba63b9d481a9522814986ea9d0f3a",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 6443.400000000023,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 351,
+          "average": [
+            244,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "007f20d2bdbc2876058df9c120ee2d8c997edd06d62920f01f8aa7926310f420",
+          "start": 6540.3000000000175,
+          "end": 6647.200000000012,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 6.016100000000006
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "a9528d6888d013cece1be3e38bc041ccb38a98acd76cea146fa922be517e0611",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 8485.800000000017,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 354,
+          "average": [
+            244,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "42aedb42afa3093096939a205838c4cee5ead3c5d56a352e53122a460b19fb95",
+          "start": 8587.5,
+          "end": 8730.300000000017,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 8.0585
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "d04252364e4fa26ad7c93663b8b09bef842621a745afa6ac0f521a6e6f1487b7",
+          "start": 934.3999999999942,
+          "end": 1122.6999999999825,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "57662d688ecd5b3e00a8597f65c78851ea6e7427c9dc7b0e5bd7204fb7b01fd2",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 1136.5,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 359,
+          "average": [
+            243,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "a09fd0177add8cd630eb811858b48daaac3c556f3722bc054105d3785c9aec15",
+          "start": 1362.8999999999942,
+          "end": 1478.5,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "3762b3f1c7e254edf139e68ff0e623801faa978ca615e13dc4024a5960d37f50",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 1479.8999999999942,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 350,
+          "average": [
+            241,
+            188,
+            174,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "d40b5992a3d9eca7d21e1a7d84646d0690af4bd27fd123f52a461983020b3ec7",
+          "start": 1777.8999999999942,
+          "end": 1898.0999999999767,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "c66069bc38a1211d06302c65ad01629c295400a4a65eb9693daad537783ecd8f",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 1909.1999999999825,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 348,
+          "average": [
+            220,
+            224,
+            174,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "847603453120787ff5bbaaf6ab6dd92a289c74355c64973823cba4c4d47a2f3b",
+          "start": 2165.899999999994,
+          "end": 2319.1999999999825,
+          "clip": {
+            "x": 19,
+            "y": 412,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "7ba17e3df6de0368abd02c9e9849707dde1cf4e634e8607d020cbd410c7fd972",
+          "width": 288,
+          "height": 192,
+          "format": "bgra8unorm",
+          "submittedAt": 2324.7999999999884,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 353,
+          "average": [
+            244,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "1a228043cb345cd4b7e3984f39e306f85b4700ebefb2f228e73d2c579f591b0d",
+        "start": 2528.0999999999767,
+        "end": 2618.5,
+        "clip": {
+          "x": 19,
+          "y": 412,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "c43635f52d4561651022c7feb2206e871e3a1abbd4089806e87c28174ef3a7f1",
+        "start": 2876.899999999994,
+        "end": 2933.2999999999884,
+        "clip": {
+          "x": 19,
+          "y": 412,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "c43635f52d4561651022c7feb2206e871e3a1abbd4089806e87c28174ef3a7f1",
+        "start": 4313.399999999994,
+        "end": 4382.599999999977,
+        "clip": {
+          "x": 19,
+          "y": 412,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "08c65713996fa7ea8fe4d2efd87863873303285285dd23246d299a0ebeda7a63",
+        "start": 4569,
+        "end": 4738.099999999977,
+        "clip": {
+          "x": 19,
+          "y": 412,
+          "width": 352,
+          "height": 235
+        }
+      }
+    },
+    "heroInteraction": {
+      "input": "touch",
+      "samples": [
+        {
+          "state": "before",
+          "inputs": [],
+          "composite": {
+            "file": "interaction-before.png",
+            "sha256": "b021bedecce829f7d3e2c2fc51bd64d08259e6fa77d0e2599d60c9f083803cd5",
+            "start": 2262.5,
+            "end": 2424.7999999999884,
+            "clip": {
+              "x": 19,
+              "y": 412,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "texture": {
+            "file": "interaction-before-texture.png",
+            "sha256": "246d918b362e81baa7b4e194a8a65752c6e06c9d9dc7e5f1a205f621ab49c794",
+            "width": 288,
+            "height": 192,
+            "format": "bgra8unorm",
+            "submittedAt": 2442.600000000006,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 353,
+            "average": [
+              244,
+              209,
+              164,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          }
+        },
+        {
+          "state": "after",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "at": 2932.5
+            }
+          ],
+          "composite": {
+            "file": "interaction-after.png",
+            "sha256": "baf46e57132c62e23d240521e1c72ee956346755d2fc9af0ed2e0483699064c9",
+            "start": 3944.2999999999884,
+            "end": 4110.299999999988,
+            "clip": {
+              "x": 19,
+              "y": 412,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "texture": {
+            "file": "interaction-after-texture.png",
+            "sha256": "49d2d1b2a743e8630d75ec03244015a73347e532b6a260742884b15009e5e34a",
+            "width": 288,
+            "height": 192,
+            "format": "bgra8unorm",
+            "submittedAt": 4113.899999999994,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 365,
+            "average": [
+              242,
+              207,
+              160,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          }
+        },
+        {
+          "state": "reset",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "at": 4517.799999999988
+            }
+          ],
+          "composite": {
+            "file": "interaction-reset.png",
+            "sha256": "a8bda6b86a7182f40fc1f8e75ab70f7d1024b159d3c86b07168f99809945804a",
+            "start": 4786,
+            "end": 4936.299999999988,
+            "clip": {
+              "x": 19,
+              "y": 391,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "texture": {
+            "file": "interaction-reset-texture.png",
+            "sha256": "b5b801d096a9565820d3037d3828af74cb4ae9225d8268c1b44074cff816c423",
+            "width": 288,
+            "height": 192,
+            "format": "bgra8unorm",
+            "submittedAt": 4972.200000000012,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 351,
+            "average": [
+              244,
+              209,
+              164,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          }
+        }
+      ],
+      "observations": {
+        "input": "touch",
+        "before": {
+          "shape": "intact",
+          "position": "none",
+          "aim": "center",
+          "material": "0",
+          "motion": "running",
+          "description": "A glossy mandarin jelly refracts the rim of its porcelain plate."
+        },
+        "after": {
+          "shape": "scooped",
+          "position": "right",
+          "aim": "right",
+          "material": "0",
+          "motion": "running",
+          "description": "Mandarin jelly with a curved hollow and a separate spoonful on the plate"
+        },
+        "reset": {
+          "shape": "intact",
+          "position": "none",
+          "aim": "center",
+          "material": "0",
+          "motion": "running",
+          "description": "A glossy mandarin jelly refracts the rim of its porcelain plate."
+        },
+        "pixels": {
+          "changed": 0.6220703125,
+          "remained": 0
+        }
+      }
+    },
+    "flow": {
+      "lang": "en",
+      "observations": [
+        {
+          "name": "empty",
+          "cups": [
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "downloadEnabled": false,
+          "text": "0 of 6 cups selected. 6 slots left."
+        },
+        {
+          "name": "empty removal blocked",
+          "cups": [
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "downloadEnabled": false,
+          "text": "0 of 6 cups selected. 6 slots left."
+        },
+        {
+          "name": "five",
+          "cups": [
+            2,
+            2,
+            1
+          ],
+          "total": 5,
+          "downloadEnabled": false,
+          "text": "5 of 6 cups selected. 1 slot left."
+        },
+        {
+          "name": "full",
+          "cups": [
+            2,
+            2,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "6 of 6 cups selected. Your recipe is ready."
+        },
+        {
+          "name": "seventh rejected",
+          "cups": [
+            2,
+            2,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "6 of 6 cups selected. Your recipe is ready."
+        },
+        {
+          "name": "reopened",
+          "cups": [
+            2,
+            1,
+            2
+          ],
+          "total": 5,
+          "downloadEnabled": false,
+          "text": "5 of 6 cups selected. 1 slot left."
+        },
+        {
+          "name": "remixed",
+          "cups": [
+            3,
+            1,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "6 of 6 cups selected. Your recipe is ready."
+        }
+      ],
+      "download": {
+        "filename": "jelly-hour-recipe-en.txt",
+        "bytes": 762,
+        "text": "Jelly Hour | Fruit jelly gift box recipe\n\nMandarin jelly: 3 × 100 mL\nRaspberry jelly: 1 × 100 mL\nWhite guava jelly: 2 × 100 mL\nTotal: 6 cups × 100 mL = 600 mL\n\nIngredients\nMandarin jelly — Mandarin juice, water, cane sugar, citrus pectin, lemon juice.\nRaspberry jelly — Strained raspberry juice, water, cane sugar, citrus pectin, lemon juice.\nWhite guava jelly — White guava juice, water, cane sugar, citrus pectin, lime juice.\n\nAllergens\nThe concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may come into contact with milk, peanuts and tree nuts.\n\nStorage\nRefrigerate and follow the use-by date on the product label.\n\nA seasonal fruit jelly brand concept. The recipe is created in this page for offline use and sharing.\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 367.96875,
+              "width": 159,
+              "height": 49.75
+            },
+            "labels": []
+          },
+          {
+            "label": "Take a scoop of jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 56.3125,
+              "y": 458.984375,
+              "width": 158.421875,
+              "height": 126.734375
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 693.703125,
+              "width": 109.03125,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Reset the jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 808.921875,
+              "width": 111.109375,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Remove one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2888.34375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2888.34375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2944.53125,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2944.53125,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 3028.71875,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 108.78125,
+              "y": 3028.71875,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Download jelly box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 3094.3125,
+              "width": 260.8125,
+              "height": 73.75
+            },
+            "labels": [],
+            "disabled": true
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to main content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 178.625,
+              "height": 44.78125
+            },
+            "color": "rgb(255, 249, 236)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(83, 23, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 7.1875,
+              "width": 80.234375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "21.6px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Flavors",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 51.1875,
+              "width": 46.625,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "A",
+            "rect": {
+              "x": 73.015625,
+              "y": 51.1875,
+              "width": 74.03125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 157.4375,
+              "y": 51.1875,
+              "width": 56,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Seasonal fruit jelly gift box",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 123.171875,
+              "width": 288,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Summer jiggles.\nTake a scoop.",
+            "tag": "H1",
+            "rect": {
+              "x": 16,
+              "y": 153.5625,
+              "width": 288,
+              "height": 93.625
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "44.8px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin, raspberry and white guava jellies with a delicate bounce. Choose six cups for so",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 258.375,
+              "width": 258.75,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 367.96875,
+              "width": 159,
+              "height": 49.75
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(148, 22, 56)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Take a scoop of jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 56.3125,
+              "y": 458.984375,
+              "width": 158.421875,
+              "height": 126.734375
+            },
+            "color": "rgb(0, 0, 0)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 211, 142)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin",
+            "tag": "LABEL",
+            "rect": {
+              "x": 16,
+              "y": 643.3125,
+              "width": 83.03125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry",
+            "tag": "LABEL",
+            "rect": {
+              "x": 103.828125,
+              "y": 643.3125,
+              "width": 86.359375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava",
+            "tag": "LABEL",
+            "rect": {
+              "x": 194.984375,
+              "y": 643.3125,
+              "width": 102.234375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 693.703125,
+              "width": 109.03125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tap or drag on the jelly to scoop from its upper edge. With a keyboard, choose a spot with",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 744.09375,
+              "width": 288,
+              "height": 64.828125
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Reset the jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 808.921875,
+              "width": 111.109375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "0.73"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Three fruit jellies",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 908.921875,
+              "width": 226.125,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "100 mL per cup",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 951.953125,
+              "width": 109.53125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin jelly",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1185.53125,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Bright and tangy, for lovers of tart citrus.",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1214.546875,
+              "width": 259.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry jelly",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1579.515625,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Bright, tart raspberry juice strained for a smooth bite.",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1608.53125,
+              "width": 259.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava jelly",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1973.5,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A soft set with a light, floral finish.",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 2002.515625,
+              "width": 259.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Allergens and shared equipment",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 2186.890625,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2215.90625,
+              "width": 288,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2403.09375,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose any mix from our three flavors. Fill all six cups to download your recipe.",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2452.53125,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A seasonal fruit jelly brand concept. The recipe is created in this page for offline use a",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2669.625,
+              "width": 288,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "0 of 6 cups selected. 6 slots left.",
+            "tag": "P",
+            "rect": {
+              "x": 29.59375,
+              "y": 2840.15625,
+              "width": 260.8125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2888.34375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2888.34375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2944.53125,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2944.53125,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 3028.71875,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 108.78125,
+              "y": 3028.71875,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download jelly box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 3094.3125,
+              "width": 260.8125,
+              "height": 73.75
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(245, 227, 222)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "tag": "P",
+            "rect": {
+              "x": 29.59375,
+              "y": 3172.859375,
+              "width": 260.8125,
+              "height": 22.546875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "15.04px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Keep it cold",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 3300.1875,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Keep refrigerated",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 3357.625,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Refrigerate and follow the use-by date on the product label.",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3384.234375,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Serve straight from the cup",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 3453.03125,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Spoon it straight from the chilled cup or turn the jelly out onto a plate.",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3479.640625,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Blank jelly box recipe",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 3599.640625,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Write in 0 to 6 cups per flavor, for a total of 6. Use your browser’s print command to pri",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3645.875,
+              "width": 288,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 4008.578125,
+              "width": 288,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4181.578125,
+              "width": 101.40625,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the visual gallery ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4236.765625,
+              "width": 190.3125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 4291.953125,
+              "width": 103.296875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/berry.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/guava.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 338.375,
+              "width": 159,
+              "height": 49.75
+            },
+            "labels": []
+          },
+          {
+            "label": "Take a scoop of jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 68.625,
+              "y": 433.171875,
+              "width": 193.078125,
+              "height": 154.453125
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 706.109375,
+              "width": 114.46875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Reset the jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 821.328125,
+              "width": 116.546875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "Remove one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3000.40625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3000.40625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3056.59375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3056.59375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Remove one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3112.78125,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Add one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3112.78125,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Download jelly box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33.09375,
+              "y": 3178.375,
+              "width": 265.9375,
+              "height": 49.75
+            },
+            "labels": [],
+            "disabled": true
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to main content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 178.625,
+              "height": 44.78125
+            },
+            "color": "rgb(255, 249, 236)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(83, 23, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 14.390625,
+              "width": 101.40625,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Flavors",
+            "tag": "A",
+            "rect": {
+              "x": 144.625,
+              "y": 14.390625,
+              "width": 53.28125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "A",
+            "rect": {
+              "x": 209.90625,
+              "y": 14.390625,
+              "width": 84.59375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 306.5,
+              "y": 14.390625,
+              "width": 64,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Seasonal fruit jelly gift box",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 93.578125,
+              "width": 351,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Summer jiggles.\nTake a scoop.",
+            "tag": "H1",
+            "rect": {
+              "x": 19.5,
+              "y": 123.96875,
+              "width": 351,
+              "height": 93.625
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "44.8px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin, raspberry and white guava jellies with a delicate bounce. Choose six cups for so",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 228.78125,
+              "width": 258.75,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 338.375,
+              "width": 159,
+              "height": 49.75
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(148, 22, 56)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Take a scoop of jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 68.625,
+              "y": 433.171875,
+              "width": 193.078125,
+              "height": 154.453125
+            },
+            "color": "rgb(0, 0, 0)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 211, 142)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin",
+            "tag": "LABEL",
+            "rect": {
+              "x": 19.5,
+              "y": 655.71875,
+              "width": 88.46875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry",
+            "tag": "LABEL",
+            "rect": {
+              "x": 112.765625,
+              "y": 655.71875,
+              "width": 91.796875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava",
+            "tag": "LABEL",
+            "rect": {
+              "x": 209.359375,
+              "y": 655.71875,
+              "width": 107.671875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pause motion",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 706.109375,
+              "width": 114.46875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Tap or drag on the jelly to scoop from its upper edge. With a keyboard, choose a spot with",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 756.5,
+              "width": 351,
+              "height": 64.828125
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Reset the jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 821.328125,
+              "width": 116.546875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "0.73"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Three fruit jellies",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 921.328125,
+              "width": 226.125,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "100 mL per cup",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 964.359375,
+              "width": 109.53125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Mandarin jelly",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1235.734375,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Bright and tangy, for lovers of tart citrus.",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1264.75,
+              "width": 322.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Raspberry jelly",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1643.515625,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Bright, tart raspberry juice strained for a smooth bite.",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1672.53125,
+              "width": 322.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "White guava jelly",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 2075.296875,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A soft set with a light, floral finish.",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 2104.3125,
+              "width": 322.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Allergens and shared equipment",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 2288.6875,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2317.703125,
+              "width": 351,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Build a box",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2504.890625,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Choose any mix from our three flavors. Fill all six cups to download your recipe.",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2554.328125,
+              "width": 327.75,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "A seasonal fruit jelly brand concept. The recipe is created in this page for offline use a",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2771.421875,
+              "width": 327.75,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "0 of 6 cups selected. 6 slots left.",
+            "tag": "P",
+            "rect": {
+              "x": 33.09375,
+              "y": 2952.21875,
+              "width": 323.8125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3000.40625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Mandarin jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3000.40625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3056.59375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of Raspberry jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3056.59375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Remove one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 3112.78125,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Add one cup of White guava jelly",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 3112.78125,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download jelly box recipe\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33.09375,
+              "y": 3178.375,
+              "width": 265.9375,
+              "height": 49.75
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(245, 227, 222)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "tag": "P",
+            "rect": {
+              "x": 33.09375,
+              "y": 3232.921875,
+              "width": 323.8125,
+              "height": 22.546875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "15.04px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Keep it cold",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 3360.25,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Keep refrigerated",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 3417.6875,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Refrigerate and follow the use-by date on the product label.",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3444.296875,
+              "width": 351,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Serve straight from the cup",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 3513.09375,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Spoon it straight from the chilled cup or turn the jelly out onto a plate.",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3539.703125,
+              "width": 351,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Blank jelly box recipe",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 3659.703125,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Write in 0 to 6 cups per flavor, for a total of 6. Use your browser’s print command to pri",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3705.9375,
+              "width": 351,
+              "height": 72
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "The concept recipes use no added milk, eggs, peanuts or tree nuts. Shared equipment may co",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 4068.640625,
+              "width": 351,
+              "height": 96
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4241.640625,
+              "width": 101.40625,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to the visual gallery ↗",
+            "tag": "A",
+            "rect": {
+              "x": 180.1875,
+              "y": 4241.640625,
+              "width": 190.3125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Source code ↗",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 4296.828125,
+              "width": 103.296875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/berry.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/guava.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Skip to main content",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "果時\nJELLY\nHOUR",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Flavors",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Build a box",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "繁體中文",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Build a box\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 338.375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Take a scoop of jelly",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 433.171875
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Mandarin",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 655.71875
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Remove one cup of Mandarin jelly",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3000.40625
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Add one cup of Mandarin jelly",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3000.40625
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Remove one cup of Raspberry jelly",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3056.59375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Add one cup of Raspberry jelly",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3056.59375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Remove one cup of White guava jelly",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3112.78125
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Add one cup of White guava jelly",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3112.78125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "果時\nJELLY\nHOUR",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4241.640625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Back to the visual gallery ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4241.640625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Source code ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4296.828125
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2414.3000000000175,
+    "end": 12417.399999999994,
+    "timestamps": [
+      2414.7000000000116,
+      2430.399999999994,
+      2447.399999999994,
+      2463.899999999994,
+      2479.8000000000175,
+      2495.7000000000116,
+      2511.5,
+      2527.3000000000175,
+      2544,
+      2559.899999999994,
+      2575.7000000000116,
+      2593.3000000000175,
+      2609.3000000000175,
+      2625.8000000000175,
+      2642.3000000000175,
+      2674.8000000000175,
+      2691.2000000000116,
+      2707.3000000000175,
+      2723.2000000000116,
+      2755,
+      2770.899999999994,
+      2787.600000000006,
+      2803.899999999994,
+      2819.600000000006,
+      2851.600000000006,
+      2867.8000000000175,
+      2883.5,
+      2899.5,
+      2915.5,
+      2931.600000000006,
+      2947.5,
+      2963.3000000000175,
+      2978.899999999994,
+      2995.2000000000116,
+      3010.899999999994,
+      3026.600000000006,
+      3042.3000000000175,
+      3058,
+      3074.7000000000116,
+      3090.7000000000116,
+      3106.399999999994,
+      3122.2000000000116,
+      3138.899999999994,
+      3154.8000000000175,
+      3170.5,
+      3187,
+      3203.7000000000116,
+      3235.600000000006,
+      3252,
+      3268.2000000000116,
+      3283.899999999994,
+      3300,
+      3316.2000000000116,
+      3331.899999999994,
+      3347.7000000000116,
+      3379.5,
+      3395.399999999994,
+      3411.600000000006,
+      3428.2000000000116,
+      3444.7000000000116,
+      3460.600000000006,
+      3476.7000000000116,
+      3493.3000000000175,
+      3509.3000000000175,
+      3525.2000000000116,
+      3541.100000000006,
+      3557.7000000000116,
+      3573.3000000000175,
+      3589.8000000000175,
+      3606,
+      3622.2000000000116,
+      3638,
+      3669.600000000006,
+      3685.3000000000175,
+      3701.2000000000116,
+      3717.100000000006,
+      3733,
+      3749.5,
+      3766.7000000000116,
+      3782.3000000000175,
+      3798.100000000006,
+      3814.8000000000175,
+      3830.399999999994,
+      3846.100000000006,
+      3862.7000000000116,
+      3879.2000000000116,
+      3895,
+      3911,
+      3926.8000000000175,
+      3942.5,
+      3958.899999999994,
+      3974.7000000000116,
+      3990.600000000006,
+      4007.100000000006,
+      4023.2000000000116,
+      4039.8000000000175,
+      4055.8000000000175,
+      4072.3000000000175,
+      4088.100000000006,
+      4104.100000000006,
+      4119.899999999994,
+      4136.3000000000175,
+      4152,
+      4168.5,
+      4184.899999999994,
+      4200.899999999994,
+      4217.700000000012,
+      4249.399999999994,
+      4265.100000000006,
+      4281.8000000000175,
+      4298.200000000012,
+      4314.200000000012,
+      4331,
+      4346.8000000000175,
+      4362.700000000012,
+      4379.100000000006,
+      4394.700000000012,
+      4410.600000000006,
+      4426.8000000000175,
+      4442.700000000012,
+      4458.399999999994,
+      4474.3000000000175,
+      4489.899999999994,
+      4506.5,
+      4523.200000000012,
+      4539.200000000012,
+      4555.5,
+      4571.3000000000175,
+      4587.600000000006,
+      4603.399999999994,
+      4619.700000000012,
+      4635.700000000012,
+      4651.899999999994,
+      4667.700000000012,
+      4684.399999999994,
+      4700.3000000000175,
+      4716,
+      4731.8000000000175,
+      4747.700000000012,
+      4763.399999999994,
+      4779.100000000006,
+      4794.600000000006,
+      4811.100000000006,
+      4826.8000000000175,
+      4843.5,
+      4859.3000000000175,
+      4875.100000000006,
+      4891.700000000012,
+      4908.600000000006,
+      4924.399999999994,
+      4956.100000000006,
+      4972.700000000012,
+      5004.5,
+      5020.3000000000175,
+      5036.200000000012,
+      5052.8000000000175,
+      5069.100000000006,
+      5084.8000000000175,
+      5116.899999999994,
+      5133.399999999994,
+      5149.899999999994,
+      5166,
+      5181.8000000000175,
+      5197.600000000006,
+      5213.399999999994,
+      5229.3000000000175,
+      5245.899999999994,
+      5262.5,
+      5279,
+      5295.100000000006,
+      5311.100000000006,
+      5327.100000000006,
+      5343.399999999994,
+      5359.399999999994,
+      5376.100000000006,
+      5392,
+      5407.899999999994,
+      5423.600000000006,
+      5440.100000000006,
+      5456.200000000012,
+      5472.200000000012,
+      5487.8000000000175,
+      5504.3000000000175,
+      5520.200000000012,
+      5536.5,
+      5552.100000000006,
+      5569.200000000012,
+      5584.899999999994,
+      5600.8000000000175,
+      5617,
+      5633.5,
+      5650.200000000012,
+      5666.399999999994,
+      5682.200000000012,
+      5698,
+      5713.899999999994,
+      5729.700000000012,
+      5745.700000000012,
+      5761.899999999994,
+      5777.600000000006,
+      5793.899999999994,
+      5810.5,
+      5826.600000000006,
+      5843.200000000012,
+      5858.899999999994,
+      5875.600000000006,
+      5892.100000000006,
+      5908.3000000000175,
+      5925.3000000000175,
+      5957.3000000000175,
+      5975,
+      5990.700000000012,
+      6006.700000000012,
+      6038.5,
+      6054.200000000012,
+      6070,
+      6085.700000000012,
+      6102.3000000000175,
+      6118.8000000000175,
+      6135,
+      6151,
+      6167,
+      6182.600000000006,
+      6199.399999999994,
+      6215.200000000012,
+      6231.100000000006,
+      6247,
+      6262.8000000000175,
+      6279.600000000006,
+      6295.899999999994,
+      6311.899999999994,
+      6327.899999999994,
+      6343.8000000000175,
+      6359.899999999994,
+      6375.700000000012,
+      6392,
+      6408,
+      6424.899999999994,
+      6440.600000000006,
+      6456.399999999994,
+      6472.3000000000175,
+      6488,
+      6503.700000000012,
+      6520.399999999994,
+      6552.200000000012,
+      6568.3000000000175,
+      6584.8000000000175,
+      6600.8000000000175,
+      6617.200000000012,
+      6633.100000000006,
+      6649.399999999994,
+      6665.8000000000175,
+      6681.700000000012,
+      6697.600000000006,
+      6713.8000000000175,
+      6729.899999999994,
+      6746.100000000006,
+      6761.8000000000175,
+      6778.700000000012,
+      6794.5,
+      6810.700000000012,
+      6826.8000000000175,
+      6843.5,
+      6859.8000000000175,
+      6876.399999999994,
+      6892.600000000006,
+      6908.8000000000175,
+      6924.600000000006,
+      6940.600000000006,
+      6956.5,
+      6973,
+      6988.899999999994,
+      7004.899999999994,
+      7021.200000000012,
+      7037,
+      7052.600000000006,
+      7068.3000000000175,
+      7085.899999999994,
+      7103.5,
+      7119.600000000006,
+      7135.3000000000175,
+      7167,
+      7183.200000000012,
+      7198.899999999994,
+      7215.3000000000175,
+      7231.8000000000175,
+      7247.899999999994,
+      7263.8000000000175,
+      7280.5,
+      7296.5,
+      7312.899999999994,
+      7329,
+      7344.899999999994,
+      7360.899999999994,
+      7376.700000000012,
+      7392.8000000000175,
+      7409.3000000000175,
+      7425.5,
+      7441.3000000000175,
+      7457.100000000006,
+      7473,
+      7489,
+      7504.600000000006,
+      7520.200000000012,
+      7536.600000000006,
+      7553.200000000012,
+      7569.200000000012,
+      7586.8000000000175,
+      7602.899999999994,
+      7619.600000000006,
+      7635.899999999994,
+      7651.600000000006,
+      7668.200000000012,
+      7685,
+      7701.3000000000175,
+      7733.3000000000175,
+      7749.8000000000175,
+      7766.600000000006,
+      7782.200000000012,
+      7814.200000000012,
+      7830,
+      7845.8000000000175,
+      7861.5,
+      7877.399999999994,
+      7893.200000000012,
+      7908.899999999994,
+      7924.8000000000175,
+      7940.5,
+      7956.200000000012,
+      7973,
+      7988.700000000012,
+      8004.399999999994,
+      8020.600000000006,
+      8036.700000000012,
+      8068.399999999994,
+      8084.200000000012,
+      8100.8000000000175,
+      8117.3000000000175,
+      8133,
+      8148.700000000012,
+      8164.8000000000175,
+      8181.600000000006,
+      8197.600000000006,
+      8213.5,
+      8229.100000000006,
+      8245,
+      8261.800000000017,
+      8277.600000000006,
+      8293.600000000006,
+      8309.800000000017,
+      8325.800000000017,
+      8341.600000000006,
+      8358.200000000012,
+      8390.300000000017,
+      8406,
+      8422.600000000006,
+      8438.600000000006,
+      8454.399999999994,
+      8486.399999999994,
+      8502.100000000006,
+      8517.800000000017,
+      8534.399999999994,
+      8550.899999999994,
+      8566.800000000017,
+      8598.5,
+      8614.200000000012,
+      8630.300000000017,
+      8646,
+      8662.100000000006,
+      8679,
+      8695.800000000017,
+      8713,
+      8729.200000000012,
+      8745.100000000006,
+      8761.600000000006,
+      8793.800000000017,
+      8810.200000000012,
+      8826.200000000012,
+      8842.399999999994,
+      8858.899999999994,
+      8874.899999999994,
+      8891.200000000012,
+      8907.300000000017,
+      8923.600000000006,
+      8940,
+      8955.800000000017,
+      8971.899999999994,
+      8987.800000000017,
+      9003.800000000017,
+      9019.5,
+      9036.200000000012,
+      9052,
+      9068,
+      9083.800000000017,
+      9100,
+      9116.5,
+      9148.5,
+      9164.300000000017,
+      9180.600000000006,
+      9198.5,
+      9213.200000000012,
+      9231,
+      9247.899999999994,
+      9266.100000000006,
+      9282,
+      9297.800000000017,
+      9313.600000000006,
+      9329.5,
+      9345.600000000006,
+      9362,
+      9377.800000000017,
+      9409.800000000017,
+      9425.600000000006,
+      9441.399999999994,
+      9458.200000000012,
+      9474.800000000017,
+      9490.600000000006,
+      9506.300000000017,
+      9522,
+      9537.700000000012,
+      9554.100000000006,
+      9569.800000000017,
+      9585.800000000017,
+      9601.800000000017,
+      9618.300000000017,
+      9633.899999999994,
+      9649.899999999994,
+      9666.200000000012,
+      9682.200000000012,
+      9698.399999999994,
+      9714.800000000017,
+      9731.300000000017,
+      9747.899999999994,
+      9763.800000000017,
+      9781.200000000012,
+      9796.700000000012,
+      9814.300000000017,
+      9831,
+      9847.800000000017,
+      9865.800000000017,
+      9897.800000000017,
+      9914,
+      9930.200000000012,
+      9945.899999999994,
+      9962.399999999994,
+      9978.399999999994,
+      10010.300000000017,
+      10027.100000000006,
+      10043.200000000012,
+      10059.300000000017,
+      10075.899999999994,
+      10091.5,
+      10107.399999999994,
+      10124.100000000006,
+      10140,
+      10156.600000000006,
+      10173.100000000006,
+      10188.899999999994,
+      10205.5,
+      10222.100000000006,
+      10238.700000000012,
+      10255.600000000006,
+      10273,
+      10289.200000000012,
+      10305.100000000006,
+      10321,
+      10336.800000000017,
+      10352.899999999994,
+      10369.700000000012,
+      10386.399999999994,
+      10403.300000000017,
+      10419,
+      10450.800000000017,
+      10467,
+      10482.800000000017,
+      10498.899999999994,
+      10530.899999999994,
+      10546.899999999994,
+      10562.800000000017,
+      10579.600000000006,
+      10595.899999999994,
+      10611.600000000006,
+      10627.5,
+      10643.600000000006,
+      10660.399999999994,
+      10677.5,
+      10694.5,
+      10710.300000000017,
+      10726.800000000017,
+      10758.700000000012,
+      10775.200000000012,
+      10790.800000000017,
+      10822.700000000012,
+      10838.600000000006,
+      10855.100000000006,
+      10887,
+      10903,
+      10918.899999999994,
+      10935.399999999994,
+      10951.100000000006,
+      10966.899999999994,
+      10982.600000000006,
+      10999.200000000012,
+      11015.200000000012,
+      11031.100000000006,
+      11047.600000000006,
+      11064.5,
+      11096.5,
+      11114.899999999994,
+      11130.899999999994,
+      11146.800000000017,
+      11163.300000000017,
+      11179.300000000017,
+      11196,
+      11213.899999999994,
+      11230.300000000017,
+      11247.300000000017,
+      11263.399999999994,
+      11279.300000000017,
+      11295.700000000012,
+      11312,
+      11327.800000000017,
+      11344,
+      11360.600000000006,
+      11376.600000000006,
+      11392.399999999994,
+      11408.300000000017,
+      11424.800000000017,
+      11440.5,
+      11456.399999999994,
+      11472.200000000012,
+      11488.800000000017,
+      11506.899999999994,
+      11523.5,
+      11556,
+      11573.200000000012,
+      11589.300000000017,
+      11605,
+      11620.800000000017,
+      11637.300000000017,
+      11653.300000000017,
+      11669.300000000017,
+      11685.100000000006,
+      11701.800000000017,
+      11717.399999999994,
+      11734.100000000006,
+      11750,
+      11766.5,
+      11782.200000000012,
+      11799.300000000017,
+      11816,
+      11831.600000000006,
+      11847.399999999994,
+      11863.899999999994,
+      11880.200000000012,
+      11896,
+      11912.600000000006,
+      11929.399999999994,
+      11945.100000000006,
+      11961,
+      11976.899999999994,
+      11994.200000000012,
+      12009.700000000012,
+      12025.700000000012,
+      12041.700000000012,
+      12058.300000000017,
+      12074,
+      12089.899999999994,
+      12106.200000000012,
+      12123,
+      12139.600000000006,
+      12155.600000000006,
+      12171.600000000006,
+      12188.399999999994,
+      12205.300000000017,
+      12222.800000000017,
+      12240.100000000006,
+      12256.899999999994,
+      12288.899999999994,
+      12305.399999999994,
+      12321.600000000006,
+      12337.300000000017,
+      12353.800000000017,
+      12370,
+      12386.200000000012,
+      12402.100000000006
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        288,
+        192
+      ]
+    ],
+    "measuredMs": 10003.099999999977,
+    "medianMs": 16.10000000000582,
+    "p95Ms": 31.699999999982538,
+    "longestMs": 32.5,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/en/works/sorbet-hour/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/assets/page-Fyba3zxv.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/assets/page-DIRAyoku.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/cover.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/berry.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/guava.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/assets/shader-BJbOJibb.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/assets/standalone-DX-vHLon.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:51888/glossquote-visuals/media/sorbet-hour/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}
