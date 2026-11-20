@@ -1,6 +1,6 @@
 # 官方 Shaders skill 與固定來源
 
-M04 繁中作品使用自託管 Noto Sans TC（100–900）及 Noto Serif TC（200–900）變動字重。來源為 [Google Fonts 固定版本](https://github.com/google/fonts/tree/869789e84da92782c144d83d69b64cec54905b5f/ofl)，以三件頁面與操作提示用到的字碼製作 WOFF2 子集。非 ASCII 字符優先使用相應子集，拉丁字保持品牌字體設定。[Sans 授權](../public/fonts/studio-text-tc-OFL.txt) 和 [Serif 授權](../public/fonts/studio-serif-tc-OFL.txt) 隨站附上。
+M04 繁中作品使用自託管 Noto Sans TC（100–900）及 Noto Serif TC（200–900）變動字重。來源為 [Google Fonts 固定版本](https://github.com/google/fonts/tree/869789e84da92782c144d83d69b64cec54905b5f/ofl)，以三件頁面與操作提示用到的字碼製作 WOFF2 子集。繁中頁的內文、拉丁產品編號及表單控制使用自託管字型，潮間帶和布邊的標題使用襯線字；英文頁延用各品牌原有字體。[Sans 授權](../public/fonts/studio-text-tc-OFL.txt) 和 [Serif 授權](../public/fonts/studio-serif-tc-OFL.txt) 隨站附上。
 
 - Repo: https://github.com/shader-effects-inc/shaders
 - 固定 commit: `1f71d113ee17c23d77e95ee46a98c3f4fcbef75a`
