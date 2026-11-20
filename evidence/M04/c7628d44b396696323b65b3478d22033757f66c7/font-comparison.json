@@ -1,0 +1,516 @@
+{
+  "run": "https://github.com/KYStr/glossquote-visuals/actions/runs/44781632505",
+  "modes": {
+    "baseline": {
+      "paint": [
+        {
+          "name": "first-paint",
+          "entryType": "paint",
+          "startTime": 3160,
+          "duration": 0,
+          "navigationId": 6689,
+          "paintTime": 3028.4000000000233,
+          "presentationTime": 3160
+        },
+        {
+          "name": "first-contentful-paint",
+          "entryType": "paint",
+          "startTime": 3160,
+          "duration": 0,
+          "navigationId": 6689,
+          "paintTime": 3028.4000000000233,
+          "presentationTime": 3160
+        }
+      ],
+      "longestMain": [
+        {
+          "ms": 112,
+          "durMs": 2907.717,
+          "pid": 636,
+          "tid": 5184,
+          "name": "RunTask",
+          "cat": "disabled-by-default-devtools.timeline"
+        },
+        {
+          "ms": 112,
+          "durMs": 2907.595,
+          "pid": 636,
+          "tid": 5184,
+          "name": "ThreadControllerImpl::RunTask",
+          "cat": "toplevel"
+        },
+        {
+          "ms": 114,
+          "durMs": 2905.149,
+          "pid": 636,
+          "tid": 5184,
+          "name": "HTMLDocumentParser::NotifyScriptLoaded",
+          "cat": "blink"
+        },
+        {
+          "ms": 114,
+          "durMs": 2905.142,
+          "pid": 636,
+          "tid": 5184,
+          "name": "Document::FinishedParsing",
+          "cat": "blink"
+        }
+      ],
+      "relatedSpansByPeak": [
+        {
+          "name": "FontDataManager::onLegacyMakeTypeface",
+          "thread": "Font thread",
+          "pid": 636,
+          "tid": 8512,
+          "count": 1,
+          "us": 2911100,
+          "peakUs": 2911100
+        },
+        {
+          "name": "FontDataService::LegacyMakeTypeface",
+          "thread": "Font thread",
+          "pid": 636,
+          "tid": 8512,
+          "count": 1,
+          "us": 2911072,
+          "peakUs": 2911072
+        },
+        {
+          "name": "HTMLDocumentParser::NotifyScriptLoaded",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 1,
+          "us": 2905149,
+          "peakUs": 2905149
+        },
+        {
+          "name": "Document::UpdateStyleAndLayout",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 13,
+          "us": 2423387,
+          "peakUs": 2423337
+        },
+        {
+          "name": "Blink.ForcedStyleAndLayout.UpdateTime",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 13,
+          "us": 2423362,
+          "peakUs": 2423334
+        },
+        {
+          "name": "LocalFrameView::UpdateStyleAndLayout",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 11,
+          "us": 2423344,
+          "peakUs": 2423331
+        },
+        {
+          "name": "Blink.Layout.UpdateTime",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 1,
+          "us": 2423286,
+          "peakUs": 2423286
+        },
+        {
+          "name": "LocalFrameView::layout",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 1,
+          "us": 2423265,
+          "peakUs": 2423265
+        },
+        {
+          "name": "Layout",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 1,
+          "us": 2423262,
+          "peakUs": 2423262
+        },
+        {
+          "name": "LocalFrameView::performLayout",
+          "thread": "CrRendererMain",
+          "pid": 636,
+          "tid": 5184,
+          "count": 1,
+          "us": 2423235,
+          "peakUs": 2423235
+        }
+      ]
+    },
+    "font-ready": {
+      "paint": [
+        {
+          "name": "first-paint",
+          "entryType": "paint",
+          "startTime": 812,
+          "duration": 0,
+          "navigationId": 7799,
+          "paintTime": 774.7999999999884,
+          "presentationTime": 812
+        },
+        {
+          "name": "first-contentful-paint",
+          "entryType": "paint",
+          "startTime": 812,
+          "duration": 0,
+          "navigationId": 7799,
+          "paintTime": 774.7999999999884,
+          "presentationTime": 812
+        }
+      ],
+      "longestMain": [
+        {
+          "ms": 690,
+          "durMs": 87.299,
+          "pid": 7292,
+          "tid": 7288,
+          "name": "RunTask",
+          "cat": "disabled-by-default-devtools.timeline"
+        },
+        {
+          "ms": 690,
+          "durMs": 86.795,
+          "pid": 7292,
+          "tid": 7288,
+          "name": "ThreadControllerImpl::RunTask",
+          "cat": "toplevel"
+        },
+        {
+          "ms": 690,
+          "durMs": 86.789,
+          "pid": 7292,
+          "tid": 7288,
+          "name": "ProxyMain::BeginMainFrame",
+          "cat": "cc,benchmark"
+        },
+        {
+          "ms": 690,
+          "durMs": 86.347,
+          "pid": 7292,
+          "tid": 7288,
+          "name": "WebFrameWidgetImpl::UpdateLifecycle",
+          "cat": "blink"
+        }
+      ],
+      "relatedSpansByPeak": [
+        {
+          "name": "LocalFrameView::RunStyleAndLayoutLifecyclePhases",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 84588,
+          "peakUs": 84588
+        },
+        {
+          "name": "LocalFrameView::UpdateStyleAndLayout",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 84568,
+          "peakUs": 84568
+        },
+        {
+          "name": "Blink.Layout.UpdateTime",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 80483,
+          "peakUs": 80483
+        },
+        {
+          "name": "LocalFrameView::layout",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 80467,
+          "peakUs": 80467
+        },
+        {
+          "name": "Layout",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 80465,
+          "peakUs": 80465
+        },
+        {
+          "name": "LocalFrameView::performLayout",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 80443,
+          "peakUs": 80443
+        },
+        {
+          "name": "InlineNode::ShapeTextIncludingFirstLine",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 77,
+          "us": 71036,
+          "peakUs": 7521
+        },
+        {
+          "name": "Blink.Style.UpdateTime",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 3949,
+          "peakUs": 3949
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 3899,
+          "peakUs": 3899
+        },
+        {
+          "name": "Document::updateStyle",
+          "thread": "CrRendererMain",
+          "pid": 7292,
+          "tid": 7288,
+          "count": 1,
+          "us": 3871,
+          "peakUs": 3871
+        }
+      ]
+    },
+    "no-js": {
+      "paint": [
+        {
+          "name": "first-paint",
+          "entryType": "paint",
+          "startTime": 4008,
+          "duration": 0,
+          "navigationId": 9166,
+          "paintTime": 3833.4000000000233,
+          "presentationTime": 4008
+        },
+        {
+          "name": "first-contentful-paint",
+          "entryType": "paint",
+          "startTime": 4008,
+          "duration": 0,
+          "navigationId": 9166,
+          "paintTime": 3833.4000000000233,
+          "presentationTime": 4008
+        }
+      ],
+      "longestMain": [
+        {
+          "ms": 114,
+          "durMs": 2836.918,
+          "pid": 4620,
+          "tid": 2164,
+          "name": "RunTask",
+          "cat": "disabled-by-default-devtools.timeline"
+        },
+        {
+          "ms": 114,
+          "durMs": 2836.813,
+          "pid": 4620,
+          "tid": 2164,
+          "name": "ThreadControllerImpl::RunTask",
+          "cat": "toplevel"
+        },
+        {
+          "ms": 114,
+          "durMs": 2836.81,
+          "pid": 4620,
+          "tid": 2164,
+          "name": "HTMLDocumentParser::DeferredPumpTokenizerIfPossible",
+          "cat": "blink"
+        },
+        {
+          "ms": 114,
+          "durMs": 2836.802,
+          "pid": 4620,
+          "tid": 2164,
+          "name": "HTMLDocumentParser::PumpTokenizerIfPossible",
+          "cat": "blink"
+        }
+      ],
+      "relatedSpansByPeak": [
+        {
+          "name": "Document::UpdateStyleAndLayout",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 12,
+          "us": 2835223,
+          "peakUs": 2835183
+        },
+        {
+          "name": "Blink.ForcedStyleAndLayout.UpdateTime",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 12,
+          "us": 2835201,
+          "peakUs": 2835181
+        },
+        {
+          "name": "LocalFrameView::UpdateStyleAndLayout",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 8,
+          "us": 2835187,
+          "peakUs": 2835179
+        },
+        {
+          "name": "Blink.Layout.UpdateTime",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 1,
+          "us": 2833808,
+          "peakUs": 2833808
+        },
+        {
+          "name": "LocalFrameView::layout",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 1,
+          "us": 2833791,
+          "peakUs": 2833791
+        },
+        {
+          "name": "Layout",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 1,
+          "us": 2833788,
+          "peakUs": 2833788
+        },
+        {
+          "name": "LocalFrameView::performLayout",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 1,
+          "us": 2833769,
+          "peakUs": 2833769
+        },
+        {
+          "name": "FontDataManager::onLegacyMakeTypeface",
+          "thread": "Font thread",
+          "pid": 4620,
+          "tid": 8396,
+          "count": 1,
+          "us": 2821348,
+          "peakUs": 2821348
+        },
+        {
+          "name": "FontDataService::LegacyMakeTypeface",
+          "thread": "Font thread",
+          "pid": 4620,
+          "tid": 8396,
+          "count": 1,
+          "us": 2821320,
+          "peakUs": 2821320
+        },
+        {
+          "name": "InlineNode::ShapeTextIncludingFirstLine",
+          "thread": "CrRendererMain",
+          "pid": 4620,
+          "tid": 2164,
+          "count": 82,
+          "us": 2546377,
+          "peakUs": 292201
+        }
+      ]
+    },
+    "single-font": {
+      "paint": [
+        {
+          "name": "first-paint",
+          "entryType": "paint",
+          "startTime": 824,
+          "duration": 0,
+          "navigationId": 7613,
+          "paintTime": 292.70000000001164,
+          "presentationTime": 824
+        },
+        {
+          "name": "first-contentful-paint",
+          "entryType": "paint",
+          "startTime": 824,
+          "duration": 0,
+          "navigationId": 7613,
+          "paintTime": 292.70000000001164,
+          "presentationTime": 824
+        }
+      ],
+      "longestMain": [
+        {
+          "ms": 930,
+          "durMs": 44.262,
+          "pid": 8996,
+          "tid": 5256,
+          "name": "RunTask",
+          "cat": "disabled-by-default-devtools.timeline"
+        },
+        {
+          "ms": 930,
+          "durMs": 40.711,
+          "pid": 8996,
+          "tid": 5256,
+          "name": "ThreadControllerImpl::RunTask",
+          "cat": "toplevel"
+        },
+        {
+          "ms": 930,
+          "durMs": 40.707,
+          "pid": 8996,
+          "tid": 5256,
+          "name": "AsyncTask Run",
+          "cat": "blink"
+        },
+        {
+          "ms": 930,
+          "durMs": 40.384,
+          "pid": 8996,
+          "tid": 5256,
+          "name": "AsyncTask Run",
+          "cat": "blink"
+        }
+      ],
+      "relatedSpansByPeak": [
+        {
+          "name": "AsyncTask Run",
+          "thread": "CrRendererMain",
+          "pid": 8996,
+          "tid": 5256,
+          "count": 2,
+          "us": 81091,
+          "peakUs": 40707
+        }
+      ]
+    }
+  }
+}
