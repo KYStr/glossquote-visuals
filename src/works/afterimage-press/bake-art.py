@@ -26,32 +26,32 @@ def smooth(low, high, value):
 def stencil(width, height, offset, mode=0):
     u = (np.arange(width) + .5)[None, :] / width
     v = (np.arange(height) + .5)[:, None] / height
-    bx, by = u - (.44 - .166 * offset), v - (.54 + .025 * offset)
-    ox, oy = u - (.54 + .166 * offset), v - (.47 - .024 * offset)
-    face = bx - by * .17
-    cabinet = np.maximum(np.maximum(-face - .29, face - .235), np.abs(by) - .46)
-    driver = np.hypot((bx + .057) * 1.94, by - .055)
-    cone = np.maximum(driver - .313, .268 - driver)
-    ring = np.maximum(driver - .239, .217 - driver)
-    core = driver - .117
-    vents = np.maximum(np.minimum(np.abs(by + .336 + .27 * bx), np.abs(by + .389 + .27 * bx)) - .012,
+    bx, by = u - (.493 - .173 * offset), v - (.503 + .064 * offset)
+    ox, oy = u - (.510 + .173 * offset), v - (.500 - .027 * offset)
+    face = bx - by * .14
+    cabinet = np.maximum(np.maximum(-face - .238, face - .238), np.abs(by) - .413)
+    driver = np.hypot((bx + .057) * 1.94, by - .035)
+    cone = np.maximum(driver - .264, .222 - driver)
+    ring = np.maximum(driver - .2, .181 - driver)
+    core = driver - .109
+    vents = np.maximum(np.minimum(np.abs(by + .318 + .27 * bx), np.abs(by + .365 + .27 * bx)) - .012,
                        np.abs(face + .086) - .126)
-    studs = np.minimum(np.hypot((bx - .16) * 1.94, by + .28),
-                       np.hypot((bx + .20) * 1.94, by - .34)) - .031
-    blue = np.minimum(np.maximum(cabinet, -np.minimum(driver - .338, np.minimum(vents, studs))),
+    studs = np.minimum(np.hypot((bx - .165) * 1.94, by + .3),
+                       np.hypot((bx + .156) * 1.94, by - .33)) - .031
+    blue = np.minimum(np.maximum(cabinet, -np.minimum(driver - .284, np.minimum(vents, studs))),
                       np.minimum(np.minimum(cone, ring), core))
 
-    x = ox + .19 * oy
-    fan = .145 + .88 * (x + .12) + .52 * (x + .12) ** 2
-    fold = np.abs(oy + .056 - .20 * x)
-    horn = np.maximum(np.maximum(-.255 - x, x - .266), fold - fan)
-    mouth = np.hypot((ox - .256) * 4.55, oy + .006)
-    flare = np.maximum(mouth - .498, .428 - mouth)
-    lip = np.maximum(mouth - .392, .385 - mouth)
-    rib = np.maximum(fold - fan * .60, -.13 - x)
-    tail = np.hypot((ox + .258) * 1.94, oy + .098)
-    orange = np.minimum(np.minimum(np.maximum(horn, -np.minimum(mouth - .431, np.maximum(rib, .014 - fold))), flare),
-                        np.minimum(lip, np.maximum(tail - .087, .045 - tail)))
+    x = ox + .1 * oy
+    bell = .16 + .66 * (x + .22) + .29 * (x + .22) ** 2
+    fold = np.abs(oy + .038 - .15 * x)
+    horn = np.maximum(np.maximum(-.238 - x, x - .205), fold - bell)
+    mouth = np.hypot((ox - .200) * 4.25, oy + .008)
+    flare = np.maximum(mouth - .44, .35 - mouth)
+    lip = np.maximum(mouth - .312, .295 - mouth)
+    channel = np.maximum(np.maximum(fold - bell * .13, -.148 - x), x - .075)
+    throat = np.hypot((ox + .232) * 2.04, oy + .072)
+    orange = np.minimum(np.minimum(np.maximum(horn, -np.minimum(mouth - .35, channel)), flare),
+                        np.minimum(lip, np.maximum(throat - .138, .059 - throat)))
 
     def screened(distance, x, y, slope, start):
         spot = np.hypot((x * 107 + slope * y * 55) % 1 - .5, (y * 55) % 1 - .5)
@@ -158,7 +158,7 @@ def main():
     draw.line((379, 80, 1128, 80), fill=DARK, width=2)
     text(draw, (379, 54), "AP–01     /     LIVE SET     /     LOADING BAY B", 16, MONO)
     text(draw, (379, 100), "FEEDBACK ASSEMBLY", 97)
-    image.paste(stencil(748, 369, .50), (379, 233))
+    image.paste(stencil(748, 369, .18), (379, 233))
     draw.line((379, 632, 1128, 632), fill=DARK, width=2)
     text(draw, (379, 654), "14 NOV 2026", 74)
     text(draw, (1128, 722), "20:00   /   TAIPEI", 17, MONO, anchor="rt")
