@@ -14,29 +14,29 @@ const hasObservers = "IntersectionObserver" in window && "ResizeObserver" in win
 const english = document.documentElement.lang === "en";
 const labels = english ? {
   still: "Still swatch",
-  starting: "Preparing raking light",
-  running: "Raking light",
-  paused: "Light paused",
+  starting: "Preparing the loom",
+  running: "Weaving a new pick",
+  paused: "Weaving paused",
   reduced: "Still swatch · reduced motion",
-  unavailable: "Still swatch · live light unavailable",
-  pause: "Pause light",
-  resume: "Resume light",
+  unavailable: "Still swatch · live weaving unavailable",
+  pause: "Pause weaving",
+  resume: "Resume weaving",
 } : {
   still: "靜態布樣",
-  starting: "準備斜側光中",
-  running: "斜側光觀察",
-  paused: "側光已暫停",
+  starting: "準備織入中",
+  running: "織入新的一緯",
+  paused: "織入已暫停",
   reduced: "靜態布樣・已減少動態",
-  unavailable: "靜態布樣・即時照明無法使用",
-  pause: "暫停側光",
-  resume: "繼續側光",
+  unavailable: "靜態布樣・即時織入無法使用",
+  pause: "暫停織入",
+  resume: "繼續織入",
 };
 
 let shader;
 let paused = false;
 const motion = createMotion({
   supported: Boolean(navigator.gpu) && hasObservers,
-  initialSettings: { pattern: 0 },
+  initialSettings: { pattern: buttons.findIndex((button) => button.dataset.weaveControl === stage.dataset.weave) },
   async initialize(options) {
     shader = await import("./shader.js");
     if (options.signal.aborted) return null;

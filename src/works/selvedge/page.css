@@ -114,6 +114,9 @@ a, button, select { touch-action: manipulation; }
 .cloth[data-weave="plain"] [data-poster="plain"],
 .cloth[data-weave="twill"] [data-poster="twill"],
 .cloth[data-weave="satin"] [data-poster="satin"] { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .cloth[data-weave="twill"][data-motion="starting"] [data-shuttle-start] { display: block; }
+}
 .cloth canvas { visibility: hidden; pointer-events: none; }
 /* Keep the pre-live canvas at its requested render size for initializeStandalone. */
 .cloth[data-live="true"] canvas {
