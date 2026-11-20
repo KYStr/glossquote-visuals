@@ -25,9 +25,9 @@ def sample(image, loom_col, loom_row):
     return image.getpixel((int(u * image.width), int(v * image.height)))
 
 
-def is_gold(pixel):
+def is_copper(pixel):
     r, g, b = pixel
-    return r > 1.18 * g and g > 1.45 * b
+    return r > 1.9 * g and g > 1.8 * b
 
 
 def is_warp(pattern, pixel):
@@ -59,27 +59,34 @@ def check_drafts():
 
 
 def check_shuttle():
-    # The first frame already threads the shed. A later snapshot shows the
-    # same new row behind the tip, including its covered intersections.
+    # Pixel dimensions match the mobile canvas recorded in the M04 probe.
+    # Track copper in the open shed and then in its finished row.
     with Image.open(POSTERS / "shuttle-start.webp") as start:
-        assert is_gold(sample(start, 5, 6))
-        assert not is_gold(sample(start, 12, 6))
-    during = loom.paint(720, 480, "twill", seconds=1.25)
-    complete = loom.paint(720, 480, "twill", seconds=2.3)
-    assert is_gold(sample(during, 12, 6))
-    assert is_gold(sample(complete, 12, 6))
-    assert is_gold(sample(complete, 16, 6))
-    assert is_warp("twill", sample(complete, 11, 6))
+        assert is_copper(sample(start, 1, 6.84))
+        assert not is_copper(sample(start, 8, 6.84))
+    middle = loom.paint(351, 234, "twill", seconds=0.9)
+    end = loom.paint(351, 234, "twill", seconds=2.25)
+    pressed = loom.paint(351, 234, "twill", seconds=3.1)
+    assert is_copper(sample(middle, 8, 6.84))
+    assert not is_copper(sample(middle, 16, 6.84))
+    assert is_copper(sample(end, 16, 6.84))
+    assert is_copper(sample(pressed, 16, 6.00))
+    assert not is_copper(sample(pressed, 16, 6.84))
+    assert is_warp("twill", sample(pressed, 11, 6.00))
+    rim = [6.84 - 0.48, 6.84 + 0.48]
+    assert all(is_copper(sample(end, 12, y)) for y in rim)
+    assert not is_copper(sample(pressed, 12, 6.48))
 
     _, _, start_head = loom.pick_position(0)
-    _, _, middle_head = loom.pick_position(1.25)
-    _, _, end_head = loom.pick_position(2.3)
-    assert 7 < start_head < 9 and start_head + 5 < middle_head < end_head and end_head > 17.5
+    _, _, middle_head = loom.pick_position(0.9)
+    _, _, end_head = loom.pick_position(2.25)
+    assert 3 < start_head < 5 and middle_head > start_head + 6
+    assert end_head - start_head > 0.75 * 18.7
 
     # Around take-up the pick counter and projected row offset cancel each
     # other in the woven bed. The same upper crossing stays visually the same.
-    prior = loom.paint(720, 480, "twill", seconds=4.103)
-    following = loom.paint(720, 480, "twill", seconds=4.105)
+    prior = loom.paint(720, 480, "twill", seconds=4.589)
+    following = loom.paint(720, 480, "twill", seconds=4.591)
     for col in range(2, 16):
         for row in range(0, 4):
             delta = np.abs(np.array(sample(prior, col, row)) - sample(following, col, row))
