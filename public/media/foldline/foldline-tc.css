@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Studio TC Text";
+  src: url("./foldline-tc.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+html[data-type-pending] { display: none !important; }
+/* Load one family for the native controls, Latin labels and Chinese text. */
+html[lang="zh-Hant"], html[lang="zh-Hant"] *,
+html[lang="zh-Hant"] ::before, html[lang="zh-Hant"] ::after,
+html[lang="en"] [hreflang="zh-Hant"][lang="zh-Hant"] {
+  font-family: "Studio TC Text", sans-serif !important;
+}
