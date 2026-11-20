@@ -1,5 +1,7 @@
 # GlossQuote Visuals 持續創作目標
 
+自 2026-11-21 M04 起，新商業網站由主責先寫 brief、每件另開側欄製作對話，指定 gpt-6.2-sol / medium。主責按 docs/M04-ACCEPTANCE.md 逐條獨立驗收，各項均須 PASS。歷史批次的分數與製作設定僅適用於當時版本。
+
 ## M03 已發布並驗收：版頭與兩件新作
 
 M02 的 Goal 已完成並保留其三件發布證據。2026-11-13 使用者追加三件版頭修正與兩件新商業網站，沿用每件美術、UI、商業完整度各嚴格 >9/10 的品質門檻，另需實際動態材質貼合驗收。本輪依 briefs/M03-hero-direction.md、coordination/m03-plan.json 與最新 registry 推進，不將 M02 分數當成 M03 已通過，也不將已完成的工具 Goal 誤寫成仍在執行。

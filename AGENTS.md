@@ -1,5 +1,7 @@
 # GlossQuote Visuals — working contract
 
+自 2026-11-21 M04 起，新商業網站由主責先寫 brief、每件另開側欄製作對話，指定 gpt-6.2-sol / medium。主責按 docs/M04-ACCEPTANCE.md 逐條獨立驗收，各項均須 PASS。歷史批次的分數與製作設定僅適用於當時版本。
+
 ## Mission and authority
 
 This is the user's independent visual-web studio, authorized 2026-11-12. Create original, varied, polished visual websites and publish their source in **KYStr/glossquote-visuals**. This repository is deliberately separate from GlossQuote Labs functional tools. Do not change Labs sources, registry, hosting, or its expired five-hour goal.
