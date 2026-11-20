@@ -74,14 +74,48 @@ html.sorbet-page {
   border-radius: 46% 46% 1rem 1rem / 23% 23% 1rem 1rem;
   background: #f8d38e;
 }
-.stage img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.stage canvas {
+.stage img, .stage canvas { position: absolute; inset: 0; }
+.stage img { width: 100%; height: 100%; }
+.stage canvas { width: 100% !important; height: 100% !important; visibility: hidden; pointer-events: none; }
+.scoop-hit {
   position: absolute;
-  width: var(--patch-width, 0%) !important;
-  height: var(--patch-height, 0%) !important;
-  visibility: hidden;
-  pointer-events: none;
+  inset: 9% 31% 25% 14%;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 42%;
+  background: transparent;
+  cursor: crosshair;
+  touch-action: pan-y;
 }
+.scoop-hit[aria-disabled="true"] { cursor: default; }
+.scoop-hit span {
+  position: absolute;
+  left: var(--aim, 50%);
+  top: var(--aim-y, 16%);
+  width: clamp(2rem, 11%, 4rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px dashed var(--ink);
+  box-shadow: 0 0 0 2px var(--paper);
+  visibility: hidden;
+}
+.scoop-hit:not([aria-disabled="true"]):is(:focus-visible, :active) span { visibility: visible; }
+.stage[data-scoop-aim="left"] { --aim: 17%; --aim-y: 29%; }
+.stage[data-scoop-aim="right"] { --aim: 85%; --aim-y: 29%; }
+.scoop-controls {
+  flex: 1 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 .5rem;
+  font-size: .9rem;
+}
+.scoop-controls p { flex: 1 1 16rem; }
+.reset-scoop:disabled { opacity: .73; cursor: default; }
 .stage[data-rendered] canvas { visibility: visible; }
 .inspector { display: flex; align-items: flex-start; flex-wrap: wrap; justify-content: space-between; gap: .4rem; padding-block-start: .6rem; }
 .sorbet-page fieldset { border: 0; min-inline-size: 0; margin: 0; padding: 0; }
