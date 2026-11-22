@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "project": "GlossQuote Visuals",
   "repository": "KYStr/glossquote-visuals",
-  "revision": 62,
+  "revision": 63,
   "defaultBranch": "main",
   "studioChatId": "01a1cec5-af43-71a3-99ac-4f2044bcbecb",
   "requestedModel": "gpt-6.2-sol",
@@ -207,7 +207,7 @@
       "liveUrl": "https://kystr.github.io/glossquote-visuals/works/foldline/",
       "deployedCommit": "86e6da3d596c64c5cc3886a20807ffd4ba3a906c",
       "brief": "briefs/V010-packed-revision.md",
-      "status": "candidate",
+      "status": "reviewed",
       "owner": "01a1fa4c-f093-7943-9078-154c5d03d14f",
       "branch": "codex/foldline-carry-review",
       "blockers": [],
@@ -215,7 +215,13 @@
       "acceptanceVersion": "hero-craft-v1",
       "acceptanceMilestone": "M07",
       "authorBranch": "codex/foldline-packed-redesign",
-      "authorCandidateCommit": "74c7f906d4daaec16acaa760a1ca371fafb898d3"
+      "authorCandidateCommit": "74c7f906d4daaec16acaa760a1ca371fafb898d3",
+      "candidateCommit": "95a806db843156ec0952ca22b0c13c8ae7fb4ef4",
+      "reviewEvidence": [
+        "evidence/V010/95a806db843156ec0952ca22b0c13c8ae7fb4ef4/acceptance.json",
+        "evidence/V010/95a806db843156ec0952ca22b0c13c8ae7fb4ef4/REVIEW.md"
+      ],
+      "pr": "https://github.com/KYStr/glossquote-visuals/pull/32"
     },
     {
       "id": "V011",
