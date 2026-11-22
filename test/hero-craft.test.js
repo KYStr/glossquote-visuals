@@ -8,6 +8,15 @@ import { PNG } from "playwright-core/lib/utilsBundle";
 import { craftCriteria, craftMilestone, craftVersion, verifyCraftReview, verifyCraftWorkflow } from "../scripts/release-proof.mjs";
 import { stageThumbnail } from "./browser/m06-craft.mjs";
 
+test("all three M06 author probes are present before publishing a candidate", async () => {
+  const needed = { V008: "testHeroInteraction", V009: "testPrintStroke", V010: "testHeroInteraction" };
+  for (const [id, probe] of Object.entries(needed)) {
+    const api = await import(new URL(`../evidence/${id}/flow.mjs`, import.meta.url));
+    assert.equal(typeof api[probe], "function", id + " is missing " + probe);
+    assert.equal(typeof api.testFlow, "function", id + " is missing its commercial flow");
+  }
+});
+
 test("stage thumbnails preserve aspect and average the original pixels without rendering a second scene", () => {
   const source = new PNG({ width: 320, height: 96 });
   for (let x = 0; x < source.width; x++) {

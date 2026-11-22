@@ -67,6 +67,26 @@ async function open(page) {
   assert.equal(await page.locator("h1").count(), 1);
   assert.equal(await scene(page).count(), 1);
 }
+async function observeHeroInputs(page) {
+  await page.evaluate(() => {
+    window.__heroInputs = [];
+    for (const type of ["keydown", "pointerdown"]) {
+      document.addEventListener(type, event => {
+        if (!event.isTrusted || !(event.target instanceof Element)) return;
+        // Touching the label graphic is equivalent to choosing its radio.
+        const control = event.target.closest("label")?.control ?? event.target.closest("button,input");
+        const target = ["data-reprint", "data-replay", "data-scoop-hit", "data-scoop-reset", "data-pause"]
+          .find(attr => control?.hasAttribute(attr)) ?? control?.getAttribute("name") ?? null;
+        window.__heroInputs.push({ type, key: event.key, pointerType: event.pointerType, target,
+          x: event.clientX, y: event.clientY, at: performance.now() });
+      }, { capture: true });
+    }
+  });
+}
+const takeInputs = page => page.evaluate(() => window.__heroInputs.splice(0));
+const activated = (events, target) => events.some(e => e.target === target &&
+  (mobile ? e.type === "pointerdown" && e.pointerType === "touch" :
+    e.type === "keydown" && (e.key === "Enter" || e.key === " " || (target === "fold-state" && e.key === "ArrowRight"))));
 async function authorTools() {
   return import(new URL("../../evidence/" + work + "/flow.mjs", import.meta.url));
 }
@@ -248,23 +268,21 @@ try {
     const input = mobile ? "touch" : "keyboard";
     const evidence = report.capture.heroInteraction = { input, samples: [] };
     if (craftCandidate) evidence.video = "craft-interaction.webm";
-    await page.evaluate(() => {
-      window.__m05HeroInputs = [];
-      for (const type of ["keydown", "pointerdown"]) {
-        document.addEventListener(type, event => {
-          if (event.isTrusted) window.__m05HeroInputs.push({
-            type, key: event.key, pointerType: event.pointerType, at: performance.now(),
-          });
-        }, { capture: true });
-      }
-    });
+    await observeHeroInputs(page);
     const checkpoints = ["before", "after", "reset"];
     const capture = async state => {
       assert.equal(state, checkpoints[evidence.samples.length], "Scoop and reset must both be observed");
       await scene(page).scrollIntoViewIfNeeded();
       const name = "interaction-" + state;
-      evidence.samples.push({ state, inputs: await page.evaluate(() => window.__m05HeroInputs.splice(0)),
+      evidence.samples.push({ state, inputs: await takeInputs(page),
         composite: await stageImage(page, name), texture: await captureTexture(page, name) });
+    };
+    if (series === "m06") capture.mid = async (state, observed) => {
+      assert.equal(state, "cut");
+      assert.equal(observed.motion, "paused");
+      // A frozen GPU has no new texture submission. Capture its actual
+      // composite without consuming the trusted gesture used to start the cut.
+      evidence.cut = { observed, composite: await stageImage(page, "interaction-cut") };
     };
     evidence.observations = await testHeroInteraction(page, input, capture);
     assert.ok(evidence.observations && Object.keys(evidence.observations).length);
@@ -275,7 +293,65 @@ try {
     }
     assert.notEqual(evidence.samples[0].composite.sha256, evidence.samples[1].composite.sha256, "Scoop did not change the visible hero");
     assert.notEqual(evidence.samples[1].composite.sha256, evidence.samples[2].composite.sha256, "Reset did not change the visible hero");
+    if (series === "m06") {
+      const { after, alternate, mid } = evidence.observations;
+      assert.equal(evidence.cut.observed.run, after.run);
+      assert.equal(evidence.cut.observed.position, after.position);
+      assert.equal(mid.phase, "cut");
+      assert.deepEqual([after.position, alternate.position].sort(), ["left", "right"]);
+      assert.ok(activated(evidence.samples[1].inputs, "data-scoop-hit"), "Missing first real scoop");
+      assert.ok(activated(evidence.samples[2].inputs, "data-scoop-hit"), "Missing second real scoop");
+      assert.ok(activated(evidence.samples[2].inputs, "data-scoop-reset"), "Missing real reset");
+      const png = Buffer.from(alternate.pngBase64, "base64");
+      assert.equal(png.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+      const file = "interaction-alternate.png";
+      await writeFile(join(dir, file), png);
+      alternate.composite = { file, sha256: hash(png) };
+      mid.composite = evidence.cut.composite;
+      delete mid.pngBase64;
+      delete alternate.pngBase64;
+    }
   }, craftCandidate ? "craft-interaction.webm" : undefined));
+
+  if (series === "m06" && ["V009", "V010"].includes(work)) await check("craft-replay", inPage({}, async page => {
+    await open(page);
+    await phase(page, "running");
+    await observeHeroInputs(page);
+    const api = await authorTools();
+    const print = work === "V009";
+    const probe = print ? api.testPrintStroke : api.testHeroInteraction;
+    const checkpoints = print ? ["before", "passing", "after", "reset"] : ["before", "after", "reset"];
+    const attribute = print ? "data-print-step" : "data-assembly-phase";
+    const phases = print ? { before: "ready", passing: "passing", after: "complete", reset: "ready" } :
+      { before: "packed", after: "complete", reset: "packed" };
+    const input = mobile ? "touch" : "keyboard";
+    const evidence = report.capture.craftReplay = { input, samples: [] };
+    evidence.observations = await probe(page, input, async state => {
+      assert.equal(state, checkpoints[evidence.samples.length]);
+      const inputs = await takeInputs(page);
+      const before = await scene(page).getAttribute(attribute);
+      const composite = await stageImage(page, "replay-" + state);
+      const after = await scene(page).getAttribute(attribute);
+      evidence.samples.push({ state, inputs, before, after, composite });
+      assert.equal(before, phases[state]);
+      assert.equal(after, before, "The replay phase changed during the " + state + " screenshot");
+    });
+    assert.deepEqual(evidence.samples.map(sample => sample.state), checkpoints);
+    const byState = Object.fromEntries(evidence.samples.map(sample => [sample.state, sample]));
+    if (print) {
+      // One human reprint drives ready, passing and complete in sequence.
+      assert.ok(activated(byState.before.inputs, "data-reprint"));
+      assert.ok(activated(byState.reset.inputs, "data-reprint"));
+      assert.deepEqual(["before", "mid", "after", "reset"].map(k => evidence.observations[k].step),
+        ["ready", "passing", "complete", "ready"]);
+    } else {
+      assert.ok(activated(byState.after.inputs, "data-replay"));
+      assert.ok(activated(byState.reset.inputs, "fold-state"));
+      assert.deepEqual(evidence.observations.timeline.map(frame => frame.phase),
+        ["packed", "releasing", "extending", "raising", "settling", "complete"]);
+    }
+    assert.notEqual(byState.before.composite.sha256, byState.after.composite.sha256);
+  }));
 
   await check("BIZ-2-and-privacy", inPage({}, async page => {
     report.pageProblems = collectDiagnostics(page);
