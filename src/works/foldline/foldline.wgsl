@@ -70,12 +70,14 @@ fn rippleNoise(p: vec2f) -> f32 {
   let lit = water + meniscus*vec3f(.16,.25,.23);
   if (frame.contact.y >= 2.60) { return vec4f(lit,1); }
   let travel = smoothstep(.68,2.60,frame.contact.y);
-  let rockUV = vec2f((p.x+1.17+2.11*travel)/1.89,.48+(-.575-p.y-.31*travel)/.99);
+  let narrow = 1.0-smoothstep(1.28,2.10,frame.tide.y);
+  let rockUV = vec2f((p.x+1.17+2.11*travel-.21*narrow)/1.89,.48+(-.575-p.y-.31*travel+.14+.035*narrow)/1.29);
   let rock = textureSampleLevel(shorePhoto,linearClamp,rockUV,0);
   let shelf = (1.0-smoothstep(.985,1.0,rockUV.x)) * select(0.0,1.0,rockUV.y > 0.0);
-  let foot = vec2f((p.x-.013)/.367,(p.y+.641+.08*p.x)/.098);
-  let pressure = exp(-dot(foot,foot))*(1.0-travel);
-  return vec4f(lit*(1.0-rock.a*shelf)+rock.rgb*shelf*(.96-.52*pressure),1);
+  let foot = q/vec2f(frame.shadow.x*.88,.060);
+  let spread = foot*vec2f(.92,.42);
+  let pressure = (exp(-dot(foot,foot))*.52+exp(-dot(spread,spread))*.16)*(1.0-travel);
+  return vec4f(lit*(1.0-rock.a*shelf)+rock.rgb*shelf*(.96-pressure),1);
 }
 
 @fragment fn composeFragment(surface: Surface) -> @location(0) vec4f {
@@ -178,7 +180,17 @@ struct Panel {
   let sheen = vec3f(.125,.077,.038)*copper*key*(.26+.74*reflectedTrees);
   var colour = panel.colour * (lighting+detail*.72) + detail + bounce + sheen;
   let uv = clamp(panel.surface,vec2f(0),vec2f(1));
-  if (mat > 0u) {
+  if (mat == 7u) {
+    let fleck = grain(floor(panel.surface*vec2f(860,350)))*.031 + micro*.40;
+    let falloff = smoothstep(.12,1.14,.72*uv.x+.66*uv.y);
+    let broad = 1.03-.26*falloff+.09*key;
+    // Sample the approved hull skin between its ridges. The diagonal fold is
+    // built into the case mesh, so both grain and shading move with the panel.
+    let patinaUV = vec2f(.42+.56*uv.x,.054+.032*uv.x+(.247+.086*uv.x)*uv.y);
+    let patina = textureSampleLevel(materialAtlas,linearClamp,patinaUV,0).rgb;
+    let finish = 1.0+(patina-vec3f(.576,.224,.086))*vec3f(1.30,2.55,3.10);
+    colour = panel.colour*finish*(broad+fleck)+vec3f(.018,.009,.004)+fleck*.33;
+  } else if (mat > 0u) {
     let seating = mat == 3u || mat == 4u;
     let deck = mat == 2u || mat == 6u;
     // Insets keep linear filtering in its own swatch at the atlas boundaries.

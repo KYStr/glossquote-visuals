@@ -89,8 +89,17 @@ def raster(mesh, width, height, atlas=None, seconds=0):
             bounce = np.array([.029,.066,.058])*((1-key)*(1-.63*copper))[:,None]
             sheen = np.array([.125,.077,.038])*(copper*key*(.26+.74*trees))[:,None]
             detail = detail[:,None]
-            colour = colour*(lighting+.72*detail)+detail+bounce+sheen
-            if material:
+            if material == 7:
+                fleck = .031*grain(np.floor(us*860),np.floor(vs*350))+.40*detail[:,0]
+                u, v = np.clip(us,0,1), np.clip(vs,0,1)
+                falloff = smoothstep(.12,1.14,.72*u+.66*v)
+                broad = 1.03-.26*falloff+.09*key
+                patina = sample(atlas,.42+.56*u,.054+.032*u+(.247+.086*u)*v)
+                finish = 1+(patina-[.576,.224,.086])*[1.30,2.55,3.10]
+                colour = colour*finish*(broad+fleck)[:,None]+[.018,.009,.004]+.33*fleck[:,None]
+            else:
+                colour = colour*(lighting+.72*detail)+detail+bounce+sheen
+            if 0 < material < 7:
                 u, v = np.clip(us,0,1), np.clip(vs,0,1)
                 if material in (3,4):
                     v = .55+v*.20 if material == 3 else v
@@ -165,11 +174,13 @@ def render(spec, model, folder, lake, shore, atlas):
         light *= smoothstep(.22,.81,.66*facets+.34*rill)*settled
         color += light[...,None]*[.16,.25,.23]
         travel = smoothstep(.68,2.60,seconds)
-        rock_u, rock_v = (u+1.17+2.11*travel)/1.89,.48+(-.575-v-.31*travel)/.99
+        narrow = 1-smoothstep(1.28,2.10,width/height)
+        rock_u, rock_v = (u+1.17+2.11*travel-.21*narrow)/1.89,.48+(-.575-v-.31*travel+.14+.035*narrow)/1.29
         rock = sample(shore,rock_u,rock_v)
         shelf = ((1-smoothstep(.985,1,rock_u))*(rock_v > 0))[...,None]
-        pressure = np.exp(-((u-.013)/.367)**2-((v+.641+.08*u)/.098)**2)*(1-travel)
-        color = color*(1-rock[...,3:4]*shelf)+rock[...,:3]*shelf*(.96-.52*pressure[...,None])
+        foot_x, foot_y = dx/(sx*.88), dy/.060
+        pressure = (.52*np.exp(-foot_x**2-foot_y**2)+.16*np.exp(-(.92*foot_x)**2-(.42*foot_y)**2))*(1-travel)
+        color = color*(1-rock[...,3:4]*shelf)+rock[...,:3]*shelf*(.96-pressure[...,None])
     else:
         grid = ((x+4) % 45 == 0) | ((y+4) % 45 == 0)
         light = np.exp(-((u*.65)**2+(v*.65)**2))
