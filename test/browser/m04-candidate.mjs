@@ -189,8 +189,16 @@ try {
     await captureOpening({ browser, page, url, dir, report, inspectRunningMotion: series !== "m04" });
   }));
 
-  if (craftCandidate) await check("craft-storyboard", inPage({}, page =>
-    captureCraft({ page, open, phase, stageImage, dir, report }), "craft-opening.webm"));
+  if (craftCandidate) await check("craft-storyboard", async () => {
+    await withPage({}, page => captureCraft({ page, open, phase, stageImage, dir, report }));
+    // A clipped CDP screenshot can also crop the screencast frame. Give the
+    // uninterrupted first visit its own viewport, with no screenshot requests.
+    await withPage({}, async page => {
+      await open(page);
+      await phase(page, "running");
+      await page.waitForTimeout(9000);
+    }, "craft-opening.webm");
+  });
 
   await check("initial-and-material-sequence", inPage({}, async page => {
     await instrument(page);
@@ -314,7 +322,33 @@ try {
       delete mid.pngBase64;
       delete alternate.pngBase64;
     }
-  }, craftCandidate ? "craft-interaction.webm" : undefined));
+  }));
+
+  if (craftCandidate && work === "V008") await check("craft-interaction-film", inPage({}, async page => {
+    await open(page);
+    await phase(page, "running");
+    const stage = scene(page);
+    const hit = stage.locator("[data-scoop-hit]");
+    const reset = page.locator("[data-scoop-reset]");
+    const activate = control => mobile ? control.tap() : control.press("Enter");
+    for (const [side, fraction] of [["left", 0.22], ["right", 0.79]]) {
+      if (!await reset.isDisabled()) await activate(reset);
+      await page.locator('[data-stage][data-hero-state="intact"]').waitFor();
+      if (mobile) {
+        const box = await hit.boundingBox();
+        assert.ok(box);
+        await hit.tap({ position: { x: box.width * fraction, y: box.height * 0.3 } });
+      } else {
+        await hit.focus();
+        await hit.press(side === "left" ? "ArrowLeft" : "ArrowRight");
+        await hit.press("Enter");
+      }
+      await page.locator(`[data-stage][data-bite-phase="held"][data-scoop-position="${side}"]`).waitFor();
+      await page.waitForTimeout(600);
+    }
+    await activate(reset);
+    await page.locator('[data-stage][data-hero-state="intact"]').waitFor();
+  }, "craft-interaction.webm"));
 
   if (series === "m06" && ["V009", "V010"].includes(work)) await check("craft-replay", inPage({}, async page => {
     await open(page);
