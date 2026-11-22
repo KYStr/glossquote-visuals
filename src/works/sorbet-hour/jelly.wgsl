@@ -41,9 +41,10 @@
       let screen = (sampleUv - vec2f(0.50, 0.56)) * vec2f(1.77, -1.18) - vec2f(0.25, -0.192);
       let origin = vec3f(screen.x, screen.y * 0.83516465, -screen.y * 0.55) - ray * 3.0;
       let floorPos = (origin + ray * ((0.018 - origin.y) / ray.y)).xz;
-      let dent = select(0.0, press * (1.0 - smoothstep(0.050, 0.315, abs(screen.x - contact.x))), hasBite);
-      let recoil = select(0.0, rebound * (1.0 - smoothstep(0.05, 0.32, abs(screen.x - contact.x))), hasBite);
-      let squash = -0.222 * dent + recoil;
+      let distanceToContact = abs(screen.x - contact.x);
+      let dent = select(0.0, press * (1.0 - smoothstep(0.050, 0.235, distanceToContact)), hasBite);
+      let recoil = select(0.0, rebound * (1.0 - smoothstep(0.05, 0.245, distanceToContact)), hasBite);
+      let squash = -0.310 * dent + recoil;
       let scale = vec3f(1.0, 1.0 + squash, 1.0 + 0.10 * dent);
       var gelRay = ray;
       var gelEye = origin - anchor + vec3f(0.0, 0.022, 0.0);

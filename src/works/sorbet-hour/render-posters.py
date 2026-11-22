@@ -123,6 +123,8 @@ if args.samples:
     for position in POSITIONS:
         save_sample(render(0, cut=position, bite=3.65), f"scoop-{position['name']}")
     save_sample(render(0, cut=POSITIONS[0], bite=1.70), "left-contact")
+    save_sample(render(0, cut=POSITIONS[2], bite=1.63, retained=1), "right-pressure-after-left")
+    save_sample(render(0, cut=POSITIONS[2], bite=2.43, retained=1), "right-rebound-after-left")
     save_sample(render(0, cut=POSITIONS[2], bite=1.70, retained=1), "right-contact-after-left")
     save_sample(render(0, cut=POSITIONS[2], bite=3.65, retained=1), "right-after-left")
     save_sample(render(0), "reset")

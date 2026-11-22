@@ -13,14 +13,14 @@ fn jellyFrame(time: f32, cutX: f32, cutZ: f32) -> JellyFrame {
   let insert = smoothstep(1.32, 1.91, time);
   let travel = smoothstep(1.94, 3.56, time);
   let press = smoothstep(1.23, 1.66, time) * (1.0 - smoothstep(1.82, 2.42, time));
-  let rebound = 0.068 * smoothstep(2.16, 2.43, time) * (1.0 - smoothstep(2.44, 2.77, time));
-  let destination = vec3f(0.33, contact.y + 0.215, -0.112);
+  let rebound = 0.098 * smoothstep(2.16, 2.43, time) * (1.0 - smoothstep(2.44, 2.77, time));
+  let destination = vec3f(0.38, contact.y + 0.330, -0.112);
   let pieceShift = (destination - contact) * travel + vec3f(0.0, 0.061 * sin(travel * 3.14159265), 0.0);
   let bowlContact = contact + vec3f(0.035, -0.145, 0.006);
   let bowlStart = bowlContact + vec3f(0.57, 0.33, -0.21);
   let bowlAbove = bowlContact + vec3f(0.048, 0.152, -0.009);
   let bowlCenter = mix(bowlStart, bowlAbove, arrive) - (bowlAbove - bowlContact) * insert
-    + pieceShift - vec3f(cutX * 0.26 * travel, 0.0, 0.0);
+    + pieceShift - vec3f(cutX * 0.26 * travel, 0.035 * press, 0.0);
   let tilt = mix(0.26, 0.06, insert) + 0.10 * travel;
   let heading = normalize(vec3f(0.794, 0.0, -0.608));
   let tangent = heading * sqrt(1.0 - tilt * tilt) + vec3f(0.0, tilt, 0.0);
