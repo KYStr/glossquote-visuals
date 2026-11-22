@@ -12,18 +12,18 @@ const copy = en ? {
   showPrinted: "View finished print",
   pulling: "The blade is depositing the second ink.",
   complete: "The second ink is printed.",
-  combined: "The fluorescent orange horn overprints the cobalt speaker in deep violet.",
+  combined: "A vermilion microphone afterimage overprinting cobalt in deep violet.",
   reduced: "Reduced motion is on. Showing the still print proof.",
   unavailable: "Showing the still print proof. Live registration is unavailable.",
   running: "Live screen print.",
   paused: "Printing motion is paused.",
   pause: "Pause motion",
   resume: "Resume motion",
-  orange: "The fluorescent-orange horn on warm paper.",
+  orange: "The vermilion microphone afterimage and lettering on warm paper.",
   error: "Enter a whole number from 25 to 250 copies.",
   copies: count => `${count} copies`,
   days: (min, max) => `${min}–${max} working days`,
-  stock: "170 gsm uncoated, cobalt blue + fluorescent orange",
+  stock: "170 gsm uncoated, cobalt blue + vermilion",
   heading: "AFTERIMAGE PRESS | Print sheet",
   printed: "Your print sheet is ready to download.",
 } : {
@@ -34,18 +34,18 @@ const copy = en ? {
   showPrinted: "看完整印件",
   pulling: "刮刀正在印上第二層油墨。",
   complete: "第二道墨已印好。",
-  combined: "螢橘號角印上鈷藍喇叭，交疊處留下深紫。",
+  combined: "朱紅麥克風殘影套印鈷藍，交疊處留下深紫。",
   reduced: "已依系統偏好減少動態，目前顯示靜態校樣。",
   unavailable: "即時套印無法使用，目前顯示靜態校樣。",
   running: "即時網版印刷。",
   paused: "已暫停刮墨動態。",
   pause: "暫停動態",
   resume: "繼續動態",
-  orange: "暖白紙上的螢橘號角。",
+  orange: "暖色紙上的朱紅麥克風殘影與字樣。",
   error: "請輸入 25 至 250 之間的整數。",
   copies: count => `${count} 張`,
   days: (min, max) => `${min}–${max} 個工作天`,
-  stock: "170 g/m² 未塗佈紙，鈷藍與螢橘雙色",
+  stock: "170 g/m² 未塗佈紙，鈷藍與朱紅雙色",
   heading: "疊印 AFTERIMAGE PRESS｜印件製作單",
   printed: "已產生可下載的印件製作單。",
 };
@@ -183,7 +183,7 @@ function updateStage() {
 }
 
 async function loadStill(file, alt, index) {
-  const image = new Image(1200, 600);
+  const image = new Image(1200, 800);
   image.alt = alt;
   image.dataset.proof = String(index);
   image.src = new URL(file, proofs[1].src).href;
