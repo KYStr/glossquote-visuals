@@ -196,7 +196,8 @@ export function paintCachedPose(params) {
     return { cached, target, targetView: target.createView(), base, baseView,
       sculpted, sculptedView, baseMotion: bindPose(moving.buffer, baseView),
       sculptedMotion: bindPose(moving.buffer, sculptedView), delta, deltaView, grid,
-      detail: deltaView && bindPose(moving.buffer, sculptedView, deltaView) };
+      baseDetail: deltaView && bindPose(moving.buffer, baseView, deltaView),
+      sculptedDetail: deltaView && bindPose(moving.buffer, sculptedView, deltaView) };
   }
 
   let width = Math.max(1, canvas.width);
@@ -305,7 +306,11 @@ export function paintCachedPose(params) {
         // Values 2 and 3 identify an overlay with its stationary plate and
         // retained cuts already present. Value 3 also has the latest cut.
         movingPose[4] = openCut ? 3 : 2;
-        const reconstruct = surfaces.grid && openCut && pose[3] < Math.fround(3.56) && regions.length > 0;
+        // The start of the empty spoon's approach reuses the lift. This
+        // exercises both pipelines on visible work before the cutter opens.
+        // The contact interval and final pose retain full-density geometry.
+        const reconstruct = surfaces.grid && regions.length > 0
+          && (pose[3] < 0.95 || (openCut && pose[3] < Math.fround(3.56)));
         if (surfaces.grid) movingPose.set(surfaces.grid, 8);
         device.queue.writeBuffer(moving.buffer, 0, movingPose);
         const bind = stableCuts ? surfaces.sculptedMotion : surfaces.baseMotion;
@@ -322,7 +327,8 @@ export function paintCachedPose(params) {
         }
         if (regions.length > 0) {
           draw(pass, reconstruct ? finishDisplacement : pipeline,
-            reconstruct ? surfaces.detail : bind, regions.length, regionStride);
+            reconstruct ? (stableCuts ? surfaces.sculptedDetail : surfaces.baseDetail) : bind,
+            regions.length, regionStride);
         }
         pass.end();
       }
