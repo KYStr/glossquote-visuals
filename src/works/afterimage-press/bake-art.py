@@ -16,10 +16,6 @@ OVERPRINT = np.array([49, 27, 69])
 DARK = (24, 25, 36)
 
 
-def ink(color):
-    return tuple(map(int, color))
-
-
 def second_art():
     width, height = 580, 470
     x = np.linspace(-1.2, 1.2, width)[None, :]

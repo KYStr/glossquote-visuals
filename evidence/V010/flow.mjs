@@ -118,17 +118,35 @@ export async function testApprovedHero(page, input, capture) {
   };
   await record("packed", "packed");
   const run = Number(await stage.getAttribute("data-assembly-run"))+1;
-  await activate(replay);
-  for (const phase of ["releasing", "extending", "raising"]) {
-    const checkpoint = page.locator(`[data-stage][data-assembly-run="${run}"][data-assembly-checkpoint="${phase}"]`);
-    await checkpoint.waitFor();
-    await activate(pause);
-    try {
-      assert.equal(await pause.getAttribute("aria-pressed"), "true");
-      await record(phase, phase);
-    } finally {
-      await activate(pause);
+  const phases = ["releasing", "extending", "raising"];
+  // The page observes the actual submitted checkpoint and freezes its normal
+  // pause control before a remote screenshot round trip can advance the pose.
+  const watcher = await stage.evaluateHandle((el, { run, phases }) => {
+    const pending = new Set(phases);
+    const button = document.querySelector("[data-pause]");
+    const observer = new MutationObserver(() => {
+      const { assemblyRun, assemblyPhase, assemblyCheckpoint, motion } = el.dataset;
+      if (assemblyRun === String(run) && motion === "running" &&
+          assemblyPhase === assemblyCheckpoint && pending.delete(assemblyPhase)) button.click();
+    });
+    observer.observe(el, { attributes: true, attributeFilter: ["data-assembly-checkpoint"] });
+    return observer;
+  }, { run, phases });
+  try {
+    await activate(replay);
+    for (const phase of phases) {
+      const checkpoint = page.locator(`[data-stage][data-assembly-run="${run}"][data-assembly-checkpoint="${phase}"][data-motion="paused"]`);
+      await checkpoint.waitFor();
+      try {
+        assert.equal(await pause.getAttribute("aria-pressed"), "true");
+        await record(phase, phase);
+      } finally {
+        await activate(pause);
+      }
     }
+  } finally {
+    await watcher.evaluate(observer => observer.disconnect()).catch(() => {});
+    await watcher.dispose();
   }
   await page.locator(`[data-stage][data-assembly-run="${run}"][data-assembly-phase="complete"][data-assembly-view="manual"]`).waitFor();
   await record("afloat", "complete");

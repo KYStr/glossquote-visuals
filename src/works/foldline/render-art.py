@@ -31,7 +31,16 @@ def grain(x, y):
     return np.mod(52.9829189 * np.mod(.06711056*x+.00583715*y, 1), 1)-.5
 
 
-def raster(mesh, width, height, material):
+def ripple_noise(x, y):
+    cx, cy = np.floor(x), np.floor(y)
+    fx, fy = x-cx, y-cy
+    tx, ty = fx*fx*(3-2*fx), fy*fy*(3-2*fy)
+    low = grain(cx,cy)*(1-tx)+grain(cx+1,cy)*tx
+    high = grain(cx,cy+1)*(1-tx)+grain(cx+1,cy+1)*tx
+    return low*(1-ty)+high*ty
+
+
+def raster(mesh, width, height, atlas=None, seconds=0):
     target = np.zeros((height, width, 4), dtype=np.float32)
     depth = np.ones((height, width))
     for triangle in mesh:
@@ -57,18 +66,51 @@ def raster(mesh, width, height, material):
         patch_depth[visible] = z[visible]
         colour = np.array(triangle["tint"])
         patch = target[top:bottom, left:right]
-        if material:
+        if atlas is not None:
             tuv = np.array(triangle["uv"])
             us = (f[visible]*tuv[0, 0]+g[visible]*tuv[1, 0]+h[visible]*tuv[2, 0])
             vs = (f[visible]*tuv[0, 1]+g[visible]*tuv[1, 1]+h[visible]*tuv[2, 1])
             tex_x, tex_y = us*352, vs*352
-            particulate = .064*grain(np.floor(tex_x), np.floor(tex_y))
-            particulate += .029*grain(np.floor(tex_x*.36), np.floor(tex_y*.36))
+            particulate = .050*grain(np.floor(tex_x), np.floor(tex_y))
+            particulate += .027*grain(np.floor(tex_x*.36), np.floor(tex_y*.36))
             weave=.019*np.cos(tex_x*2.8)*np.cos(tex_y*3.1)
             copper=smoothstep(.16,.49,colour[0]-colour[2])
-            detail=.014*grain(np.broadcast_to(xx+.5,z.shape)[visible],np.broadcast_to(yy+.5,z.shape)[visible])
-            detail+= .014*np.sin(vs*23.5+.27*np.sin(us*13.1))+(1-copper)*weave+copper*particulate
-            patch[visible,:3] = colour*(1+.72*detail[:,None])+detail[:,None]
+            pixel_x = np.broadcast_to(xx+.5,z.shape)[visible]
+            pixel_y = np.broadcast_to(yy+.5,z.shape)[visible]
+            material = triangle["material"]
+            detail=.014*grain(pixel_x,pixel_y)
+            if not material:
+                detail+= (1-copper)*weave+copper*particulate
+            sx, sy = np.asarray(triangle["points"])[:,:2].T
+            weights = np.stack([f[visible],g[visible],h[visible]],axis=-1)
+            key = weights @ np.exp(-((sx+.43)*1.20)**2-((sy-.49)*1.46)**2)
+            trees = weights @ smoothstep(-.55,.46,sy-.35*sx+.11*np.sin(9*sx))
+            lighting = (.78+.34*key+.11*trees)[:,None]
+            bounce = np.array([.029,.066,.058])*((1-key)*(1-.63*copper))[:,None]
+            sheen = np.array([.125,.077,.038])*(copper*key*(.26+.74*trees))[:,None]
+            detail = detail[:,None]
+            colour = colour*(lighting+.72*detail)+detail+bounce+sheen
+            if material:
+                u, v = np.clip(us,0,1), np.clip(vs,0,1)
+                if material in (3,4):
+                    v = .55+v*.20 if material == 3 else v
+                    fabric = sample(atlas,.506+.488*u,.510+.480*v)
+                    textile = fabric*(1.13+.35*key[:,None])-.005
+                    colour = .14*colour+.86*textile
+                else:
+                    deck = material in (2,6)
+                    u = .006+(.489 if deck else .988)*u
+                    v = (.510 if deck else .010)+(.480 if deck else .479)*v
+                    polymer = sample(atlas,u,v)*[1.18,1.10,1.04]
+                    exposure = (.53+.65*np.clip((colour[:,0]-.18)/.62,0,1))[:,None]
+                    colour = .24*colour+.76*(polymer*exposure+.24*bounce+.26*sheen)
+                if material in (5,6):
+                    lift = smoothstep(.14,1.12,seconds)
+                    x = np.clip(us,0,1)-.012-.055*lift
+                    strip = np.minimum(np.abs(x-.176),np.abs(x-.758))
+                    shadow = 1-smoothstep(.019,.060+.028*lift,strip)
+                    colour *= (1-.38*(1-lift)*shadow)[:,None]
+            patch[visible,:3] = np.clip(colour,0,1)
         else:
             patch[visible,:3] = colour
         patch[visible,3] = 1
@@ -87,7 +129,7 @@ def sample(source, u, v):
     return top*(1-ty)+bottom*ty
 
 
-def render(spec, model, folder, lake):
+def render(spec, model, folder, lake, shore, atlas):
     name, width, height, seconds, _, water, _ = spec
     y, x = np.ogrid[:height, :width]
     u, v = 2*(x+.5)/width-1, 1-2*(y+.5)/height
@@ -97,8 +139,6 @@ def render(spec, model, folder, lake):
     pocket = (dx/sx)**2+(dy/sy)**2
     shade = .59*np.exp(-2.4*pocket)
     if water:
-        raster_width = min(680, width)
-        mirror = raster(model["reflection"], raster_width, round(height*raster_width/width), False)
         ripple = v*28+u*7.5+2.4*np.sin(u*4+v*2.6)
         facets = np.sin(v*121+2.6*np.sin(7*u+3*v))
         rill = np.sin(ripple+.51*facets)
@@ -107,24 +147,46 @@ def render(spec, model, folder, lake):
         lake_u = (ux-.5+(.0042*rill+.0016*facets)*.37)*min(1,ratio)+.5
         lake_v = (vy-.5+(.0018*np.sin(.69*ripple))*.37)*min(1,1/ratio)+.5
         lake_rgb = sample(lake,lake_u,lake_v)*(.91+.21*(1-shade[...,None]))+[.003,.012,.013]
-        reflection = sample(mirror,ux+.019*rill*facets+.007*np.sin(.65*ripple),vy+.0055*facets+.007*abs(rill))
         settled = max(0,(seconds-4.05)/.75)
-        fracture = np.sin(29*u+2.7*rill+np.sin(23*u-48*v))
-        broken = (.18+.82*smoothstep(-.40,.71,facets+.53*rill+.52*fracture))*(.68+.32*np.sin(.39*ripple))
-        fade = 1-smoothstep(.09,.61,-dy)
-        intensity = ((.24+.45*settled)*fade*broken)[...,None]
-        color = lake_rgb*(1-reflection[...,3:4]*intensity*.68)
-        color += reflection[...,:3]*[1.06,.75,.53]*intensity
+        color = lake_rgb
+        if settled:
+            raster_width = min(680,width)
+            mirror = raster(model["reflection"],raster_width,round(height*raster_width/width))
+            eddies = ripple_noise(u*28,v*65)
+            reflection = sample(mirror,ux+.018*rill*facets+.016*eddies,vy+.008*facets+.011*eddies)
+            fracture = np.sin(47*u+2.7*rill+np.sin(23*u-48*v))
+            broken = .09+.91*smoothstep(-.08,.74,.33*facets+.38*fracture+.24*rill+1.20*eddies)
+            fade = 1-smoothstep(.043,.33,-dy)
+            intensity = (.82*settled*fade*broken)[...,None]
+            color = color*(1-reflection[...,3:4]*intensity*.86)
+            luma = np.sum(reflection[...,:3]*[.30,.57,.13],axis=-1,keepdims=True)
+            color += (.64*reflection[...,:3]+.36*luma)*[.68,.61,.54]*intensity
         light = np.exp(-abs(dy+.012)*73)*(1-smoothstep(.44,1.02,abs(dx/sx)))
         light *= smoothstep(.22,.81,.66*facets+.34*rill)*settled
         color += light[...,None]*[.16,.25,.23]
+        travel = smoothstep(.68,2.60,seconds)
+        rock_u, rock_v = (u+1.17+2.11*travel)/1.89,.48+(-.575-v-.31*travel)/.99
+        rock = sample(shore,rock_u,rock_v)
+        shelf = ((1-smoothstep(.985,1,rock_u))*(rock_v > 0))[...,None]
+        pressure = np.exp(-((u-.013)/.367)**2-((v+.641+.08*u)/.098)**2)*(1-travel)
+        color = color*(1-rock[...,3:4]*shelf)+rock[...,:3]*shelf*(.96-.52*pressure[...,None])
     else:
         grid = ((x+4) % 45 == 0) | ((y+4) % 45 == 0)
         light = np.exp(-((u*.65)**2+(v*.65)**2))
         color = np.array([.84,.853,.835])+.045*light[...,None]
         color -= .07*grid[...,None]+.42*shade[...,None]
 
-    hull = raster(model["triangles"],width,height,True)
+    hull = raster(model["triangles"],width,height,atlas,seconds)
+    if water and settled:
+        contact = (settled*(1-smoothstep(.62,1,abs(dx)/sx))*(abs(dy)<.19))[...,None]
+        alpha = hull[...,3:4]
+        above = np.pad(alpha[:-2],((2,0),(0,0),(0,0)))
+        below = np.pad(alpha[3:],((0,3),(0,0),(0,0)))
+        immersed = alpha*(1-below)*contact*.8
+        hull[...,:3] = hull[...,:3]*(1-immersed)+immersed*(hull[...,:3]*[.46,.63,.64]+color*alpha*.16)
+        ripple = .54*np.sin(u*137)+.46*np.sin(u*289+1.9*np.sin(u*17))
+        crests = smoothstep(.05,.68,ripple)[...,None]*above*(1-alpha)*contact
+        color += crests*[.185,.32,.29]
     pixels = hull[...,:3]+color*(1-hull[...,3:4])
     result = Image.fromarray(np.uint8(np.clip(pixels,0,1)*255))
     result.save(folder/f"{name}.webp",quality=88,method=6)
@@ -149,8 +211,11 @@ console.log(JSON.stringify(JSON.parse(process.argv[1]).map(boatScene)));
     models = json.loads(subprocess.check_output(
         ["node", "--input-type=module", "-e", command, json.dumps(specs)], text=True))
     lake = np.array(Image.open(OUT/"lake.webp").convert("RGB"),dtype=np.float32)/255
+    shore = np.array(Image.open(OUT/"shore.webp").convert("RGBA"),dtype=np.float32)/255
+    shore[...,:3] *= shore[...,3:4]
+    atlas = np.array(Image.open(OUT/"material.webp").convert("RGB"),dtype=np.float32)/255
     for spec, model in zip(views, models):
-        render(spec, model, folder, lake)
+        render(spec, model, folder, lake, shore, atlas)
 
 
 if __name__ == "__main__":

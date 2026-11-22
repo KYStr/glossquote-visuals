@@ -11,7 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        work: [V008, V009, V010]
+        work: [V009, V010]
+        lang: [zh-Hant, en]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -21,12 +22,12 @@ jobs:
           node-version-file: .node-version
           package-manager-cache: false
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node node_modules/vite/bin/vite.js build
+      - run: node node_modules/vite/bin/vite.js build --mode candidate
       - run: node node_modules/playwright/cli.js install chromium --no-shell
-      - run: node test/browser/m07-art-preview.mjs ${{ matrix.work }}
+      - run: node test/browser/m07-perf-preview.mjs ${{ matrix.work }} ${{ matrix.lang }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
-          name: preview-${{ github.sha }}-${{ matrix.work }}
+          name: preview-${{ github.sha }}-${{ matrix.work }}-${{ matrix.lang }}
           path: .runs/art-preview/
           retention-days: 2
