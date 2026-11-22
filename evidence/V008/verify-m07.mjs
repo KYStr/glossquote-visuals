@@ -26,7 +26,8 @@ let browser;
 try {
   browser = await chromium.launch({
     headless: true, channel: "chromium",
-    args: ["--enable-unsafe-webgpu", "--disable-gpu-watchdog", "--use-angle=swiftshader", "--enable-gpu"],
+    args: ["--enable-unsafe-webgpu", "--disable-gpu-watchdog", "--enable-gpu",
+      "--use-angle=d3d11-warp", "--use-webgpu-adapter=d3d11"],
   });
   const context = await browser.newContext({
     viewport, deviceScaleFactor: 1, isMobile: mobile, hasTouch: mobile, acceptDownloads: true,
@@ -38,17 +39,32 @@ try {
   page.on("console", message => {
     if (message.type() === "error") errors.push(message.text());
   });
+  const diagnostics = [];
+  page.on("requestfailed", request => diagnostics.push(`${request.url()} ${request.failure()?.errorText}`));
+  page.on("response", response => {
+    if (response.status() >= 400) diagnostics.push(`${response.status()} ${response.url()}`);
+  });
   const stage = page.locator("[data-stage]");
   assert.equal((await page.goto(url, { waitUntil: "domcontentloaded" })).status(), 200);
   await page.evaluate(() => document.fonts.ready);
   await stage.scrollIntoViewIfNeeded();
-  await page.locator('[data-stage][data-rendered][data-motion="running"]').waitFor();
   const gpu = await page.evaluate(async () => {
-    const adapter = await navigator.gpu.requestAdapter();
+    const adapter = await navigator.gpu?.requestAdapter();
     return adapter ? { vendor: adapter.info.vendor, device: adapter.info.device,
       architecture: adapter.info.architecture, description: adapter.info.description } : null;
   });
-  assert.ok(gpu);
+  try {
+    assert.ok(gpu, "The isolated runner did not provide a WebGPU adapter");
+    await page.locator('[data-stage][data-rendered][data-motion="running"]').waitFor();
+  } catch (error) {
+    const state = await stage.evaluate(element => ({
+      ...element.dataset, canvas: [element.querySelector("canvas").width, element.querySelector("canvas").height],
+    }));
+    await page.screenshot({ path: join(dir, "startup-failure.png") });
+    await writeFile(join(dir, "startup-failure.json"), JSON.stringify({ gpu, state, errors, diagnostics }, null, 2));
+    console.error({ gpu, state, errors, diagnostics });
+    throw error;
+  }
   await page.screenshot({ path: join(dir, "viewport.png") });
   const capture = async name => {
     await stage.screenshot({ path: join(dir, `${name}-hero.png`) });
