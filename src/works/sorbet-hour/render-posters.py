@@ -9,6 +9,7 @@ import wgpu
 
 SOURCE = Path(__file__).resolve().parent
 MEDIA = SOURCE.parents[2] / "public/media/sorbet-hour"
+MOTION = (SOURCE / "jelly-motion.wgsl").read_text(encoding="utf-8")
 PAINT = (SOURCE / "jelly.wgsl").read_text(encoding="utf-8")
 POSITIONS = loads((SOURCE / "scoop-positions.json").read_text(encoding="utf-8"))
 FORMAT = "rgba8unorm-srgb"
@@ -33,8 +34,23 @@ STRIDE = (WIDTH * 4 + 255) // 256 * 256
 
 adapter = wgpu.gpu.request_adapter_sync(force_fallback_adapter=args.software)
 device = adapter.request_device_sync()
+material = Image.open(MEDIA / "morning-material.webp").convert("RGBA")
+atlas = device.create_texture(size=(*material.size, 1), format=FORMAT,
+    usage=wgpu.TextureUsage.TEXTURE_BINDING | wgpu.TextureUsage.COPY_DST)
+device.queue.write_texture({"texture": atlas}, material.tobytes(),
+    {"bytes_per_row": material.width * 4, "rows_per_image": material.height}, (*material.size, 1))
 shader = device.create_shader_module(code=f"""
 @group(0) @binding(0) var<uniform> params: array<vec4f, 3>;
+@group(0) @binding(1) var morning: texture_2d<f32>;
+@group(0) @binding(2) var stationary: texture_2d<f32>;
+fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {{
+    let texel = vec2i(origin + clamp(uv, vec2f(0.0), vec2f(1.0)) * (extent - 1.0));
+    return textureLoad(morning, texel, 0);
+}}
+fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {{
+    return photoRGBA(origin, extent, uv).rgb;
+}}
+{MOTION}
 @vertex fn vertex(@builtin(vertex_index) i: u32) -> @builtin(position) vec4f {{
     let box = array<vec2f, 3>(vec2f(-1, -1), vec2f(3, -1), vec2f(-1, 3));
     return vec4f(box[i], 0, 1);
@@ -48,6 +64,9 @@ shader = device.create_shader_module(code=f"""
     let scooped = params[1].y;
     let cutX = params[1].z;
     let cutZ = params[2].x;
+    let retained = u32(params[2].y);
+    let frame = jellyFrame(biteTime, cutX, cutZ);
+    let markSteel = false;
 {PAINT}
 }}
 """)
@@ -58,15 +77,16 @@ pipeline = device.create_render_pipeline(
 params = device.create_buffer(size=48, usage=wgpu.BufferUsage.UNIFORM | wgpu.BufferUsage.COPY_DST)
 bind = device.create_bind_group(
     layout=pipeline.get_bind_group_layout(0),
-    entries=[{"binding": 0, "resource": {"buffer": params, "offset": 0, "size": 48}}],
+    entries=[{"binding": 0, "resource": {"buffer": params, "offset": 0, "size": 48}},
+        {"binding": 1, "resource": atlas.create_view()}],
 )
 texture = device.create_texture(size=(WIDTH, HEIGHT, 1), format=FORMAT,
     usage=wgpu.TextureUsage.RENDER_ATTACHMENT | wgpu.TextureUsage.COPY_SRC)
 
-def render(flavor, *, cut=None, bite=0.0):
+def render(flavor, *, cut=None, bite=0.0, retained=0):
     device.queue.write_buffer(params, 0, pack("<12f", WIDTH, HEIGHT, flavor, 0,
         bite, cut is not None, cut["x"] if cut else 0.0, 0.0,
-        cut["z"] if cut else 0.0, 0.0, 0.0, 0.0))
+        cut["z"] if cut else 0.0, retained, 0.0, 0.0))
     encoder = device.create_command_encoder()
     drawing = encoder.begin_render_pass(color_attachments=[{
         "view": texture.create_view(), "clear_value": (0, 0, 0, 0),
@@ -85,8 +105,13 @@ def render(flavor, *, cut=None, bite=0.0):
 if args.assets:
     for flavor, name in enumerate(("cover", "berry", "guava")):
         render(flavor).save(MEDIA / f"{name}.webp", quality=89, method=6)
-        for position in POSITIONS:
-            render(flavor, cut=position, bite=3.65).save(MEDIA / f"{name}-{position['name']}.webp", quality=86, method=6)
+        for index, position in enumerate(POSITIONS):
+            for retained in range(1 << len(POSITIONS)):
+                if retained & (1 << index):
+                    continue
+                key = f"{retained}-{position['name']}" if retained else position["name"]
+                render(flavor, cut=position, bite=3.65, retained=retained).save(
+                    MEDIA / f"{name}-{key}.webp", quality=86, method=6)
 
 def save_sample(image, name):
     image.save(args.samples / f"{name}.png")
@@ -99,5 +124,10 @@ if args.samples:
         save_sample(render(0, cut=POSITIONS[1], bite=time), f"bite-{time:04.2f}")
     for position in POSITIONS:
         save_sample(render(0, cut=position, bite=3.65), f"scoop-{position['name']}")
+    save_sample(render(0, cut=POSITIONS[0], bite=1.70), "left-contact")
+    save_sample(render(0, cut=POSITIONS[2], bite=1.63, retained=1), "right-pressure-after-left")
+    save_sample(render(0, cut=POSITIONS[2], bite=2.43, retained=1), "right-rebound-after-left")
+    save_sample(render(0, cut=POSITIONS[2], bite=1.70, retained=1), "right-contact-after-left")
+    save_sample(render(0, cut=POSITIONS[2], bite=3.65, retained=1), "right-after-left")
     save_sample(render(0), "reset")
 print(dict(adapter.info))

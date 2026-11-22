@@ -1,6 +1,7 @@
 import source from "./press.wgsl?raw";
+import plateSource from "./plates.wgsl?raw";
 
-const textureNames = ["bed-texture.webp", "plate-cobalt.webp", "plate-both.webp", "plate-orange.webp", "tool-texture.webp"];
+const textureNames = ["bed-texture.webp", "ink-plates.webp", "plate-both.webp", "tool-texture.webp"];
 
 async function loadImage(file, base) {
   const image = new Image();
@@ -17,6 +18,31 @@ function upload(device, image) {
   });
   device.queue.copyExternalImageToTexture({ source: image }, { texture, premultipliedAlpha: true }, size);
   return texture;
+}
+
+function cacheImpressions(device, pipeline, ink, master, size) {
+  const views = Array.from({ length: 3 }, () => device.createTexture({
+    size, format: "rgba8unorm", usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.RENDER_ATTACHMENT,
+  }).createView());
+  const group = device.createBindGroup({
+    layout: pipeline.getBindGroupLayout(0),
+    entries: [
+      { binding: 0, resource: ink.createView() },
+      { binding: 1, resource: master.createView() },
+    ],
+  });
+  const encoder = device.createCommandEncoder();
+  const pass = encoder.beginRenderPass({
+    colorAttachments: views.map(view => ({
+      view, loadOp: "clear", clearValue: { r: 0, g: 0, b: 0, a: 0 }, storeOp: "store",
+    })),
+  });
+  pass.setPipeline(pipeline);
+  pass.setBindGroup(0, group);
+  pass.draw(3);
+  pass.end();
+  device.queue.submit([encoder.finish()]);
+  return views;
 }
 
 export async function initializePress(canvas, options) {
@@ -48,11 +74,22 @@ export async function initializePress(canvas, options) {
         return null;
       }
       const shader = device.createShaderModule({ code: source });
-      const pipeline = await device.createRenderPipelineAsync({
-        layout: "auto",
-        vertex: { module: shader, entryPoint: "triangle" },
-        fragment: { module: shader, entryPoint: "printFrame", targets: [{ format }] },
-      });
+      const plates = device.createShaderModule({ code: plateSource });
+      const [pipeline, bake] = await Promise.all([
+        device.createRenderPipelineAsync({
+          layout: "auto",
+          vertex: { module: shader, entryPoint: "triangle" },
+          fragment: { module: shader, entryPoint: "printFrame", targets: [{ format }] },
+        }),
+        device.createRenderPipelineAsync({
+          layout: "auto",
+          vertex: { module: plates, entryPoint: "triangle" },
+          fragment: {
+            module: plates, entryPoint: "bakePlates",
+            targets: [{ format: "rgba8unorm" }, { format: "rgba8unorm" }, { format: "rgba8unorm" }],
+          },
+        }),
+      ]);
       if (signal.aborted || destroyed) {
         device.destroy();
         return null;
@@ -61,17 +98,20 @@ export async function initializePress(canvas, options) {
         size: uniforms.byteLength, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
       });
       const sampler = device.createSampler({ minFilter: "linear", magFilter: "linear" });
-      const textures = assets.map(image => upload(device, image));
+      const [bed, ink, master, tool] = assets.map(image => upload(device, image));
+      const impressions = cacheImpressions(device, bake, ink, master,
+        [assets[1].naturalWidth, assets[1].naturalHeight]);
+      const views = [bed.createView(), ...impressions, tool.createView(), ink.createView()];
       const group = device.createBindGroup({
         layout: pipeline.getBindGroupLayout(0),
         entries: [
           { binding: 0, resource: { buffer } },
           { binding: 1, resource: sampler },
-          ...textures.map((texture, index) => ({ binding: index + 2, resource: texture.createView() })),
+          ...views.map((view, index) => ({ binding: index + 2, resource: view })),
         ],
       });
       context.configure({ device, format, alphaMode: "opaque", colorSpace: "srgb" });
-      return { device, pipeline, buffer, group, pending: false, ready: false, completion: Promise.resolve() };
+      return { device, pipeline, buffer, group, pending: 0, ready: false, completion: Promise.resolve() };
     } catch (error) {
       device.destroy();
       throw error;
@@ -111,8 +151,9 @@ export async function initializePress(canvas, options) {
     raf = 0;
     const gpu = state;
     if (!gpu || stopped || destroyed || signal.aborted) return;
-    // Bound outstanding GPU work on software adapters as well as real GPUs.
-    if (gpu.pending || (last !== null && time - last < 15) || (resizePending && !resize())) {
+    // One queued frame behind the active frame avoids missing an entire
+    // refresh while the adapter finishes. Never let the queue grow further.
+    if (gpu.pending >= 2 || (last !== null && time - last < 15) || (resizePending && !resize())) {
       schedule();
       return;
     }
@@ -120,7 +161,9 @@ export async function initializePress(canvas, options) {
     lightTime += last === null ? 0 : Math.min((time - last) / 1000, .08);
     last = time;
     settings = onFrame(time) ?? settings;
-    uniforms.set([settings.plate, settings.edge, Number(settings.tool), lightTime * 1.2], 4);
+    const drawnPlate = settings.plate;
+    const reflectedLight = Math.cos(lightTime * 1.2) * (1.65 / 255);
+    uniforms.set([drawnPlate, settings.edge, Number(settings.tool), reflectedLight], 4);
     const { device, pipeline, group, buffer } = gpu;
     device.queue.writeBuffer(buffer, 0, uniforms);
     const encoder = device.createCommandEncoder();
@@ -133,15 +176,16 @@ export async function initializePress(canvas, options) {
     pass.draw(3);
     pass.end();
     device.queue.submit([encoder.finish()]);
-    gpu.pending = true;
+    gpu.pending++;
     gpu.completion = device.queue.onSubmittedWorkDone().then(() => {
       if (state !== gpu || destroyed || signal.aborted) return;
-      gpu.pending = false;
+      gpu.pending--;
+      if (canvas.dataset.plate !== String(drawnPlate)) canvas.dataset.plate = String(drawnPlate);
       if (!gpu.ready) {
         gpu.ready = true;
         onReady();
       }
-    }, () => { gpu.pending = false; });
+    }, () => { gpu.pending--; });
     schedule();
   }
 

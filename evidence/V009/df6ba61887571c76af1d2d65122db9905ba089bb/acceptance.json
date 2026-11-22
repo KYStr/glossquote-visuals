@@ -1,0 +1,730 @@
+{
+  "work": "V009",
+  "commit": "df6ba61887571c76af1d2d65122db9905ba089bb",
+  "author": "01a1fa4c-f419-7853-bc26-6e79796f0a64",
+  "reviewer": "GlossQuote Visuals 工作室主責（獨立於原製作對話）",
+  "runId": 45002487345,
+  "jobId": 137148579087,
+  "gates": {
+    "visual": "PASS",
+    "interaction": "PASS",
+    "shader": "PASS",
+    "lifecycle": "PASS",
+    "accessibility": "PASS",
+    "performance": "PASS",
+    "privacy": "PASS",
+    "seo": "PASS",
+    "reproducibility": "PASS"
+  },
+  "provenance": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/CI.json",
+  "ruleReview": {
+    "version": "commercial-rules-v1",
+    "environment": "GitHub-hosted windows-2025, Chromium 158.0.8127.18, measured GPU vendor=google architecture=swiftshader isFallbackAdapter=True",
+    "rules": [
+      {
+        "id": "ART-1",
+        "status": "PASS",
+        "reason": "左側服務標題與右側演出海報構成桌機首屏，手機先讀標題隨即看到紙上麥克風、規格與試算入口。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/first-fold.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/first-fold.png"
+        ]
+      },
+      {
+        "id": "ART-2",
+        "status": "PASS",
+        "reason": "藍色 FEEDBACK 與單支麥克風先留在紙上。橫刃向下推，紅色 ASSEMBLY 與第二層網點逐步留在刃後；刮刀離場後右側殘影和暗紫交疊區停住。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-0.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-1.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-10.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-11.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-2.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-3.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-4.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-5.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-6.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-7.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-8.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/opening-9.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-0.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-1.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-10.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-11.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-2.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-3.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-4.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-5.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-6.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-7.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-8.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/opening-9.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-0-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-1-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-2-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-3-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-4-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-5-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-0.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-1.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-10.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-10.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-11.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-11.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-2.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-3.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-3.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-4.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-4.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-5.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-5.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-6.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-6.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-7.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-7.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-8.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-8.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-9.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/opening-9.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-0-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-1-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-2-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-3-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-4-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-5-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-0.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-1.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-10.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-10.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-11.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-11.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-2.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-3.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-3.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-4.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-4.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-5.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-5.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-6.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-6.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-7.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-7.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-8.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-8.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-9.jpg",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/opening-9.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "ART-3",
+        "status": "PASS",
+        "reason": "全張窄字、紅藍專色與暖紙網點構成獨立的印刷語言。印件型錄與估價流程延續同一組紙張、色版和印量。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/first-fold.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-1440.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/first-fold.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/compare-desktop.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/compare-mobile.png"
+        ]
+      },
+      {
+        "id": "GPU-1",
+        "status": "PASS",
+        "reason": "中英桌機與手機尺寸皆有單一有效 WebGPU 畫布。原始紋理與合成畫面隨動作改變，檢查使用 Windows 隔離 Chromium 軟體繪圖。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-0-texture.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-0-texture.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "GPU-2",
+        "status": "PASS",
+        "reason": "以鍵盤與觸控切換狀態並返回，暫停後畫面在至少一秒內保持一致，續播後會繼續。另以實際滑鼠和觸控輸入完成本件的操作序列。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-3.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-after-1s.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-before.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-immediate.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-resumed.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-3.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-after-1s.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-before.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-immediate.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-resumed.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-1",
+        "status": "PASS",
+        "reason": "暖機後量十秒實際提交間隔。以下依序是中位數／p95／最長毫秒。zh-Hant-desktop 19.9/26/28.3、zh-Hant-mobile 21.5/22.2/23.0、en-desktop 27.4/28.6/29.4、en-mobile 19.9/21.0/21.3。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-2",
+        "status": "PASS",
+        "reason": "兩語首載含延遲載入的壓縮大小最多 1917541 bytes。離屏與隱藏時停止提交，返回仍為單一實例。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/build.txt",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-1",
+        "status": "PASS",
+        "reason": "檢視中英 320、390、768、1440 寬與桌面 200% 放大的實際版型。標題、主要行動、商品控制和結果均可讀，未見水平溢出。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-1440.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-768.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200-viewport-6.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-zoom-200.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/layout-320.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/layout-390.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-1440.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-768.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-zoom-200.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/layout-320.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/layout-390.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-2",
+        "status": "PASS",
+        "reason": "檢視操作焦點及 DOM／合成文字對比。兩語五種版型的啟用控制熱區均至少 44×44 CSS px，觸控可完成操作與下載。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/flow-complete.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/flow-complete.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "BIZ-1",
+        "status": "PASS",
+        "reason": "Three AP poster options, two paper colors and sizes, print quantity and production turnaround. Local print specification and indicative quote disclosed in both languages.",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/layout-1440.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/layout-1440.png"
+        ]
+      },
+      {
+        "id": "BIZ-2",
+        "status": "PASS",
+        "reason": "兩語實際切換印件、版本與數量，測試上下限及回改。估價單列出相同規格、印量及選項。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/flow-complete.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/flow-complete.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/flow-complete.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/flow-complete.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-1",
+        "status": "PASS",
+        "reason": "逐一檢視無 JavaScript、GPU 初始化失敗和減少動態的首屏。產品與下一步可辨，減少動態預設靜止，GPU 不可用時仍可完成商流。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/gpu-init-fail.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/no-js.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/reduced.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/gpu-init-fail.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/no-js.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/reduced.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-2",
+        "status": "PASS",
+        "reason": "快速暫停／恢復、模擬裝置遺失及離頁回返後仍有可讀產品與正常控制，沒有空白頁或未處理例外。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/after-device-loss.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/after-device-loss.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "SHIP-1",
+        "status": "PASS",
+        "reason": "鎖版安裝、來源檢查、單元測試與建置通過。候選請求為同源，無額外儲存或遙測，兩語、分享圖、canonical 與畫廊入口均通過檢查。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/build.txt",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      }
+    ]
+  },
+  "craftReview": {
+    "version": "hero-craft-v1",
+    "status": "PASS",
+    "commit": "df6ba61887571c76af1d2d65122db9905ba089bb",
+    "reviewer": "GlossQuote Visuals 工作室主責（獨立於原製作對話）",
+    "criteria": [
+      {
+        "id": "silhouette",
+        "status": "PASS",
+        "reason": "160px 中可分辨橫向印刃與斜向麥克風，暖紙矩形不隨印刃走；完印時刀離開紙面。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-01-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-02-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-03-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-04-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-05-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-06-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-07-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-08-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-09-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-01-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-02-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-03-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-04-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-05-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-06-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-07-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-08-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-09-160.png"
+        ]
+      },
+      {
+        "id": "finish",
+        "status": "PASS",
+        "reason": "標題墨緣銳利、麥克風網罩有意保留顆粒；檢視紙邊與刃口兩側，可辨哪一側已附著紅墨。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-01-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-02-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-03-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-04-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-05-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-06-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-07-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-08-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-09-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-01-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-02-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-03-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-04-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-05-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-06-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-07-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-08-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-09-native.png"
+        ]
+      },
+      {
+        "id": "material",
+        "status": "PASS",
+        "reason": "同一紙白透過粗細網點顯露，紅藍重疊處變深。工具投影只在印台上移動。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-01-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-02-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-03-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-04-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-05-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-06-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-07-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-08-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-09-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-01-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-02-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-03-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-04-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-05-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-06-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-07-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-08-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-09-native.png"
+        ]
+      },
+      {
+        "id": "narrative",
+        "status": "PASS",
+        "reason": "首訪藍版已在紙上，刀由上往下壓過，刃後才有朱紅，最終是完整的雙色演出海報。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-01-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-02-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-03-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-04-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-05-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-06-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-07-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-08-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-09-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-opening.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-01-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-02-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-03-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-04-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-05-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-06-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-07-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-08-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-09-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-opening.webm"
+        ]
+      },
+      {
+        "id": "continuity",
+        "status": "PASS",
+        "reason": "固定定位十字、麥克風網罩及活動日期全程留在原位。單藍、印到一半、雙版及單紅可分別觀察。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/craft-opening.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/craft-opening.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-opening.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-blue.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-composite.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-interaction.webm",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-overprinting.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-red.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-opening.webm"
+        ]
+      },
+      {
+        "id": "fidelity",
+        "status": "PASS",
+        "reason": "桌機與手機能讀到相同海報標題與網罩。首屏、兩張專色校樣及型錄裡的樂團印件是同一設計。",
+        "evidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json"
+        ]
+      }
+    ]
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "df6ba61887571c76af1d2d65122db9905ba089bb",
+    "reviewer": "GlossQuote Visuals 工作室主責（獨立於原製作對話）",
+    "views": [
+      {
+        "viewport": "desktop",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "固定定位十字、麥克風網罩及活動日期全程留在原位。單藍、印到一半、雙版及單紅可分別觀察。 同一紙白透過粗細網點顯露，紅藍重疊處變深。工具投影只在印台上移動。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-0-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-0-composite.png",
+            "compositeStartMs": 2614.2000000000116,
+            "compositeEndMs": 3077.5999999999767
+          },
+          {
+            "seconds": 1.5563000000000466,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-1-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-1-composite.png",
+            "compositeStartMs": 3591.5,
+            "compositeEndMs": 4056.899999999965
+          },
+          {
+            "seconds": 2.5227000000000115,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-2-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-2-composite.png",
+            "compositeStartMs": 4456,
+            "compositeEndMs": 4883
+          },
+          {
+            "seconds": 4.035700000000012,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-3-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-3-composite.png",
+            "compositeStartMs": 6005.700000000012,
+            "compositeEndMs": 6359
+          },
+          {
+            "seconds": 6.047300000000047,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-4-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-4-composite.png",
+            "compositeStartMs": 8171.799999999988,
+            "compositeEndMs": 8586.299999999988
+          },
+          {
+            "seconds": 8.114300000000046,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-5-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/frame-5-composite.png",
+            "compositeStartMs": 10541.299999999988,
+            "compositeEndMs": 11390.700000000012
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-before.png",
+          "paused": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-immediate.png",
+          "stillPaused": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-after-1s.png",
+          "resumed": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "固定定位十字、麥克風網罩及活動日期全程留在原位。單藍、印到一半、雙版及單紅可分別觀察。 同一紙白透過粗細網點顯露，紅藍重疊處變深。工具投影只在印台上移動。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "開始時第一色與上端印刃",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-0.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "單獨鈷藍色版",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-1.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "單獨朱紅色版",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-2.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "返回雙色紫色交疊成品",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-3.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/control-3-texture.png"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "mobile",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "固定定位十字、麥克風網罩及活動日期全程留在原位。單藍、印到一半、雙版及單紅可分別觀察。 同一紙白透過粗細網點顯露，紅藍重疊處變深。工具投影只在印台上移動。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-0-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-0-composite.png",
+            "compositeStartMs": 811.6999999999534,
+            "compositeEndMs": 884.2999999999302
+          },
+          {
+            "seconds": 0.9282000000000699,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-1-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-1-composite.png",
+            "compositeStartMs": 1734.9000000000233,
+            "compositeEndMs": 1787.4000000000233
+          },
+          {
+            "seconds": 2.2369000000000234,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-2-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-2-composite.png",
+            "compositeStartMs": 3044.5,
+            "compositeEndMs": 3087.29999999993
+          },
+          {
+            "seconds": 4.035400000000023,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-3-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-3-composite.png",
+            "compositeStartMs": 4842.5,
+            "compositeEndMs": 4886.5
+          },
+          {
+            "seconds": 6.020800000000047,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-4-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-4-composite.png",
+            "compositeStartMs": 6828.699999999953,
+            "compositeEndMs": 6883.79999999993
+          },
+          {
+            "seconds": 8.0745,
+            "evidence": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-5-texture.png",
+            "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/frame-5-composite.png",
+            "compositeStartMs": 8880.599999999977,
+            "compositeEndMs": 8923.099999999977
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-0.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-1.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-2.png",
+          "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-before.png",
+          "paused": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-immediate.png",
+          "stillPaused": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-after-1s.png",
+          "resumed": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "固定定位十字、麥克風網罩及活動日期全程留在原位。單藍、印到一半、雙版及單紅可分別觀察。 同一紙白透過粗細網點顯露，紅藍重疊處變深。工具投影只在印台上移動。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "開始時第一色與上端印刃",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-0.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "單獨鈷藍色版",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-1.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "單獨朱紅色版",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-2.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "返回雙色紫色交疊成品",
+              "composite": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-3.png",
+              "texture": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/control-3-texture.png"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -28,7 +28,7 @@ const expected = {
     invalid: "Enter a whole number from 25 to 250 copies.",
     warm: "Warm white",
     oat: "Oat",
-    stock: "170 gsm uncoated, cobalt blue + fluorescent orange",
+    stock: "170 gsm uncoated, cobalt blue + vermilion",
     labels: ["Artwork", "Trim size", "Print run", "Paper", "Estimate", "Lead time"],
   },
   "zh-Hant": {
@@ -38,7 +38,7 @@ const expected = {
     invalid: "請輸入 25 至 250 之間的整數。",
     warm: "暖白",
     oat: "燕麥",
-    stock: "170 g/m² 未塗佈紙，鈷藍與螢橘雙色",
+    stock: "170 g/m² 未塗佈紙，鈷藍與朱紅雙色",
     labels: ["圖案", "成品尺寸", "印量", "紙色", "預估金額", "預估工期"],
   },
 };
@@ -112,6 +112,31 @@ export async function testFlow(page, lang) {
   return { lang, observations, download: { filename, bytes: bytes.length, text } };
 }
 
+async function armCheckpoint(page, run, step, range = [.47, .84]) {
+  await page.evaluate(({ run, step, range }) => {
+    const stage = document.querySelector("[data-stage]");
+    const button = document.querySelector("[data-pause]");
+    const deadline = performance.now() + 7_500;
+    function tick(stableFrames) {
+      const edge = Number(stage.dataset.blade);
+      const reached = stage.dataset.printRun === String(run) && stage.dataset.printStep === step &&
+        (step !== "passing" || (edge >= range[0] && edge < range[1])) && stage.dataset.motion === "running";
+      if (reached && stableFrames >= 2) {
+        button.click();
+        return;
+      }
+      if (performance.now() < deadline) requestAnimationFrame(() => tick(reached ? stableFrames + 1 : 0));
+    }
+    requestAnimationFrame(() => tick(0));
+  }, { run, step, range });
+}
+async function waitCheckpoint(page, run, step) {
+  await page.waitForFunction(({ run, step }) => {
+    const stage = document.querySelector("[data-stage]");
+    return stage.dataset.printRun === String(run) && stage.dataset.printStep === step && stage.dataset.motion === "paused";
+  }, { run, step }, { timeout: 8000 });
+}
+
 // Exercise a new impression from a known starting point regardless of how long
 // the page had been open. The legacy callback keeps its three checkpoint IDs;
 // testPrintStroke additionally captures the blade crossing the stationary sheet.
@@ -142,40 +167,16 @@ async function probePrint(page, input, capture, includeStroke) {
   // Arm before the real input so a remote screenshot can take longer than
   // the ready interval. Use the site's pause control after allowing the new
   // ink uniforms and blade position to reach the compositor.
-  async function armCheckpoint(run, step) {
-    await page.evaluate(({ run, step }) => {
-      const stage = document.querySelector("[data-stage]");
-      const button = document.querySelector("[data-pause]");
-      const deadline = performance.now() + 7_500;
-      function tick(stableFrames) {
-        const edge = Number(stage.dataset.blade);
-        const reached = stage.dataset.printRun === String(run) && stage.dataset.printStep === step &&
-          (step !== "passing" || (edge >= .47 && edge < .84)) && stage.dataset.motion === "running";
-        if (reached && stableFrames >= 2) {
-          button.click();
-          return;
-        }
-        if (performance.now() < deadline) requestAnimationFrame(() => tick(reached ? stableFrames + 1 : 0));
-      }
-      requestAnimationFrame(() => tick(0));
-    }, { run, step });
-  }
-  async function waitCheckpoint(run, step) {
-    await page.waitForFunction(({ run, step }) => {
-      const stage = document.querySelector("[data-stage]");
-      return stage.dataset.printRun === String(run) && stage.dataset.printStep === step && stage.dataset.motion === "paused";
-    }, { run, step }, { timeout: 8000 });
-  }
   const resume = () => pause.evaluate(button => button.click());
   const trigger = async () => {
     const nextRun = Number(await stage.getAttribute("data-print-run")) + 1;
-    await armCheckpoint(nextRun, "ready");
+    await armCheckpoint(page, nextRun, "ready");
     if (input === "keyboard") {
       await repeat.evaluate(button => button.focus({ preventScroll: true }));
       await page.keyboard.press("Enter");
     } else if (input === "touch") await repeat.tap();
     else await repeat.click();
-    await waitCheckpoint(nextRun, "ready");
+    await waitCheckpoint(page, nextRun, "ready");
     return nextRun;
   };
   async function snapshot(name) {
@@ -210,10 +211,10 @@ async function probePrint(page, input, capture, includeStroke) {
   assert.equal(before.motion, "paused");
   assert.ok(before.blade < .21);
   let mid;
-  if (includeStroke) await armCheckpoint(run, "passing");
+  if (includeStroke) await armCheckpoint(page, run, "passing");
   await resume();
   if (includeStroke) {
-    await waitCheckpoint(run, "passing");
+    await waitCheckpoint(page, run, "passing");
     mid = await snapshot("passing");
     assert.equal(mid.run, run);
     assert.equal(mid.step, "passing");
@@ -264,4 +265,37 @@ export function testHeroInteraction(page, input, capture) {
 
 export function testPrintStroke(page, input, capture) {
   return probePrint(page, input, capture, true);
+}
+
+export async function testApprovedHero(page, input, capture) {
+  assert.ok(["mouse", "touch"].includes(input));
+  const stage = page.locator("[data-stage]");
+  const interact = target => input === "touch" ? target.tap() : target.click();
+  await stage.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.querySelector("[data-stage]")?.dataset.motion === "running");
+  async function select(plate) {
+    await interact(page.locator(`[name=press-plate][value="${plate}"]`));
+    await page.waitForFunction(expected => document.querySelector("[data-stage] canvas")?.dataset.plate === String(expected), plate);
+  }
+  await select(1);
+  await capture("blue");
+
+  const run = Number(await stage.getAttribute("data-print-run")) + 1;
+  await armCheckpoint(page, run, "passing", [.525, .74]);
+  await interact(page.locator("[data-reprint]"));
+  await waitCheckpoint(page, run, "passing");
+  const blade = Number(await stage.getAttribute("data-blade"));
+  assert.ok(blade >= .525 && blade < .80);
+  await capture("overprinting");
+  assert.equal(Number(await stage.getAttribute("data-blade")), blade);
+
+  await interact(page.locator("[data-pause]"));
+  await page.waitForFunction(expected => {
+    const stage = document.querySelector("[data-stage]");
+    return stage.dataset.printRun === String(expected) && stage.dataset.printStep === "complete";
+  }, run);
+  await capture("composite");
+  await select(2);
+  await capture("red");
+  return { input, run, blade, sequence: ["blue", "overprinting", "composite", "red"] };
 }

@@ -5,9 +5,9 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
-import { assemblePinnedBundles, verifyCarrySources } from "../scripts/carry-release.mjs";
+import { assemblePinnedBundles, composeCarriedRelease, verifyCarrySources } from "../scripts/carry-release.mjs";
 import { carriedRuntimeAssets } from "../scripts/release-proof.mjs";
-import { base } from "../scripts/site-map.mjs";
+import { base, registry } from "../scripts/site-map.mjs";
 
 const head = "d".repeat(40);
 const shared = "assets/shared-12345678.js";
@@ -90,4 +90,15 @@ test("changing a carried source, shared shader runtime or carried catalog entry 
     assert.throws(check,/Carried source changed|Changed carried catalog/);
     git("restore","--",path);
   }
+});
+
+test("a later site deployment must still attest the exact carried work before assembly", async t => {
+  const works = registry.works.filter(work =>
+    ["V001", "V002", "V003", "V004", "V005", "V006", "V007", "V011"].includes(work.id));
+  const live = { commit: head, works: [], carriedWorks: works.map(work => ({
+    work: work.id, slug: work.slug, candidate: work.candidateCommit, deployedCommit: work.deployedCommit,
+  })) };
+  live.carriedWorks[0].candidate = "a".repeat(40);
+  t.mock.method(globalThis, "fetch", async () => Response.json(live));
+  await assert.rejects(composeCarriedRelease(works), /Wrong live carried identity/);
 });

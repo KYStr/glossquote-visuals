@@ -1,6 +1,6 @@
 export const strokeDuration = 3_750;
-export const initialEdge = 0.205;
-export const sheetHeight = 0.68;
+export const initialEdge = 0.106;
+export const sheetHeight = 608 / 720;
 export const pullStart = 0.09;
 export const liftStart = 0.84;
 

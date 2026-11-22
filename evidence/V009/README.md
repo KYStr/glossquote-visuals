@@ -1,15 +1,14 @@
-# V009 疊印 AFTERIMAGE PRESS · M06
+# V009 疊印 AFTERIMAGE PRESS · M07
 
-## 重現
+## 核准稿與製作來源
 
-- 以正常動態開啟任一語版。首幀是一張固定在印台上的鈷藍校樣。刮刀向下推進，螢橘只留在刃口經過的地方，交疊處呈深紫。3.75 秒行程結束後，畫面停留在印件，僅裸紙反光有極小變化。
-- 「重印第二版」可重新演出。原本的雙版／鈷藍／螢橘三態、鍵盤與觸控、估價與下載保持相容。減少動態或無 GPU 時，可手動切換起點與完整印件，也可檢視單色版。
-- `shader.js` 與 `press.wgsl` 使用一個裝置像素對齊的不透明 WebGPU 畫布。單一繪製 pass 合成印床、固定定位線、2000 × 1000 無損墨版、木柄刮刀及接觸影。刃口與上墨前緣由同一個 uniform 控制。畫布在暫停、續播與中途重印間維持原節點。暫停取消後續提交，確認已送出的工作完成後才回報 paused。程式沒有在暫停時讀取畫布、重製快照或切換呈現層。
-- `bake-art.py` 使用 Pillow、NumPy 與 resvg-py 產生質材、靜態校樣、型錄與 1200 × 800 封面。無損墨版可直接用於靜態校樣。
+- 來源為工作室的 `2026-11-22-Key-Visuals/02-Afterimage-Press.png`。原圖 1536 × 1024，SHA-256 `3e05a476275573869051058d8a00f38603b3eb8abf648e4b1b45a975449c399b`。
+- 在 repo 根目錄執行 `python src/works/afterimage-press/separate-poster.py <核准原圖>`。需要 Pillow、NumPy、resvg-py。程式從核准稿分離鈷藍與朱紅的墨量、取樣暖素紙底紋，產生 `ink-plates.webp`、三張降級校樣、印床、封面與 AP–01 型錄樣張。`bake-art.py` 則可重做另兩張型錄海報與刮刀材質。
+- `press.wgsl` 在原有的單一不透明 WebGPU 畫布上合成兩色。墨量彼此獨立，濕墨邊和受壓彎曲的刃口共用位置，已印好的字與麥克風網罩固定在紙面上。完工後刮刀完全退出，保留完整的 FEEDBACK ASSEMBLY 海報。雙語商流仍可選款式、尺寸、紙色和印量並下載製作單，墨色規格更新為朱紅。
 
 ## 複驗
 
-- `setMaterial(page, state, input)`、`testFlow(page, lang)` 與舊介面相容。原始 GPU 計數及逐像素比較由共享驗收執行。
-- `testPrintStroke(page, input, capture)` 維持 before／passing／after／reset 檢查點。中段會暫停並間隔一秒兩次擷取同一畫布，比較 PNG bytes、刮刀位置及可用的 GPU 計數，再續播至完成。每一站檢查畫布節點、紙張與定位框座標。
-- 以 wgpu 頭端 CLI 在 RTX 3060／Vulkan 上編譯並渲染實際 WGSL。966 × 484 的印前、印中、印後及兩個單版均不透明，目視檢視刃口、交色邊和印床。中段停止寫入的離屏紋理兩次讀取全等。Node 驗證暫停停送、尾幀完成及續播維持行程。這不是 Windows 瀏覽器合成器或 PERF-1 實測。
-- 既有 `scripts/check-source.mjs` 只列出摺徑可使用原生 WebGPU，其餘作品要求呼叫 `initializeStandalone`，因此新 V009 會觸發該來源結構檢查。整合時需由主責將 V009 明列為原生例外並核對直接 WebGPU、opaque canvas、無 fetch、無 telemetry。共享腳本與瀏覽器驗收由主責維護。
+- 正常動態從藍版開啟，朱紅隨刃口約 3.75 秒印完。以「重印第二版」重播，或切換鈷藍／朱紅單版。暫停仍停止 GPU 提交並保留原畫布，無 GPU 與減少動態則使用同一組分版的靜態校樣。
+- 保留 `setMaterial`、`testFlow`、`testHeroInteraction`、`testPrintStroke`。`testApprovedHero(page,input,capture)` 另支援 mouse／touch，依序擷取 `blue`、`overprinting`、`composite`、`red`，並在中段使用既有暫停與續播。
+- 作者端使用 RTX 3060／Vulkan 的 wgpu CLI 渲染實際 WGSL，檢視 900 × 649 桌機與 350 × 252 手機尺寸。像素比對驗證中段刃口下方未落紅墨，離屏紋理停止寫入時逐位元組全等。實際瀏覽器首屏、互動、逐像素暫停與提交間隔由主責使用隔離瀏覽器驗收。
+- 效能修正以原尺寸墨量和核准印件一次合成三張 GPU 材質，播放時只在刃口與濕墨窄帶額外取樣。保留畫布像素尺寸、紙面微光和刃口形變。佇列最多保留兩幀，暫停等待最後一幀完成。RTX 3060 和 Microsoft Basic Render Driver 的 900 × 649 離屏畫面均驗證了落墨界線與定格全等。AP–01 型錄圖直接使用單張印件，不再套外層標題。
