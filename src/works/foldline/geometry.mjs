@@ -79,8 +79,10 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
   const surfaces = [];
   const chain = rigidChain(phase);
   let orientation = 1;
-  // The entire animation uses these same four floor leaves, eight cheeks,
-  // deck caps, belt lengths and seat. Only hinge angles and webbing flex change.
+  const uncase = ease(seconds,.88,1.77);
+  const packFit = ease(seconds,1.08,1.89);
+  const caseLeft = -.052, caseRight = .851;
+  const caseTop = .182, caseBase = -.171, caseNear = .278, caseFar = -.278;
   function face(hex, ...verts) {
     surface(hex, verts, 0);
   }
@@ -88,6 +90,9 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     surface(hex, verts, material, uv);
   }
   function surface(hex, verts, material, uv) {
+    if (fittingCore && packFit < 1) {
+      verts = verts.map(([x,y,z]) => [x,y*mix(.63,1,packFit),z*mix(.83,1,packFit)]);
+    }
     const base = minus(verts[1],verts[0]);
     const normal = unit(cross(base, minus(verts[2],verts[0])));
     const illumination = .63 + .41*Math.max(0,dot(normal, light)*orientation) + .10*Math.max(0,dot(normal,bounce)*orientation);
@@ -172,6 +177,7 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     for (let i=0;i<outline.length;i++) paddedFace(paint[3],dome,rim[(i+1)%rim.length],rim[i]);
     return rings[2];
   }
+  let fittingCore = true;
   const rail = "#ffc294", black = "#262724";
   for (const [index, { move, inner, sign }] of chain.entries()) {
     orientation = sign;
@@ -313,6 +319,85 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     }
   }
 
+  fittingCore = false;
+  orientation = 1;
+
+  // The front skin and rear tray open on opposite long edges. Their
+  // reinforcement folds tuck into the linked end leaves beneath each cap.
+  for (const side of [-1,1]) {
+    const front = side === 1;
+    const leaf = chain[front ? 1 : 3].move;
+    const dock = ease(seconds,1.34,3.18);
+    const angle = mix(0,front ? -1.64 : 1.12,uncase);
+    const depth = front ? caseNear : caseFar;
+    const hingeY = front ? caseTop : caseBase;
+    const near = (x,y,z) => {
+      const across = z-depth, height = y-hingeY;
+      const opened = [x,hingeY+height*Math.cos(angle)-across*Math.sin(angle),
+        depth+height*Math.sin(angle)+across*Math.cos(angle)];
+      const along = (caseRight-x)/(caseRight-caseLeft);
+      const bed = leaf(.06+along*.34,(front ? -1 : 1)*(.004+.015*(caseTop-y)),-side*(.04+.22*z));
+      return point(opened,bed,dock);
+    };
+    const bevel = .013, x0=caseLeft, x1=caseRight, y0=caseBase, y1=caseTop;
+    const rim = depth-side*bevel;
+    const skin = [
+      near(x0+bevel,y0+bevel,depth), near(x1-bevel,y0+bevel,depth),
+      near(x1-bevel,y1-bevel,depth), near(x0+bevel,y1-bevel,depth),
+    ];
+    const lip = [near(x0,y0,rim),near(x1,y0,rim),near(x1,y1,rim),near(x0,y1,rim)];
+    const skinUV = [[0,1],[1,1],[1,0],[0,0]];
+    const enamel = (paint, uv, corners) => photoFace(paint,7,front ? uv : uv.slice().reverse(),
+      ...(front ? corners : corners.slice().reverse()));
+    if (front) {
+      const fold = (left, right, rise) => {
+        const leftY = y0+left, rightY = y0+right;
+        const v = y => 1-(y-y0-bevel)/(y1-y0-2*bevel);
+        return {
+          uv: [[0,v(leftY)],[1,v(rightY)]],
+          corners: [near(x0+bevel,leftY,depth),near(x1-bevel,rightY,depth+rise)],
+        };
+      };
+      const ridge = fold(.092,.198,.008);
+      const roll = fold(.106,.214,.003);
+      enamel("#be7047",[skinUV[0],skinUV[1],ridge.uv[1],ridge.uv[0]],[skin[0],skin[1],ridge.corners[1],ridge.corners[0]]);
+      enamel("#c1764d",[...ridge.uv,roll.uv[1],roll.uv[0]],[...ridge.corners,roll.corners[1],roll.corners[0]]);
+      enamel("#c4774c",[...roll.uv,skinUV[2],skinUV[3]],[...roll.corners,skin[2],skin[3]]);
+    } else {
+      enamel("#ad5a37",skinUV,skin);
+    }
+    for (let i=0;i<4;i++) {
+      const j=(i+1)%4;
+      enamel(i===2 ? "#c4845b" : "#9a4d2f",skinUV,[lip[i],lip[j],skin[j],skin[i]]);
+    }
+    const middle = side*.004;
+    const lidJoint = -.122;
+    const ledge = front ? caseTop : caseBase;
+    const endOfLid = front ? lidJoint+.0015 : middle;
+    const farLedge = near(x0+bevel,ledge,endOfLid), farRidge = near(x1-bevel,ledge,endOfLid);
+    enamel(front ? "#c08058" : "#8c4429",skinUV,front
+      ? [lip[3],lip[2],farRidge,farLedge] : [farLedge,farRidge,lip[1],lip[0]]);
+    if (!front) {
+      enamel("#bf7e56",skinUV,[near(x1-bevel,y1-.004,lidJoint-.0015),near(x0+bevel,y1-.004,lidJoint-.0015),lip[3],lip[2]]);
+      face("#693d2d",near(x1-bevel,y1-.008,lidJoint+.017),near(x0+bevel,y1-.008,lidJoint+.017),near(x0+bevel,y1-.008,lidJoint-.010),near(x1-bevel,y1-.008,lidJoint-.010));
+    }
+    for (const end of [0,1]) {
+      const offset = end ? x1 : x0;
+      const lo = side*.002;
+      const corners=[near(offset,y0+.006,lo),near(offset,y0+.006,rim),
+        near(offset,y1-.006,rim),near(offset,y1-.006,lo)];
+      enamel(end ? "#8d4b31" : "#a55d3d",skinUV,end ? corners : corners.slice().reverse());
+      // The narrow gasket seams retain the folded layers at each end.
+      for (const height of [y0+.035,y0+.060,y0+.087]) {
+        const seamX = offset + (end ? .001 : -.001);
+        face("#60382a",near(seamX,height,lo),near(seamX,height,rim),
+          near(seamX,height+.004,rim),near(seamX,height+.004,lo));
+        face("#986244",near(seamX,height+.004,lo),near(seamX,height+.004,rim),
+          near(seamX,height+.008,rim),near(seamX,height+.008,lo));
+      }
+    }
+  }
+
   // Each strap stays fixed at one anchor. As the buckle releases, the band
   // bends away and settles as a rear gear tie, with no loss of its solid buckle.
   const tie = hinge(0, .05*(1-phase.inner), mix(.051, Math.PI, phase.inner));
@@ -320,9 +405,9 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
   const slack = Math.sin(phase.strap*Math.PI);
   const anchorY = mix(.187,-.055,grip)+.07*slack;
   const anchorZ = mix(-.19,-.197,grip);
-  for (const x of [.20,.68]) {
+  for (const [packedX,x] of [[.16,.20],[.67,.68]]) {
     const wrap = x < .3 ? .230 : .309;
-    const path = [
+    const loose = [
       tie(x,.014,-.214), tie(x,mix(.13,-.028,grip),mix(-.223,-.185,grip)),
       tie(x,anchorY,anchorZ),
       tie(x,mix(.198,-.054,grip)+.05*slack,mix(.00,-.185,grip)),
@@ -331,33 +416,59 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
       tie(x,mix(.02,-.025,grip),mix(.242,-.155,grip)),
       tie(x,mix(-.141,-.019,grip),mix(.22,-.144,grip)),
     ];
+    const lift = .105*slack;
+    const belt = [
+      [caseBase+.014,caseFar], [caseTop-.016,caseFar-.006],
+      [caseTop+.006,caseFar+.017], [caseTop+.007,caseNear-.020],
+      [caseTop-.013,caseNear+.008], [caseTop-.106-.026*slack,caseNear+.011+lift],
+      [caseBase+.015,caseNear+.017+lift*.64], [caseBase-.006,caseNear-.015],
+    ];
+    const pull = packedX < .3 ? -1 : 1;
+    const path = belt.map(([y,z],i)=>{
+      const freeEnd = [0,0,.36,.65,1,.86,.25,0][i]*slack;
+      return point([packedX+pull*.054*freeEnd,y+.045*freeEnd,z],loose[i],grip);
+    });
     for (let j=0; j<path.length-1;j++) {
-      const offset = minus(tie(x+.027,0,0),tie(x,0,0));
+      const offset = minus(tie(x+mix(.018,.027,grip),0,0),tie(x,0,0));
       const a=path[j], b=path[j+1];
       const shift = (p,k,h=0) => p.map((v,i) => v + k*offset[i] + (i===1 ? h : 0));
       face("#252b31",shift(a,-1),shift(a,1),shift(b,1),shift(b,-1));
       face("#4f5150",shift(a,-1,.001),shift(a,-.77,.001),shift(b,-.77,.001),shift(b,-1,.001));
     }
-    const buckle = point(path[3],path[4],.24);
-    const hardware = (dx,dy,dz) => [buckle[0]+dx,buckle[1]+dy,buckle[2]+dz];
-    block(hardware,0,0,0,.088,.025,.109,["#c4c8b7","#737d7b","#535d5e"],.008);
-    block(hardware,0,.025,0,.048,.007,.078,["#38424a","#353c40","#30383c"],.002);
+    const buckle = point(point(path[4],path[5],.55),point(path[3],path[4],.24),grip);
+    const buckleAngle = grip * Math.PI/2;
+    const claspSwing = pull*.52*slack;
+    const hardware = (dx,dy,dz) => {
+      const up = dy*Math.sin(buckleAngle)+dz*Math.cos(buckleAngle);
+      return [buckle[0]+dx*Math.cos(claspSwing)-up*Math.sin(claspSwing),
+        buckle[1]+dx*Math.sin(claspSwing)+up*Math.cos(claspSwing),
+        buckle[2]+dy*Math.cos(buckleAngle)-dz*Math.sin(buckleAngle)];
+    };
+    const buckleHeight = mix(.013,.025,grip);
+    block(hardware,0,0,0,mix(.055,.088,grip),buckleHeight,mix(.047,.109,grip),
+      ["#686960","#454945","#343936"],mix(.004,.008,grip));
+    block(hardware,0,buckleHeight,0,mix(.033,.048,grip),mix(.003,.007,grip),mix(.031,.078,grip),
+      ["#282f2e","#353c40","#30383c"],mix(.001,.002,grip));
   }
   // A rigid bail shares the two webbing anchors. Its open centre and dark
   // grip clear the packed silhouette. It folds flat as the straps release.
   const bailAngle = mix(-.13,-1.48,grip);
-  const bail = (x,y,z) => tie(x,anchorY+y*Math.cos(bailAngle)-z*Math.sin(bailAngle),anchorZ+y*Math.sin(bailAngle)+z*Math.cos(bailAngle));
-  for (const x of [.20,.68]) {
-    block(bail,x,-.014,0,.083,.060,.094,["#595b58","#363a3f","#252c34"],.009);
+  const bail = (x,y,z) => point([x,caseTop+y,-.033+z],
+    tie(x,anchorY+y*Math.cos(bailAngle)-z*Math.sin(bailAngle),anchorZ+y*Math.sin(bailAngle)+z*Math.cos(bailAngle)),grip);
+  const handleLeft = mix(.244,.20,grip), handleRight = mix(.573,.68,grip);
+  for (const x of [handleLeft,handleRight]) {
+    block(bail,x,mix(-.003,-.014,grip),0,mix(.069,.083,grip),mix(.025,.060,grip),
+      mix(.083,.094,grip),["#454944","#303531","#222622"],mix(.006,.009,grip));
   }
-  const handle = Array.from({length:13},(_,i)=>bail(.20+.48*i/12,.030+.256*Math.pow(Math.sin(i*Math.PI/12),.71),0));
-  cord(handle,.028,"#282d29",[0,0,1],.018);
+  const handle = Array.from({length:13},(_,i)=>bail(mix(handleLeft,handleRight,i/12),
+    mix(.014,.030,grip)+mix(.085,.256,grip)*Math.pow(Math.sin(i*Math.PI/12),mix(.60,.71,grip)),0));
+  cord(handle,mix(.018,.028,grip),"#282d29",[0,0,1],mix(.016,.018,grip));
 
   const carryDetail = plate && seconds === 0;
-  const viewYaw = mix(.055,.30,ease(seconds,.60,4.38)) + yaw;
-  const tilt = mix(.56,.62,ease(seconds,1.25,3.70));
+  const viewYaw = mix(.14,.30,ease(seconds,.60,4.38)) + yaw;
+  const tilt = mix(.31,.62,ease(seconds,.92,3.70));
   const c=Math.cos(viewYaw), s=Math.sin(viewYaw), elevation=Math.sqrt(1-tilt*tilt);
-  const diagonal = carryDetail ? .08 : mix(.075,.23,ease(seconds,.64,3.68));
+  const diagonal = carryDetail ? .11 : mix(.10,.23,ease(seconds,.64,3.68));
   const dc=Math.sqrt(1-diagonal*diagonal);
   function project(x,y,z, target, offset) {
     if (tandem) { x *= 1.12; z *= 1.07; }
@@ -419,9 +530,12 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     for (const points of projected) for (const [x,y] of points) include(x,y);
   }
   const xCenter=(frame[0]+frame[1])*.5, yCenter=(frame[2]+frame[3])*.5;
-  const nominal=carryDetail ? 1.04 : mix(1.25,.513,ease(seconds, .88, 3.48));
+  const nominal=carryDetail ? 1.19 : mix(1.37,.513,ease(seconds, .88, 3.48));
   const scale = Math.min(nominal, 1.81/(frame[1]-frame[0]), 1.51/((frame[3]-frame[2])*aspect));
-  const yOffset=carryDetail ? .17 : mix(.063,.155,phase.settle);
+  const departure = ease(seconds,.68,2.38);
+  const packedY = mix(-.177,-.140,ease(aspect,1.28,2.24));
+  const xOffset = carryDetail ? 0 : mix(-.079,-.145,ease(aspect,1.28,2.24))*(1-departure);
+  const yOffset=carryDetail ? .08 : mix(mix(packedY,.063,departure),.155,phase.settle);
   const scaleY = scale*aspect;
   if (buffers) {
     const { hull, mirror } = buffers;
@@ -429,14 +543,14 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
       const offset = i*hullStride;
       // Interleave the attributes only at the upload boundary. Projection and
       // material lookup share one vertex per face corner instead of per triangle.
-      hull[offset] = (hull[offset]-xCenter)*scale;
+      hull[offset] = (hull[offset]-xCenter)*scale+xOffset;
       hull[offset+1] = (hull[offset+1]-yCenter)*scaleY+yOffset;
       hull[offset+6] = buffers.attributes[i*3];
       hull[offset+7] = buffers.attributes[i*3+1];
       hull[offset+8] = buffers.attributes[i*3+2];
       if (seconds > 4.05) {
         const reflected = i*mirrorStride;
-        mirror[reflected] = (mirror[reflected]-xCenter)*scale;
+        mirror[reflected] = (mirror[reflected]-xCenter)*scale+xOffset;
         mirror[reflected+1] = (mirror[reflected+1]-yCenter)*scaleY+yOffset;
       }
     }
@@ -446,7 +560,7 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     for (const [index, { tint, verts, uv, material }] of surfaces.entries()) {
       const points = mirrored ? verts.map(([x,y,z])=>projectWorld([x,2*waterLevel-y,z])) : projected[index];
       for (const p of points) {
-        p[0]=(p[0]-xCenter)*scale;
+        p[0]=(p[0]-xCenter)*scale+xOffset;
         p[1]=(p[1]-yCenter)*scale*aspect+yOffset;
       }
       for (let i=1;i<points.length-1;i++) {
@@ -456,16 +570,21 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     return triangles;
   }
   const contact = .232*phase.settle;
-  const [groundX,groundY] = projectWorld([0,waterLevel,contact]);
-  const [leftX,leftY] = projectWorld([-1,waterLevel,contact]);
-  const [rightX,rightY] = projectWorld([1,waterLevel,contact]);
+  const shoreContact = 1-ease(seconds,.80,2.60);
+  const contactY = mix(waterLevel,caseBase-.008,shoreContact);
+  const contactZ = mix(contact,caseNear-.040,shoreContact);
+  const contactX = shoreContact*(caseLeft+caseRight)/2;
+  const [groundX,groundY] = projectWorld([contactX,contactY,contactZ]);
+  const [leftX,leftY] = projectWorld([contactX-1,contactY,contactZ]);
+  const [rightX,rightY] = projectWorld([contactX+1,contactY,contactZ]);
   const slope = (rightY-leftY)/(rightX-leftX)*aspect;
   const shadowCenter = (groundY-yCenter)*scale*aspect+yOffset;
-  const shadowX = Math.min(.16, Math.max(-.16, (groundX-xCenter)*scale));
+  const shadowLimit = mix(.16,.23,shoreContact);
+  const shadowX = Math.min(shadowLimit, Math.max(-shadowLimit, (groundX-xCenter)*scale+xOffset));
   const shadow = [
     Math.max(.23,(frame[1]-frame[0])*.50*scale),
     Math.max(.065,mix(.179,.087,phase.settle)*aspect*scale),
-    Math.max(-.64,shadowCenter), shadowX,
+    mix(Math.max(-.64,shadowCenter),shadowCenter,shoreContact), shadowX,
   ];
   if (buffers) {
     buffers.vertexCount = vertices;
