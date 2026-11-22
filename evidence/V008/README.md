@@ -1,3 +1,20 @@
+# 果時 JELLY HOUR｜M06 銀匙試吃
+
+候選分支從正式基線 `8206c4a55e8be0faee2ff4b265878d4da75445f7` 建立。中英文入口仍為 `/glossquote-visuals/works/sorbet-hour/` 與 `/glossquote-visuals/en/works/sorbet-hour/`。三款口味、六杯配盒與離線配方沿用現有接口。
+
+## 重現
+
+- 正常動態冷開先見完整果凍。銀匙斜向入鏡、按壓上緣、匙碗部分切入並由果凍遮住，最後托著與缺口配對的一口抬起。3.65 秒停在展示姿態，餘下只有很輕的果凍反光。
+- 可在首播中點按或拖曳果凍來選另一個切點。鍵盤聚焦 `[data-scoop-hit]` 後用左右鍵選位置，再按 Enter。`[data-scoop-replay]` 重播所選位置，`[data-scoop-reset]` 恢復完整，`[data-pause]` 凍結當前幀。換口味回到完整姿態。減少動態和無 WebGPU 可切換相同構圖的靜態成品與銀匙尾幀。
+- `flow.mjs` 保留 `setMaterial`、`testFlow`、`testHeroInteraction(page, input, capture)`。後者以 `data-bite-run`、`data-bite-phase`、`data-bite-elapsed` 鎖定新序列，保留 `before`、`after`、`reset`。中段凍結在 `cut` 取證，支援選用的 `capture.mid("cut", observation)` 或宣告 `capture.checkpoints` 包含 `mid` 的主程式。回傳值另含 `mid.pngBase64` 及另一切點尾幀 `alternate.pngBase64`，可與現有三點 runner 共用。
+- 以 Python 3.12、wgpu 0.31.0、Pillow 12.0.0 執行 `python src/works/sorbet-hour/render-posters.py --samples .runs/v008-m06-frames`，可重現 1200×800 關鍵影格。加 `--assets` 會更新本作三張海報及九張靜態尾幀。未用外部影像或材質。繁中字型以工作室既有的 Noto Sans TC 原檔製作本版私有 WOFF2，保留上版字符並補入新介面所需的「匙、對、應、托、查、滋、起、銀」。沿用倉庫的 `public/fonts/studio-text-tc-OFL.txt` 授權。
+
+## 作者核對
+
+原生 RTX 3060 Vulkan 影格檢視了 160 px 無字輪廓，以及原尺寸的匙碗和果膠接縫。銀匙頂面與下方厚度分開著色，匙柄有連續冷灰暗緣，尾幀仍可辨認承載關係。上緣受壓及切口使用同一切入點，抽出的果凍與匙碗共用抬升位移，瓷盤與畫面座標固定。鎖版安裝、來源檢查、26 項單元測試、雙語建置，以及無 GPU 的 DOM、配方 Blob、時間線凍結與重設測試已通過。未使用本機瀏覽器，實際瀏覽器 M04 十四條及 M06 六項美術觀察待主責判定。
+
+---
+
 # 果時 JELLY HOUR｜M05 作者交接
 
 作品入口維持 `/glossquote-visuals/works/sorbet-hour/` 和 `/glossquote-visuals/en/works/sorbet-hour/`。變更從發布基線 `085460a3884d2e826e94b71ef5a3dea74ed05908` 製作。果時英文品牌改為 Jelly Hour。共享畫廊、catalog、registry 和發布檔案由主責處理。

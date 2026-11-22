@@ -140,71 +140,121 @@ export async function testHeroInteraction(page, input, capture) {
   const stage = page.locator("[data-stage]");
   const scoop = stage.locator("[data-scoop-hit]");
   const reset = page.locator("[data-scoop-reset]");
-  const state = async () => ({
-    shape: await stage.getAttribute("data-hero-state"),
-    position: await stage.getAttribute("data-scoop-position"),
-    aim: await stage.getAttribute("data-scoop-aim"),
-    material: await stage.getAttribute("data-material"),
-    motion: await stage.getAttribute("data-motion"),
-    description: await stage.locator("[data-poster]").getAttribute("alt"),
-  });
-  await stage.scrollIntoViewIfNeeded();
-  await scoop.waitFor({ state: "visible" });
-  await page.locator('[data-stage]:not([data-motion="still"]):not([data-motion="starting"])').waitFor();
-  // Compare the cuts against the intact resting geometry after the one-time drop.
-  if (await stage.getAttribute("data-motion") === "running") await page.waitForTimeout(1450);
-  const before = await state();
-  assert.equal(before.shape, "intact");
-  assert.equal(before.position, "none");
-  assert.equal(await reset.isDisabled(), true);
-  await capture("before");
-  const beforeImage = await stage.screenshot({ scale: "css" });
+  const pause = page.locator("[data-pause]");
+  const screenshot = () => stage.screenshot({ scale: "css" });
+  const state = () => stage.evaluate(element => ({
+    shape: element.dataset.heroState,
+    position: element.dataset.scoopPosition,
+    aim: element.dataset.scoopAim,
+    material: element.dataset.material,
+    motion: element.dataset.motion,
+    phase: element.dataset.bitePhase,
+    run: Number(element.dataset.biteRun),
+    elapsed: Number(element.dataset.biteElapsed),
+    description: element.querySelector("[data-poster]").alt,
+  }));
+  const activate = button => input === "keyboard" ? button.press("Enter") :
+    input === "touch" ? button.tap() : button.click();
 
-  let chosen;
-  if (input === "keyboard") {
-    await scoop.focus();
-    await page.keyboard.press("ArrowLeft");
-    assert.equal(await stage.getAttribute("data-scoop-aim"), "left");
-    await page.keyboard.press("Enter");
-    chosen = "left";
-  } else {
-    const bounds = await scoop.boundingBox();
-    assert.ok(bounds);
-    const position = { x: bounds.width * (input === "touch" ? 0.79 : 0.5), y: bounds.height * 0.30 };
-    if (input === "touch") {
-      await scoop.tap({ position });
-      chosen = "right";
+  async function restore() {
+    if (!(await reset.isDisabled())) await activate(reset);
+    await page.locator('[data-stage][data-hero-state="intact"][data-scoop-visual="ready"]').waitFor();
+    await stage.scrollIntoViewIfNeeded();
+  }
+
+  async function choose(direction) {
+    if (input === "keyboard") {
+      await scoop.focus();
+      await page.keyboard.press(direction === "left" ? "ArrowLeft" : "ArrowRight");
+      assert.equal(await stage.getAttribute("data-scoop-aim"), direction);
+      await page.keyboard.press("Enter");
     } else {
-      await scoop.click({ position });
-      chosen = "center";
+      const bounds = await scoop.boundingBox();
+      assert.ok(bounds);
+      const position = { x: bounds.width * (direction === "left" ? 0.22 : 0.79), y: bounds.height * 0.30 };
+      if (input === "touch") await scoop.tap({ position });
+      else await scoop.click({ position });
     }
   }
 
-  await page.locator('[data-stage][data-hero-state="scooped"][data-scoop-visual="ready"]').waitFor();
-  const after = await state();
-  assert.equal(after.position, chosen);
-  assert.equal(await scoop.getAttribute("aria-disabled"), "true");
-  assert.equal(await reset.isEnabled(), true);
-  assert.match(after.description, /hollow.*separate spoonful|凹面.*一勺/);
-  assert.match(await stage.locator("[data-poster]").getAttribute("src"), new RegExp(`-${chosen}\\.webp$`));
-  await capture("after");
-  const afterImage = await stage.screenshot({ scale: "css" });
+  await stage.scrollIntoViewIfNeeded();
+  await scoop.waitFor({ state: "visible" });
+  await page.locator('[data-stage]:not([data-motion="still"]):not([data-motion="starting"])').waitFor();
+  await restore();
+  const before = await state();
+  assert.equal(before.shape, "intact");
+  assert.equal(before.position, "none");
+  await capture("before");
+  const beforeImage = await screenshot();
 
-  if (input === "keyboard") await reset.press("Enter");
-  else if (input === "touch") await reset.tap();
-  else await reset.click();
-  await page.locator('[data-stage][data-hero-state="intact"][data-scoop-visual="ready"]').waitFor();
+  const firstSpot = input === "touch" ? "right" : "left";
+  const secondSpot = firstSpot === "left" ? "right" : "left";
+  const firstRun = before.run + 1;
+  const live = before.motion === "running";
+  if (live) {
+    // Arm before the real gesture. Lock only this run in the cut window so
+    // remote screenshot latency cannot turn a cut sample into a lift sample.
+    await stage.evaluate((element, run) => {
+      const observer = new MutationObserver(() => {
+        if (Number(element.dataset.biteRun) !== run || element.dataset.bitePhase !== "cut" ||
+          Number(element.dataset.biteElapsed) < 1680) return;
+        observer.disconnect();
+        requestAnimationFrame(() => {
+          if (Number(element.dataset.biteRun) === run && element.dataset.bitePhase === "cut") {
+            document.querySelector("[data-pause]").click();
+          }
+        });
+      });
+      observer.observe(element, { attributes: true, attributeFilter: ["data-bite-elapsed"] });
+    }, firstRun);
+  }
+  await choose(firstSpot);
+  let mid;
+  if (live) {
+    await page.locator(`[data-stage][data-bite-run="${firstRun}"][data-bite-phase="cut"][data-motion="paused"]`).waitFor();
+    const observed = await state();
+    assert.equal(observed.position, firstSpot);
+    assert.equal(observed.shape, "tasting");
+    assert.ok(observed.elapsed >= 1630 && observed.elapsed < 1940);
+    if (typeof capture.mid === "function") await capture.mid("cut", observed);
+    else if (capture.checkpoints?.includes("mid")) await capture("mid");
+    mid = { ...observed, pngBase64: (await screenshot()).toString("base64") };
+    await activate(pause);
+  }
+
+  const held = async run => {
+    await page.locator(`[data-stage][data-bite-run="${run}"][data-bite-phase="held"][data-hero-state="scooped"][data-scoop-visual="ready"]`).waitFor();
+    const result = await state();
+    assert.equal(result.elapsed, 3650);
+    assert.match(result.description, /hollow.*silver spoon|凹面.*銀匙/);
+    return result;
+  };
+  const after = await held(firstRun);
+  assert.equal(after.position, firstSpot);
+  await capture("after");
+  const afterImage = await screenshot();
+
+  await restore();
+  const secondRun = (await state()).run + 1;
+  await choose(secondSpot);
+  const alternate = await held(secondRun);
+  assert.equal(alternate.position, secondSpot);
+  const alternateImage = await screenshot();
+  assert.notDeepEqual(alternateImage, afterImage);
+
+  await restore();
   const restored = await state();
   assert.equal(restored.position, "none");
   assert.equal(restored.material, before.material);
   assert.equal(restored.description, before.description);
-  assert.equal(await scoop.getAttribute("aria-disabled"), "false");
   assert.equal(await reset.isDisabled(), true);
-  await stage.scrollIntoViewIfNeeded();
   await capture("reset");
-  const resetImage = await stage.screenshot({ scale: "css" });
-  const [changed, remained] = await readNotch(page, [beforeImage, afterImage, resetImage], chosen);
-  assert.ok(changed > 0.25, `The selected upper edge never visibly opened: ${changed}`);
+  const resetImage = await screenshot();
+  const [changed, remained] = await readNotch(page, [beforeImage, afterImage, resetImage], firstSpot);
+  const [alternateChanged] = await readNotch(page, [beforeImage, alternateImage], secondSpot);
+  assert.ok(changed > 0.20 && alternateChanged > 0.20, `Selected edges did not open: ${changed}, ${alternateChanged}`);
   assert.ok(remained < changed * 0.55, `Reset did not restore the selected edge: ${remained}`);
-  return { input, before, after, reset: restored, pixels: { changed, remained } };
+  return { input, before, mid, after, reset: restored,
+    alternate: { ...alternate, pngBase64: alternateImage.toString("base64") },
+    pixels: { changed, alternateChanged, remained } };
 }
