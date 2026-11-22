@@ -111,3 +111,157 @@ export async function testFlow(page, lang) {
   assert.ok(bytes.length > 0);
   return { lang, observations, download: { filename, bytes: bytes.length, text } };
 }
+
+// Exercise a new impression from a known starting point regardless of how long
+// the page had been open. The legacy callback keeps its three checkpoint IDs;
+// testPrintStroke additionally captures the blade crossing the stationary sheet.
+async function probePrint(page, input, capture, includeStroke) {
+  assert.ok(["keyboard", "touch", "mouse"].includes(input));
+  const stage = page.locator("[data-stage]");
+  const repeat = page.locator("[data-reprint]");
+  await stage.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.querySelector("[data-stage]")?.dataset.motion === "running");
+  const pause = page.locator("[data-pause]");
+  const surface = stage.locator("canvas");
+  const originalSurface = await surface.elementHandle();
+  if (includeStroke) {
+    await page.evaluate(() => {
+      if (window.__m04Times || window.__visualProbe) return;
+      const submit = GPUQueue.prototype.submit;
+      window.__v009ReplaySubmissions = 0;
+      GPUQueue.prototype.submit = function (commands) {
+        const result = submit.call(this, commands);
+        window.__v009ReplaySubmissions++;
+        return result;
+      };
+      window.__v009RestoreReplayCounter = () => { GPUQueue.prototype.submit = submit; };
+    });
+  }
+  const getSubmissions = () => page.evaluate(() =>
+    window.__m04Times?.length ?? window.__visualProbe?.textures ?? window.__v009ReplaySubmissions);
+  // Arm before the real input so a remote screenshot can take longer than
+  // the ready interval. Use the site's pause control after allowing the new
+  // ink uniforms and blade position to reach the compositor.
+  async function armCheckpoint(run, step) {
+    await page.evaluate(({ run, step }) => {
+      const stage = document.querySelector("[data-stage]");
+      const button = document.querySelector("[data-pause]");
+      const deadline = performance.now() + 7_500;
+      function tick(stableFrames) {
+        const edge = Number(stage.dataset.blade);
+        const reached = stage.dataset.printRun === String(run) && stage.dataset.printStep === step &&
+          (step !== "passing" || (edge >= .47 && edge < .84)) && stage.dataset.motion === "running";
+        if (reached && stableFrames >= 2) {
+          button.click();
+          return;
+        }
+        if (performance.now() < deadline) requestAnimationFrame(() => tick(reached ? stableFrames + 1 : 0));
+      }
+      requestAnimationFrame(() => tick(0));
+    }, { run, step });
+  }
+  async function waitCheckpoint(run, step) {
+    await page.waitForFunction(({ run, step }) => {
+      const stage = document.querySelector("[data-stage]");
+      return stage.dataset.printRun === String(run) && stage.dataset.printStep === step && stage.dataset.motion === "paused";
+    }, { run, step }, { timeout: 8000 });
+  }
+  const resume = () => pause.evaluate(button => button.click());
+  const trigger = async () => {
+    const nextRun = Number(await stage.getAttribute("data-print-run")) + 1;
+    await armCheckpoint(nextRun, "ready");
+    if (input === "keyboard") {
+      await repeat.evaluate(button => button.focus({ preventScroll: true }));
+      await page.keyboard.press("Enter");
+    } else if (input === "touch") await repeat.tap();
+    else await repeat.click();
+    await waitCheckpoint(nextRun, "ready");
+    return nextRun;
+  };
+  async function snapshot(name) {
+    const sample = await stage.evaluate(scene => {
+      function localBox(element) {
+        const { left, top, width, height } = element.getBoundingClientRect();
+        const sceneBox = scene.getBoundingClientRect();
+        return [left - sceneBox.left, top - sceneBox.top, width, height];
+      }
+      return {
+        step: scene.dataset.printStep,
+        material: Number(scene.dataset.material),
+        run: Number(scene.dataset.printRun),
+        blade: Number(scene.dataset.blade),
+        toolVisible: ["ready", "printing"].includes(scene.dataset.heroState),
+        motion: scene.dataset.motion,
+        canvasCount: scene.querySelectorAll("canvas").length,
+        sheet: localBox(scene.querySelector(".press-sheet")),
+        registration: localBox(scene.querySelector(".registration")),
+      };
+    });
+    assert.equal(await stage.evaluate((scene, canvas) => scene.querySelector("canvas") === canvas, originalSurface), true);
+    await capture?.(name);
+    return sample;
+  }
+  const run = await trigger();
+  const before = await snapshot("before");
+  assert.equal(before.run, run);
+  assert.equal(before.step, "ready");
+  assert.equal(before.material, 0);
+  assert.equal(before.toolVisible, true);
+  assert.equal(before.motion, "paused");
+  assert.ok(before.blade < .21);
+  let mid;
+  if (includeStroke) await armCheckpoint(run, "passing");
+  await resume();
+  if (includeStroke) {
+    await waitCheckpoint(run, "passing");
+    mid = await snapshot("passing");
+    assert.equal(mid.run, run);
+    assert.equal(mid.step, "passing");
+    assert.equal(mid.toolVisible, true);
+    assert.equal(mid.motion, "paused");
+    assert.ok(mid.blade > before.blade);
+    const submissions = await getSubmissions();
+    assert.ok(Number.isInteger(submissions) && submissions > 0);
+    mid.submissions = submissions;
+    const pixels = await surface.screenshot();
+    await page.waitForTimeout(1000);
+    assert.ok(pixels.equals(await surface.screenshot()), "Mid-stroke surface changed during pause");
+    assert.equal(await getSubmissions(), submissions);
+    assert.equal(Number(await stage.getAttribute("data-blade")), mid.blade);
+    await resume();
+  }
+  await page.waitForFunction(expectedRun => {
+    const stage = document.querySelector("[data-stage]");
+    return stage.dataset.printRun === String(expectedRun) && stage.dataset.heroState === "printed";
+  }, run, { timeout: 8000 });
+  const after = await snapshot("after");
+  assert.equal(after.toolVisible, false);
+  assert.equal(after.motion, "running");
+  assert.equal(after.step, "complete");
+  if (mid) assert.ok(await getSubmissions() > mid.submissions);
+  await page.waitForTimeout(250);
+  assert.equal(await stage.getAttribute("data-hero-state"), "printed");
+
+  const replayRun = await trigger();
+  const reset = await snapshot("reset");
+  assert.equal(reset.run, replayRun);
+  assert.equal(reset.toolVisible, true);
+  assert.equal(reset.motion, "paused");
+  assert.ok(reset.blade < .21);
+  for (const sample of [mid, after, reset].filter(Boolean)) {
+    assert.equal(sample.canvasCount, 1);
+    assert.deepEqual(sample.sheet, before.sheet);
+    assert.deepEqual(sample.registration, before.registration);
+  }
+  await resume();
+  if (includeStroke) await page.evaluate(() => window.__v009RestoreReplayCounter?.());
+  return { before, ...(mid && { mid }), after, reset };
+}
+
+export function testHeroInteraction(page, input, capture) {
+  return probePrint(page, input, capture, false);
+}
+
+export function testPrintStroke(page, input, capture) {
+  return probePrint(page, input, capture, true);
+}

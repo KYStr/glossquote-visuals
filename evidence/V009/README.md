@@ -1,17 +1,15 @@
-# V009 疊印 AFTERIMAGE PRESS
+# V009 疊印 AFTERIMAGE PRESS · M06
 
-## 來源
+## 重現
 
-- 兩語頁面位於 `works/afterimage-press/` 和 `en/works/afterimage-press/`。限量海報與活動為虛構案例。
-- `press.wgsl` 在同一個 WebGPU 繪製中使用兩份印版遮罩與四區油墨覆蓋率。8 秒週期，從 34.6% 版寬的相對錯位起步，約 1.2 秒套準，留在對位區間至約 3.4 秒，再緩慢退開。墨色依靜態校樣的 sRGB 值合成，再轉線性 RGB 交給 WebGPU 呈現。切版順序是雙版、鈷藍、螢橘。
-- GPU backing width 的目標上限為 352 px。依裝置像素比反推初始化及 resize 的邏輯尺寸，首次呈現前與裝置重建時先讓套件讀取受限的 CSS 尺寸。畫布就緒後鋪滿海報區。
-- `bake-art.py` 使用 Pillow 與 NumPy，在 repo root 產生網頁靜態校樣、三款海報與 1200 × 800 封面。圖案及字排為本件製作。校樣沿用 GPU 的版面座標和油墨色階。
-- 繁中以本件 WOFF2 及 850 ms 上限的首次排版載入方式處理。字型來自 Google Fonts 固定版本 `869789e84da92782c144d83d69b64cec54905b5f` 的 Noto Sans TC 變動字型，涵蓋繁中 HTML、執行期字串及 ASCII。OFL 隨檔。拉丁海報字沿用 repo 內的 Barlow Condensed，規格標記使用 IBM Plex Mono。
-- `flow.mjs` 提供候選審查器的色版控制和商業流程介面。計價測試涵蓋 25、150、151、250 張、空白、超出範圍及小數，並核對回改後的 UTF-8 製作單。
+- 以正常動態開啟任一語版。首幀是一張固定在印台上的鈷藍校樣。刮刀向下推進，螢橘只留在刃口經過的地方，交疊處呈深紫。3.75 秒行程結束後，畫面停留在印件，僅裸紙反光有極小變化。
+- 「重印第二版」可重新演出。原本的雙版／鈷藍／螢橘三態、鍵盤與觸控、估價與下載保持相容。減少動態或無 GPU 時，可手動切換起點與完整印件，也可檢視單色版。
+- `shader.js` 與 `press.wgsl` 使用一個裝置像素對齊的不透明 WebGPU 畫布。單一繪製 pass 合成印床、固定定位線、2000 × 1000 無損墨版、木柄刮刀及接觸影。刃口與上墨前緣由同一個 uniform 控制。畫布在暫停、續播與中途重印間維持原節點。暫停取消後續提交，確認已送出的工作完成後才回報 paused。程式沒有在暫停時讀取畫布、重製快照或切換呈現層。
+- `bake-art.py` 使用 Pillow、NumPy 與 resvg-py 產生質材、靜態校樣、型錄與 1200 × 800 封面。無損墨版可直接用於靜態校樣。
 
-## 作者檢查
+## 複驗
 
-- `npm ci --ignore-scripts --no-audit --no-fund`、`npm run check`、`npm test`（23 項）及兩語 scoped Vite build 完成。Scoped build 使用專案 Vite 設定與 Shaders CSP 轉換，只覆寫 HTML inputs 和輸出位置。
-- 兩語輸出檔案與站內素材引用均可解析。計入 lazy shader、雙色備用校樣及三張案例的 gzip 合計約繁中 1.18 MiB、英文 1.10 MiB。封面尺寸與繁中字型碼位覆蓋已檢查。
-- 390 × 195 靜態版形模型以相同的位移曲線產生 0、0.4、0.8、1.5、3 秒校樣。距深紫基準色的 RGB 向量差小於 38 的像素覆蓋率從 4.1% 擴大至約 15–16%。
-- 瀏覽器操作、實際 GPU 影格與效能、裝置遺失和版面、無 GPU 及 no-JS 情境的畫面驗收交由主責在隔離 Windows 環境執行。作者端未啟動瀏覽器。
+- `setMaterial(page, state, input)`、`testFlow(page, lang)` 與舊介面相容。原始 GPU 計數及逐像素比較由共享驗收執行。
+- `testPrintStroke(page, input, capture)` 維持 before／passing／after／reset 檢查點。中段會暫停並間隔一秒兩次擷取同一畫布，比較 PNG bytes、刮刀位置及可用的 GPU 計數，再續播至完成。每一站檢查畫布節點、紙張與定位框座標。
+- 以 wgpu 頭端 CLI 在 RTX 3060／Vulkan 上編譯並渲染實際 WGSL。966 × 484 的印前、印中、印後及兩個單版均不透明，目視檢視刃口、交色邊和印床。中段停止寫入的離屏紋理兩次讀取全等。Node 驗證暫停停送、尾幀完成及續播維持行程。這不是 Windows 瀏覽器合成器或 PERF-1 實測。
+- 既有 `scripts/check-source.mjs` 只列出摺徑可使用原生 WebGPU，其餘作品要求呼叫 `initializeStandalone`，因此新 V009 會觸發該來源結構檢查。整合時需由主責將 V009 明列為原生例外並核對直接 WebGPU、opaque canvas、無 fetch、無 telemetry。共享腳本與瀏覽器驗收由主責維護。

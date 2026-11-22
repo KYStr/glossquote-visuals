@@ -35,6 +35,14 @@ for (const [slug, entry] of Object.entries(catalog)) {
     assert.match(program, /@vertex fn panelVertex/);
     assert.match(program, /@fragment fn waterFragment/);
     assert.doesNotMatch(mesh, /\b(?:fetch|WebSocket|XMLHttpRequest|sendBeacon|createShader)\b/);
+  } else if (slug === "afterimage-press") {
+    const press = read("src/works/afterimage-press/shader.js").toString();
+    const program = read("src/works/afterimage-press/press.wgsl").toString();
+    assert.match(press, /navigator\.gpu\.requestAdapter\(/);
+    assert.match(press, /copyExternalImageToTexture\(/);
+    assert.match(program, /@fragment\s+fn printFrame/);
+    assert.match(program, /textureSampleLevel\(squeegee,/);
+    assert.doesNotMatch(press, /\b(?:fetch|WebSocket|XMLHttpRequest|sendBeacon|createShader)\b/);
   } else {
     const shader = read(`src/works/${slug}/shader.js`).toString();
     assert.match(shader, /initializeStandalone\(/);

@@ -1,24 +1,24 @@
-import { defineShader, registerShader, wgsl } from "shaders/std";
+import { defineShader, registerShader, schema } from "shaders/std";
 import { initializeStandalone } from "../../shared/standalone.js";
-import paint from "./jelly.wgsl?raw";
+import { paintCachedPose } from "./pose-cache.js";
 
 const id = "jelly-surface";
-const settledIntro = 1.23;
-const travelMs = 480;
-const maxBackingWidth = 288;
+const duration = 3650;
+const maxBackingWidth = 576;
+const targetBackingRatio = 1.15;
 const surface = registerShader(defineShader({
   name: "JellyHourMold",
   animatedTime: { speed: "speed" },
   props: {
     speed: { default: 1 },
     flavor: { default: 0 },
-    introOffset: { default: 0 },
+    biteTime: { default: 0 },
     scooped: { default: 0 },
     cutX: { default: 0 },
     cutZ: { default: 0 },
-    scoopProgress: { default: 1 },
   },
-  paint: wgsl(paint),
+  extraFields: { glintDrift: { schema: schema.f32, initial: 0 } },
+  gpu: { fragment: paintCachedPose },
 }));
 
 function backingRatio() {
@@ -28,104 +28,104 @@ function backingRatio() {
   return Math.min(devicePixelRatio || 1, mobile ? 1.5 : 2);
 }
 
-function renderSize(width, height, ratio) {
-  const scale = Math.min(1, maxBackingWidth / width) / ratio;
-  return {
-    width: Math.max(1, Math.floor(width * scale)),
-    height: Math.max(1, Math.floor(height * scale)),
-  };
+function renderSize(width, ratio) {
+  const logicalWidth = Math.max(1, Math.floor(Math.min(width * targetBackingRatio, maxBackingWidth) / ratio));
+  // The photographed stage keeps a 3:2 aspect ratio at every breakpoint.
+  return { width: logicalWidth, height: Math.max(1, Math.round(logicalWidth * 2 / 3)) };
+}
+
+function phaseAt(elapsed) {
+  if (elapsed < 1230) return "approach";
+  if (elapsed < 1630) return "press";
+  if (elapsed < 1940) return "cut";
+  if (elapsed < duration) return "lift";
+  return "held";
 }
 
 export async function initializeJelly(canvas, options) {
-  const { settings, skipOpening, onScoopSettled } = options;
-  const introOffset = skipOpening ? settledIntro : 0;
-  let currentCut = settings.cut;
-  let elapsed = travelMs;
+  const { onProgress } = options;
+  let scene = options.settings;
+  let elapsed = scene.cut && scene.animate ? 0 : duration;
   let frame;
-  let lastFrame;
+  let previous;
   let playing = true;
+  let drawable = false;
   let ratio = backingRatio();
-  let { width, height } = options;
-  const initialSize = renderSize(width, height, ratio);
-  // Core reads the actual rectangle during each device initialization.
-  // Expand it for display only after the renderer has sized its backing store.
+  let { width } = options;
+  let raw;
   delete canvas.dataset.displaySize;
 
-  let ready = false;
-  let skipRecoveredOpening = false;
-  let raw;
-  raw = await initializeStandalone(canvas, [
-    { id, type: surface.name, props: {
-      flavor: settings.flavor, introOffset,
-      scooped: Number(Boolean(currentCut)), cutX: currentCut?.x ?? 0, cutZ: currentCut?.z ?? 0,
-    } },
-  ], {
+  function props() {
+    return {
+      flavor: scene.flavor,
+      scooped: Number(Boolean(scene.cut)),
+      cutX: scene.cut?.x ?? 0,
+      cutZ: scene.cut?.z ?? 0,
+      biteTime: scene.cut ? elapsed / 1000 : 0,
+    };
+  }
+
+  function stop() {
+    if (frame !== undefined) cancelAnimationFrame(frame);
+    frame = undefined;
+    previous = undefined;
+  }
+
+  function advance(now) {
+    frame = undefined;
+    if (previous !== undefined) elapsed = Math.min(duration, elapsed + now - previous);
+    previous = now;
+    raw.update(id, { biteTime: elapsed / 1000 });
+    onProgress(scene.run, phaseAt(elapsed), elapsed);
+    schedule();
+  }
+
+  function schedule() {
+    if (raw && drawable && playing && scene.cut && elapsed < duration && frame === undefined) {
+      frame = requestAnimationFrame(advance);
+    }
+  }
+
+  raw = await initializeStandalone(canvas, [{ id, type: surface.name, props: props() }], {
     ...options,
-    ...initialSize,
+    ...renderSize(width, ratio),
     onReady() {
-      if (ready) {
-        skipRecoveredOpening = true;
-        raw?.update(id, { introOffset: settledIntro });
-        if (playing && elapsed < travelMs && frame === undefined) frame = requestAnimationFrame(tick);
-      }
+      drawable = true;
       canvas.dataset.displaySize = "";
-      ready = true;
+      if (scene.cut && elapsed >= duration) onProgress(scene.run, "held", elapsed);
       options.onReady();
+      schedule();
     },
     onError(reason) {
+      drawable = false;
       stop();
       delete canvas.dataset.displaySize;
       ratio = backingRatio();
-      const size = renderSize(width, height, ratio);
+      const size = renderSize(width, ratio);
       canvas.style.width = `${size.width}px`;
       canvas.style.height = `${size.height}px`;
       options.onError(reason);
     },
   });
   if (!raw) return null;
-
-  function stop() {
-    if (frame !== undefined) cancelAnimationFrame(frame);
-    frame = undefined;
-    lastFrame = undefined;
-  }
-
-  function tick(now) {
-    frame = undefined;
-    if (lastFrame !== undefined) elapsed = Math.min(travelMs, elapsed + now - lastFrame);
-    lastFrame = now;
-    raw.update(id, { scoopProgress: elapsed / travelMs });
-    if (elapsed < travelMs) frame = requestAnimationFrame(tick);
-    else onScoopSettled(currentCut);
-  }
+  if (!options.signal.aborted) schedule();
 
   return {
     getFailureReason: raw.getFailureReason,
-    resize(nextWidth, nextHeight) {
+    resize(nextWidth) {
       width = nextWidth;
-      height = nextHeight;
-      const size = renderSize(width, height, ratio);
+      const size = renderSize(width, ratio);
       raw.resize(size.width, size.height);
     },
     select(next) {
-      const moved = currentCut !== next.cut;
-      currentCut = next.cut;
-      if (moved) {
+      if (scene.run !== next.run) {
         stop();
-        elapsed = currentCut && next.animate ? 0 : travelMs;
+        elapsed = next.cut && next.animate ? 0 : duration;
       }
-      raw.update(id, {
-        flavor: next.flavor,
-        introOffset: next.skipOpening || skipRecoveredOpening ? settledIntro : introOffset,
-        scooped: Number(Boolean(currentCut)),
-        cutX: currentCut?.x ?? 0,
-        cutZ: currentCut?.z ?? 0,
-        scoopProgress: elapsed / travelMs,
-      });
-      if (moved && currentCut) {
-        if (elapsed < travelMs && playing) frame = requestAnimationFrame(tick);
-        else if (elapsed === travelMs) onScoopSettled(currentCut);
-      }
+      scene = next;
+      raw.update(id, props());
+      if (scene.cut) onProgress(scene.run, phaseAt(elapsed), elapsed);
+      schedule();
     },
     pause() {
       playing = false;
@@ -135,7 +135,7 @@ export async function initializeJelly(canvas, options) {
     resume() {
       playing = true;
       raw.resume();
-      if (elapsed < travelMs && frame === undefined) frame = requestAnimationFrame(tick);
+      schedule();
     },
     destroy() {
       stop();

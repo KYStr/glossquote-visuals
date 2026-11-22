@@ -1,18 +1,24 @@
 import { createMotion, observeMotion } from "../../shared/motion.js";
+import { bladeEdge, initialEdge, liftStart, pullStart, sheetHeight, strokeDuration } from "./stroke.js";
 
 const find = selector => document.querySelector(selector);
 const lang = document.documentElement.lang;
 const en = lang === "en";
 const copy = en ? {
   still: "Showing the still print proof.",
-  starting: "Preparing ink registration.",
+  starting: "Preparing the press bed.",
+  reprint: "Reprint second ink",
+  showStart: "View the start of printing",
+  showPrinted: "View finished print",
+  pulling: "The blade is depositing the second ink.",
+  complete: "The second ink is printed.",
+  combined: "The fluorescent orange horn overprints the cobalt speaker in deep violet.",
   reduced: "Reduced motion is on. Showing the still print proof.",
   unavailable: "Showing the still print proof. Live registration is unavailable.",
-  running: "The ink plates are in motion.",
-  paused: "Motion is paused. Resume to apply a new plate to the live proof.",
+  running: "Live screen print.",
+  paused: "Printing motion is paused.",
   pause: "Pause motion",
   resume: "Resume motion",
-  cobalt: "The cobalt speaker cabinet on warm paper.",
   orange: "The fluorescent-orange horn on warm paper.",
   error: "Enter a whole number from 25 to 250 copies.",
   copies: count => `${count} copies`,
@@ -22,14 +28,19 @@ const copy = en ? {
   printed: "Your print sheet is ready to download.",
 } : {
   still: "目前顯示靜態校樣。",
-  starting: "正在準備油墨套準。",
+  starting: "正在準備印台。",
+  reprint: "重印第二版",
+  showStart: "看印刷起點",
+  showPrinted: "看完整印件",
+  pulling: "刮刀正在印上第二層油墨。",
+  complete: "第二道墨已印好。",
+  combined: "螢橘號角印上鈷藍喇叭，交疊處留下深紫。",
   reduced: "已依系統偏好減少動態，目前顯示靜態校樣。",
   unavailable: "即時套印無法使用，目前顯示靜態校樣。",
-  running: "印版正在移動。",
-  paused: "已暫停動態。繼續播放後，即時校樣會套用新選的色版。",
+  running: "即時網版印刷。",
+  paused: "已暫停刮墨動態。",
   pause: "暫停動態",
   resume: "繼續動態",
-  cobalt: "暖白紙上的鈷藍喇叭音箱。",
   orange: "暖白紙上的螢橘號角。",
   error: "請輸入 25 至 250 之間的整數。",
   copies: count => `${count} 張`,
@@ -117,88 +128,185 @@ find("[data-receipt]").hidden = false;
 
 const stage = find("[data-stage]");
 const canvas = stage.querySelector("canvas");
+const bed = stage.querySelector(".registration");
 const pause = find("[data-pause]");
+const repeat = find("[data-reprint]");
 const status = find("[data-motion-status]");
 const controls = [...document.querySelectorAll("[name=press-plate]")];
+const preference = matchMedia("(prefers-reduced-motion: reduce)");
 const supportsObservers = "IntersectionObserver" in window && "ResizeObserver" in window;
 const supported = Boolean(navigator.gpu) && supportsObservers;
-let still = stage.querySelector("img");
-const proofs = [still];
-let settings = { plate: 0 };
+let still = stage.querySelector("[data-proof]");
+const proofs = [null, still, null];
+let plate = 0;
+let elapsed = 0;
+let previousFrame = null;
+let phaseVersion = 0;
+let renderer;
+let phase = "still";
 let rendered = false;
 let paused = false;
-let shader;
+let staticStart = false;
+let printRun = 0;
 
-function paintStill({ plate }) {
-  if (proofs[plate] !== still && proofs[plate]) {
-    still.replaceWith(proofs[plate]);
-    still = proofs[plate];
+function isStatic() {
+  return !supported || preference.matches || phase === "unavailable";
+}
+
+function showProof(index) {
+  const next = proofs[index];
+  if (next && next !== still) {
+    still.replaceWith(next);
+    still = next;
   }
 }
-function hideLive() {
-  rendered = false;
-  stage.removeAttribute("data-rendered");
-  paintStill(settings);
+
+function updateStage() {
+  const staticMode = isStatic();
+  const progress = staticMode ? Number(!staticStart) : elapsed / strokeDuration;
+  const heroState = plate === 1 ? "cobalt" : plate === 2 ? "orange" :
+    progress === 1 ? "printed" : progress === 0 ? "ready" : "printing";
+  const step = progress < pullStart ? "ready" : progress < liftStart ? "passing" : progress < 1 ? "lifting" : "complete";
+  const stepChanged = stage.dataset.printStep !== step || stage.dataset.heroState !== heroState;
+  if (stepChanged) {
+    stage.dataset.heroState = heroState;
+    stage.dataset.printStep = step;
+    status.textContent = [copy[phase], heroState === "printed" ? copy.complete :
+      step === "passing" ? copy.pulling : ""].filter(Boolean).join(" ");
+  }
+  stage.toggleAttribute("data-static-start", staticMode && staticStart);
+  if (!rendered) showProof(plate || (progress < 1 ? 1 : 0));
+  // In normal motion the blade and ink frontier share one stage coordinate.
+  // During WebGPU initialization and recovery, keep the static first proof.
+  const edge = bladeEdge(rendered ? progress : 0);
+  stage.dataset.blade = String(edge);
 }
 
 async function loadStill(file, alt, index) {
   const image = new Image(1200, 600);
   image.alt = alt;
   image.dataset.proof = String(index);
-  image.src = new URL(file, proofs[0].src).href;
+  image.src = new URL(file, proofs[1].src).href;
   await image.decode();
   proofs[index] = image;
 }
 
+function printSettings() {
+  const progress = elapsed / strokeDuration;
+  return { plate, edge: bladeEdge(progress), tool: plate === 0 && progress < 1 };
+}
+
+function advanceStroke(time) {
+  if (phase !== "running" || plate !== 0 || elapsed >= strokeDuration) return undefined;
+  const increment = previousFrame === null ? 0 : Math.min(time - previousFrame, 80);
+  previousFrame = time;
+  elapsed = Math.min(strokeDuration, elapsed + increment);
+  updateStage();
+  return printSettings();
+}
+
+function publishPhase(next) {
+  const revision = ++phaseVersion;
+  if (next !== "paused" || !renderer || !rendered) {
+    stage.dataset.motion = next;
+    return;
+  }
+  // The renderer has stopped requesting textures. Wait for any work already
+  // submitted to finish before the UI confirms the retained frame.
+  void renderer.settled().then(() => {
+    if (revision === phaseVersion) stage.dataset.motion = "paused";
+  });
+}
+
 const motion = createMotion({
   supported,
-  initialSettings: settings,
+  initialSettings: printSettings(),
   async initialize(options) {
-    shader = await import("./shader.js");
+    const { initializePress } = await import("./shader.js");
     if (options.signal.aborted) return null;
-    return shader.initializePress(canvas, {
+    renderer = await initializePress(canvas, {
       ...options,
+      assetBase: bed.src,
+      onFrame: advanceStroke,
       onError() {
-        if (!options.signal.aborted) hideLive();
+        if (!options.signal.aborted) {
+          rendered = false;
+          stage.removeAttribute("data-rendered");
+        }
         options.onError();
+        if (!options.signal.aborted) updateStage();
       },
     });
+    return renderer;
   },
-  applySettings: (renderer, next) => shader.updatePress(renderer, next),
-  renderState(phase) {
-    stage.dataset.motion = phase;
+  applySettings: (renderer, next) => renderer.update(next),
+  renderState(next) {
+    phase = next;
+    previousFrame = null;
     if (phase === "running") {
       rendered = true;
       stage.setAttribute("data-rendered", "");
-    } else if (["starting", "reduced", "unavailable"].includes(phase)) {
-      hideLive();
+    } else {
+      if (["starting", "reduced", "unavailable"].includes(phase)) {
+        rendered = false;
+        stage.removeAttribute("data-rendered");
+      }
     }
-    pause.disabled = phase === "reduced" || phase === "unavailable";
+    pause.hidden = isStatic();
+    repeat.textContent = isStatic() ? (staticStart ? copy.showPrinted : copy.showStart) : copy.reprint;
     status.textContent = copy[phase];
+    updateStage();
+    publishPhase(next);
   },
 });
 
-for (const control of controls) {
-  control.addEventListener("change", () => {
-    settings = { plate: Number(control.value) };
-    stage.dataset.material = control.value;
-    if (!rendered) paintStill(settings);
-    motion.setSettings(settings);
-  });
-}
-pause.addEventListener("click", () => {
-  paused = !paused;
+function setPause(next) {
+  paused = next;
   pause.textContent = paused ? copy.resume : copy.pause;
   pause.setAttribute("aria-pressed", String(paused));
   motion.update({ paused });
+}
+
+for (const control of controls) {
+  control.addEventListener("change", () => {
+    previousFrame = null;
+    plate = Number(control.value);
+    stage.dataset.material = control.value;
+    elapsed = strokeDuration;
+    staticStart = false;
+    motion.setSettings(printSettings());
+    if (paused && !isStatic()) setPause(false);
+    repeat.textContent = isStatic() ? copy.showStart : copy.reprint;
+    updateStage();
+  });
+}
+pause.addEventListener("click", () => setPause(!paused));
+repeat.addEventListener("click", () => {
+  previousFrame = null;
+  controls[0].checked = true;
+  plate = 0;
+  stage.dataset.material = "0";
+  stage.dataset.printRun = String(++printRun);
+  if (isStatic()) {
+    staticStart = !staticStart;
+    repeat.textContent = staticStart ? copy.showPrinted : copy.showStart;
+    // A later change back to motion keeps the selected still until reprint.
+    elapsed = strokeDuration;
+  } else {
+    elapsed = 0;
+    stage.scrollIntoView({ block: "nearest", behavior: "instant" });
+  }
+  motion.setSettings(printSettings());
+  if (paused && !isStatic()) setPause(false);
+  updateStage();
 });
-pause.hidden = !supported;
 void Promise.allSettled([
-  loadStill("plate-cobalt.webp", copy.cobalt, 1),
+  loadStill("plate-both.webp", copy.combined, 0),
   loadStill("plate-orange.webp", copy.orange, 2),
 ]).then(results => {
-  for (const [index, result] of results.entries()) controls[index + 1].disabled = result.status === "rejected";
+  controls[2].disabled = results[1].status === "rejected" && !rendered;
+  updateStage();
   find("[data-console]").hidden = false;
 });
-if (supportsObservers) observeMotion(stage, motion, matchMedia("(prefers-reduced-motion: reduce)"));
+if (supportsObservers) observeMotion(stage, motion, preference);
 else motion.update({ active: true });

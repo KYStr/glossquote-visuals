@@ -11,17 +11,26 @@ SOURCE = Path(__file__).resolve().parent
 MEDIA = SOURCE.parents[2] / "public/media/sorbet-hour"
 PAINT = (SOURCE / "jelly.wgsl").read_text(encoding="utf-8")
 POSITIONS = loads((SOURCE / "scoop-positions.json").read_text(encoding="utf-8"))
-WIDTH, HEIGHT = 1200, 800
-STRIDE = (WIDTH * 4 + 255) // 256 * 256
 FORMAT = "rgba8unorm-srgb"
 
 parser = ArgumentParser(description=__doc__)
 parser.add_argument("--samples", type=Path, help="Write original frames for the drop, the scoop and the reset")
 parser.add_argument("--software", action="store_true", help="Use a native fallback GPU adapter")
 parser.add_argument("--assets", action="store_true", help="Write the shipping WebP files")
+parser.add_argument("--backing", type=int, nargs=2, metavar=("WIDTH", "HEIGHT"), help="Render samples at the actual GPU backing size")
+parser.add_argument("--display", type=int, nargs=2, metavar=("WIDTH", "HEIGHT"), help="Save additional samples resampled to the CSS stage size")
 args = parser.parse_args()
 if not args.assets and not args.samples:
     parser.error("Specify --assets or --samples")
+if args.assets and args.backing:
+    parser.error("Shipping images always use 1200×800")
+if args.display and not args.samples:
+    parser.error("--display requires --samples")
+if any(d <= 0 for d in (args.backing or []) + (args.display or [])):
+    parser.error("Dimensions must be positive")
+WIDTH, HEIGHT = args.backing or (1200, 800)
+STRIDE = (WIDTH * 4 + 255) // 256 * 256
+
 adapter = wgpu.gpu.request_adapter_sync(force_fallback_adapter=args.software)
 device = adapter.request_device_sync()
 shader = device.create_shader_module(code=f"""
@@ -31,13 +40,13 @@ shader = device.create_shader_module(code=f"""
     return vec4f(box[i], 0, 1);
 }}
 @fragment fn fragment(@builtin(position) at: vec4f) -> @location(0) vec4f {{
-    let uv = at.xy / params[0].xy;
+    let viewport = params[0].xy;
+    let uv = at.xy / viewport;
     let flavor = params[0].z;
     let time = params[0].w;
-    let introOffset = params[1].x;
+    let biteTime = params[1].x;
     let scooped = params[1].y;
     let cutX = params[1].z;
-    let scoopProgress = params[1].w;
     let cutZ = params[2].x;
 {PAINT}
 }}
@@ -54,9 +63,9 @@ bind = device.create_bind_group(
 texture = device.create_texture(size=(WIDTH, HEIGHT, 1), format=FORMAT,
     usage=wgpu.TextureUsage.RENDER_ATTACHMENT | wgpu.TextureUsage.COPY_SRC)
 
-def render(flavor, time=0, *, opening=False, cut=None, progress=1):
-    device.queue.write_buffer(params, 0, pack("<12f", WIDTH, HEIGHT, flavor, time,
-        0 if opening else 1.23, cut is not None, cut["x"] if cut else 0.0, progress,
+def render(flavor, *, cut=None, bite=0.0):
+    device.queue.write_buffer(params, 0, pack("<12f", WIDTH, HEIGHT, flavor, 0,
+        bite, cut is not None, cut["x"] if cut else 0.0, 0.0,
         cut["z"] if cut else 0.0, 0.0, 0.0, 0.0))
     encoder = device.create_command_encoder()
     drawing = encoder.begin_render_pass(color_attachments=[{
@@ -77,14 +86,18 @@ if args.assets:
     for flavor, name in enumerate(("cover", "berry", "guava")):
         render(flavor).save(MEDIA / f"{name}.webp", quality=89, method=6)
         for position in POSITIONS:
-            render(flavor, cut=position).save(MEDIA / f"{name}-{position['name']}.webp", quality=86, method=6)
+            render(flavor, cut=position, bite=3.65).save(MEDIA / f"{name}-{position['name']}.webp", quality=86, method=6)
+
+def save_sample(image, name):
+    image.save(args.samples / f"{name}.png")
+    if args.display:
+        image.resize(args.display, Image.Resampling.BILINEAR).save(args.samples / f"{name}-display.png")
 
 if args.samples:
     args.samples.mkdir(parents=True, exist_ok=True)
-    for time in (0, 0.17, 0.34, 0.57, 0.83, 1.21, 3):
-        render(0, time, opening=True).save(args.samples / f"drop-{time:04.2f}.png")
+    for time in (0, 0.48, 0.90, 1.26, 1.55, 1.78, 1.92, 2.09, 2.35, 2.72, 3.04, 3.65):
+        save_sample(render(0, cut=POSITIONS[1], bite=time), f"bite-{time:04.2f}")
     for position in POSITIONS:
-        render(0, cut=position).save(args.samples / f"scoop-{position['name']}.png")
-    render(0, cut=POSITIONS[1], progress=0.55).save(args.samples / "scoop-in-flight.png")
-    render(0).save(args.samples / "reset.png")
+        save_sample(render(0, cut=position, bite=3.65), f"scoop-{position['name']}")
+    save_sample(render(0), "reset")
 print(dict(adapter.info))

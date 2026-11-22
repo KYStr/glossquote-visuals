@@ -1,0 +1,715 @@
+{
+  "work": "V010",
+  "commit": "5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44",
+  "author": "01a1fa4c-f093-7943-9078-154c5d03d14f",
+  "reviewer": "GlossQuote Visuals 工作室主責（獨立於三個製作對話）",
+  "runId": 44981579584,
+  "jobId": 137083958832,
+  "gates": {
+    "visual": "PASS",
+    "interaction": "PASS",
+    "shader": "PASS",
+    "lifecycle": "PASS",
+    "accessibility": "PASS",
+    "performance": "PASS",
+    "privacy": "PASS",
+    "seo": "PASS",
+    "reproducibility": "PASS"
+  },
+  "provenance": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/CI.json",
+  "ruleReview": {
+    "version": "commercial-rules-v1",
+    "environment": "GitHub-hosted windows-2025, Chromium 158.0.8127.18, measured GPU vendor=google architecture=swiftshader isFallbackAdapter=True",
+    "rules": [
+      {
+        "id": "ART-1",
+        "status": "PASS",
+        "reason": "紙白標題「把水路摺進旅程。」與配置按鈕上方引導閱讀，藍水面襯出亮橘的攜行包、提把和黑色束帶；手機首屏可見整包及狀態控制。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/first-fold.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/first-fold.png"
+        ]
+      },
+      {
+        "id": "ART-2",
+        "status": "PASS",
+        "reason": "可從同組板件追到鬆帶、展長、翻起側舷與座椅，最後是浮在水面且可坐進去的艇。重播後先回到包；使用者可檢視半展或成船。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-0.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-1.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-10.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-11.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-2.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-3.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-4.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-5.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-6.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-7.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-8.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/opening-9.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-0.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-1.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-10.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-11.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-2.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-3.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-4.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-5.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-6.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-7.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-8.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/opening-9.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-0-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-1-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-2-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-3-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-4-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-5-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-0.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-1.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-10.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-10.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-11.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-11.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-2.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-3.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-3.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-4.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-4.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-5.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-5.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-6.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-6.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-7.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-7.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-8.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-8.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-9.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/opening-9.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-0-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-1-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-2-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-3-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-4-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-5-composite.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-0.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-1.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-10.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-10.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-11.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-11.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-2.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-3.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-3.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-4.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-4.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-5.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-5.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-6.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-6.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-7.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-7.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-8.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-8.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-9.jpg",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/opening-9.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "ART-3",
+        "status": "PASS",
+        "reason": "技術型錄的直角字排、硬折面、深藍水面與橘色艇殼形成獨立品牌；艇型比較與攜行尺寸圖都能對上同一船體與提把。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/first-fold.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-1440.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/first-fold.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/compare-desktop.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/compare-mobile.png"
+        ]
+      },
+      {
+        "id": "GPU-1",
+        "status": "PASS",
+        "reason": "Chromium 158.0.8127.18 的四次隔離測試均建立 WebGPU 裝置與單一可見畫布。實測 adapter 為 Google SwiftShader。逐幀讀回材質有非空像素與不同雜湊，並與瀏覽器合成原圖對照。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-0-texture.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-0-texture.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "GPU-2",
+        "status": "PASS",
+        "reason": "鍵盤及觸控能在攜行、半展及成船三態切換，停止在展開中段後畫面保留，續播後能完成。重播回到帶提把的攜行包。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-3.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-after-1s.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-immediate.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-resumed.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-3.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-after-1s.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-immediate.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-resumed.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-1",
+        "status": "PASS",
+        "reason": "暖機兩秒後量十秒的畫布提交；以下為中位數／p95／最長毫秒。en desktop 19.8/32.2/46.8；en mobile 24.1/28.8/31.8；zh-Hant desktop 19.8/31.6/52.7；zh-Hant mobile 23.7/27.6/29.5。四組分別符合 34／50／150 ms 門檻。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-2",
+        "status": "PASS",
+        "reason": "建置後中英每頁含延遲載入資源皆在 2 MiB 內，分別為 354197 與 244202 gzip bytes。離開首屏及切至背景會停止送幀，返回後只有一個活動畫布。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/build.txt",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-1",
+        "status": "PASS",
+        "reason": "逐張檢視兩語在 320、390、768、1440 CSS px 與桌面真實 200% 放大時的排版。標題、版頭、商品選項與結果欄完整，測得十份版型均無橫向溢出。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-1440.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-768.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-10.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-6.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-7.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-8.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200-viewport-9.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-zoom-200.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/layout-320.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/layout-390.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-1440.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-768.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-10.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-6.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-7.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-8.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200-viewport-9.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-zoom-200.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/layout-320.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/layout-390.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-2",
+        "status": "PASS",
+        "reason": "核對可見焦點、表單與恢復狀態。十份版型共量 110 個主要操作熱區，均至少 44 × 44 CSS px。一般文字的純色對比最低為 6.69:1，合成文字另外以原圖取樣。觸控可完成選擇、重播及下載。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/flow-complete.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/flow-complete.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "BIZ-1",
+        "status": "PASS",
+        "reason": "Solo 330 與 Tandem 370 的艇型、攜行和展開尺寸、座位、重量、載重與適用水域在兩語都有列出；估價和配置單有概念產品標示。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/layout-1440.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/layout-1440.png"
+        ]
+      },
+      {
+        "id": "BIZ-2",
+        "status": "PASS",
+        "reason": "測試空載重、110 kg 臨界值、單艇雙人、超載、水域與裝備數量限制；回改雙人 205 kg，匯出 Tandem 370、裝備數及 NT$43,210 清單。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/flow-complete.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/flow-complete.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/flow-complete.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/flow-complete.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-1",
+        "status": "PASS",
+        "reason": "無 JS、WebGPU 失敗及減少動態皆有完整產品造型、首屏配置入口及兩艇型資料。減少動態預設靜止，無 GPU 仍可調整載重和輸出艇型配置。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/gpu-init-fail.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/no-js.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/reduced.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/gpu-init-fail.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/no-js.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/reduced.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-2",
+        "status": "PASS",
+        "reason": "裝置遺失後恢復至可用狀態。快速暫停、續播、實際離頁再回返均能再取得畫布；商業內容一直可讀，沒有遮住頁面的空白層。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/after-device-loss.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/after-device-loss.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "SHIP-1",
+        "status": "PASS",
+        "reason": "候選四組隔離建置皆以 lockfile 安裝，check、單元測試與 build 通過。實際請求同源，無追蹤或 storage 副作用。兩語可互返，canonical、分享圖、畫廊連結與正式路徑相符。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/build.txt",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      }
+    ]
+  },
+  "craftReview": {
+    "version": "hero-craft-v1",
+    "status": "PASS",
+    "commit": "5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44",
+    "reviewer": "GlossQuote Visuals 工作室主責（獨立於三個製作對話）",
+    "criteria": [
+      {
+        "id": "silhouette",
+        "status": "PASS",
+        "reason": "160 px 縮圖可分辨包頂提把、中央折板及完成後開放的座艙。即使去除標題，起點的短方包與終點兩個船尖輪廓都清楚。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-01-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-02-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-03-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-04-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-05-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-06-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-07-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-08-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-09-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-01-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-02-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-03-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-04-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-05-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-06-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-07-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-08-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-09-160.png"
+        ]
+      },
+      {
+        "id": "finish",
+        "status": "PASS",
+        "reason": "在原尺寸檢查橙色上舷的長斜邊、板與板相接的細折脊，以及深色座艙邊界。水面色帶和艇身分離，邊緣連續。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-01-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-02-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-03-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-04-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-05-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-06-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-07-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-08-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-09-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-01-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-02-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-03-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-04-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-05-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-06-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-07-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-08-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-09-native.png"
+        ]
+      },
+      {
+        "id": "material",
+        "status": "PASS",
+        "reason": "相鄰硬板分別受光，折邊有明確轉折，深色座艙受側舷遮擋。下方水紋的尺度與船殼折面不同。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-01-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-02-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-03-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-04-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-05-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-06-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-07-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-08-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-09-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-01-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-02-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-03-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-04-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-05-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-06-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-07-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-08-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-09-native.png"
+        ]
+      },
+      {
+        "id": "narrative",
+        "status": "PASS",
+        "reason": "初訪先見綁帶攜行包，兩端沿折線接續展開，側舷向上，座艙落成。最後留在可以乘坐的完整艇型。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-01-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-02-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-03-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-04-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-05-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-06-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-07-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-08-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-09-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-opening.webm",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-01-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-02-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-03-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-04-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-05-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-06-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-07-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-08-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-09-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-opening.webm"
+        ]
+      },
+      {
+        "id": "continuity",
+        "status": "PASS",
+        "reason": "能沿同一段橙色折脊從束起的包體、半展的接板追到上舷；座位位於兩側板之間，展開過程未切換成另一張艇圖。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/craft-opening.webm",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/craft-opening.webm",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-opening.webm",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/replay-reset.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-opening.webm",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-after.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-before.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/replay-reset.png"
+        ]
+      },
+      {
+        "id": "fidelity",
+        "status": "PASS",
+        "reason": "技術圖示中的攜行把手、尺寸與艇型對照可回扣首屏。桌機和手機都留出兩個艇尖的空間，完成後仍辨認出同組橙色硬折板。",
+        "evidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-en-mobile/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/results.json",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/results.json"
+        ]
+      }
+    ]
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44",
+    "reviewer": "GlossQuote Visuals 工作室主責（獨立於三個製作對話）",
+    "views": [
+      {
+        "viewport": "desktop",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "冷啟動先見束帶與攜行提把，長軸展開、兩舷翻立、座艙成形。重播和三個手動狀態與這段順序一致。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-0-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-0-composite.png",
+            "compositeStartMs": 2686.399999999965,
+            "compositeEndMs": 3281.7999999999884
+          },
+          {
+            "seconds": 1.3031999999999535,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-1-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-1-composite.png",
+            "compositeStartMs": 3882.899999999965,
+            "compositeEndMs": 4426.799999999988
+          },
+          {
+            "seconds": 2.468899999999965,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-2-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-2-composite.png",
+            "compositeStartMs": 4956.799999999988,
+            "compositeEndMs": 5566.599999999977
+          },
+          {
+            "seconds": 4.027299999999989,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-3-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-3-composite.png",
+            "compositeStartMs": 6360.299999999988,
+            "compositeEndMs": 6816.799999999988
+          },
+          {
+            "seconds": 6.020399999999965,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-4-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-4-composite.png",
+            "compositeStartMs": 8423,
+            "compositeEndMs": 8858.700000000012
+          },
+          {
+            "seconds": 8.063199999999954,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-5-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/frame-5-composite.png",
+            "compositeStartMs": 10550.399999999965,
+            "compositeEndMs": 10996
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-before.png",
+          "paused": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-immediate.png",
+          "stillPaused": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-after-1s.png",
+          "resumed": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "冷啟動先見束帶與攜行提把，長軸展開、兩舷翻立、座艙成形。重播和三個手動狀態與這段順序一致。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "攜行包的橘板疊起，提把與束帶貼在包上。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-0.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "板段向兩端伸展且仍連著，尚保留攤開的硬折面。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-1.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "兩舷與船尖成形，座椅落在艙內。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-2.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "收起後重新見到包的束帶與突出提把。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-3.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-desktop/control-3-texture.png"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "mobile",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "手機能在同一座標系追到包、半展到艇；觸控重播確實先回到包，完成時船尖與座艙仍在框內。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-0-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-0-composite.png",
+            "compositeStartMs": 583.1000000000058,
+            "compositeEndMs": 686.3000000000175
+          },
+          {
+            "seconds": 0.9248999999999942,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-1-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-1-composite.png",
+            "compositeStartMs": 1505.8000000000175,
+            "compositeEndMs": 1593.1000000000058
+          },
+          {
+            "seconds": 2.2177000000000118,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-2-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-2-composite.png",
+            "compositeStartMs": 2794.5,
+            "compositeEndMs": 2909
+          },
+          {
+            "seconds": 4.026799999999988,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-3-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-3-composite.png",
+            "compositeStartMs": 4602.700000000012,
+            "compositeEndMs": 4693.3000000000175
+          },
+          {
+            "seconds": 6.017799999999989,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-4-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-4-composite.png",
+            "compositeStartMs": 6589.900000000023,
+            "compositeEndMs": 6676.400000000023
+          },
+          {
+            "seconds": 8.064799999999988,
+            "evidence": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-5-texture.png",
+            "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/frame-5-composite.png",
+            "compositeStartMs": 8639.100000000006,
+            "compositeEndMs": 8748.100000000006
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-0.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-1.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-2.png",
+          "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-before.png",
+          "paused": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-immediate.png",
+          "stillPaused": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-after-1s.png",
+          "resumed": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "手機能在同一座標系追到包、半展到艇；觸控重播確實先回到包，完成時船尖與座艙仍在框內。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "攜行包的橘板疊起，提把與束帶貼在包上。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-0.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "板段向兩端伸展且仍連著，尚保留攤開的硬折面。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-1.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "兩舷與船尖成形，座椅落在艙內。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-2.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "收起後重新見到包的束帶與突出提把。",
+              "composite": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-3.png",
+              "texture": "evidence/V010/5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44/V010-zh-Hant-mobile/control-3-texture.png"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -6,7 +6,6 @@ const zh = lang === "zh-Hant";
 const copy = zh ? {
   title: "摺徑 FOLDLINE｜裝備與攜行清單",
   labels: ["船型", "同行人數", "規劃路線", "總載重", "攜行尺寸（長 × 寬 × 高）", "船身重量", "展開尺寸", "示意總價"],
-  modes: ["攜行", "半展", "成船"],
   images: ["橙紅色板件摺成有束帶及提把的攜行箱。", "橙紅色船殼半展，露出側舷鉸線與座艙。", "兩端甲板扣合，橙紅色船殼完全展開。"],
   running: "播放船身動態。", paused: "目前動態已暫停。", still: "目前顯示靜態船身。", unavailable: "目前顯示靜態船身，仍可切換三種船型狀態。",
   pause: "暫停動態", play: "繼續動態",
@@ -20,8 +19,7 @@ const copy = zh ? {
 } : {
   title: "FOLDLINE | Equipment and carry list",
   labels: ["Kayak", "Party size", "Planned route", "Total payload", "Packed size (L × W × H)", "Hull weight", "Open size", "Illustrative total"],
-  modes: ["Packed", "Half open", "Assembled"],
-  images: ["Orange panels folded into a case with straps and a handle.", "An orange hull half open, with the side hinges and cockpit exposed.", "An assembled orange hull, with both end panels locked in place."],
+  images: ["Orange panels folded into a case with straps and a handle.", "The four rigid hull sections partly unfolded, with the seat and hinges exposed.", "An assembled orange hull, with both end panels locked in place."],
   running: "Hull animation playing.", paused: "Hull animation paused.", still: "Showing a still view of the hull.", unavailable: "Showing still views. You can select any of the three hull states.",
   pause: "Pause motion", play: "Resume motion",
   seats: "The kayak’s seating does not match your party. Choose Solo for one paddler or Tandem for two.",
@@ -39,10 +37,27 @@ const posterImage = poster.querySelector("img");
 const posterSource = poster.querySelector("source");
 const imageBase = new URL(".", posterImage.src);
 const radios = document.querySelector("[data-instrument]");
+const choices = [...radios.querySelectorAll("input")];
 const pauseButton = document.querySelector("[data-pause]");
+const replay = document.querySelector("[data-replay]");
 const motionStatus = document.querySelector("[data-motion-status]");
 let paused = false;
 let live = false;
+let mode = null;
+let run = 0;
+let posterMode = 0;
+const syncSelection = state => {
+  stage.dataset.material = String(state);
+  choices[state].checked = true;
+};
+function setPoster(state) {
+  if (state === posterMode) return;
+  posterMode = state;
+  const name = ["pack", "half", "full"][state];
+  posterImage.alt = copy.images[state];
+  posterSource.srcset = new URL(`${name}-narrow.webp`, imageBase).href;
+  posterImage.src = new URL(`${name}-wide.webp`, imageBase).href;
+}
 const motion = createMotion({
   supported: Boolean(navigator.gpu),
   async initialize(options) {
@@ -50,6 +65,17 @@ const motion = createMotion({
     if (options.signal.aborted) return null;
     return initializeFoldline(stage.querySelector("canvas"), {
       ...options,
+      onPose(phase, settings) {
+        stage.dataset.assemblyPhase = phase;
+        stage.dataset.assemblyRun = String(settings.run);
+        stage.dataset.assemblyView = settings.mode === null ? "auto" : "manual";
+        if (settings.mode === null && phase === "complete") {
+          mode = 2;
+          syncSelection(2);
+          setPoster(2);
+          motion.setSettings({ mode, run });
+        }
+      },
       onError() {
         live = false;
         stage.removeAttribute("data-live");
@@ -60,40 +86,57 @@ const motion = createMotion({
   applySettings(renderer, settings) {
     renderer.set(settings);
   },
-  initialSettings: { mode: null },
+  initialSettings: { mode, run },
   renderState(phase) {
     stage.dataset.motion = phase;
     if (phase === "running") live = true;
     if (phase === "starting" || phase === "unavailable" || phase === "reduced") live = false;
     stage.toggleAttribute("data-live", live);
     pauseButton.hidden = !["running", "paused"].includes(phase);
+    replay.hidden = pauseButton.hidden;
     pauseButton.textContent = paused ? copy.play : copy.pause;
     pauseButton.setAttribute("aria-pressed", String(paused));
     motionStatus.textContent = copy[phase] ?? copy.still;
   },
 });
-const setMode = mode => {
-  const name = ["pack", "half", "full"][mode];
-  stage.dataset.material = String(mode);
-  posterImage.alt = copy.images[mode];
-  posterSource.srcset = new URL(`${name}-narrow.webp`, imageBase).href;
-  posterImage.src = new URL(`${name}-wide.webp`, imageBase).href;
-  motion.setSettings({ mode });
-};
-radios.addEventListener("input", event => {
-  if (event.target.name === "fold-state") setMode(Number(event.target.value));
-});
-// Clicking the initially checked half-open state stops the opening sequence at
-// that exact configuration, even though the radio's value hasn't changed.
-radios.addEventListener("click", event => {
-  if (event.target.name === "fold-state") {
-    const mode = Number(event.target.value);
-    if (mode === Number(stage.dataset.material)) setMode(mode);
+const setMode = state => {
+  if (mode === state) return;
+  mode = state;
+  syncSelection(state);
+  setPoster(state);
+  if (!live || paused) {
+    stage.dataset.assemblyPhase = ["packed", "half", "complete"][state];
+    stage.dataset.assemblyView = "manual";
   }
+  if (paused) stage.removeAttribute("data-live");
+  motion.setSettings({ mode, run });
+};
+function selectChecked({ target }) {
+  if (target.name === "fold-state" && target.checked) setMode(Number(target.value));
+}
+radios.addEventListener("input", selectChecked);
+radios.addEventListener("click", selectChecked);
+radios.addEventListener("keydown", event => {
+  // Space on an already-selected radio may produce neither click nor input.
+  // Treat it as an explicit hold and leave native arrow navigation intact.
+  if (event.key !== " " || event.target.name !== "fold-state" || !event.target.checked) return;
+  event.preventDefault();
+  if (!event.repeat) selectChecked(event);
 });
 pauseButton.addEventListener("click", () => {
   paused = !paused;
   motion.update({ paused });
+});
+replay.addEventListener("click", () => {
+  mode = null;
+  run += 1;
+  syncSelection(0);
+  setPoster(0);
+  motion.setSettings({ mode, run });
+  if (paused) {
+    paused = false;
+    motion.update({ paused });
+  }
 });
 radios.hidden = false;
 observeMotion(stage, motion, matchMedia("(prefers-reduced-motion: reduce)"));

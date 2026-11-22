@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Studio TC Text";
+  src: url("./text-tc.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: block;
+}
+
+/* The startup script sets this attribute only when FontFaceSet is usable. */
+html[data-type-pending] { display: none !important; }
+
+/* Unstyled native selects and other controls follow their page's text face. */
+:where(button, input, select, option, textarea) { font-family: inherit; }
+
+html.sorbet-page[lang="zh-Hant"] {
+  --sans: "Studio TC Text", sans-serif;
+  --display: var(--sans);
+  font-family: var(--sans);
+}

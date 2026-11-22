@@ -15,7 +15,7 @@
   <meta property="og:description" content="為城市旅人設計的硬殼摺疊皮艇。比較單人與雙人船型、規劃同行裝備，下載攜行清單。">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/foldline/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/foldline/cover.webp">
-  <meta property="og:image:alt" content="橙紅色摺疊皮艇浮在深藍水面，兩端甲板翹起，露出側舷鉸線與座艙。">
+  <meta property="og:image:alt" content="橙紅色單人皮艇展開後浮在深藍水面，露出中央座椅。">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <link rel="icon" href="%BASE_URL%media/foldline/mark.svg" type="image/svg+xml">
@@ -45,10 +45,10 @@
         <div class="hero-action"><p>硬殼板件沿鉸線開合，從手提尺寸展成單人或雙人船身。</p><a class="button" href="#plan">規劃我的裝備<span aria-hidden="true">↘</span></a></div>
       </header>
       <figure class="hull">
-        <div class="stage" data-stage data-motion="still" data-material="1" data-cycle-seconds="8">
+        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-assembly-phase="packed" data-assembly-run="0">
           <picture data-poster>
-            <source media="(max-width: 640px)" srcset="%BASE_URL%media/foldline/half-narrow.webp">
-            <img src="%BASE_URL%media/foldline/half-wide.webp" width="1440" height="643" fetchpriority="high" alt="橙紅色摺疊皮艇浮在深藍水面，兩端甲板翹起，露出側舷鉸線與座艙。">
+            <source media="(max-width: 640px)" srcset="%BASE_URL%media/foldline/pack-narrow.webp">
+            <img src="%BASE_URL%media/foldline/pack-wide.webp" width="1440" height="643" fetchpriority="high" alt="橙紅色板件摺成有束帶及提把的攜行箱。">
           </picture>
           <canvas aria-hidden="true"></canvas>
           <span class="stage-label">FL / SOLO 330</span>
@@ -57,12 +57,15 @@
           <span class="stage-caption">單人艇展開示意</span>
           <fieldset class="modes" data-instrument hidden>
             <legend class="visually-hidden">單人艇展開示意</legend>
-            <label><input name="fold-state" type="radio" value="0"><span>攜行</span></label>
-            <label><input name="fold-state" type="radio" value="1" checked><span>半展</span></label>
+            <label><input name="fold-state" type="radio" value="0" checked><span>攜行</span></label>
+            <label><input name="fold-state" type="radio" value="1"><span>半展</span></label>
             <label><input name="fold-state" type="radio" value="2"><span>成船</span></label>
           </fieldset>
-          <button type="button" class="pause" data-pause aria-pressed="false" hidden>暫停動態</button>
-          <span class="visually-hidden" role="status" data-motion-status>靜態半展圖</span>
+          <div class="stage-actions">
+            <button type="button" class="replay" data-replay hidden>重播展開</button>
+            <button type="button" class="pause" data-pause aria-pressed="false" hidden>暫停動態</button>
+          </div>
+          <span class="visually-hidden" role="status" data-motion-status>靜態攜行圖</span>
         </figcaption>
       </figure>
     </section>

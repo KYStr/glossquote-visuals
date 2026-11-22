@@ -1,3 +1,52 @@
+# 果時 JELLY HOUR｜M06 銀匙試吃
+
+候選分支從正式基線 `8206c4a55e8be0faee2ff4b265878d4da75445f7` 建立。中英文入口仍為 `/glossquote-visuals/works/sorbet-hour/` 與 `/glossquote-visuals/en/works/sorbet-hour/`。三款口味、六杯配盒與離線配方沿用現有接口。
+
+## 重現
+
+- 正常動態冷開先見完整果凍。銀匙斜向入鏡、按壓上緣、匙碗部分切入並由果凍遮住，最後托著與缺口配對的一口抬起。3.65 秒停在展示姿態，餘下只有很輕的果凍反光。
+- 可在首播中點按或拖曳果凍來選另一個切點。鍵盤聚焦 `[data-scoop-hit]` 後用左右鍵選位置，再按 Enter。`[data-scoop-replay]` 重播所選位置，`[data-scoop-reset]` 恢復完整，`[data-pause]` 凍結當前幀。換口味回到完整姿態。減少動態和無 WebGPU 可切換相同構圖的靜態成品與銀匙尾幀。
+- `flow.mjs` 保留 `setMaterial`、`testFlow`、`testHeroInteraction(page, input, capture)`。後者以 `data-bite-run`、`data-bite-phase`、`data-bite-elapsed` 鎖定新序列，保留 `before`、`after`、`reset`。中段凍結在 `cut` 取證，支援選用的 `capture.mid("cut", observation)` 或宣告 `capture.checkpoints` 包含 `mid` 的主程式。回傳值另含 `mid.pngBase64` 及另一切點尾幀 `alternate.pngBase64`，可與現有三點 runner 共用。
+- 以 Python 3.12、wgpu 0.31.0、Pillow 12.0.0 執行 `python src/works/sorbet-hour/render-posters.py --samples .runs/v008-m06-frames`，可重現 1200×800 關鍵影格。加 `--assets` 會更新本作三張海報及九張靜態尾幀。未用外部影像或材質。繁中字型以工作室既有的 Noto Sans TC 原檔製作本版私有 WOFF2，保留上版字符並補入新介面所需的「匙、對、應、托、查、滋、起、銀」。沿用倉庫的 `public/fonts/studio-text-tc-OFL.txt` 授權。
+
+## M06 原尺寸收邊
+
+a9b6ee5 的桌面舞台約 768 px 寬，實際緩衝只有 288×192，匙沿、切口及盤紋放大後出現明顯階梯。新候選在 DPR 1 的桌機使用 576×384、390 px 版面使用 403×269。中心光線先判斷輪廓、切削交界與遮擋邊緣，附近才補三條次像素光線。匙柄維持連續覆蓋值，盤紋按像素足跡整合。實際 GPU 在整段演出和停住後持續使用相同幾何與著色。中央切點向前移 0.039 場景單位，露出較寬的琥珀色內壁，匙上的一口由同一體積截出。
+
+在原工作目錄用同一 WGSL 產生實際緩衝影格與桌面／手機顯示尺寸的副本。切入中段見 `bite-1.78-display.png`，抬升見 `bite-2.35-display.png`，停住見 `bite-3.65-display.png`。
+
+```powershell
+python src/works/sorbet-hour/render-posters.py --samples .runs/v008-m06-finish-desktop --backing 576 384 --display 768 512
+python src/works/sorbet-hour/render-posters.py --samples .runs/v008-m06-finish-mobile --backing 403 269 --display 351 234
+```
+
+作者在兩個顯示尺寸逐一裁切檢視匙碗暗緣、中央缺口、盤沿與切入時的遮擋。Microsoft Basic Render Driver 原生 D3D12 驗證各取 100 筆繪製提交至完成，使用實際緩衝尺寸。桌面 p95 為 2.81–4.96 ms，手機 2.93–4.15 ms。這些數值供估算本地負載，瀏覽器呈現間隔與 ART-1 收邊仍待獨立驗收。
+
+## M06 第三輪呈現候選
+
+銀匙移動時按實際緩衝尺寸重畫幾何、遮擋與次像素覆蓋。銀匙入鏡前與抬升到位後，畫布每幀直接讀取 GPU 內最近一次的完整姿勢，果膠冠部的反射仍由當前時間即時計算。換切點、換口味及改尺寸會更新快取，釋放畫布時一併釋放紋理。
+
+同一原生 D3D12 軟體轉譯環境暖機 20 幀後各取 100 幀。390×260 停姿 p95 由 3.42 降至 0.73 ms，576×384 由 4.89 降至 0.89 ms。候選移動期間的 p95 分別為 4.14 和 5.57 ms。兩個尺寸的蜜柑中央切點尾幀在反射位移為零時與前版逐像素相同。2.2 秒後分別有 1,640 和 3,561 個像素的反光改變。這是原生 GPU 工作完成時間，兩語瀏覽器四個 lane 的實際呈現間隔待第三輪複測。
+
+## M06 移動區域更新候選
+
+完整果凍、盤與背景先以原尺寸繪製成 GPU 基底。每個移動姿勢由基底還原，再只重繪銀匙、匙影、按壓與回彈、切口及被托起的一口所涵蓋的區域。每個區域沿用同一份 WGSL、遮擋和次像素取樣。停姿直接重用最後的完整結果，反射繼續逐幀更新。以 576×384 蜜柑中央切點的 121 個姿勢測得重繪面積中位 28.3%、最多 41.9%。
+
+以相同原生 Vulkan SwiftShader（Subzero）交替測前版全張與候選局部重算，兩版均加入連續反射的呈現 pass。下表為第二次 121 幀取樣的 GPU 工作完成時間。桌面後半段的 p95 由 18.95 降至 8.09 ms。
+
+| 實際緩衝尺寸 | 前版移動 median / p95 / max | 候選移動 median / p95 / max |
+| --- | --- | --- |
+| 576×384 | 17.57 / 18.92 / 19.17 ms | 6.21 / 7.82 / 8.89 ms |
+| 390×260 | 8.79 / 10.24 / 12.72 ms | 3.12 / 4.04 / 4.56 ms |
+
+三款口味、三處切點、576×384／390×260／403×269 逐一比對每組 121 張從入鏡至停姿的 RGBA 影格，共 3,267 張與前版全張重繪逐像素相同。原尺寸影格存於作者工作目錄的 `.runs/v008-m06-motion-native`。中央切入、抬升及到位可檢視 `576-1-057-regions.png`、`576-1-090-regions.png`、`576-1-120-regions.png`。雙語瀏覽器的實際提交間隔及 PERF-1 待原 runner 複測。
+
+## 作者核對
+
+原生 RTX 3060 Vulkan 影格檢視了 160 px 無字輪廓，以及原尺寸的匙碗和果膠接縫。銀匙頂面與下方厚度分開著色，匙柄有連續冷灰暗緣，尾幀仍可辨認承載關係。上緣受壓及切口使用同一切入點，抽出的果凍與匙碗共用抬升位移，瓷盤與畫面座標固定。鎖版安裝、來源檢查、26 項單元測試、雙語建置，以及無 GPU 的 DOM、配方 Blob、時間線凍結與重設測試已通過。未使用本機瀏覽器，實際瀏覽器 M04 十四條及 M06 六項美術觀察待主責判定。
+
+---
+
 # 果時 JELLY HOUR｜M05 作者交接
 
 作品入口維持 `/glossquote-visuals/works/sorbet-hour/` 和 `/glossquote-visuals/en/works/sorbet-hour/`。變更從發布基線 `085460a3884d2e826e94b71ef5a3dea74ed05908` 製作。果時英文品牌改為 Jelly Hour。共享畫廊、catalog、registry 和發布檔案由主責處理。

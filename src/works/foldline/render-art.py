@@ -2,6 +2,7 @@
 from pathlib import Path
 import json
 import subprocess
+import sys
 
 import numpy as np
 from PIL import Image
@@ -9,26 +10,26 @@ from PIL import Image
 OUT = Path("public/media/foldline")
 
 VIEWS = [
-    ("cover", 1200, 800, 0, False, False, True, 0),
-    ("half-wide", 1440, 643, 0, False, False, True, 0),
-    ("half-narrow", 720, 560, 0, False, False, True, 0),
-    ("full-wide", 1440, 643, 1, False, False, True, 0),
-    ("full-narrow", 720, 560, 1, False, False, True, 0),
-    ("pack-wide", 1440, 643, 0, True, False, True, 0),
-    ("pack-narrow", 720, 560, 0, True, False, True, 0),
-    ("solo", 900, 450, 1, False, False, False, -.09),
-    ("tandem", 900, 450, 1, False, True, False, -.09),
-    ("carry", 900, 540, 0, True, False, False, -.34),
+    ("cover", 1200, 800, 4.8, False, True, 0),
+    ("half-wide", 1440, 643, 2.65, False, True, 0),
+    ("half-narrow", 720, 560, 2.65, False, True, 0),
+    ("full-wide", 1440, 643, 4.8, False, True, 0),
+    ("full-narrow", 720, 560, 4.8, False, True, 0),
+    ("pack-wide", 1440, 643, 0, False, True, 0),
+    ("pack-narrow", 720, 560, 0, False, True, 0),
+    ("solo", 900, 450, 4.8, False, False, .03),
+    ("tandem", 900, 450, 4.8, True, False, .03),
+    ("carry", 900, 540, 0, False, False, -.04),
 ]
 
 
-def render(spec, model):
-    name, width, height, _, pack, _, water, _ = spec
+def render(spec, model, folder):
+    name, width, height, seconds, _, water, _ = spec
     y, x = np.ogrid[:height, :width]
     u, v = 2*(x+.5)/width-1, 1-2*(y+.5)/height
-    sx, sy, center = model["shadow"]
-    q = (u+.13)**2 + (v-center+.09*u)**2
-    r = (u/sx)**2 + ((v-center-.14*u*width/height)/sy)**2
+    sx, sy, center, shift = model["shadow"]
+    q = (u-shift+.13)**2 + (v-center+.09*u)**2
+    r = ((u-shift)/sx)**2 + ((v-center-.095*u*width/height)/sy)**2
     shade = .51*np.exp(-2.1*r) + .18*np.exp(-6*q)
     rng = np.random.default_rng(1010)
     grain = rng.uniform(-.5, .5, (height, width, 1))
@@ -40,7 +41,14 @@ def render(spec, model):
         thread = (.5+.5*np.sin(v*87+u*20+2*np.cos(u*6+v*3)))**14
         color = np.array([.020,.126,.196]) + np.array([.014,.139,.173])*light[..., None]
         color += np.array([.025,.086,.10])*(cut*streak*.9+thread*.33)[..., None]
+        rim = .042 * np.exp(-3*r) * (1 + np.sin(ripple)) * (v < center)
+        reach = (u-shift)/sx
+        surface_line = v-center-.160*u*width/height
+        contact = np.exp(-1.85*reach**4)*np.exp(-abs(surface_line+.061)*22.0)
+        reflected = contact*max(0,(seconds-4.05)/.75)*(.54+.46*np.sin(ripple*1.9))
         color *= (1-shade[..., None])
+        color += rim[..., None] * np.array([.28,.67,.76])
+        color += reflected[..., None] * np.array([.10,.075,.060])
     else:
         grid = ((x+4) % 45 == 0) | ((y+4) % 45 == 0)
         light = np.exp(-((u*.65)**2+(v*.65)**2))
@@ -68,30 +76,29 @@ def render(spec, model):
         patch_depth[visible] = z[visible]
         pixels[top:bottom, left:right][visible] = np.array(triangle["tint"]) + grain[top:bottom, left:right][visible]*.026
     result = Image.fromarray(np.uint8(np.clip(pixels, 0, 1)*255))
-    result.save(OUT/f"{name}.webp", quality=88, method=6)
+    result.save(folder/f"{name}.webp", quality=90, method=6)
 
 
 def main():
-    specs = [
-        {"aspect": w/h, "opened": opened, "pack": pack, "tandem": duo, "yaw": yaw}
-        for _, w, h, opened, pack, duo, _, yaw in VIEWS
+    folder = Path(sys.argv[1]) if len(sys.argv) > 1 else OUT
+    views = VIEWS if len(sys.argv) == 1 else [
+        (f"{layout}-{second}", w, h, second, False, True, 0)
+        for layout, w, h in [("wide", 1080, 482), ("narrow", 540, 420)]
+        for second in [0, .8, 1.5, 2.25, 2.65, 3, 3.7, 4.8]
     ]
-    # Increase the pack detail only in its dedicated illustration. The hero
-    # maintains its true scale relative to the full-width hull.
+    folder.mkdir(parents=True, exist_ok=True)
+    specs = [
+        {"aspect": w/h, "seconds": seconds, "tandem": duo, "yaw": yaw, "plate": not water}
+        for _, w, h, seconds, duo, water, yaw in views
+    ]
     command = """
 import { boatScene } from './src/works/foldline/geometry.mjs';
-const views = JSON.parse(process.argv[1]).map(boatScene);
-const detail = views.at(-1);
-const unique = new Set(detail.triangles.flatMap(triangle => triangle.points));
-for (const p of unique) { p[0] *= 2.7; p[1] = (p[1] + .12) * 2.7; }
-detail.shadow[0] *= 2.7; detail.shadow[1] *= 2.7;
-detail.shadow[2] = (detail.shadow[2] + .12) * 2.7;
-console.log(JSON.stringify(views));
+console.log(JSON.stringify(JSON.parse(process.argv[1]).map(boatScene)));
 """
     models = json.loads(subprocess.check_output(
         ["node", "--input-type=module", "-e", command, json.dumps(specs)], text=True))
-    for spec, model in zip(VIEWS, models):
-        render(spec, model)
+    for spec, model in zip(views, models):
+        render(spec, model, folder)
 
 
 if __name__ == "__main__":

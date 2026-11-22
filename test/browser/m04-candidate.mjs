@@ -1,13 +1,15 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { chromium } from "playwright";
+import { craftMilestone } from "../../scripts/release-proof.mjs";
 import { base, registry, root } from "../../scripts/site-map.mjs";
 import { observe } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 import { captureOpening } from "./m04-opening.mjs";
+import { captureCraft } from "./m06-craft.mjs";
 import { captureBrowserZoom, checkPerformance, installPresentationMeter, layoutInventory, measureSubmissions } from "./m04-measure.mjs";
 
 if (process.platform !== "win32" || process.env.RUNNER_OS !== "Windows" ||
@@ -16,9 +18,10 @@ if (process.platform !== "win32" || process.env.RUNNER_OS !== "Windows" ||
   throw Error("NOT_RUN_USER_FOCUS_BOUNDARY: browser capture is restricted to the project's GitHub-hosted Windows VM");
 }
 const [work, lang, viewport, series = "m04"] = process.argv.slice(2);
-assert.ok(["m04", "m05"].includes(series));
 const entry = registry.works.find(candidate => candidate.id === work);
 assert.ok(entry && ["zh-Hant", "en"].includes(lang) && ["desktop", "mobile"].includes(viewport));
+const craftCandidate = !["m04", "m05"].includes(series);
+if (craftCandidate) assert.equal(series, craftMilestone(entry).toLowerCase());
 const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 assert.equal(commit, process.env.GITHUB_SHA);
 const dir = join(root, ".runs", series + "-evidence", [work, lang, viewport].join("-"));
@@ -37,6 +40,8 @@ const report = { work, lang, viewport, commit, cssSize: size, runner: "GitHub-ho
 const save = () => writeFile(join(dir, "results.json"), JSON.stringify(report, null, 2) + "\n");
 const hash = buffer => createHash("sha256").update(buffer).digest("hex");
 async function check(name, operation) {
+  const started = Date.now();
+  if (craftCandidate) console.log(`START ${work}/${lang}/${viewport} ${name}`);
   try {
     const details = await operation();
     report.checks[name] = { status: "PASS", details };
@@ -45,6 +50,7 @@ async function check(name, operation) {
     console.error(name, error.message);
   }
   await save();
+  if (craftCandidate) console.log(`${report.checks[name].status} ${name} (${Date.now() - started} ms)`);
 }
 
 const launch = { headless: true, channel: "chromium", ignoreDefaultArgs: ["--disable-back-forward-cache"],
@@ -64,6 +70,26 @@ async function open(page) {
   assert.equal(await page.locator("h1").count(), 1);
   assert.equal(await scene(page).count(), 1);
 }
+async function observeHeroInputs(page) {
+  await page.evaluate(() => {
+    window.__heroInputs = [];
+    for (const type of ["keydown", "pointerdown"]) {
+      document.addEventListener(type, event => {
+        if (!event.isTrusted || !(event.target instanceof Element)) return;
+        // Touching the label graphic is equivalent to choosing its radio.
+        const control = event.target.closest("label")?.control ?? event.target.closest("button,input");
+        const target = ["data-reprint", "data-replay", "data-scoop-hit", "data-scoop-reset", "data-pause"]
+          .find(attr => control?.hasAttribute(attr)) ?? control?.getAttribute("name") ?? null;
+        window.__heroInputs.push({ type, key: event.key, pointerType: event.pointerType, target,
+          x: event.clientX, y: event.clientY, at: performance.now() });
+      }, { capture: true });
+    }
+  });
+}
+const takeInputs = page => page.evaluate(() => window.__heroInputs.splice(0));
+const activated = (events, target) => events.some(e => e.target === target &&
+  (mobile ? e.type === "pointerdown" && e.pointerType === "touch" :
+    e.type === "keydown" && (e.key === "Enter" || e.key === " " || (target === "fold-state" && e.key === "ArrowRight"))));
 async function authorTools() {
   return import(new URL("../../evidence/" + work + "/flow.mjs", import.meta.url));
 }
@@ -106,12 +132,23 @@ async function quiet(page) {
   return before;
 }
 let browser;
-async function withPage(options, test) {
-  const context = await browser.newContext({ viewport: size, deviceScaleFactor: 1, hasTouch: mobile, ...options });
+async function withPage(options, test, videoName) {
+  const recordVideo = videoName ? { dir, size } : undefined;
+  const context = await browser.newContext({ viewport: size, deviceScaleFactor: 1, hasTouch: mobile, ...options, recordVideo });
   const page = await context.newPage();
   page.setDefaultTimeout(10_000);
   try { return await test(page); }
-  finally { await context.close(); }
+  finally {
+    await context.close();
+    if (videoName) {
+      const original = await page.video().path();
+      const bytes = await readFile(original);
+      assert.ok(bytes.length > 0, "Missing recording of visitor-visible frames");
+      await rename(original, join(dir, videoName));
+      const recording = videoName === "craft-opening.webm" ? report.capture.craft : report.capture.heroInteraction;
+      if (recording) recording.videoSha256 = hash(bytes);
+    }
+  }
 }
 async function instrument(page) {
   const probe = await observe(page, { readPixels: true });
@@ -139,7 +176,7 @@ function collectDiagnostics(page) {
   page.on("pageerror", error => problems.push({ kind: "script", message: error.message }));
   return problems;
 }
-const inPage = (options, fn) => () => withPage(options, fn);
+const inPage = (options, fn, videoName) => () => withPage(options, fn, videoName);
 try {
   browser = await chromium.launch(launch);
   report.browser = browser.version();
@@ -149,8 +186,19 @@ try {
   await system.detach();
 
   await check("first-three-seconds", inPage({}, async page => {
-    await captureOpening({ browser, page, url, dir, report, inspectRunningMotion: series === "m05" });
+    await captureOpening({ browser, page, url, dir, report, inspectRunningMotion: series !== "m04" });
   }));
+
+  if (craftCandidate) await check("craft-storyboard", async () => {
+    await withPage({}, page => captureCraft({ page, open, phase, stageImage, dir, report }));
+    // A clipped CDP screenshot can also crop the screencast frame. Give the
+    // uninterrupted first visit its own viewport, with no screenshot requests.
+    await withPage({}, async page => {
+      await open(page);
+      await phase(page, "running");
+      await page.waitForTimeout(9000);
+    }, "craft-opening.webm");
+  });
 
   await check("initial-and-material-sequence", inPage({}, async page => {
     await instrument(page);
@@ -223,30 +271,29 @@ try {
     await phase(page, "running");
   }));
 
-  if (series === "m05" && work === "V008") await check("hero-interaction", inPage({}, async page => {
+  if (series !== "m04" && work === "V008") await check("hero-interaction", inPage({}, async page => {
     await instrument(page);
     await open(page);
     await phase(page, "running");
     const { testHeroInteraction } = await authorTools();
     const input = mobile ? "touch" : "keyboard";
     const evidence = report.capture.heroInteraction = { input, samples: [] };
-    await page.evaluate(() => {
-      window.__m05HeroInputs = [];
-      for (const type of ["keydown", "pointerdown"]) {
-        document.addEventListener(type, event => {
-          if (event.isTrusted) window.__m05HeroInputs.push({
-            type, key: event.key, pointerType: event.pointerType, at: performance.now(),
-          });
-        }, { capture: true });
-      }
-    });
+    if (craftCandidate) evidence.video = "craft-interaction.webm";
+    await observeHeroInputs(page);
     const checkpoints = ["before", "after", "reset"];
     const capture = async state => {
       assert.equal(state, checkpoints[evidence.samples.length], "Scoop and reset must both be observed");
       await scene(page).scrollIntoViewIfNeeded();
       const name = "interaction-" + state;
-      evidence.samples.push({ state, inputs: await page.evaluate(() => window.__m05HeroInputs.splice(0)),
+      evidence.samples.push({ state, inputs: await takeInputs(page),
         composite: await stageImage(page, name), texture: await captureTexture(page, name) });
+    };
+    if (series === "m06") capture.mid = async (state, observed) => {
+      assert.equal(state, "cut");
+      assert.equal(observed.motion, "paused");
+      // A frozen GPU has no new texture submission. Capture its actual
+      // composite without consuming the trusted gesture used to start the cut.
+      evidence.cut = { observed, composite: await stageImage(page, "interaction-cut") };
     };
     evidence.observations = await testHeroInteraction(page, input, capture);
     assert.ok(evidence.observations && Object.keys(evidence.observations).length);
@@ -257,6 +304,90 @@ try {
     }
     assert.notEqual(evidence.samples[0].composite.sha256, evidence.samples[1].composite.sha256, "Scoop did not change the visible hero");
     assert.notEqual(evidence.samples[1].composite.sha256, evidence.samples[2].composite.sha256, "Reset did not change the visible hero");
+    if (series === "m06") {
+      const { after, alternate, mid } = evidence.observations;
+      assert.equal(evidence.cut.observed.run, after.run);
+      assert.equal(evidence.cut.observed.position, after.position);
+      assert.equal(mid.phase, "cut");
+      assert.deepEqual([after.position, alternate.position].sort(), ["left", "right"]);
+      assert.ok(activated(evidence.samples[1].inputs, "data-scoop-hit"), "Missing first real scoop");
+      assert.ok(activated(evidence.samples[2].inputs, "data-scoop-hit"), "Missing second real scoop");
+      assert.ok(activated(evidence.samples[2].inputs, "data-scoop-reset"), "Missing real reset");
+      const png = Buffer.from(alternate.pngBase64, "base64");
+      assert.equal(png.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+      const file = "interaction-alternate.png";
+      await writeFile(join(dir, file), png);
+      alternate.composite = { file, sha256: hash(png) };
+      mid.composite = evidence.cut.composite;
+      delete mid.pngBase64;
+      delete alternate.pngBase64;
+    }
+  }));
+
+  if (craftCandidate && work === "V008") await check("craft-interaction-film", inPage({}, async page => {
+    await open(page);
+    await phase(page, "running");
+    const stage = scene(page);
+    const hit = stage.locator("[data-scoop-hit]");
+    const reset = page.locator("[data-scoop-reset]");
+    const activate = control => mobile ? control.tap() : control.press("Enter");
+    for (const [side, fraction] of [["left", 0.22], ["right", 0.79]]) {
+      if (!await reset.isDisabled()) await activate(reset);
+      await page.locator('[data-stage][data-hero-state="intact"]').waitFor();
+      if (mobile) {
+        const box = await hit.boundingBox();
+        assert.ok(box);
+        await hit.tap({ position: { x: box.width * fraction, y: box.height * 0.3 } });
+      } else {
+        await hit.focus();
+        await hit.press(side === "left" ? "ArrowLeft" : "ArrowRight");
+        await hit.press("Enter");
+      }
+      await page.locator(`[data-stage][data-bite-phase="held"][data-scoop-position="${side}"]`).waitFor();
+      await page.waitForTimeout(600);
+    }
+    await activate(reset);
+    await page.locator('[data-stage][data-hero-state="intact"]').waitFor();
+  }, "craft-interaction.webm"));
+
+  if (series === "m06" && ["V009", "V010"].includes(work)) await check("craft-replay", inPage({}, async page => {
+    await open(page);
+    await phase(page, "running");
+    await observeHeroInputs(page);
+    const api = await authorTools();
+    const print = work === "V009";
+    const probe = print ? api.testPrintStroke : api.testHeroInteraction;
+    const checkpoints = print ? ["before", "passing", "after", "reset"] : ["before", "after", "reset"];
+    const attribute = print ? "data-print-step" : "data-assembly-phase";
+    const phases = print ? { before: "ready", passing: "passing", after: "complete", reset: "ready" } :
+      { before: "packed", after: "complete", reset: "packed" };
+    const input = mobile ? "touch" : "keyboard";
+    const evidence = report.capture.craftReplay = { input, samples: [] };
+    evidence.observations = await probe(page, input, async state => {
+      assert.equal(state, checkpoints[evidence.samples.length]);
+      const inputs = await takeInputs(page);
+      const before = await scene(page).getAttribute(attribute);
+      const composite = await stageImage(page, "replay-" + state);
+      const after = await scene(page).getAttribute(attribute);
+      evidence.samples.push({ state, inputs, before, after, composite });
+      assert.equal(before, phases[state]);
+      assert.equal(after, before, "The replay phase changed during the " + state + " screenshot");
+    });
+    assert.deepEqual(evidence.samples.map(sample => sample.state), checkpoints);
+    const byState = Object.fromEntries(evidence.samples.map(sample => [sample.state, sample]));
+    if (print) {
+      // One human reprint drives ready, passing and complete in sequence.
+      assert.ok(activated(byState.before.inputs, "data-reprint"));
+      assert.ok(activated(byState.reset.inputs, "data-reprint"));
+      assert.deepEqual(["before", "mid", "after", "reset"].map(k => evidence.observations[k].step),
+        ["ready", "passing", "complete", "ready"]);
+    } else {
+      assert.ok(activated(byState.after.inputs, "data-replay"));
+      assert.ok(activated(byState.reset.inputs, "fold-state"));
+      assert.deepEqual(evidence.observations.timeline.map(frame => frame.phase),
+        ["packed", "releasing", "extending", "raising", "settling", "complete"]);
+    }
+    assert.notEqual(byState.before.composite.sha256, byState.after.composite.sha256);
   }));
 
   await check("BIZ-2-and-privacy", inPage({}, async page => {
@@ -268,7 +399,7 @@ try {
     report.capture.flow = result;
     report.requests = await privacy(page, probe);
     await page.screenshot({ path: join(dir, "flow-complete.png"), fullPage: true });
-    if (series === "m05") assert.deepEqual(report.pageProblems, []);
+    if (series !== "m04") assert.deepEqual(report.pageProblems, []);
     return result;
   }));
   for (const mode of ["no-js", "gpu-init-fail", "reduced"]) {
