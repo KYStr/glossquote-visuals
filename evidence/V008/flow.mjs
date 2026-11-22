@@ -270,6 +270,10 @@ export async function testApprovedHero(page, input, capture) {
     { name: "left", x: 0.398, y: 0.43 },
     { name: "right", x: 0.725, y: 0.43 },
   ];
+  const captureStage = async name => {
+    await stage.scrollIntoViewIfNeeded();
+    await capture(name);
+  };
 
   await stage.scrollIntoViewIfNeeded();
   await page.locator('[data-stage][data-rendered][data-motion="running"]').waitFor();
@@ -277,9 +281,10 @@ export async function testApprovedHero(page, input, capture) {
   if (!(await reset.isDisabled())) await activate(reset);
   await page.locator('[data-stage][data-hero-state="intact"][data-scoop-visual="ready"]').waitFor();
   assert.equal(await stage.getAttribute("data-cuts"), "");
-  await capture("intact");
+  await captureStage("intact");
 
   async function select(point) {
+    await stage.scrollIntoViewIfNeeded();
     await scoop.scrollIntoViewIfNeeded();
     const bounds = await stage.boundingBox();
     const hit = await scoop.boundingBox();
@@ -311,19 +316,19 @@ export async function testApprovedHero(page, input, capture) {
   });
   await select(selected[0]);
   await page.locator('[data-stage][data-bite-phase="press"][data-motion="paused"]').waitFor();
-  await capture("press");
+  await captureStage("press");
   await activate(pause);
   await waitForHeld("left", "left");
-  await capture("first-bite");
+  await captureStage("first-bite");
 
   await select(selected[1]);
   assert.match(await stage.getAttribute("data-cuts"), /\bleft\b/);
   await waitForHeld("right", "left right");
-  await capture("second-bite");
+  await captureStage("second-bite");
 
   await activate(reset);
   await page.locator('[data-stage][data-hero-state="intact"][data-scoop-visual="ready"]').waitFor();
   assert.equal(await stage.getAttribute("data-cuts"), "");
-  await capture("reset");
+  await captureStage("reset");
   return { positions: selected.map(({ x, y }) => ({ x, y })) };
 }
