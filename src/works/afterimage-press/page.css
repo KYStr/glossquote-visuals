@@ -109,21 +109,67 @@ body { background: var(--dark); }
 }
 .stage {
   position: relative;
+  isolation: isolate;
   aspect-ratio: 2 / 1;
   overflow: hidden;
-  background: var(--paper);
+  background:
+    linear-gradient(151deg, #63574f38, transparent 60%),
+    repeating-linear-gradient(0deg, #181820 0 1px, #25252d 1px 8px);
 }
-.stage img, .stage canvas { position: absolute; inset: 0; }
-.stage img { width: 100%; height: 100%; }
-.stage canvas { display: block; visibility: hidden; pointer-events: none; }
-/* Shaders reads the canvas rect before its first frame and on device rebuild.
-   At that point the inline dimensions define the render budget. */
+.stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 14% 1.4% 4%;
+  background: linear-gradient(170deg, #4c4651, #312f39 62%, #242630);
+  border: 1px solid #625962;
+  box-shadow: inset 0 0 0 2px #ffffff0b, 0 .25rem .5rem #100f17a6;
+}
+.press-sheet {
+  position: absolute;
+  inset: 20.5% 6.5% 11.5%;
+  background: var(--paper);
+  box-shadow: 1px 1px #a4937b, 0 .12rem .46rem #0c0b156e, 0 .4rem .8rem #0b0a1280;
+}
+.press-sheet img, .press-sheet canvas { position: absolute; inset: 0; }
+.press-sheet img { width: 100%; height: 100%; }
+.press-sheet canvas { display: block; visibility: hidden; pointer-events: none; }
+/* Initial and recovery measurements use the bounded inline canvas dimensions.
+   Stretch only after a frame is available so the paper stays full-size. */
 .stage[data-rendered] canvas {
   width: 100% !important;
   height: 100% !important;
   visibility: visible;
 }
-.stage[data-rendered] img { visibility: hidden; }
+.stage[data-rendered] .press-sheet img { visibility: hidden; }
+.registration {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #d6cabb;
+  stroke-width: 1;
+  pointer-events: none;
+}
+.registration .grips { stroke: #9b9291; stroke-width: 2; }
+.squeegee {
+  position: absolute;
+  inset-inline-start: 5%;
+  inset-block-start: -.74%;
+  transform: translateY(calc((var(--blade, .205) - .205) * 462.96296%));
+  width: 90%;
+  height: auto;
+  filter: drop-shadow(0 .1rem .13rem #151219bc) drop-shadow(0 .25rem .33rem #15121b66);
+  pointer-events: none;
+}
+.stage[data-hero-state="printing"] .squeegee { will-change: transform; }
+.stage:not([data-hero-state="ready"], [data-hero-state="printing"]) .squeegee { visibility: hidden; }
+.stage:has(noscript img) .squeegee { visibility: hidden; }
+.stage:has(noscript img) [data-proof] { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .stage[data-hero-state="ready"]:not([data-static-start]) .squeegee { visibility: hidden; }
+}
 .ticket {
   display: flex;
   flex-wrap: wrap;
@@ -182,7 +228,7 @@ body { background: var(--dark); }
   opacity: 0;
   cursor: pointer;
 }
-.ink-controls label span, .pause {
+.ink-controls label span, .repeat, .pause {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -204,7 +250,9 @@ body { background: var(--dark); }
 .ink-controls label:nth-of-type(3) i { background: var(--orange); }
 .ink-controls input:checked + span { border-color: var(--paper); box-shadow: inset 0 -2px var(--paper); }
 .ink-controls input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
-.pause { cursor: pointer; }
+.repeat, .pause { cursor: pointer; }
+.repeat { color: var(--dark); background: #ff865e; border-color: #ff865e; font-weight: 800; }
+.repeat:hover { background: var(--paper); border-color: var(--paper); }
 .pause:disabled { opacity: .68; cursor: default; }
 .sr-only {
   position: absolute;
@@ -331,7 +379,7 @@ main { background: var(--blank); }
 @media (max-width: 22rem) {
   .masthead nav a { font-size: .8rem; }
   .brand span { font-size: 1.1rem; }
-  .ink-controls label span, .pause { padding-inline: .4rem; }
+  .ink-controls label span, .repeat, .pause { padding-inline: .4rem; }
 }
 @media (forced-colors: active) {
   .ink-controls input:checked + span { border: 2px solid Highlight; }

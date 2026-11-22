@@ -6,8 +6,8 @@ const id = "press-plates";
 const maxBackingWidth = 352;
 const press = registerShader(defineShader({
   name: "AfterimagePressPlates",
-  animatedTime: { speed: "registrationSpeed" },
-  props: { plate: { default: 0 }, registrationSpeed: { default: 1 / 8 } },
+  animatedTime: { speed: "lightSpeed" },
+  props: { plate: { default: 0 }, inkEdge: { default: 0 }, lightSpeed: { default: 1.2 } },
   paint: wgsl(art),
 }));
 
@@ -27,7 +27,7 @@ export async function initializePress(canvas, options) {
   let rendererDpr = displayDpr();
   const area = () => printArea(width, height, Math.max(rendererDpr, displayDpr()));
   const renderer = await initializeStandalone(canvas, [
-    { id, type: press.name, props: { plate: options.settings.plate } },
+    { id, type: press.name, props: options.settings },
   ], {
     ...options,
     ...area(),
@@ -55,5 +55,5 @@ export async function initializePress(canvas, options) {
 }
 
 export function updatePress(renderer, settings) {
-  renderer.update(id, { plate: settings.plate });
+  renderer.update(id, settings);
 }

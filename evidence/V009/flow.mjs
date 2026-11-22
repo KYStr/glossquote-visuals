@@ -111,3 +111,95 @@ export async function testFlow(page, lang) {
   assert.ok(bytes.length > 0);
   return { lang, observations, download: { filename, bytes: bytes.length, text } };
 }
+
+// Exercise a new impression from a known starting point regardless of how long
+// the page had been open. The legacy callback keeps its three checkpoint IDs;
+// testPrintStroke additionally captures the blade crossing the stationary sheet.
+async function probePrint(page, input, capture, includeStroke) {
+  assert.ok(["keyboard", "touch", "mouse"].includes(input));
+  const stage = page.locator("[data-stage]");
+  const repeat = page.locator("[data-reprint]");
+  await stage.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.querySelector("[data-stage]")?.dataset.motion === "running");
+  const trigger = async () => {
+    const nextRun = Number(await stage.getAttribute("data-print-run")) + 1;
+    if (input === "keyboard") await repeat.press("Enter");
+    else if (input === "touch") await repeat.tap();
+    else await repeat.click();
+    await page.waitForFunction(run => {
+      const stage = document.querySelector("[data-stage]");
+      return stage.dataset.printRun === String(run) && stage.dataset.printStep === "ready";
+    }, nextRun, { timeout: 8000 });
+    return nextRun;
+  };
+  async function snapshot(name) {
+    const sample = await stage.evaluate(scene => {
+      const tool = scene.querySelector(".squeegee");
+      function localBox(element) {
+        const { left, top, width, height } = element.getBoundingClientRect();
+        const sceneBox = scene.getBoundingClientRect();
+        return [left - sceneBox.left, top - sceneBox.top, width, height];
+      }
+      return {
+        step: scene.dataset.printStep,
+        material: Number(scene.dataset.material),
+        run: Number(scene.dataset.printRun),
+        blade: Number(tool.style.getPropertyValue("--blade")),
+        toolVisible: getComputedStyle(tool).visibility === "visible",
+        sheet: localBox(scene.querySelector(".press-sheet")),
+        registration: localBox(scene.querySelector(".registration")),
+      };
+    });
+    await capture?.(name);
+    return sample;
+  }
+  const run = await trigger();
+  const before = await snapshot("before");
+  assert.equal(before.run, run);
+  assert.equal(before.step, "ready");
+  assert.equal(before.material, 0);
+  assert.equal(before.toolVisible, true);
+  assert.ok(before.blade < .21);
+  let mid;
+  if (includeStroke) {
+    await page.waitForFunction(expectedRun => {
+      const stage = document.querySelector("[data-stage]");
+      const edge = Number(stage.querySelector(".squeegee").style.getPropertyValue("--blade"));
+      return stage.dataset.printRun === String(expectedRun) && stage.dataset.printStep === "passing" &&
+        edge >= .47 && edge < .84;
+    }, run, { timeout: 8000 });
+    mid = await snapshot("passing");
+    assert.equal(mid.run, run);
+    assert.equal(mid.step, "passing");
+    assert.equal(mid.toolVisible, true);
+    assert.ok(mid.blade > before.blade);
+  }
+  await page.waitForFunction(expectedRun => {
+    const stage = document.querySelector("[data-stage]");
+    return stage.dataset.printRun === String(expectedRun) && stage.dataset.heroState === "printed";
+  }, run, { timeout: 8000 });
+  const after = await snapshot("after");
+  assert.equal(after.toolVisible, false);
+  assert.equal(after.step, "complete");
+  await page.waitForTimeout(250);
+  assert.equal(await stage.getAttribute("data-hero-state"), "printed");
+
+  const replayRun = await trigger();
+  const reset = await snapshot("reset");
+  assert.equal(reset.run, replayRun);
+  assert.equal(reset.toolVisible, true);
+  assert.ok(reset.blade < .21);
+  for (const sample of [mid, after, reset].filter(Boolean)) {
+    assert.deepEqual(sample.sheet, before.sheet);
+    assert.deepEqual(sample.registration, before.registration);
+  }
+  return { before, ...(mid && { mid }), after, reset };
+}
+
+export function testHeroInteraction(page, input, capture) {
+  return probePrint(page, input, capture, false);
+}
+
+export function testPrintStroke(page, input, capture) {
+  return probePrint(page, input, capture, true);
+}

@@ -20,7 +20,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <link rel="icon" href="%BASE_URL%media/afterimage-press/mark.svg" type="image/svg+xml">
-  <link rel="preload" href="%BASE_URL%media/afterimage-press/plate-both.webp" as="image">
+  <link rel="preload" href="%BASE_URL%media/afterimage-press/plate-cobalt.webp" as="image">
   <link rel="preload" href="%BASE_URL%fonts/night-barlow-condensed-extrabold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/afterimage-press/page.css">
@@ -48,9 +48,17 @@
           <div class="poster" aria-label="Gig poster proof">
             <div class="slugline"><span>AP–01</span><span>Independent bands live</span><span aria-hidden="true">⊕</span></div>
             <h2 class="poster-title" lang="en">FEEDBACK ASSEMBLY</h2>
-            <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="8">
-              <img data-proof="0" src="%BASE_URL%media/afterimage-press/plate-both.webp" alt="A cobalt loudspeaker and a fluorescent-orange horn overlap in dark violet on warm paper." width="1200" height="600" fetchpriority="high">
-              <canvas aria-hidden="true"></canvas>
+            <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="ready" data-print-run="0">
+              <div class="press-sheet">
+                <img data-proof="1" src="%BASE_URL%media/afterimage-press/plate-cobalt.webp" alt="A cream gig poster, held on the press bed, with the cobalt speaker already printed." width="1200" height="600" fetchpriority="high">
+                <noscript><img src="%BASE_URL%media/afterimage-press/plate-both.webp" alt="The fluorescent orange horn overprints the cobalt speaker in deep violet." width="1200" height="600"></noscript>
+                <canvas aria-hidden="true"></canvas>
+              </div>
+              <svg class="registration" viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M31 102.5h22m-11-11v22m905-11h22m-11-11v22M31 442.5h22m-11-11v22m905-11h22m-11-11v22" vector-effect="non-scaling-stroke"/>
+                <path class="grips" d="M63 122v-23h24m826 0h24v23M63 423v23h24m826 0h24v-23" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <img class="squeegee" src="%BASE_URL%media/afterimage-press/squeegee.svg" width="1000" height="120" alt="" aria-hidden="true">
             </div>
             <div class="ticket">
               <div class="event">
@@ -67,8 +75,9 @@
               <label><input name="press-plate" type="radio" value="1"><span><i aria-hidden="true"></i>Cobalt plate</span></label>
               <label><input name="press-plate" type="radio" value="2"><span><i aria-hidden="true"></i>Orange plate</span></label>
             </fieldset>
+            <button type="button" class="repeat" data-reprint>Reprint second ink</button>
             <button type="button" class="pause" data-pause hidden aria-pressed="false">Pause motion</button>
-            <span class="sr-only" data-motion-status role="status">Showing the still print proof.</span>
+            <span class="sr-only" data-motion-status role="status">The two-ink proof on the press bed.</span>
           </div>
         </div>
       </section>

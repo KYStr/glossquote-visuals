@@ -1,14 +1,8 @@
-  // Both stencils use the same paper coordinates. Registration is the only
-  // transform, so slugs, screen dots and knockout marks travel with the ink.
-  let phase = fract(time);
-  // A quick press stroke (1.2 s), a registered hold, then a slow release.
-  let remaining = 1.0 - clamp(phase / 0.15, 0.0, 1.0);
-  let returnStroke = smoothstep(0.43, 1.0, phase);
-  let settle = 0.026 * sin(phase * 37.699) * smoothstep(0.12, 0.18, phase)
-    * (1.0 - smoothstep(0.37, 0.43, phase));
-  let offset = remaining * remaining + returnStroke + settle;
-  let b = uv - vec2f(0.493 - 0.173 * offset, 0.503 + 0.064 * offset);
-  let o = uv - vec2f(0.510 + 0.173 * offset, 0.500 - 0.027 * offset);
+  // Both stencils share the same fixed sheet coordinates. The rubber edge
+  // carries no image: it sets the frontier of the second ink deposition.
+  let imageUv = vec2f(uv.x, (uv.y - 0.5) / 0.92 + 0.5);
+  let b = imageUv - vec2f(0.493, 0.503);
+  let o = imageUv - vec2f(0.510, 0.500);
   let edge = max(fwidth(uv.x) * 1.15, 0.0008);
 
   // Cobalt: a slanted cabinet, turned-out cone and two smaller drivers.
@@ -52,12 +46,20 @@
     * (1.0 - strength * screenBlue * smoothstep(0.11, 0.33, b.y));
   var orange = (1.0 - smoothstep(-edge, edge, orangeDist))
     * (1.0 - strength * screenOrange * smoothstep(0.08, 0.33, o.y));
+  let aaInk = fwidth(uv.y) * 0.5;
+  if (plate < 0.5) {
+    orange *= 1.0 - smoothstep(inkEdge - aaInk, inkEdge + aaInk, uv.y);
+  }
   if (plate >= 0.5 && plate < 1.5) { orange = 0.0; }
   if (plate >= 1.5) { blue = 0.0; }
 
   // Match the baked sRGB proof at both solid and partial ink coverage.
   // Custom WGSL returns linear RGB; Shaders encodes it for presentation.
-  let paper = vec3f(246.0, 239.0, 221.0) / 255.0;
+  // A mild change of reflected light over the tooth of the paper, including
+  // when the completed impression is left on the bed. No ink geometry moves.
+  let glint = 0.5 + 0.5 * cos(uv.x * 6.0 + uv.y * 2.0 - time);
+  let stock = (glint - 0.5) * 3.5;
+  let paper = (vec3f(246.0, 239.0, 221.0) + stock * vec3f(1.0, 0.83, 0.62)) / 255.0;
   let cobalt = vec3f(20.0, 58.0, 214.0) / 255.0;
   let vermilion = vec3f(255.0, 81.0, 29.0) / 255.0;
   let overprint = vec3f(49.0, 27.0, 69.0) / 255.0;
