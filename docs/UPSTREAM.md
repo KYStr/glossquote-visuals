@@ -8,6 +8,8 @@
 
 果時沿用鎖版 Shaders standalone 及自製 WGSL。盤面、果凍與銀匙的著色結果可在 GPU 紋理中保留，移動時只重畫受影響的區域；停留時仍按表面材質更新細微反光。摺徑以原生 WebGPU 畫出相連的硬折板，水面、船身與最終合成分開繪製，船身保留四倍多重取樣的斜邊。[果時](../src/works/sorbet-hour/pose-cache.js) · [摺徑](../src/works/foldline/gpu.js)
 
+疊印將固定印床、三套墨版和有透明邊緣的刮刀上傳為同源紋理。WebGPU 以同一個刮刀座標決定落墨邊界，並將整張海報畫在同一塊畫布上。[刮印程式](../src/works/afterimage-press/press.wgsl)
+
 ## M05 繁中字型與渲染
 
 繁中每頁先載入本件需要的同源字型。字型就緒、請求失敗或達 850 ms 的截止時間時，啟動腳本就讓頁面排版。關閉 JavaScript 時 HTML 會直接顯示。英文沿用各品牌的字體設計。
