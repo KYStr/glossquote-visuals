@@ -1,4 +1,3 @@
-import { freezePress } from "./freeze.js";
 import { createMotion, observeMotion } from "../../shared/motion.js";
 import { bladeEdge, initialEdge, liftStart, pullStart, sheetHeight, strokeDuration } from "./stroke.js";
 
@@ -130,8 +129,6 @@ find("[data-receipt]").hidden = false;
 const stage = find("[data-stage]");
 const canvas = stage.querySelector("canvas");
 const bed = stage.querySelector(".registration");
-const inkDetail = stage.querySelector(".ink-detail");
-const tool = stage.querySelector(".squeegee");
 const pause = find("[data-pause]");
 const repeat = find("[data-reprint]");
 const status = find("[data-motion-status]");
@@ -144,14 +141,13 @@ const proofs = [null, still, null];
 let plate = 0;
 let elapsed = 0;
 let previousFrame = null;
-let frame = 0;
-let frozenFrame = null;
+let phaseVersion = 0;
+let renderer;
 let phase = "still";
 let rendered = false;
 let paused = false;
 let staticStart = false;
 let printRun = 0;
-let shader;
 
 function isStatic() {
   return !supported || preference.matches || phase === "unavailable";
@@ -183,8 +179,7 @@ function updateStage() {
   // In normal motion the blade and ink frontier share one stage coordinate.
   // During WebGPU initialization and recovery, keep the static first proof.
   const edge = bladeEdge(rendered ? progress : 0);
-  tool.style.setProperty("--blade", String(edge));
-  inkDetail.style.setProperty("--ink-cut", `${inkCoverage(edge) * 100}%`);
+  stage.dataset.blade = String(edge);
 }
 
 async function loadStill(file, alt, index) {
@@ -196,77 +191,45 @@ async function loadStill(file, alt, index) {
   proofs[index] = image;
 }
 
-function inkCoverage(edge) {
-  return Math.max(0, Math.min(1, (edge - initialEdge) / sheetHeight));
-}
-
 function printSettings() {
-  const edge = bladeEdge(elapsed / strokeDuration);
-  return { plate, inkEdge: inkCoverage(edge) };
+  const progress = elapsed / strokeDuration;
+  return { plate, edge: bladeEdge(progress), tool: plate === 0 && progress < 1 };
 }
 
-function draw(time) {
-  frame = 0;
-  if (phase !== "running" || plate !== 0) return;
+function advanceStroke(time) {
+  if (phase !== "running" || plate !== 0 || elapsed >= strokeDuration) return undefined;
   const increment = previousFrame === null ? 0 : Math.min(time - previousFrame, 80);
   previousFrame = time;
   elapsed = Math.min(strokeDuration, elapsed + increment);
-  motion.setSettings(printSettings());
   updateStage();
-  if (elapsed < strokeDuration) frame = requestAnimationFrame(draw);
+  return printSettings();
 }
 
-function startClock() {
-  if (!frame && phase === "running" && plate === 0 && elapsed < strokeDuration) {
-    frame = requestAnimationFrame(draw);
+function publishPhase(next) {
+  const revision = ++phaseVersion;
+  if (next !== "paused" || !renderer || !rendered) {
+    stage.dataset.motion = next;
+    return;
   }
-}
-
-function stopClock() {
-  cancelAnimationFrame(frame);
-  frame = 0;
-  previousFrame = null;
-}
-
-function restoreLiveFrame() {
-  if (!frozenFrame) return;
-  inkDetail.before(canvas);
-  frozenFrame.remove();
-  frozenFrame = null;
-}
-
-function presentFrame(next) {
-  if (next === "paused" && rendered) {
-    // The GPU queue is locked by createMotion before this read. Retain the
-    // detached live canvas and timeline for resume, with one canvas onscreen.
-    try {
-      frozenFrame = freezePress({
-        stage, bed, canvas, inkDetail, tool, plate, coverage: printSettings().inkEdge,
-      });
-    } catch {
-      // A read can fail during device loss. Leave the locked canvas in place
-      // so the normal recovery path can present its fallback.
-      frozenFrame = null;
-    }
-    if (frozenFrame) {
-      canvas.remove();
-      stage.append(frozenFrame);
-    }
-  }
-  stage.dataset.motion = next;
+  // The renderer has stopped requesting textures. Wait for any work already
+  // submitted to finish before the UI confirms the retained frame.
+  void renderer.settled().then(() => {
+    if (revision === phaseVersion) stage.dataset.motion = "paused";
+  });
 }
 
 const motion = createMotion({
   supported,
   initialSettings: printSettings(),
   async initialize(options) {
-    shader = await import("./shader.js");
+    const { initializePress } = await import("./shader.js");
     if (options.signal.aborted) return null;
-    return shader.initializePress(canvas, {
+    renderer = await initializePress(canvas, {
       ...options,
+      assetBase: bed.src,
+      onFrame: advanceStroke,
       onError() {
         if (!options.signal.aborted) {
-          restoreLiveFrame();
           rendered = false;
           stage.removeAttribute("data-rendered");
         }
@@ -274,17 +237,16 @@ const motion = createMotion({
         if (!options.signal.aborted) updateStage();
       },
     });
+    return renderer;
   },
-  applySettings: (renderer, next) => shader.updatePress(renderer, next),
+  applySettings: (renderer, next) => renderer.update(next),
   renderState(next) {
     phase = next;
-    if (phase !== "paused") restoreLiveFrame();
+    previousFrame = null;
     if (phase === "running") {
       rendered = true;
       stage.setAttribute("data-rendered", "");
-      startClock();
     } else {
-      stopClock();
       if (["starting", "reduced", "unavailable"].includes(phase)) {
         rendered = false;
         stage.removeAttribute("data-rendered");
@@ -294,7 +256,7 @@ const motion = createMotion({
     repeat.textContent = isStatic() ? (staticStart ? copy.showPrinted : copy.showStart) : copy.reprint;
     status.textContent = copy[phase];
     updateStage();
-    presentFrame(next);
+    publishPhase(next);
   },
 });
 
@@ -307,7 +269,7 @@ function setPause(next) {
 
 for (const control of controls) {
   control.addEventListener("change", () => {
-    stopClock();
+    previousFrame = null;
     plate = Number(control.value);
     stage.dataset.material = control.value;
     elapsed = strokeDuration;
@@ -320,7 +282,7 @@ for (const control of controls) {
 }
 pause.addEventListener("click", () => setPause(!paused));
 repeat.addEventListener("click", () => {
-  stopClock();
+  previousFrame = null;
   controls[0].checked = true;
   plate = 0;
   stage.dataset.material = "0";
@@ -337,7 +299,6 @@ repeat.addEventListener("click", () => {
   motion.setSettings(printSettings());
   if (paused && !isStatic()) setPause(false);
   updateStage();
-  startClock();
 });
 void Promise.allSettled([
   loadStill("plate-both.webp", copy.combined, 0),

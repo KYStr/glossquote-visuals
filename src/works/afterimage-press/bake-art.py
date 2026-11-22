@@ -1,12 +1,14 @@
 """Bake the still ink proofs and the three original specimen posters.
 
-Run from the repository root with Pillow and NumPy. The live artwork uses the
-same fixed stencil distances in press.wgsl.
+Run from the repository root with Pillow, NumPy and resvg-py. The high
+density impressions are sampled directly by the live WebGPU compositor.
 """
+from io import BytesIO
 from pathlib import Path
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+from resvg_py import svg_to_bytes
 
 OUT = Path("public/media/afterimage-press")
 DISPLAY = "public/fonts/night-barlow-condensed-extrabold.ttf"
@@ -23,7 +25,7 @@ def smooth(low, high, value):
     return amount * amount * (3 - 2 * amount)
 
 
-def stencil(width, height, mode=0, ink_edge=1, detail=False):
+def stencil(width, height, mode=0, ink_edge=1):
     u = (np.arange(width) + .5)[None, :] / width
     v = (np.arange(height) + .5)[:, None] / height
     image_v = (v - .5) / .92 + .5
@@ -69,21 +71,7 @@ def stencil(width, height, mode=0, ink_edge=1, detail=False):
     if mode == 0:
         b *= (1 - smooth(ink_edge - .5 / height, ink_edge + .5 / height, v))[:, :, None]
     rgb = PAPER * (1 - a) * (1 - b) + COBALT * a * (1 - b) + ORANGE * b * (1 - a) + OVERPRINT * a * b
-    image = Image.fromarray(np.rint(rgb).astype(np.uint8))
-    if detail:
-        # Preserve opaque, full-resolution detail across contours and screens.
-        # Feather onto the GPU's flat color and softly changing bare paper.
-        def detail_mask(distance, height_from_center, screen_start):
-            edge_mask = 1 - smooth(.015, .038, np.abs(distance))
-            screen_mask = smooth(screen_start - .035, screen_start, height_from_center)
-            screen_mask = screen_mask * (1 - smooth(-.008, .035, distance))
-            return np.maximum(edge_mask, screen_mask)
-
-        blue_detail = detail_mask(blue, by, .11) if mode != 2 else 0
-        orange_detail = detail_mask(orange, oy, .08) if mode != 1 else 0
-        alpha = np.maximum(blue_detail, orange_detail) * smooth(.002, .02, v) * smooth(.002, .02, 1 - v)
-        image.putalpha(Image.fromarray(np.rint(255 * alpha).astype(np.uint8)))
-    return image
+    return Image.fromarray(np.rint(rgb).astype(np.uint8))
 
 
 def ink(color):
@@ -152,11 +140,30 @@ def specimen(file, code, title, date, venue, art):
     image.save(OUT / file, quality=90, method=6)
 
 
+def bake_stage_textures():
+    bed = (OUT / "press-bed.svg").read_text(encoding="utf-8")
+    bed = bed.replace('width="1000" height="500"', 'width="2000" height="1000"', 1)
+    plate = Image.open(BytesIO(bytes(svg_to_bytes(svg_string=bed)))).convert("RGB")
+    plate.save(OUT / "bed-texture.webp", lossless=True, method=6)
+
+    handle = (OUT / "squeegee.svg").read_text(encoding="utf-8").split(">", 1)[1].rsplit("</svg>", 1)[0]
+    # Padding around the same tool lets the blade cast a contact shadow.
+    tool = f"""<svg xmlns="http://www.w3.org/2000/svg" width="2120" height="340" viewBox="-30 -20 1060 170">
+      <filter id="contact" filterUnits="userSpaceOnUse" x="-30" y="-20" width="1060" height="170">
+        <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#151219" flood-opacity=".68"/>
+        <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#15121b" flood-opacity=".34"/>
+      </filter>
+      <g filter="url(#contact)">{handle}</g>
+    </svg>"""
+    image = Image.open(BytesIO(bytes(svg_to_bytes(svg_string=tool)))).convert("RGBA")
+    image.save(OUT / "tool-texture.webp", lossless=True, method=6)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
+    bake_stage_textures()
     for index, name in enumerate(("both", "cobalt", "orange")):
-        stencil(1200, 600, mode=index).save(OUT / f"plate-{name}.webp", quality=93, method=6)
-        stencil(2000, 1000, mode=index, detail=True).save(OUT / f"detail-{name}.webp", lossless=True, method=6)
+        stencil(2000, 1000, mode=index).save(OUT / f"plate-{name}.webp", lossless=True, method=6)
     specimen("feedback.webp", "01", ["FEEDBACK", "ASSEMBLY"], "14 NOV / 20:00", "LIVE SET  /  LOADING BAY B", stencil(1160, 878, 0))
     specimen("orbital.webp", "02", ["ORBITAL", "RELAY"], "21 NOV / 19:30", "ELECTRONIC SETS  /  ROOM 04", second_art())
     specimen("side-b.webp", "03", ["SIDE B", "SOCIAL"], "28 NOV / 17:00", "RECORD SWAP  /  SOUTH ARCADE", third_art())
