@@ -1,10 +1,10 @@
 html.sorbet-page {
-  --paper: #fff9ec;
-  --ink: #531727;
-  --accent: #941638;
+  --paper: #fff4ee;
+  --ink: #50101c;
+  --accent: #76172d;
   --rule: #d6b4af;
   --gutter: clamp(1rem, 5vw, 4.75rem);
-  --display: ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", "Microsoft JhengHei", system-ui, sans-serif;
+  --display: Georgia, "Times New Roman", "Microsoft JhengHei", serif;
 }
 .sorbet-page body { line-height: 1.5; }
 .sorbet-page .frame { max-inline-size: 88rem; }
@@ -36,18 +36,44 @@ html.sorbet-page {
 .brand span:last-child { font-size: .52em; line-height: .92; letter-spacing: .015em; }
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  align-items: center;
-  column-gap: clamp(1rem, 4vw, 4.5rem);
-  padding-block: clamp(2.25rem, 5vw, 5rem) clamp(3.5rem, 8vw, 7rem);
+  gap: clamp(1.1rem, 2vw, 1.9rem);
+  padding-block: .45rem clamp(2.6rem, 6vw, 5.25rem);
 }
-.hero-copy { min-inline-size: 0; }
-.hero-copy .season-label { margin-block-end: .75rem; font-weight: 800; }
-.hero h1, .sorbet-page h2 { font-family: var(--display); font-weight: 900; line-height: 1.045; color: var(--accent); }
-.hero h1 { font-size: clamp(2.7rem, 5.6vw, 5.5rem); letter-spacing: -.075em; }
-.hero h1 span { display: block; }
-:lang(zh-Hant) > body .hero h1 { font-size: clamp(2.6rem, 5.15vw, 5rem); letter-spacing: -.08em; line-height: 1.15; }
-.hero-copy .hero-intro { margin-block: 1.15rem 1.55rem; max-inline-size: 30ch; }
+.hero-copy {
+  order: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem 1rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--rule);
+}
+.hero-copy .season-label { font-weight: 800; }
+.hero-copy .hero-intro { flex: 1 1 18rem; }
+.hero-copy .button { margin-inline-start: auto; }
+.sorbet-page h2 { font-family: var(--display); font-weight: 750; line-height: 1.045; color: var(--accent); }
+.hero-wordmark {
+  position: absolute;
+  z-index: 1;
+  inset: 5% auto auto 5%;
+  color: #4a0c10;
+  pointer-events: none;
+  font-family: var(--display);
+}
+.hero-wordmark :lang(en) {
+  font-size: clamp(2.5rem, 12vw, 12rem);
+  font-weight: 500;
+  line-height: .73;
+  letter-spacing: -.091em;
+}
+.hero-wordmark span { display: block; }
+.hero-wordmark :lang(zh-Hant) {
+  margin-block-start: 1.15em;
+  font-size: clamp(.86rem, 2.9vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: .33em;
+  line-height: 1.2;
+}
 .button {
   display: inline-flex;
   align-items: center;
@@ -71,7 +97,7 @@ html.sorbet-page {
   position: relative;
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  background: #f8d38e;
+  background: #efc6bf;
 }
 .stage img, .stage canvas { position: absolute; inset: 0; }
 .stage img { width: 100%; height: 100%; }
@@ -79,7 +105,7 @@ html.sorbet-page {
 .stage canvas[data-display-size] { width: 100% !important; height: 100% !important; }
 .scoop-hit {
   position: absolute;
-  inset: 9% 31% 25% 14%;
+  inset: 20% 13% 26% 34%;
   min-inline-size: 44px;
   min-block-size: 44px;
   padding: 0;
@@ -92,8 +118,8 @@ html.sorbet-page {
 .scoop-hit[aria-disabled="true"] { cursor: default; }
 .scoop-hit span {
   position: absolute;
-  left: var(--aim, 50%);
-  top: var(--aim-y, 16%);
+  left: var(--aim, 53%);
+  top: var(--aim-y, 17%);
   width: clamp(2rem, 11%, 4rem);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
@@ -104,8 +130,8 @@ html.sorbet-page {
 }
 .stage:is([data-hero-state="intact"], [data-aiming]) .scoop-hit:focus-visible span,
 .scoop-hit:active span { visibility: visible; }
-.stage[data-scoop-aim="left"] { --aim: 17%; --aim-y: 29%; }
-.stage[data-scoop-aim="right"] { --aim: 85%; --aim-y: 29%; }
+.stage[data-scoop-aim="left"] { --aim: 16%; --aim-y: 31%; }
+.stage[data-scoop-aim="right"] { --aim: 89%; --aim-y: 31%; }
 .scoop-controls {
   flex: 1 0 100%;
   display: flex;
@@ -198,11 +224,8 @@ html.sorbet-page {
 .sorbet-footer .brand { margin-inline-end: auto; }
 
 @media (max-width: 52rem) {
-  .hero { grid-template-columns: 1fr; row-gap: 1.5rem; padding-block-start: 1.3rem; }
-  .hero h1 { font-size: clamp(2.8rem, 10.3vw, 5rem); }
-  :lang(zh-Hant) > body .hero h1 { font-size: clamp(2.7rem, 9vw, 4.6rem); }
-  .hero-copy .hero-intro { margin-block: .7rem .85rem; }
-  .hero-copy .season-label { margin-block-end: .4rem; }
+  .hero-copy .hero-intro { flex-basis: 100%; }
+  .hero-copy .button { margin-inline-start: 0; }
   .flavor-grid, .allergy, .box-grid, .care { grid-template-columns: 1fr; }
   .flavor-grid { gap: 1rem; }
 }

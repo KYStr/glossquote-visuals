@@ -39,15 +39,13 @@
 
   <main id="main" tabindex="-1">
     <section class="frame hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="season-label">季節果凍禮盒 · 銀匙試吃</p>
-        <h1 id="hero-title"><span>一勺果凍，</span> 一口盛夏。</h1>
-        <p class="hero-intro">用銀匙試吃蜜柑、覆盆莓或白芭樂果凍，再配一盒六杯的季節滋味。</p>
-        <a class="button" href="#box">搭配六杯<span aria-hidden="true">↘</span></a>
-      </div>
       <figure class="sorbets">
-        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="intact" data-scoop-aim="center" data-scoop-position="none" data-scoop-visual="ready" data-bite-phase="idle" data-bite-run="0" data-bite-elapsed="0">
+        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="intact" data-scoop-aim="center" data-scoop-position="none" data-cuts="" data-scoop-visual="ready" data-bite-phase="idle" data-bite-run="0" data-bite-elapsed="0">
           <img src="%BASE_URL%media/sorbet-hour/cover.webp" alt="透亮的蜜柑果凍立在瓷盤上，盤沿透過果凍折射。" width="1200" height="800" fetchpriority="high" data-poster>
+          <div class="hero-wordmark">
+            <p lang="en" aria-hidden="true"><span>Jelly</span><span>Hour</span></p>
+            <h1 id="hero-title">果時</h1>
+          </div>
           <canvas aria-hidden="true"></canvas>
           <button type="button" class="scoop-hit" data-scoop-hit aria-label="用銀匙試吃果凍" aria-describedby="scoop-help" aria-disabled="false" hidden><span aria-hidden="true"></span></button>
         </div>
@@ -63,13 +61,18 @@
           <button class="pause" type="button" data-pause aria-pressed="false" hidden>暫停動態</button>
           <span class="visually-hidden" data-motion-status role="status">目前顯示靜態果凍。</span>
           <div class="scoop-controls" data-scoop-controls hidden>
-            <p id="scoop-help">點按或拖曳選位置，看銀匙挖起一口。鍵盤用左右鍵選位置，再按 Enter。</p>
+            <p id="scoop-help">選一處用銀匙挖取，每一口都會留下凹痕。鍵盤用左右鍵選位置，再按 Enter。</p>
             <button type="button" class="pause reset-scoop" data-scoop-reset disabled>重設</button>
             <button type="button" class="pause replay-scoop" data-scoop-replay>再試一口</button>
             <span class="visually-hidden" data-scoop-status role="status"></span>
           </div>
         </figcaption>
       </figure>
+      <div class="hero-copy">
+        <p class="season-label">季節果凍禮盒 · 銀匙試吃</p>
+        <p class="hero-intro">用銀匙試吃蜜柑、覆盆莓或白芭樂果凍，再配一盒六杯的季節滋味。</p>
+        <a class="button" href="#box">搭配六杯<span aria-hidden="true">↘</span></a>
+      </div>
     </section>
 
     <section class="frame flavor-section" id="flavors" aria-labelledby="flavors-title">
