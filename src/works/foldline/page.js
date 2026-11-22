@@ -68,6 +68,7 @@ const motion = createMotion({
       onPose(phase, settings) {
         stage.dataset.assemblyPhase = phase;
         stage.dataset.assemblyRun = String(settings.run);
+        stage.dataset.assemblyView = settings.mode === null ? "auto" : "manual";
         if (settings.mode === null && phase === "complete") {
           mode = 2;
           syncSelection(2);
@@ -103,19 +104,24 @@ const setMode = state => {
   mode = state;
   syncSelection(state);
   setPoster(state);
-  if (!live || paused) stage.dataset.assemblyPhase = ["packed", "half", "complete"][state];
+  if (!live || paused) {
+    stage.dataset.assemblyPhase = ["packed", "half", "complete"][state];
+    stage.dataset.assemblyView = "manual";
+  }
   if (paused) stage.removeAttribute("data-live");
   motion.setSettings({ mode, run });
 };
-radios.addEventListener("input", event => {
-  if (event.target.name === "fold-state") setMode(Number(event.target.value));
-});
-// A click on the checked radio deliberately holds that exact pose.
-radios.addEventListener("click", event => {
-  if (event.target.name === "fold-state") {
-    const mode = Number(event.target.value);
-    if (mode === Number(stage.dataset.material)) setMode(mode);
-  }
+function selectChecked({ target }) {
+  if (target.name === "fold-state" && target.checked) setMode(Number(target.value));
+}
+radios.addEventListener("input", selectChecked);
+radios.addEventListener("click", selectChecked);
+radios.addEventListener("keydown", event => {
+  // Space on an already-selected radio may produce neither click nor input.
+  // Treat it as an explicit hold and leave native arrow navigation intact.
+  if (event.key !== " " || event.target.name !== "fold-state" || !event.target.checked) return;
+  event.preventDefault();
+  if (!event.repeat) selectChecked(event);
 });
 pauseButton.addEventListener("click", () => {
   paused = !paused;
