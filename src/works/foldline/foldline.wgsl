@@ -12,6 +12,7 @@ struct Frame {
 @group(0) @binding(5) var mirroredHull: texture_2d<f32>;
 @group(0) @binding(6) var shorePhoto: texture_2d<f32>;
 @group(0) @binding(7) var materialAtlas: texture_2d<f32>;
+@group(0) @binding(8) var cachedPicture: texture_2d<f32>;
 
 struct Surface {
   @builtin(position) position: vec4f,
@@ -114,6 +115,33 @@ fn rippleNoise(p: vec2f) -> f32 {
   let coord = (floor(source)+blendWeight+.5)/pixels;
   let hull = textureSampleLevel(resolvedHull,linearClamp,coord,0);
   return vec4f(hull.rgb+water*(1.0-hull.a),1);
+}
+
+@fragment fn wakeFragment(surface: Surface) -> @location(0) vec4f {
+  let pixel=vec2i(surface.position.xy);
+  let still=textureLoad(cachedPicture,pixel,0);
+  let p=surface.uv;
+  let afloat=frame.tide.z>0.0;
+  let x=p.x-frame.shadow.w;
+  let down=frame.shadow.z+frame.contact.x*x-p.y;
+  let bankMask=smoothstep(.25,.43,p.x)*(1.0-smoothstep(.78,.96,p.x))
+    *smoothstep(-.93,-.79,p.y)*(1.0-smoothstep(-.58,-.43,p.y));
+  let hullMask=(1.0-smoothstep(.40,.55,abs(x)))*smoothstep(.021,.06,down)
+    *(1.0-smoothstep(.14,.225,down));
+  var mask=select(bankMask,hullMask,afloat);
+  if (mask <= 0.0) { return still; }
+  let at=pixel-vec2i(frame.crop.xy);
+  if (all(at >= vec2i(0)) && all(at < vec2i(frame.crop.zw))) {
+    mask *= 1.0-textureLoad(resolvedHull,at,0).a;
+  }
+  let phase=frame.tide.x;
+  let broken=sin(p.x*89.0 + 1.4*sin(p.x*32.0) + p.y*84.0 + phase*2.0);
+  let crest=sin(p.y*166.0+p.x*19.0+phase*2.4);
+  let drift=vec2f(.0018*broken,.00082*crest)*mask;
+  let moving=textureSampleLevel(cachedPicture,linearClamp,imageUV(p)+drift,0).rgb;
+  let pinch=smoothstep(.07,.92,broken*crest);
+  let gleam=vec3f(.029,.061,.054)*pinch*mask*select(.6,1.0,afloat);
+  return vec4f(mix(still.rgb,moving,.67*mask)+gleam,1);
 }
 
 struct Panel {

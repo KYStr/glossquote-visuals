@@ -6,7 +6,33 @@ const layerFormat = "rgba8unorm";
 const depthFormat = "depth24plus";
 const samples = 4;
 const transparent = [0, 0, 0, 0];
-const usage = () => GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC;
+const usage = () => GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC | GPUTextureUsage.COPY_DST;
+
+function wakeScissors(width, height, uniforms, afloat) {
+  const xPixel = x => (x+1)*width/2;
+  const yPixel = y => (1-y)*height/2;
+  function rect(left, right, bottom, top) {
+    const x0=Math.max(0,Math.floor(xPixel(left)));
+    const x1=Math.min(width,Math.ceil(xPixel(right)));
+    const y0=Math.max(0,Math.floor(yPixel(top)));
+    const y1=Math.min(height,Math.ceil(yPixel(bottom)));
+    return [x0,y0,x1-x0,y1-y0];
+  }
+  if (!afloat) return [rect(.25,.96,-.93,-.43)];
+  const slope=uniforms[8], centreX=uniforms[3], centreY=uniforms[2];
+  const line = x => centreY+(x-centreX)*slope;
+  const scissors=[];
+  for (let i=0;i<4;i++) {
+    const left=centreX-.55+i*.275, right=left+.275;
+    const a=line(left), b=line(right);
+    const top=Math.max(a,b), bottom=Math.min(a,b);
+    const box=rect(left,right,bottom-.23,top-.021);
+    // Adjacent scissor rects share a pixel at most; each writes from the same
+    // frozen base and therefore produces the same value there.
+    if (box[2]>0 && box[3]>0) scissors.push(box);
+  }
+  return scissors;
+}
 
 async function loadPhoto(url) {
   const image = new Image();
@@ -48,7 +74,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
       }],
       depthStencil: { format: depthFormat, depthWriteEnabled: true, depthCompare: "less" },
     };
-    const [water, panels, mirror, compose, composeMotion] = await Promise.all([
+    const [water, panels, mirror, compose, composeMotion, wake] = await Promise.all([
       pipeline("waterVertex", "waterFragment", layerFormat),
       pipeline("panelVertex", "panelFragment", layerFormat, { ...hullPipeline, multisample: { count: samples } }),
       pipeline("mirrorVertex", "mirrorFragment", layerFormat, {
@@ -57,6 +83,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
       }),
       pipeline("waterVertex", "composeFragment", format),
       pipeline("waterVertex", "composeMotionFragment", format),
+      pipeline("waterVertex", "wakeFragment", format),
     ]);
     if (obsolete()) {
       device.destroy();
@@ -98,9 +125,12 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
     context.configure({ device, format, alphaMode: "opaque", usage: usage() });
     let targets = [];
     let coverage, depth, resolve, waterView, mirrored, mirrorDepth, layers, surface;
+    let cacheTexture, cacheView, wakeLayers, scissors;
     let movingCoverage, movingDepth, movingResolve, motionLayers;
+    let movingWater;
     let reducedMotionTarget = false;
     let lastMoving;
+    let hasCache = false;
     let geometryDirty = true;
     let topologyReady = false;
     let cropWidth, cropHeight;
@@ -142,6 +172,9 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
           movingCoverage = create(motionSize,layerFormat,samples,attachment);
           movingDepth = create(motionSize,depthFormat,samples,attachment);
           movingResolve = create(motionSize,layerFormat,1,sampled);
+          const fastWaterScale = 520/width;
+          const fastWaterSize = [520,Math.max(1,Math.round(height*fastWaterScale))];
+          movingWater = create(fastWaterSize,layerFormat,1,sampled);
         }
         waterView = create(waterSize, layerFormat, 1, sampled);
         mirrored = create(waterSize, layerFormat, 1, sampled);
@@ -155,17 +188,31 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
             { binding: 6, resource: rock.createView() },
           ],
         });
-        const composite = (pipeline,hull) => device.createBindGroup({
+        const composite = (pipeline,hull,waterLayer) => device.createBindGroup({
           layout: pipeline.getBindGroupLayout(0),
           entries: [
             { binding: 0, resource: { buffer: frame } },
             { binding: 1, resource: hull },
-            { binding: 2, resource: waterView },
+            { binding: 2, resource: waterLayer },
             { binding: 3, resource: sampler },
           ],
         });
-        layers = composite(compose,resolve);
-        if (reducedMotionTarget) motionLayers = composite(composeMotion,movingResolve);
+        layers = composite(compose,resolve,waterView);
+        if (reducedMotionTarget) motionLayers = composite(composeMotion,movingResolve,movingWater);
+        cacheTexture = device.createTexture({
+          size:[width,height],format,usage:sampled | GPUTextureUsage.COPY_SRC,
+        });
+        targets.push(cacheTexture);
+        cacheView=cacheTexture.createView();
+        wakeLayers=device.createBindGroup({
+          layout:wake.getBindGroupLayout(0), entries:[
+            { binding:0,resource:{ buffer:frame } },
+            { binding:1,resource:resolve },
+            { binding:3,resource:sampler },
+            { binding:8,resource:cacheView },
+          ],
+        });
+        hasCache=false;
         geometryDirty = true;
       },
       draw(mesh, uniforms, geometryChanged, animating) {
@@ -180,6 +227,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
         device.queue.writeBuffer(frame, 0, uniforms);
         const encoder = device.createCommandEncoder();
         const moving = reducedMotionTarget && animating;
+        if (animating || geometryChanged || geometryDirty) hasCache=false;
         if (geometryChanged || geometryDirty || moving !== lastMoving) {
           if (!topologyReady) {
             device.queue.writeBuffer(indices,0,topology,0,indexCount+(indexCount%2));
@@ -216,16 +264,36 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
           geometryDirty = false;
           lastMoving = moving;
         }
-        const tide = colorPass(encoder, waterView);
-        tide.setPipeline(water);
-        tide.setBindGroup(0, surface);
-        tide.draw(3);
-        tide.end();
-        const presentation = colorPass(encoder, context.getCurrentTexture().createView());
-        presentation.setPipeline(moving ? composeMotion : compose);
-        presentation.setBindGroup(0,moving ? motionLayers : layers);
-        presentation.draw(3);
-        presentation.end();
+        const output=context.getCurrentTexture();
+        if (animating || !hasCache) {
+          const tide = colorPass(encoder,moving ? movingWater : waterView);
+          tide.setPipeline(water);
+          tide.setBindGroup(0,surface);
+          tide.draw(3);
+          tide.end();
+          const picture = colorPass(encoder,animating ? output.createView() : cacheView);
+          picture.setPipeline(moving ? composeMotion : compose);
+          picture.setBindGroup(0,moving ? motionLayers : layers);
+          picture.draw(3);
+          picture.end();
+          if (!animating) {
+            scissors=wakeScissors(canvas.width,canvas.height,uniforms,reflects);
+            hasCache=true;
+          }
+        }
+        if (!animating) {
+          encoder.copyTextureToTexture({texture:cacheTexture},{texture:output},[canvas.width,canvas.height]);
+          const ripples=encoder.beginRenderPass({
+            colorAttachments:[{view:output.createView(),loadOp:"load",storeOp:"store"}],
+          });
+          ripples.setPipeline(wake);
+          ripples.setBindGroup(0,wakeLayers);
+          for (const rect of scissors) {
+            ripples.setScissorRect(...rect);
+            ripples.draw(3);
+          }
+          ripples.end();
+        }
         device.queue.submit([encoder.finish()]);
       },
       close() {
