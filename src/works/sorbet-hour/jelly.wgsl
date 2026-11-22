@@ -31,12 +31,38 @@
     vec3f(0.0, 0.392, -0.309), vec3f(0.36, 0.392, -0.12));
   let offsets = array<vec2f, 4>(vec2f(0.0), vec2f(-0.35, -0.20),
     vec2f(0.34, -0.26), vec2f(0.01, 0.46));
+
+  // Tiles are conservative axis-aligned rectangles. At their corners, skip
+  // the full ray path when even the outermost subpixel tap can only see the
+  // stationary texture already loaded in this render target.
+  if (scooped >= 2.0) {
+    let center = (uv - vec2f(0.50, 0.56)) * vec2f(1.77, -1.18) - vec2f(0.25, -0.192);
+    let shoulder = (press > 0.0 || rebound > 0.0)
+      && abs(center.x - contact.x) < 0.245 + worldPixel
+      && center.y > shoulderHeight - 0.20 - worldPixel;
+    let opening = hasCut && scooped < 3.0
+      && abs(center.x - contact.x) < 0.211 + worldPixel
+      && abs(center.y - shoulderHeight) < 0.278 + worldPixel;
+    let mouthful = hasCut && abs(center.x - pieceCenter.x) < 0.203 + worldPixel
+      && abs(center.y - pieceY) < 0.203 + worldPixel;
+    if (!shoulder && !opening && !mouthful) {
+      let tool = center - bowlScreen;
+      let along = dot(tool, spoonAxis);
+      let across = abs(dot(tool, spoonAcross));
+      let spoon = along > -0.228 - worldPixel && along < 0.957 + worldPixel
+        && across < 0.138 + worldPixel;
+      if (!spoon) { discard; }
+    }
+  }
   // Most pixels shade once. Only a center ray near an edge asks for the
   // three subpixel rays, including where the moving cut meets the spoon.
   var accumulated = vec4f(0.0);
+  var coveredTaps = 0.0;
   for (var tap = 0u; tap < 4u; tap++) {
     let sampleUv = uv + offsets[tap] * pixelStep;
     var edge = false;
+    var covered = false;
+    var opaqueSteel = false;
     var shaded = vec4f(0.0);
     loop {
       let screen = (sampleUv - vec2f(0.50, 0.56)) * vec2f(1.77, -1.18) - vec2f(0.25, -0.192);
@@ -236,11 +262,13 @@
       }
 
       let hitsGel = visibleAt < endAt;
+      covered = hitsGel;
       if (tap == 0u && hitsGel && metalCoverage > 0.0 && abs(silverAt - visibleAt) < worldPixel * 6.0) {
         edge = true;
       }
       if (silverAt < visibleAt && metalCoverage >= 0.999) {
         shaded = vec4f(silver, 0.0);
+        opaqueSteel = true;
         break;
       }
       let path = clamp(endAt - visibleAt, 0.06, 0.88);
@@ -269,9 +297,7 @@
         let floorHue = array<vec3f, 3>(vec3f(1.0, 0.411, 0.018), vec3f(0.64, 0.069, 0.135), vec3f(0.46, 0.61, 0.13))[j];
         color = color * (1.0 - max(contact, bodyShadow)) + floorHue * reflectedLight;
         if (spoonVisible) {
-          let shadowPos = (floorPos - bowlCenter.xz - vec2f(0.045, 0.09)) / vec2f(0.265, 0.199);
-          let toolShadow = 1.0 - smoothstep(0.17, 1.14, length(shadowPos));
-          color *= 1.0 - toolShadow * (0.19 - 0.10 * travel);
+          color *= 1.0 - spoonShadow(floorPos, bowlCenter.xz, travel);
         }
         color = mix(color, silver, metalCoverage);
 
@@ -351,9 +377,13 @@
       break;
     }
     if (tap == 0u) {
-      if (!edge) { return shaded; }
+      if (!edge) {
+        if (markSteel && opaqueSteel) { return vec4f(shaded.rgb, -1.0); }
+        return cacheColor(shaded, select(0.0, 2.0, covered), 0.0);
+      }
     } else {
       accumulated += shaded;
+      coveredTaps += select(0.0, 1.0, covered);
     }
   }
-  return accumulated / 3.0;
+  return cacheColor(accumulated / 3.0, 1.0, coveredTaps);

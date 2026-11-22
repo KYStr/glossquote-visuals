@@ -42,6 +42,7 @@ device.queue.write_texture({"texture": atlas}, material.tobytes(),
 shader = device.create_shader_module(code=f"""
 @group(0) @binding(0) var<uniform> params: array<vec4f, 3>;
 @group(0) @binding(1) var morning: texture_2d<f32>;
+@group(0) @binding(2) var stationary: texture_2d<f32>;
 fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {{
     let texel = vec2i(origin + clamp(uv, vec2f(0.0), vec2f(1.0)) * (extent - 1.0));
     return textureLoad(morning, texel, 0);
@@ -65,6 +66,7 @@ fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {{
     let cutZ = params[2].x;
     let retained = u32(params[2].y);
     let frame = jellyFrame(biteTime, cutX, cutZ);
+    let markSteel = false;
 {PAINT}
 }}
 """)

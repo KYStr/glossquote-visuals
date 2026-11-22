@@ -30,3 +30,14 @@ fn jellyFrame(time: f32, cutX: f32, cutZ: f32) -> JellyFrame {
   return JellyFrame(vec4f(0.0), vec4f(arrive, travel, press, rebound),
     vec4f(pieceShift, sin(0.68 * travel)), vec4f(bowlCenter, cos(0.68 * travel)), up, axis);
 }
+
+fn cacheColor(color: vec4f, kind: f32, coveredTaps: f32) -> vec4f {
+  let mixed = 1.0 + coveredTaps * 31.0 + round(color.a * 30.0);
+  let code = select(mixed, 128.0 + round(color.a * 127.0), kind == 2.0);
+  return vec4f(color.rgb, select(code / 255.0, 0.0, kind == 0.0));
+}
+
+fn spoonShadow(floor: vec2f, bowl: vec2f, travel: f32) -> f32 {
+  let shadowPos = (floor - bowl - vec2f(0.045, 0.09)) / vec2f(0.265, 0.199);
+  return (1.0 - smoothstep(0.17, 1.14, length(shadowPos))) * (0.19 - 0.10 * travel);
+}
