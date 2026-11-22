@@ -2,7 +2,7 @@ name: Verify M07 candidate
 
 on:
   push:
-    branches: ['codex/m07-key-visuals']
+    branches: ['codex/m07-v010-full-desktop']
   workflow_dispatch:
 
 permissions:
@@ -20,9 +20,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        work: [V008, V009, V010]
+        work: [V010]
         lang: [zh-Hant, en]
-        viewport: [desktop, mobile]
+        viewport: [desktop]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
