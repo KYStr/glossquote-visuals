@@ -280,14 +280,17 @@ export async function testApprovedHero(page, input, capture) {
   await capture("intact");
 
   async function select(point) {
+    await scoop.scrollIntoViewIfNeeded();
     const bounds = await stage.boundingBox();
     const hit = await scoop.boundingBox();
     assert.ok(bounds && hit);
-    const x = bounds.x + point.x * bounds.width;
-    const y = bounds.y + point.y * bounds.height;
-    assert.ok(x > hit.x && x < hit.x + hit.width && y > hit.y && y < hit.y + hit.height);
-    if (input === "touch") await page.touchscreen.tap(x, y);
-    else await page.mouse.click(x, y);
+    const position = {
+      x: bounds.x + point.x * bounds.width - hit.x,
+      y: bounds.y + point.y * bounds.height - hit.y,
+    };
+    assert.ok(position.x > 0 && position.x < hit.width && position.y > 0 && position.y < hit.height);
+    if (input === "touch") await scoop.tap({ position });
+    else await scoop.click({ position });
     assert.equal(await stage.getAttribute("data-scoop-position"), point.name);
   }
 

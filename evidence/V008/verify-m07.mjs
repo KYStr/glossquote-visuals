@@ -3,6 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { chromium } from "playwright";
 import { serveDist } from "../../test/browser/server.mjs";
+import { checkPerformance, installPresentationMeter, measureSubmissions } from "../../test/browser/m04-measure.mjs";
 import { base, root } from "../../scripts/site-map.mjs";
 import { testApprovedHero, testFlow, testHeroInteraction } from "./flow.mjs";
 
@@ -67,7 +68,15 @@ try {
   }
   await page.screenshot({ path: join(dir, "viewport.png") });
   const capture = async name => {
-    await stage.screenshot({ path: join(dir, `${name}-hero.png`) });
+    const clip = await stage.evaluate(element => {
+      const bounds = element.getBoundingClientRect();
+      const x = Math.max(0, Math.floor(bounds.left));
+      const y = Math.max(0, Math.floor(bounds.top));
+      return { x, y, width: Math.min(innerWidth, Math.ceil(bounds.right)) - x,
+        height: Math.min(innerHeight, Math.ceil(bounds.bottom)) - y };
+    });
+    assert.ok(clip.width > 0 && clip.height > 0);
+    await page.screenshot({ path: join(dir, `${name}-hero.png`), clip });
     await page.screenshot({ path: join(dir, `${name}-viewport.png`) });
   };
   capture.checkpoints = ["mid"];
@@ -94,7 +103,22 @@ try {
   await still.locator('[data-stage][data-hero-state="intact"][data-scoop-visual="ready"]').waitFor();
   await reduced.close();
   assert.deepEqual(errors, []);
-  await writeFile(join(dir, "results.json"), JSON.stringify({ input, lang, gpu, hero, flow, reduced: true }, null, 2));
+  let performance;
+  if (input !== "keyboard") {
+    const timing = await browser.newContext({ viewport, deviceScaleFactor: 1, hasTouch: mobile });
+    try {
+      const timedPage = await timing.newPage();
+      await timedPage.addInitScript(installPresentationMeter);
+      await timedPage.goto(url, { waitUntil: "domcontentloaded" });
+      await timedPage.locator('[data-stage][data-rendered][data-motion="running"]').waitFor();
+      performance = await measureSubmissions(timedPage);
+      await writeFile(join(dir, "performance.json"), JSON.stringify(performance, null, 2));
+    } finally {
+      await timing.close();
+    }
+  }
+  await writeFile(join(dir, "results.json"), JSON.stringify({ input, lang, gpu, hero, flow, reduced: true, performance }, null, 2));
+  if (performance) checkPerformance(performance);
 } finally {
   await browser?.close();
   await site.close();

@@ -68,12 +68,13 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0) {
     const direction = Math.hypot(tx, ty * 1.52);
     const ax = tx / direction;
     const ay = ty * 1.52 / direction;
-    // The cutout carries the true contours. These four intervals cover its
-    // bowl, neck, stem and grip before conversion to disjoint raster tiles.
-    for (const [start, end, radius] of [[-0.228, 0.249, 0.138],
-      [0.249, 0.46, 0.14], [0.46, 0.76, 0.14], [0.76, 0.957, 0.14]]) {
-      cover(bowlX + start * ax - radius * Math.abs(ay), bowlY + start * ay - radius * Math.abs(ax),
-        bowlX + end * ax + radius * Math.abs(ay), bowlY + end * ay + radius * Math.abs(ax));
+    // Bound the visible atlas alpha in the spoon's projected frame. The bowl
+    // also covers its analytic edge taps. The shaft sits off the bowl axis.
+    for (const [start, end, lower, upper] of [[-0.228, 0.248, -0.14, 0.14],
+      [0.246, 0.436, -0.024, 0.056], [0.433, 0.733, -0.013, 0.065],
+      [0.729, 0.957, -0.039, 0.100]]) {
+      cover(bowlX + start * ax - upper * ay, bowlY + start * ay + lower * ax,
+        bowlX + end * ax - lower * ay, bowlY + end * ay + upper * ax);
     }
   }
 

@@ -1,5 +1,6 @@
 import { asLocal, expr, math } from "shaders/std";
 import geometry from "./jelly.wgsl?raw";
+import motion from "./jelly-motion.wgsl?raw";
 import { poseRegions } from "./pose-regions.js";
 
 const format = "rgba8unorm-srgb";
@@ -29,15 +30,19 @@ fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {
   return photoRGBA(origin, extent, uv).rgb;
 }
 
-@vertex fn drawRegion(@builtin(vertex_index) index: u32, @location(0) bounds: vec4f) -> @builtin(position) vec4f {
+${motion}
+
+@vertex fn drawRegion(@builtin(vertex_index) index: u32, @location(0) bounds: vec4f) -> JellyFrame {
   let corner = vec2f(f32(index & 1u), f32(index >> 1u));
   let uv = mix(bounds.xy, bounds.zw, corner) / pose[0].xy;
-  return vec4f(uv * vec2f(2, -2) + vec2f(-1, 1), 0, 1);
+  var frame = jellyFrame(pose[0].w, pose[1].y, pose[1].z);
+  frame.pixel = vec4f(uv * vec2f(2, -2) + vec2f(-1, 1), 0, 1);
+  return frame;
 }
 
-@fragment fn drawPose(@builtin(position) pixel: vec4f) -> @location(0) vec4f {
+@fragment fn drawPose(frame: JellyFrame) -> @location(0) vec4f {
   let viewport = pose[0].xy;
-  let uv = pixel.xy / viewport;
+  let uv = frame.pixel.xy / viewport;
   let flavor = pose[0].z;
   let biteTime = pose[0].w;
   let scooped = pose[1].x;
