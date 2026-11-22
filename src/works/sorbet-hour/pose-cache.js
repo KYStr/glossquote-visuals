@@ -22,6 +22,7 @@ export async function prepareJellyMaterial() {
 const geometryModule = `
 @group(0) @binding(0) var<uniform> pose: array<vec4f, 2>;
 @group(0) @binding(1) var morning: texture_2d<f32>;
+@group(0) @binding(2) var stationary: texture_2d<f32>;
 
 fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {
   let texel = vec2i(origin + clamp(uv, vec2f(0.0), vec2f(1.0)) * (extent - 1.0));
@@ -30,6 +31,11 @@ fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {
 
 fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {
   return photoRGBA(origin, extent, uv).rgb;
+}
+
+fn cacheColor(color: vec4f, kind: f32) -> vec4f {
+  let code = select(1.0 + round(color.a * 126.0), 128.0 + round(color.a * 127.0), kind == 2.0);
+  return vec4f(color.rgb, select(code / 255.0, 0.0, kind == 0.0));
 }
 
 ${motion}
@@ -75,16 +81,22 @@ export function paintCachedPose(params) {
   });
   const pose = new Float32Array(8);
   const basePose = new Float32Array(8);
+  const movingPose = new Float32Array(8);
+  const dummy = device.createTexture({ size: [1, 1], format, usage: GPUTextureUsage.TEXTURE_BINDING });
+  const dummyView = dummy.createView();
+  function bindPose(buffer, view) {
+    return device.createBindGroup({
+      layout: pipeline.getBindGroupLayout(0),
+      entries: [{ binding: 0, resource: { buffer } }, { binding: 1, resource: atlasView },
+        { binding: 2, resource: view }],
+    });
+  }
   function poseUniform() {
     const buffer = device.createBuffer({
       size: pose.byteLength,
       usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
     });
-    const bind = device.createBindGroup({
-      layout: pipeline.getBindGroupLayout(0),
-      entries: [{ binding: 0, resource: { buffer } }, { binding: 1, resource: atlasView }],
-    });
-    return { buffer, bind };
+    return { buffer, bind: bindPose(buffer, dummyView) };
   }
   const intact = poseUniform();
   const settled = poseUniform();
@@ -100,14 +112,18 @@ export function paintCachedPose(params) {
     const target = cached.unwrap();
     const base = device.createTexture({
       size: [width, height], format,
-      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
+      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC | GPUTextureUsage.TEXTURE_BINDING,
     });
     const sculpted = device.createTexture({
       size: [width, height], format,
-      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC | GPUTextureUsage.COPY_DST,
+      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC
+        | GPUTextureUsage.COPY_DST | GPUTextureUsage.TEXTURE_BINDING,
     });
-    return { cached, target, targetView: target.createView(), base, baseView: base.createView(),
-      sculpted, sculptedView: sculpted.createView() };
+    const baseView = base.createView();
+    const sculptedView = sculpted.createView();
+    return { cached, target, targetView: target.createView(), base, baseView,
+      sculpted, sculptedView, baseMotion: bindPose(moving.buffer, baseView),
+      sculptedMotion: bindPose(moving.buffer, sculptedView) };
   }
 
   let width = Math.max(1, canvas.width);
@@ -181,30 +197,38 @@ export function paintCachedPose(params) {
       baseDirty = false;
       baked = 0;
     }
-    let stableCuts = pose[7];
-    if (spoonInScene && pose[3] >= 2.77) {
-      const index = positions.findIndex(cut => Math.fround(cut.x) === pose[5] && Math.fround(cut.z) === pose[6]);
-      if (index >= 0) stableCuts |= 1 << index;
-    }
-    // The cut stops deforming after recoil. Save it once; the raised spoon
-    // and moving shadow continue to use live depth, even over a saved cut.
-    if (stableCuts && baked !== stableCuts) {
+    const index = spoonInScene
+      ? positions.findIndex(cut => Math.fround(cut.x) === pose[5] && Math.fround(cut.z) === pose[6])
+      : -1;
+    const activeCut = index < 0 ? 0 : 1 << index;
+    const openCut = pose[3] >= 1.94 ? activeCut : 0;
+    const stableCuts = pose[7] | openCut;
+    // Prepare the undeformed first cut while the empty spoon approaches.
+    // Keep existing cuts visible when preparing any subsequent bite.
+    const prepareCuts = stableCuts || activeCut;
+    if (prepareCuts && baked !== prepareCuts) {
       encoder.copyTextureToTexture({ texture: surfaces.base }, { texture: surfaces.sculpted }, [width, height]);
-      const regions = poseRegions(width, height, 0, 0, 0, stableCuts);
+      const regions = poseRegions(width, height, 0, 0, 0, prepareCuts);
       if (regions.length > 0) {
-        device.queue.writeBuffer(settled.buffer, 0, new Float32Array([width, height, pose[2], 0, 0, 0, 0, stableCuts]));
+        device.queue.writeBuffer(settled.buffer, 0, new Float32Array([width, height, pose[2], 0, 0, 0, 0, prepareCuts]));
         writeRegions(regions, settledOffset);
         draw(encoder, surfaces.sculptedView, settled.bind, "load", regions.length, settledOffset);
       }
+      baked = prepareCuts;
     }
-    baked = stableCuts;
-    encoder.copyTextureToTexture({ texture: baked ? surfaces.sculpted : surfaces.base }, { texture: surfaces.target }, [width, height]);
+    encoder.copyTextureToTexture({ texture: stableCuts ? surfaces.sculpted : surfaces.base },
+      { texture: surfaces.target }, [width, height]);
     if (spoonInScene) {
-      const regions = poseRegions(width, height, pose[3], pose[5], pose[6], pose[7], baked);
+      const regions = poseRegions(width, height, pose[3], pose[5], pose[6], pose[7], stableCuts);
       if (regions.length > 0) {
-        device.queue.writeBuffer(moving.buffer, 0, pose);
+        movingPose.set(pose);
+        // Values 2 and 3 identify an overlay with its stationary plate and
+        // retained cuts already present. Value 3 also has the latest cut.
+        movingPose[4] = openCut ? 3 : 2;
+        device.queue.writeBuffer(moving.buffer, 0, movingPose);
         writeRegions(regions, regionStride);
-        draw(encoder, surfaces.targetView, moving.bind, "load", regions.length, regionStride);
+        draw(encoder, surfaces.targetView, stableCuts ? surfaces.sculptedMotion : surfaces.baseMotion,
+          "load", regions.length, regionStride);
       }
     }
     device.queue.submit([encoder.finish()]);
@@ -217,9 +241,10 @@ export function paintCachedPose(params) {
     moving.buffer.destroy();
     vertices.destroy();
     atlas.destroy();
+    dummy.destroy();
   });
 
-  const { add, sub, mul, abs, max, vec4 } = math;
+  const { add, sub, mul, abs, max, mix, step, vec4 } = math;
   const uv = params.ctx.uv;
   // Both passes use the same pixel lattice. A direct texel read preserves
   // subpixel coverage and avoids the sampler's work on software adapters.
@@ -240,6 +265,9 @@ export function paintCachedPose(params) {
     const falloff = max(0, sub(1, mul(abs(offset), 12)));
     return mul(falloff, falloff);
   };
-  const difference = mul(sub(sheen(add(stripe, drift)), sheen(stripe)), mul(sample.member("a"), 0.065));
+  const code = mul(sample.member("a"), 255);
+  const glint = mix(max(0, mul(sub(code, 1), 1 / 126)),
+    mul(sub(code, 128), 1 / 127), step(128 - 0.5, code));
+  const difference = mul(sub(sheen(add(stripe, drift)), sheen(stripe)), mul(glint, 0.065));
   return vec4(add(sample.member("rgb"), mul(expr("vec3f(1.0, 0.960, 0.875)"), difference)), 1);
 }

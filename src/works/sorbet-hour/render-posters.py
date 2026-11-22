@@ -42,12 +42,17 @@ device.queue.write_texture({"texture": atlas}, material.tobytes(),
 shader = device.create_shader_module(code=f"""
 @group(0) @binding(0) var<uniform> params: array<vec4f, 3>;
 @group(0) @binding(1) var morning: texture_2d<f32>;
+@group(0) @binding(2) var stationary: texture_2d<f32>;
 fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {{
     let texel = vec2i(origin + clamp(uv, vec2f(0.0), vec2f(1.0)) * (extent - 1.0));
     return textureLoad(morning, texel, 0);
 }}
 fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {{
     return photoRGBA(origin, extent, uv).rgb;
+}}
+fn cacheColor(color: vec4f, kind: f32) -> vec4f {{
+    let code = select(1.0 + round(color.a * 126.0), 128.0 + round(color.a * 127.0), kind == 2.0);
+    return vec4f(color.rgb, select(code / 255.0, 0.0, kind == 0.0));
 }}
 {MOTION}
 @vertex fn vertex(@builtin(vertex_index) i: u32) -> @builtin(position) vec4f {{
@@ -76,7 +81,7 @@ params = device.create_buffer(size=48, usage=wgpu.BufferUsage.UNIFORM | wgpu.Buf
 bind = device.create_bind_group(
     layout=pipeline.get_bind_group_layout(0),
     entries=[{"binding": 0, "resource": {"buffer": params, "offset": 0, "size": 48}},
-        {"binding": 1, "resource": atlas.create_view()}],
+        {"binding": 1, "resource": atlas.create_view()}, {"binding": 2, "resource": atlas.create_view()}],
 )
 texture = device.create_texture(size=(WIDTH, HEIGHT, 1), format=FORMAT,
     usage=wgpu.TextureUsage.RENDER_ATTACHMENT | wgpu.TextureUsage.COPY_SRC)

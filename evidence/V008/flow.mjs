@@ -303,13 +303,9 @@ export async function testApprovedHero(page, input, capture) {
     const run = Number(element.dataset.biteRun) + 1;
     const observer = new MutationObserver(() => {
       if (Number(element.dataset.biteRun) !== run || element.dataset.bitePhase !== "press" ||
-        Number(element.dataset.biteElapsed) < 1500) return;
+        Number(element.dataset.biteElapsed) < 1460) return;
       observer.disconnect();
-      requestAnimationFrame(() => {
-        if (Number(element.dataset.biteRun) === run && element.dataset.bitePhase === "press") {
-          document.querySelector("[data-pause]").click();
-        }
-      });
+      document.querySelector("[data-pause]").click();
     });
     observer.observe(element, { attributes: true, attributeFilter: ["data-bite-elapsed"] });
   });
