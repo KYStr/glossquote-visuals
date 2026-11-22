@@ -11,7 +11,7 @@ const mix = (a, b, t) => a + (b - a) * t;
 
 // These are conservative bounds of the same projected shapes in jelly.wgsl.
 // Include the neighboring subpixel taps before rounding out to tile boundaries.
-export function poseRegions(width, height, time, cutX, cutZ, retained = 0) {
+export function poseRegions(width, height, time, cutX, cutZ, retained = 0, baked = 0) {
   const boxes = [];
   function cover(left, bottom, right, top) {
     const x0 = clamp(Math.floor((((left + 0.25) / 1.77 + 0.5) * width - 2) / tile) * tile, width);
@@ -34,19 +34,22 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0) {
   const rise = projectY(dy, dz);
 
   for (const [index, cut] of positions.entries()) {
-    if (!(retained & (1 << index))) continue;
+    if (!((retained & ~baked) & (1 << index))) continue;
     const x = -0.142 + cut.x;
     const y = projectY(contactY, 0.026 + cut.z);
     cover(x - 0.211, y - 0.278, x + 0.211, Math.min(0.536, y + 0.278));
   }
   if (time > 1.23 && time < 2.77) {
     // The pressure and recoil only reach this strip of the main mold.
-    cover(Math.max(contactX - 0.245, -0.617), -0.290,
+    cover(Math.max(contactX - 0.245, -0.617), opening - 0.20,
       Math.min(contactX + 0.245, 0.333), 0.580);
   }
   if (time >= 1.94) {
-    cover(contactX - 0.211, Math.max(-0.262, opening - 0.278),
-      contactX + 0.211, Math.min(0.536, opening + 0.278));
+    const active = positions.findIndex(cut => Math.fround(cut.x) === cutX && Math.fround(cut.z) === cutZ);
+    if (active < 0 || !(baked & (1 << active))) {
+      cover(contactX - 0.211, Math.max(-0.262, opening - 0.278),
+        contactX + 0.211, Math.min(0.536, opening + 0.278));
+    }
     cover(contactX + dx - 0.203, opening + rise - 0.214,
       contactX + dx + 0.203, opening + rise + 0.214);
   }
