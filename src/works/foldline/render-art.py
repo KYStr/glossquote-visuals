@@ -40,7 +40,7 @@ def ripple_noise(x, y):
     return low*(1-ty)+high*ty
 
 
-def raster(mesh, width, height, material):
+def raster(mesh, width, height, atlas=None, seconds=0):
     target = np.zeros((height, width, 4), dtype=np.float32)
     depth = np.ones((height, width))
     for triangle in mesh:
@@ -66,7 +66,7 @@ def raster(mesh, width, height, material):
         patch_depth[visible] = z[visible]
         colour = np.array(triangle["tint"])
         patch = target[top:bottom, left:right]
-        if material:
+        if atlas is not None:
             tuv = np.array(triangle["uv"])
             us = (f[visible]*tuv[0, 0]+g[visible]*tuv[1, 0]+h[visible]*tuv[2, 0])
             vs = (f[visible]*tuv[0, 1]+g[visible]*tuv[1, 1]+h[visible]*tuv[2, 1])
@@ -86,7 +86,29 @@ def raster(mesh, width, height, material):
             bounce = np.array([.029,.066,.058])*((1-key)*(1-.63*copper))[:,None]
             sheen = np.array([.125,.077,.038])*(copper*key*(.26+.74*trees))[:,None]
             detail = detail[:,None]
-            patch[visible,:3] = colour*(lighting+.72*detail)+detail+bounce+sheen
+            colour = colour*(lighting+.72*detail)+detail+bounce+sheen
+            material = triangle["material"]
+            if material:
+                u, v = np.clip(us,0,1), np.clip(vs,0,1)
+                if material in (3,4):
+                    v = .55+v*.20 if material == 3 else v
+                    fabric = sample(atlas,.506+.488*u,.510+.480*v)
+                    textile = fabric*(1.13+.35*key[:,None])-.005
+                    colour = .14*colour+.86*textile
+                else:
+                    deck = material in (2,6)
+                    u = .006+(.489 if deck else .988)*u
+                    v = (.510 if deck else .010)+(.480 if deck else .479)*v
+                    polymer = sample(atlas,u,v)*[1.18,1.10,1.04]
+                    exposure = (.53+.65*np.clip((colour[:,0]-.18)/.62,0,1))[:,None]
+                    colour = .24*colour+.76*(polymer*exposure+.24*bounce+.26*sheen)
+                if material in (5,6):
+                    lift = smoothstep(.14,1.12,seconds)
+                    x = np.clip(us,0,1)-.012-.055*lift
+                    strip = np.minimum(np.abs(x-.176),np.abs(x-.758))
+                    shadow = 1-smoothstep(.019,.060+.028*lift,strip)
+                    colour *= (1-.38*(1-lift)*shadow)[:,None]
+            patch[visible,:3] = np.clip(colour,0,1)
         else:
             patch[visible,:3] = colour
         patch[visible,3] = 1
@@ -105,7 +127,7 @@ def sample(source, u, v):
     return top*(1-ty)+bottom*ty
 
 
-def render(spec, model, folder, lake, shore):
+def render(spec, model, folder, lake, shore, atlas):
     name, width, height, seconds, _, water, _ = spec
     y, x = np.ogrid[:height, :width]
     u, v = 2*(x+.5)/width-1, 1-2*(y+.5)/height
@@ -116,7 +138,7 @@ def render(spec, model, folder, lake, shore):
     shade = .59*np.exp(-2.4*pocket)
     if water:
         raster_width = min(680, width)
-        mirror = raster(model["reflection"], raster_width, round(height*raster_width/width), False)
+        mirror = raster(model["reflection"], raster_width, round(height*raster_width/width))
         ripple = v*28+u*7.5+2.4*np.sin(u*4+v*2.6)
         facets = np.sin(v*121+2.6*np.sin(7*u+3*v))
         rill = np.sin(ripple+.51*facets)
@@ -150,7 +172,7 @@ def render(spec, model, folder, lake, shore):
         color = np.array([.84,.853,.835])+.045*light[...,None]
         color -= .07*grid[...,None]+.42*shade[...,None]
 
-    hull = raster(model["triangles"],width,height,True)
+    hull = raster(model["triangles"],width,height,atlas,seconds)
     pixels = hull[...,:3]+color*(1-hull[...,3:4])
     result = Image.fromarray(np.uint8(np.clip(pixels,0,1)*255))
     result.save(folder/f"{name}.webp",quality=88,method=6)
@@ -177,8 +199,9 @@ console.log(JSON.stringify(JSON.parse(process.argv[1]).map(boatScene)));
     lake = np.array(Image.open(OUT/"lake.webp").convert("RGB"),dtype=np.float32)/255
     shore = np.array(Image.open(OUT/"shore.webp").convert("RGBA"),dtype=np.float32)/255
     shore[...,:3] *= shore[...,3:4]
+    atlas = np.array(Image.open(OUT/"material.webp").convert("RGB"),dtype=np.float32)/255
     for spec, model in zip(views, models):
-        render(spec, model, folder, lake, shore)
+        render(spec, model, folder, lake, shore, atlas)
 
 
 if __name__ == "__main__":

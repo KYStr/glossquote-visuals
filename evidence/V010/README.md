@@ -3,6 +3,7 @@
 - 從核准的 `03-Foldline.png` 取水色、銅橘板件、黑色座艙與接觸水線作為方向。冷開頁的手提包以接觸影坐在岩岸，鬆帶後連續展長與翻舷，短橢圓座艙與右後方的軟墊椅背立起。成船可停留、切換三態或重播。
 - 主體使用一組固定拓撲及原生 WebGPU 深度測試。內外板件沿各自鉸線活動，材質座標跟著表面走。船身 4× MSAA，水與倒影片層單採樣；倒影以相同艇身幾何對水面鏡射，再由水流扭曲、切碎並合成，並沿水線疊加接觸亮帶。靜止姿態沿用已解析的船身與倒影緩衝。
 - [湖面](../../public/media/foldline/lake.webp)與[岩岸](../../public/media/foldline/shore.webp)由內建 ImageGen 生成，壓成自託管 WebP。兩張素材只有風景內容。下方是實際使用的生成提示。
+- [攝影材質圖](../../public/media/foldline/material.webp)直接從核准原圖取樣，分為側板折脊、甲板、黑色軟墊三區。從 repo 根目錄執行 `python src/works/foldline/extract-material.py <核准原圖>` 可重建。各板件與椅背使用自身 UV，在打開或收摺時隨同一網格移動。兩條束帶所在的板件另帶會隨鬆帶逐步減淡的接觸影。
 - `testApprovedHero(page, input, capture)` 提供 `packed → releasing → extending → raising → afloat`。頁面內觀察器在三個即時中段影格提交後啟動原本的暫停控制，等待截圖。重播與恢復使用 mouse 或 touch，既有 flow 與鍵盤介面延續。
 - 作者以 Dawn D3D12 實際讀回 1296 × 579 與 358 × 278 紋理，確認所有姿態、1:1 座艙局部及手機全船；在 DOM 模擬取證延遲 1,015 ms，三個中段均保持同一畫面。瀏覽器外層排版以已驗證的舞台尺寸做構圖檢查，正式 Chromium 整頁、真實觸控及幀距由隔離 runner 驗收。
 - 執行 `python src/works/foldline/render-art.py` 可更新各態首屏、兩款型錄、攜行圖與封面。加目錄參數可輸出獨立影格。

@@ -67,6 +67,7 @@ const motion = createMotion({
       ...options,
       lake: new URL("lake.webp", imageBase).href,
       shore: new URL("shore.webp", imageBase).href,
+      atlas: new URL("material.webp", imageBase).href,
       onPose(phase, settings, checkpoint) {
         stage.dataset.assemblyPhase = phase;
         stage.dataset.assemblyCheckpoint = checkpoint;
