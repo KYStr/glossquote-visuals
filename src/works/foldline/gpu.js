@@ -1,7 +1,6 @@
-import { assemblyStage, boatScene, duration, modeTimes } from "./geometry.mjs";
+import { assemblyStage, boatScene, duration, hullStride, mirrorStride, modeTimes } from "./geometry.mjs";
 import program from "./foldline.wgsl?raw";
 
-const stride = 9;
 const maxVertices = 8192;
 const layerFormat = "rgba8unorm";
 const depthFormat = "depth24plus";
@@ -39,7 +38,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
       });
     const hullPipeline = {
       buffers: [{
-        arrayStride: stride * 4,
+        arrayStride: hullStride * 4,
         attributes: [
           { shaderLocation: 0, offset: 0, format: "float32x3" },
           { shaderLocation: 1, offset: 12, format: "float32x3" },
@@ -52,7 +51,10 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
     const [water, panels, mirror, compose] = await Promise.all([
       pipeline("waterVertex", "waterFragment", layerFormat),
       pipeline("panelVertex", "panelFragment", layerFormat, { ...hullPipeline, multisample: { count: samples } }),
-      pipeline("panelVertex", "mirrorFragment", layerFormat, hullPipeline),
+      pipeline("mirrorVertex", "mirrorFragment", layerFormat, {
+        depthStencil: hullPipeline.depthStencil,
+        buffers: [{ arrayStride: mirrorStride * 4, attributes: hullPipeline.buffers[0].attributes.slice(0,2) }],
+      }),
       pipeline("waterVertex", "composeFragment", format),
     ]);
     if (obsolete()) {
@@ -61,9 +63,15 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
     }
 
     const vertices = device.createBuffer({
-      size: maxVertices * stride * 4 * 2, usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+      size: maxVertices * hullStride * 4, usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
     });
-    const frame = device.createBuffer({ size: 48, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+    const reflections = device.createBuffer({
+      size: maxVertices * mirrorStride * 4, usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+    });
+    const indices = device.createBuffer({
+      size: maxVertices * 2, usage: GPUBufferUsage.INDEX | GPUBufferUsage.COPY_DST,
+    });
+    const frame = device.createBuffer({ size: 64, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
     const photoTexture = (source, premultipliedAlpha) => {
       const size = [source.naturalWidth, source.naturalHeight];
       const texture = device.createTexture({
@@ -90,6 +98,8 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
     let targets = [];
     let coverage, depth, resolve, waterView, mirrored, mirrorDepth, layers, surface;
     let geometryDirty = true;
+    let topologyReady = false;
+    let cropWidth, cropHeight;
     function colorPass(encoder, view) {
       return encoder.beginRenderPass({
         colorAttachments: [{ view, loadOp: "clear", storeOp: "store", clearValue: transparent }],
@@ -109,12 +119,16 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
         };
         const attachment = GPUTextureUsage.RENDER_ATTACHMENT;
         const sampled = attachment | GPUTextureUsage.TEXTURE_BINDING;
-        const size = [width, height];
+        // The framing limits hull bounds to 90.5% × 75.5%. Resolve only that
+        // area, retaining one texel per display pixel and room for AA coverage.
+        cropWidth = Math.min(width,Math.ceil(width*.905)+4);
+        cropHeight = Math.min(height,Math.ceil(height*.755)+4);
+        const hullSize = [cropWidth,cropHeight];
         const waterScale = Math.min(1, 680 / width);
         const waterSize = [Math.round(width * waterScale), Math.max(1, Math.round(height * waterScale))];
-        coverage = create(size, layerFormat, samples, attachment);
-        depth = create(size, depthFormat, samples, attachment);
-        resolve = create(size, layerFormat, 1, sampled);
+        coverage = create(hullSize, layerFormat, samples, attachment);
+        depth = create(hullSize, depthFormat, samples, attachment);
+        resolve = create(hullSize, layerFormat, 1, sampled);
         waterView = create(waterSize, layerFormat, 1, sampled);
         mirrored = create(waterSize, layerFormat, 1, sampled);
         mirrorDepth = create(waterSize, depthFormat, 1, attachment);
@@ -130,6 +144,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
         layers = device.createBindGroup({
           layout: compose.getBindGroupLayout(0),
           entries: [
+            { binding: 0, resource: { buffer: frame } },
             { binding: 1, resource: resolve },
             { binding: 2, resource: waterView },
             { binding: 3, resource: sampler },
@@ -137,11 +152,23 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
         });
         geometryDirty = true;
       },
-      draw(data, count, uniforms, geometryChanged) {
+      draw(mesh, uniforms, geometryChanged) {
+        const { hull: data, mirror: reflected, topology, indexCount, vertexCount, reflects, yOffset } = mesh;
+        uniforms[10] = canvas.width;
+        uniforms[11] = canvas.height;
+        uniforms[12] = Math.floor((canvas.width-cropWidth)/2);
+        uniforms[13] = Math.max(0,Math.min(canvas.height-cropHeight,
+          Math.round(((1-yOffset)*canvas.height-cropHeight)/2)));
+        uniforms[14] = cropWidth;
+        uniforms[15] = cropHeight;
         device.queue.writeBuffer(frame, 0, uniforms);
         const encoder = device.createCommandEncoder();
         if (geometryChanged || geometryDirty) {
-          device.queue.writeBuffer(vertices, 0, data, 0, count * stride * 2);
+          if (!topologyReady) {
+            device.queue.writeBuffer(indices,0,topology,0,indexCount+(indexCount%2));
+            topologyReady = true;
+          }
+          device.queue.writeBuffer(vertices,0,data,0,vertexCount*hullStride);
           const hull = encoder.beginRenderPass({
             colorAttachments: [{ view: coverage, resolveTarget: resolve, loadOp: "clear", storeOp: "discard", clearValue: transparent }],
             depthStencilAttachment: { view: depth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
@@ -149,16 +176,21 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
           hull.setPipeline(panels);
           hull.setBindGroup(0, materials);
           hull.setVertexBuffer(0, vertices);
-          hull.draw(count);
+          hull.setIndexBuffer(indices,"uint16");
+          hull.drawIndexed(indexCount);
           hull.end();
-          const reflection = encoder.beginRenderPass({
-            colorAttachments: [{ view: mirrored, loadOp: "clear", storeOp: "store", clearValue: transparent }],
-            depthStencilAttachment: { view: mirrorDepth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
-          });
-          reflection.setPipeline(mirror);
-          reflection.setVertexBuffer(0, vertices, count * stride * 4, count * stride * 4);
-          reflection.draw(count);
-          reflection.end();
+          if (reflects) {
+            device.queue.writeBuffer(reflections,0,reflected,0,vertexCount*mirrorStride);
+            const reflection = encoder.beginRenderPass({
+              colorAttachments: [{ view: mirrored, loadOp: "clear", storeOp: "store", clearValue: transparent }],
+              depthStencilAttachment: { view: mirrorDepth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
+            });
+            reflection.setPipeline(mirror);
+            reflection.setVertexBuffer(0,reflections);
+            reflection.setIndexBuffer(indices,"uint16");
+            reflection.drawIndexed(indexCount);
+            reflection.end();
+          }
           geometryDirty = false;
         }
         const tide = colorPass(encoder, waterView);
@@ -176,6 +208,8 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
       close() {
         for (const texture of targets) texture.destroy();
         vertices.destroy();
+        reflections.destroy();
+        indices.destroy();
         frame.destroy();
         photo.destroy();
         rock.destroy();
@@ -209,10 +243,16 @@ export async function initializeFoldline(canvas, options) {
   let ready = false;
   let active = false;
   let recovered = false;
-  const data = new Float32Array(maxVertices * stride * 2);
-  const uniforms = new Float32Array(12);
+  const meshes = {
+    hull: new Float32Array(maxVertices*hullStride),
+    mirror: new Float32Array(maxVertices*mirrorStride),
+    attributes: new Float32Array(maxVertices*3),
+    topology: new Uint16Array(maxVertices), indexCount: 0,
+    shadow: new Float32Array(4),
+  };
+  const uniforms = new Float32Array(16);
   uniforms[7] = lake.naturalWidth / lake.naturalHeight;
-  let cachedAspect, cachedTime, vertexCount;
+  let cachedAspect, cachedTime;
   let reportedStage, reportedSettings, reportedCheckpoint;
 
   function allocate() {
@@ -278,23 +318,9 @@ export async function initializeFoldline(canvas, options) {
       const seconds = settings.mode === null ? elapsed : modeTimes[settings.mode];
       const geometryChanged = seconds !== cachedTime || aspect !== cachedAspect;
       if (geometryChanged) {
-        const { triangles, shadow, reflection, slope } = boatScene({ aspect, seconds });
-        vertexCount = triangles.length * 3;
-        if (vertexCount > maxVertices || reflection.length !== triangles.length) throw new RangeError("Hull vertex count");
-        let index = 0;
-        for (const mesh of [triangles, reflection]) {
-          for (const { points, tint, uv, material } of mesh) {
-            for (let i = 0; i < points.length; i++) {
-              data.set(points[i], index);
-              data.set(tint, index + 3);
-              data.set(uv[i], index + 6);
-              data[index + 8] = material;
-              index += stride;
-            }
-          }
-        }
-        uniforms.set(shadow);
-        uniforms[8] = slope;
+        boatScene({ aspect, seconds, buffers: meshes });
+        uniforms.set(meshes.shadow);
+        uniforms[8] = meshes.slope;
         cachedTime = seconds;
         cachedAspect = aspect;
       }
@@ -302,7 +328,7 @@ export async function initializeFoldline(canvas, options) {
       uniforms[5] = aspect;
       uniforms[6] = Math.max(0, (seconds - 4.05) / (duration - 4.05));
       uniforms[9] = seconds;
-      target.draw(data, vertexCount, uniforms, geometryChanged);
+      target.draw(meshes, uniforms, geometryChanged);
       const phase = settings.mode === 1 ? "half" : assemblyStage(seconds);
       const checkpoint = phase === "releasing" && seconds >= .62 ||
         phase === "extending" && seconds >= 1.87 ||
