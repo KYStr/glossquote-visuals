@@ -138,7 +138,7 @@ export async function composeCarriedRelease(works, dist = resolve(root, "dist"))
   assert.equal(index.version, "carried-bundles-v1");
   assert.equal(index.deployment, previousM05);
   const live = JSON.parse(await fromPages("release.json"));
-  if (live.commit !== index.deployment) return; // All normal byte checks still run in releaseProof.
+  assert.match(live.commit, /^[a-f0-9]{40}$/);
   const ids = works.map(w => w.id).sort();
   if (JSON.stringify(ids) !== JSON.stringify(index.works.map(w => w.work).sort())) return;
   for (const work of works) {
@@ -147,8 +147,11 @@ export async function composeCarriedRelease(works, dist = resolve(root, "dist"))
     const attested = selected ? { ...selected, deployedCommit: live.commit } : live.carriedWorks.find(x => x.work === work.id);
     const receipt = { work: work.id, slug: work.slug, candidate: work.candidateCommit, deployedCommit: work.deployedCommit };
     assert.deepEqual(attested, receipt, `Wrong live carried identity: ${work.id}`);
-    assert.deepEqual({work:pin.work,slug:pin.slug,candidate:pin.candidate,deployedCommit:pin.deployedCommit}, receipt);
+    // A later release may carry the exact same published inputs. If the pin is
+    // for a different revision, defer to the fresh build and full live byte check.
+    if (pin.slug !== work.slug || pin.candidate !== work.candidateCommit || pin.deployedCommit !== work.deployedCommit) return;
   }
+  execFileSync("git", ["merge-base", "--is-ancestor", index.deployment, live.commit], { cwd: root });
   verifyCarrySources(index.deployment, works);
   await assemblePinnedBundles(dist, index);
 }
