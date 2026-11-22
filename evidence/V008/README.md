@@ -1,3 +1,17 @@
+# 果時 JELLY HOUR｜M07 晨光橘瓣
+
+M07 從正式來源 `8c998d30fc2fe213cc9ed09b042ebb195c54cbe4` 建立。核准稿提供酒紅雙語字標與匙上橘瓣的攝影材質。乾淨粉色晨光空盤、完整果凍和透明空銀匙以內建 ImageGen 由核准稿衍生。原稿只作素材來源，文字另有語意標題。版頭為同幅貼近滿寬的構圖，手機把搭配六杯入口放在主畫面下方第一列。
+
+可用 `pack-material.py APPROVED DISH WHOLE SPOON` 把四張來源製成 `public/media/sorbet-hour/morning-material.webp` 與 `jelly-hour-wordmark.webp`。三項衍生圖的製作指令依序為：保持原透視、光影、質地與盤緣，移除果凍、銀匙及字，重建空盤。保持原尺寸、構圖、果膠橘瓣與高光，補回缺口並移除銀匙與字。保留參考的拋光厚匙緣和晨光，取完整空銀匙，匙碗向左、匙柄向右，透明背景。匙面深度、投影、果凍輪廓受壓、阻尼回彈、凹部和取出體積由 WGSL 控制，攝影材質跟隨各自表面。
+
+左、中央、右三處可用滑鼠、觸控或方向鍵選取。完成第一口後直接選另一處，既有凹部保留。只要切口已形成，移動中開始下一口也會保留它。已挖的位置可由讀屏狀態辨識，重設和換口味會恢復完整。無 WebGPU、減少動態或暫停時仍可用同場景的對應尾幀完成連續挖取。
+
+`testApprovedHero(page,input,capture)` 接受 `mouse` 或 `touch`，等候公開暫停控制鎖住接觸段，依序捕捉 `intact`、`press`、`first-bite`、`second-bite`、`reset`，回傳實際選點在舞台的正規化座標。兩次操作中間無重設。原 `testHeroInteraction`、`setMaterial` 和 `testFlow` 仍可重播。作者隔離取證由 `verify-m07-v008.yml` 擷取真實鼠標、觸控與鍵盤、整頁版頭及降動態操作。獨立美術及部署判定由主責保留。
+
+RTX 3060 Vulkan 原生對照覆蓋三款口味、576×384 與 390×260，以及五組首次或連續挖取路徑。各組 61 幀從匙入鏡至停姿，全數 1,830 張 RGBA 與全張重畫逐像素相同。鎖版來源檢查、40 項單元測試及雙語建置通過。
+
+---
+
 # 果時 JELLY HOUR｜M06 銀匙試吃
 
 候選分支從正式基線 `8206c4a55e8be0faee2ff4b265878d4da75445f7` 建立。中英文入口仍為 `/glossquote-visuals/works/sorbet-hour/` 與 `/glossquote-visuals/en/works/sorbet-hour/`。三款口味、六杯配盒與離線配方沿用現有接口。
