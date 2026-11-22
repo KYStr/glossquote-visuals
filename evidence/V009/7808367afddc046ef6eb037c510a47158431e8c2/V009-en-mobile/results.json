@@ -1,0 +1,6273 @@
+{
+  "work": "V009",
+  "lang": "en",
+  "viewport": "mobile",
+  "commit": "7808367afddc046ef6eb037c510a47158431e8c2",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "craft-storyboard": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "craft-replay": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "initial estimate",
+            "count": 50,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "50 copies",
+              "Warm white",
+              "NT$2,050",
+              "5–7 working days"
+            ]
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "24",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "25.5",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "251",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "minimum",
+            "count": 25,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "25 copies",
+              "Warm white",
+              "NT$1,500",
+              "5–7 working days"
+            ]
+          },
+          {
+            "name": "standard lead threshold",
+            "count": 150,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "150 copies",
+              "Oat",
+              "NT$6,900",
+              "7–9 working days"
+            ]
+          },
+          {
+            "name": "extra lead threshold",
+            "count": 151,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "151 copies",
+              "Oat",
+              "NT$6,937",
+              "9–11 working days"
+            ]
+          },
+          {
+            "name": "maximum",
+            "count": 250,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "250 copies",
+              "Oat",
+              "NT$10,600",
+              "9–11 working days"
+            ]
+          },
+          {
+            "name": "revised",
+            "count": 72,
+            "rows": [
+              "AP–03 Side B Social",
+              "A3 · 297 × 420 mm",
+              "72 copies",
+              "Warm white",
+              "NT$2,534",
+              "5–7 working days"
+            ]
+          }
+        ],
+        "download": {
+          "filename": "afterimage-print-sheet-en.txt",
+          "bytes": 356,
+          "text": "AFTERIMAGE PRESS | Print sheet\n\nArtwork AP–03 Side B Social\nTrim size A3 · 297 × 420 mm\nPrint run 72 copies\nPaper Warm white\nEstimate NT$2,534\nLead time 5–7 working days\n170 gsm uncoated, cobalt blue + fluorescent orange\n\nConcept print service. Events are fictional, prices and lead times are illustrative, and print sheets are for offline planning.\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "en",
+        "observations": [
+          {
+            "name": "initial estimate",
+            "count": 50,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "50 copies",
+              "Warm white",
+              "NT$2,050",
+              "5–7 working days"
+            ]
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "24",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "25.5",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "251",
+            "error": "Enter a whole number from 25 to 250 copies."
+          },
+          {
+            "name": "minimum",
+            "count": 25,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "25 copies",
+              "Warm white",
+              "NT$1,500",
+              "5–7 working days"
+            ]
+          },
+          {
+            "name": "standard lead threshold",
+            "count": 150,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "150 copies",
+              "Oat",
+              "NT$6,900",
+              "7–9 working days"
+            ]
+          },
+          {
+            "name": "extra lead threshold",
+            "count": 151,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "151 copies",
+              "Oat",
+              "NT$6,937",
+              "9–11 working days"
+            ]
+          },
+          {
+            "name": "maximum",
+            "count": 250,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "250 copies",
+              "Oat",
+              "NT$10,600",
+              "9–11 working days"
+            ]
+          },
+          {
+            "name": "revised",
+            "count": 72,
+            "rows": [
+              "AP–03 Side B Social",
+              "A3 · 297 × 420 mm",
+              "72 copies",
+              "Warm white",
+              "NT$2,534",
+              "5–7 working days"
+            ]
+          }
+        ],
+        "download": {
+          "filename": "afterimage-print-sheet-en.txt",
+          "bytes": 356,
+          "text": "AFTERIMAGE PRESS | Print sheet\n\nArtwork AP–03 Side B Social\nTrim size A3 · 297 × 420 mm\nPrint run 72 copies\nPaper Warm white\nEstimate NT$2,534\nLead time 5–7 working days\n170 gsm uncoated, cobalt blue + fluorescent orange\n\nConcept print service. Events are fictional, prices and lead times are illustrative, and print sheets are for offline planning.\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795320015211.9,
+      "anchorMs": 3532.5,
+      "view": {
+        "at": 534.7000000000698,
+        "stage": {
+          "x": 20.796875,
+          "y": 316.1875,
+          "right": 369.203125,
+          "bottom": 490.390625
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstRunningObservedMs": 1669.4000000000233,
+      "firstContentfulPaint": 552,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "en",
+        "title": "AFTERIMAGE PRESS | Two-ink gig posters",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [
+          {
+            "family": "Press Condensed",
+            "status": "loaded",
+            "weight": "800",
+            "style": "normal"
+          },
+          {
+            "family": "Press Mono",
+            "status": "loaded",
+            "weight": "normal",
+            "style": "normal"
+          }
+        ],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/assets/page-tDpWpdC2.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 1.8000000000465661,
+          "requestStart": 3.400000000023283,
+          "responseStart": 10.5,
+          "responseEnd": 11.300000000046566,
+          "duration": 535.5,
+          "domInteractive": 26.800000000046566,
+          "domContentLoadedEventStart": 509.20000000006985,
+          "domContentLoadedEventEnd": 509.80000000004657,
+          "domComplete": 535.4000000000233,
+          "loadEventStart": 535.4000000000233,
+          "loadEventEnd": 535.5,
+          "transferSize": 12525,
+          "encodedBodySize": 12225,
+          "decodedBodySize": 12225
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 552
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 552
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/plate-cobalt.webp",
+            "initiator": "link",
+            "startTime": 24,
+            "fetchStart": 24,
+            "requestStart": 25.400000000023283,
+            "responseStart": 31.800000000046566,
+            "responseEnd": 32.40000000002328,
+            "duration": 8.400000000023283,
+            "transferSize": 57550,
+            "encodedBodySize": 57250,
+            "decodedBodySize": 57250
+          },
+          {
+            "path": "/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+            "initiator": "link",
+            "startTime": 24.300000000046566,
+            "fetchStart": 24.300000000046566,
+            "requestStart": 32.59999999997672,
+            "responseStart": 35.59999999997672,
+            "responseEnd": 36.59999999997672,
+            "duration": 12.29999999993015,
+            "transferSize": 110596,
+            "encodedBodySize": 110296,
+            "decodedBodySize": 110296
+          },
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 24.5,
+            "fetchStart": 24.5,
+            "requestStart": 32.70000000006985,
+            "responseStart": 36.09999999997672,
+            "responseEnd": 37.09999999997672,
+            "duration": 12.599999999976717,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-BFmTOD75.js",
+            "initiator": "script",
+            "startTime": 24.599999999976717,
+            "fetchStart": 24.599999999976717,
+            "requestStart": 32.70000000006985,
+            "responseStart": 36.40000000002328,
+            "responseEnd": 37.70000000006985,
+            "duration": 13.100000000093132,
+            "transferSize": 7039,
+            "encodedBodySize": 6739,
+            "decodedBodySize": 6739
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-tDpWpdC2.css",
+            "initiator": "link",
+            "startTime": 24.70000000006985,
+            "fetchStart": 24.70000000006985,
+            "requestStart": 33.300000000046566,
+            "responseStart": 36.70000000006985,
+            "responseEnd": 36.90000000002328,
+            "duration": 12.199999999953434,
+            "transferSize": 9879,
+            "encodedBodySize": 9579,
+            "decodedBodySize": 9579
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 24.70000000006985,
+            "fetchStart": 24.70000000006985,
+            "requestStart": 34.40000000002328,
+            "responseStart": 37.20000000006985,
+            "responseEnd": 37.40000000002328,
+            "duration": 12.699999999953434,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/mark.svg",
+            "initiator": "img",
+            "startTime": 25.900000000023283,
+            "fetchStart": 25.900000000023283,
+            "requestStart": 34.5,
+            "responseStart": 37.40000000002328,
+            "responseEnd": 38,
+            "duration": 12.099999999976717,
+            "transferSize": 509,
+            "encodedBodySize": 209,
+            "decodedBodySize": 209
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/press-bed.svg",
+            "initiator": "img",
+            "startTime": 26,
+            "fetchStart": 26,
+            "requestStart": 37.800000000046566,
+            "responseStart": 43.59999999997672,
+            "responseEnd": 43.90000000002328,
+            "duration": 17.900000000023283,
+            "transferSize": 1853,
+            "encodedBodySize": 1553,
+            "decodedBodySize": 1553
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/squeegee.svg",
+            "initiator": "img",
+            "startTime": 26.099999999976717,
+            "fetchStart": 26.099999999976717,
+            "requestStart": 38.09999999997672,
+            "responseStart": 44,
+            "responseEnd": 44.5,
+            "duration": 18.400000000023283,
+            "transferSize": 2747,
+            "encodedBodySize": 2447,
+            "decodedBodySize": 2447
+          },
+          {
+            "path": "/glossquote-visuals/fonts/prism-plex-mono.ttf",
+            "initiator": "css",
+            "startTime": 49.09999999997672,
+            "fetchStart": 49.09999999997672,
+            "requestStart": 495.4000000000233,
+            "responseStart": 496.9000000000233,
+            "responseEnd": 497.30000000004657,
+            "duration": 448.20000000006985,
+            "transferSize": 135880,
+            "encodedBodySize": 135580,
+            "decodedBodySize": 135580
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/feedback.webp",
+            "initiator": "img",
+            "startTime": 491.30000000004657,
+            "fetchStart": 491.30000000004657,
+            "requestStart": 492.80000000004657,
+            "responseStart": 496,
+            "responseEnd": 496.5999999999767,
+            "duration": 5.299999999930151,
+            "transferSize": 49588,
+            "encodedBodySize": 49288,
+            "decodedBodySize": 49288
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/orbital.webp",
+            "initiator": "img",
+            "startTime": 491.5,
+            "fetchStart": 491.5,
+            "requestStart": 493,
+            "responseStart": 496.30000000004657,
+            "responseEnd": 496.80000000004657,
+            "duration": 5.300000000046566,
+            "transferSize": 70274,
+            "encodedBodySize": 69974,
+            "decodedBodySize": 69974
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/plate-both.webp",
+            "initiator": "img",
+            "startTime": 509.0999999999767,
+            "fetchStart": 509.0999999999767,
+            "requestStart": 510.20000000006985,
+            "responseStart": 511.9000000000233,
+            "responseEnd": 512.4000000000233,
+            "duration": 3.300000000046566,
+            "transferSize": 166112,
+            "encodedBodySize": 165812,
+            "decodedBodySize": 165812
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/plate-orange.webp",
+            "initiator": "img",
+            "startTime": 509.20000000006985,
+            "fetchStart": 509.20000000006985,
+            "requestStart": 510.5,
+            "responseStart": 513.5,
+            "responseEnd": 513.8000000000466,
+            "duration": 4.599999999976717,
+            "transferSize": 41134,
+            "encodedBodySize": 40834,
+            "decodedBodySize": 40834
+          },
+          {
+            "path": "/glossquote-visuals/assets/shader-CvSO64jm.js",
+            "initiator": "script",
+            "startTime": 537.0999999999767,
+            "fetchStart": 537.0999999999767,
+            "requestStart": 541.9000000000233,
+            "responseStart": 549.5999999999767,
+            "responseEnd": 550,
+            "duration": 12.900000000023283,
+            "transferSize": 6047,
+            "encodedBodySize": 5747,
+            "decodedBodySize": 5747
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/mark.svg",
+            "initiator": "other",
+            "startTime": 546.9000000000233,
+            "fetchStart": 546.9000000000233,
+            "requestStart": 547.4000000000233,
+            "responseStart": 554.7000000000698,
+            "responseEnd": 555,
+            "duration": 8.099999999976717,
+            "transferSize": 509,
+            "encodedBodySize": 209,
+            "decodedBodySize": 209
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/bed-texture.webp",
+            "initiator": "img",
+            "startTime": 570.7000000000698,
+            "fetchStart": 570.7000000000698,
+            "requestStart": 575.3000000000466,
+            "responseStart": 578,
+            "responseEnd": 578.4000000000233,
+            "duration": 7.699999999953434,
+            "transferSize": 9680,
+            "encodedBodySize": 9380,
+            "decodedBodySize": 9380
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/tool-texture.webp",
+            "initiator": "img",
+            "startTime": 572,
+            "fetchStart": 572,
+            "requestStart": 575.9000000000233,
+            "responseStart": 580,
+            "responseEnd": 580.3000000000466,
+            "duration": 8.300000000046566,
+            "transferSize": 23044,
+            "encodedBodySize": 22744,
+            "decodedBodySize": 22744
+          }
+        ],
+        "longTasks": []
+      },
+      "fromCommitReturnToTimingReadMs": 3518.607499999999,
+      "navigationStartMetricMs": 610139.082,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > div:nth-of-type(1) > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "Two-ink gig posters",
+          "cssFamily": "\"Press Condensed\", \"Arial Narrow\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Barlow Condensed",
+              "postScriptName": "BarlowCondensed-ExtraBold",
+              "isCustomFont": true,
+              "glyphCount": 19
+            }
+          ]
+        },
+        {
+          "selector": "body > div:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(2)",
+          "text": "繁體中文",
+          "cssFamily": "\"Instrument Sans\", Inter, system-ui, \"Microsoft JhengHei\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "微軟正黑體",
+              "postScriptName": "MicrosoftJhengHeiRegular",
+              "isCustomFont": false,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "selector": "body > div:nth-of-type(1) > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "Independent gig printing",
+          "cssFamily": "\"Press Mono\", monospace",
+          "fonts": [
+            {
+              "familyName": "IBM Plex Mono",
+              "postScriptName": "IBMPlexMono-Regular",
+              "isCustomFont": true,
+              "glyphCount": 24
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 610156.962,
+          "ms": 17.880000000004657
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 610648.816,
+          "ms": 509.73399999993853
+        },
+        {
+          "name": "load",
+          "traceMs": 610674.581,
+          "ms": 535.4989999999525
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 610689.992,
+          "ms": 550.9099999999162
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 610689.992,
+          "ms": 550.9099999999162
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 610689.992,
+          "ms": 550.9099999999162
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 610689.992,
+          "ms": 550.9099999999162
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 610714.217,
+          "ms": 575.1349999998929
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 610689.992,
+          "ms": 550.9099999999162
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 610720.408,
+          "ms": 581.3260000000009
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3514.6199999999953,
+      "navigationStartTraceMs": 610139.082,
+      "navigationStartEventUs": 610139082,
+      "anchorTraceUs": 613671598,
+      "fcpTraceClockUs": 610691082,
+      "screenshotEvents": 92,
+      "traceImageTimesMs": [
+        11.70499999995809,
+        541.9889999999432,
+        942.2849999999162,
+        1040.7829999999376,
+        1705.6269999999786,
+        1711.2949999999255,
+        1732.247999999905,
+        1753.152999999933,
+        1789.4309999999823,
+        1809.6879999999655,
+        1815.7149999999674,
+        1851.90699999989,
+        1856.8769999999786,
+        1877.9079999999376,
+        1898.7979999999516,
+        1919.6819999999134,
+        1955.5179999999236,
+        1960.5479999999516,
+        1982.658999999985,
+        2004.6030000000028,
+        2025.8339999999152,
+        2062.1389999999665,
+        2067.2339999999385,
+        2089.2909999999683,
+        2109.7869999998948,
+        2131.8189999999013,
+        2168.1239999999525,
+        2174.2949999999255,
+        2195.1889999998966,
+        2217.253999999957,
+        2238.238999999943,
+        2259.0939999999246,
+        2279.863999999943,
+        2300.845999999903,
+        2339.3439999999246,
+        2358.003999999957,
+        2363.284999999916,
+        2385.107999999891,
+        2421.580999999889,
+        2442.1790000000037,
+        2462.625999999931,
+        2468.8279999999795,
+        2505.2829999999376,
+        2511.292999999947,
+        2532.2099999999627,
+        2554.3189999999013,
+        2575.2299999999814,
+        2596.1549999999115,
+        2636.1729999999516,
+        2638.344999999972,
+        2660.268999999971,
+        2680.8819999999832,
+        2701.7269999999553,
+        2722.7979999999516,
+        2743.860999999917,
+        2780.664999999921,
+        2785.829999999958,
+        2807.0149999998976,
+        2827.625999999931,
+        2848.582999999984,
+        2869.269999999902,
+        2890.019999999902,
+        2912.3169999999227,
+        2933.3619999999646,
+        2954.0109999999404,
+        2974.9409999999916,
+        2995.8429999999935,
+        3016.8769999999786,
+        3039.003999999957,
+        3061.094999999972,
+        3083.3129999999655,
+        3104.0540000000037,
+        3126.048999999999,
+        3148.1419999999925,
+        3170.0789999999106,
+        3191.06799999997,
+        3213.179999999935,
+        3249.8769999999786,
+        3270.155999999959,
+        3275.118999999948,
+        3297.10699999996,
+        3317.978999999934,
+        3339.944999999949,
+        3376.5479999999516,
+        3381.8709999999264,
+        3417.9159999999683,
+        3438.4229999999516,
+        3443.659999999916,
+        3481.9529999999795,
+        3486.144999999902,
+        3525.7579999999143,
+        3528.9499999999534
+      ],
+      "filmstripFramesInWindow": 65,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 942.2849999999162,
+          "traceUs": 611081367,
+          "file": "opening-0.png",
+          "sha256": "12246f0c105d18d15f34fba7a6bb4afdd7359c610d210a6d263bbeb4518edc8b",
+          "source": "opening-0.jpg",
+          "originalSha256": "6fc04118005fe5feafb1e8a94d71ef67bfb7313493c0c3de481b6286a24a9dc1",
+          "stageHash": "73781cd62f587e60e72d4e1344b45b6e39aa758ae7395cb7c3a120ee9f895dbf",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1789.4309999999823,
+          "traceUs": 611928513,
+          "file": "opening-1.png",
+          "sha256": "be4a237f90f540c1cef438da507bf76cd1117ed8e29e18b9ed983b8cda9ed48e",
+          "source": "opening-1.jpg",
+          "originalSha256": "bc75aee157515c8a6e6ff1047d26240c8510fe49ece4b91059eba5671f99eb52",
+          "stageHash": "defc3fc38533999dc0fcf09a7a38cd008a7f3f6369ce80a627cd2b4128b9fdca",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1898.7979999999516,
+          "traceUs": 612037880,
+          "file": "opening-2.png",
+          "sha256": "d6bc9c87b5618341b1b0d033b998153a14f6cefdad1109f4d28b0fe719cff2f6",
+          "source": "opening-2.jpg",
+          "originalSha256": "3401035a3e172e21788050d23f5ce12e59728b706596ca0bf68c7f1447afdb6b",
+          "stageHash": "fe5445f3132d01f7ac6b2260de48fdc4820e85a309d38786da395caf3fe5ef48",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2004.6030000000028,
+          "traceUs": 612143685,
+          "file": "opening-3.png",
+          "sha256": "e3a618af9ea0d171a833bcfe5fabac38315904de98cb3e9ee955bceae37fdadb",
+          "source": "opening-3.jpg",
+          "originalSha256": "79658f69a202bf14c1c435cdbf8eaadfbe894a385268e946db195e70106e762e",
+          "stageHash": "39812142d3f1637e49153f5c0d88659b80d23ef442fc3648f7e6da56a52f3230",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2131.8189999999013,
+          "traceUs": 612270901,
+          "file": "opening-4.png",
+          "sha256": "e721570a3a675b03e7f102454f8b81774f201be5fceab47a27d910ae33fa9605",
+          "source": "opening-4.jpg",
+          "originalSha256": "9bb2a526fd2f77eac04f4b10cbbb90b8dcd2e1cc839b5b65021dbdd008996955",
+          "stageHash": "caadba4d8edc85f3e31815376e8e79530bf42ed0c0f7194c04d9a9cbf5c2fcc9",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2259.0939999999246,
+          "traceUs": 612398176,
+          "file": "opening-5.png",
+          "sha256": "2b251aeca2ab53232126784599adea0560b802aca46e5d7ad4efa5bd02816fa8",
+          "source": "opening-5.jpg",
+          "originalSha256": "1052cb772b72068a0604ca0decb4273720142b35ac12bddd9a4c5dfd45bdbf8c",
+          "stageHash": "b5fa8eaeb822c59ac7fa7fe5d8327faf66837fa0194334e65cd9376bb2252eea",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2385.107999999891,
+          "traceUs": 612524190,
+          "file": "opening-6.png",
+          "sha256": "25c8afae4848262bb0fe0991bfa09d1b4fc60954faacba1d61f0f79ea5741430",
+          "source": "opening-6.jpg",
+          "originalSha256": "72c1c5f9b3a22a9b1d81b76e6725e63e3175875f3ac57b80276e6071f2ad50e3",
+          "stageHash": "bbbcc21f88fd1b5833993cbe28705aeedea99e0c7c9cd86ed1cb6347d5af4120",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2511.292999999947,
+          "traceUs": 612650375,
+          "file": "opening-7.png",
+          "sha256": "0a5dda5fae41f122391548d0e36f4546cc35d5e790862afb0841d1482ed16bdb",
+          "source": "opening-7.jpg",
+          "originalSha256": "7a6b65a136aa1d2d3c2f47be241e7f6fa93c06eabaa5245f29fd88833d8f61b1",
+          "stageHash": "cf974429ff89f8b1e5c34e8b3bac50a15d5f6833f86cf0ee53954eb1d3f73216",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2638.344999999972,
+          "traceUs": 612777427,
+          "file": "opening-8.png",
+          "sha256": "c2ed8f35298dd3e0734e945ac5a01eebff2342e26a8a098424d56ba8046fbd42",
+          "source": "opening-8.jpg",
+          "originalSha256": "4b50ba2af315d1cec450ba31fe5cc0dd9f7e0605b51e310c1fd25b0fcbf51de2",
+          "stageHash": "8832a5c3821328a9ac10cf7a6e9c2b42a1fd5372c5cd3f2240faf93a207688ab",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2743.860999999917,
+          "traceUs": 612882943,
+          "file": "opening-9.png",
+          "sha256": "c0b9360faa1ccaa95881d7ffce35d38c2d95eada9e64b80e775643b692c736d8",
+          "source": "opening-9.jpg",
+          "originalSha256": "53d4c5cedfa121d8d6fbf6179fd8fa91778d276c781b66b7e9d60d60409d22b6",
+          "stageHash": "e2148845dce7581ea6df92a6ba890a36ca3cd2c5df8b449229fbb22b4237823b",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2869.269999999902,
+          "traceUs": 613008352,
+          "file": "opening-10.png",
+          "sha256": "699182f7ca272af7068be3f5c9a1caf6b5f2b3e973b3a408a4baa77cd571541a",
+          "source": "opening-10.jpg",
+          "originalSha256": "d7ff96e5f02d6300d826e3003d407bbd2be92a16a7c3eef4c544d34727d73418",
+          "stageHash": "9b54251b494708fdb07cabfd81a5698549289feceabbdd37ffac85cf6b0e238b",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2995.8429999999935,
+          "traceUs": 613134925,
+          "file": "opening-11.png",
+          "sha256": "923a4778f31b19be7000db0bc1fe0fe97aeb5357f15af7cfffeb8f86d67a85c4",
+          "source": "opening-11.jpg",
+          "originalSha256": "48fe872db14c7dd9cfd78c9e5dc41f61a72e2b0933931a115a3c48055c4a7349",
+          "stageHash": "1b747c079c04ad700b237410dfb58add41e298fa9f7ee4da6d006251f9805f4d",
+          "crop": [
+            12,
+            186,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input",
+      "runningMotion": {
+        "sampledStageFrames": 11,
+        "thumbnailSize": [
+          64,
+          48
+        ],
+        "strongest": {
+          "before": "opening-2.jpg",
+          "beforeMs": 1898.7979999999516,
+          "after": "opening-11.jpg",
+          "afterMs": 2995.8429999999935,
+          "meanAbsoluteRgb": 27.049045138888903,
+          "fractionWithMeanRgbDeltaAtLeast16": 0.3115234375
+        },
+        "basis": "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material."
+      }
+    },
+    "craft": {
+      "version": "hero-craft-v1",
+      "video": "craft-opening.webm",
+      "frames": [
+        {
+          "targetMs": null,
+          "native": {
+            "file": "craft-00-native.png",
+            "sha256": "a06f536baaf0625a82cbf3eef2c1eed6042d5b494a99f5120a1f496d7b620c62",
+            "start": 260.80000000004657,
+            "end": 571.5999999999767,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-00-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "5835baa14c28c6b845541abd0ad2dcc322b41e3aa9240cf8ca2731d742780f39"
+          }
+        },
+        {
+          "targetMs": 500,
+          "native": {
+            "file": "craft-01-native.png",
+            "sha256": "a846ccd00a8b2ab12a7425fdb092ff8cd589ec94845936b7d9aac6d9ddb8019e",
+            "start": 1386,
+            "end": 1429.5,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-01-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "eb3c54d9e99f1655c529ebafb91b43f0edc7e9b5b6803173a93ed021751163c1"
+          }
+        },
+        {
+          "targetMs": 1000,
+          "native": {
+            "file": "craft-02-native.png",
+            "sha256": "3792bd776b977658f0a0ed76d37ec282ca17a0109048f007827812b7b7ec185d",
+            "start": 1903.4000000000233,
+            "end": 1941.4000000000233,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-02-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "fb746abbf361d788a7a9bf0be32e7ee382e203f565771f8c3eed477ff718bac3"
+          }
+        },
+        {
+          "targetMs": 1600,
+          "native": {
+            "file": "craft-03-native.png",
+            "sha256": "488721c8864f1fe66c2a12c152773f26473c824f5a50f456faa4388087835dc2",
+            "start": 2485,
+            "end": 2525.9000000000233,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-03-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "d28a5623a17e7e414dc6c28d49376a9cd8b56e8e69530b42f31340285eb136e5"
+          }
+        },
+        {
+          "targetMs": 2200,
+          "native": {
+            "file": "craft-04-native.png",
+            "sha256": "53f632484015d0b3c9decdaf03efa92bd6ff0d11a8a19a19adfed610c86066c1",
+            "start": 3092,
+            "end": 3130.9000000000233,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-04-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "e837ed9b5dc1758959d445d2409103ecbda662dc3850613815144473ea5ee4a0"
+          }
+        },
+        {
+          "targetMs": 3000,
+          "native": {
+            "file": "craft-05-native.png",
+            "sha256": "24ddc3bd4fe13113ca7d6a736a4cd809f1e49cb6f7fce9f1a28721c17b49d351",
+            "start": 3885.9000000000233,
+            "end": 3925,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-05-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "5e3497d7cca66ab334ae35421d6885a3b440395464dd54c2a341e934938f9c65"
+          }
+        },
+        {
+          "targetMs": 4000,
+          "native": {
+            "file": "craft-06-native.png",
+            "sha256": "7032594a59962400706d2e13bcff73ba483290c4c6348ff4193f3ee3c7c38b8a",
+            "start": 4884.599999999977,
+            "end": 4926.20000000007,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-06-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "b5435a98bf735cf54fa9130cee1f946b3bebcfd9164073bae19135c385e5d1d5"
+          }
+        },
+        {
+          "targetMs": 5000,
+          "native": {
+            "file": "craft-07-native.png",
+            "sha256": "74096f0c2bf28238bd4ef1fdb72ef3f25f45c25ee7e2ec207671299c83ef6fe8",
+            "start": 5883.300000000047,
+            "end": 5916.5,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-07-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "6dabd0fa516cbacba52742cfba25b899c992325f4bdb6a37528100540e9aee8d"
+          }
+        },
+        {
+          "targetMs": 6500,
+          "native": {
+            "file": "craft-08-native.png",
+            "sha256": "99fc0335f2698aa50e6271e2575a7531af9cf2b042656bab618e443a33da1a21",
+            "start": 7385.400000000023,
+            "end": 7416.400000000023,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-08-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "b9effeee2bb642feaef1679eb6a87d24dc23e6921c73b5093317f66a09c7c212"
+          }
+        },
+        {
+          "targetMs": 8500,
+          "native": {
+            "file": "craft-09-native.png",
+            "sha256": "f71183295f0b4f25a4e39a339bf99d1e454d1f8ff0dacfaab7200ce9b9e006c2",
+            "start": 9391,
+            "end": 9433.5,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-09-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "d34e6b6368272be837f605e789bc051557aac7d1d0324b1172b90454b5227180"
+          }
+        }
+      ],
+      "runningAt": 876.5999999999767,
+      "videoSha256": "0a0577e5238d7acfde98fc710226f56d9554e00c53449fdf573fb094fcc535dc"
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 211.69999999995343,
+    "firstFoldEnd": 309.69999999995343,
+    "cycle": "evolving",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "aa479818f455123cf31df1babf8723d5dadc4698956331f22b52866aa91ecafd",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 909.1999999999534,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            133,
+            132,
+            150,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "ca2c7c20bfc9f8d52b2dfa8a01de3dbf45be48405bc3feda5986bf7f7c7fa706",
+          "start": 944,
+          "end": 989.9000000000233,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "9662b875a6133840a4f15b651de08cb6334b30bb232c934da74746e4777a3801",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1822.1999999999534,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 127,
+          "average": [
+            119,
+            118,
+            138,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "d28bddaa599b9c7aac49a8aec2e02919ee4c2889d31f9adfafd6fc84d39126de",
+          "start": 1852.5,
+          "end": 1890.9000000000233,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 0.913
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "4bd39017b574f1426500332bf234d3610d0fbed380a754f6da968f9235e14583",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 3126.1999999999534,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 134,
+          "average": [
+            116,
+            107,
+            114,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "c52a2591f552e3c54c16e32e144cc6cb8c0ecc2193a38862f4003494c4416fec",
+          "start": 3158.1999999999534,
+          "end": 3194.5999999999767,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 2.217
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "67e7c11d1417ecd6da215e5743d70da6e9fa06ae94fda5e3242f86bf3107f4d1",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 4929.5,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 125,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "c3e4338e1cf364cbd7b3a582bc9ad6d92ed273baff4a14f5c548ca84d0061b61",
+          "start": 4959.5,
+          "end": 4998.699999999953,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 4.020300000000047
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "f872ba0b8b3c83c33e136c47cf921957442cd02852b9d261f6f933a154e06ace",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 6939.5,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 125,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "1c0f8a375561c4f5161187c5faae083d33144bc4feb0671fe486616812f0d847",
+          "start": 6970.5,
+          "end": 7009.599999999977,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 6.030300000000047
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "bfd3668316ed83c45b4daff7d14efefbd037448505941c6eba015b872a4c94cb",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 8972.300000000047,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 125,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "f2693636352c92f4db6101f267c5c7d1412281aa4c68c0bd9f26ba991d4c63db",
+          "start": 9003.5,
+          "end": 9041.199999999953,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 8.063100000000093
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "35255089f0f8e36184064e9503fd3e5e8ac5b37e818c340c791488c57e0759c9",
+          "start": 1008,
+          "end": 1053.5999999999767,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "f17125729d8f099d138570c5b98ed6e55b3d106ef1752cd78ede25e1e2150e83",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1063.7000000000698,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            133,
+            132,
+            150,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "a04964c86a499d9f3a8a5a0814c8408671ce5530fa242f1cdeca848700d2221f",
+          "start": 1217.5999999999767,
+          "end": 1252.0999999999767,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "e2eb0ebbdf34d93dbf068edb87d520f679cd91c69ccb418fa50664bbdfc053de",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1263,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 115,
+          "average": [
+            124,
+            126,
+            147,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "f4a92dfd5202434a7b4082b2f539ba0f158430311b59888955a74a85e7d19bc8",
+          "start": 1388.2000000000698,
+          "end": 1436.0999999999767,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "37a416a10d118eb05682c2b766659267c1cb4f35a6ad6dc301ca3c80bdb7e330",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1447.0999999999767,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 110,
+          "average": [
+            160,
+            132,
+            121,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "9de76e2a233564faf9d568ed4c2ade4b53f365dd6194556bef8f9b8e9ef53f71",
+          "start": 1586.5999999999767,
+          "end": 1621,
+          "clip": {
+            "x": 20,
+            "y": 316,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "fe85fd4793fc621704a4ba0ff2c4571ba54721c3cef40effb653b7f3599ec705",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1631.5,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 125,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "128600bf791ae9e3dd602f1392e89ec0851c0fe3fa678a18ed73dbb6ea641e65",
+        "start": 1716.7000000000698,
+        "end": 1756.5999999999767,
+        "clip": {
+          "x": 20,
+          "y": 316,
+          "width": 350,
+          "height": 175
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "7c1dcb0cbb38c74ca458905181377b4bfd70dc2d4630e0b13a54174dcabcbed4",
+        "start": 1814.7000000000698,
+        "end": 1848.2000000000698,
+        "clip": {
+          "x": 20,
+          "y": 316,
+          "width": 350,
+          "height": 175
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "7c1dcb0cbb38c74ca458905181377b4bfd70dc2d4630e0b13a54174dcabcbed4",
+        "start": 3208.4000000000233,
+        "end": 3269.5999999999767,
+        "clip": {
+          "x": 20,
+          "y": 316,
+          "width": 350,
+          "height": 175
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "4d53d0f0e33eea72db35ab64617e08c79ed88a5e948479fb2840feca15bdb020",
+        "start": 3357.5,
+        "end": 3397.5999999999767,
+        "clip": {
+          "x": 20,
+          "y": 316,
+          "width": 350,
+          "height": 175
+        }
+      }
+    },
+    "craftReplay": {
+      "input": "touch",
+      "samples": [
+        {
+          "state": "before",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-reprint",
+              "x": 80.76000213623047,
+              "y": 663.0900268554688,
+              "at": 1005.8999999999069
+            }
+          ],
+          "before": "ready",
+          "after": "ready",
+          "composite": {
+            "file": "replay-before.png",
+            "sha256": "35f167cd6921939880a88e624fd398327d17b1154a4585273651d411140a0e82",
+            "start": 1102.2999999999302,
+            "end": 1164.7999999999302,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          }
+        },
+        {
+          "state": "passing",
+          "inputs": [],
+          "before": "passing",
+          "after": "passing",
+          "composite": {
+            "file": "replay-passing.png",
+            "sha256": "793023357d45e29dc0da70406195d23ca2d5c625c72cf5894dd6f2aa3f0f7d95",
+            "start": 2756.5999999999767,
+            "end": 2819.5999999999767,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          }
+        },
+        {
+          "state": "after",
+          "inputs": [],
+          "before": "complete",
+          "after": "complete",
+          "composite": {
+            "file": "replay-after.png",
+            "sha256": "230e546664bfd762201dc582d15acbfb551e177021c08478d9f5d7230d2bfabd",
+            "start": 6212.099999999977,
+            "end": 6261.599999999977,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          }
+        },
+        {
+          "state": "reset",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-reprint",
+              "x": 80.76000213623047,
+              "y": 663.0900268554688,
+              "at": 6571.699999999953
+            }
+          ],
+          "before": "ready",
+          "after": "ready",
+          "composite": {
+            "file": "replay-reset.png",
+            "sha256": "b491c73180ecb57f3995171f87038259f2723b068743f9b430aa79505d4abca9",
+            "start": 6669.599999999977,
+            "end": 6734.699999999953,
+            "clip": {
+              "x": 20,
+              "y": 316,
+              "width": 350,
+              "height": 175
+            }
+          }
+        }
+      ],
+      "observations": {
+        "before": {
+          "step": "ready",
+          "material": 0,
+          "run": 1,
+          "blade": 0.205,
+          "toolVisible": true,
+          "motion": "paused",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ]
+        },
+        "mid": {
+          "step": "passing",
+          "material": 0,
+          "run": 1,
+          "blade": 0.4879576907954585,
+          "toolVisible": true,
+          "motion": "paused",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ],
+          "submissions": 82
+        },
+        "after": {
+          "step": "complete",
+          "material": 0,
+          "run": 1,
+          "blade": 1.255,
+          "toolVisible": false,
+          "motion": "running",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ]
+        },
+        "reset": {
+          "step": "ready",
+          "material": 0,
+          "run": 2,
+          "blade": 0.205,
+          "toolVisible": true,
+          "motion": "paused",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ]
+        }
+      }
+    },
+    "flow": {
+      "lang": "en",
+      "observations": [
+        {
+          "name": "initial estimate",
+          "count": 50,
+          "rows": [
+            "AP–01 Feedback Assembly",
+            "A3 · 297 × 420 mm",
+            "50 copies",
+            "Warm white",
+            "NT$2,050",
+            "5–7 working days"
+          ]
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "",
+          "error": "Enter a whole number from 25 to 250 copies."
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "24",
+          "error": "Enter a whole number from 25 to 250 copies."
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "25.5",
+          "error": "Enter a whole number from 25 to 250 copies."
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "251",
+          "error": "Enter a whole number from 25 to 250 copies."
+        },
+        {
+          "name": "minimum",
+          "count": 25,
+          "rows": [
+            "AP–01 Feedback Assembly",
+            "A3 · 297 × 420 mm",
+            "25 copies",
+            "Warm white",
+            "NT$1,500",
+            "5–7 working days"
+          ]
+        },
+        {
+          "name": "standard lead threshold",
+          "count": 150,
+          "rows": [
+            "AP–02 Orbital Relay",
+            "A2 · 420 × 594 mm",
+            "150 copies",
+            "Oat",
+            "NT$6,900",
+            "7–9 working days"
+          ]
+        },
+        {
+          "name": "extra lead threshold",
+          "count": 151,
+          "rows": [
+            "AP–02 Orbital Relay",
+            "A2 · 420 × 594 mm",
+            "151 copies",
+            "Oat",
+            "NT$6,937",
+            "9–11 working days"
+          ]
+        },
+        {
+          "name": "maximum",
+          "count": 250,
+          "rows": [
+            "AP–02 Orbital Relay",
+            "A2 · 420 × 594 mm",
+            "250 copies",
+            "Oat",
+            "NT$10,600",
+            "9–11 working days"
+          ]
+        },
+        {
+          "name": "revised",
+          "count": 72,
+          "rows": [
+            "AP–03 Side B Social",
+            "A3 · 297 × 420 mm",
+            "72 copies",
+            "Warm white",
+            "NT$2,534",
+            "5–7 working days"
+          ]
+        }
+      ],
+      "download": {
+        "filename": "afterimage-print-sheet-en.txt",
+        "bytes": 356,
+        "text": "AFTERIMAGE PRESS | Print sheet\n\nArtwork AP–03 Side B Social\nTrim size A3 · 297 × 420 mm\nPrint run 72 copies\nPaper Warm white\nEstimate NT$2,534\nLead time 5–7 working days\n170 gsm uncoated, cobalt blue + fluorescent orange\n\nConcept print service. Events are fictional, prices and lead times are illustrative, and print sheets are for offline planning.\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "Price a print run\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 20.796875,
+              "y": 577.375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "View the start of printing",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 12,
+              "y": 690.15625,
+              "width": 170.859375,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1479.109375,
+              "width": 149.375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2063.546875,
+              "width": 149.375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2673.25,
+              "width": 149.375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Poster artwork",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3039.96875,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Poster artwork",
+                "rect": {
+                  "x": 12,
+                  "y": 3011.1875,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Trim size",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3123.9375,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Trim size",
+                "rect": {
+                  "x": 12,
+                  "y": 3095.15625,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Paper color",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3207.90625,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Paper color",
+                "rect": {
+                  "x": 12,
+                  "y": 3179.125,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Print run",
+            "tag": "INPUT",
+            "rect": {
+              "x": 12,
+              "y": 3291.875,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Print run",
+                "rect": {
+                  "x": 12,
+                  "y": 3263.09375,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Download print sheet\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3745.015625,
+              "width": 213.421875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 139.390625,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 6.296875,
+              "width": 124.03125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Poster archive",
+            "tag": "A",
+            "rect": {
+              "x": 168.546875,
+              "y": 6.296875,
+              "width": 78.65625,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 256.796875,
+              "y": 6.296875,
+              "width": 51.203125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "INDEPENDENT GIG PRINTING",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 77.59375,
+              "width": 296,
+              "height": 16
+            },
+            "color": "rgb(255, 134, 94)",
+            "size": "12.32px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TWO-INK GIG POSTERS",
+            "tag": "H1",
+            "rect": {
+              "x": 12,
+              "y": 102.546875,
+              "width": 296,
+              "height": 82.40625
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "44.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Short runs for independent bands, venues and record shops. Two inks meet on paper to print",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 195.25,
+              "width": 296,
+              "height": 69
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.56px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H2",
+            "rect": {
+              "x": 20.796875,
+              "y": 321.015625,
+              "width": 278.40625,
+              "height": 26.046875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.9543px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Loading Bay B · Taipei\n20:00 SHOW",
+            "tag": "P",
+            "rect": {
+              "x": 20.796875,
+              "y": 539.4375,
+              "width": 152.078125,
+              "height": 31.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "11.52px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Price a print run\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 20.796875,
+              "y": 577.375,
+              "width": 156.40625,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Both inks",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 637.359375,
+              "width": 81.53125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Cobalt plate",
+            "tag": "LABEL",
+            "rect": {
+              "x": 98.328125,
+              "y": 637.359375,
+              "width": 97.640625,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Orange plate",
+            "tag": "LABEL",
+            "rect": {
+              "x": 200.765625,
+              "y": 637.359375,
+              "width": 102.6875,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "View the start of printing",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 12,
+              "y": 690.15625,
+              "width": 170.859375,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "12.48px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 134, 94)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "THREE GIGS ON PAPER",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 797.546875,
+              "width": 296,
+              "height": 76
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Three sample events, each printed in cobalt blue and fluorescent orange.",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 883.140625,
+              "width": 296,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–01\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1351.8125,
+              "width": 258.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 1387.015625,
+              "width": 258.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Band headline show · A solid-ink overlap of speaker cabinet and horn.",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1422.1875,
+              "width": 258.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1479.109375,
+              "width": 149.375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–02\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1936.25,
+              "width": 258.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "ORBITAL RELAY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 1971.453125,
+              "width": 258.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Electronic bill · Two sets of off-center orbital lines in overprint.",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2006.625,
+              "width": 258.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2063.546875,
+              "width": 149.375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–03\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2520.6875,
+              "width": 258.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "SIDE B SOCIAL",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 2555.890625,
+              "width": 258.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Record swap · Two sets of bars drawn from record grooves and the beats between them.",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2591.0625,
+              "width": 258.8125,
+              "height": 75.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2673.25,
+              "width": 149.375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "BUILD A PRINT SHEET",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 2803.828125,
+              "width": 296,
+              "height": 76
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pick a poster, format, run and paper. Change any choice and download the updated print she",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 2889.421875,
+              "width": 296,
+              "height": 75.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Poster artwork",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3011.1875,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Trim size",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3095.15625,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Paper color",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3179.125,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Print run",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3263.09375,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Enter a whole number from 25 to 250 copies.",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 3353.625,
+              "width": 296,
+              "height": 21.734375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.76px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Print sheet preview",
+            "tag": "H3",
+            "rect": {
+              "x": 26.796875,
+              "y": 3430.703125,
+              "width": 266.40625,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download print sheet\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3745.015625,
+              "width": 213.421875,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Print specs and pricing",
+            "tag": "H3",
+            "rect": {
+              "x": 12,
+              "y": 3856.8125,
+              "width": 296,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Concept print service. Events are fictional, prices and lead times are illustrative, and p",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 4194,
+              "width": 296,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4318.59375,
+              "width": 119.03125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to Visual Showcase ↗",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4366.59375,
+              "width": 187.5625,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "View source ↗",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4414.59375,
+              "width": 100.765625,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/press-bed.svg",
+            "width": 1000,
+            "height": 500
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/plate-both.webp",
+            "width": 2000,
+            "height": 1000
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/squeegee.svg",
+            "width": 1000,
+            "height": 120
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/feedback.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/orbital.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/side-b.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "Price a print run\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 212.796875,
+              "y": 528.3125,
+              "width": 156.40625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "View the start of printing",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 12,
+              "y": 641.09375,
+              "width": 178.859375,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1481.734375,
+              "width": 149.375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2155.859375,
+              "width": 149.375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2829.984375,
+              "width": 149.375,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "Poster artwork",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3158.703125,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Poster artwork",
+                "rect": {
+                  "x": 12,
+                  "y": 3129.921875,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Trim size",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3242.671875,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Trim size",
+                "rect": {
+                  "x": 12,
+                  "y": 3213.890625,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Paper color",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3326.640625,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Paper color",
+                "rect": {
+                  "x": 12,
+                  "y": 3297.859375,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Print run",
+            "tag": "INPUT",
+            "rect": {
+              "x": 12,
+              "y": 3410.609375,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "Print run",
+                "rect": {
+                  "x": 12,
+                  "y": 3381.828125,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "Download print sheet\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3863.75,
+              "width": 213.421875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "Skip to content",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 139.390625,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 6.296875,
+              "width": 135.53125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Poster archive",
+            "tag": "A",
+            "rect": {
+              "x": 225.546875,
+              "y": 6.296875,
+              "width": 86.53125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "繁體中文",
+            "tag": "A",
+            "rect": {
+              "x": 321.671875,
+              "y": 6.296875,
+              "width": 56.328125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "INDEPENDENT GIG PRINTING",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 77.59375,
+              "width": 366,
+              "height": 16
+            },
+            "color": "rgb(255, 134, 94)",
+            "size": "12.32px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "TWO-INK GIG POSTERS",
+            "tag": "H1",
+            "rect": {
+              "x": 12,
+              "y": 102.546875,
+              "width": 366,
+              "height": 41.203125
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "44.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Short runs for independent bands, venues and record shops. Two inks meet on paper to print",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 154.046875,
+              "width": 329.640625,
+              "height": 69
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.56px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H2",
+            "rect": {
+              "x": 20.796875,
+              "y": 280.6875,
+              "width": 348.40625,
+              "height": 32.609375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "36.2342px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Loading Bay B · Taipei\n20:00 SHOW",
+            "tag": "P",
+            "rect": {
+              "x": 20.796875,
+              "y": 541.25,
+              "width": 152.078125,
+              "height": 31.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "11.52px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Price a print run\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 212.796875,
+              "y": 528.3125,
+              "width": 156.40625,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Both inks",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 588.296875,
+              "width": 89.53125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Cobalt plate",
+            "tag": "LABEL",
+            "rect": {
+              "x": 106.328125,
+              "y": 588.296875,
+              "width": 105.640625,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Orange plate",
+            "tag": "LABEL",
+            "rect": {
+              "x": 216.765625,
+              "y": 588.296875,
+              "width": 110.6875,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "View the start of printing",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 12,
+              "y": 641.09375,
+              "width": 178.859375,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "12.48px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 134, 94)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "THREE GIGS ON PAPER",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 748.484375,
+              "width": 316.328125,
+              "height": 38
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Three sample events, each printed in cobalt blue and fluorescent orange.",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 796.078125,
+              "width": 310.5,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–01\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1354.4375,
+              "width": 328.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 1389.640625,
+              "width": 328.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Band headline show · A solid-ink overlap of speaker cabinet and horn.",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1424.8125,
+              "width": 328.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1481.734375,
+              "width": 149.375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–02\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2028.5625,
+              "width": 328.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "ORBITAL RELAY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 2063.765625,
+              "width": 328.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Electronic bill · Two sets of off-center orbital lines in overprint.",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2098.9375,
+              "width": 328.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2155.859375,
+              "width": 149.375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–03\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2702.6875,
+              "width": 328.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "SIDE B SOCIAL",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 2737.890625,
+              "width": 328.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Record swap · Two sets of bars drawn from record grooves and the beats between them.",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2773.0625,
+              "width": 328.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Use this artwork\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2829.984375,
+              "width": 149.375,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "BUILD A PRINT SHEET",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 2960.5625,
+              "width": 308.6875,
+              "height": 38
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Pick a poster, format, run and paper. Change any choice and download the updated print she",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 3008.15625,
+              "width": 310.5,
+              "height": 75.796875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Poster artwork",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3129.921875,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Trim size",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3213.890625,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Paper color",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3297.859375,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Print run",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3381.828125,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Enter a whole number from 25 to 250 copies.",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 3472.359375,
+              "width": 366,
+              "height": 21.734375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.76px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Print sheet preview",
+            "tag": "H3",
+            "rect": {
+              "x": 26.796875,
+              "y": 3549.4375,
+              "width": 336.40625,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Download print sheet\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3863.75,
+              "width": 213.421875,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Print specs and pricing",
+            "tag": "H3",
+            "rect": {
+              "x": 12,
+              "y": 3975.546875,
+              "width": 366,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Concept print service. Events are fictional, prices and lead times are illustrative, and p",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 4211.671875,
+              "width": 366,
+              "height": 75.796875
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4336.265625,
+              "width": 130.53125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Back to Visual Showcase ↗",
+            "tag": "A",
+            "rect": {
+              "x": 190.4375,
+              "y": 4336.265625,
+              "width": 187.5625,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "View source ↗",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4384.265625,
+              "width": 100.765625,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/press-bed.svg",
+            "width": 1000,
+            "height": 500
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/plate-both.webp",
+            "width": 2000,
+            "height": 1000
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/squeegee.svg",
+            "width": 1000,
+            "height": 120
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/feedback.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/orbital.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/side-b.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Skip to content",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "AFTERIMAGE\nPRESS",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.296875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Poster archive",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.296875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "繁體中文",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.296875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Price a print run\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(20, 58, 214)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 528.3125
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "Both inks",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 588.296875
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "View the start of printing",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 641.09375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Use this artwork\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1481.734375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Use this artwork\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2155.859375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Use this artwork\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2829.984375
+      },
+      {
+        "tag": "SELECT",
+        "id": "art",
+        "text": "Poster artwork",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3158.703125
+      },
+      {
+        "tag": "SELECT",
+        "id": "size",
+        "text": "Trim size",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3242.671875
+      },
+      {
+        "tag": "SELECT",
+        "id": "paper",
+        "text": "Paper color",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3326.640625
+      },
+      {
+        "tag": "INPUT",
+        "id": "copies",
+        "text": "Print run",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3410.609375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "Download print sheet\n↓",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3863.75
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "AFTERIMAGE\nPRESS",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4336.265625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "Back to Visual Showcase ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4336.265625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "View source ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4384.265625
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2882.6999999999534,
+    "end": 12883.79999999993,
+    "timestamps": [
+      2897.79999999993,
+      2918.0999999999767,
+      2938.6999999999534,
+      2959,
+      2979.1999999999534,
+      3000.899999999907,
+      3022,
+      3042.5,
+      3063,
+      3083.29999999993,
+      3103.5999999999767,
+      3124,
+      3144.399999999907,
+      3164.79999999993,
+      3185.0999999999767,
+      3205.6999999999534,
+      3226,
+      3246.399999999907,
+      3266.6999999999534,
+      3287.0999999999767,
+      3307.399999999907,
+      3326.899999999907,
+      3346.6999999999534,
+      3367.0999999999767,
+      3387.5,
+      3408.5,
+      3428.79999999993,
+      3449.399999999907,
+      3469.899999999907,
+      3490.399999999907,
+      3510.6999999999534,
+      3531.1999999999534,
+      3551.5999999999767,
+      3572.1999999999534,
+      3592.79999999993,
+      3613.0999999999767,
+      3633.6999999999534,
+      3654.29999999993,
+      3674.5999999999767,
+      3694.899999999907,
+      3715.399999999907,
+      3736,
+      3756.29999999993,
+      3776.6999999999534,
+      3797.5999999999767,
+      3818.5999999999767,
+      3839.0999999999767,
+      3859.6999999999534,
+      3880,
+      3900.29999999993,
+      3921.899999999907,
+      3943,
+      3963.29999999993,
+      3983.5999999999767,
+      4004.0999999999767,
+      4025.0999999999767,
+      4045.399999999907,
+      4066,
+      4086.1999999999534,
+      4106.599999999977,
+      4127,
+      4147.399999999907,
+      4168.29999999993,
+      4189.5,
+      4209.899999999907,
+      4230.199999999953,
+      4250.599999999977,
+      4271.5,
+      4292,
+      4312.29999999993,
+      4333.5,
+      4354,
+      4375.399999999907,
+      4395.699999999953,
+      4416.79999999993,
+      4437.79999999993,
+      4457.899999999907,
+      4478.199999999953,
+      4499.399999999907,
+      4520.599999999977,
+      4541,
+      4561.399999999907,
+      4581.79999999993,
+      4601.29999999993,
+      4622.5,
+      4642.79999999993,
+      4663.599999999977,
+      4683.79999999993,
+      4704.199999999953,
+      4724.399999999907,
+      4744.79999999993,
+      4765.099999999977,
+      4785.5,
+      4805.79999999993,
+      4826.399999999907,
+      4846.599999999977,
+      4866.599999999977,
+      4887.79999999993,
+      4907.699999999953,
+      4929,
+      4948.899999999907,
+      4970.199999999953,
+      4991.29999999993,
+      5010.79999999993,
+      5031.399999999907,
+      5051.899999999907,
+      5072,
+      5092.199999999953,
+      5112.29999999993,
+      5132.599999999977,
+      5152.699999999953,
+      5172.899999999907,
+      5194.29999999993,
+      5214.599999999977,
+      5235,
+      5256,
+      5276.199999999953,
+      5297.29999999993,
+      5318.399999999907,
+      5338.5,
+      5359,
+      5380.29999999993,
+      5400.699999999953,
+      5420.899999999907,
+      5441,
+      5460.399999999907,
+      5480.79999999993,
+      5501,
+      5522.099999999977,
+      5542.599999999977,
+      5562.899999999907,
+      5583.199999999953,
+      5604.199999999953,
+      5624.29999999993,
+      5645.399999999907,
+      5665.599999999977,
+      5685.699999999953,
+      5705.899999999907,
+      5726.099999999977,
+      5746,
+      5766.099999999977,
+      5785.899999999907,
+      5805.899999999907,
+      5826.699999999953,
+      5848.29999999993,
+      5868.399999999907,
+      5889.699999999953,
+      5909.899999999907,
+      5930.099999999977,
+      5950.29999999993,
+      5970.5,
+      5990.699999999953,
+      6012,
+      6031.29999999993,
+      6051.599999999977,
+      6071.899999999907,
+      6092.199999999953,
+      6112.5,
+      6132.699999999953,
+      6153.099999999977,
+      6173.199999999953,
+      6194.399999999907,
+      6214.699999999953,
+      6235.899999999907,
+      6256.199999999953,
+      6276.699999999953,
+      6296.79999999993,
+      6317,
+      6336.899999999907,
+      6356.899999999907,
+      6377,
+      6396.399999999907,
+      6416.599999999977,
+      6436.399999999907,
+      6457.399999999907,
+      6478.699999999953,
+      6498.899999999907,
+      6519.099999999977,
+      6539.5,
+      6560.199999999953,
+      6580.79999999993,
+      6601.099999999977,
+      6621.79999999993,
+      6643.099999999977,
+      6663.599999999977,
+      6684.099999999977,
+      6704.399999999907,
+      6724.899999999907,
+      6745.79999999993,
+      6766.5,
+      6787.099999999977,
+      6807.399999999907,
+      6828.699999999953,
+      6849,
+      6869,
+      6890.29999999993,
+      6910.599999999977,
+      6931,
+      6951.399999999907,
+      6971.699999999953,
+      6992.399999999907,
+      7013.699999999953,
+      7034.099999999977,
+      7055,
+      7075.599999999977,
+      7095.599999999977,
+      7115.899999999907,
+      7136.5,
+      7158,
+      7178.29999999993,
+      7198.79999999993,
+      7219.29999999993,
+      7239.79999999993,
+      7260.199999999953,
+      7281.199999999953,
+      7302.5,
+      7322.79999999993,
+      7342.699999999953,
+      7363,
+      7383,
+      7403.79999999993,
+      7424.199999999953,
+      7445.5,
+      7465.5,
+      7486.099999999977,
+      7506.399999999907,
+      7527,
+      7547.199999999953,
+      7568,
+      7588.5,
+      7609.199999999953,
+      7629.899999999907,
+      7650.29999999993,
+      7670.79999999993,
+      7691.099999999977,
+      7711.399999999907,
+      7731.699999999953,
+      7752.399999999907,
+      7772.79999999993,
+      7793.399999999907,
+      7813.5,
+      7833.79999999993,
+      7854.79999999993,
+      7876,
+      7896.29999999993,
+      7916.79999999993,
+      7937.099999999977,
+      7957.29999999993,
+      7977.099999999977,
+      7998.29999999993,
+      8019.599999999977,
+      8039.29999999993,
+      8059.5,
+      8079.899999999907,
+      8100.199999999953,
+      8120.599999999977,
+      8140.899999999907,
+      8161.199999999953,
+      8181.099999999977,
+      8201.099999999977,
+      8222.5,
+      8242.79999999993,
+      8263.199999999953,
+      8283.5,
+      8304.699999999953,
+      8324.599999999977,
+      8344.79999999993,
+      8366,
+      8386,
+      8407.29999999993,
+      8427.399999999907,
+      8448.699999999953,
+      8469.099999999977,
+      8489.699999999953,
+      8511.199999999953,
+      8532,
+      8552.599999999977,
+      8572.699999999953,
+      8593.099999999977,
+      8613.5,
+      8633.899999999907,
+      8654.29999999993,
+      8674.79999999993,
+      8695.599999999977,
+      8715.699999999953,
+      8736.29999999993,
+      8757.099999999977,
+      8777.699999999953,
+      8798,
+      8819.099999999977,
+      8839.5,
+      8860.79999999993,
+      8881,
+      8901.5,
+      8922.199999999953,
+      8942.79999999993,
+      8963.399999999907,
+      8983.79999999993,
+      9004.399999999907,
+      9024.79999999993,
+      9045.399999999907,
+      9065.79999999993,
+      9086.399999999907,
+      9107.79999999993,
+      9129,
+      9149.5,
+      9169.699999999953,
+      9189.29999999993,
+      9209.79999999993,
+      9230.199999999953,
+      9250.699999999953,
+      9271.099999999977,
+      9292.29999999993,
+      9312.399999999907,
+      9332.399999999907,
+      9353.399999999907,
+      9373.599999999977,
+      9393.599999999977,
+      9413.5,
+      9433.79999999993,
+      9455.29999999993,
+      9475.79999999993,
+      9496.199999999953,
+      9516.099999999977,
+      9536.199999999953,
+      9556.29999999993,
+      9577.599999999977,
+      9598.29999999993,
+      9618.79999999993,
+      9639.099999999977,
+      9659.29999999993,
+      9679.599999999977,
+      9699.5,
+      9720.79999999993,
+      9742,
+      9763.199999999953,
+      9783.199999999953,
+      9804.099999999977,
+      9824,
+      9844.29999999993,
+      9865.5,
+      9885.599999999977,
+      9905.5,
+      9926.899999999907,
+      9948.099999999977,
+      9968.399999999907,
+      9989.599999999977,
+      10010.899999999907,
+      10031,
+      10052.199999999953,
+      10073.399999999907,
+      10094.399999999907,
+      10114.699999999953,
+      10134.79999999993,
+      10155,
+      10176.29999999993,
+      10196.099999999977,
+      10216.399999999907,
+      10236.5,
+      10256.79999999993,
+      10277,
+      10298,
+      10317.29999999993,
+      10337.599999999977,
+      10357.899999999907,
+      10378.099999999977,
+      10398.199999999953,
+      10419.099999999977,
+      10439.29999999993,
+      10460,
+      10480,
+      10500.29999999993,
+      10520.599999999977,
+      10541.099999999977,
+      10561.699999999953,
+      10582.099999999977,
+      10602.599999999977,
+      10623,
+      10644.199999999953,
+      10664.199999999953,
+      10684.199999999953,
+      10704.099999999977,
+      10724.199999999953,
+      10744.199999999953,
+      10764.199999999953,
+      10785.5,
+      10806,
+      10826.29999999993,
+      10847.599999999977,
+      10867.899999999907,
+      10889,
+      10909.5,
+      10929.599999999977,
+      10949.699999999953,
+      10970.899999999907,
+      10990.29999999993,
+      11011.599999999977,
+      11031.899999999907,
+      11052.29999999993,
+      11072.5,
+      11093.599999999977,
+      11113.899999999907,
+      11133.29999999993,
+      11153.29999999993,
+      11174.29999999993,
+      11194.5,
+      11214.699999999953,
+      11234.79999999993,
+      11254.699999999953,
+      11276,
+      11296.099999999977,
+      11316.199999999953,
+      11336.399999999907,
+      11357.699999999953,
+      11377.79999999993,
+      11398.899999999907,
+      11419,
+      11440.29999999993,
+      11460.699999999953,
+      11481.199999999953,
+      11501.399999999907,
+      11522.099999999977,
+      11542.79999999993,
+      11563.5,
+      11583.699999999953,
+      11603.29999999993,
+      11624.099999999977,
+      11644.79999999993,
+      11665,
+      11686.29999999993,
+      11707.5,
+      11728.29999999993,
+      11748.5,
+      11768.699999999953,
+      11788.79999999993,
+      11808.699999999953,
+      11828.599999999977,
+      11848.79999999993,
+      11870,
+      11891.199999999953,
+      11911.29999999993,
+      11931.5,
+      11952.899999999907,
+      11973.099999999977,
+      11993,
+      12014.29999999993,
+      12034.699999999953,
+      12054.899999999907,
+      12075.79999999993,
+      12096.199999999953,
+      12117.399999999907,
+      12136.79999999993,
+      12156.899999999907,
+      12177.099999999977,
+      12198.099999999977,
+      12219.399999999907,
+      12239.5,
+      12259.599999999977,
+      12279.79999999993,
+      12299.199999999953,
+      12319.29999999993,
+      12339.79999999993,
+      12360.099999999977,
+      12380.199999999953,
+      12400.29999999993,
+      12420.399999999907,
+      12440.79999999993,
+      12462,
+      12481.899999999907,
+      12502,
+      12522.29999999993,
+      12542.699999999953,
+      12562.899999999907,
+      12583.29999999993,
+      12603.399999999907,
+      12623.699999999953,
+      12643.599999999977,
+      12663.5,
+      12684.699999999953,
+      12706,
+      12726.199999999953,
+      12746.399999999907,
+      12766.79999999993,
+      12787.29999999993,
+      12808.699999999953,
+      12829,
+      12849.199999999953,
+      12868.599999999977
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        350,
+        175
+      ]
+    ],
+    "measuredMs": 10001.099999999977,
+    "medianMs": 20.399999999906868,
+    "p95Ms": 21.300000000046566,
+    "longestMs": 21.699999999953434,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/en/works/afterimage-press/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/plate-cobalt.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/assets/page-BFmTOD75.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/assets/page-tDpWpdC2.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/mark.svg",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/press-bed.svg",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/squeegee.svg",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/plate-both.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/plate-orange.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/fonts/prism-plex-mono.ttf",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/feedback.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/orbital.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/assets/shader-CvSO64jm.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/bed-texture.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/tool-texture.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/side-b.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:52600/glossquote-visuals/media/afterimage-press/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}

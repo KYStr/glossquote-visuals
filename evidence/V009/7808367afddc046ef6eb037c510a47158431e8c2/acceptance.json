@@ -1,0 +1,718 @@
+{
+  "work": "V009",
+  "commit": "7808367afddc046ef6eb037c510a47158431e8c2",
+  "author": "01a1fa4c-f419-7853-bc26-6e79796f0a64",
+  "reviewer": "GlossQuote Visuals 工作室主責（獨立於三個製作對話）",
+  "runId": 44983018073,
+  "jobId": 137088455313,
+  "gates": {
+    "visual": "PASS",
+    "interaction": "PASS",
+    "shader": "PASS",
+    "lifecycle": "PASS",
+    "accessibility": "PASS",
+    "performance": "PASS",
+    "privacy": "PASS",
+    "seo": "PASS",
+    "reproducibility": "PASS"
+  },
+  "provenance": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/CI.json",
+  "ruleReview": {
+    "version": "commercial-rules-v1",
+    "environment": "GitHub-hosted windows-2025, Chromium 158.0.8127.18, measured GPU vendor=google architecture=swiftshader isFallbackAdapter=True",
+    "rules": [
+      {
+        "id": "ART-1",
+        "status": "PASS",
+        "reason": "桌機以黑色工作室頁面襯出米白印台、鈷藍第一版與木柄刮刀；手機首屏含限量雙色海報、印台及詢價入口。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/first-fold.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/first-fold.png"
+        ]
+      },
+      {
+        "id": "ART-2",
+        "status": "PASS",
+        "reason": "固定的藍版先出現，刮刀往下推時只有刀後出現橘色，重疊處留深紫。紙張及定位角在工具離開、單色檢視和再印之間維持原位。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-0.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-1.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-10.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-11.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-2.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-3.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-4.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-5.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-6.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-7.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-8.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/opening-9.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-0.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-1.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-10.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-11.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-2.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-3.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-4.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-5.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-6.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-7.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-8.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/opening-9.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-0-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-1-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-2-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-3-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-4-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-5-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-0.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-1.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-10.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-10.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-11.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-11.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-2.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-3.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-3.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-4.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-4.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-5.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-5.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-6.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-6.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-7.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-7.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-8.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-8.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-9.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/opening-9.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-0-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-1-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-2-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-3-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-4-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-5-composite.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-0.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-1.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-10.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-10.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-11.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-11.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-2.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-3.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-3.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-4.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-4.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-5.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-5.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-6.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-6.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-7.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-7.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-8.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-8.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-9.jpg",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/opening-9.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "ART-3",
+        "status": "PASS",
+        "reason": "黑色印台、密排海報字樣和雙色墨與另兩件形成區別；三張型錄海報沿用雙墨與米白紙，詢價單保留印件欄位、粗線和同組品牌配色。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/first-fold.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-1440.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/first-fold.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/compare-desktop.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/compare-mobile.png"
+        ]
+      },
+      {
+        "id": "GPU-1",
+        "status": "PASS",
+        "reason": "Chromium 158.0.8127.18 的四次隔離測試均建立 WebGPU 裝置與單一可見畫布。實測 adapter 為 Google SwiftShader。逐幀讀回材質有非空像素與不同雜湊，並與瀏覽器合成原圖對照。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-0-texture.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-0-texture.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "GPU-2",
+        "status": "PASS",
+        "reason": "桌機以鍵盤、手機以觸控實際再印。印前、刮刀在中段、完印及重印各階段影像可查；中段暫停一秒逐位元組完全一致且零提交，續播繼續落墨。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-3.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-after-1s.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-immediate.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-resumed.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-3.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-after-1s.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-immediate.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-resumed.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-1",
+        "status": "PASS",
+        "reason": "暖機兩秒後量十秒的畫布提交；以下為中位數／p95／最長毫秒。en desktop 16.1/31.6/31.8；en mobile 20.4/21.3/21.7；zh-Hant desktop 25.1/26.6/29.2；zh-Hant mobile 21.7/22.5/23.3。四組分別符合 34／50／150 ms 門檻。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "PERF-2",
+        "status": "PASS",
+        "reason": "建置後中英每頁含延遲載入資源皆在 2 MiB 內，分別為 531381 與 447477 gzip bytes。離開首屏及切至背景會停止送幀，返回後只有一個活動畫布。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/build.txt",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-1",
+        "status": "PASS",
+        "reason": "逐張檢視兩語在 320、390、768、1440 CSS px 與桌面真實 200% 放大時的排版。標題、版頭、商品選項與結果欄完整，測得十份版型均無橫向溢出。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-1440.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-768.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200-viewport-6.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-zoom-200.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/layout-320.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/layout-390.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-1440.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-768.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-zoom-200-viewport-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-zoom-200-viewport-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-zoom-200-viewport-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-zoom-200-viewport-3.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-zoom-200-viewport-4.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-zoom-200-viewport-5.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-zoom-200.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/layout-320.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/layout-390.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "UI-2",
+        "status": "PASS",
+        "reason": "核對可見焦點、表單與恢復狀態。十份版型共量 100 個主要操作熱區，均至少 44 × 44 CSS px。一般文字的純色對比最低為 5.42:1，合成文字另外以原圖取樣。觸控可完成選擇、重播及下載。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/flow-complete.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/flow-complete.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "BIZ-1",
+        "status": "PASS",
+        "reason": "三張印件提供圖案、成品規格、紙別與印量；兩語都能看到預估金額、工期和概念印刷工作室說明。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/layout-1440.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/layout-1440.png"
+        ]
+      },
+      {
+        "id": "BIZ-2",
+        "status": "PASS",
+        "reason": "驗過印量 25、250 與非法值，以及 150/151 張的工期切換。回改為 Side B Social、A3、72 張，產出暖白紙、NT$2,534 的印件製作單。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/flow-complete.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/flow-complete.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/flow-complete.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/flow-complete.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-1",
+        "status": "PASS",
+        "reason": "原始 HTML、減少動態及 GPU 失敗的首屏均留可辨識的雙色印件與詢價入口。減少動態靜止；無 GPU 仍能調整紙別、印量及下載製作單。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/gpu-init-fail.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/no-js.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/reduced.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/gpu-init-fail.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/no-js.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/reduced.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "FALL-2",
+        "status": "PASS",
+        "reason": "裝置遺失後恢復至可用狀態。快速暫停、續播、實際離頁再回返均能再取得畫布；商業內容一直可讀，沒有遮住頁面的空白層。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/after-device-loss.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/after-device-loss.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      },
+      {
+        "id": "SHIP-1",
+        "status": "PASS",
+        "reason": "候選四組隔離建置皆以 lockfile 安裝，check、單元測試與 build 通過。實際請求同源，無追蹤或 storage 副作用。兩語可互返，canonical、分享圖、畫廊連結與正式路徑相符。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/build.txt",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      }
+    ]
+  },
+  "craftReview": {
+    "version": "hero-craft-v1",
+    "status": "PASS",
+    "commit": "7808367afddc046ef6eb037c510a47158431e8c2",
+    "reviewer": "GlossQuote Visuals 工作室主責（獨立於三個製作對話）",
+    "criteria": [
+      {
+        "id": "silhouette",
+        "status": "PASS",
+        "reason": "去除頁面文字、縮至 160 px，短柄橫刮刀、紙框和雙喇叭的大負形可區分，頭尾的版面色塊也能分辨。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-01-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-02-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-03-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-04-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-05-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-06-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-07-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-08-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-09-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-01-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-02-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-03-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-04-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-05-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-06-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-07-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-08-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-09-160.png"
+        ]
+      },
+      {
+        "id": "finish",
+        "status": "PASS",
+        "reason": "原尺寸檢查音箱負形的斜線、白色斜槽的轉角和黑色刀唇。圖內有規律的粗網點，墨層外緣平順；刮刀移過後白槽與套色線穩定。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-01-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-02-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-03-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-04-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-05-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-06-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-07-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-08-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-09-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-01-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-02-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-03-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-04-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-05-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-06-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-07-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-08-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-09-native.png"
+        ]
+      },
+      {
+        "id": "material",
+        "status": "PASS",
+        "reason": "鈷藍與橙墨重疊成深紫，同一處留白仍見紙色；刀唇的接觸影貼住紙面，能與平坦的墨層區分。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-01-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-02-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-03-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-04-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-05-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-06-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-07-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-08-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-09-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-01-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-02-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-03-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-04-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-05-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-06-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-07-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-08-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-09-native.png"
+        ]
+      },
+      {
+        "id": "narrative",
+        "status": "PASS",
+        "reason": "先見鈷藍底版；刮刀橫跨紙面往下推，橙色圖形只出現在刀口後。完工時刀離開，保留完整雙色海報供檢視。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-01-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-02-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-03-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-04-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-05-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-06-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-07-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-08-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-09-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-opening.webm",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-01-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-02-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-03-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-04-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-05-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-06-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-07-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-08-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-09-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-opening.webm"
+        ]
+      },
+      {
+        "id": "continuity",
+        "status": "PASS",
+        "reason": "沿紙角對位線與音箱邊緣對照印前、刮至中段、印畢及重播。紙未移動，刀口兩側的未印及已印區分界相接。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/craft-opening.webm",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/craft-opening.webm",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-opening.webm",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/replay-reset.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-opening.webm",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-after.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-before.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-passing.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/replay-reset.png"
+        ]
+      },
+      {
+        "id": "fidelity",
+        "status": "PASS",
+        "reason": "首圖與執行中的海報共用音箱版心、白紙與雙專色；型錄其他印件和詢價單使用一致的印刷配色、粗線與格線。手機保留完整印床。",
+        "evidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-mobile/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-00-160.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/craft-00-native.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/results.json"
+        ]
+      }
+    ]
+  },
+  "temporalReview": {
+    "version": "material-motion-v1",
+    "status": "PASS",
+    "commit": "7808367afddc046ef6eb037c510a47158431e8c2",
+    "reviewer": "GlossQuote Visuals 工作室主責（獨立於三個製作對話）",
+    "views": [
+      {
+        "viewport": "desktop",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "從第一版、刮刀中段到第二版完成有連貫記錄；切換兩個單版再回雙版可辨識重疊的深紫，重播會回到印前。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-0-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-0-composite.png",
+            "compositeStartMs": 1033,
+            "compositeEndMs": 1105.4000000000233
+          },
+          {
+            "seconds": 0.9149000000000233,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-1-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-1-composite.png",
+            "compositeStartMs": 1943.0999999999767,
+            "compositeEndMs": 2014.0999999999767
+          },
+          {
+            "seconds": 2.2021999999999533,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-2-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-2-composite.png",
+            "compositeStartMs": 3230.3000000000466,
+            "compositeEndMs": 3301.5999999999767
+          },
+          {
+            "seconds": 4.015800000000047,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-3-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-3-composite.png",
+            "compositeStartMs": 5044.199999999953,
+            "compositeEndMs": 5094.5
+          },
+          {
+            "seconds": 6.013099999999977,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-4-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-4-composite.png",
+            "compositeStartMs": 7039.400000000023,
+            "compositeEndMs": 7093.300000000047
+          },
+          {
+            "seconds": 8.050800000000047,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-5-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/frame-5-composite.png",
+            "compositeStartMs": 9078.800000000047,
+            "compositeEndMs": 9127.5
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-before.png",
+          "paused": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-immediate.png",
+          "stillPaused": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-after-1s.png",
+          "resumed": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "從第一版、刮刀中段到第二版完成有連貫記錄；切換兩個單版再回雙版可辨識重疊的深紫，重播會回到印前。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "完成的鈷藍與螢橘雙色印件。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-0.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "獨立鈷藍音箱版，負形環與白槽留在紙內。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-1.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "單獨顯示螢橘喇叭口，紙角和版心原位。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-2.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "回到雙版，重疊區呈深紫。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-3.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/control-3-texture.png"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "mobile",
+        "pauseMode": "freeze",
+        "coherence": "PASS",
+        "reason": "手機上刀口寬度、紙角和重疊色仍能辨認，觸控再印從第一版開始，留下完整海報。",
+        "timeBasis": "measured-wall-clock",
+        "frames": [
+          {
+            "seconds": 0,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-0-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-0-composite.png",
+            "compositeStartMs": 1306.1000000000058,
+            "compositeEndMs": 1343.3999999999942
+          },
+          {
+            "seconds": 0.9196000000000059,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-1-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-1-composite.png",
+            "compositeStartMs": 2220.6999999999825,
+            "compositeEndMs": 2278.6999999999825
+          },
+          {
+            "seconds": 2.226,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-2-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-2-composite.png",
+            "compositeStartMs": 3527.100000000006,
+            "compositeEndMs": 3587.7999999999884
+          },
+          {
+            "seconds": 4.0346000000000055,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-3-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-3-composite.png",
+            "compositeStartMs": 5335.1999999999825,
+            "compositeEndMs": 5375.600000000006
+          },
+          {
+            "seconds": 6.036700000000011,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-4-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-4-composite.png",
+            "compositeStartMs": 7339.600000000006,
+            "compositeEndMs": 7380.399999999994
+          },
+          {
+            "seconds": 8.071600000000005,
+            "evidence": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-5-texture.png",
+            "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/frame-5-composite.png",
+            "compositeStartMs": 9374,
+            "compositeEndMs": 9410.799999999988
+          }
+        ],
+        "controlEvidence": [
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-0.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-1.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-2.png",
+          "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-3.png"
+        ],
+        "pauseEvidence": {
+          "before": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-before.png",
+          "paused": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-immediate.png",
+          "stillPaused": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-after-1s.png",
+          "resumed": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/pause-resumed.png"
+        },
+        "motionKind": "evolving",
+        "semanticControls": {
+          "status": "PASS",
+          "reason": "手機上刀口寬度、紙角和重疊色仍能辨認，觸控再印從第一版開始，留下完整海報。",
+          "sequence": [
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "完成的鈷藍與螢橘雙色印件。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-0.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-0-texture.png"
+            },
+            {
+              "state": "1",
+              "verdict": "PASS",
+              "observedShape": "獨立鈷藍音箱版，負形環與白槽留在紙內。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-1.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-1-texture.png"
+            },
+            {
+              "state": "2",
+              "verdict": "PASS",
+              "observedShape": "單獨顯示螢橘喇叭口，紙角和版心原位。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-2.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-2-texture.png"
+            },
+            {
+              "state": "0",
+              "verdict": "PASS",
+              "observedShape": "回到雙版，重疊區呈深紫。",
+              "composite": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-3.png",
+              "texture": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-mobile/control-3-texture.png"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

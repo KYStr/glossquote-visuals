@@ -1,0 +1,6769 @@
+{
+  "work": "V008",
+  "lang": "zh-Hant",
+  "viewport": "mobile",
+  "commit": "7808367afddc046ef6eb037c510a47158431e8c2",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "craft-storyboard": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "hero-interaction": {
+      "status": "PASS"
+    },
+    "craft-interaction-film": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "zh-Hant",
+        "observations": [
+          {
+            "name": "empty",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "已選 0／6 杯，還可選 6 杯。"
+          },
+          {
+            "name": "empty removal blocked",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "已選 0／6 杯，還可選 6 杯。"
+          },
+          {
+            "name": "five",
+            "cups": [
+              2,
+              2,
+              1
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "已選 5／6 杯，還可選 1 杯。"
+          },
+          {
+            "name": "full",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "已選 6／6 杯，可以下載禮盒配方。"
+          },
+          {
+            "name": "seventh rejected",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "已選 6／6 杯，可以下載禮盒配方。"
+          },
+          {
+            "name": "reopened",
+            "cups": [
+              2,
+              1,
+              2
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "已選 5／6 杯，還可選 1 杯。"
+          },
+          {
+            "name": "remixed",
+            "cups": [
+              3,
+              1,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "已選 6／6 杯，可以下載禮盒配方。"
+          }
+        ],
+        "download": {
+          "filename": "jelly-hour-recipe-zh-Hant.txt",
+          "bytes": 710,
+          "text": "果時 JELLY HOUR｜果凍禮盒配方\n\n蜜柑果凍：3 杯 × 100 毫升\n覆盆莓果凍：1 杯 × 100 毫升\n白芭樂果凍：2 杯 × 100 毫升\n合計：6 杯 × 100 毫升 = 600 毫升\n\n成分\n蜜柑果凍 — 蜜柑汁、水、蔗糖、柑橘果膠、檸檬汁。\n覆盆莓果凍 — 過篩覆盆莓汁、水、蔗糖、柑橘果膠、檸檬汁。\n白芭樂果凍 — 白芭樂汁、水、蔗糖、柑橘果膠、萊姆汁。\n\n過敏原\n示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。\n\n保存方式\n冷藏保存，依實際商品標示上的期限享用。\n\n季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "zh-Hant",
+        "observations": [
+          {
+            "name": "empty",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "已選 0／6 杯，還可選 6 杯。"
+          },
+          {
+            "name": "empty removal blocked",
+            "cups": [
+              0,
+              0,
+              0
+            ],
+            "total": 0,
+            "downloadEnabled": false,
+            "text": "已選 0／6 杯，還可選 6 杯。"
+          },
+          {
+            "name": "five",
+            "cups": [
+              2,
+              2,
+              1
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "已選 5／6 杯，還可選 1 杯。"
+          },
+          {
+            "name": "full",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "已選 6／6 杯，可以下載禮盒配方。"
+          },
+          {
+            "name": "seventh rejected",
+            "cups": [
+              2,
+              2,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "已選 6／6 杯，可以下載禮盒配方。"
+          },
+          {
+            "name": "reopened",
+            "cups": [
+              2,
+              1,
+              2
+            ],
+            "total": 5,
+            "downloadEnabled": false,
+            "text": "已選 5／6 杯，還可選 1 杯。"
+          },
+          {
+            "name": "remixed",
+            "cups": [
+              3,
+              1,
+              2
+            ],
+            "total": 6,
+            "downloadEnabled": true,
+            "text": "已選 6／6 杯，可以下載禮盒配方。"
+          }
+        ],
+        "download": {
+          "filename": "jelly-hour-recipe-zh-Hant.txt",
+          "bytes": 710,
+          "text": "果時 JELLY HOUR｜果凍禮盒配方\n\n蜜柑果凍：3 杯 × 100 毫升\n覆盆莓果凍：1 杯 × 100 毫升\n白芭樂果凍：2 杯 × 100 毫升\n合計：6 杯 × 100 毫升 = 600 毫升\n\n成分\n蜜柑果凍 — 蜜柑汁、水、蔗糖、柑橘果膠、檸檬汁。\n覆盆莓果凍 — 過篩覆盆莓汁、水、蔗糖、柑橘果膠、檸檬汁。\n白芭樂果凍 — 白芭樂汁、水、蔗糖、柑橘果膠、萊姆汁。\n\n過敏原\n示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。\n\n保存方式\n冷藏保存，依實際商品標示上的期限享用。\n\n季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795320012397.7,
+      "anchorMs": 3536.399999999994,
+      "view": {
+        "at": 119.80000000001746,
+        "stage": {
+          "x": 19.5,
+          "y": 369.84375,
+          "right": 370.5,
+          "bottom": 603.84375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstRunningObservedMs": 480.8999999999942,
+      "firstContentfulPaint": 188,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "zh-Hant",
+        "title": "果時 JELLY HOUR｜季節果凍禮盒",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [
+          {
+            "family": "Studio TC Text",
+            "status": "loaded",
+            "weight": "100 900",
+            "style": "normal"
+          }
+        ],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/text-tc.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-BQ-hy3Xm.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 0.8999999999941792,
+          "requestStart": 2.3999999999941792,
+          "responseStart": 14,
+          "responseEnd": 14.60000000000582,
+          "duration": 96.60000000000582,
+          "domInteractive": 42.80000000001746,
+          "domContentLoadedEventStart": 95.20000000001164,
+          "domContentLoadedEventEnd": 95.39999999999418,
+          "domComplete": 96.60000000000582,
+          "loadEventStart": 96.60000000000582,
+          "loadEventEnd": 96.60000000000582,
+          "transferSize": 12959,
+          "encodedBodySize": 12659,
+          "decodedBodySize": 12659
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 188
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 188
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/text-tc.woff2",
+            "initiator": "link",
+            "startTime": 24.60000000000582,
+            "fetchStart": 24.60000000000582,
+            "requestStart": 26.10000000000582,
+            "responseStart": 31,
+            "responseEnd": 31.60000000000582,
+            "duration": 7,
+            "transferSize": 96968,
+            "encodedBodySize": 96668,
+            "decodedBodySize": 96668
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/text-tc.css",
+            "initiator": "link",
+            "startTime": 25,
+            "fetchStart": 25,
+            "requestStart": 31.39999999999418,
+            "responseStart": 32.39999999999418,
+            "responseEnd": 32.60000000000582,
+            "duration": 7.600000000005821,
+            "transferSize": 862,
+            "encodedBodySize": 562,
+            "decodedBodySize": 562
+          },
+          {
+            "path": "/glossquote-visuals/fonts/studio-tc-first-layout.js",
+            "initiator": "script",
+            "startTime": 25.10000000000582,
+            "fetchStart": 25.10000000000582,
+            "requestStart": 31.5,
+            "responseStart": 32.89999999999418,
+            "responseEnd": 33.10000000000582,
+            "duration": 8,
+            "transferSize": 1152,
+            "encodedBodySize": 852,
+            "decodedBodySize": 852
+          },
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 41.30000000001746,
+            "fetchStart": 41.30000000001746,
+            "requestStart": 43.10000000000582,
+            "responseStart": 50.39999999999418,
+            "responseEnd": 50.60000000000582,
+            "duration": 9.299999999988358,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-BMZ5eBt8.js",
+            "initiator": "script",
+            "startTime": 41.30000000001746,
+            "fetchStart": 41.30000000001746,
+            "requestStart": 45,
+            "responseStart": 52.20000000001164,
+            "responseEnd": 52.39999999999418,
+            "duration": 11.099999999976717,
+            "transferSize": 8329,
+            "encodedBodySize": 8029,
+            "decodedBodySize": 8029
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-BQ-hy3Xm.css",
+            "initiator": "link",
+            "startTime": 41.39999999999418,
+            "fetchStart": 41.39999999999418,
+            "requestStart": 44.80000000001746,
+            "responseStart": 50.70000000001164,
+            "responseEnd": 51,
+            "duration": 9.60000000000582,
+            "transferSize": 8842,
+            "encodedBodySize": 8542,
+            "decodedBodySize": 8542
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 41.70000000001164,
+            "fetchStart": 41.70000000001164,
+            "requestStart": 45.89999999999418,
+            "responseStart": 55.60000000000582,
+            "responseEnd": 56,
+            "duration": 14.299999999988358,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "initiator": "img",
+            "startTime": 42.5,
+            "fetchStart": 42.5,
+            "requestStart": 46.80000000001746,
+            "responseStart": 56.89999999999418,
+            "responseEnd": 57.30000000001746,
+            "duration": 14.800000000017462,
+            "transferSize": 22722,
+            "encodedBodySize": 22422,
+            "decodedBodySize": 22422
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/berry.webp",
+            "initiator": "img",
+            "startTime": 92.30000000001746,
+            "fetchStart": 92.30000000001746,
+            "requestStart": 93.80000000001746,
+            "responseStart": 96.20000000001164,
+            "responseEnd": 96.80000000001746,
+            "duration": 4.5,
+            "transferSize": 22848,
+            "encodedBodySize": 22548,
+            "decodedBodySize": 22548
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/guava.webp",
+            "initiator": "img",
+            "startTime": 92.39999999999418,
+            "fetchStart": 92.39999999999418,
+            "requestStart": 94.10000000000582,
+            "responseStart": 97.10000000000582,
+            "responseEnd": 97.30000000001746,
+            "duration": 4.900000000023283,
+            "transferSize": 21246,
+            "encodedBodySize": 20946,
+            "decodedBodySize": 20946
+          },
+          {
+            "path": "/glossquote-visuals/assets/shader-B9ACFw8K.js",
+            "initiator": "script",
+            "startTime": 120.60000000000582,
+            "fetchStart": 120.60000000000582,
+            "requestStart": 121,
+            "responseStart": 121.80000000001746,
+            "responseEnd": 122,
+            "duration": 1.3999999999941792,
+            "transferSize": 27230,
+            "encodedBodySize": 26930,
+            "decodedBodySize": 26930
+          },
+          {
+            "path": "/glossquote-visuals/assets/standalone-ZQeXyw3T.js",
+            "initiator": "script",
+            "startTime": 258.80000000001746,
+            "fetchStart": 258.80000000001746,
+            "requestStart": 259.3999999999942,
+            "responseStart": 262.1000000000058,
+            "responseEnd": 281.6000000000058,
+            "duration": 22.79999999998836,
+            "transferSize": 2577991,
+            "encodedBodySize": 2577691,
+            "decodedBodySize": 2577691
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/mark.svg",
+            "initiator": "other",
+            "startTime": 259.8999999999942,
+            "fetchStart": 259.8999999999942,
+            "requestStart": 260.3999999999942,
+            "responseStart": 261,
+            "responseEnd": 261.30000000001746,
+            "duration": 1.400000000023283,
+            "transferSize": 699,
+            "encodedBodySize": 399,
+            "decodedBodySize": 399
+          },
+          {
+            "path": "/glossquote-visuals/media/sorbet-hour/cover-center.webp",
+            "initiator": "img",
+            "startTime": 481.6000000000058,
+            "fetchStart": 481.6000000000058,
+            "requestStart": 482.30000000001746,
+            "responseStart": 486.3999999999942,
+            "responseEnd": 486.80000000001746,
+            "duration": 5.2000000000116415,
+            "transferSize": 23010,
+            "encodedBodySize": 22710,
+            "decodedBodySize": 22710
+          }
+        ],
+        "longTasks": []
+      },
+      "fromCommitReturnToTimingReadMs": 3518.032,
+      "navigationStartMetricMs": 170931.866,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "一勺果凍， 一口盛夏。",
+          "cssFamily": "\"Studio TC Text\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-Black",
+              "isCustomFont": true,
+              "glyphCount": 10
+            }
+          ]
+        },
+        {
+          "selector": "body > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+          "text": "看口味",
+          "cssFamily": "\"Studio TC Text\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-Bold",
+              "isCustomFont": true,
+              "glyphCount": 3
+            }
+          ]
+        },
+        {
+          "selector": "body > main:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "季節果凍禮盒 · 銀匙試吃",
+          "cssFamily": "\"Studio TC Text\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-ExtraBold",
+              "isCustomFont": true,
+              "glyphCount": 13
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 170951.91,
+          "ms": 20.043999999994412
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 171027.323,
+          "ms": 95.45699999999488
+        },
+        {
+          "name": "load",
+          "traceMs": 171028.48599999998,
+          "ms": 96.61999999996624
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 171118.517,
+          "ms": 186.65099999998347
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 171118.517,
+          "ms": 186.65099999998347
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 171118.517,
+          "ms": 186.65099999998347
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 171118.517,
+          "ms": 186.65099999998347
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 171028.263,
+          "ms": 96.3969999999972
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 171118.517,
+          "ms": 186.65099999998347
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 171419.16900000002,
+          "ms": 487.30300000001444
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3516.3559999999998,
+      "navigationStartTraceMs": 170931.866,
+      "navigationStartEventUs": 170931866,
+      "anchorTraceUs": 174468226,
+      "fcpTraceClockUs": 171119866,
+      "screenshotEvents": 134,
+      "traceImageTimesMs": [
+        7.315000000002328,
+        257.9749999999767,
+        269.8429999999935,
+        270.5809999999765,
+        646.9459999999963,
+        649.55799999999,
+        654.8509999999951,
+        674.6119999999937,
+        700.1659999999974,
+        719.9139999999898,
+        744.0089999999909,
+        771.5139999999956,
+        796.1589999999851,
+        821.5149999999849,
+        846.2859999999928,
+        871.2629999999772,
+        896.573000000004,
+        925.6889999999839,
+        949.9949999999953,
+        973.7639999999956,
+        997.8029999999853,
+        1020.2289999999921,
+        1047.3249999999825,
+        1071.3009999999776,
+        1095.3949999999895,
+        1119.5019999999786,
+        1143.853999999992,
+        1169.3739999999816,
+        1193.7209999999905,
+        1218.1900000000023,
+        1243.136999999988,
+        1268.7249999999767,
+        1293.5659999999916,
+        1319.7049999999872,
+        1342.7930000000051,
+        1371.2509999999893,
+        1396.3649999999907,
+        1419.8649999999907,
+        1445.8969999999972,
+        1473.508999999991,
+        1499.9959999999846,
+        1528.7789999999804,
+        1552.2669999999925,
+        1579.7059999999765,
+        1605.0069999999832,
+        1633.4339999999793,
+        1659.951000000001,
+        1686.8349999999919,
+        1713.9429999999993,
+        1736.2759999999835,
+        1767.566999999981,
+        1797.4639999999781,
+        1834.4719999999797,
+        1864.8059999999823,
+        1893.1729999999807,
+        1926.2019999999902,
+        1957.6809999999823,
+        1987.7759999999835,
+        2018.2539999999863,
+        2048.764999999985,
+        2075.410999999993,
+        2109.112999999983,
+        2111.3940000000002,
+        2142.573000000004,
+        2165.4159999999974,
+        2202.508999999991,
+        2225.978999999992,
+        2256.285999999993,
+        2287.972999999998,
+        2317.657999999996,
+        2351.8150000000023,
+        2375.5169999999925,
+        2408.908999999985,
+        2440.32699999999,
+        2468.7789999999804,
+        2481.043000000005,
+        2501.0659999999916,
+        2533.9919999999984,
+        2536.4249999999884,
+        2567.2609999999986,
+        2568.45199999999,
+        2582.4489999999932,
+        2608.630999999994,
+        2633.63499999998,
+        2664.4159999999974,
+        2666.2459999999846,
+        2680.1900000000023,
+        2683.027999999991,
+        2705.935999999987,
+        2722.9009999999835,
+        2729.6790000000037,
+        2744.0509999999776,
+        2754.5439999999944,
+        2782.1939999999886,
+        2795.8919999999925,
+        2823.046000000002,
+        2840.2059999999765,
+        2856.274999999994,
+        2871.5989999999874,
+        2882.853999999992,
+        2904.255999999994,
+        2909.524000000005,
+        2939.36599999998,
+        2953.5739999999932,
+        2974.051999999996,
+        2975.2360000000044,
+        3006.576000000001,
+        3017.2059999999765,
+        3031.7759999999835,
+        3051.243999999977,
+        3063.8769999999786,
+        3087.6140000000014,
+        3099.853999999992,
+        3120.1419999999925,
+        3133.7999999999884,
+        3164.6569999999774,
+        3166.8679999999877,
+        3184.5139999999956,
+        3228.957999999984,
+        3261.603999999992,
+        3262.8340000000026,
+        3264.9719999999797,
+        3291.875,
+        3294.36599999998,
+        3296.9429999999993,
+        3297.9279999999853,
+        3326.831999999995,
+        3356.3579999999783,
+        3385.7339999999967,
+        3414.9069999999774,
+        3444.5599999999977,
+        3490.069999999978,
+        3504.527999999991,
+        3534.2880000000005
+      ],
+      "filmstripFramesInWindow": 105,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 257.9749999999767,
+          "traceUs": 171189841,
+          "file": "opening-0.png",
+          "sha256": "8429aba62bc570a8a4dcd9ea39dae5edea93057d5485f3402185f4fa5cd41d66",
+          "source": "opening-0.jpg",
+          "originalSha256": "dd5a30349b654a27595c13e60bdb90e6098fe9684c73cf99149db2ced3d0654c",
+          "stageHash": "4349d488afd9fe316af7fd0f04e81305146eed010b38c0d68303a9683922d947",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 744.0089999999909,
+          "traceUs": 171675875,
+          "file": "opening-1.png",
+          "sha256": "bb80159084eabf5bef1ceef1917bb41835ec8df32374ad5ad0043c3652c33998",
+          "source": "opening-1.jpg",
+          "originalSha256": "02056c4cde62763e83a8e41867ac966ca09ba35c148be19cccecd37bb814ec42",
+          "stageHash": "84c0d20bbe0e722a46221d94f829a009e7c5f6eeb5087184c41fbd36f9744fc8",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 997.8029999999853,
+          "traceUs": 171929669,
+          "file": "opening-2.png",
+          "sha256": "48667ac8fd1de6af054720232d857fdf9ad6fa1b5be574cf9f139268538d0dee",
+          "source": "opening-2.jpg",
+          "originalSha256": "f1f090c71b33bb26bcda1d275584d749575f87a156528a3058be7e32bae78a90",
+          "stageHash": "80429fb9d04f79fda60bde60ca9437f4a35abf605a1a39165c66a9ab536e9940",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1218.1900000000023,
+          "traceUs": 172150056,
+          "file": "opening-3.png",
+          "sha256": "362fd0933cfe0e1e1daa78d73eabc6bcb4805d059513e114c0183f6059b5df4b",
+          "source": "opening-3.jpg",
+          "originalSha256": "f8da140bad0a7366e258229d25237104d7a9b9a6906bea74568e6ab82d388193",
+          "stageHash": "fe66f1e7e71a6937516f7befcd1d5c020ea43ee0bfd9e7b059dc882ae5ac2c46",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1473.508999999991,
+          "traceUs": 172405375,
+          "file": "opening-4.png",
+          "sha256": "6d7463970b87f0c385dc85f740261ea4fe491260f201483c3524377acaa59a00",
+          "source": "opening-4.jpg",
+          "originalSha256": "4f08d6922ff93a8b6f5270e3c9d01379bc21a1a4c3330e57706551e663d5c563",
+          "stageHash": "c253e7cc09f9e5767ed58fa2cbb0af435c7ce34f730308257d283fbcc13332d3",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 1713.9429999999993,
+          "traceUs": 172645809,
+          "file": "opening-5.png",
+          "sha256": "7850cf090cf64e6cdddd752acd082989052b85e15f6993dd4ad97124c08a909d",
+          "source": "opening-5.jpg",
+          "originalSha256": "f147750556b0fb6f0311eed552f32bbedd49d6841b34105f5cb0d1b4ebe19eca",
+          "stageHash": "60d866b0e32f49a4ea165d77899a23c5911d972d34bda97694d989da6929a9a9",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2018.2539999999863,
+          "traceUs": 172950120,
+          "file": "opening-6.png",
+          "sha256": "5bd7a6fb7f05aa6b235e1f777b7676b7fc15b24e41ed9521a058317df622745b",
+          "source": "opening-6.jpg",
+          "originalSha256": "3d2f478af0e6efaf33b4abd896c116edbc75a9e1aa834b08e902748bb0771c3d",
+          "stageHash": "b0921b81d082ef39902f937a13d63e3912900c16bed2172c3df9350c8b19264e",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2256.285999999993,
+          "traceUs": 173188152,
+          "file": "opening-7.png",
+          "sha256": "34ec81e2473454f0ebfcc3f6db6d3c71f664cf481e4ff523803e267d4b6b240f",
+          "source": "opening-7.jpg",
+          "originalSha256": "601a5f73446059a9d456b046d2d07b7e1854a77c797aee0c77df56847d29e28b",
+          "stageHash": "17626c5456ae4573360c91c97566cabef3adb03df8f3cf5b07a63f9220777471",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2533.9919999999984,
+          "traceUs": 173465858,
+          "file": "opening-8.png",
+          "sha256": "18090d1efd1da82dc6f86a9f040b9572231d99b484b70b45698fc253a588f9c9",
+          "source": "opening-8.jpg",
+          "originalSha256": "d1c3ae4b3b592e62cbef5104c457991af9bebe0e4c6b4815959867ff7a34ae76",
+          "stageHash": "a6fe1410ef4fe4a0cb1281b76938c2e0c79944e6d813ab463a90730fcb063b72",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2680.1900000000023,
+          "traceUs": 173612056,
+          "file": "opening-9.png",
+          "sha256": "e924ce51a3e2481787863be609ade42002c764a22e49d119f956d7bbc19e9893",
+          "source": "opening-9.jpg",
+          "originalSha256": "ff2c763e0b7b36773da9a0e8a89ef470fd42753a7b560f28d8f68511c4292e15",
+          "stageHash": "b009410ec2dcc59a3a2a950901ab93ea9b6fa5a1e0e7612f20626929ec58fc70",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2840.2059999999765,
+          "traceUs": 173772072,
+          "file": "opening-10.png",
+          "sha256": "bde2fcdd1bf83cc5c7fddcd415781b656313334884bc25cf468e3c27de702ad7",
+          "source": "opening-10.jpg",
+          "originalSha256": "193e230e3dddc69b98ea3872be03955cbeb0811d7c07ee0b0a6e6ddf7f15e491",
+          "stageHash": "f31108397f173df64e51fd1b8d0f31c3b06d0f29527883edb8d42dba3afb92db",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2975.2360000000044,
+          "traceUs": 173907102,
+          "file": "opening-11.png",
+          "sha256": "87d9100977abfe8c83af237464c5c87208cf904bafb3ddd8b7711425a19d00a5",
+          "source": "opening-11.jpg",
+          "originalSha256": "7552e5f9c9f4b57ffb15462a2a7450064e4183336475eb77c90d486b20eb6dc0",
+          "stageHash": "e9765c46a96d1128a18b877657afb90e74420d05aaec3ae97c51546605a67791",
+          "crop": [
+            11,
+            218,
+            208,
+            139
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input",
+      "runningMotion": {
+        "sampledStageFrames": 11,
+        "thumbnailSize": [
+          64,
+          48
+        ],
+        "strongest": {
+          "before": "opening-6.jpg",
+          "beforeMs": 2018.2539999999863,
+          "after": "opening-11.jpg",
+          "afterMs": 2975.2360000000044,
+          "meanAbsoluteRgb": 4.472005208333333,
+          "fractionWithMeanRgbDeltaAtLeast16": 0.06966145833333333
+        },
+        "basis": "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material."
+      }
+    },
+    "craft": {
+      "version": "hero-craft-v1",
+      "video": "craft-opening.webm",
+      "frames": [
+        {
+          "targetMs": null,
+          "native": {
+            "file": "craft-00-native.png",
+            "sha256": "46a0058f14db3841d9a4fe36ea095bde152fa5dce390ab9cdb72fa9c88212568",
+            "start": 139.30000000001746,
+            "end": 189.10000000000582,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-00-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "f9c4002ed62eb101a1515caf63278fea3fa12f2da6d1d8c3237655500bd4c0de"
+          }
+        },
+        {
+          "targetMs": 500,
+          "native": {
+            "file": "craft-01-native.png",
+            "sha256": "437b93283f43856e0c57ecbd8dfe4e38cd1286c879f3cea9d6a5ff5bfbbe010e",
+            "start": 835,
+            "end": 940.1000000000058,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-01-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "7ee71cb7245e12f15c1f1a4c5e5e9c93d1f665c714230c2eb98eda1eb1b99a5a"
+          }
+        },
+        {
+          "targetMs": 1000,
+          "native": {
+            "file": "craft-02-native.png",
+            "sha256": "ba434fd8be9bf663183e36496a21062a87cb11bc4ab9d489bd93762a9a75b681",
+            "start": 1342.8000000000175,
+            "end": 1418,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-02-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "236f5dec89ec2b04c9cff86c4829fdd1ca87e258e33943464db3b2d6e17545d5"
+          }
+        },
+        {
+          "targetMs": 1600,
+          "native": {
+            "file": "craft-03-native.png",
+            "sha256": "4083918ebc51cb7b7f9761325b26dc02bc03e242106906a8cb68151bae7ac56b",
+            "start": 1933.8999999999942,
+            "end": 2016.6000000000058,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-03-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "3863f5e9f4282974136bbfb12cd1732047a18e8b26e6e24b9674e94264f967c9"
+          }
+        },
+        {
+          "targetMs": 2200,
+          "native": {
+            "file": "craft-04-native.png",
+            "sha256": "e500be7d161620275e42db6bb145a45e5280468d5d0fc9f7e98662a1dc5ad145",
+            "start": 2557.100000000006,
+            "end": 2674.5,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-04-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "107116e4d4408f7e99ee34a06bb79fac8e3166debfce388d9c4d89f223340db1"
+          }
+        },
+        {
+          "targetMs": 3000,
+          "native": {
+            "file": "craft-05-native.png",
+            "sha256": "7e37961fd71fe09d7b83b780cabe736f6f2c8b7253b79b7da1cfee6278ec0047",
+            "start": 3336.600000000006,
+            "end": 3417.899999999994,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-05-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "36e863fb19ba574833b40ee157c04e98173779b6455b49f305f619c122a99b58"
+          }
+        },
+        {
+          "targetMs": 4000,
+          "native": {
+            "file": "craft-06-native.png",
+            "sha256": "06469c8c880bb7bd42322b5db7b32e55c56d2298c4bb386221f79865bb0044c3",
+            "start": 4345.5,
+            "end": 4410.200000000012,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-06-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "1899f650dc0eb462440df70688c208e2cbf1a98d42fbfde8fd6214bd87c34cc8"
+          }
+        },
+        {
+          "targetMs": 5000,
+          "native": {
+            "file": "craft-07-native.png",
+            "sha256": "ffc47d93b6ac6a9d1ec243040500a56fb0dd24c81a29c6aed373cad97de338e4",
+            "start": 5336.600000000006,
+            "end": 5405,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-07-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "21c6cde046583b83298118efda0075cb971604c1cd04191248d967ae161a5e6e"
+          }
+        },
+        {
+          "targetMs": 6500,
+          "native": {
+            "file": "craft-08-native.png",
+            "sha256": "9035d23d7cf9befa411aab384f36c2dd1a4e1fdecfaff8c22f400bfff49a36dd",
+            "start": 6830.600000000006,
+            "end": 6880.700000000012,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-08-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "56ccc151ebbfdd377d84efd02b3713ee195796096a63e11ff1da2172a179c54e"
+          }
+        },
+        {
+          "targetMs": 8500,
+          "native": {
+            "file": "craft-09-native.png",
+            "sha256": "0e16b20880734b61441ed65e7ee8c73c04fceb7cc7ef9396b61e80f8ab874f0a",
+            "start": 8835.899999999994,
+            "end": 8883.899999999994,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "thumb": {
+            "file": "craft-09-160.png",
+            "width": 160,
+            "height": 107,
+            "sha256": "b84b7d00cc1c9a931685257482f393d3f5ae8da5b063ef926184ff7cf34e377e"
+          }
+        }
+      ],
+      "runningAt": 322.1000000000058,
+      "videoSha256": "c1ae6b83c8bda49f79c32598043526fa6d8a4c928cd2c0e00e104d2f33167d7c"
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 161.29999999998836,
+    "firstFoldEnd": 211.09999999997672,
+    "cycle": "evolving",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "9874d02c995c8f0265caeff6a11518998aecab892c646c96970b56ddf14ba03b",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 365,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 358,
+          "average": [
+            244,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "96c68dfc00f72b3114a234965ac291848ef06623820086da9935077fd90822d4",
+          "start": 552.3999999999942,
+          "end": 594.7999999999884,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "150ae87b70257c075582727b6083563c2ff7bd0240c04465e9c3d8227eacf93e",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 1293.5,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 373,
+          "average": [
+            241,
+            207,
+            163,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "7d66ddbe32b5768a26196ca5679668e1883c4d84142c22c1a2ed312fe567a91c",
+          "start": 1329.7999999999884,
+          "end": 1400.7999999999884,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 0.9285
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "f1bab42f616746fa81a6bc63e747a04d3fe6d71b681fd086275c1e49bdbc281e",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 2578.5999999999767,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 358,
+          "average": [
+            243,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "ab58feb44a42fba45b5ad83a683b1f88f2278d421c146059d230182ee9bf0a4b",
+          "start": 2645.899999999994,
+          "end": 2790.5,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 2.213599999999977
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "2295b2bdbb01c7068ff3a00a62c28497a66d28178ae00393312d7e53e44aa4b2",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 4395.1999999999825,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 374,
+          "average": [
+            242,
+            207,
+            162,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "ab090ed71f65d2272124cc463b10642a27d9215cc0f5bcea3f7938243f4ca9da",
+          "start": 4428.5,
+          "end": 4471.799999999988,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 4.030199999999983
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "d8b51732130a59f105c4b5a39d42802323b848162745dd78a6dc0c78c79f2325",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 6389,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 374,
+          "average": [
+            242,
+            207,
+            162,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "c6675c34f5072bc5f15879fad01e767dba01e3968fd3be6eb4b0a458ea500fd1",
+          "start": 6421.899999999994,
+          "end": 6477.899999999994,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 6.024
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "24ff82818472f20107cf2085c1f8fd8db4abe40b1a61f8585cb7493544a79295",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 8425.699999999983,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 374,
+          "average": [
+            242,
+            207,
+            162,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "243407dd61ee99f559f7fec7a4674abd780e5b52705d58068afc0253b17943ae",
+          "start": 8460.699999999983,
+          "end": 8511.299999999988,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "seconds": 8.060699999999983
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "ddba2504409c79bcb15da3a131bbbfc22c363d0a134a26ef32e805028a37077c",
+          "start": 590.7000000000116,
+          "end": 635.5,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "80c1afc34d499dd916f6ddbd3d7229849912a328974fa695e0b64ec7201b5f0d",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 639.1000000000058,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 363,
+          "average": [
+            243,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "6057e2f3e089d476bc71ee05fe7c7dbc45277ec0b4f070e988dbcdf35f768daa",
+          "start": 807,
+          "end": 849.2000000000116,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "a9277bd68d7902533cec5472b3ab265c61d63c5db8055d54848540e931d418b2",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 850.7000000000116,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 354,
+          "average": [
+            241,
+            188,
+            174,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "5aad1f3744ef281f5412d08294a3c4c1c38c7d7d128ed2daa635f9ab02a64f43",
+          "start": 983.5,
+          "end": 1037.8999999999942,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "83c06cde92db6a081fd038bdce408c6bd0791298574619b258822f729d503592",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 1044.1000000000058,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 351,
+          "average": [
+            219,
+            225,
+            174,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "c2149ac12f2ffae563303c9b53f183fe487dcede09c62ae2171ec405d7c97d4f",
+          "start": 1180.8999999999942,
+          "end": 1223.8999999999942,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "41fb0c824e3ce464896a0eee2dff51219c47c4e4d4d0b97dbf519c2a2d055c79",
+          "width": 390,
+          "height": 260,
+          "format": "bgra8unorm",
+          "submittedAt": 1226.2000000000116,
+          "alphaMode": "premultiplied",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 358,
+          "average": [
+            244,
+            209,
+            164,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "f4a9a9fab37094bbe986dd5e5a98b2bd5b03c7d3f0a4a5ca0979cf5fcbb08379",
+        "start": 1292.2000000000116,
+        "end": 1340.1000000000058,
+        "clip": {
+          "x": 19,
+          "y": 369,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "68ba617354b7e36c2ecf857230b68e4ca20e63d565940a68404b04e7e1ec3d60",
+        "start": 1410.8999999999942,
+        "end": 1454.1000000000058,
+        "clip": {
+          "x": 19,
+          "y": 369,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "68ba617354b7e36c2ecf857230b68e4ca20e63d565940a68404b04e7e1ec3d60",
+        "start": 2830.600000000006,
+        "end": 2885.2000000000116,
+        "clip": {
+          "x": 19,
+          "y": 369,
+          "width": 352,
+          "height": 235
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "c1b9e0c46110aac8f6f17bd9a793f75bdbcc4eddc48d3a6bcf81613b99be94b7",
+        "start": 2981.8000000000175,
+        "end": 3030.3000000000175,
+        "clip": {
+          "x": 19,
+          "y": 369,
+          "width": 352,
+          "height": 235
+        }
+      }
+    },
+    "heroInteraction": {
+      "input": "touch",
+      "samples": [
+        {
+          "state": "before",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-scoop-reset",
+              "x": 344.1000061035156,
+              "y": 685.8200073242188,
+              "at": 541.2999999999884
+            }
+          ],
+          "composite": {
+            "file": "interaction-before.png",
+            "sha256": "e976f87dfe83e50509307066847f76f6a7689fb995436dda7c3c51e8784586a2",
+            "start": 633.2999999999884,
+            "end": 692.3999999999942,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "texture": {
+            "file": "interaction-before-texture.png",
+            "sha256": "746397cf2fdd816f9229e3d3aa468132fac3e9a724e1a60841edc2210433592c",
+            "width": 390,
+            "height": 260,
+            "format": "bgra8unorm",
+            "submittedAt": 695.7000000000116,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 358,
+            "average": [
+              244,
+              209,
+              164,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          }
+        },
+        {
+          "state": "after",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-scoop-hit",
+              "x": 221.14999389648438,
+              "y": 437.2200012207031,
+              "at": 910.5
+            },
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-pause",
+              "x": 330.1000061035156,
+              "y": 635.4299926757812,
+              "at": 2888
+            }
+          ],
+          "composite": {
+            "file": "interaction-after.png",
+            "sha256": "1c8ee719b6438f08eb9302677a586607d40402ed415354b0e629543490cb1343",
+            "start": 5273.600000000006,
+            "end": 5319.899999999994,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "texture": {
+            "file": "interaction-after-texture.png",
+            "sha256": "f4d6ed36b0b4f3584b32e29eb93204434d1a75647ecc2102c07a031a2fa7baa9",
+            "width": 390,
+            "height": 260,
+            "format": "bgra8unorm",
+            "submittedAt": 5321.5,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 381,
+            "average": [
+              240,
+              206,
+              161,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          }
+        },
+        {
+          "state": "reset",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-scoop-reset",
+              "x": 344.1000061035156,
+              "y": 685.8200073242188,
+              "at": 5516.600000000006
+            },
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-scoop-hit",
+              "x": 111.0999984741211,
+              "y": 437.2200012207031,
+              "at": 5619.5
+            },
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-scoop-reset",
+              "x": 344.1000061035156,
+              "y": 685.8200073242188,
+              "at": 9599.700000000012
+            }
+          ],
+          "composite": {
+            "file": "interaction-reset.png",
+            "sha256": "a5a38fd0b1fd945b5c2745b3e47cde7552ae4ec05720fddea2e71bcaed562a18",
+            "start": 9688,
+            "end": 9753.899999999994,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          },
+          "texture": {
+            "file": "interaction-reset-texture.png",
+            "sha256": "75a53d61d6317bb480562e248d23b034eaeac6bad42647ee2c012fe8158671de",
+            "width": 390,
+            "height": 260,
+            "format": "bgra8unorm",
+            "submittedAt": 9758.399999999994,
+            "alphaMode": "premultiplied",
+            "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+            "colors": 358,
+            "average": [
+              244,
+              209,
+              164,
+              255
+            ],
+            "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+          }
+        }
+      ],
+      "video": "craft-interaction.webm",
+      "cut": {
+        "observed": {
+          "shape": "tasting",
+          "position": "right",
+          "aim": "right",
+          "material": "0",
+          "motion": "paused",
+          "phase": "cut",
+          "run": 3,
+          "elapsed": 1724,
+          "description": "蜜柑果凍留著一處凹面，銀匙托著對應的一口果凍"
+        },
+        "composite": {
+          "file": "interaction-cut.png",
+          "sha256": "3dada1382f3e8ff786eef8ae03b708d19e632b1ccaea1de11668b9df1e8af807",
+          "start": 2736,
+          "end": 2777.899999999994,
+          "clip": {
+            "x": 19,
+            "y": 369,
+            "width": 352,
+            "height": 235
+          }
+        }
+      },
+      "observations": {
+        "input": "touch",
+        "before": {
+          "shape": "intact",
+          "position": "none",
+          "aim": "center",
+          "material": "0",
+          "motion": "running",
+          "phase": "idle",
+          "run": 2,
+          "elapsed": 0,
+          "description": "透亮的蜜柑果凍立在瓷盤上，盤沿透過果凍折射。"
+        },
+        "mid": {
+          "shape": "tasting",
+          "position": "right",
+          "aim": "right",
+          "material": "0",
+          "motion": "paused",
+          "phase": "cut",
+          "run": 3,
+          "elapsed": 1724,
+          "description": "蜜柑果凍留著一處凹面，銀匙托著對應的一口果凍",
+          "composite": {
+            "file": "interaction-cut.png",
+            "sha256": "3dada1382f3e8ff786eef8ae03b708d19e632b1ccaea1de11668b9df1e8af807",
+            "start": 2736,
+            "end": 2777.899999999994,
+            "clip": {
+              "x": 19,
+              "y": 369,
+              "width": 352,
+              "height": 235
+            }
+          }
+        },
+        "after": {
+          "shape": "scooped",
+          "position": "right",
+          "aim": "right",
+          "material": "0",
+          "motion": "running",
+          "phase": "held",
+          "run": 3,
+          "elapsed": 3650,
+          "description": "蜜柑果凍留著一處凹面，銀匙托著對應的一口果凍"
+        },
+        "reset": {
+          "shape": "intact",
+          "position": "none",
+          "aim": "center",
+          "material": "0",
+          "motion": "running",
+          "phase": "idle",
+          "run": 6,
+          "elapsed": 0,
+          "description": "透亮的蜜柑果凍立在瓷盤上，盤沿透過果凍折射。"
+        },
+        "alternate": {
+          "shape": "scooped",
+          "position": "left",
+          "aim": "left",
+          "material": "0",
+          "motion": "running",
+          "phase": "held",
+          "run": 5,
+          "elapsed": 3650,
+          "description": "蜜柑果凍留著一處凹面，銀匙托著對應的一口果凍",
+          "composite": {
+            "file": "interaction-alternate.png",
+            "sha256": "6370e2704df38eaca790df40ce34075f19f841b1f8ec5c027d5815c1b736c5f9"
+          }
+        },
+        "pixels": {
+          "changed": 0.612060546875,
+          "alternateChanged": 0.627197265625,
+          "remained": 0
+        }
+      },
+      "videoSha256": "2afce765b4339ac96092062075fe88c72cce90880e9dba322598f4ed68a57aff"
+    },
+    "flow": {
+      "lang": "zh-Hant",
+      "observations": [
+        {
+          "name": "empty",
+          "cups": [
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "downloadEnabled": false,
+          "text": "已選 0／6 杯，還可選 6 杯。"
+        },
+        {
+          "name": "empty removal blocked",
+          "cups": [
+            0,
+            0,
+            0
+          ],
+          "total": 0,
+          "downloadEnabled": false,
+          "text": "已選 0／6 杯，還可選 6 杯。"
+        },
+        {
+          "name": "five",
+          "cups": [
+            2,
+            2,
+            1
+          ],
+          "total": 5,
+          "downloadEnabled": false,
+          "text": "已選 5／6 杯，還可選 1 杯。"
+        },
+        {
+          "name": "full",
+          "cups": [
+            2,
+            2,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "已選 6／6 杯，可以下載禮盒配方。"
+        },
+        {
+          "name": "seventh rejected",
+          "cups": [
+            2,
+            2,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "已選 6／6 杯，可以下載禮盒配方。"
+        },
+        {
+          "name": "reopened",
+          "cups": [
+            2,
+            1,
+            2
+          ],
+          "total": 5,
+          "downloadEnabled": false,
+          "text": "已選 5／6 杯，還可選 1 杯。"
+        },
+        {
+          "name": "remixed",
+          "cups": [
+            3,
+            1,
+            2
+          ],
+          "total": 6,
+          "downloadEnabled": true,
+          "text": "已選 6／6 杯，可以下載禮盒配方。"
+        }
+      ],
+      "download": {
+        "filename": "jelly-hour-recipe-zh-Hant.txt",
+        "bytes": 710,
+        "text": "果時 JELLY HOUR｜果凍禮盒配方\n\n蜜柑果凍：3 杯 × 100 毫升\n覆盆莓果凍：1 杯 × 100 毫升\n白芭樂果凍：2 杯 × 100 毫升\n合計：6 杯 × 100 毫升 = 600 毫升\n\n成分\n蜜柑果凍 — 蜜柑汁、水、蔗糖、柑橘果膠、檸檬汁。\n覆盆莓果凍 — 過篩覆盆莓汁、水、蔗糖、柑橘果膠、檸檬汁。\n白芭樂果凍 — 白芭樂汁、水、蔗糖、柑橘果膠、萊姆汁。\n\n過敏原\n示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。\n\n保存方式\n冷藏保存，依實際商品標示上的期限享用。\n\n季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "搭配六杯\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 281.6875,
+              "width": 133.578125,
+              "height": 49.75
+            },
+            "labels": []
+          },
+          {
+            "label": "用銀匙試吃果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 56.3125,
+              "y": 372.703125,
+              "width": 158.421875,
+              "height": 126.734375
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "暫停動態",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 228.65625,
+              "y": 557.03125,
+              "width": 75.34375,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "重設",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 650.640625,
+              "width": 47.34375,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "再試一口",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 228.65625,
+              "y": 650.640625,
+              "width": 75.34375,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "減少一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2658.0625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "增加一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2658.0625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "減少一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2714.25,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "增加一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2714.25,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "減少一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2770.4375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "增加一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2770.4375,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "下載果凍禮盒配方\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 2836.03125,
+              "width": 197.578125,
+              "height": 49.75
+            },
+            "labels": [],
+            "disabled": true
+          }
+        ],
+        "text": [
+          {
+            "label": "跳到主要內容",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 128,
+              "height": 44.78125
+            },
+            "color": "rgb(255, 249, 236)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(83, 23, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 7.1875,
+              "width": 83.265625,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "21.6px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "看口味",
+            "tag": "A",
+            "rect": {
+              "x": 134.71875,
+              "y": 7.1875,
+              "width": 42,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "搭配六杯",
+            "tag": "A",
+            "rect": {
+              "x": 187.109375,
+              "y": 7.1875,
+              "width": 56,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "English",
+            "tag": "A",
+            "rect": {
+              "x": 253.5,
+              "y": 7.1875,
+              "width": 50.5,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "季節果凍禮盒 · 銀匙試吃",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 79.171875,
+              "width": 288,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "一勺果凍，\n一口盛夏。",
+            "tag": "H1",
+            "rect": {
+              "x": 16,
+              "y": 109.5625,
+              "width": 288,
+              "height": 99.34375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "43.2px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "用銀匙試吃蜜柑、覆盆莓或白芭樂果凍，再配一盒六杯的季節滋味。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 220.09375,
+              "width": 266.390625,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "搭配六杯\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 281.6875,
+              "width": 133.578125,
+              "height": 49.75
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(148, 22, 56)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "用銀匙試吃果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 56.3125,
+              "y": 372.703125,
+              "width": 158.421875,
+              "height": 126.734375
+            },
+            "color": "rgb(0, 0, 0)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 211, 142)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "蜜柑",
+            "tag": "LABEL",
+            "rect": {
+              "x": 16,
+              "y": 557.03125,
+              "width": 47.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "覆盆莓",
+            "tag": "LABEL",
+            "rect": {
+              "x": 68.140625,
+              "y": 557.03125,
+              "width": 61.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "白芭樂",
+            "tag": "LABEL",
+            "rect": {
+              "x": 134.28125,
+              "y": 557.03125,
+              "width": 61.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "暫停動態",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 228.65625,
+              "y": 557.03125,
+              "width": 75.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "點按或拖曳選位置，看銀匙挖起一口。鍵盤用左右鍵選位置，再按 Enter。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 607.421875,
+              "width": 288,
+              "height": 43.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "重設",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 16,
+              "y": 650.640625,
+              "width": 47.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "0.73"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "再試一口",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 228.65625,
+              "y": 650.640625,
+              "width": 75.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 223, 162)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "三款季節果凍",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 750.640625,
+              "width": 179.53125,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "100 毫升／杯",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 793.671875,
+              "width": 94.234375,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "蜜柑果凍",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1027.25,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "酸香明亮，適合喜歡柑橘微酸的人。",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1056.265625,
+              "width": 259.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "覆盆莓果凍",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1397.234375,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "過篩的莓果汁酸甜鮮明，適合喜歡微酸口味的人。",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1426.25,
+              "width": 259.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "白芭樂果凍",
+            "tag": "H3",
+            "rect": {
+              "x": 30.390625,
+              "y": 1791.21875,
+              "width": 259.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "帶淡淡果香，適合喜歡清爽口味的人。",
+            "tag": "P",
+            "rect": {
+              "x": 30.390625,
+              "y": 1820.234375,
+              "width": 259.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "過敏原與共用設備",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 2028.609375,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2057.625,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "配一盒果凍",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 2196.8125,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "每種口味可自由增減，湊滿六杯就能下載配方。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2246.25,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 2463.34375,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "已選 0／6 杯，還可選 6 杯。",
+            "tag": "P",
+            "rect": {
+              "x": 29.59375,
+              "y": 2609.875,
+              "width": 260.8125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "減少一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2658.0625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "增加一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2658.0625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "減少一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2714.25,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "增加一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2714.25,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "減少一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 167.21875,
+              "y": 2770.4375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "增加一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 246.40625,
+              "y": 2770.4375,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載果凍禮盒配方\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 29.59375,
+              "y": 2836.03125,
+              "width": 197.578125,
+              "height": 49.75
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(245, 227, 222)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "tag": "P",
+            "rect": {
+              "x": 29.59375,
+              "y": 2890.578125,
+              "width": 260.8125,
+              "height": 22.546875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "15.04px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "收存與享用",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 3017.90625,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "冷藏保存",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 3075.34375,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "冷藏保存，依實際商品標示上的期限享用。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3101.953125,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "開杯即食",
+            "tag": "H3",
+            "rect": {
+              "x": 16,
+              "y": 3170.75,
+              "width": 288,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "從冰箱取出後可直接用小勺挖取，也可倒扣在盤上享用。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3197.359375,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "空白果凍禮盒配方",
+            "tag": "H2",
+            "rect": {
+              "x": 16,
+              "y": 3317.359375,
+              "width": 288,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "每欄填入 0 到 6 杯，合計 6 杯。可用瀏覽器的列印功能印出此表。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3363.59375,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。",
+            "tag": "P",
+            "rect": {
+              "x": 16,
+              "y": 3702.296875,
+              "width": 288,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 3827.296875,
+              "width": 105.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "返回視覺作品集 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 172.40625,
+              "y": 3827.296875,
+              "width": 131.59375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "作品原始碼 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 16,
+              "y": 3882.484375,
+              "width": 99.59375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/berry.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/guava.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "搭配六杯\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 296.09375,
+              "width": 133.578125,
+              "height": 49.75
+            },
+            "labels": []
+          },
+          {
+            "label": "用銀匙試吃果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 68.625,
+              "y": 390.890625,
+              "width": 193.078125,
+              "height": 154.453125
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "暫停動態",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 289.71875,
+              "y": 613.4375,
+              "width": 80.78125,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "重設",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 317.71875,
+              "y": 663.828125,
+              "width": 52.78125,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": true
+          },
+          {
+            "label": "再試一口",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 707.828125,
+              "width": 80.78125,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "減少一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2710.875,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "增加一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2710.875,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "減少一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2767.0625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "增加一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2767.0625,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "減少一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2823.25,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "增加一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2823.25,
+              "width": 44,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "下載果凍禮盒配方\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33.09375,
+              "y": 2888.84375,
+              "width": 197.578125,
+              "height": 49.75
+            },
+            "labels": [],
+            "disabled": true
+          }
+        ],
+        "text": [
+          {
+            "label": "跳到主要內容",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 128,
+              "height": 44.78125
+            },
+            "color": "rgb(255, 249, 236)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(83, 23, 39)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 14.390625,
+              "width": 105.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "看口味",
+            "tag": "A",
+            "rect": {
+              "x": 176.78125,
+              "y": 14.390625,
+              "width": 48,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "搭配六杯",
+            "tag": "A",
+            "rect": {
+              "x": 236.78125,
+              "y": 14.390625,
+              "width": 64,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "English",
+            "tag": "A",
+            "rect": {
+              "x": 312.78125,
+              "y": 14.390625,
+              "width": 57.71875,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "季節果凍禮盒 · 銀匙試吃",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 93.578125,
+              "width": 351,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "一勺果凍，\n一口盛夏。",
+            "tag": "H1",
+            "rect": {
+              "x": 19.5,
+              "y": 123.96875,
+              "width": 351,
+              "height": 99.34375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "43.2px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "用銀匙試吃蜜柑、覆盆莓或白芭樂果凍，再配一盒六杯的季節滋味。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 234.5,
+              "width": 266.390625,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "搭配六杯\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 296.09375,
+              "width": 133.578125,
+              "height": 49.75
+            },
+            "color": "rgb(255, 255, 255)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(148, 22, 56)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "用銀匙試吃果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 68.625,
+              "y": 390.890625,
+              "width": 193.078125,
+              "height": 154.453125
+            },
+            "color": "rgb(0, 0, 0)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 211, 142)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "蜜柑",
+            "tag": "LABEL",
+            "rect": {
+              "x": 19.5,
+              "y": 613.4375,
+              "width": 52.78125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "覆盆莓",
+            "tag": "LABEL",
+            "rect": {
+              "x": 77.078125,
+              "y": 613.4375,
+              "width": 66.78125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "白芭樂",
+            "tag": "LABEL",
+            "rect": {
+              "x": 148.65625,
+              "y": 613.4375,
+              "width": 66.78125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "暫停動態",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 289.71875,
+              "y": 613.4375,
+              "width": 80.78125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "點按或拖曳選位置，看銀匙挖起一口。鍵盤用左右鍵選位置，再按 Enter。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 664.21875,
+              "width": 290.21875,
+              "height": 43.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14.4px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "重設",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 317.71875,
+              "y": 663.828125,
+              "width": 52.78125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "0.73"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "再試一口",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 19.5,
+              "y": 707.828125,
+              "width": 80.78125,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "14px",
+            "weight": "750",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 223, 162)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "三款季節果凍",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 807.828125,
+              "width": 179.53125,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "100 毫升／杯",
+            "tag": "P",
+            "rect": {
+              "x": 276.265625,
+              "y": 818.828125,
+              "width": 94.234375,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "蜜柑果凍",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1090.203125,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "酸香明亮，適合喜歡柑橘微酸的人。",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1119.21875,
+              "width": 322.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "覆盆莓果凍",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1473.984375,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "過篩的莓果汁酸甜鮮明，適合喜歡微酸口味的人。",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1503,
+              "width": 322.21875,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "白芭樂果凍",
+            "tag": "H3",
+            "rect": {
+              "x": 33.890625,
+              "y": 1905.765625,
+              "width": 322.21875,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "帶淡淡果香，適合喜歡清爽口味的人。",
+            "tag": "P",
+            "rect": {
+              "x": 33.890625,
+              "y": 1934.78125,
+              "width": 322.21875,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "過敏原與共用設備",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 2095.15625,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2124.171875,
+              "width": 351,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "配一盒果凍",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 2263.359375,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "每種口味可自由增減，湊滿六杯就能下載配方。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2312.796875,
+              "width": 337.4375,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "季節果凍概念品牌。配方只在這個頁面產生，供離線保存與分享。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 2505.890625,
+              "width": 337.4375,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(252, 226, 228)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "已選 0／6 杯，還可選 6 杯。",
+            "tag": "P",
+            "rect": {
+              "x": 33.09375,
+              "y": 2662.6875,
+              "width": 323.8125,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "減少一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2710.875,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "增加一杯蜜柑果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2710.875,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 219, 118)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "減少一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2767.0625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "增加一杯覆盆莓果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2767.0625,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(247, 180, 192)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "減少一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 233.71875,
+              "y": 2823.25,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(240, 232, 223)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "增加一杯白芭樂果凍",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 312.90625,
+              "y": 2823.25,
+              "width": 44,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(219, 232, 169)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載果凍禮盒配方\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 33.09375,
+              "y": 2888.84375,
+              "width": 197.578125,
+              "height": 49.75
+            },
+            "color": "rgb(101, 73, 81)",
+            "size": "16px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(245, 227, 222)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "",
+            "tag": "P",
+            "rect": {
+              "x": 33.09375,
+              "y": 2943.390625,
+              "width": 323.8125,
+              "height": 22.546875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "15.04px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "收存與享用",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 3070.71875,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "冷藏保存",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 3128.15625,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "冷藏保存，依實際商品標示上的期限享用。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3154.765625,
+              "width": 351,
+              "height": 24
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "開杯即食",
+            "tag": "H3",
+            "rect": {
+              "x": 19.5,
+              "y": 3199.5625,
+              "width": 351,
+              "height": 20.21875
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "17.6px",
+            "weight": "850",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "從冰箱取出後可直接用小勺挖取，也可倒扣在盤上享用。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3226.171875,
+              "width": 351,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "空白果凍禮盒配方",
+            "tag": "H2",
+            "rect": {
+              "x": 19.5,
+              "y": 3346.171875,
+              "width": 351,
+              "height": 33.4375
+            },
+            "color": "rgb(148, 22, 56)",
+            "size": "32px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "每欄填入 0 到 6 杯，合計 6 杯。可用瀏覽器的列印功能印出此表。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3392.40625,
+              "width": 351,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "示意配方未添加乳、蛋、花生或堅果。共用設備可能接觸乳、花生與樹堅果。",
+            "tag": "P",
+            "rect": {
+              "x": 19.5,
+              "y": 3731.109375,
+              "width": 351,
+              "height": 48
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "果時\nJELLY\nHOUR",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 3856.109375,
+              "width": 105.34375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "28px",
+            "weight": "900",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "返回視覺作品集 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 238.90625,
+              "y": 3856.109375,
+              "width": 131.59375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "作品原始碼 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 19.5,
+              "y": 3911.296875,
+              "width": 99.59375,
+              "height": 44
+            },
+            "color": "rgb(83, 23, 39)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(255, 249, 236)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/cover.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/berry.webp",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "src": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/guava.webp",
+            "width": 1200,
+            "height": 800
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "跳到主要內容",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "果時\nJELLY\nHOUR",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "看口味",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "搭配六杯",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "English",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 14.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "搭配六杯\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 296.09375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "用銀匙試吃果凍",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 390.890625
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "蜜柑",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 613.4375
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "再試一口",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 707.828125
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "減少一杯蜜柑果凍",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2710.875
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "增加一杯蜜柑果凍",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2710.875
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "減少一杯覆盆莓果凍",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2767.0625
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "增加一杯覆盆莓果凍",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2767.0625
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "減少一杯白芭樂果凍",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2823.25
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "增加一杯白芭樂果凍",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2823.25
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "果時\nJELLY\nHOUR",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3856.109375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "返回視覺作品集 ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3856.109375
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "作品原始碼 ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(148, 22, 56)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3911.296875
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2324.7999999999884,
+    "end": 12336.5,
+    "timestamps": [
+      2343.6999999999825,
+      2374.1999999999825,
+      2409.1999999999825,
+      2434.7999999999884,
+      2465.1999999999825,
+      2496.7999999999884,
+      2524.5,
+      2560.7999999999884,
+      2587,
+      2617.5999999999767,
+      2653.0999999999767,
+      2677.7999999999884,
+      2713.399999999994,
+      2725.899999999994,
+      2755.899999999994,
+      2772.2999999999884,
+      2788.0999999999767,
+      2809.399999999994,
+      2822.6999999999825,
+      2837.6999999999825,
+      2853.899999999994,
+      2885.5999999999767,
+      2900.1999999999825,
+      2931.0999999999767,
+      2948,
+      2979.5,
+      2995.7999999999884,
+      3027,
+      3058.5999999999767,
+      3074.5,
+      3090.2999999999884,
+      3106.5,
+      3135.0999999999767,
+      3163.5,
+      3192.2999999999884,
+      3221.6999999999825,
+      3250.399999999994,
+      3279.2999999999884,
+      3307.899999999994,
+      3336.399999999994,
+      3365.0999999999767,
+      3393.5,
+      3422,
+      3450.6999999999825,
+      3479.399999999994,
+      3507.7999999999884,
+      3536.2999999999884,
+      3564.899999999994,
+      3594.1999999999825,
+      3622.7999999999884,
+      3651.7999999999884,
+      3682,
+      3711.0999999999767,
+      3739.7999999999884,
+      3768.7999999999884,
+      3797.7999999999884,
+      3826,
+      3855.399999999994,
+      3884.0999999999767,
+      3913.7999999999884,
+      3942.7999999999884,
+      3963.1999999999825,
+      3983.6999999999825,
+      4004.0999999999767,
+      4023.5,
+      4044.7999999999884,
+      4065.0999999999767,
+      4085.399999999994,
+      4105.6999999999825,
+      4127.099999999977,
+      4147.299999999988,
+      4167.5,
+      4188.6999999999825,
+      4209.5,
+      4230.799999999988,
+      4251,
+      4271.299999999988,
+      4291.6999999999825,
+      4312.299999999988,
+      4333.1999999999825,
+      4355.5,
+      4376.799999999988,
+      4399.299999999988,
+      4420.899999999994,
+      4442.299999999988,
+      4463.6999999999825,
+      4484.1999999999825,
+      4505.599999999977,
+      4527.099999999977,
+      4548.599999999977,
+      4571.099999999977,
+      4592.599999999977,
+      4614.099999999977,
+      4636.599999999977,
+      4659.099999999977,
+      4680.599999999977,
+      4701.5,
+      4722.399999999994,
+      4743.399999999994,
+      4764,
+      4785.1999999999825,
+      4806.6999999999825,
+      4827.599999999977,
+      4848.6999999999825,
+      4870.299999999988,
+      4891.399999999994,
+      4912.099999999977,
+      4932.899999999994,
+      4954,
+      4975.1999999999825,
+      4995.799999999988,
+      5017.099999999977,
+      5038.399999999994,
+      5059.799999999988,
+      5081,
+      5103.299999999988,
+      5124.299999999988,
+      5145.799999999988,
+      5167.399999999994,
+      5188.899999999994,
+      5210,
+      5231.1999999999825,
+      5252.799999999988,
+      5274.099999999977,
+      5296.5,
+      5318.399999999994,
+      5339.899999999994,
+      5361.399999999994,
+      5382.6999999999825,
+      5403.5,
+      5424.099999999977,
+      5444.6999999999825,
+      5465.099999999977,
+      5486,
+      5506.799999999988,
+      5527.099999999977,
+      5547.6999999999825,
+      5568.799999999988,
+      5591,
+      5611.299999999988,
+      5632.299999999988,
+      5653.299999999988,
+      5674.099999999977,
+      5695,
+      5715.899999999994,
+      5736.899999999994,
+      5757.399999999994,
+      5778.799999999988,
+      5799.599999999977,
+      5819.799999999988,
+      5841.399999999994,
+      5862.1999999999825,
+      5882.799999999988,
+      5903.099999999977,
+      5924.099999999977,
+      5943.899999999994,
+      5964.299999999988,
+      5985,
+      6005.599999999977,
+      6025.799999999988,
+      6046.599999999977,
+      6067.099999999977,
+      6087.6999999999825,
+      6108,
+      6128.299999999988,
+      6147.599999999977,
+      6167.899999999994,
+      6188.299999999988,
+      6208,
+      6228.299999999988,
+      6249.1999999999825,
+      6270.1999999999825,
+      6291.299999999988,
+      6311.1999999999825,
+      6331.299999999988,
+      6351.799999999988,
+      6372.6999999999825,
+      6393.299999999988,
+      6413.6999999999825,
+      6435.099999999977,
+      6456.299999999988,
+      6476.6999999999825,
+      6497.1999999999825,
+      6517.5,
+      6537.599999999977,
+      6557.899999999994,
+      6578.5,
+      6599.6999999999825,
+      6619.599999999977,
+      6639.599999999977,
+      6659.799999999988,
+      6679.6999999999825,
+      6699.799999999988,
+      6719.899999999994,
+      6740.1999999999825,
+      6761,
+      6781,
+      6802.299999999988,
+      6822.099999999977,
+      6842.399999999994,
+      6862.1999999999825,
+      6883.1999999999825,
+      6904.5,
+      6924.799999999988,
+      6946.099999999977,
+      6966.099999999977,
+      6986.399999999994,
+      7006.6999999999825,
+      7026.899999999994,
+      7047.599999999977,
+      7067.899999999994,
+      7088.799999999988,
+      7109.099999999977,
+      7129.599999999977,
+      7149.599999999977,
+      7169.6999999999825,
+      7190.799999999988,
+      7210.5,
+      7231.6999999999825,
+      7251.899999999994,
+      7272.399999999994,
+      7292.599999999977,
+      7312.899999999994,
+      7334.1999999999825,
+      7354.299999999988,
+      7374.5,
+      7394.299999999988,
+      7415.599999999977,
+      7436.1999999999825,
+      7456,
+      7476.399999999994,
+      7497.1999999999825,
+      7517.799999999988,
+      7538.299999999988,
+      7559,
+      7579.5,
+      7600,
+      7621.1999999999825,
+      7641.5,
+      7661.899999999994,
+      7681.799999999988,
+      7701.6999999999825,
+      7721.899999999994,
+      7742.099999999977,
+      7762.599999999977,
+      7783,
+      7803.099999999977,
+      7824.299999999988,
+      7844.399999999994,
+      7865.399999999994,
+      7885.399999999994,
+      7905.5,
+      7925.799999999988,
+      7946.099999999977,
+      7966.399999999994,
+      7986.1999999999825,
+      8007.5,
+      8027.6999999999825,
+      8047.899999999994,
+      8068.899999999994,
+      8090,
+      8110.6999999999825,
+      8130.599999999977,
+      8150.899999999994,
+      8172.1999999999825,
+      8192.399999999994,
+      8213,
+      8232.799999999988,
+      8253.099999999977,
+      8273.299999999988,
+      8293.699999999983,
+      8314.299999999988,
+      8335.299999999988,
+      8356.5,
+      8378.399999999994,
+      8400.599999999977,
+      8421.699999999983,
+      8442.599999999977,
+      8463.399999999994,
+      8484.5,
+      8505.699999999983,
+      8526.899999999994,
+      8549.299999999988,
+      8570.5,
+      8591.799999999988,
+      8612.899999999994,
+      8633.699999999983,
+      8654.699999999983,
+      8675.199999999983,
+      8695.399999999994,
+      8715.899999999994,
+      8735.399999999994,
+      8756.099999999977,
+      8777.399999999994,
+      8798.099999999977,
+      8818.399999999994,
+      8839.599999999977,
+      8861.599999999977,
+      8882.099999999977,
+      8902.399999999994,
+      8922.799999999988,
+      8944.199999999983,
+      8964.5,
+      8984.799999999988,
+      9006.099999999977,
+      9026.599999999977,
+      9047.099999999977,
+      9068.199999999983,
+      9089,
+      9109.399999999994,
+      9130.5,
+      9151.199999999983,
+      9171.899999999994,
+      9192.299999999988,
+      9213.199999999983,
+      9233.599999999977,
+      9253.899999999994,
+      9274.699999999983,
+      9295.5,
+      9315.899999999994,
+      9336.5,
+      9357.699999999983,
+      9378.599999999977,
+      9399,
+      9419.599999999977,
+      9440,
+      9460.099999999977,
+      9481.5,
+      9501.899999999994,
+      9522.599999999977,
+      9543.5,
+      9564.399999999994,
+      9585.5,
+      9606,
+      9626.399999999994,
+      9646.699999999983,
+      9667,
+      9687.199999999983,
+      9707.599999999977,
+      9728,
+      9748.299999999988,
+      9768.599999999977,
+      9788.399999999994,
+      9808.699999999983,
+      9829,
+      9848.799999999988,
+      9868.899999999994,
+      9889,
+      9909.299999999988,
+      9929.599999999977,
+      9949.699999999983,
+      9970.799999999988,
+      9991.5,
+      10011.299999999988,
+      10030.699999999983,
+      10051.099999999977,
+      10071.399999999994,
+      10091.699999999983,
+      10111.799999999988,
+      10132.199999999983,
+      10153.199999999983,
+      10174.099999999977,
+      10194.399999999994,
+      10213.799999999988,
+      10234.099999999977,
+      10254.5,
+      10275.199999999983,
+      10295.099999999977,
+      10315.099999999977,
+      10336.399999999994,
+      10356.899999999994,
+      10378.199999999983,
+      10399.399999999994,
+      10419.699999999983,
+      10440.099999999977,
+      10461.099999999977,
+      10482.099999999977,
+      10502.199999999983,
+      10522.399999999994,
+      10542.099999999977,
+      10562.599999999977,
+      10582.699999999983,
+      10603.699999999983,
+      10624.299999999988,
+      10644.299999999988,
+      10664.5,
+      10684.799999999988,
+      10704.899999999994,
+      10725.199999999983,
+      10745.599999999977,
+      10766.199999999983,
+      10786.5,
+      10806.899999999994,
+      10828.199999999983,
+      10848.5,
+      10868.699999999983,
+      10888.899999999994,
+      10910.099999999977,
+      10930.199999999983,
+      10950.299999999988,
+      10971,
+      10991.199999999983,
+      11010.899999999994,
+      11032.099999999977,
+      11053.099999999977,
+      11073.399999999994,
+      11093.299999999988,
+      11113.5,
+      11133.799999999988,
+      11154.099999999977,
+      11174,
+      11194,
+      11214.099999999977,
+      11235.399999999994,
+      11255.599999999977,
+      11275.5,
+      11295.699999999983,
+      11316.099999999977,
+      11336.099999999977,
+      11356.199999999983,
+      11377.099999999977,
+      11398.299999999988,
+      11418.599999999977,
+      11438.5,
+      11458.899999999994,
+      11479.199999999983,
+      11500.5,
+      11521.399999999994,
+      11541.699999999983,
+      11562,
+      11581.799999999988,
+      11602.899999999994,
+      11623.099999999977,
+      11643.399999999994,
+      11665.099999999977,
+      11685.799999999988,
+      11706.099999999977,
+      11726.099999999977,
+      11747,
+      11767.699999999983,
+      11788,
+      11808.299999999988,
+      11828.099999999977,
+      11848.399999999994,
+      11869.5,
+      11889.399999999994,
+      11910,
+      11930.199999999983,
+      11950.5,
+      11970.699999999983,
+      11990.399999999994,
+      12010.699999999983,
+      12030.099999999977,
+      12050.299999999988,
+      12071.5,
+      12091.399999999994,
+      12111.699999999983,
+      12131.899999999994,
+      12153.099999999977,
+      12173.399999999994,
+      12194.5,
+      12214.399999999994,
+      12234.299999999988,
+      12255.5,
+      12275.199999999983,
+      12295.399999999994,
+      12315.599999999977
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        390,
+        260
+      ]
+    ],
+    "measuredMs": 10011.700000000012,
+    "medianMs": 20.599999999976717,
+    "p95Ms": 29,
+    "longestMs": 36.29999999998836,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/works/sorbet-hour/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/text-tc.woff2",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/text-tc.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/fonts/studio-tc-first-layout.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/assets/page-BMZ5eBt8.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/assets/page-BQ-hy3Xm.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/cover.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/berry.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/guava.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/assets/shader-B9ACFw8K.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/assets/standalone-ZQeXyw3T.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/cover-center.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:61434/glossquote-visuals/media/sorbet-hour/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}
