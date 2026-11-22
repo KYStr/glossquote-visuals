@@ -1,5 +1,11 @@
 # Evidence status
 
+<!-- M06 release -->
+## M06 已發布並完成正式站驗證
+
+更新 [果時](https://kystr.github.io/glossquote-visuals/works/sorbet-hour/)、[疊印](https://kystr.github.io/glossquote-visuals/works/afterimage-press/)、[摺徑](https://kystr.github.io/glossquote-visuals/works/foldline/) 的產品版頭。三件作品均通過 14 條規則與六項美術觀察的逐項驗收，完成中英兩語的正式站操作與下載。[發布證據與限制](../evidence/M06/93475d7b705cc487258ebb8bdb72ff0088b85dfd/RELEASE.md)。
+<!-- /M06 release -->
+
 <!-- M05 release -->
 ## M05 已發布並完成正式站驗證
 

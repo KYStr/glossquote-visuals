@@ -1,0 +1,1621 @@
+{
+  "result": "PASS",
+  "sourceCommit": "93475d7b705cc487258ebb8bdb72ff0088b85dfd",
+  "candidateCommit": "7808367afddc046ef6eb037c510a47158431e8c2",
+  "runId": 44983856183,
+  "attempt": 1,
+  "runUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983856183",
+  "publishConclusion": "success",
+  "failedPublisherJobs": [],
+  "failedLiveEvidence": [],
+  "failedBuildEvidence": [],
+  "jobs": [
+    {
+      "name": "build",
+      "id": 137090018793,
+      "run_attempt": 1,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983856183/job/137090018793",
+      "conclusion": "success",
+      "completed_at": "2026-11-22T04:19:36Z"
+    },
+    {
+      "name": "deploy",
+      "id": 137092141863,
+      "run_attempt": 1,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983856183/job/137092141863",
+      "conclusion": "success",
+      "completed_at": "2026-11-22T04:19:47Z"
+    },
+    {
+      "name": "live",
+      "id": 137092183161,
+      "run_attempt": 1,
+      "html_url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983856183/job/137092183161",
+      "conclusion": "success",
+      "completed_at": "2026-11-22T04:26:17Z"
+    }
+  ],
+  "liveVerification": {
+    "runId": 44983856183,
+    "runUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983856183",
+    "headSha": "93475d7b705cc487258ebb8bdb72ff0088b85dfd",
+    "jobId": 137092183161,
+    "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983856183/job/137092183161",
+    "conclusion": "success",
+    "separate": false,
+    "changedPathsSinceDeployment": []
+  },
+  "artifact": {
+    "id": 14739348420,
+    "name": "release-live-93475d7b705cc487258ebb8bdb72ff0088b85dfd",
+    "digest": "sha256:bdeb78be47dddad42cb701af47b6cb3e27883f2fadbe345de34f77e736c0ab88",
+    "size_in_bytes": 114740979
+  },
+  "resultsSha256": "e37e5f14562412a4cd0751f9b67e6d6c92ab13f9a969c68d4d4e91c0b553e154",
+  "flows": 6,
+  "materialCaptures": 24,
+  "heroInteractions": {
+    "sequences": 6,
+    "captures": 18,
+    "additionalCaptures": 4
+  },
+  "observations": [
+    {
+      "work": "V008",
+      "locale": "zh-Hant",
+      "slug": "sorbet-hour",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "input": "mouse",
+          "before": {
+            "shape": "intact",
+            "position": "none",
+            "aim": "center",
+            "material": "0",
+            "motion": "running",
+            "phase": "idle",
+            "run": 4,
+            "elapsed": 0,
+            "description": "透亮的蜜柑果凍立在瓷盤上，盤沿透過果凍折射。"
+          },
+          "mid": {
+            "shape": "tasting",
+            "position": "left",
+            "aim": "left",
+            "material": "0",
+            "motion": "paused",
+            "phase": "cut",
+            "run": 5,
+            "elapsed": 1742,
+            "description": "蜜柑果凍留著一處凹面，銀匙托著對應的一口果凍",
+            "image": "live-sorbet-hour-zh-Hant-interaction-mid.png"
+          },
+          "after": {
+            "shape": "scooped",
+            "position": "left",
+            "aim": "left",
+            "material": "0",
+            "motion": "running",
+            "phase": "held",
+            "run": 5,
+            "elapsed": 3650,
+            "description": "蜜柑果凍留著一處凹面，銀匙托著對應的一口果凍"
+          },
+          "reset": {
+            "shape": "intact",
+            "position": "none",
+            "aim": "center",
+            "material": "0",
+            "motion": "running",
+            "phase": "idle",
+            "run": 8,
+            "elapsed": 0,
+            "description": "透亮的蜜柑果凍立在瓷盤上，盤沿透過果凍折射。"
+          },
+          "alternate": {
+            "shape": "scooped",
+            "position": "right",
+            "aim": "right",
+            "material": "0",
+            "motion": "running",
+            "phase": "held",
+            "run": 7,
+            "elapsed": 3650,
+            "description": "蜜柑果凍留著一處凹面，銀匙托著對應的一口果凍",
+            "image": "live-sorbet-hour-zh-Hant-interaction-alternate.png"
+          },
+          "pixels": {
+            "changed": 0.648193359375,
+            "alternateChanged": 0.60791015625,
+            "remained": 0.009765625
+          }
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-sorbet-hour-zh-Hant-interaction-before.png",
+            "sha256": "babf1921ef2e42d2ec555f999f3119a908095c54e0a78172955d1b779265b312",
+            "width": 602,
+            "height": 403
+          },
+          {
+            "state": "after",
+            "file": "live-sorbet-hour-zh-Hant-interaction-after.png",
+            "sha256": "9dd801d549e0b2823d6178a4625a769cb0aad8be3cf6c95ae004285972a7566c",
+            "width": 602,
+            "height": 403
+          },
+          {
+            "state": "reset",
+            "file": "live-sorbet-hour-zh-Hant-interaction-reset.png",
+            "sha256": "164cdf5dc34e906703bbb993b37d6b989221ced30e2672768a03626673c22fdd",
+            "width": 602,
+            "height": 403
+          }
+        ],
+        "additionalCaptures": [
+          {
+            "state": "mid",
+            "file": "live-sorbet-hour-zh-Hant-interaction-mid.png",
+            "sha256": "561ec0e40d9a435128c228fbef72a317c1acb81fd9103219b94e3a6f30bbfff0",
+            "width": 602,
+            "height": 403,
+            "bytes": 104498,
+            "source": "observations.mid.pngBase64"
+          },
+          {
+            "state": "alternate",
+            "file": "live-sorbet-hour-zh-Hant-interaction-alternate.png",
+            "sha256": "f435eb64be448d8a5fac0d72df79fef9e6bf088fe8f005230a3dda830e052674",
+            "width": 602,
+            "height": 403,
+            "bytes": 111769,
+            "source": "observations.alternate.pngBase64"
+          }
+        ]
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/works/sorbet-hour/",
+      "export": {
+        "filename": "jelly-hour-recipe-zh-Hant.txt",
+        "bytes": 710,
+        "sha256": "9cee09cafb4d23a755799ed05865f12ed89788521a2eda9a5e771f65a3df88c2",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-zh-Hant-material-0.png",
+          "sha256": "e2bf298f822f48ac8abb3efb7c97c0b46a577cdf000d0f6836a2c6a8bf73406c",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 1,
+          "file": "live-sorbet-hour-zh-Hant-material-1.png",
+          "sha256": "c24e34ea4202ffe1899085f023413212f4b4bff4bc90360e05ab6b0a46899f93",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 2,
+          "file": "live-sorbet-hour-zh-Hant-material-2.png",
+          "sha256": "7e023f99521029881b07ad3ef33db23924528aaf1d41439666ec96e9fad6b5aa",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-zh-Hant-material-3.png",
+          "sha256": "e941af9daabbc395d7d07a75668a403814ac0ea7749d943bb9e9012dc420f486",
+          "width": 576,
+          "height": 384
+        }
+      ],
+      "frozen": {
+        "file": "live-sorbet-hour-zh-Hant-frozen.png",
+        "sha256": "99485e6383916ef2fa362ad3f6693a333005d5effc65a378c46ba98f269cfdd2",
+        "width": 602,
+        "height": 403
+      },
+      "pageScreenshot": {
+        "file": "live-sorbet-hour-zh-Hant.png",
+        "sha256": "da6638e6f53fc5eb240002bb6b756d5151b9c3311b629c02f1511f2602a14860",
+        "width": 1100,
+        "height": 2880
+      },
+      "candidateProvenance": {
+        "lane": "V008-zh-Hant-desktop",
+        "path": "evidence/V008/7808367afddc046ef6eb037c510a47158431e8c2/V008-zh-Hant-desktop/results.json",
+        "runId": 44983018073,
+        "jobId": 137087466978,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087466978",
+        "artifactId": 14739080415,
+        "artifactDigest": "sha256:0a69aa096a0a5e3f2ab091c021522c9ed96e4ebc50e80f0ba23abeae530e7062",
+        "renderer": {
+          "runner": "GitHub-hosted windows-2025",
+          "browser": "Chromium 158.0.8127.18",
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "isFallbackAdapter": true,
+          "requestedAdapterMode": "D3D11 WARP (software)",
+          "zoom": {
+            "factor": 2,
+            "cssViewport": [
+              720,
+              450
+            ],
+            "viewportPng": [
+              1440,
+              900
+            ],
+            "devicePixelRatio": 2,
+            "height": 9320,
+            "originalTiles": 11
+          },
+          "defaultEdge": {
+            "version": "157.0.4341.60",
+            "runtime": "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
+            "requestedGraphicsFlags": [],
+            "phase": "unavailable",
+            "gpu": {
+              "api": true,
+              "devices": 0,
+              "textures": 0,
+              "adapter": null
+            },
+            "presentation": "static fallback",
+            "flowDownload": {
+              "filename": "jelly-hour-recipe-zh-Hant.txt",
+              "bytes": 710
+            }
+          }
+        },
+        "measurements": {
+          "measuredMs": 10000.20000000007,
+          "medianMs": 25.300000000046566,
+          "p95Ms": 44.39999999990687,
+          "longestMs": 78.79999999993015
+        }
+      }
+    },
+    {
+      "work": "V008",
+      "locale": "en",
+      "slug": "sorbet-hour",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "input": "mouse",
+          "before": {
+            "shape": "intact",
+            "position": "none",
+            "aim": "center",
+            "material": "0",
+            "motion": "running",
+            "phase": "idle",
+            "run": 4,
+            "elapsed": 0,
+            "description": "A glossy mandarin jelly refracts the rim of its porcelain plate."
+          },
+          "mid": {
+            "shape": "tasting",
+            "position": "left",
+            "aim": "left",
+            "material": "0",
+            "motion": "paused",
+            "phase": "cut",
+            "run": 5,
+            "elapsed": 1718,
+            "description": "Mandarin jelly with a curved hollow and the matching bite held in a silver spoon",
+            "image": "live-sorbet-hour-en-interaction-mid.png"
+          },
+          "after": {
+            "shape": "scooped",
+            "position": "left",
+            "aim": "left",
+            "material": "0",
+            "motion": "running",
+            "phase": "held",
+            "run": 5,
+            "elapsed": 3650,
+            "description": "Mandarin jelly with a curved hollow and the matching bite held in a silver spoon"
+          },
+          "reset": {
+            "shape": "intact",
+            "position": "none",
+            "aim": "center",
+            "material": "0",
+            "motion": "running",
+            "phase": "idle",
+            "run": 8,
+            "elapsed": 0,
+            "description": "A glossy mandarin jelly refracts the rim of its porcelain plate."
+          },
+          "alternate": {
+            "shape": "scooped",
+            "position": "right",
+            "aim": "right",
+            "material": "0",
+            "motion": "running",
+            "phase": "held",
+            "run": 7,
+            "elapsed": 3650,
+            "description": "Mandarin jelly with a curved hollow and the matching bite held in a silver spoon",
+            "image": "live-sorbet-hour-en-interaction-alternate.png"
+          },
+          "pixels": {
+            "changed": 0.6474609375,
+            "alternateChanged": 0.60791015625,
+            "remained": 0.013916015625
+          }
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-sorbet-hour-en-interaction-before.png",
+            "sha256": "cfef9d56f361396458141cbd560bb4bfb852a2e01e66157cc023c25ff2b22886",
+            "width": 602,
+            "height": 403
+          },
+          {
+            "state": "after",
+            "file": "live-sorbet-hour-en-interaction-after.png",
+            "sha256": "03d90f5dc2688423743c890dceece7a42f04b926380c5c1cb16be4ff7b0c7419",
+            "width": 602,
+            "height": 403
+          },
+          {
+            "state": "reset",
+            "file": "live-sorbet-hour-en-interaction-reset.png",
+            "sha256": "a2a43eea3084e5060042d9f683ed0d02cd5b1ea1a09eb8d1601df656acb12e39",
+            "width": 602,
+            "height": 403
+          }
+        ],
+        "additionalCaptures": [
+          {
+            "state": "mid",
+            "file": "live-sorbet-hour-en-interaction-mid.png",
+            "sha256": "6bbf91fb0a4b3b9a571358df1edff4565012844d9386f9cf6a134880506ecb57",
+            "width": 602,
+            "height": 403,
+            "bytes": 104821,
+            "source": "observations.mid.pngBase64"
+          },
+          {
+            "state": "alternate",
+            "file": "live-sorbet-hour-en-interaction-alternate.png",
+            "sha256": "651319dbdc86f96d8b5f397ed53b5ee2c101aa1eba9cd4b3a0fb193c9618f827",
+            "width": 602,
+            "height": 403,
+            "bytes": 111709,
+            "source": "observations.alternate.pngBase64"
+          }
+        ]
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/sorbet-hour/",
+      "export": {
+        "filename": "jelly-hour-recipe-en.txt",
+        "bytes": 762,
+        "sha256": "13ceabf493ac10806482bac9a8bb91c4ab5135fb7a8a47427222e808a4d04372",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-en-material-0.png",
+          "sha256": "6ba633ed60eef18cc7282ce424c363273e0024b6ff9b6ea95e3d32f0dc7d7e9f",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 1,
+          "file": "live-sorbet-hour-en-material-1.png",
+          "sha256": "29cc3da8cbf7ba7f11b8c8977139ef23b60368cf51ba8c6318f56e84f8b1ddf8",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 2,
+          "file": "live-sorbet-hour-en-material-2.png",
+          "sha256": "0bcb7cbfd8f96097c1fad0b44df1571d05b0cfb2e14027bcece4052ebb59afe9",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 0,
+          "file": "live-sorbet-hour-en-material-3.png",
+          "sha256": "edc3165b07b2c5fa9066e60f89c7fd9a05a04b682d30e270a98c8323da41606c",
+          "width": 576,
+          "height": 384
+        }
+      ],
+      "frozen": {
+        "file": "live-sorbet-hour-en-frozen.png",
+        "sha256": "5fcc429e562332c1126d078b51a71fddf7e106257f734ea9ab1da472b24f7ae4",
+        "width": 602,
+        "height": 403
+      },
+      "pageScreenshot": {
+        "file": "live-sorbet-hour-en.png",
+        "sha256": "624c2070f0f013435575e2ba88911ba717d26a55c9fa4cb40dfbbd86b193f2e6",
+        "width": 1100,
+        "height": 2958
+      },
+      "candidateProvenance": {
+        "lane": "V008-en-desktop",
+        "path": "evidence/V008/7808367afddc046ef6eb037c510a47158431e8c2/V008-en-desktop/results.json",
+        "runId": 44983018073,
+        "jobId": 137087466900,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087466900",
+        "artifactId": 14738456969,
+        "artifactDigest": "sha256:b6e42a5b7178902f00f549d6f6d3f6dbf255ddb61da9bb3d5643ce41a3febfca",
+        "renderer": {
+          "runner": "GitHub-hosted windows-2025",
+          "browser": "Chromium 158.0.8127.18",
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "isFallbackAdapter": true,
+          "requestedAdapterMode": "D3D11 WARP (software)",
+          "zoom": {
+            "factor": 2,
+            "cssViewport": [
+              720,
+              450
+            ],
+            "viewportPng": [
+              1440,
+              900
+            ],
+            "devicePixelRatio": 2,
+            "height": 9617,
+            "originalTiles": 12
+          }
+        },
+        "measurements": {
+          "measuredMs": 10001.100000000006,
+          "medianMs": 25.89999999999418,
+          "p95Ms": 48.39999999999418,
+          "longestMs": 85.70000000001164
+        }
+      }
+    },
+    {
+      "work": "V009",
+      "locale": "zh-Hant",
+      "slug": "afterimage-press",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "before": {
+            "step": "ready",
+            "material": 0,
+            "run": 1,
+            "blade": 0.205,
+            "toolVisible": true,
+            "motion": "paused",
+            "canvasCount": 1,
+            "sheet": [
+              47.859375,
+              75.46875,
+              640.640625,
+              250.375
+            ],
+            "registration": [
+              0,
+              0,
+              736.359375,
+              368.171875
+            ]
+          },
+          "after": {
+            "step": "complete",
+            "material": 0,
+            "run": 1,
+            "blade": 1.255,
+            "toolVisible": false,
+            "motion": "running",
+            "canvasCount": 1,
+            "sheet": [
+              47.859375,
+              75.46875,
+              640.640625,
+              250.375
+            ],
+            "registration": [
+              0,
+              0,
+              736.359375,
+              368.171875
+            ]
+          },
+          "reset": {
+            "step": "ready",
+            "material": 0,
+            "run": 2,
+            "blade": 0.205,
+            "toolVisible": true,
+            "motion": "paused",
+            "canvasCount": 1,
+            "sheet": [
+              47.859375,
+              75.46875,
+              640.640625,
+              250.375
+            ],
+            "registration": [
+              0,
+              0,
+              736.359375,
+              368.171875
+            ]
+          }
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-afterimage-press-zh-Hant-interaction-before.png",
+            "sha256": "38b86ebee2421dd9be48faff76608fd320dff77cc17a5e2f4a1ffb2b1bab75f7",
+            "width": 737,
+            "height": 369
+          },
+          {
+            "state": "after",
+            "file": "live-afterimage-press-zh-Hant-interaction-after.png",
+            "sha256": "460dd1ac819cdb9b9e485dde83f8abd1619244c0f584c2c63c58dc599fcc19a4",
+            "width": 737,
+            "height": 369
+          },
+          {
+            "state": "reset",
+            "file": "live-afterimage-press-zh-Hant-interaction-reset.png",
+            "sha256": "1b9374307eab1fe9596136c0d8c6c5254d9755c5c2d8ab7e1d8033722f6333af",
+            "width": 737,
+            "height": 369
+          }
+        ],
+        "additionalCaptures": []
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/works/afterimage-press/",
+      "export": {
+        "filename": "afterimage-print-sheet-zh-Hant.txt",
+        "bytes": 332,
+        "sha256": "029af211c8b978e2408f0bc046f279ffb83c7eca2ec8fce4b4e69f86242a4345",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-afterimage-press-zh-Hant-material-0.png",
+          "sha256": "15a1cb3df2d127b54c0e2b4fd021248cfd4ef62b021cd2472310add5daf1eec0",
+          "width": 737,
+          "height": 369
+        },
+        {
+          "state": 1,
+          "file": "live-afterimage-press-zh-Hant-material-1.png",
+          "sha256": "b4510e5d2498a47adbcfeb4f7e896c03a19ebe53e6b4fffcd0d2727a613bfb75",
+          "width": 737,
+          "height": 369
+        },
+        {
+          "state": 2,
+          "file": "live-afterimage-press-zh-Hant-material-2.png",
+          "sha256": "bd6b9592bfe126e27a9688de8d2d84f8c0b325aa1df80faca4bb210eee26987b",
+          "width": 737,
+          "height": 369
+        },
+        {
+          "state": 0,
+          "file": "live-afterimage-press-zh-Hant-material-3.png",
+          "sha256": "8cda3572669e6ef7590134265ca360f4db065433e07740229e8848684b1d7c79",
+          "width": 737,
+          "height": 369
+        }
+      ],
+      "frozen": {
+        "file": "live-afterimage-press-zh-Hant-frozen.png",
+        "sha256": "d048c01729c49d00516ed8f14864378d8dcd219a465193635fd9239625f8de17",
+        "width": 737,
+        "height": 369
+      },
+      "pageScreenshot": {
+        "file": "live-afterimage-press-zh-Hant.png",
+        "sha256": "5ee751b4aab0050b946db10035c76bc1ebe0826571bb2f5aaeaa148fdeeeed9e",
+        "width": 1100,
+        "height": 2693
+      },
+      "candidateProvenance": {
+        "lane": "V009-zh-Hant-desktop",
+        "path": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-zh-Hant-desktop/results.json",
+        "runId": 44983018073,
+        "jobId": 137087467018,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467018",
+        "artifactId": 14738736145,
+        "artifactDigest": "sha256:5177bacf80682c9650b4612a97c25742e9cfb211062a1eb179e1845a39633a75",
+        "renderer": {
+          "runner": "GitHub-hosted windows-2025",
+          "browser": "Chromium 158.0.8127.18",
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "isFallbackAdapter": true,
+          "requestedAdapterMode": "D3D11 WARP (software)",
+          "zoom": {
+            "factor": 2,
+            "cssViewport": [
+              720,
+              450
+            ],
+            "viewportPng": [
+              1440,
+              900
+            ],
+            "devicePixelRatio": 2,
+            "height": 4828,
+            "originalTiles": 6
+          },
+          "defaultEdge": {
+            "version": "157.0.4341.60",
+            "runtime": "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
+            "requestedGraphicsFlags": [],
+            "phase": "unavailable",
+            "gpu": {
+              "api": true,
+              "devices": 0,
+              "textures": 0,
+              "adapter": null
+            },
+            "presentation": "static fallback",
+            "flowDownload": {
+              "filename": "afterimage-print-sheet-zh-Hant.txt",
+              "bytes": 332
+            }
+          }
+        },
+        "measurements": {
+          "measuredMs": 10001.20000000007,
+          "medianMs": 25.099999999976717,
+          "p95Ms": 26.599999999976717,
+          "longestMs": 29.199999999953434
+        }
+      }
+    },
+    {
+      "work": "V009",
+      "locale": "en",
+      "slug": "afterimage-press",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "before": {
+            "step": "ready",
+            "material": 0,
+            "run": 1,
+            "blade": 0.205,
+            "toolVisible": true,
+            "motion": "paused",
+            "canvasCount": 1,
+            "sheet": [
+              47.859375,
+              75.46875,
+              640.640625,
+              250.375
+            ],
+            "registration": [
+              0,
+              0,
+              736.359375,
+              368.171875
+            ]
+          },
+          "after": {
+            "step": "complete",
+            "material": 0,
+            "run": 1,
+            "blade": 1.255,
+            "toolVisible": false,
+            "motion": "running",
+            "canvasCount": 1,
+            "sheet": [
+              47.859375,
+              75.46875,
+              640.640625,
+              250.375
+            ],
+            "registration": [
+              0,
+              0,
+              736.359375,
+              368.171875
+            ]
+          },
+          "reset": {
+            "step": "ready",
+            "material": 0,
+            "run": 2,
+            "blade": 0.205,
+            "toolVisible": true,
+            "motion": "paused",
+            "canvasCount": 1,
+            "sheet": [
+              47.859375,
+              75.46875,
+              640.640625,
+              250.375
+            ],
+            "registration": [
+              0,
+              0,
+              736.359375,
+              368.171875
+            ]
+          }
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-afterimage-press-en-interaction-before.png",
+            "sha256": "c0c125650ff74d89b2e0b664d6dc369ca86bef7bf93737a897f696b95a2f01f7",
+            "width": 737,
+            "height": 369
+          },
+          {
+            "state": "after",
+            "file": "live-afterimage-press-en-interaction-after.png",
+            "sha256": "3aae495bedff58dcf14bac9319fef8d2d9c4da10a3c6a02fe3a72f0a89a71296",
+            "width": 737,
+            "height": 369
+          },
+          {
+            "state": "reset",
+            "file": "live-afterimage-press-en-interaction-reset.png",
+            "sha256": "e49f62bfe41a67908e8e754384aa857eb885f4b65fa0bc1407d0683623b1672d",
+            "width": 737,
+            "height": 369
+          }
+        ],
+        "additionalCaptures": []
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/afterimage-press/",
+      "export": {
+        "filename": "afterimage-print-sheet-en.txt",
+        "bytes": 356,
+        "sha256": "9f2280b299921ea1f6112359a2e6fefc15972645817533642ee675681f31512d",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-afterimage-press-en-material-0.png",
+          "sha256": "d5096807ba17975d85561c80af721874dad1dfc08de0e592b17f993959ad5633",
+          "width": 737,
+          "height": 369
+        },
+        {
+          "state": 1,
+          "file": "live-afterimage-press-en-material-1.png",
+          "sha256": "015ca103e6ea94a00b8838100d50d927ce145ec6587d370fcc6c4a17a716600b",
+          "width": 737,
+          "height": 369
+        },
+        {
+          "state": 2,
+          "file": "live-afterimage-press-en-material-2.png",
+          "sha256": "2673252df1778731ae88cbc3113ac833fd3b5ad639ee7b17206f729e2e9ed625",
+          "width": 737,
+          "height": 369
+        },
+        {
+          "state": 0,
+          "file": "live-afterimage-press-en-material-3.png",
+          "sha256": "f0b4a1a24659af4334f61cc515a5420a323ef4c7fb544df99abe10fa4cf1ec75",
+          "width": 737,
+          "height": 369
+        }
+      ],
+      "frozen": {
+        "file": "live-afterimage-press-en-frozen.png",
+        "sha256": "1c95c2234d402949ab46a55653ff235f5ac7e0842b27b755ff0bbc4e3adb2f1a",
+        "width": 737,
+        "height": 369
+      },
+      "pageScreenshot": {
+        "file": "live-afterimage-press-en.png",
+        "sha256": "ac2d0945816aa2628c112416a7510bc77d7542a9c77dde68ffa151a991d52e2a",
+        "width": 1100,
+        "height": 2679
+      },
+      "candidateProvenance": {
+        "lane": "V009-en-desktop",
+        "path": "evidence/V009/7808367afddc046ef6eb037c510a47158431e8c2/V009-en-desktop/results.json",
+        "runId": 44983018073,
+        "jobId": 137087467036,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467036",
+        "artifactId": 14739045581,
+        "artifactDigest": "sha256:c9f3024ea373cd2701dd5a1c03e57f4ad90c344a6932439b490d1d790177ccc5",
+        "renderer": {
+          "runner": "GitHub-hosted windows-2025",
+          "browser": "Chromium 158.0.8127.18",
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "isFallbackAdapter": true,
+          "requestedAdapterMode": "D3D11 WARP (software)",
+          "zoom": {
+            "factor": 2,
+            "cssViewport": [
+              720,
+              450
+            ],
+            "viewportPng": [
+              1440,
+              900
+            ],
+            "devicePixelRatio": 2,
+            "height": 5270,
+            "originalTiles": 7
+          }
+        },
+        "measurements": {
+          "measuredMs": 10001.199999999953,
+          "medianMs": 16.099999999976717,
+          "p95Ms": 31.599999999976717,
+          "longestMs": 31.800000000046566
+        }
+      }
+    },
+    {
+      "work": "V010",
+      "locale": "zh-Hant",
+      "slug": "foldline",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "input": "mouse",
+          "before": "packed",
+          "after": "complete",
+          "reset": "packed",
+          "playback": 1,
+          "timeline": [
+            {
+              "phase": "packed",
+              "ms": 0
+            },
+            {
+              "phase": "releasing",
+              "ms": 203
+            },
+            {
+              "phase": "extending",
+              "ms": 1139.8000000000175
+            },
+            {
+              "phase": "raising",
+              "ms": 3019.9000000000233
+            },
+            {
+              "phase": "settling",
+              "ms": 4073.600000000006
+            },
+            {
+              "phase": "complete",
+              "ms": 4814.8000000000175
+            }
+          ]
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-foldline-zh-Hant-interaction-before.png",
+            "sha256": "fffe26a204aba9f629d08fb08ce78fd6068fa73c4f43995deec4f9f570cd06ed",
+            "width": 990,
+            "height": 444
+          },
+          {
+            "state": "after",
+            "file": "live-foldline-zh-Hant-interaction-after.png",
+            "sha256": "21f7c07f47bd53aa7815ecaba5b365071aa9753e8414ee30773d4aa18d9b00a1",
+            "width": 990,
+            "height": 444
+          },
+          {
+            "state": "reset",
+            "file": "live-foldline-zh-Hant-interaction-reset.png",
+            "sha256": "22dfd0922513b60d1fb28779c7204add742e9b5e254735a356b2a2dc609b7d6b",
+            "width": 990,
+            "height": 444
+          }
+        ],
+        "additionalCaptures": []
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/works/foldline/",
+      "export": {
+        "filename": "foldline-kit-zh-Hant.txt",
+        "bytes": 475,
+        "sha256": "3e372b260c75971113701f849dbefe68579661dbbfbee45e20245357fb8ae6f7",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-foldline-zh-Hant-material-0.png",
+          "sha256": "b4cfd160e77dd9b1e06cdd57d0c20e511ee12a6bda5e0efb945afd8e42a5b8d4",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 1,
+          "file": "live-foldline-zh-Hant-material-1.png",
+          "sha256": "829a23758d4b270b228c82729ff73877c5be8733ffb590fbf7fb52a745e7cbc1",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 2,
+          "file": "live-foldline-zh-Hant-material-2.png",
+          "sha256": "725b7a14e4419c1d84dcbadc7078cf665cc0bd6a3a244f8c3e80697ec6574ba5",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 0,
+          "file": "live-foldline-zh-Hant-material-3.png",
+          "sha256": "98ec623c1fa0596cfc090a141222d7b35e0658dfc2f903e7649a759c23c08f3e",
+          "width": 990,
+          "height": 442
+        }
+      ],
+      "frozen": {
+        "file": "live-foldline-zh-Hant-frozen.png",
+        "sha256": "787030fdb0a3eeba2f63c658a1bf586f13a6b63b861e3d0b2e7145553b10e628",
+        "width": 990,
+        "height": 444
+      },
+      "pageScreenshot": {
+        "file": "live-foldline-zh-Hant.png",
+        "sha256": "aa929a44b855f591222b6351030cd1f277405ad518fb59e21db4d4a5890436fd",
+        "width": 1100,
+        "height": 3156
+      },
+      "candidateProvenance": {
+        "lane": "V010-zh-Hant-desktop",
+        "path": "evidence/V010/7808367afddc046ef6eb037c510a47158431e8c2/V010-zh-Hant-desktop/results.json",
+        "runId": 44983018073,
+        "jobId": 137087467059,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467059",
+        "artifactId": 14739225098,
+        "artifactDigest": "sha256:a80453cd3789c60fe5919baa0128edd8bf88ac54e5eb2c4827ff13c77a837558",
+        "renderer": {
+          "runner": "GitHub-hosted windows-2025",
+          "browser": "Chromium 158.0.8127.18",
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "isFallbackAdapter": true,
+          "requestedAdapterMode": "D3D11 WARP (software)",
+          "zoom": {
+            "factor": 2,
+            "cssViewport": [
+              720,
+              450
+            ],
+            "viewportPng": [
+              1440,
+              900
+            ],
+            "devicePixelRatio": 2,
+            "height": 9125,
+            "originalTiles": 11
+          },
+          "defaultEdge": {
+            "version": "157.0.4341.60",
+            "runtime": "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
+            "requestedGraphicsFlags": [],
+            "phase": "unavailable",
+            "gpu": {
+              "api": true,
+              "devices": 0,
+              "textures": 0,
+              "adapter": null
+            },
+            "presentation": "static fallback",
+            "flowDownload": {
+              "filename": "foldline-kit-zh-Hant.txt",
+              "bytes": 475
+            }
+          }
+        },
+        "measurements": {
+          "measuredMs": 10013.200000000012,
+          "medianMs": 19.900000000023283,
+          "p95Ms": 32.29999999998836,
+          "longestMs": 38.100000000034925
+        }
+      }
+    },
+    {
+      "work": "V010",
+      "locale": "en",
+      "slug": "foldline",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "input": "mouse",
+          "before": "packed",
+          "after": "complete",
+          "reset": "packed",
+          "playback": 1,
+          "timeline": [
+            {
+              "phase": "packed",
+              "ms": 0
+            },
+            {
+              "phase": "releasing",
+              "ms": 199.89999999999418
+            },
+            {
+              "phase": "extending",
+              "ms": 1131.6999999999825
+            },
+            {
+              "phase": "raising",
+              "ms": 3022.899999999994
+            },
+            {
+              "phase": "settling",
+              "ms": 4079.7999999999884
+            },
+            {
+              "phase": "complete",
+              "ms": 4830.1999999999825
+            }
+          ]
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-foldline-en-interaction-before.png",
+            "sha256": "6122103fd391e9bae1eb27390a65016e9d922c48ec665aa27d7deef903245c63",
+            "width": 990,
+            "height": 443
+          },
+          {
+            "state": "after",
+            "file": "live-foldline-en-interaction-after.png",
+            "sha256": "1d1d44bfb3b410ccaca85979c3e3e60ee392e0ea37e88c9135381c4a99822632",
+            "width": 990,
+            "height": 443
+          },
+          {
+            "state": "reset",
+            "file": "live-foldline-en-interaction-reset.png",
+            "sha256": "546d522514d1666c011939cb9b1d6df38759445debe283892d1c3982b55c346b",
+            "width": 990,
+            "height": 443
+          }
+        ],
+        "additionalCaptures": []
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/foldline/",
+      "export": {
+        "filename": "foldline-kit-en.txt",
+        "bytes": 482,
+        "sha256": "a5e4be1fc0140140add10131809a22711a8a9191cdf5bb1485be0b5f13456c80",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-foldline-en-material-0.png",
+          "sha256": "9b8f9e4b80e7f6b2991fb5200cd8735cd11c77cb797acd288d22700521ee54b1",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 1,
+          "file": "live-foldline-en-material-1.png",
+          "sha256": "0b2a9a0573b0ce3b70c39de782be84c30798af8a55f19e2865f567c10a1174df",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 2,
+          "file": "live-foldline-en-material-2.png",
+          "sha256": "677bb53a7c2c3fb3ef4c1d96c617dc79d1f580791fdcd2e671fe09f1879a3f40",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 0,
+          "file": "live-foldline-en-material-3.png",
+          "sha256": "6a0f4e44b741c28894cc89befceac1fa6baa4d2e296643dd8c9010313239411d",
+          "width": 990,
+          "height": 442
+        }
+      ],
+      "frozen": {
+        "file": "live-foldline-en-frozen.png",
+        "sha256": "32aef396b2152c6dc7d5e6d6105ad3b80a8559c68c8c87cd1bca849a1b62d0a5",
+        "width": 990,
+        "height": 443
+      },
+      "pageScreenshot": {
+        "file": "live-foldline-en.png",
+        "sha256": "f731c50ed3cce344078b2a7fd844bf5236f0bc355bc693fc6579e3204d210abd",
+        "width": 1100,
+        "height": 3299
+      },
+      "candidateProvenance": {
+        "lane": "V010-en-desktop",
+        "path": "evidence/V010/7808367afddc046ef6eb037c510a47158431e8c2/V010-en-desktop/results.json",
+        "runId": 44983018073,
+        "jobId": 137087467022,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467022",
+        "artifactId": 14738885952,
+        "artifactDigest": "sha256:b220982178b87153ec64cad3eb38b6e35cd25abdd153f2700e6f68757f577f03",
+        "renderer": {
+          "runner": "GitHub-hosted windows-2025",
+          "browser": "Chromium 158.0.8127.18",
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "isFallbackAdapter": true,
+          "requestedAdapterMode": "D3D11 WARP (software)",
+          "zoom": {
+            "factor": 2,
+            "cssViewport": [
+              720,
+              450
+            ],
+            "viewportPng": [
+              1440,
+              900
+            ],
+            "devicePixelRatio": 2,
+            "height": 9324,
+            "originalTiles": 11
+          }
+        },
+        "measurements": {
+          "measuredMs": 10000.59999999986,
+          "medianMs": 15.899999999906868,
+          "p95Ms": 24.300000000046566,
+          "longestMs": 38.89999999990687
+        }
+      }
+    }
+  ],
+  "carriedRuleBased": [
+    {
+      "work": "V006",
+      "locale": "zh-Hant",
+      "slug": "tide-table",
+      "heroInteraction": null,
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/works/tide-table/",
+      "export": {
+        "filename": "tide-table-zh-Hant.txt",
+        "bytes": 352,
+        "sha256": "781efdf430f62e4eb5cebac49cd752adc2da79b59016a4d1fc4ff752a2ac06cf",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-tide-table-zh-Hant-material-0.png",
+          "sha256": "ccf81965be31dc20c9604f781e95737b162d3f25970f9ae92c13a7c935980905",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 1,
+          "file": "live-tide-table-zh-Hant-material-1.png",
+          "sha256": "90d1321ac6aca822cc776c5cbf77ace730b61f2fc54c3bfb8befe4eac2a3a478",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 2,
+          "file": "live-tide-table-zh-Hant-material-2.png",
+          "sha256": "a831f726c46f0b31cc006a793625de3804e8dec156d8c2d24a9a6e1f800425c1",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 0,
+          "file": "live-tide-table-zh-Hant-material-3.png",
+          "sha256": "b41202e3611de81e09dfb592330e0982d47de9597ca29e3b561fa10d0191c816",
+          "width": 576,
+          "height": 384
+        }
+      ],
+      "frozen": {
+        "file": "live-tide-table-zh-Hant-frozen.png",
+        "sha256": "3cfbbe7a889fe81069a47a488a19153eb8891aa4709198f231131667cb059e07",
+        "width": 600,
+        "height": 401
+      },
+      "pageScreenshot": {
+        "file": "live-tide-table-zh-Hant.png",
+        "sha256": "1a594fbd9f0e320d8dd73d7b600f50a7c3b4339299154f2a7a2db3a2b340770f",
+        "width": 1100,
+        "height": 2260
+      },
+      "candidateProvenance": {
+        "lane": "V006-zh-Hant-desktop",
+        "path": "evidence/V006/52fa4e91f748be73f060c3acc3c91ce9728fccd9/V006-zh-Hant-desktop/results.json",
+        "runId": 44783845662,
+        "jobId": 136453349708,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662/job/136453349708",
+        "artifactId": 14654245211,
+        "artifactDigest": "sha256:4f028aa73790ef9bcd63b474e6b9bbc0cff8477f3f15463a744f57f495e54a64",
+        "measurements": {
+          "measuredMs": 10001.700000000012,
+          "medianMs": 26.599999999976717,
+          "p95Ms": 27.599999999976717,
+          "longestMs": 30
+        }
+      }
+    },
+    {
+      "work": "V006",
+      "locale": "en",
+      "slug": "tide-table",
+      "heroInteraction": null,
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/tide-table/",
+      "export": {
+        "filename": "tide-table-en.txt",
+        "bytes": 366,
+        "sha256": "dab41b8d6d39488f8ecf5cfdce18cc5a4c306b6f69a77eb5ae7d18684254ec70",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-tide-table-en-material-0.png",
+          "sha256": "a831572c9744500e1b2148faf6e8e392a4ba6d0a8b8d90619c47595fd41b13ab",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 1,
+          "file": "live-tide-table-en-material-1.png",
+          "sha256": "ce0a715021b3779d5513bf1a23c7bfda0fd74665e17757a50c5379a0c0f1c223",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 2,
+          "file": "live-tide-table-en-material-2.png",
+          "sha256": "38f788fb0cb4038a0a6c9d4b724a8578e8f31628d0a2a329b46f5462d7a2d530",
+          "width": 576,
+          "height": 384
+        },
+        {
+          "state": 0,
+          "file": "live-tide-table-en-material-3.png",
+          "sha256": "c2704bc0430b51039982097533482fb5834959e48a9c47ae14389f9a795d7a17",
+          "width": 576,
+          "height": 384
+        }
+      ],
+      "frozen": {
+        "file": "live-tide-table-en-frozen.png",
+        "sha256": "2282ed5e1932b4ced47e13f7940a18c3961cdab292026b81b988ddb74634a4b2",
+        "width": 600,
+        "height": 401
+      },
+      "pageScreenshot": {
+        "file": "live-tide-table-en.png",
+        "sha256": "b20b37a3accc7d98ed4ac3ae041e3467eca642ca82da8f63dea06f42b2200eef",
+        "width": 1100,
+        "height": 2337
+      },
+      "candidateProvenance": {
+        "lane": "V006-en-desktop",
+        "path": "evidence/V006/52fa4e91f748be73f060c3acc3c91ce9728fccd9/V006-en-desktop/results.json",
+        "runId": 44783845662,
+        "jobId": 136453349290,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44783845662/job/136453349290",
+        "artifactId": 14653645821,
+        "artifactDigest": "sha256:c4f01a78bfdf35638dfc8599448b1008580c999b9faeb580c5b3766bf1455a0b",
+        "measurements": {
+          "measuredMs": 10007.700000000012,
+          "medianMs": 19.29999999998836,
+          "p95Ms": 31.099999999976717,
+          "longestMs": 42.79999999998836
+        }
+      }
+    },
+    {
+      "work": "V007",
+      "locale": "zh-Hant",
+      "slug": "selvedge",
+      "heroInteraction": null,
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/works/selvedge/",
+      "export": {
+        "filename": "selvedge-samples-zh-Hant.txt",
+        "bytes": 467,
+        "sha256": "a6ec9f91550ae2fadaa50a40e13eac1079be1ff35225222bca08a175868cea44",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-selvedge-zh-Hant-material-0.png",
+          "sha256": "048bef554eb3d9ee4a4b85ce236be27de3f583fd906fdd64f5b61ab873be794a",
+          "width": 528,
+          "height": 352
+        },
+        {
+          "state": 1,
+          "file": "live-selvedge-zh-Hant-material-1.png",
+          "sha256": "914f412d1f7f0d9ccdaf116af22a07c0e06f6d86c081b1fb42b83656d6e0541d",
+          "width": 528,
+          "height": 352
+        },
+        {
+          "state": 2,
+          "file": "live-selvedge-zh-Hant-material-2.png",
+          "sha256": "3820debfa5847de0dfffb5a86f5e8ab0533683ffbd65ba606f2cc938901647e5",
+          "width": 528,
+          "height": 352
+        },
+        {
+          "state": 0,
+          "file": "live-selvedge-zh-Hant-material-3.png",
+          "sha256": "b0326c926d12612ca395126099cd22c7d6cd5e1a9d3a4816fd272cb0041be332",
+          "width": 528,
+          "height": 352
+        }
+      ],
+      "frozen": {
+        "file": "live-selvedge-zh-Hant-frozen.png",
+        "sha256": "e9b4741f8e027177f627717715c4d2eb75ab9edcd735465b8663ee059a9c1cde",
+        "width": 685,
+        "height": 457
+      },
+      "pageScreenshot": {
+        "file": "live-selvedge-zh-Hant.png",
+        "sha256": "ff4fa5d257d0df8829cf11ac2928cd1af15261d0b5431b1c174966190da3c01d",
+        "width": 1100,
+        "height": 2417
+      },
+      "candidateProvenance": {
+        "lane": "V007-zh-Hant-desktop",
+        "path": "evidence/V007/c19abda5645c174c8fa6df79c06d26993cc31746/V007-zh-Hant-desktop/results.json",
+        "runId": 44803659273,
+        "jobId": 136521889110,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889110",
+        "artifactId": 14662181939,
+        "artifactDigest": "sha256:ac26d1b3ea29ab8547eb58d80d73ad78dbc0dc03cadd77451fd039e385751ec5",
+        "measurements": {
+          "measuredMs": 10008.600000000006,
+          "medianMs": 28.10000000000582,
+          "p95Ms": 29.60000000000582,
+          "longestMs": 36.29999999998836
+        }
+      }
+    },
+    {
+      "work": "V007",
+      "locale": "en",
+      "slug": "selvedge",
+      "heroInteraction": null,
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/selvedge/",
+      "export": {
+        "filename": "selvedge-samples-en.txt",
+        "bytes": 527,
+        "sha256": "d2757229b7ca0b7ad8c380528cd71949da77fed50cc9e1caf1993bc9ef12e3f3",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-selvedge-en-material-0.png",
+          "sha256": "511656afe73f54307cc998a155cd48557ce891df6725a18ef49f586b87021b6e",
+          "width": 528,
+          "height": 352
+        },
+        {
+          "state": 1,
+          "file": "live-selvedge-en-material-1.png",
+          "sha256": "d9d21f5c8d6d62c9af940887de3ca1bef5ff8bf5515425079d70f5d52c1b10f4",
+          "width": 528,
+          "height": 352
+        },
+        {
+          "state": 2,
+          "file": "live-selvedge-en-material-2.png",
+          "sha256": "23028c97c135d6f4f6f80213debac6ab0a082ad1e99bb5032fa9206b2806885d",
+          "width": 528,
+          "height": 352
+        },
+        {
+          "state": 0,
+          "file": "live-selvedge-en-material-3.png",
+          "sha256": "dd37ad42c33c7b4487b6a62d7f333e4c2fc33002ca54e2e8b9c3264d124edda7",
+          "width": 528,
+          "height": 352
+        }
+      ],
+      "frozen": {
+        "file": "live-selvedge-en-frozen.png",
+        "sha256": "f0129ec556a18920c350c77e677e03092722d307e42af7d453cd11e45509c97f",
+        "width": 685,
+        "height": 457
+      },
+      "pageScreenshot": {
+        "file": "live-selvedge-en.png",
+        "sha256": "b4e47442fdd8e9a7ee57d240d16b105116515fc229940bafd2a50567bf3e4543",
+        "width": 1100,
+        "height": 2638
+      },
+      "candidateProvenance": {
+        "lane": "V007-en-desktop",
+        "path": "evidence/V007/c19abda5645c174c8fa6df79c06d26993cc31746/V007-en-desktop/results.json",
+        "runId": 44803659273,
+        "jobId": 136521889180,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889180",
+        "artifactId": 14661743870,
+        "artifactDigest": "sha256:1a889aa654c6c9bcc9464b99913666d7ec1313d8e4dc92b2ce6174664b996a01",
+        "measurements": {
+          "measuredMs": 10007.699999999983,
+          "medianMs": 29.10000000000582,
+          "p95Ms": 30.300000000017462,
+          "longestMs": 30.900000000023283
+        }
+      }
+    },
+    {
+      "work": "V011",
+      "locale": "zh-Hant",
+      "slug": "umbra-dial",
+      "heroInteraction": null,
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/works/umbra-dial/",
+      "export": {
+        "filename": "umbra-dial-proposal-zh-Hant.txt",
+        "bytes": 589,
+        "sha256": "a0075554a461d668e529d1dd610044c3a4067bc16984b7fea3cd4ef6566b3a12",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-umbra-dial-zh-Hant-material-0.png",
+          "sha256": "c9c8fd81b487ef1b58bda70b1fdb74185373295f3f3021ae0f48c6cb70808f9c",
+          "width": 445,
+          "height": 296
+        },
+        {
+          "state": 1,
+          "file": "live-umbra-dial-zh-Hant-material-1.png",
+          "sha256": "3cef35d6f83813cc1a98ad32d4568ba3fbcce894013eaca3f4fba984b0f78e37",
+          "width": 445,
+          "height": 296
+        },
+        {
+          "state": 2,
+          "file": "live-umbra-dial-zh-Hant-material-2.png",
+          "sha256": "1a067b4a7c5905293ed93e53320746767aea75a7aafc34c0d651bdbccfee3f6e",
+          "width": 445,
+          "height": 296
+        },
+        {
+          "state": 0,
+          "file": "live-umbra-dial-zh-Hant-material-3.png",
+          "sha256": "76d77aa0612428441666d41c51138b7d8af7be7511e3cedd9ed662002c0d7188",
+          "width": 445,
+          "height": 296
+        }
+      ],
+      "frozen": {
+        "file": "live-umbra-dial-zh-Hant-frozen.png",
+        "sha256": "23bc861cc8034f6451ccf1eb99f2be39cea89e634f545e5886e89eb526a0a547",
+        "width": 594,
+        "height": 396
+      },
+      "pageScreenshot": {
+        "file": "live-umbra-dial-zh-Hant.png",
+        "sha256": "135a3016e888efa901ee49ae88c12bb08cd377a4bafa2c9e552db72180d1fefc",
+        "width": 1100,
+        "height": 2702
+      },
+      "candidateProvenance": {
+        "lane": "V011-zh-Hant-desktop",
+        "path": "evidence/V011/c19abda5645c174c8fa6df79c06d26993cc31746/V011-zh-Hant-desktop/results.json",
+        "runId": 44803659273,
+        "jobId": 136521889267,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889267",
+        "artifactId": 14662511077,
+        "artifactDigest": "sha256:b1f9ad68ca777282233b328faf335466fbb1b0851fa4a5c50b48d8ef93403b2b",
+        "measurements": {
+          "measuredMs": 10001.399999999994,
+          "medianMs": 18.70000000001164,
+          "p95Ms": 31.60000000000582,
+          "longestMs": 42.39999999999418
+        }
+      }
+    },
+    {
+      "work": "V011",
+      "locale": "en",
+      "slug": "umbra-dial",
+      "heroInteraction": null,
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/umbra-dial/",
+      "export": {
+        "filename": "umbra-dial-proposal-en.txt",
+        "bytes": 643,
+        "sha256": "2218386e077c4f0f619b4f34502c55c9a005a81c2215e86d1f78999c3c3333d6",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-umbra-dial-en-material-0.png",
+          "sha256": "a7607134c12d5510c8bc2bd8c2b0905361ec2287bdcb2b9f01bd642b6a5e1bf8",
+          "width": 445,
+          "height": 296
+        },
+        {
+          "state": 1,
+          "file": "live-umbra-dial-en-material-1.png",
+          "sha256": "f13e9172722e0304320b7e2e8b7f0f56108a7c04ff5c060ff74cedf403853319",
+          "width": 445,
+          "height": 296
+        },
+        {
+          "state": 2,
+          "file": "live-umbra-dial-en-material-2.png",
+          "sha256": "565d50d45174e408edbfe6b3ef0eaf25e85705872980f6c14aa96d53b6eeefb7",
+          "width": 445,
+          "height": 296
+        },
+        {
+          "state": 0,
+          "file": "live-umbra-dial-en-material-3.png",
+          "sha256": "bc6293f97fae0d2dd57f92f6532e421b2a1986728f805410d0ecf07d8bea36a9",
+          "width": 445,
+          "height": 296
+        }
+      ],
+      "frozen": {
+        "file": "live-umbra-dial-en-frozen.png",
+        "sha256": "3fa1180169e0f8da19b652cc0b4f4ed8bb90d24408e95bafe339f6fa04738bc3",
+        "width": 594,
+        "height": 396
+      },
+      "pageScreenshot": {
+        "file": "live-umbra-dial-en.png",
+        "sha256": "6919343a21ebf5f18d32ddff0673bd1b86282fb1973a796631376b8f73522662",
+        "width": 1100,
+        "height": 2777
+      },
+      "candidateProvenance": {
+        "lane": "V011-en-desktop",
+        "path": "evidence/V011/c19abda5645c174c8fa6df79c06d26993cc31746/V011-en-desktop/results.json",
+        "runId": 44803659273,
+        "jobId": 136521889212,
+        "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44803659273/job/136521889212",
+        "artifactId": 14660244341,
+        "artifactDigest": "sha256:cfb73d501c7e73257d6652ed753ea735eb5ddce3b1fd4c698da767d94747d715",
+        "measurements": {
+          "measuredMs": 10004.400000000023,
+          "medianMs": 29.099999999976717,
+          "p95Ms": 30.20000000001164,
+          "longestMs": 31.29999999998836
+        }
+      }
+    }
+  ]
+}
