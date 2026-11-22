@@ -292,7 +292,15 @@ try {
       await observeHeroInputs(page);
       evidence.observations = await testApprovedHero(page, input, async state => {
         assert.equal(state, states[evidence.frames.length], "Unexpected reference-art checkpoint");
-        evidence.frames.push({ state, inputs: await takeInputs(page), composite: await stageImage(page, "approved-" + state) });
+        // Controls below the artwork scroll into view when clicked. Restore
+        // the whole scene before recording its locked interaction checkpoint.
+        const stage = scene(page);
+        await stage.scrollIntoViewIfNeeded();
+        const dimensions = await stage.boundingBox();
+        const composite = await stageImage(page, "approved-" + state);
+        assert.ok(dimensions && composite.clip.width >= dimensions.width - 1 &&
+          composite.clip.height >= dimensions.height - 1, "The approved interaction screenshot cropped the stage");
+        evidence.frames.push({ state, inputs: await takeInputs(page), composite });
       });
     });
     assert.deepEqual(evidence.frames.map(frame => frame.state), states);
