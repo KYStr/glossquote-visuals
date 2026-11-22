@@ -52,7 +52,7 @@ body { background: var(--dark); }
 .masthead nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .88rem; }
 .hero {
   display: grid;
-  grid-template-columns: minmax(13.5rem, .76fr) minmax(0, 2.65fr);
+  grid-template-columns: minmax(13.5rem, .95fr) minmax(0, 2.52fr);
   align-items: start;
   gap: clamp(1.5rem, 4vw, 4.4rem);
   padding-block: clamp(1.5rem, 3vw, 3.25rem) 2.15rem;
@@ -71,7 +71,7 @@ body { background: var(--dark); }
   text-transform: uppercase;
   margin: .15em 0 .29em;
 }
-.intro { max-width: 25ch; margin: 0; font-size: clamp(.91rem, 1.26vw, 1.11rem); }
+.intro { max-width: 27ch; margin: 0; font-size: clamp(.91rem, 1.26vw, 1.11rem); }
 .formats {
   display: flex;
   flex-wrap: wrap;
@@ -101,22 +101,17 @@ body { background: var(--dark); }
   text-transform: uppercase;
 }
 .slugline > span:last-child { font-size: 1rem; }
-.poster-title {
-  margin: .12em 0 .08em;
-  font: 800 clamp(1.62rem, 10.4cqi, 7.1rem)/.9 var(--display);
-  letter-spacing: -.01em;
-  overflow-wrap: anywhere;
-}
 .stage {
   position: relative;
   isolation: isolate;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 25 / 18;
+  margin-block-start: .45rem;
   overflow: hidden;
-  background: #25252d;
+  background: #211d29;
 }
 .press-sheet {
   position: absolute;
-  inset: 20.5% 6.5% 11.5%;
+  inset: 10.6% 4.4% 4.955556%;
   background: var(--paper);
 }
 .press-sheet img { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -132,10 +127,11 @@ body { background: var(--dark); }
 }
 .squeegee {
   position: absolute;
-  inset-inline-start: 5%;
-  inset-block-start: -.74%;
-  width: 90%;
-  height: auto;
+  inset-inline-start: 4.4%;
+  inset-block-start: -.3%;
+  width: 91.2%;
+  height: 11.1%;
+  object-fit: fill;
   filter: drop-shadow(0 .1rem .13rem #151219bc) drop-shadow(0 .25rem .33rem #15121b66);
   pointer-events: none;
 }
@@ -219,10 +215,10 @@ body { background: var(--dark); }
   height: .65rem;
   flex: none;
   display: inline-block;
-  background: linear-gradient(115deg, #3d64ff 0 40%, #683b82 40% 60%, var(--orange) 60%);
+  background: linear-gradient(115deg, #3d64ff 0 40%, #683b82 40% 60%, #ef210f 60%);
 }
 .ink-controls label:nth-of-type(2) i { background: #3d64ff; }
-.ink-controls label:nth-of-type(3) i { background: var(--orange); }
+.ink-controls label:nth-of-type(3) i { background: #ef210f; }
 .ink-controls input:checked + span { border-color: var(--paper); box-shadow: inset 0 -2px var(--paper); }
 .ink-controls input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
 .repeat, .pause { cursor: pointer; }

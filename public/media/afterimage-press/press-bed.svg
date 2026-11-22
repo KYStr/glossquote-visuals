@@ -1,25 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720">
   <defs>
     <pattern id="bed" width="8" height="8" patternUnits="userSpaceOnUse">
-      <path fill="#25252d" d="M0 0h8v8H0z"/><path fill="#181820" d="M0 0h8v1H0z"/>
+      <path fill="#211d29" d="M0 0h8v8H0z"/><path fill="#19161f" d="M0 0h8v1H0z"/>
     </pattern>
-    <linearGradient id="light" x2=".7" y2=".88">
-      <stop stop-color="#63574f" stop-opacity=".22"/>
-      <stop offset=".65" stop-color="#63574f" stop-opacity="0"/>
+    <linearGradient id="steel" x2=".25" y2="1">
+      <stop stop-color="#48404c"/><stop offset="1" stop-color="#211c27"/>
     </linearGradient>
-    <linearGradient id="platen" x1=".48" y1="0" x2=".52" y2="1">
-      <stop stop-color="#4c4651"/><stop offset=".62" stop-color="#312f39"/><stop offset="1" stop-color="#242630"/>
-    </linearGradient>
-    <filter id="shadow" width="1.06" height="1.2" x="-.03" y="-.08">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#100f17" flood-opacity=".61"/>
+    <filter id="shadow" x="-.1" width="1.2" y="-.1" height="1.2">
+      <feDropShadow dx="1" dy="5" stdDeviation="4" flood-color="#0d0a12" flood-opacity=".78"/>
     </filter>
   </defs>
-  <path fill="url(#bed)" d="M0 0h1000v500H0z"/>
-  <path fill="url(#light)" d="M0 0h1000v500H0z"/>
-  <rect x="14" y="70" width="972" height="410" fill="url(#platen)" stroke="#625962" filter="url(#shadow)"/>
-  <rect x="16" y="72" width="968" height="406" fill="none" stroke="#ffffff" opacity=".06"/>
-  <rect x="66" y="103.5" width="870" height="340" fill="#a4937b" filter="url(#shadow)"/>
-  <rect x="65" y="102.5" width="870" height="340" fill="#f6efdd"/>
-  <path d="M31 102.5h22m-11-11v22m905-11h22m-11-11v22M31 442.5h22m-11-11v22m905-11h22m-11-11v22" fill="none" stroke="#d6cabb"/>
-  <path d="M63 122v-23h24m826 0h24v23M63 423v23h24m826 0h24v-23" fill="none" stroke="#9b9291" stroke-width="2"/>
+  <path fill="url(#bed)" d="M0 0h1000v720H0z"/>
+  <rect x="11" y="51" width="978" height="652" fill="url(#steel)" stroke="#60515a"/>
+  <path fill="none" stroke="#8f7e83" opacity=".34" d="M14 700V54h972"/>
+  <rect x="45" y="77" width="912" height="608" fill="#ad8a62" filter="url(#shadow)"/>
+  <rect x="44" y="76.32" width="912" height="608" fill="#f7e1c3"/>
+  <path d="M14 76h15m-7.5-7.5v15m950-7.5h15m-7.5-7.5v15M14 684h15m-7.5-7.5v15m950-7.5h15m-7.5-7.5v15" fill="none" stroke="#dec09e"/>
+  <path d="M41 94V73h18m882 0h18v21M41 666v21h18m882 0h18v-21" fill="none" stroke="#9b8587" stroke-width="2"/>
 </svg>

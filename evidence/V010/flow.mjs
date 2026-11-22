@@ -101,6 +101,41 @@ export async function testHeroInteraction(page, input, capture) {
   return { input, before: "packed", after: "complete", reset: "packed", playback: nextRun, timeline: normalized };
 }
 
+export async function testApprovedHero(page, input, capture) {
+  assert.ok(["mouse", "touch"].includes(input));
+  const stage = page.locator("[data-stage]");
+  const replay = page.locator("[data-replay]");
+  const pause = page.locator("[data-pause]");
+  const activate = locator => input === "touch" ? locator.tap() : locator.click();
+  const checkpoints = [];
+  await replay.waitFor();
+  await setMaterial(page, 0, input);
+  const record = async (name, phase) => {
+    assert.equal(await stage.getAttribute("data-assembly-phase"), phase);
+    await capture(name);
+    assert.equal(await stage.getAttribute("data-assembly-phase"), phase);
+    checkpoints.push({ name, phase, motion: await stage.getAttribute("data-motion") });
+  };
+  await record("packed", "packed");
+  const run = Number(await stage.getAttribute("data-assembly-run"))+1;
+  await activate(replay);
+  for (const phase of ["releasing", "extending", "raising"]) {
+    const checkpoint = page.locator(`[data-stage][data-assembly-run="${run}"][data-assembly-checkpoint="${phase}"]`);
+    await checkpoint.waitFor();
+    await activate(pause);
+    try {
+      assert.equal(await pause.getAttribute("aria-pressed"), "true");
+      await record(phase, phase);
+    } finally {
+      await activate(pause);
+    }
+  }
+  await page.locator(`[data-stage][data-assembly-run="${run}"][data-assembly-phase="complete"][data-assembly-view="manual"]`).waitFor();
+  await record("afloat", "complete");
+  assert.equal(await stage.getAttribute("data-material"), "2");
+  return { input, run, checkpoints };
+}
+
 export async function testFlow(page, lang) {
   const expected = languages[lang];
   assert.ok(expected, `Unsupported language: ${lang}`);

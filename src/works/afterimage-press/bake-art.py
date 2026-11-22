@@ -1,8 +1,4 @@
-"""Bake the still ink proofs and the three original specimen posters.
-
-Run from the repository root with Pillow, NumPy and resvg-py. The high
-density impressions are sampled directly by the live WebGPU compositor.
-"""
+"""Bake the two secondary catalogue posters and the padded squeegee material."""
 from io import BytesIO
 from pathlib import Path
 
@@ -18,60 +14,6 @@ COBALT = np.array([20, 58, 214])
 ORANGE = np.array([255, 81, 29])
 OVERPRINT = np.array([49, 27, 69])
 DARK = (24, 25, 36)
-
-
-def smooth(low, high, value):
-    amount = np.clip((value - low) / (high - low), 0, 1)
-    return amount * amount * (3 - 2 * amount)
-
-
-def stencil(width, height, mode=0, ink_edge=1):
-    u = (np.arange(width) + .5)[None, :] / width
-    v = (np.arange(height) + .5)[:, None] / height
-    image_v = (v - .5) / .92 + .5
-    bx, by = u - .493, image_v - .503
-    ox, oy = u - .510, image_v - .500
-    face = bx - by * .14
-    cabinet = np.maximum(np.maximum(-face - .238, face - .238), np.abs(by) - .413)
-    driver = np.hypot((bx + .057) * 1.94, by - .035)
-    cone = np.maximum(driver - .264, .222 - driver)
-    ring = np.maximum(driver - .2, .181 - driver)
-    core = driver - .109
-    vents = np.maximum(np.minimum(np.abs(by + .318 + .27 * bx), np.abs(by + .365 + .27 * bx)) - .012,
-                       np.abs(face + .086) - .126)
-    studs = np.minimum(np.hypot((bx - .165) * 1.94, by + .3),
-                       np.hypot((bx + .156) * 1.94, by - .33)) - .031
-    blue = np.minimum(np.maximum(cabinet, -np.minimum(driver - .284, np.minimum(vents, studs))),
-                      np.minimum(np.minimum(cone, ring), core))
-
-    x = ox + .1 * oy
-    bell = .16 + .66 * (x + .22) + .29 * (x + .22) ** 2
-    fold = np.abs(oy + .038 - .15 * x)
-    horn = np.maximum(np.maximum(-.238 - x, x - .205), fold - bell)
-    mouth = np.hypot((ox - .200) * 4.25, oy + .008)
-    flare = np.maximum(mouth - .44, .35 - mouth)
-    lip = np.maximum(mouth - .312, .295 - mouth)
-    channel = np.maximum(np.maximum(fold - bell * .13, -.148 - x), x - .075)
-    throat = np.hypot((ox + .232) * 2.04, oy + .072)
-    orange = np.minimum(np.minimum(np.maximum(horn, -np.minimum(mouth - .35, channel)), flare),
-                        np.minimum(lip, np.maximum(throat - .138, .059 - throat)))
-
-    def screened(distance, x, y, slope, start):
-        spot = np.hypot((x * 107 + slope * y * 55) % 1 - .5, (y * 55) % 1 - .5)
-        cell = max(107 / width, 55 / (.92 * height))
-        aa = cell * .60 + .025
-        strength = (1 - smooth(.24, .49, cell)) * .48
-        edge = max(1.15 / width, .0008)
-        return (1 - smooth(-edge, edge, distance)) * (
-            1 - strength * (1 - smooth(.17 - aa, .17 + aa, spot)) * smooth(start, .33, y)
-        )
-
-    a = screened(blue, bx, by, .5, .11)[:, :, None] if mode != 2 else 0
-    b = screened(orange, ox, oy, -.5, .08)[:, :, None] if mode != 1 else 0
-    if mode == 0:
-        b *= (1 - smooth(ink_edge - .5 / height, ink_edge + .5 / height, v))[:, :, None]
-    rgb = PAPER * (1 - a) * (1 - b) + COBALT * a * (1 - b) + ORANGE * b * (1 - a) + OVERPRINT * a * b
-    return Image.fromarray(np.rint(rgb).astype(np.uint8))
 
 
 def ink(color):
@@ -140,12 +82,7 @@ def specimen(file, code, title, date, venue, art):
     image.save(OUT / file, quality=90, method=6)
 
 
-def bake_stage_textures():
-    bed = (OUT / "press-bed.svg").read_text(encoding="utf-8")
-    bed = bed.replace('width="1000" height="500"', 'width="2000" height="1000"', 1)
-    plate = Image.open(BytesIO(bytes(svg_to_bytes(svg_string=bed)))).convert("RGB")
-    plate.save(OUT / "bed-texture.webp", lossless=True, method=6)
-
+def bake_squeegee():
     handle = (OUT / "squeegee.svg").read_text(encoding="utf-8").split(">", 1)[1].rsplit("</svg>", 1)[0]
     # Padding around the same tool lets the blade cast a contact shadow.
     tool = f"""<svg xmlns="http://www.w3.org/2000/svg" width="2120" height="340" viewBox="-30 -20 1060 170">
@@ -161,35 +98,9 @@ def bake_stage_textures():
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    bake_stage_textures()
-    for index, name in enumerate(("both", "cobalt", "orange")):
-        stencil(2000, 1000, mode=index).save(OUT / f"plate-{name}.webp", lossless=True, method=6)
-    specimen("feedback.webp", "01", ["FEEDBACK", "ASSEMBLY"], "14 NOV / 20:00", "LIVE SET  /  LOADING BAY B", stencil(1160, 878, 0))
+    bake_squeegee()
     specimen("orbital.webp", "02", ["ORBITAL", "RELAY"], "21 NOV / 19:30", "ELECTRONIC SETS  /  ROOM 04", second_art())
     specimen("side-b.webp", "03", ["SIDE B", "SOCIAL"], "28 NOV / 17:00", "RECORD SWAP  /  SOUTH ARCADE", third_art())
-
-    image = Image.new("RGB", (1200, 800), (23, 24, 34))
-    draw = ImageDraw.Draw(image)
-    accent = ink(ORANGE)
-    text(draw, (45, 58), "AFTERIMAGE", 57, fill=ink(PAPER))
-    text(draw, (45, 125), "PRESS", 57, fill=ink(PAPER))
-    draw.line((46, 212, 319, 212), fill=accent, width=2)
-    text(draw, (46, 238), "TWO-INK", 52, fill=accent)
-    text(draw, (46, 289), "GIG POSTERS", 52, fill=accent)
-    text(draw, (46, 696), "A3 / A2", 27, MONO, fill=ink(PAPER))
-    text(draw, (46, 739), "25–250 COPIES", 20, MONO, fill=ink(PAPER))
-
-    draw.rectangle((352, 37, 1155, 761), fill=ink(PAPER))
-    draw.line((379, 80, 1128, 80), fill=DARK, width=2)
-    text(draw, (379, 54), "AP–01     /     LIVE SET     /     LOADING BAY B", 16, MONO)
-    text(draw, (379, 100), "FEEDBACK ASSEMBLY", 97)
-    image.paste(stencil(748, 369), (379, 233))
-    draw.line((379, 632, 1128, 632), fill=DARK, width=2)
-    text(draw, (379, 654), "14 NOV 2026", 74)
-    text(draw, (1128, 722), "20:00   /   TAIPEI", 17, MONO, anchor="rt")
-    register(draw, 1113, 666)
-    image.save(OUT / "cover.webp", quality=92, method=6)
-
 
 if __name__ == "__main__":
     main()
