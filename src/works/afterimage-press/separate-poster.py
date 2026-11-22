@@ -8,7 +8,7 @@ from io import BytesIO
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 from resvg_py import svg_to_bytes
 
 OUT = Path("public/media/afterimage-press")
@@ -90,15 +90,7 @@ def bake_proofs(origin, packed):
 
     poster = Image.fromarray(origin.astype(np.uint8))
     poster.resize((1200, 800), Image.Resampling.LANCZOS).save(OUT / "cover.webp", quality=83, method=6)
-    sample = Image.new("RGB", (640, 820), "#1e1924")
-    sample.paste(poster.resize((590, 393), Image.Resampling.LANCZOS), (25, 214))
-    draw = ImageDraw.Draw(sample)
-    font = "public/fonts/night-barlow-condensed-extrabold.ttf"
-    draw.text((25, 32), "FEEDBACK", font=ImageFont.truetype(font, 94), fill="#f7e1c3")
-    draw.text((25, 108), "ASSEMBLY", font=ImageFont.truetype(font, 94), fill="#f7e1c3")
-    draw.text((25, 655), "14 NOV 2026", font=ImageFont.truetype(font, 76), fill="#f7e1c3")
-    draw.text((25, 738), "AP–01  /  LOADING BAY B", font=ImageFont.truetype(font, 36), fill="#f7e1c3")
-    sample.save(OUT / "feedback.webp", quality=87, method=6)
+    poster.resize((640, 427), Image.Resampling.LANCZOS).save(OUT / "feedback.webp", quality=87, method=6)
 
 
 def bake_bed():
