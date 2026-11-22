@@ -143,6 +143,7 @@ let plate = 0;
 let elapsed = 0;
 let previousFrame = null;
 let frame = 0;
+let pausePresentation = 0;
 let phase = "still";
 let rendered = false;
 let paused = false;
@@ -225,6 +226,24 @@ function stopClock() {
   previousFrame = null;
 }
 
+function publishMotion(next) {
+  cancelAnimationFrame(pausePresentation);
+  pausePresentation = 0;
+  if (next !== "paused" || !rendered || document.hidden) {
+    stage.dataset.motion = next;
+    return;
+  }
+  // The shared motion controller has already locked the GPU frame and
+  // stopped the stroke clock. Let the composed frame reach the screen
+  // before announcing that the pause is complete.
+  pausePresentation = requestAnimationFrame(() => {
+    pausePresentation = requestAnimationFrame(() => {
+      pausePresentation = 0;
+      stage.dataset.motion = "paused";
+    });
+  });
+}
+
 const motion = createMotion({
   supported,
   initialSettings: printSettings(),
@@ -246,7 +265,6 @@ const motion = createMotion({
   applySettings: (renderer, next) => shader.updatePress(renderer, next),
   renderState(next) {
     phase = next;
-    stage.dataset.motion = phase;
     if (phase === "running") {
       rendered = true;
       stage.setAttribute("data-rendered", "");
@@ -262,6 +280,7 @@ const motion = createMotion({
     repeat.textContent = isStatic() ? (staticStart ? copy.showPrinted : copy.showStart) : copy.reprint;
     status.textContent = copy[phase];
     updateStage();
+    publishMotion(next);
   },
 });
 
