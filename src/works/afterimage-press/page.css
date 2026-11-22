@@ -110,35 +110,21 @@ body { background: var(--dark); }
 .stage {
   position: relative;
   isolation: isolate;
-  /* Keep registration, paper and ink in the same compositor layer while paused. */
-  transform: translateZ(0);
   aspect-ratio: 2 / 1;
   overflow: hidden;
-  background:
-    linear-gradient(151deg, #63574f38, transparent 60%),
-    repeating-linear-gradient(0deg, #181820 0 1px, #25252d 1px 8px);
-}
-.stage::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 14% 1.4% 4%;
-  background: linear-gradient(170deg, #4c4651, #312f39 62%, #242630);
-  border: 1px solid #625962;
-  box-shadow: inset 0 0 0 2px #ffffff0b, 0 .25rem .5rem #100f17a6;
+  background: #25252d;
 }
 .press-sheet {
   position: absolute;
   inset: 20.5% 6.5% 11.5%;
   background: var(--paper);
-  box-shadow: 1px 1px #a4937b, 0 .12rem .46rem #0c0b156e, 0 .4rem .8rem #0b0a1280;
 }
 .press-sheet img, .press-sheet canvas { position: absolute; inset: 0; }
 .press-sheet img { width: 100%; height: 100%; }
 .press-sheet canvas { display: block; visibility: hidden; pointer-events: none; }
 /* Initial and recovery measurements use the bounded inline canvas dimensions.
    Stretch only after a frame is available so the paper stays full-size. */
-.stage[data-rendered] canvas {
+.stage[data-rendered] .press-sheet canvas {
   width: 100% !important;
   height: 100% !important;
   visibility: visible;
@@ -169,12 +155,9 @@ body { background: var(--dark); }
   inset: 0;
   width: 100%;
   height: 100%;
-  fill: none;
-  stroke: #d6cabb;
-  stroke-width: 1;
   pointer-events: none;
 }
-.registration .grips { stroke: #9b9291; stroke-width: 2; }
+.frozen-frame { position: absolute; z-index: 1; pointer-events: none; }
 .squeegee {
   position: absolute;
   inset-inline-start: 5%;

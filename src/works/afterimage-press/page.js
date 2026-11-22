@@ -1,3 +1,4 @@
+import { freezePress } from "./freeze.js";
 import { createMotion, observeMotion } from "../../shared/motion.js";
 import { bladeEdge, initialEdge, liftStart, pullStart, sheetHeight, strokeDuration } from "./stroke.js";
 
@@ -128,6 +129,7 @@ find("[data-receipt]").hidden = false;
 
 const stage = find("[data-stage]");
 const canvas = stage.querySelector("canvas");
+const bed = stage.querySelector(".registration");
 const inkDetail = stage.querySelector(".ink-detail");
 const tool = stage.querySelector(".squeegee");
 const pause = find("[data-pause]");
@@ -143,7 +145,7 @@ let plate = 0;
 let elapsed = 0;
 let previousFrame = null;
 let frame = 0;
-let pausePresentation = 0;
+let frozenFrame = null;
 let phase = "still";
 let rendered = false;
 let paused = false;
@@ -226,22 +228,32 @@ function stopClock() {
   previousFrame = null;
 }
 
-function publishMotion(next) {
-  cancelAnimationFrame(pausePresentation);
-  pausePresentation = 0;
-  if (next !== "paused" || !rendered || document.hidden) {
-    stage.dataset.motion = next;
-    return;
+function restoreLiveFrame() {
+  if (!frozenFrame) return;
+  inkDetail.before(canvas);
+  frozenFrame.remove();
+  frozenFrame = null;
+}
+
+function presentFrame(next) {
+  if (next === "paused" && rendered) {
+    // The GPU queue is locked by createMotion before this read. Retain the
+    // detached live canvas and timeline for resume, with one canvas onscreen.
+    try {
+      frozenFrame = freezePress({
+        stage, bed, canvas, inkDetail, tool, plate, coverage: printSettings().inkEdge,
+      });
+    } catch {
+      // A read can fail during device loss. Leave the locked canvas in place
+      // so the normal recovery path can present its fallback.
+      frozenFrame = null;
+    }
+    if (frozenFrame) {
+      canvas.remove();
+      stage.append(frozenFrame);
+    }
   }
-  // The shared motion controller has already locked the GPU frame and
-  // stopped the stroke clock. Let the composed frame reach the screen
-  // before announcing that the pause is complete.
-  pausePresentation = requestAnimationFrame(() => {
-    pausePresentation = requestAnimationFrame(() => {
-      pausePresentation = 0;
-      stage.dataset.motion = "paused";
-    });
-  });
+  stage.dataset.motion = next;
 }
 
 const motion = createMotion({
@@ -254,6 +266,7 @@ const motion = createMotion({
       ...options,
       onError() {
         if (!options.signal.aborted) {
+          restoreLiveFrame();
           rendered = false;
           stage.removeAttribute("data-rendered");
         }
@@ -265,6 +278,7 @@ const motion = createMotion({
   applySettings: (renderer, next) => shader.updatePress(renderer, next),
   renderState(next) {
     phase = next;
+    if (phase !== "paused") restoreLiveFrame();
     if (phase === "running") {
       rendered = true;
       stage.setAttribute("data-rendered", "");
@@ -280,7 +294,7 @@ const motion = createMotion({
     repeat.textContent = isStatic() ? (staticStart ? copy.showPrinted : copy.showStart) : copy.reprint;
     status.textContent = copy[phase];
     updateStage();
-    publishMotion(next);
+    presentFrame(next);
   },
 });
 

@@ -176,6 +176,8 @@ async function probePrint(page, input, capture, includeStroke) {
         run: Number(scene.dataset.printRun),
         blade: Number(tool.style.getPropertyValue("--blade")),
         toolVisible: getComputedStyle(tool).visibility === "visible",
+        frozen: Boolean(scene.querySelector("canvas.frozen-frame")),
+        canvasCount: scene.querySelectorAll("canvas").length,
         sheet: localBox(scene.querySelector(".press-sheet")),
         registration: localBox(scene.querySelector(".registration")),
       };
@@ -189,6 +191,7 @@ async function probePrint(page, input, capture, includeStroke) {
   assert.equal(before.step, "ready");
   assert.equal(before.material, 0);
   assert.equal(before.toolVisible, true);
+  assert.equal(before.frozen, true);
   assert.ok(before.blade < .21);
   let mid;
   if (includeStroke) await armCheckpoint(run, "passing");
@@ -199,6 +202,7 @@ async function probePrint(page, input, capture, includeStroke) {
     assert.equal(mid.run, run);
     assert.equal(mid.step, "passing");
     assert.equal(mid.toolVisible, true);
+    assert.equal(mid.frozen, true);
     assert.ok(mid.blade > before.blade);
     await resume();
   }
@@ -208,6 +212,7 @@ async function probePrint(page, input, capture, includeStroke) {
   }, run, { timeout: 8000 });
   const after = await snapshot("after");
   assert.equal(after.toolVisible, false);
+  assert.equal(after.frozen, false);
   assert.equal(after.step, "complete");
   await page.waitForTimeout(250);
   assert.equal(await stage.getAttribute("data-hero-state"), "printed");
@@ -216,8 +221,10 @@ async function probePrint(page, input, capture, includeStroke) {
   const reset = await snapshot("reset");
   assert.equal(reset.run, replayRun);
   assert.equal(reset.toolVisible, true);
+  assert.equal(reset.frozen, true);
   assert.ok(reset.blade < .21);
   for (const sample of [mid, after, reset].filter(Boolean)) {
+    assert.equal(sample.canvasCount, 1);
     assert.deepEqual(sample.sheet, before.sheet);
     assert.deepEqual(sample.registration, before.registration);
   }
