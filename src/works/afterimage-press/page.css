@@ -141,7 +141,24 @@ body { background: var(--dark); }
   height: 100% !important;
   visibility: visible;
 }
-.stage[data-rendered] .press-sheet img { visibility: hidden; }
+.stage[data-rendered] [data-proof] { visibility: hidden; }
+.ink-detail {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ink-detail img { visibility: hidden; }
+.stage[data-rendered] [data-ink] { visibility: hidden; }
+.stage[data-rendered][data-material="0"] [data-ink="0"] {
+  visibility: visible;
+  clip-path: inset(0 0 calc(100% - var(--ink-cut, 0%)) 0);
+}
+.stage[data-rendered][data-material="0"] [data-ink="1"] {
+  visibility: visible;
+  clip-path: inset(var(--ink-cut, 0%) 0 0);
+}
+.stage[data-rendered][data-material="1"] [data-ink="1"],
+.stage[data-rendered][data-material="2"] [data-ink="2"] { visibility: visible; }
 .registration {
   position: absolute;
   inset: 0;

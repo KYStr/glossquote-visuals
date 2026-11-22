@@ -121,15 +121,45 @@ async function probePrint(page, input, capture, includeStroke) {
   const repeat = page.locator("[data-reprint]");
   await stage.scrollIntoViewIfNeeded();
   await page.waitForFunction(() => document.querySelector("[data-stage]")?.dataset.motion === "running");
+  const pause = page.locator("[data-pause]");
+  // Arm before the real input so a remote screenshot can take longer than
+  // the ready interval. Use the site's pause control after allowing the new
+  // ink uniforms and blade position to reach the compositor.
+  async function armCheckpoint(run, step) {
+    await page.evaluate(({ run, step }) => {
+      const stage = document.querySelector("[data-stage]");
+      const button = document.querySelector("[data-pause]");
+      const tool = stage.querySelector(".squeegee");
+      const deadline = performance.now() + 7_500;
+      function tick(stableFrames) {
+        const edge = Number(tool.style.getPropertyValue("--blade"));
+        const reached = stage.dataset.printRun === String(run) && stage.dataset.printStep === step &&
+          (step !== "passing" || (edge >= .47 && edge < .84)) && stage.dataset.motion === "running";
+        if (reached && stableFrames >= 2) {
+          button.click();
+          return;
+        }
+        if (performance.now() < deadline) requestAnimationFrame(() => tick(reached ? stableFrames + 1 : 0));
+      }
+      requestAnimationFrame(() => tick(0));
+    }, { run, step });
+  }
+  async function waitCheckpoint(run, step) {
+    await page.waitForFunction(({ run, step }) => {
+      const stage = document.querySelector("[data-stage]");
+      return stage.dataset.printRun === String(run) && stage.dataset.printStep === step && stage.dataset.motion === "paused";
+    }, { run, step }, { timeout: 8000 });
+  }
+  const resume = () => pause.evaluate(button => button.click());
   const trigger = async () => {
     const nextRun = Number(await stage.getAttribute("data-print-run")) + 1;
-    if (input === "keyboard") await repeat.press("Enter");
-    else if (input === "touch") await repeat.tap();
+    await armCheckpoint(nextRun, "ready");
+    if (input === "keyboard") {
+      await repeat.evaluate(button => button.focus({ preventScroll: true }));
+      await page.keyboard.press("Enter");
+    } else if (input === "touch") await repeat.tap();
     else await repeat.click();
-    await page.waitForFunction(run => {
-      const stage = document.querySelector("[data-stage]");
-      return stage.dataset.printRun === String(run) && stage.dataset.printStep === "ready";
-    }, nextRun, { timeout: 8000 });
+    await waitCheckpoint(nextRun, "ready");
     return nextRun;
   };
   async function snapshot(name) {
@@ -161,18 +191,16 @@ async function probePrint(page, input, capture, includeStroke) {
   assert.equal(before.toolVisible, true);
   assert.ok(before.blade < .21);
   let mid;
+  if (includeStroke) await armCheckpoint(run, "passing");
+  await resume();
   if (includeStroke) {
-    await page.waitForFunction(expectedRun => {
-      const stage = document.querySelector("[data-stage]");
-      const edge = Number(stage.querySelector(".squeegee").style.getPropertyValue("--blade"));
-      return stage.dataset.printRun === String(expectedRun) && stage.dataset.printStep === "passing" &&
-        edge >= .47 && edge < .84;
-    }, run, { timeout: 8000 });
+    await waitCheckpoint(run, "passing");
     mid = await snapshot("passing");
     assert.equal(mid.run, run);
     assert.equal(mid.step, "passing");
     assert.equal(mid.toolVisible, true);
     assert.ok(mid.blade > before.blade);
+    await resume();
   }
   await page.waitForFunction(expectedRun => {
     const stage = document.querySelector("[data-stage]");
@@ -193,6 +221,7 @@ async function probePrint(page, input, capture, includeStroke) {
     assert.deepEqual(sample.sheet, before.sheet);
     assert.deepEqual(sample.registration, before.registration);
   }
+  await resume();
   return { before, ...(mid && { mid }), after, reset };
 }
 
