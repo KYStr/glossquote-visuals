@@ -3,6 +3,9 @@ struct Frame {
   tide: vec4f,
 }
 @group(0) @binding(0) var<uniform> frame: Frame;
+@group(0) @binding(1) var resolvedHull: texture_2d<f32>;
+@group(0) @binding(2) var waterLayer: texture_2d<f32>;
+@group(0) @binding(3) var linearClamp: sampler;
 
 struct Surface {
   @builtin(position) position: vec4f,
@@ -31,6 +34,15 @@ struct Surface {
   let contact = exp(-1.85*reach*reach*reach*reach) * exp(-abs(surfaceLine+.061)*22.0);
   let reflected = contact*frame.tide.z*(.54+.46*sin(ripple*1.9+frame.tide.x));
   return vec4f(occlusion*blue+rim*vec3f(.28,.67,.76)+reflected*vec3f(.10,.075,.060)+grain*.014, 1);
+}
+
+@fragment fn composeFragment(surface: Surface) -> @location(0) vec4f {
+  let hull = textureLoad(resolvedHull, vec2i(surface.position.xy), 0);
+  let uv = surface.uv * vec2f(.5, -.5) + .5;
+  let water = textureSample(waterLayer, linearClamp, uv).rgb;
+  // Resolving opaque hull samples against transparent black gives premultiplied
+  // coverage. Composite it once, preserving partial-pixel edges.
+  return vec4f(hull.rgb + water * (1.0 - hull.a), 1);
 }
 
 struct Panel {

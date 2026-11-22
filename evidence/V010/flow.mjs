@@ -40,13 +40,10 @@ export async function setMaterial(page, state, input) {
     for (let i = 0; i < steps; i++) await page.keyboard.press("ArrowRight");
   }
   await stage.scrollIntoViewIfNeeded();
+  const pose = ["packed", "half", "complete"][state];
+  await page.locator(`[data-stage][data-assembly-view="manual"][data-assembly-phase="${pose}"]`).waitFor();
   assert.equal(await stage.getAttribute("data-material"), String(state));
   assert.equal(await target.isChecked(), true);
-  // Give the active renderer a presentation opportunity before the caller
-  // captures the newly selected state. The still path relies on the DOM.
-  if (await stage.getAttribute("data-motion") === "running") {
-    await stage.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-  }
   return { state, input, motion: await stage.getAttribute("data-motion") };
 }
 
@@ -54,9 +51,9 @@ export async function testHeroInteraction(page, input, capture) {
   assert.ok(["keyboard", "touch", "mouse"].includes(input));
   const stage = page.locator("[data-stage]");
   const replay = page.locator("[data-replay]");
-  await setMaterial(page, 0, input);
   await replay.waitFor();
   await stage.locator("canvas").waitFor({ state: "visible" });
+  await setMaterial(page, 0, input);
   const waitFor = (run, phase) => page.locator(`[data-stage][data-assembly-run="${run}"][data-assembly-phase="${phase}"]`).waitFor();
   const beforeRun = Number(await stage.getAttribute("data-assembly-run"));
   await waitFor(beforeRun, "packed");
