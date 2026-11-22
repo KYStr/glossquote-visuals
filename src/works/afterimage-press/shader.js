@@ -1,6 +1,6 @@
 import source from "./press.wgsl?raw";
 
-const textureNames = ["bed-texture.webp", "plate-cobalt.webp", "plate-both.webp", "plate-orange.webp", "tool-texture.webp"];
+const textureNames = ["bed-texture.webp", "ink-plates.webp", "plate-both.webp", "tool-texture.webp"];
 
 async function loadImage(file, base) {
   const image = new Image();
@@ -120,7 +120,8 @@ export async function initializePress(canvas, options) {
     lightTime += last === null ? 0 : Math.min((time - last) / 1000, .08);
     last = time;
     settings = onFrame(time) ?? settings;
-    uniforms.set([settings.plate, settings.edge, Number(settings.tool), lightTime * 1.2], 4);
+    const drawnPlate = settings.plate;
+    uniforms.set([drawnPlate, settings.edge, Number(settings.tool), lightTime * 1.2], 4);
     const { device, pipeline, group, buffer } = gpu;
     device.queue.writeBuffer(buffer, 0, uniforms);
     const encoder = device.createCommandEncoder();
@@ -137,6 +138,7 @@ export async function initializePress(canvas, options) {
     gpu.completion = device.queue.onSubmittedWorkDone().then(() => {
       if (state !== gpu || destroyed || signal.aborted) return;
       gpu.pending = false;
+      if (canvas.dataset.plate !== String(drawnPlate)) canvas.dataset.plate = String(drawnPlate);
       if (!gpu.ready) {
         gpu.ready = true;
         onReady();
