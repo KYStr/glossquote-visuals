@@ -15,7 +15,7 @@
   <meta property="og:description" content="Hard-shell folding kayaks for city travellers. Compare solo and tandem models, choose your equipment and download a carry list.">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/en/works/foldline/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/foldline/cover.webp">
-  <meta property="og:image:alt" content="An orange folding kayak on deep blue water, with both deck panels raised to expose the hinges and cockpit.">
+  <meta property="og:image:alt" content="An assembled orange solo kayak on deep blue water, with the cockpit and seat visible.">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <link rel="icon" href="%BASE_URL%media/foldline/mark.svg" type="image/svg+xml">
@@ -43,10 +43,10 @@
         <div class="hero-action"><p>Rigid panels hinge open into a one- or two-seat kayak you can carry by hand.</p><a class="button" href="#plan">Build your kit<span aria-hidden="true">↘</span></a></div>
       </header>
       <figure class="hull">
-        <div class="stage" data-stage data-motion="still" data-material="1" data-cycle-seconds="8">
+        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-assembly-phase="packed" data-assembly-run="0">
           <picture data-poster>
-            <source media="(max-width: 640px)" srcset="%BASE_URL%media/foldline/half-narrow.webp">
-            <img src="%BASE_URL%media/foldline/half-wide.webp" width="1440" height="643" fetchpriority="high" alt="An orange folding kayak on deep blue water, with both deck panels raised to expose the hinges and cockpit.">
+            <source media="(max-width: 640px)" srcset="%BASE_URL%media/foldline/pack-narrow.webp">
+            <img src="%BASE_URL%media/foldline/pack-wide.webp" width="1440" height="643" fetchpriority="high" alt="Orange panels folded into a case with straps and a handle.">
           </picture>
           <canvas aria-hidden="true"></canvas>
           <span class="stage-label">FL / SOLO 330</span>
@@ -55,12 +55,15 @@
           <span class="stage-caption">Solo hull assembly</span>
           <fieldset class="modes" data-instrument hidden>
             <legend class="visually-hidden">Solo hull assembly</legend>
-            <label><input name="fold-state" type="radio" value="0"><span>Packed</span></label>
-            <label><input name="fold-state" type="radio" value="1" checked><span>Half open</span></label>
+            <label><input name="fold-state" type="radio" value="0" checked><span>Packed</span></label>
+            <label><input name="fold-state" type="radio" value="1"><span>Half open</span></label>
             <label><input name="fold-state" type="radio" value="2"><span>Assembled</span></label>
           </fieldset>
-          <button type="button" class="pause" data-pause aria-pressed="false" hidden>Pause motion</button>
-          <span class="visually-hidden" role="status" data-motion-status>Still view of the half-open hull</span>
+          <div class="stage-actions">
+            <button type="button" class="replay" data-replay hidden>Replay assembly</button>
+            <button type="button" class="pause" data-pause aria-pressed="false" hidden>Pause motion</button>
+          </div>
+          <span class="visually-hidden" role="status" data-motion-status>Still view of the packed hull</span>
         </figcaption>
       </figure>
     </section>

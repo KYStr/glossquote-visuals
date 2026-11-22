@@ -1,10 +1,9 @@
-# V010 摺徑 FOLDLINE
+# V010 摺徑 FOLDLINE · M06
 
-- 兩語入口為 /works/foldline/ 與 /en/works/foldline/。主責整合 catalog、registry 和遠端驗收路由。
-- 查驗介面為 flow.mjs 的 setMaterial(page, state, input) 和 testFlow(page, lang)。三個材質狀態依序為攜行、半展、成船。流程檢查單／雙人、載重等值與超額、路線、件數、回改，以及下載檔名、位元組數和兩語原文。
-- 首屏 GPU 將船殼板面、前後甲板、座椅與水面分開著色，用深度緩衝區處理遮擋。船舷繞船底邊線立起，兩端甲板繞橫向鉸線轉動後扣合。開場從半展起算，約 2.75 秒完成成船，8 秒循環。明確選擇狀態後固定該組板面角度，保留小幅視角與水紋變化。
-- 原生 WebGPU 只載入一個活動畫布。沿用共享生命週期，進背景或離畫會停送幀。可見畫布的首次設備遺失會嘗試重建，重建時顯示靜態圖。三種靜態圖均從同一模型烘焙。無 GPU 與減少動態模式下仍可選擇靜態船身及產生裝備清單。無 JS 時可比較型錄、讀規格及下載空白表。
-- render-art.py 從同一幾何模型產生封面、首屏靜態圖、兩款船型與攜行示意。從 repo 根目錄執行，需要 Node.js、Python、NumPy 和 Pillow。1200 × 800 的 WebP 封面已隨來源附上。
-- 本地繁中字型沿用 M04 固定版 Noto Sans TC，採 V008 同一首排初始化腳本。V010 專用 WOFF2 由兩語切換與繁中 HTML/JS 字元製成，OFL 與字型同目錄。英文頁的中文語言切換同樣使用此字型；英文字標使用專案既有 Barlow Condensed。
-- 作者檢查通過 npm ci、npm run check、npm test（23 項）、兩語 scoped Vite 候選建置、CJK 字形完整性、封面格式與尺寸、0／1.5／3 秒幾何投影，以及無 WebGPU 的雙語 DOM 表單與下載內容模擬。含全部海報狀態、封面、型錄圖、字型與 lazy chunks 的保守 gzip 合計，繁中 438,011 bytes，英文 437,575 bytes。
-- 依裝置隔離規範，瀏覽器鍵盤／觸控、實際下載事件、GPU 取樣與效能、畫面和發布驗收由主責在遠端環境執行。作者端這些項目均未執行。
+- 兩語入口為 `/works/foldline/` 與 `/en/works/foldline/`。初次開頁顯示攜行包。鬆開固定帶後，四塊底板及其相連船舷展長，甲板與椅背升起，約 4.8 秒成船。船身停在成船位置，水面持續微動。可用「重播展開」再看一次，也可直接選「攜行／半展／成船」。
+- 板面、椅背、提環、扣具和座艙均使用一組固定拓撲。提環從兩條束帶的錨點立起，放鬆後向側邊放平。兩側硬板沿縱向船底邊線轉動，兩端保持同一組甲板幾何。鏡頭在底板展長時拉遠，讓小包與長船都保有足夠畫面空間。成船後的窄影與水面反光沿著橙紅船底。
+- `flow.mjs` 保留 `setMaterial(page, state, input)` 與 `testFlow(page, lang)`。`testHeroInteraction(page, input, capture)` 依序產生 `before`、`after`、`reset`，並回傳重播的逐段時間。`data-assembly-phase` 依序為 `packed` → `releasing` → `extending` → `raising` → `settling` → `complete`，每次重播會增加 `data-assembly-run`。手動半展為 `half`，手動攜行和成船沿用各自的起訖名稱。
+- 從 repo 根目錄執行 `python src/works/foldline/render-art.py` 可重建封面、三種姿態的寬窄海報、兩款型錄圖及攜行圖，需要 Node.js、Python、NumPy 與 Pillow。帶輸出目錄參數可另烘焙桌機與手機比例的 0、0.8、1.5、2.25、2.65、3、3.7 和 4.8 秒影格，例如 `python src/works/foldline/render-art.py .runs/m06-foldline-frames`。
+- 減少動態或 GPU 不可用時可選用三種靜態姿態並完成選型下載。無 JavaScript 時保留攜行海報、雙語型錄和空白規劃表。動態版暫停保留當前影格，離畫及背景頁面停送幀，首次裝置遺失會嘗試重建。繁中與英語頁的中文切換文字沿用固定版 Noto Sans TC 和本地首排腳本。
+- 作者驗證涵蓋 `npm ci`、`npm run check`、`npm test`（26 項）及 `npm run build`。建置輸出回檢計入 lazy chunks 後，繁中 353,610 bytes、英文 243,615 bytes gzip。另檢查 1200 × 800 的 WebP 封面、繁中字形、四種長寬比各 289 個幾何時點，以及無 WebGPU 的雙語 DOM 選擇、載重與下載內容。桌機和手機比例的靜態 160 px 無字影格由作者回看。
+- 真實 WebGPU 首次渲染、畫面提交幀距、鍵盤／觸控與瀏覽器實際下載事件留待隔離環境獨立驗收。
