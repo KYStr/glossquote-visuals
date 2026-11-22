@@ -111,7 +111,7 @@ export async function initializePress(canvas, options) {
         ],
       });
       context.configure({ device, format, alphaMode: "opaque", colorSpace: "srgb" });
-      return { device, pipeline, buffer, group, pending: false, ready: false, completion: Promise.resolve() };
+      return { device, pipeline, buffer, group, pending: 0, ready: false, completion: Promise.resolve() };
     } catch (error) {
       device.destroy();
       throw error;
@@ -151,8 +151,9 @@ export async function initializePress(canvas, options) {
     raf = 0;
     const gpu = state;
     if (!gpu || stopped || destroyed || signal.aborted) return;
-    // Bound outstanding GPU work on software adapters as well as real GPUs.
-    if (gpu.pending || (last !== null && time - last < 15) || (resizePending && !resize())) {
+    // One queued frame behind the active frame avoids missing an entire
+    // refresh while the adapter finishes. Never let the queue grow further.
+    if (gpu.pending >= 2 || (last !== null && time - last < 15) || (resizePending && !resize())) {
       schedule();
       return;
     }
@@ -175,16 +176,16 @@ export async function initializePress(canvas, options) {
     pass.draw(3);
     pass.end();
     device.queue.submit([encoder.finish()]);
-    gpu.pending = true;
+    gpu.pending++;
     gpu.completion = device.queue.onSubmittedWorkDone().then(() => {
       if (state !== gpu || destroyed || signal.aborted) return;
-      gpu.pending = false;
+      gpu.pending--;
       if (canvas.dataset.plate !== String(drawnPlate)) canvas.dataset.plate = String(drawnPlate);
       if (!gpu.ready) {
         gpu.ready = true;
         onReady();
       }
-    }, () => { gpu.pending = false; });
+    }, () => { gpu.pending--; });
     schedule();
   }
 
