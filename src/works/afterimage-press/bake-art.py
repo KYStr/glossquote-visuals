@@ -23,7 +23,7 @@ def smooth(low, high, value):
     return amount * amount * (3 - 2 * amount)
 
 
-def stencil(width, height, mode=0, ink_edge=1):
+def stencil(width, height, mode=0, ink_edge=1, detail=False):
     u = (np.arange(width) + .5)[None, :] / width
     v = (np.arange(height) + .5)[:, None] / height
     image_v = (v - .5) / .92 + .5
@@ -56,7 +56,7 @@ def stencil(width, height, mode=0, ink_edge=1):
 
     def screened(distance, x, y, slope, start):
         spot = np.hypot((x * 107 + slope * y * 55) % 1 - .5, (y * 55) % 1 - .5)
-        cell = max(107 / width, 55 / height)
+        cell = max(107 / width, 55 / (.92 * height))
         aa = cell * .60 + .025
         strength = (1 - smooth(.24, .49, cell)) * .48
         edge = max(1.15 / width, .0008)
@@ -69,7 +69,21 @@ def stencil(width, height, mode=0, ink_edge=1):
     if mode == 0:
         b *= (1 - smooth(ink_edge - .5 / height, ink_edge + .5 / height, v))[:, :, None]
     rgb = PAPER * (1 - a) * (1 - b) + COBALT * a * (1 - b) + ORANGE * b * (1 - a) + OVERPRINT * a * b
-    return Image.fromarray(np.rint(rgb).astype(np.uint8))
+    image = Image.fromarray(np.rint(rgb).astype(np.uint8))
+    if detail:
+        # Preserve opaque, full-resolution detail across contours and screens.
+        # Feather onto the GPU's flat color and softly changing bare paper.
+        def detail_mask(distance, height_from_center, screen_start):
+            edge_mask = 1 - smooth(.015, .038, np.abs(distance))
+            screen_mask = smooth(screen_start - .035, screen_start, height_from_center)
+            screen_mask = screen_mask * (1 - smooth(-.008, .035, distance))
+            return np.maximum(edge_mask, screen_mask)
+
+        blue_detail = detail_mask(blue, by, .11) if mode != 2 else 0
+        orange_detail = detail_mask(orange, oy, .08) if mode != 1 else 0
+        alpha = np.maximum(blue_detail, orange_detail) * smooth(.002, .02, v) * smooth(.002, .02, 1 - v)
+        image.putalpha(Image.fromarray(np.rint(255 * alpha).astype(np.uint8)))
+    return image
 
 
 def ink(color):
@@ -142,6 +156,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for index, name in enumerate(("both", "cobalt", "orange")):
         stencil(1200, 600, mode=index).save(OUT / f"plate-{name}.webp", quality=93, method=6)
+        stencil(2000, 1000, mode=index, detail=True).save(OUT / f"detail-{name}.webp", lossless=True, method=6)
     specimen("feedback.webp", "01", ["FEEDBACK", "ASSEMBLY"], "14 NOV / 20:00", "LIVE SET  /  LOADING BAY B", stencil(1160, 878, 0))
     specimen("orbital.webp", "02", ["ORBITAL", "RELAY"], "21 NOV / 19:30", "ELECTRONIC SETS  /  ROOM 04", second_art())
     specimen("side-b.webp", "03", ["SIDE B", "SOCIAL"], "28 NOV / 17:00", "RECORD SWAP  /  SOUTH ARCADE", third_art())

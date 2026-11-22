@@ -128,6 +128,7 @@ find("[data-receipt]").hidden = false;
 
 const stage = find("[data-stage]");
 const canvas = stage.querySelector("canvas");
+const inkDetail = stage.querySelector(".ink-detail");
 const tool = stage.querySelector(".squeegee");
 const pause = find("[data-pause]");
 const repeat = find("[data-reprint]");
@@ -180,6 +181,7 @@ function updateStage() {
   // During WebGPU initialization and recovery, keep the static first proof.
   const edge = bladeEdge(rendered ? progress : 0);
   tool.style.setProperty("--blade", String(edge));
+  inkDetail.style.setProperty("--ink-cut", `${inkCoverage(edge) * 100}%`);
 }
 
 async function loadStill(file, alt, index) {
@@ -191,15 +193,19 @@ async function loadStill(file, alt, index) {
   proofs[index] = image;
 }
 
+function inkCoverage(edge) {
+  return Math.max(0, Math.min(1, (edge - initialEdge) / sheetHeight));
+}
+
 function printSettings() {
   const edge = bladeEdge(elapsed / strokeDuration);
-  return { plate, inkEdge: Math.max(0, Math.min(1, (edge - initialEdge) / sheetHeight)) };
+  return { plate, inkEdge: inkCoverage(edge) };
 }
 
 function draw(time) {
   frame = 0;
   if (phase !== "running" || plate !== 0) return;
-  const increment = previousFrame === null ? 0 : time - previousFrame;
+  const increment = previousFrame === null ? 0 : Math.min(time - previousFrame, 80);
   previousFrame = time;
   elapsed = Math.min(strokeDuration, elapsed + increment);
   motion.setSettings(printSettings());
@@ -293,6 +299,7 @@ repeat.addEventListener("click", () => {
     elapsed = strokeDuration;
   } else {
     elapsed = 0;
+    stage.scrollIntoView({ block: "nearest", behavior: "instant" });
   }
   motion.setSettings(printSettings());
   if (paused && !isStatic()) setPause(false);
