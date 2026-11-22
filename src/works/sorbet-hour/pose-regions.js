@@ -28,8 +28,8 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0) {
   const arrive = ramp(0.22, 1.33, time);
   const insert = ramp(1.32, 1.91, time);
   const travel = ramp(1.94, 3.56, time);
-  const dx = (0.33 - contactX) * travel;
-  const dy = 0.215 * travel + 0.061 * Math.sin(travel * Math.PI);
+  const dx = (0.38 - contactX) * travel;
+  const dy = 0.330 * travel + 0.061 * Math.sin(travel * Math.PI);
   const dz = (-0.112 - contactZ) * travel;
   const rise = projectY(dy, dz);
 
@@ -41,8 +41,8 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0) {
   }
   if (time > 1.23 && time < 2.77) {
     // The pressure and recoil only reach this strip of the main mold.
-    cover(Math.max(contactX - 0.320, -0.617), -0.290,
-      Math.min(contactX + 0.320, 0.333), 0.580);
+    cover(Math.max(contactX - 0.245, -0.617), -0.290,
+      Math.min(contactX + 0.245, 0.333), 0.580);
   }
   if (time >= 1.94) {
     cover(contactX - 0.211, Math.max(-0.262, opening - 0.278),
@@ -54,7 +54,8 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0) {
   if (time > 0.22) {
     const bowlX = contactX + 0.035 + mix(0.57, 0.048, arrive) - 0.048 * insert + dx - cutX * 0.26 * travel;
     const bowlZ = contactZ + 0.006 + mix(-0.21, -0.009, arrive) + 0.009 * insert + dz;
-    const bowlY = projectY(contactY - 0.145 + mix(0.33, 0.152, arrive) - 0.152 * insert + dy, bowlZ);
+    const press = ramp(1.23, 1.66, time) * (1 - ramp(1.82, 2.42, time));
+    const bowlY = projectY(contactY - 0.145 + mix(0.33, 0.152, arrive) - 0.152 * insert + dy - 0.035 * press, bowlZ);
     const shadowY = projectY(0.018, bowlZ + 0.09);
     cover(bowlX + 0.045 - 0.303, shadowY - 0.125,
       bowlX + 0.045 + 0.303, shadowY + 0.125);
@@ -68,12 +69,13 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0) {
     const direction = Math.hypot(tx, ty * 1.52);
     const ax = tx / direction;
     const ay = ty * 1.52 / direction;
-    // The cutout carries the true contours. These four intervals cover its
-    // bowl, neck, stem and grip before conversion to disjoint raster tiles.
-    for (const [start, end, radius] of [[-0.228, 0.249, 0.138],
-      [0.249, 0.46, 0.14], [0.46, 0.76, 0.14], [0.76, 0.957, 0.14]]) {
-      cover(bowlX + start * ax - radius * Math.abs(ay), bowlY + start * ay - radius * Math.abs(ax),
-        bowlX + end * ax + radius * Math.abs(ay), bowlY + end * ay + radius * Math.abs(ax));
+    // Bound the visible atlas alpha in the spoon's projected frame. The bowl
+    // also covers its analytic edge taps. The shaft sits off the bowl axis.
+    for (const [start, end, lower, upper] of [[-0.228, 0.248, -0.14, 0.14],
+      [0.246, 0.436, -0.024, 0.056], [0.433, 0.733, -0.013, 0.065],
+      [0.729, 0.957, -0.039, 0.100]]) {
+      cover(bowlX + start * ax - upper * ay, bowlY + start * ay + lower * ax,
+        bowlX + end * ax - lower * ay, bowlY + end * ay + upper * ax);
     }
   }
 

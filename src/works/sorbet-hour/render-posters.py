@@ -9,6 +9,7 @@ import wgpu
 
 SOURCE = Path(__file__).resolve().parent
 MEDIA = SOURCE.parents[2] / "public/media/sorbet-hour"
+MOTION = (SOURCE / "jelly-motion.wgsl").read_text(encoding="utf-8")
 PAINT = (SOURCE / "jelly.wgsl").read_text(encoding="utf-8")
 POSITIONS = loads((SOURCE / "scoop-positions.json").read_text(encoding="utf-8"))
 FORMAT = "rgba8unorm-srgb"
@@ -48,6 +49,7 @@ fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {{
 fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {{
     return photoRGBA(origin, extent, uv).rgb;
 }}
+{MOTION}
 @vertex fn vertex(@builtin(vertex_index) i: u32) -> @builtin(position) vec4f {{
     let box = array<vec2f, 3>(vec2f(-1, -1), vec2f(3, -1), vec2f(-1, 3));
     return vec4f(box[i], 0, 1);
@@ -62,6 +64,7 @@ fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {{
     let cutX = params[1].z;
     let cutZ = params[2].x;
     let retained = u32(params[2].y);
+    let frame = jellyFrame(biteTime, cutX, cutZ);
 {PAINT}
 }}
 """)
@@ -120,6 +123,8 @@ if args.samples:
     for position in POSITIONS:
         save_sample(render(0, cut=position, bite=3.65), f"scoop-{position['name']}")
     save_sample(render(0, cut=POSITIONS[0], bite=1.70), "left-contact")
+    save_sample(render(0, cut=POSITIONS[2], bite=1.63, retained=1), "right-pressure-after-left")
+    save_sample(render(0, cut=POSITIONS[2], bite=2.43, retained=1), "right-rebound-after-left")
     save_sample(render(0, cut=POSITIONS[2], bite=1.70, retained=1), "right-contact-after-left")
     save_sample(render(0, cut=POSITIONS[2], bite=3.65, retained=1), "right-after-left")
     save_sample(render(0), "reset")

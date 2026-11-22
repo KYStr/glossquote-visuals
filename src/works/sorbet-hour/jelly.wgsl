@@ -10,25 +10,22 @@
   let cut = vec3f(cutX, 0.392, cutZ);
   let anchor = gelOrigin + vec3f(0.0, 0.018, 0.0);
   let contact = gelOrigin + cut;
-  let arrive = smoothstep(0.22, 1.33, biteTime);
-  let insert = smoothstep(1.32, 1.91, biteTime);
-  let travel = smoothstep(1.94, 3.56, biteTime);
-  let press = smoothstep(1.23, 1.66, biteTime) * (1.0 - smoothstep(1.82, 2.42, biteTime));
-  // While the bowl withdraws, the piece and bowl are translated together.
-  let pieceDestination = vec3f(0.33, contact.y + 0.215, -0.112);
-  let pieceShift = (pieceDestination - contact) * travel + vec3f(0.0, 0.061 * sin(travel * 3.14159265), 0.0);
-  let bowlContact = contact + vec3f(0.035, -0.145, 0.006);
-  let bowlStart = bowlContact + vec3f(0.57, 0.33, -0.21);
-  let bowlAbove = bowlContact + vec3f(0.048, 0.152, -0.009);
-  let bowlCenter = mix(bowlStart, bowlAbove, arrive) - (bowlAbove - bowlContact) * insert
-    + pieceShift - vec3f(cutX * 0.26 * travel, 0.0, 0.0);
+  let arrive = frame.timing.x;
+  let travel = frame.timing.y;
+  let press = frame.timing.z;
+  let rebound = frame.timing.w;
+  let pieceShift = frame.piece.xyz;
+  let bowlCenter = frame.bowl.xyz;
   let foot = 0.018 * 0.83516465 - gelOrigin.z * 0.55;
   let pieceCenter = gelOrigin + cut + pieceShift;
-  let turn = 0.68 * travel;
-  let turnSin = sin(turn);
-  let turnCos = cos(turn);
+  let turnSin = frame.piece.w;
+  let turnCos = frame.bowl.w;
   let pieceY = pieceCenter.y * 0.83516465 - pieceCenter.z * 0.55;
   let spoonVisible = hasBite && biteTime > 0.22;
+  let spoonUp = frame.spoonUp;
+  let spoonAxis = frame.spoonAxis;
+  let spoonAcross = vec2f(-spoonAxis.y, spoonAxis.x);
+  let bowlScreen = vec2f(bowlCenter.x, bowlCenter.y * 0.83516465 - bowlCenter.z * 0.55);
   let retainedCenters = array<vec3f, 3>(vec3f(-0.36, 0.392, -0.12),
     vec3f(0.0, 0.392, -0.309), vec3f(0.36, 0.392, -0.12));
   let offsets = array<vec2f, 4>(vec2f(0.0), vec2f(-0.35, -0.20),
@@ -44,10 +41,10 @@
       let screen = (sampleUv - vec2f(0.50, 0.56)) * vec2f(1.77, -1.18) - vec2f(0.25, -0.192);
       let origin = vec3f(screen.x, screen.y * 0.83516465, -screen.y * 0.55) - ray * 3.0;
       let floorPos = (origin + ray * ((0.018 - origin.y) / ray.y)).xz;
-      let dent = select(0.0, press * (1.0 - smoothstep(0.050, 0.315, abs(screen.x - contact.x))), hasBite);
-      let recoil = select(0.0, 0.068 * smoothstep(2.16, 2.43, biteTime)
-        * (1.0 - smoothstep(2.44, 2.77, biteTime)) * (1.0 - smoothstep(0.05, 0.32, abs(screen.x - contact.x))), hasBite);
-      let squash = -0.222 * dent + recoil;
+      let distanceToContact = abs(screen.x - contact.x);
+      let dent = select(0.0, press * (1.0 - smoothstep(0.050, 0.235, distanceToContact)), hasBite);
+      let recoil = select(0.0, rebound * (1.0 - smoothstep(0.05, 0.245, distanceToContact)), hasBite);
+      let squash = -0.310 * dent + recoil;
       let scale = vec3f(1.0, 1.0 + squash, 1.0 + 0.10 * dent);
       var gelRay = ray;
       var gelEye = origin - anchor + vec3f(0.0, 0.022, 0.0);
@@ -213,18 +210,9 @@
       var silver = vec3f(0.0);
       var metalCoverage = 0.0;
       if (spoonVisible) {
-        let tilt = mix(0.26, 0.06, insert) + 0.10 * travel;
-        let heading = normalize(vec3f(0.794, 0.0, -0.608));
-        let tangent = heading * sqrt(1.0 - tilt * tilt) + vec3f(0.0, tilt, 0.0);
-        let side = vec3f(-heading.z, 0.0, heading.x);
-        let up = cross(side, tangent);
-        let projectedTilt = tangent.y * 0.83516465 - tangent.z * 0.55;
-        let axis = normalize(vec2f(tangent.x, projectedTilt * 1.52));
-        let across = vec2f(-axis.y, axis.x);
-        let bowlScreen = vec2f(bowlCenter.x, bowlCenter.y * 0.83516465 - bowlCenter.z * 0.55);
         let tool = screen - bowlScreen;
-        let along = dot(tool, axis);
-        let vertical = dot(tool, across);
+        let along = dot(tool, spoonAxis);
+        let vertical = dot(tool, spoonAcross);
         let materialUv = vec2f((along + 0.228) / 1.185, 0.50 - vertical / 0.276);
         if (all(materialUv > vec2f(0.0)) && all(materialUv < vec2f(1.0))) {
           let steel = photoRGBA(vec2f(0.0, 1440.0), vec2f(1200.0, 256.0), materialUv);
@@ -232,10 +220,11 @@
           let bowlFloor = -0.069 * (1.0 - smoothstep(0.09, 1.03, ellipse));
           let stem = 0.104 * max(0.0, along - 0.19);
           let surfaceHeight = bowlFloor + stem;
-          if (steel.a > 0.0) {
-            silverAt = (surfaceHeight - dot(origin - bowlCenter, up)) / dot(ray, up);
+          // Discard isolated transparent resampling specks outside the cutout.
+          if (steel.a > 2.0 / 255.0) {
+            silverAt = (surfaceHeight - dot(origin - bowlCenter, spoonUp)) / dot(ray, spoonUp);
+            metalCoverage = steel.a;
           }
-          metalCoverage = steel.a;
           silver = steel.rgb * (0.92 + 0.08 * arrive + 0.09 * travel);
           if (tap == 0u && ((steel.a > 0.01 && steel.a < 0.995)
             || (along < 0.238 && abs(ellipse - 1.0) < 0.055))) {
@@ -270,8 +259,11 @@
         let bodyShadow = (1.0 - smoothstep(0.60, 1.18, castDistance)) * 0.46;
         let glowPoint = (floorPos - gelOrigin.xz - vec2f(0.22, 0.15)) / vec2f(0.43, 0.36);
         let glowDistance = dot(glowPoint, glowPoint);
-        let reflectedLight = (1.0 - smoothstep(0.10, 1.02, glowDistance))
-          * (0.35 + 0.65 * abs(sin(36.0 * glowPoint.x + 12.0 * glowPoint.y))) * 0.19;
+        var reflectedLight = 0.0;
+        if (glowDistance < 1.02) {
+          reflectedLight = (1.0 - smoothstep(0.10, 1.02, glowDistance))
+            * (0.35 + 0.65 * abs(sin(36.0 * glowPoint.x + 12.0 * glowPoint.y))) * 0.19;
+        }
         let floorHue = array<vec3f, 3>(vec3f(1.0, 0.411, 0.018), vec3f(0.64, 0.069, 0.135), vec3f(0.46, 0.61, 0.13))[j];
         color = color * (1.0 - max(contact, bodyShadow)) + floorHue * reflectedLight;
         if (spoonVisible) {
