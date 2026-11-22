@@ -246,7 +246,7 @@ function spotFromPointer(clientX) {
 function startBite(automatic = false) {
   autoEligible = false;
   delete stage.dataset.aiming;
-  const cut = positions[aim];
+  const cut = automatic ? positions.at(-1) : positions[aim];
   const committed = settings.retained | (["lift", "held"].includes(stage.dataset.bitePhase) ? bit(settings.cut) : 0);
   if (committed & bit(cut)) {
     scoopStatus.textContent = copy.occupied;

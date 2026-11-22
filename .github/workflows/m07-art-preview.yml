@@ -1,18 +1,28 @@
 name: M07 isolated art preview
+
 on:
   push:
-    branches: [codex/m07-art-preview]
+    branches: ['codex/m07-art-preview']
+  workflow_dispatch:
+
 permissions:
   contents: read
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
-  preview:
+  evidence:
     runs-on: windows-2025
-    timeout-minutes: 12
+    # Leave time to upload the last complete observations if the browser stalls.
+    timeout-minutes: 36
     strategy:
       fail-fast: false
       matrix:
-        work: [V009, V010]
+        work: [V008]
         lang: [zh-Hant, en]
+        viewport: [desktop]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -21,13 +31,31 @@ jobs:
         with:
           node-version-file: .node-version
           package-manager-cache: false
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node node_modules/vite/bin/vite.js build --mode candidate
+      - name: Validate and build candidate
+        run: |
+          set -o pipefail
+          mkdir -p .runs/m07-evidence
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run check
+          npm test
+          npm run build | tee .runs/m07-evidence/build.txt
       - run: node node_modules/playwright/cli.js install chromium --no-shell
-      - run: node test/browser/m07-perf-preview.mjs ${{ matrix.work }} ${{ matrix.lang }}
+      - name: Capture page, WebGPU submissions and customer flow
+        timeout-minutes: 30
+        run: node test/browser/m04-candidate.mjs "${{ matrix.work }}" "${{ matrix.lang }}" "${{ matrix.viewport }}" m07
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
-          name: preview-${{ github.sha }}-${{ matrix.work }}-${{ matrix.lang }}
-          path: .runs/art-preview/
-          retention-days: 2
+          name: m07-${{ github.sha }}-${{ matrix.work }}-${{ matrix.lang }}-${{ matrix.viewport }}
+          path: .runs/m07-evidence/
+          if-no-files-found: warn
+          retention-days: 7
+  accepted:
+    name: Both jelly desktop preview checks
+    if: always()
+    needs: evidence
+    runs-on: windows-2025
+    steps:
+      - env:
+          MATRIX_RESULT: ${{ needs.evidence.result }}
+        run: test "$MATRIX_RESULT" = 'success'

@@ -102,6 +102,20 @@ fn rippleNoise(p: vec2f) -> f32 {
   return vec4f(hull.rgb + water * (1.0 - hull.a), 1);
 }
 
+@fragment fn composeMotionFragment(surface: Surface) -> @location(0) vec4f {
+  let at = surface.position.xy-frame.crop.xy;
+  let water = textureSample(waterLayer,linearClamp,imageUV(surface.uv)).rgb;
+  if (any(at < vec2f(0)) || any(at >= frame.crop.zw)) { return vec4f(water,1); }
+  let pixels = vec2f(textureDimensions(resolvedHull));
+  let source = at/frame.crop.zw*pixels-.5;
+  // Remap the blend weight around texel centres to keep the thin creases
+  // crisp without stepping the resolved coverage at the silhouette.
+  let blendWeight = smoothstep(vec2f(.10),vec2f(.90),fract(source));
+  let coord = (floor(source)+blendWeight+.5)/pixels;
+  let hull = textureSampleLevel(resolvedHull,linearClamp,coord,0);
+  return vec4f(hull.rgb+water*(1.0-hull.a),1);
+}
+
 struct Panel {
   @builtin(position) position: vec4f,
   @location(0) colour: vec3f,

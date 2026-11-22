@@ -104,9 +104,9 @@ export async function testFlow(page, lang) {
 }
 
 const notchBoxes = {
-  left: [0.37, 0.31, 0.50, 0.48],
-  center: [0.55, 0.24, 0.68, 0.36],
-  right: [0.74, 0.31, 0.88, 0.48],
+  left: [0.34, 0.33, 0.47, 0.49],
+  center: [0.49, 0.29, 0.62, 0.41],
+  right: [0.68, 0.33, 0.81, 0.49],
 };
 
 async function readNotch(page, pngs, spot) {
@@ -267,9 +267,13 @@ export async function testApprovedHero(page, input, capture) {
   const pause = page.locator("[data-pause]");
   const activate = button => input === "touch" ? button.tap() : button.click();
   const selected = [
-    { name: "left", x: 0.414, y: 0.365 },
-    { name: "right", x: 0.825, y: 0.365 },
+    { name: "left", x: 0.398, y: 0.43 },
+    { name: "right", x: 0.725, y: 0.43 },
   ];
+  const captureStage = async name => {
+    await stage.scrollIntoViewIfNeeded();
+    await capture(name);
+  };
 
   await stage.scrollIntoViewIfNeeded();
   await page.locator('[data-stage][data-rendered][data-motion="running"]').waitFor();
@@ -277,17 +281,21 @@ export async function testApprovedHero(page, input, capture) {
   if (!(await reset.isDisabled())) await activate(reset);
   await page.locator('[data-stage][data-hero-state="intact"][data-scoop-visual="ready"]').waitFor();
   assert.equal(await stage.getAttribute("data-cuts"), "");
-  await capture("intact");
+  await captureStage("intact");
 
   async function select(point) {
+    await stage.scrollIntoViewIfNeeded();
+    await scoop.scrollIntoViewIfNeeded();
     const bounds = await stage.boundingBox();
     const hit = await scoop.boundingBox();
     assert.ok(bounds && hit);
-    const x = bounds.x + point.x * bounds.width;
-    const y = bounds.y + point.y * bounds.height;
-    assert.ok(x > hit.x && x < hit.x + hit.width && y > hit.y && y < hit.y + hit.height);
-    if (input === "touch") await page.touchscreen.tap(x, y);
-    else await page.mouse.click(x, y);
+    const position = {
+      x: bounds.x + point.x * bounds.width - hit.x,
+      y: bounds.y + point.y * bounds.height - hit.y,
+    };
+    assert.ok(position.x > 0 && position.x < hit.width && position.y > 0 && position.y < hit.height);
+    if (input === "touch") await scoop.tap({ position });
+    else await scoop.click({ position });
     assert.equal(await stage.getAttribute("data-scoop-position"), point.name);
   }
 
@@ -300,31 +308,27 @@ export async function testApprovedHero(page, input, capture) {
     const run = Number(element.dataset.biteRun) + 1;
     const observer = new MutationObserver(() => {
       if (Number(element.dataset.biteRun) !== run || element.dataset.bitePhase !== "press" ||
-        Number(element.dataset.biteElapsed) < 1430) return;
+        Number(element.dataset.biteElapsed) < 1460) return;
       observer.disconnect();
-      requestAnimationFrame(() => {
-        if (Number(element.dataset.biteRun) === run && element.dataset.bitePhase === "press") {
-          document.querySelector("[data-pause]").click();
-        }
-      });
+      document.querySelector("[data-pause]").click();
     });
     observer.observe(element, { attributes: true, attributeFilter: ["data-bite-elapsed"] });
   });
   await select(selected[0]);
   await page.locator('[data-stage][data-bite-phase="press"][data-motion="paused"]').waitFor();
-  await capture("press");
+  await captureStage("press");
   await activate(pause);
   await waitForHeld("left", "left");
-  await capture("first-bite");
+  await captureStage("first-bite");
 
   await select(selected[1]);
   assert.match(await stage.getAttribute("data-cuts"), /\bleft\b/);
   await waitForHeld("right", "left right");
-  await capture("second-bite");
+  await captureStage("second-bite");
 
   await activate(reset);
   await page.locator('[data-stage][data-hero-state="intact"][data-scoop-visual="ready"]').waitFor();
   assert.equal(await stage.getAttribute("data-cuts"), "");
-  await capture("reset");
+  await captureStage("reset");
   return { positions: selected.map(({ x, y }) => ({ x, y })) };
 }
