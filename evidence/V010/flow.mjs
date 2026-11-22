@@ -24,11 +24,13 @@ const languages = {
 
 export async function setMaterial(page, state, input) {
   assert.ok([0, 1, 2].includes(state));
-  assert.ok(["keyboard", "touch"].includes(input));
+  assert.ok(["keyboard", "touch", "mouse"].includes(input));
   const stage = page.locator("[data-stage]");
   const target = page.locator(`[name=fold-state][value="${state}"]`);
   if (input === "touch") {
     await target.tap();
+  } else if (input === "mouse") {
+    await target.click();
   } else {
     const checked = page.locator("[name=fold-state]:checked");
     const current = Number(await checked.getAttribute("value"));
@@ -46,6 +48,60 @@ export async function setMaterial(page, state, input) {
     await stage.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   }
   return { state, input, motion: await stage.getAttribute("data-motion") };
+}
+
+export async function testHeroInteraction(page, input, capture) {
+  assert.ok(["keyboard", "touch", "mouse"].includes(input));
+  const stage = page.locator("[data-stage]");
+  const replay = page.locator("[data-replay]");
+  await setMaterial(page, 0, input);
+  await replay.waitFor();
+  await stage.locator("canvas").waitFor({ state: "visible" });
+  const waitFor = (run, phase) => page.locator(`[data-stage][data-assembly-run="${run}"][data-assembly-phase="${phase}"]`).waitFor();
+  const beforeRun = Number(await stage.getAttribute("data-assembly-run"));
+  await waitFor(beforeRun, "packed");
+  await capture("before");
+
+  const nextRun = beforeRun + 1;
+  const trace = await stage.evaluateHandle((el, run) => {
+    const steps = [];
+    const record = () => {
+      if (el.dataset.assemblyRun !== String(run)) return;
+      const phase = el.dataset.assemblyPhase;
+      if (phase === steps.at(-1)?.phase) return;
+      steps.push({ phase, ms: performance.now() });
+    };
+    const observer = new MutationObserver(record);
+    observer.observe(el, { attributes: true, attributeFilter: ["data-assembly-phase", "data-assembly-run"] });
+    return {
+      finish() { observer.disconnect(); return steps; },
+    };
+  }, nextRun);
+  let timeline;
+  try {
+    if (input === "keyboard") await replay.press("Enter");
+    else if (input === "touch") await replay.tap();
+    else await replay.click();
+    await waitFor(nextRun, "complete");
+    timeline = await trace.evaluate(record => record.finish());
+  } finally {
+    await trace.evaluate(record => record.finish()).catch(() => {});
+    await trace.dispose();
+  }
+  const steps = ["packed", "releasing", "extending", "raising", "settling", "complete"];
+  assert.deepEqual(timeline.map(({ phase }) => phase), steps);
+  const normalized = timeline.map(({ phase, ms }) => ({ phase, ms: ms - timeline[0].ms }));
+  assert.ok(normalized.find(({ phase }) => phase === "extending").ms < 3000, "The main leaves must begin opening within three seconds");
+  assert.ok(normalized.at(-1).ms >= 4200, "The sequence must open gradually");
+  await capture("after");
+  await page.waitForTimeout(1200);
+  assert.equal(await stage.getAttribute("data-assembly-phase"), "complete");
+  assert.equal(await stage.getAttribute("data-material"), "2");
+  assert.equal(await stage.getAttribute("data-assembly-run"), String(nextRun));
+  await setMaterial(page, 0, input);
+  await waitFor(nextRun, "packed");
+  await capture("reset");
+  return { input, before: "packed", after: "complete", reset: "packed", playback: nextRun, timeline: normalized };
 }
 
 export async function testFlow(page, lang) {

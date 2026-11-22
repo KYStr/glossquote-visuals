@@ -21,7 +21,7 @@
 }
 .frame { max-inline-size: 100rem; }
 figure, p, h1, h2, h3, dl, dd { margin: 0; }
-.button, .pause, .masthead a, .footer a, .modes label, .model-link, .planning-note a { min-block-size: 44px; }
+.button, .pause, .replay, .masthead a, .footer a, .modes label, .model-link, .planning-note a { min-block-size: 44px; }
 [hidden] { display: none !important; }
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; margin: -1px;
@@ -103,11 +103,13 @@ html[lang="zh-Hant"] h1 { font-size: clamp(2.65rem, 6vw, 5.65rem); line-height: 
 }
 .modes input:checked + span { background: #dce2dc; border-color: var(--rust); }
 .modes input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: -3px; }
-.pause {
-  justify-self: end; display: inline-flex; align-items: center; gap: .55rem; flex-wrap: wrap;
+.stage-actions { display: flex; justify-self: end; gap: .75rem; flex-wrap: wrap; }
+.pause, .replay {
+  display: inline-flex; align-items: center; gap: .45rem;
   cursor: pointer; background: transparent; border: 0; color: var(--ink);
   font-size: .83rem; font-weight: 700; padding: .35rem .25rem;
 }
+.replay { color: var(--accent); text-decoration: underline; text-underline-offset: .25em; }
 .pause::before { content: ""; width: .64em; height: .85em; border-inline: .17em solid currentColor; }
 .pause[aria-pressed="true"]::before { border: 0; background: currentColor; clip-path: polygon(0 0,100% 50%,0 100%); }
 .catalogue, .planner { padding-block: clamp(2.5rem, 5vw, 5.6rem); }
@@ -193,7 +195,12 @@ html[lang="zh-Hant"] h2 { font-size: clamp(2rem, 4vw, 4.25rem); line-height: 1.1
   html[lang="zh-Hant"] h1 { font-size: clamp(1.9rem, 8.9vw, 3.15rem); }
   .stage-label { left: .5rem; bottom: .5rem; padding-inline: .38rem; font-size: .67rem; }
   .modes span { font-size: .76rem; padding-inline: .56rem; }
-  .pause { font-size: .76rem; }
+  .pause, .replay { font-size: .76rem; }
+}
+@media (max-width: 530px) {
+  .control-deck { grid-template-columns: minmax(0,1fr); gap: 0; }
+  .stage-actions { justify-self: stretch; border-block-start: 1px solid var(--rule); }
+  .stage-actions:not(:has(button:not([hidden]))) { display: none; }
 }
 @media (max-width: 420px) {
   .trip-inputs { grid-template-columns: minmax(0, 1fr); }

@@ -1,8 +1,8 @@
-import { boatScene, unfolding } from "./geometry.mjs";
+import { assemblyStage, boatScene, duration, modeTimes } from "./geometry.mjs";
 import program from "./foldline.wgsl?raw";
 
 const stride = 6;
-const maxVertices = 2304;
+const maxVertices = 4608;
 const usage = () => GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC;
 
 async function makeDevice(canvas, obsolete) {
@@ -101,7 +101,7 @@ export async function initializeFoldline(canvas, options) {
   }
 
   let width = options.width, height = options.height;
-  let time = 0, previous = 0, raf = 0;
+  let time = 0, elapsed = 0, previous = 0, raf = 0;
   let settings = options.settings;
   let failure = null;
   let ready = false;
@@ -109,6 +109,8 @@ export async function initializeFoldline(canvas, options) {
   let recovered = false;
   const data = new Float32Array(maxVertices * stride);
   const uniforms = new Float32Array(8);
+  let cachedAspect, cachedTime, cachedShadow, vertexCount;
+  let reportedStage, reportedRun;
 
   function allocate() {
     // Limit fragment work in the panoramic desktop stage. Geometric edges
@@ -163,24 +165,41 @@ export async function initializeFoldline(canvas, options) {
   }
   function render(now) {
     if (!active || obsolete() || !target) return;
-    if (previous) time += (now - previous) / 1000;
+    if (previous) {
+      const delta = Math.min(.10, (now - previous) / 1000);
+      time += delta;
+      elapsed = Math.min(duration, elapsed + delta);
+    }
     previous = now;
     try {
       const aspect = width / height;
-      const pack = settings.mode === 0;
-      const opened = settings.mode === null ? unfolding(time) : Number(settings.mode === 2);
-      const yaw = .027 * Math.sin(time * Math.PI / 4);
-      const { triangles, shadow } = boatScene({ aspect, pack, opened, yaw });
-      let index = 0;
-      for (const { points, tint } of triangles) {
-        for (const p of points) {
-          data.set(p, index);
-          data.set(tint, index + 3);
-          index += stride;
+      const seconds = settings.mode === null ? elapsed : modeTimes[settings.mode];
+      if (seconds !== cachedTime || aspect !== cachedAspect) {
+        const { triangles, shadow } = boatScene({ aspect, seconds });
+        let index = 0;
+        for (const { points, tint } of triangles) {
+          for (const p of points) {
+            data.set(p, index);
+            data.set(tint, index + 3);
+            index += stride;
+          }
         }
+        cachedShadow = shadow;
+        cachedTime = seconds;
+        cachedAspect = aspect;
+        vertexCount = index / stride;
       }
-      uniforms.set([...shadow, aspect, .46 * Math.sin(time * Math.PI / 4)]);
-      target.draw(data, index / stride, uniforms);
+      uniforms.set(cachedShadow);
+      uniforms[4] = .65 * Math.sin(time * .74);
+      uniforms[5] = aspect;
+      uniforms[6] = Math.max(0, (seconds - 4.05) / (duration - 4.05));
+      target.draw(data, vertexCount, uniforms);
+      const phase = settings.mode === 1 ? "half" : assemblyStage(seconds);
+      if (phase !== reportedStage || settings.run !== reportedRun) {
+        reportedStage = phase;
+        reportedRun = settings.run;
+        options.onPose(phase, settings);
+      }
       if (!ready) {
         ready = true;
         options.onReady();
@@ -202,7 +221,13 @@ export async function initializeFoldline(canvas, options) {
   return {
     pause: stop,
     resume,
-    set(next) { settings = next; },
+    set(next) {
+      if (next.run !== settings.run) {
+        elapsed = 0;
+        previous = 0;
+      }
+      settings = next;
+    },
     resize(w, h) { width = w; height = h; allocate(); },
     getFailureReason() { return failure; },
     destroy() {
