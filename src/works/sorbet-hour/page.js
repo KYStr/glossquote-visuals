@@ -22,8 +22,8 @@ const copy = en ? {
   ingredients: "Ingredients", allergy: "Allergens", storage: "Storage",
   spots: ["Left", "Center", "Right"],
   aiming: spot => `${spot} scoop position selected.`,
-  scooped: spot => `One scoop taken at the ${spot.toLowerCase()}. Reset to scoop again.`,
-  cutAlt: name => `${name} with a curved hollow and a separate spoonful on the plate`,
+  scooped: spot => `One scoop taken at the ${spot.toLowerCase()}. Choose another spot to taste again.`,
+  cutAlt: name => `${name} with a curved hollow and the matching bite held in a silver spoon`,
   reset: "The jelly is whole again.",
 } : {
   still: "目前顯示靜態果凍。",
@@ -44,8 +44,8 @@ const copy = en ? {
   ingredients: "成分", allergy: "過敏原", storage: "保存方式",
   spots: ["左側", "中央", "右側"],
   aiming: spot => `已選擇${spot}挖取位置。`,
-  scooped: spot => `已從${spot}挖走一勺。重設即可再試。`,
-  cutAlt: name => `${name}留著一處凹面，旁邊的盤上有一勺挖出的果凍`,
+  scooped: spot => `已從${spot}挖走一勺。也可以再選一處試吃。`,
+  cutAlt: name => `${name}留著一處凹面，銀匙托著對應的一口果凍`,
   reset: "果凍已恢復完整。",
 };
 
@@ -140,20 +140,29 @@ const canvas = stage.querySelector("canvas");
 const pause = find("[data-pause]");
 const scoop = find("[data-scoop-hit]");
 const reset = find("[data-scoop-reset]");
+const replay = find("[data-scoop-replay]");
 const scoopStatus = find("[data-scoop-status]");
 const motionStatus = find("[data-motion-status]");
 const controls = [...document.querySelectorAll("[name=sorbet-flavor]")];
-const supportsObservers = "IntersectionObserver" in window && "ResizeObserver" in window;
-let settings = { flavor: 0, cut: null, skipOpening: false, animate: false };
+const hasObservers = "IntersectionObserver" in window && "ResizeObserver" in window;
+const preference = matchMedia("(prefers-reduced-motion: reduce)");
+let settings = { flavor: 0, cut: null, run: 0, animate: false };
 let paused = false;
 let rendered = false;
-let openingSeen = false;
+let autoEligible = true;
 let aim = 1;
 let pointer = null;
 let shader;
 
-function settle(cut) {
-  if (settings.cut === cut) stage.dataset.scoopVisual = "ready";
+function onProgress(run, phase, elapsed) {
+  if (settings.run !== run || !settings.cut) return;
+  const oldPhase = stage.dataset.bitePhase;
+  stage.dataset.bitePhase = phase;
+  stage.dataset.biteElapsed = String(Math.round(elapsed));
+  if (phase !== "held" || oldPhase === "held") return;
+  stage.dataset.heroState = "scooped";
+  stage.dataset.scoopVisual = "ready";
+  if (!settings.automatic) scoopStatus.textContent = copy.scooped(copy.spots[positions.indexOf(settings.cut)]);
 }
 
 function showPoster(next) {
@@ -162,33 +171,24 @@ function showPoster(next) {
   if (next.cut) url.pathname = url.pathname.replace(/\.webp$/, `-${next.cut.name}.webp`);
   poster.alt = next.cut ? copy.cutAlt(product.name) : product.poster.alt;
   if (poster.src !== url.href) poster.src = url.href;
-  if (!rendered && stage.dataset.scoopVisual !== "ready") {
-    const cut = next.cut;
+  if (!rendered && stage.dataset.motion !== "starting" && stage.dataset.scoopVisual !== "ready") {
     poster.decode().then(() => {
-      if (settings === next) settle(cut);
+      if (settings !== next || rendered) return;
+      if (next.cut) onProgress(next.run, "held", 3650);
+      else stage.dataset.scoopVisual = "ready";
     }, () => {
-      // If a still is interrupted or unavailable, retain the intact composition.
       if (settings === next && poster.src === url.href) poster.src = product.poster.src;
     });
   }
 }
 
 const motion = createMotion({
-  supported: Boolean(navigator.gpu) && supportsObservers,
+  supported: Boolean(navigator.gpu) && hasObservers,
   initialSettings: settings,
   async initialize(options) {
     shader = await import("./shader.js");
     if (options.signal.aborted) return null;
-    return shader.initializeJelly(canvas, {
-      ...options,
-      skipOpening: openingSeen || options.settings.skipOpening,
-      onReady() {
-        openingSeen = true;
-        settle(options.settings.cut);
-        options.onReady();
-      },
-      onScoopSettled: settle,
-    });
+    return shader.initializeJelly(canvas, { ...options, onProgress });
   },
   applySettings(renderer, next) {
     renderer.select(next);
@@ -196,7 +196,12 @@ const motion = createMotion({
   },
   renderState(phase) {
     stage.dataset.motion = phase;
-    if (phase === "running") rendered = true;
+    if (phase === "running") {
+      rendered = true;
+      queueMicrotask(() => {
+        if (autoEligible && stage.dataset.motion === "running") startBite(true);
+      });
+    }
     if (["starting", "reduced", "unavailable"].includes(phase)) rendered = false;
     if (!rendered) showPoster(settings);
     stage.toggleAttribute("data-rendered", rendered);
@@ -218,7 +223,10 @@ function updateScene(next) {
 function selectSpot(index, announce) {
   aim = Math.max(0, Math.min(positions.length - 1, index));
   stage.dataset.scoopAim = positions[aim].name;
-  if (announce) scoopStatus.textContent = copy.aiming(copy.spots[aim]);
+  if (announce) {
+    stage.dataset.aiming = "";
+    scoopStatus.textContent = copy.aiming(copy.spots[aim]);
+  }
 }
 
 function spotFromPointer(clientX) {
@@ -226,25 +234,46 @@ function spotFromPointer(clientX) {
   selectSpot(Math.floor((clientX - rect.left) / rect.width * positions.length), false);
 }
 
-function takeScoop() {
-  if (settings.cut) return;
+function startBite(automatic = false) {
+  autoEligible = false;
+  delete stage.dataset.aiming;
   const cut = positions[aim];
-  stage.dataset.heroState = "scooped";
+  const run = settings.run + 1;
+  const animate = !paused && !preference.matches && Boolean(navigator.gpu) && hasObservers
+    && ["running", "starting"].includes(stage.dataset.motion);
+  stage.dataset.biteRun = String(run);
+  stage.dataset.bitePhase = "approach";
+  stage.dataset.biteElapsed = "0";
   stage.dataset.scoopPosition = cut.name;
+  stage.dataset.heroState = "tasting";
   stage.dataset.scoopVisual = "moving";
-  scoop.setAttribute("aria-disabled", "true");
   reset.disabled = false;
-  scoopStatus.textContent = copy.scooped(copy.spots[aim]);
-  updateScene({ ...settings, cut, skipOpening: true, animate: rendered && !paused });
+  updateScene({ ...settings, cut, run, animate, automatic });
+}
+
+function restore(flavor = settings.flavor) {
+  autoEligible = false;
+  delete stage.dataset.aiming;
+  const run = settings.run + 1;
+  stage.dataset.biteRun = String(run);
+  stage.dataset.bitePhase = "idle";
+  stage.dataset.biteElapsed = "0";
+  stage.dataset.heroState = "intact";
+  stage.dataset.scoopPosition = "none";
+  stage.dataset.scoopVisual = rendered && !paused ? "ready" : "loading";
+  reset.disabled = true;
+  updateScene({ flavor, cut: null, run, animate: false });
 }
 
 scoop.addEventListener("keydown", event => {
-  if (settings.cut || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+  if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
   event.preventDefault();
+  autoEligible = false;
   selectSpot(aim + (event.key === "ArrowLeft" ? -1 : 1), true);
 });
 scoop.addEventListener("pointerdown", event => {
-  if (settings.cut || !event.isPrimary || event.button !== 0) return;
+  if (!event.isPrimary || event.button !== 0) return;
+  autoEligible = false;
   pointer = event.pointerId;
   scoop.setPointerCapture(pointer);
   spotFromPointer(event.clientX);
@@ -259,29 +288,24 @@ scoop.addEventListener("pointerup", event => {
   if (event.pointerId !== pointer) return;
   pointer = null;
   spotFromPointer(event.clientX);
-  takeScoop();
+  startBite();
 });
 scoop.addEventListener("click", event => {
-  if (event.detail === 0) takeScoop();
+  if (event.detail === 0) startBite();
 });
+replay.addEventListener("click", () => startBite());
 reset.addEventListener("click", event => {
   if (!settings.cut) return;
-  stage.dataset.heroState = "intact";
-  stage.dataset.scoopPosition = "none";
-  stage.dataset.scoopVisual = rendered && !paused ? "ready" : "loading";
-  scoop.setAttribute("aria-disabled", "false");
-  reset.disabled = true;
+  restore();
   selectSpot(1, false);
   scoopStatus.textContent = copy.reset;
-  updateScene({ ...settings, cut: null, skipOpening: true, animate: false });
   if (event.detail === 0) scoop.focus({ preventScroll: true });
 });
-
 for (const control of controls) {
   control.addEventListener("change", () => {
     const flavor = Number(control.value);
     stage.dataset.material = control.value;
-    updateScene({ ...settings, flavor });
+    restore(flavor);
   });
 }
 pause.addEventListener("click", () => {
@@ -293,6 +317,6 @@ pause.addEventListener("click", () => {
 find("[data-instrument]").hidden = false;
 find("[data-scoop-controls]").hidden = false;
 scoop.hidden = false;
-pause.hidden = !navigator.gpu || !supportsObservers;
-if (supportsObservers) observeMotion(stage, motion, matchMedia("(prefers-reduced-motion: reduce)"));
+pause.hidden = !navigator.gpu || !hasObservers;
+if (hasObservers) observeMotion(stage, motion, preference);
 else motion.update({ active: true });

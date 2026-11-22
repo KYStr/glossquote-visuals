@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- discoverability -->
   <title>果時 JELLY HOUR｜季節果凍禮盒</title>
-  <meta name="description" content="蜜柑、覆盆莓、白芭樂。查看果凍成分、過敏原與保存方式，搭配六杯並下載你的禮盒配方。">
+  <meta name="description" content="用銀匙試吃三款果凍，查看成分、過敏原與保存方式，再搭配六杯果凍禮盒。">
   <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/sorbet-hour/">
   <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/sorbet-hour/">
   <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/sorbet-hour/">
   <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/sorbet-hour/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="果時 JELLY HOUR｜季節果凍禮盒">
-  <meta property="og:description" content="蜜柑、覆盆莓、白芭樂。查看果凍成分、過敏原與保存方式，搭配六杯並下載你的禮盒配方。">
+  <meta property="og:description" content="用銀匙試吃三款果凍，查看成分、過敏原與保存方式，再搭配六杯果凍禮盒。">
   <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/sorbet-hour/">
   <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/sorbet-hour/cover.webp">
   <meta property="og:image:alt" content="透亮的蜜柑果凍立在瓷盤上，盤沿透過果凍折射。">
@@ -21,8 +21,8 @@
   <link rel="icon" href="%BASE_URL%media/sorbet-hour/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/src/shared/site.css">
   <link rel="stylesheet" href="/src/works/sorbet-hour/page.css">
-  <link rel="preload" href="%BASE_URL%fonts/m05-sorbet-hour-text.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="%BASE_URL%fonts/m05-sorbet-hour-tc.css">
+  <link rel="preload" href="%BASE_URL%media/sorbet-hour/text-tc.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="%BASE_URL%media/sorbet-hour/text-tc.css">
   <script src="%BASE_URL%fonts/studio-tc-first-layout.js"></script>
   <script type="module" src="/src/works/sorbet-hour/page.js"></script>
 </head>
@@ -40,16 +40,16 @@
   <main id="main" tabindex="-1">
     <section class="frame hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="season-label">季節果凍禮盒</p>
+        <p class="season-label">季節果凍禮盒 · 銀匙試吃</p>
         <h1 id="hero-title"><span>一勺果凍，</span> 一口盛夏。</h1>
-        <p class="hero-intro">蜜柑、覆盆莓、白芭樂。三款清透 Q 彈的水果果凍，自由搭配六杯送給想念的人。</p>
+        <p class="hero-intro">用銀匙試吃蜜柑、覆盆莓或白芭樂果凍，再配一盒六杯的季節滋味。</p>
         <a class="button" href="#box">搭配六杯<span aria-hidden="true">↘</span></a>
       </div>
       <figure class="sorbets">
-        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="intact" data-scoop-aim="center" data-scoop-position="none" data-scoop-visual="ready">
+        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="intact" data-scoop-aim="center" data-scoop-position="none" data-scoop-visual="ready" data-bite-phase="idle" data-bite-run="0" data-bite-elapsed="0">
           <img src="%BASE_URL%media/sorbet-hour/cover.webp" alt="透亮的蜜柑果凍立在瓷盤上，盤沿透過果凍折射。" width="1200" height="800" fetchpriority="high" data-poster>
           <canvas aria-hidden="true"></canvas>
-          <button type="button" class="scoop-hit" data-scoop-hit aria-label="挖一勺果凍" aria-describedby="scoop-help" aria-disabled="false" hidden><span aria-hidden="true"></span></button>
+          <button type="button" class="scoop-hit" data-scoop-hit aria-label="用銀匙試吃果凍" aria-describedby="scoop-help" aria-disabled="false" hidden><span aria-hidden="true"></span></button>
         </div>
         <figcaption class="inspector">
           <fieldset data-instrument hidden>
@@ -63,8 +63,9 @@
           <button class="pause" type="button" data-pause aria-pressed="false" hidden>暫停動態</button>
           <span class="visually-hidden" data-motion-status role="status">目前顯示靜態果凍。</span>
           <div class="scoop-controls" data-scoop-controls hidden>
-            <p id="scoop-help">點按或拖曳果凍，從上緣挖一勺。鍵盤可用左右鍵選位置，再按 Enter。</p>
-            <button type="button" class="pause reset-scoop" data-scoop-reset disabled>重設果凍</button>
+            <p id="scoop-help">點按或拖曳選位置，看銀匙挖起一口。鍵盤用左右鍵選位置，再按 Enter。</p>
+            <button type="button" class="pause reset-scoop" data-scoop-reset disabled>重設</button>
+            <button type="button" class="pause replay-scoop" data-scoop-replay>再試一口</button>
             <span class="visually-hidden" data-scoop-status role="status"></span>
           </div>
         </figcaption>

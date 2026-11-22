@@ -102,7 +102,8 @@ html.sorbet-page {
   box-shadow: 0 0 0 2px var(--paper);
   visibility: hidden;
 }
-.scoop-hit:not([aria-disabled="true"]):is(:focus-visible, :active) span { visibility: visible; }
+.stage:is([data-hero-state="intact"], [data-aiming]) .scoop-hit:focus-visible span,
+.scoop-hit:active span { visibility: visible; }
 .stage[data-scoop-aim="left"] { --aim: 17%; --aim-y: 29%; }
 .stage[data-scoop-aim="right"] { --aim: 85%; --aim-y: 29%; }
 .scoop-controls {
@@ -116,6 +117,8 @@ html.sorbet-page {
 }
 .scoop-controls p { flex: 1 1 16rem; }
 .reset-scoop:disabled { opacity: .73; cursor: default; }
+.pause.replay-scoop { background: #ffdfa2; text-decoration: none; }
+.pause.replay-scoop:hover { background: #f9c665; }
 .stage[data-rendered] canvas[data-display-size] { visibility: visible; }
 .inspector { display: flex; align-items: flex-start; flex-wrap: wrap; justify-content: space-between; gap: .4rem; padding-block-start: .6rem; }
 .sorbet-page fieldset { border: 0; min-inline-size: 0; margin: 0; padding: 0; }
