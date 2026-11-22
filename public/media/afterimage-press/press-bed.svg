@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+  <defs>
+    <pattern id="bed" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path fill="#25252d" d="M0 0h8v8H0z"/><path fill="#181820" d="M0 0h8v1H0z"/>
+    </pattern>
+    <linearGradient id="light" x2=".7" y2=".88">
+      <stop stop-color="#63574f" stop-opacity=".22"/>
+      <stop offset=".65" stop-color="#63574f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="platen" x1=".48" y1="0" x2=".52" y2="1">
+      <stop stop-color="#4c4651"/><stop offset=".62" stop-color="#312f39"/><stop offset="1" stop-color="#242630"/>
+    </linearGradient>
+    <filter id="shadow" width="1.06" height="1.2" x="-.03" y="-.08">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#100f17" flood-opacity=".61"/>
+    </filter>
+  </defs>
+  <path fill="url(#bed)" d="M0 0h1000v500H0z"/>
+  <path fill="url(#light)" d="M0 0h1000v500H0z"/>
+  <rect x="14" y="70" width="972" height="410" fill="url(#platen)" stroke="#625962" filter="url(#shadow)"/>
+  <rect x="16" y="72" width="968" height="406" fill="none" stroke="#ffffff" opacity=".06"/>
+  <rect x="66" y="103.5" width="870" height="340" fill="#a4937b" filter="url(#shadow)"/>
+  <rect x="65" y="102.5" width="870" height="340" fill="#f6efdd"/>
+  <path d="M31 102.5h22m-11-11v22m905-11h22m-11-11v22M31 442.5h22m-11-11v22m905-11h22m-11-11v22" fill="none" stroke="#d6cabb"/>
+  <path d="M63 122v-23h24m826 0h24v23M63 423v23h24m826 0h24v-23" fill="none" stroke="#9b9291" stroke-width="2"/>
+</svg>
