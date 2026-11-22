@@ -2,7 +2,7 @@ name: Verify M07 candidate
 
 on:
   push:
-    branches: ['codex/m07-key-visuals']
+    branches: ['codex/m07-key-visuals', 'codex/foldline-carry-review']
   workflow_dispatch:
 
 permissions:
@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        work: [V008, V009, V010]
+        work: ${{ fromJSON(github.ref_name == 'codex/foldline-carry-review' && '["V010"]' || '["V008","V009","V010"]') }}
         lang: [zh-Hant, en]
         viewport: [desktop, mobile]
     steps:

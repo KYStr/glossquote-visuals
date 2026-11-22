@@ -6,8 +6,10 @@ import { dirname, resolve } from "node:path";
 import { carriedRuntimeAssets } from "./release-proof.mjs";
 import { base, origin, root } from "./site-map.mjs";
 
-const previousM05 = "d28a1030bdd348c2733a644027ca35d782d00c9d";
-const pinnedIndex = resolve(root, "evidence/M06", previousM05, "carried-bundles.json");
+const bundleSources = [
+  ["M07", "86e6da3d596c64c5cc3886a20807ffd4ba3a906c"],
+  ["M06", "d28a1030bdd348c2733a644027ca35d782d00c9d"],
+];
 const assetName = /^assets\/[A-Za-z0-9_][\w.-]*-[\w-]{8}\.[A-Za-z0-9]+$/;
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
@@ -133,23 +135,28 @@ export async function assemblePinnedBundles(dist, index, load = fromPages) {
 }
 
 export async function composeCarriedRelease(works, dist = resolve(root, "dist")) {
-  if (!works.length || !existsSync(pinnedIndex)) return;
-  const index = JSON.parse(readFileSync(pinnedIndex));
-  assert.equal(index.version, "carried-bundles-v1");
-  assert.equal(index.deployment, previousM05);
+  if (!works.length) return;
+  // Both the carried IDs and their individual deployed revisions must match.
+  // A solo release can use an index whose routes were originally shipped in
+  // several different deployments.
+  const index = bundleSources.flatMap(([milestone, deployment]) => {
+    const path = resolve(root, "evidence", milestone, deployment, "carried-bundles.json");
+    if (!existsSync(path)) return [];
+    const pin = JSON.parse(readFileSync(path));
+    assert.equal(pin.version, "carried-bundles-v1");
+    assert.equal(pin.deployment, deployment);
+    return [pin];
+  }).find(pin => pin.works.length === works.length && works.every(work => pin.works.some(entry =>
+    entry.work === work.id && entry.slug === work.slug && entry.candidate === work.candidateCommit &&
+    entry.deployedCommit === work.deployedCommit)));
+  if (!index) return;
   const live = JSON.parse(await fromPages("release.json"));
   assert.match(live.commit, /^[a-f0-9]{40}$/);
-  const ids = works.map(w => w.id).sort();
-  if (JSON.stringify(ids) !== JSON.stringify(index.works.map(w => w.work).sort())) return;
   for (const work of works) {
-    const pin = index.works.find(x => x.work === work.id);
     const selected = live.works.find(x => x.work === work.id);
     const attested = selected ? { ...selected, deployedCommit: live.commit } : live.carriedWorks.find(x => x.work === work.id);
     const receipt = { work: work.id, slug: work.slug, candidate: work.candidateCommit, deployedCommit: work.deployedCommit };
     assert.deepEqual(attested, receipt, `Wrong live carried identity: ${work.id}`);
-    // A later release may carry the exact same published inputs. If the pin is
-    // for a different revision, defer to the fresh build and full live byte check.
-    if (pin.slug !== work.slug || pin.candidate !== work.candidateCommit || pin.deployedCommit !== work.deployedCommit) return;
   }
   execFileSync("git", ["merge-base", "--is-ancestor", index.deployment, live.commit], { cwd: root });
   verifyCarrySources(index.deployment, works);
