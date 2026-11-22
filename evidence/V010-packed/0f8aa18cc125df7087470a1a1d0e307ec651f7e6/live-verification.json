@@ -1,0 +1,359 @@
+{
+  "result": "PASS",
+  "work": "V010",
+  "sourceCommit": "0f8aa18cc125df7087470a1a1d0e307ec651f7e6",
+  "candidateCommit": "95a806db843156ec0952ca22b0c13c8ae7fb4ef4",
+  "candidateRun": 45008335068,
+  "publish": {
+    "run": 45009115812,
+    "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/45009115812",
+    "attempt": 1,
+    "jobs": [
+      {
+        "jobId": 137167242141,
+        "name": "build",
+        "conclusion": "success",
+        "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/45009115812/job/137167242141"
+      },
+      {
+        "jobId": 137169616965,
+        "name": "deploy",
+        "conclusion": "success",
+        "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/45009115812/job/137169616965"
+      },
+      {
+        "jobId": 137169684723,
+        "name": "live",
+        "conclusion": "success",
+        "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/45009115812/job/137169684723"
+      }
+    ]
+  },
+  "liveArtifact": {
+    "id": 14749212583,
+    "digest": "sha256:c120499bfd1efc637da3a4c3dd72af52406999b75c5efe43b3c5942fe8ee62c0",
+    "size_in_bytes": 139722995,
+    "name": "release-live-0f8aa18cc125df7087470a1a1d0e307ec651f7e6"
+  },
+  "resultsHash": {
+    "sha256": "d8d9259e51d5bcedd4eab8fe378aef0d087a7e8a6e04903cb8a71b45c56fa190",
+    "bytes": 3785463
+  },
+  "deployed": {
+    "commit": "0f8aa18cc125df7087470a1a1d0e307ec651f7e6",
+    "work": "V010",
+    "slug": "foldline",
+    "candidate": "95a806db843156ec0952ca22b0c13c8ae7fb4ef4",
+    "works": [
+      {
+        "work": "V010",
+        "slug": "foldline",
+        "candidate": "95a806db843156ec0952ca22b0c13c8ae7fb4ef4"
+      }
+    ],
+    "carriedWorks": [
+      {
+        "work": "V001",
+        "slug": "paper-light",
+        "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+        "deployedCommit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9"
+      },
+      {
+        "work": "V002",
+        "slug": "liquid-archive",
+        "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+        "deployedCommit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9"
+      },
+      {
+        "work": "V003",
+        "slug": "night-signal",
+        "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+        "deployedCommit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9"
+      },
+      {
+        "work": "V004",
+        "slug": "prism-materials",
+        "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+        "deployedCommit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9"
+      },
+      {
+        "work": "V005",
+        "slug": "aeriform",
+        "candidate": "ba1cffaad8b678f26a147403a36ed20197b27c36",
+        "deployedCommit": "33d0aee9006b2b76f02a58c9ddd575571a4704b9"
+      },
+      {
+        "work": "V006",
+        "slug": "tide-table",
+        "candidate": "52fa4e91f748be73f060c3acc3c91ce9728fccd9",
+        "deployedCommit": "873d07650ee107e465ab163f6a1df050b928f114"
+      },
+      {
+        "work": "V007",
+        "slug": "selvedge",
+        "candidate": "c19abda5645c174c8fa6df79c06d26993cc31746",
+        "deployedCommit": "d28a1030bdd348c2733a644027ca35d782d00c9d"
+      },
+      {
+        "work": "V008",
+        "slug": "sorbet-hour",
+        "candidate": "df6ba61887571c76af1d2d65122db9905ba089bb",
+        "deployedCommit": "86e6da3d596c64c5cc3886a20807ffd4ba3a906c"
+      },
+      {
+        "work": "V009",
+        "slug": "afterimage-press",
+        "candidate": "df6ba61887571c76af1d2d65122db9905ba089bb",
+        "deployedCommit": "86e6da3d596c64c5cc3886a20807ffd4ba3a906c"
+      },
+      {
+        "work": "V011",
+        "slug": "umbra-dial",
+        "candidate": "c19abda5645c174c8fa6df79c06d26993cc31746",
+        "deployedCommit": "d28a1030bdd348c2733a644027ca35d782d00c9d"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "work": "V010",
+      "locale": "zh-Hant",
+      "slug": "foldline",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "input": "mouse",
+          "before": "packed",
+          "after": "complete",
+          "reset": "packed",
+          "playback": 1,
+          "timeline": [
+            {
+              "phase": "packed",
+              "ms": 0
+            },
+            {
+              "phase": "releasing",
+              "ms": 239.09999999997672
+            },
+            {
+              "phase": "extending",
+              "ms": 1135.5
+            },
+            {
+              "phase": "raising",
+              "ms": 3015.4000000000233
+            },
+            {
+              "phase": "settling",
+              "ms": 4073.2000000000116
+            },
+            {
+              "phase": "complete",
+              "ms": 4845.5
+            }
+          ]
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-foldline-zh-Hant-interaction-before.png",
+            "sha256": "e335938f7771d76bf5536752f00371359594961292881d00db7b4deaca4204be",
+            "width": 990,
+            "height": 444
+          },
+          {
+            "state": "after",
+            "file": "live-foldline-zh-Hant-interaction-after.png",
+            "sha256": "333a5dc010bdf860d376945765924f1ce3b2cc12a0fff8134295ca74143d190a",
+            "width": 990,
+            "height": 444
+          },
+          {
+            "state": "reset",
+            "file": "live-foldline-zh-Hant-interaction-reset.png",
+            "sha256": "5a89bf3330732b8f8e6921813d69d3aeb0176badd6b74973957161b61dc09fcb",
+            "width": 990,
+            "height": 444
+          }
+        ],
+        "additionalCaptures": []
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/works/foldline/",
+      "export": {
+        "filename": "foldline-kit-zh-Hant.txt",
+        "bytes": 475,
+        "sha256": "3e372b260c75971113701f849dbefe68579661dbbfbee45e20245357fb8ae6f7",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-foldline-zh-Hant-material-0.png",
+          "sha256": "5ef1ca4550b58a8217ec0c6781be7a0be1da68c78d51ea159306dfce96879e19",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 1,
+          "file": "live-foldline-zh-Hant-material-1.png",
+          "sha256": "2a77c52b44361d0455a978be58b36570968486fe4ee71e855a9b3d977259cbe2",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 2,
+          "file": "live-foldline-zh-Hant-material-2.png",
+          "sha256": "5a739134bbfc22538bb19d0a393675ce55c8a8700bc34706a37fb76e1cf00087",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 0,
+          "file": "live-foldline-zh-Hant-material-3.png",
+          "sha256": "57352deff7e915a982b084447bdccec84695a26fd7cd1f737160eb10ffd483f4",
+          "width": 990,
+          "height": 442
+        }
+      ],
+      "frozen": {
+        "file": "live-foldline-zh-Hant-frozen.png",
+        "sha256": "838170e284f284476333ac715aced8a407bd09d8230c09124c7ca724bdc277ab",
+        "width": 990,
+        "height": 444
+      },
+      "pageScreenshot": {
+        "file": "live-foldline-zh-Hant.png",
+        "sha256": "b13e6bc7378850939046b5d756d3944cb56e1859f316003984af9520a0448e92",
+        "width": 1100,
+        "height": 3156
+      },
+      "liveHTML": {
+        "sha256": "b4d9f8fe1bcf77accf922a0f004b275f9dd7566108db1b35fc200df2592ac918",
+        "bytes": 12271
+      },
+      "sourceResults": "evidence/V010/95a806db843156ec0952ca22b0c13c8ae7fb4ef4/V010-zh-Hant-desktop/results.json"
+    },
+    {
+      "work": "V010",
+      "locale": "en",
+      "slug": "foldline",
+      "heroInteraction": {
+        "input": "mouse",
+        "observations": {
+          "input": "mouse",
+          "before": "packed",
+          "after": "complete",
+          "reset": "packed",
+          "playback": 1,
+          "timeline": [
+            {
+              "phase": "packed",
+              "ms": 0
+            },
+            {
+              "phase": "releasing",
+              "ms": 247.90000000002328
+            },
+            {
+              "phase": "extending",
+              "ms": 1159.4000000000233
+            },
+            {
+              "phase": "raising",
+              "ms": 3027.2999999999884
+            },
+            {
+              "phase": "settling",
+              "ms": 4089.7000000000116
+            },
+            {
+              "phase": "complete",
+              "ms": 4817.600000000035
+            }
+          ]
+        },
+        "captures": [
+          {
+            "state": "before",
+            "file": "live-foldline-en-interaction-before.png",
+            "sha256": "af5f1fc74039576297b15042c1ebd7ee34223c89e1a8e1e5b601c011b3540677",
+            "width": 990,
+            "height": 443
+          },
+          {
+            "state": "after",
+            "file": "live-foldline-en-interaction-after.png",
+            "sha256": "6ed6958b9226daf7fbabb7687e25fe4e7c0b507f2c903754b52c61270635f7d8",
+            "width": 990,
+            "height": 443
+          },
+          {
+            "state": "reset",
+            "file": "live-foldline-en-interaction-reset.png",
+            "sha256": "dabcbc81c09d9fa0f86a16f90ef7ad8240cac78fd97f8245293ecc1b6f9aa443",
+            "width": 990,
+            "height": 443
+          }
+        ],
+        "additionalCaptures": []
+      },
+      "entireFlowMatches": true,
+      "url": "https://kystr.github.io/glossquote-visuals/en/works/foldline/",
+      "export": {
+        "filename": "foldline-kit-en.txt",
+        "bytes": 482,
+        "sha256": "a5e4be1fc0140140add10131809a22711a8a9191cdf5bb1485be0b5f13456c80",
+        "matchesCandidateOrder": true
+      },
+      "frames": [
+        {
+          "state": 0,
+          "file": "live-foldline-en-material-0.png",
+          "sha256": "857eefe4ff6ef703856559b932577934d7a41df60dfc1a953bbf2be1613edbee",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 1,
+          "file": "live-foldline-en-material-1.png",
+          "sha256": "e6b0a4a3d16d278c5f93c9e76f8c15612534d11c7a9fd958d1deb80ea9a90c50",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 2,
+          "file": "live-foldline-en-material-2.png",
+          "sha256": "f07f019b8b5bd9fd78b0b51d07d8b3a9f01acee635adcdf5356013873aaec63a",
+          "width": 990,
+          "height": 442
+        },
+        {
+          "state": 0,
+          "file": "live-foldline-en-material-3.png",
+          "sha256": "2fe7b95cf4ba4f579a5c380881791b18a00ac9d6caacd47400002b30b3eff367",
+          "width": 990,
+          "height": 442
+        }
+      ],
+      "frozen": {
+        "file": "live-foldline-en-frozen.png",
+        "sha256": "1a39b576535bf5739de101e68d2abb6b327146107e14704d97d327354287e5bf",
+        "width": 990,
+        "height": 443
+      },
+      "pageScreenshot": {
+        "file": "live-foldline-en.png",
+        "sha256": "f8793ff263158ad1ffebfc5e7e441da100b1103d6a37f1ac94849804c0564434",
+        "width": 1100,
+        "height": 3299
+      },
+      "liveHTML": {
+        "sha256": "c52da2d20918c0525d985d706c67fc6bd18c4711f6b23032dd1f3270044767b0",
+        "bytes": 12122
+      },
+      "sourceResults": "evidence/V010/95a806db843156ec0952ca22b0c13c8ae7fb4ef4/V010-en-desktop/results.json"
+    }
+  ]
+}

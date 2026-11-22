@@ -4,6 +4,8 @@
 ## M07 作品入口
 
 [果時](https://kystr.github.io/glossquote-visuals/works/sorbet-hour/)可在不同位置壓下湯匙，挖起果凍並留下缺口。[疊印](https://kystr.github.io/glossquote-visuals/works/afterimage-press/)讓朱紅墨覆上鈷藍底版，套印成一張海報。[摺徑](https://kystr.github.io/glossquote-visuals/works/foldline/)讓手提包逐段展開成能乘坐的艇。每件均通過 14 條驗收規則及六項美術檢查。正式站的中英文商品流程已逐一操作並下載。[發布證據與限制](evidence/M07/86e6da3d596c64c5cc3886a20807ffd4ba3a906c/RELEASE.md)。
+
+摺徑的攜行造型已更新。[瀏覽器新舊對照](evidence/V010-packed/95a806db843156ec0952ca22b0c13c8ae7fb4ef4/BEFORE-AFTER.jpg) · [正式站複核](evidence/V010-packed/0f8aa18cc125df7087470a1a1d0e307ec651f7e6/RELEASE.md)。
 <!-- /M07 release -->
 
 <!-- M06 release -->
