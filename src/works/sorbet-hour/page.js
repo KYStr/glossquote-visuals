@@ -22,7 +22,8 @@ const copy = en ? {
   ingredients: "Ingredients", allergy: "Allergens", storage: "Storage",
   spots: ["Left", "Center", "Right"],
   aiming: spot => `${spot} scoop position selected.`,
-  scooped: spot => `One scoop taken at the ${spot.toLowerCase()}. Choose another spot to taste again.`,
+  scooped: (spot, count) => `Scooped at the ${spot.toLowerCase()}. ${count} of 3 places tasted.`,
+  occupied: "That spot has been scooped. Choose another spot or reset the jelly.",
   cutAlt: name => `${name} with a curved hollow and the matching bite held in a silver spoon`,
   reset: "The jelly is whole again.",
 } : {
@@ -44,7 +45,8 @@ const copy = en ? {
   ingredients: "成分", allergy: "過敏原", storage: "保存方式",
   spots: ["左側", "中央", "右側"],
   aiming: spot => `已選擇${spot}挖取位置。`,
-  scooped: spot => `已從${spot}挖走一勺。也可以再選一處試吃。`,
+  scooped: (spot, count) => `已從${spot}挖走一勺。已試吃三處中的 ${count} 處。`,
+  occupied: "這裡已經挖過。請選別處，或重設果凍。",
   cutAlt: name => `${name}留著一處凹面，銀匙托著對應的一口果凍`,
   reset: "果凍已恢復完整。",
 };
@@ -146,29 +148,36 @@ const motionStatus = find("[data-motion-status]");
 const controls = [...document.querySelectorAll("[name=sorbet-flavor]")];
 const hasObservers = "IntersectionObserver" in window && "ResizeObserver" in window;
 const preference = matchMedia("(prefers-reduced-motion: reduce)");
-let settings = { flavor: 0, cut: null, run: 0, animate: false };
+let settings = { flavor: 0, cut: null, retained: 0, run: 0, animate: false };
 let paused = false;
 let rendered = false;
 let autoEligible = true;
 let aim = 1;
 let pointer = null;
 let shader;
+const bit = cut => cut ? 1 << positions.indexOf(cut) : 0;
+const cuts = mask => positions.filter((_, index) => mask & (1 << index));
 
 function onProgress(run, phase, elapsed) {
   if (settings.run !== run || !settings.cut) return;
   const oldPhase = stage.dataset.bitePhase;
   stage.dataset.bitePhase = phase;
   stage.dataset.biteElapsed = String(Math.round(elapsed));
+  const committed = settings.retained | (["lift", "held"].includes(phase) ? bit(settings.cut) : 0);
+  stage.dataset.cuts = cuts(committed).map(cut => cut.name).join(" ");
   if (phase !== "held" || oldPhase === "held") return;
   stage.dataset.heroState = "scooped";
   stage.dataset.scoopVisual = "ready";
-  if (!settings.automatic) scoopStatus.textContent = copy.scooped(copy.spots[positions.indexOf(settings.cut)]);
+  if (!settings.automatic) scoopStatus.textContent = copy.scooped(copy.spots[positions.indexOf(settings.cut)], cuts(committed).length);
 }
 
 function showPoster(next) {
   const product = flavors[next.flavor];
   const url = new URL(product.poster.src);
-  if (next.cut) url.pathname = url.pathname.replace(/\.webp$/, `-${next.cut.name}.webp`);
+  if (next.cut) {
+    const key = next.retained ? `${next.retained}-${next.cut.name}` : next.cut.name;
+    url.pathname = url.pathname.replace(/\.webp$/, `-${key}.webp`);
+  }
   poster.alt = next.cut ? copy.cutAlt(product.name) : product.poster.alt;
   if (poster.src !== url.href) poster.src = url.href;
   if (!rendered && stage.dataset.motion !== "starting" && stage.dataset.scoopVisual !== "ready") {
@@ -237,7 +246,12 @@ function spotFromPointer(clientX) {
 function startBite(automatic = false) {
   autoEligible = false;
   delete stage.dataset.aiming;
-  const cut = positions[aim];
+  const cut = automatic ? positions.at(-1) : positions[aim];
+  const committed = settings.retained | (["lift", "held"].includes(stage.dataset.bitePhase) ? bit(settings.cut) : 0);
+  if (committed & bit(cut)) {
+    scoopStatus.textContent = copy.occupied;
+    return;
+  }
   const run = settings.run + 1;
   const animate = !paused && !preference.matches && Boolean(navigator.gpu) && hasObservers
     && ["running", "starting"].includes(stage.dataset.motion);
@@ -247,8 +261,9 @@ function startBite(automatic = false) {
   stage.dataset.scoopPosition = cut.name;
   stage.dataset.heroState = "tasting";
   stage.dataset.scoopVisual = "moving";
+  stage.dataset.cuts = cuts(committed).map(previous => previous.name).join(" ");
   reset.disabled = false;
-  updateScene({ ...settings, cut, run, animate, automatic });
+  updateScene({ ...settings, cut, retained: committed, run, animate, automatic });
 }
 
 function restore(flavor = settings.flavor) {
@@ -260,9 +275,10 @@ function restore(flavor = settings.flavor) {
   stage.dataset.biteElapsed = "0";
   stage.dataset.heroState = "intact";
   stage.dataset.scoopPosition = "none";
+  stage.dataset.cuts = "";
   stage.dataset.scoopVisual = rendered && !paused ? "ready" : "loading";
   reset.disabled = true;
-  updateScene({ flavor, cut: null, run, animate: false });
+  updateScene({ flavor, cut: null, retained: 0, run, animate: false });
 }
 
 scoop.addEventListener("keydown", event => {
@@ -293,7 +309,12 @@ scoop.addEventListener("pointerup", event => {
 scoop.addEventListener("click", event => {
   if (event.detail === 0) startBite();
 });
-replay.addEventListener("click", () => startBite());
+replay.addEventListener("click", () => {
+  const occupied = settings.retained | bit(settings.cut);
+  const next = positions.findIndex(cut => !(occupied & bit(cut)));
+  if (occupied & bit(positions[aim]) && next !== -1) selectSpot(next, false);
+  startBite();
+});
 reset.addEventListener("click", event => {
   if (!settings.cut) return;
   restore();

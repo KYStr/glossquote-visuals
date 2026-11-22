@@ -1,6 +1,6 @@
 import { defineShader, registerShader, schema } from "shaders/std";
 import { initializeStandalone } from "../../shared/standalone.js";
-import { paintCachedPose } from "./pose-cache.js";
+import { paintCachedPose, prepareJellyMaterial } from "./pose-cache.js";
 
 const id = "jelly-surface";
 const duration = 3650;
@@ -16,6 +16,7 @@ const surface = registerShader(defineShader({
     scooped: { default: 0 },
     cutX: { default: 0 },
     cutZ: { default: 0 },
+    retained: { default: 0 },
   },
   extraFields: { glintDrift: { schema: schema.f32, initial: 0 } },
   gpu: { fragment: paintCachedPose },
@@ -43,6 +44,8 @@ function phaseAt(elapsed) {
 }
 
 export async function initializeJelly(canvas, options) {
+  await prepareJellyMaterial();
+  if (options.signal.aborted) return null;
   const { onProgress } = options;
   let scene = options.settings;
   let elapsed = scene.cut && scene.animate ? 0 : duration;
@@ -61,6 +64,7 @@ export async function initializeJelly(canvas, options) {
       scooped: Number(Boolean(scene.cut)),
       cutX: scene.cut?.x ?? 0,
       cutZ: scene.cut?.z ?? 0,
+      retained: scene.retained ?? 0,
       biteTime: scene.cut ? elapsed / 1000 : 0,
     };
   }

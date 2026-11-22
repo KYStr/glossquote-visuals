@@ -4,10 +4,30 @@ import { poseRegions } from "./pose-regions.js";
 
 const format = "rgba8unorm-srgb";
 const regionStride = 4 * Float32Array.BYTES_PER_ELEMENT;
-// Nine projected boxes yield at most 17 rows of nine disjoint spans.
-const regionCapacity = 153;
+// Up to eleven projected boxes yield at most 21 rows of eleven spans.
+const regionCapacity = 231;
+let material;
+
+export async function prepareJellyMaterial() {
+  if (material) return;
+  const image = new Image();
+  image.src = `${import.meta.env.BASE_URL}media/sorbet-hour/morning-material.webp`;
+  await image.decode();
+  material = image;
+}
+
 const geometryModule = `
 @group(0) @binding(0) var<uniform> pose: array<vec4f, 2>;
+@group(0) @binding(1) var morning: texture_2d<f32>;
+
+fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {
+  let texel = vec2i(origin + clamp(uv, vec2f(0.0), vec2f(1.0)) * (extent - 1.0));
+  return textureLoad(morning, texel, 0);
+}
+
+fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {
+  return photoRGBA(origin, extent, uv).rgb;
+}
 
 @vertex fn drawRegion(@builtin(vertex_index) index: u32, @location(0) bounds: vec4f) -> @builtin(position) vec4f {
   let corner = vec2f(f32(index & 1u), f32(index >> 1u));
@@ -23,6 +43,7 @@ const geometryModule = `
   let scooped = pose[1].x;
   let cutX = pose[1].y;
   let cutZ = pose[1].z;
+  let retained = u32(pose[1].w);
 ${geometry}
 }
 `;
@@ -30,6 +51,11 @@ ${geometry}
 export function paintCachedPose(params) {
   params.noteCustomWgsl?.();
   const { canvas, gpu: { device } } = params;
+  const atlas = params.createMediaTexture({
+    width: material.naturalWidth, height: material.naturalHeight, format,
+  });
+  atlas.write(material);
+  const atlasView = atlas.unwrap().createView();
   const shader = device.createShaderModule({ code: geometryModule });
   const pipeline = device.createRenderPipeline({
     layout: "auto",
@@ -49,7 +75,7 @@ export function paintCachedPose(params) {
     });
     const bind = device.createBindGroup({
       layout: pipeline.getBindGroupLayout(0),
-      entries: [{ binding: 0, resource: { buffer } }],
+      entries: [{ binding: 0, resource: { buffer } }, { binding: 1, resource: atlasView }],
     });
     return { buffer, bind };
   }
@@ -114,6 +140,7 @@ export function paintCachedPose(params) {
       Number(spoonInScene),
       spoonInScene ? params.getCpuValue("cutX") ?? 0 : 0,
       spoonInScene ? params.getCpuValue("cutZ") ?? 0 : 0,
+      params.getCpuValue("retained") ?? 0,
     ];
     let dirty = baseDirty;
     for (const [index, value] of current.entries()) {
@@ -136,8 +163,8 @@ export function paintCachedPose(params) {
     // Restoring the intact image also erases the previous spoon and cut.
     // Only pixels in the current pose's affected regions run the geometry.
     encoder.copyTextureToTexture({ texture: surfaces.base }, { texture: surfaces.target }, [width, height]);
-    if (spoonInScene) {
-      const regions = poseRegions(width, height, pose[3], pose[5], pose[6]);
+    if (spoonInScene || pose[7]) {
+      const regions = poseRegions(width, height, pose[3], pose[5], pose[6], pose[7]);
       if (regions.length > 0) {
         for (const [index, region] of regions.entries()) bounds.set(region, index * 4);
         device.queue.writeBuffer(moving.buffer, 0, pose);
@@ -153,6 +180,7 @@ export function paintCachedPose(params) {
     intact.buffer.destroy();
     moving.buffer.destroy();
     vertices.destroy();
+    atlas.destroy();
   });
 
   const { add, sub, mul, abs, max, vec4 } = math;
@@ -168,8 +196,8 @@ export function paintCachedPose(params) {
   const sample = asLocal(texel, "jellyPose");
   // Reconstruct the stationary mold crown's optical coordinate. The stored
   // alpha masks the live difference to the glossy gel, preserving occlusion.
-  const x = mul(sub(uv.member("x"), 0.50), 1.77);
-  const y = mul(sub(0.56, uv.member("y")), 1.18);
+  const x = sub(mul(sub(uv.member("x"), 0.50), 1.77), 0.25);
+  const y = add(mul(sub(0.56, uv.member("y")), 1.18), 0.192);
   const stripe = add(add(x, 0.312), mul(sub(mul(sub(0.32822, y), 1 / 0.55), 0.026), 0.28));
   const drift = params.uniforms.glintDrift;
   const sheen = offset => {

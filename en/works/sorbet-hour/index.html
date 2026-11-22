@@ -36,19 +36,16 @@
 
   <main id="main" tabindex="-1">
     <section class="frame hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="season-label">Seasonal fruit jelly gift box · Silver-spoon tasting</p>
-        <h1 id="hero-title"><span>Summer jiggles.</span> Take a scoop.</h1>
-        <p class="hero-intro">Taste mandarin, raspberry or white guava jelly with a silver spoon, then choose six cups for your gift box.</p>
-        <a class="button" href="#box">Build a box<span aria-hidden="true">↘</span></a>
-      </div>
       <figure class="sorbets">
-        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="intact" data-scoop-aim="center" data-scoop-position="none" data-scoop-visual="ready" data-bite-phase="idle" data-bite-run="0" data-bite-elapsed="0">
+        <div class="stage" data-stage data-motion="still" data-material="0" data-cycle-seconds="evolving" data-hero-state="intact" data-scoop-aim="center" data-scoop-position="none" data-cuts="" data-scoop-visual="ready" data-bite-phase="idle" data-bite-run="0" data-bite-elapsed="0">
           <img src="%BASE_URL%media/sorbet-hour/cover.webp" alt="A glossy mandarin jelly refracts the rim of its porcelain plate." width="1200" height="800" fetchpriority="high" data-poster>
+          <div class="hero-wordmark"><img src="%BASE_URL%media/sorbet-hour/jelly-hour-wordmark.webp" width="566" height="478" alt="" fetchpriority="high"></div>
+          <h1 class="visually-hidden" id="hero-title">Jelly Hour</h1>
           <canvas aria-hidden="true"></canvas>
           <button type="button" class="scoop-hit" data-scoop-hit aria-label="Taste the jelly with a silver spoon" aria-describedby="scoop-help" aria-disabled="false" hidden><span aria-hidden="true"></span></button>
         </div>
         <figcaption class="inspector">
+          <a class="button build-box" href="#box">Build a box<span aria-hidden="true">↘</span></a>
           <fieldset data-instrument hidden>
             <legend class="visually-hidden">Tasting flavor</legend>
             <div class="slice-choices">
@@ -60,13 +57,17 @@
           <button class="pause" type="button" data-pause aria-pressed="false" hidden>Pause motion</button>
           <span class="visually-hidden" data-motion-status role="status">Showing the still fruit jelly.</span>
           <div class="scoop-controls" data-scoop-controls hidden>
-            <p id="scoop-help">Tap or drag to choose where the spoon takes a bite. Use the arrow keys and Enter on a keyboard.</p>
+            <p id="scoop-help">Choose one of three places to scoop. Each bite leaves a hollow. Use the arrow keys and Enter on a keyboard.</p>
             <button type="button" class="pause reset-scoop" data-scoop-reset disabled>Reset</button>
             <button type="button" class="pause replay-scoop" data-scoop-replay>Taste again</button>
             <span class="visually-hidden" data-scoop-status role="status"></span>
           </div>
         </figcaption>
       </figure>
+      <div class="hero-copy">
+        <p class="season-label">Seasonal fruit jelly gift box · Silver-spoon tasting</p>
+        <p class="hero-intro">Taste mandarin, raspberry or white guava jelly with a silver spoon, then choose six cups for your gift box.</p>
+      </div>
     </section>
 
     <section class="frame flavor-section" id="flavors" aria-labelledby="flavors-title">
