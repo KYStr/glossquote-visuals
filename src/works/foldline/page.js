@@ -65,8 +65,11 @@ const motion = createMotion({
     if (options.signal.aborted) return null;
     return initializeFoldline(stage.querySelector("canvas"), {
       ...options,
-      onPose(phase, settings) {
+      lake: new URL("lake.webp", imageBase).href,
+      shore: new URL("shore.webp", imageBase).href,
+      onPose(phase, settings, checkpoint) {
         stage.dataset.assemblyPhase = phase;
+        stage.dataset.assemblyCheckpoint = checkpoint;
         stage.dataset.assemblyRun = String(settings.run);
         stage.dataset.assemblyView = settings.mode === null ? "auto" : "manual";
         if (settings.mode === null && phase === "complete") {

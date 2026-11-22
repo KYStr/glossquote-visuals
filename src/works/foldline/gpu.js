@@ -1,15 +1,22 @@
 import { assemblyStage, boatScene, duration, modeTimes } from "./geometry.mjs";
 import program from "./foldline.wgsl?raw";
 
-const stride = 6;
-const maxVertices = 4608;
+const stride = 8;
+const maxVertices = 8192;
 const layerFormat = "rgba8unorm";
 const depthFormat = "depth24plus";
 const samples = 4;
 const transparent = [0, 0, 0, 0];
 const usage = () => GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC;
 
-async function makeDevice(canvas, obsolete) {
+async function loadPhoto(url) {
+  const image = new Image();
+  image.src = url;
+  await image.decode();
+  return image;
+}
+
+async function makeDevice(canvas, obsolete, lake, shore) {
   const adapter = await navigator.gpu.requestAdapter();
   if (!adapter || obsolete()) return null;
   const device = await adapter.requestDevice();
@@ -30,19 +37,21 @@ async function makeDevice(canvas, obsolete) {
         depthStencil: geometry.depthStencil,
         multisample: geometry.multisample,
       });
-    const [water, panels, compose] = await Promise.all([
+    const hullPipeline = {
+      buffers: [{
+        arrayStride: stride * 4,
+        attributes: [
+          { shaderLocation: 0, offset: 0, format: "float32x3" },
+          { shaderLocation: 1, offset: 12, format: "float32x3" },
+          { shaderLocation: 2, offset: 24, format: "float32x2" },
+        ],
+      }],
+      depthStencil: { format: depthFormat, depthWriteEnabled: true, depthCompare: "less" },
+    };
+    const [water, panels, mirror, compose] = await Promise.all([
       pipeline("waterVertex", "waterFragment", layerFormat),
-      pipeline("panelVertex", "panelFragment", layerFormat, {
-        buffers: [{
-          arrayStride: stride * 4,
-          attributes: [
-            { shaderLocation: 0, offset: 0, format: "float32x3" },
-            { shaderLocation: 1, offset: 12, format: "float32x3" },
-          ],
-        }],
-        depthStencil: { format: depthFormat, depthWriteEnabled: true, depthCompare: "less" },
-        multisample: { count: samples },
-      }),
+      pipeline("panelVertex", "panelFragment", layerFormat, { ...hullPipeline, multisample: { count: samples } }),
+      pipeline("panelVertex", "mirrorFragment", layerFormat, hullPipeline),
       pipeline("waterVertex", "composeFragment", format),
     ]);
     if (obsolete()) {
@@ -51,18 +60,26 @@ async function makeDevice(canvas, obsolete) {
     }
 
     const vertices = device.createBuffer({
-      size: maxVertices * stride * 4, usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+      size: maxVertices * stride * 4 * 2, usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
     });
-    const frame = device.createBuffer({ size: 32, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
-    const surface = device.createBindGroup({
-      layout: water.getBindGroupLayout(0), entries: [{ binding: 0, resource: { buffer: frame } }],
-    });
+    const frame = device.createBuffer({ size: 48, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+    const photoTexture = (source, premultipliedAlpha) => {
+      const size = [source.naturalWidth, source.naturalHeight];
+      const texture = device.createTexture({
+        size, format: layerFormat,
+        usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST | GPUTextureUsage.RENDER_ATTACHMENT,
+      });
+      device.queue.copyExternalImageToTexture({ source }, { texture, premultipliedAlpha }, size);
+      return texture;
+    };
+    const photo = photoTexture(lake, false);
+    const rock = photoTexture(shore, true);
     const sampler = device.createSampler({ magFilter: "linear", minFilter: "linear" });
     context = canvas.getContext("webgpu");
     if (!context) throw new Error("Unable to acquire canvas context");
     context.configure({ device, format, alphaMode: "opaque", usage: usage() });
     let targets = [];
-    let coverage, depth, resolve, waterView, layers;
+    let coverage, depth, resolve, waterView, mirrored, mirrorDepth, layers, surface;
     let geometryDirty = true;
     function colorPass(encoder, view) {
       return encoder.beginRenderPass({
@@ -90,6 +107,17 @@ async function makeDevice(canvas, obsolete) {
         depth = create(size, depthFormat, samples, attachment);
         resolve = create(size, layerFormat, 1, sampled);
         waterView = create(waterSize, layerFormat, 1, sampled);
+        mirrored = create(waterSize, layerFormat, 1, sampled);
+        mirrorDepth = create(waterSize, depthFormat, 1, attachment);
+        surface = device.createBindGroup({
+          layout: water.getBindGroupLayout(0), entries: [
+            { binding: 0, resource: { buffer: frame } },
+            { binding: 3, resource: sampler },
+            { binding: 4, resource: photo.createView() },
+            { binding: 5, resource: mirrored },
+            { binding: 6, resource: rock.createView() },
+          ],
+        });
         layers = device.createBindGroup({
           layout: compose.getBindGroupLayout(0),
           entries: [
@@ -104,7 +132,7 @@ async function makeDevice(canvas, obsolete) {
         device.queue.writeBuffer(frame, 0, uniforms);
         const encoder = device.createCommandEncoder();
         if (geometryChanged || geometryDirty) {
-          device.queue.writeBuffer(vertices, 0, data, 0, count * stride);
+          device.queue.writeBuffer(vertices, 0, data, 0, count * stride * 2);
           const hull = encoder.beginRenderPass({
             colorAttachments: [{ view: coverage, resolveTarget: resolve, loadOp: "clear", storeOp: "discard", clearValue: transparent }],
             depthStencilAttachment: { view: depth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
@@ -113,6 +141,14 @@ async function makeDevice(canvas, obsolete) {
           hull.setVertexBuffer(0, vertices);
           hull.draw(count);
           hull.end();
+          const reflection = encoder.beginRenderPass({
+            colorAttachments: [{ view: mirrored, loadOp: "clear", storeOp: "store", clearValue: transparent }],
+            depthStencilAttachment: { view: mirrorDepth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
+          });
+          reflection.setPipeline(mirror);
+          reflection.setVertexBuffer(0, vertices, count * stride * 4, count * stride * 4);
+          reflection.draw(count);
+          reflection.end();
           geometryDirty = false;
         }
         const tide = colorPass(encoder, waterView);
@@ -131,6 +167,8 @@ async function makeDevice(canvas, obsolete) {
         for (const texture of targets) texture.destroy();
         vertices.destroy();
         frame.destroy();
+        photo.destroy();
+        rock.destroy();
         context.unconfigure();
         device.destroy();
       },
@@ -145,7 +183,9 @@ async function makeDevice(canvas, obsolete) {
 export async function initializeFoldline(canvas, options) {
   let closed = false;
   const obsolete = () => closed || options.signal.aborted;
-  let target = await makeDevice(canvas, obsolete);
+  const [lake, shore] = await Promise.all([loadPhoto(options.lake), loadPhoto(options.shore)]);
+  if (obsolete()) return null;
+  let target = await makeDevice(canvas, obsolete, lake, shore);
   if (!target || obsolete()) {
     target?.close();
     return null;
@@ -158,10 +198,11 @@ export async function initializeFoldline(canvas, options) {
   let ready = false;
   let active = false;
   let recovered = false;
-  const data = new Float32Array(maxVertices * stride);
-  const uniforms = new Float32Array(8);
-  let cachedAspect, cachedTime, cachedShadow, vertexCount;
-  let reportedStage, reportedSettings;
+  const data = new Float32Array(maxVertices * stride * 2);
+  const uniforms = new Float32Array(12);
+  uniforms[7] = lake.naturalWidth / lake.naturalHeight;
+  let cachedAspect, cachedTime, vertexCount;
+  let reportedStage, reportedSettings, reportedCheckpoint;
 
   function allocate() {
     // Keep a 1296 CSS px desktop stage at native width at DPR 1.
@@ -191,7 +232,7 @@ export async function initializeFoldline(canvas, options) {
     options.onError();
     if (obsolete()) return;
     try {
-      const replacement = await makeDevice(canvas, obsolete);
+      const replacement = await makeDevice(canvas, obsolete, lake, shore);
       if (obsolete()) {
         replacement?.close();
         return;
@@ -226,30 +267,39 @@ export async function initializeFoldline(canvas, options) {
       const seconds = settings.mode === null ? elapsed : modeTimes[settings.mode];
       const geometryChanged = seconds !== cachedTime || aspect !== cachedAspect;
       if (geometryChanged) {
-        const { triangles, shadow } = boatScene({ aspect, seconds });
+        const { triangles, shadow, reflection, slope } = boatScene({ aspect, seconds });
+        vertexCount = triangles.length * 3;
+        if (vertexCount > maxVertices || reflection.length !== triangles.length) throw new RangeError("Hull vertex count");
         let index = 0;
-        for (const { points, tint } of triangles) {
-          for (const p of points) {
-            data.set(p, index);
-            data.set(tint, index + 3);
-            index += stride;
+        for (const mesh of [triangles, reflection]) {
+          for (const { points, tint, uv } of mesh) {
+            for (let i = 0; i < points.length; i++) {
+              data.set(points[i], index);
+              data.set(tint, index + 3);
+              data.set(uv[i], index + 6);
+              index += stride;
+            }
           }
         }
-        cachedShadow = shadow;
+        uniforms.set(shadow);
+        uniforms[8] = slope;
         cachedTime = seconds;
         cachedAspect = aspect;
-        vertexCount = index / stride;
       }
-      uniforms.set(cachedShadow);
       uniforms[4] = .65 * Math.sin(time * .74);
       uniforms[5] = aspect;
       uniforms[6] = Math.max(0, (seconds - 4.05) / (duration - 4.05));
+      uniforms[9] = seconds;
       target.draw(data, vertexCount, uniforms, geometryChanged);
       const phase = settings.mode === 1 ? "half" : assemblyStage(seconds);
-      if (phase !== reportedStage || settings !== reportedSettings) {
+      const checkpoint = phase === "releasing" && seconds >= .62 ||
+        phase === "extending" && seconds >= 1.87 ||
+        phase === "raising" && seconds >= 3.43 ? phase : "";
+      if (phase !== reportedStage || settings !== reportedSettings || checkpoint !== reportedCheckpoint) {
         reportedStage = phase;
         reportedSettings = settings;
-        options.onPose(phase, settings);
+        reportedCheckpoint = checkpoint;
+        options.onPose(phase, settings, checkpoint);
       }
       if (!ready) {
         ready = true;

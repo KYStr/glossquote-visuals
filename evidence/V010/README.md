@@ -1,3 +1,24 @@
+# V010 摺徑 FOLDLINE · M07
+
+- 從核准的 `03-Foldline.png` 取水色、銅橘板件、黑色座艙與接觸水線作為方向。冷開頁的手提包以接觸影坐在岩岸，鬆帶後連續展長與翻舷，短橢圓座艙與右後方的軟墊椅背立起。成船可停留、切換三態或重播。
+- 主體使用一組固定拓撲及原生 WebGPU 深度測試。內外板件沿各自鉸線活動，材質座標跟著表面走。船身 4× MSAA，水與倒影片層單採樣；倒影以相同艇身幾何對水面鏡射，再由水流扭曲、切碎並合成，並沿水線疊加接觸亮帶。靜止姿態沿用已解析的船身與倒影緩衝。
+- [湖面](../../public/media/foldline/lake.webp)與[岩岸](../../public/media/foldline/shore.webp)由內建 ImageGen 生成，壓成自託管 WebP。兩張素材只有風景內容。下方是實際使用的生成提示。
+- `testApprovedHero(page, input, capture)` 提供 `packed → releasing → extending → raising → afloat`。頁面內觀察器在三個即時中段影格提交後啟動原本的暫停控制，等待截圖。重播與恢復使用 mouse 或 touch，既有 flow 與鍵盤介面延續。
+- 作者以 Dawn D3D12 實際讀回 1296 × 579 與 358 × 278 紋理，確認所有姿態、1:1 座艙局部及手機全船；在 DOM 模擬取證延遲 1,015 ms，三個中段均保持同一畫面。瀏覽器外層排版以已驗證的舞台尺寸做構圖檢查，正式 Chromium 整頁、真實觸控及幀距由隔離 runner 驗收。
+- 執行 `python src/works/foldline/render-art.py` 可更新各態首屏、兩款型錄、攜行圖與封面。加目錄參數可輸出獨立影格。
+
+### 風景素材生成提示
+
+**湖面**
+
+Reference image only: approved FOLDLINE image, take the precise moody teal-green lake photography as visual direction. Generate a new empty deep-forest mountain lake water surface photographed from a kayak product photographer's downward-looking oblique viewpoint, no horizon, no shoreline, no rocks, no boat, no gear, no people, no lettering. Landscape extra-wide composition. Quiet near-black emerald water with naturally irregular vertical pine-tree reflections out of shot over the upper third and left, tiny warm olive highlights, increasingly horizontal broken silky cyan-dark green reflections and gently lapping shallow ripples in the lower and right areas. Keep mid-frame lake fairly restrained and dark so an orange 3D kayak rendered separately will read exceptionally well. Photographic realism, natural unlit black-green depths (not neon), real microtexture, asymmetric distribution of tiny ripple highlights, dappled natural daylight. The full frame must be uninterrupted water with no recognizable reflected product, object, or human silhouettes. No text, watermark, graphics, illustration, flare, or smoky fog.
+
+**岩岸**
+
+Generate a photoreal isolated rocky lakeshore foreground ledge for compositing, transparent cutout background. Reference image is only for natural rock, direction of light and material, NOT the kayak or bag. Wide horizontal still-life low slate and granite shelf photographed downward at oblique 35 degree angle, warm amber sunlight upper left, cool deep forest shadows, natural layered dark weathered slate, muted scrappy olive moss and a few fine pine needles. Broad flat usable top ledge with surface extending all the way to left edge, mostly level across central half, tip tapers toward the right. The top outline has modest cracks but no large stones or vegetation rising above it. Low front edge drops slightly like a rock terrace to the water. Use real mineral roughness and subtle natural color. The ledge occupies lower 65% of image with transparent area above, extends off the left and lower framing edges, irregular right edge, isolated with transparent alpha, no water, no backdrop, no shadows outside the object, absolutely no boat or bag or text.
+
+---
+
 # V010 摺徑 FOLDLINE · M06
 
 - 兩語入口為 `/works/foldline/` 與 `/en/works/foldline/`。初次開頁顯示攜行包。鬆開固定帶後，四塊底板及其相連船舷展長，甲板與椅背升起，約 4.8 秒成船。船身停在成船位置，水面持續微動。可用「重播展開」再看一次，也可直接選「攜行／半展／成船」。
