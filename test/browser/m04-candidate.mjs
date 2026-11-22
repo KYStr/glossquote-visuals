@@ -145,7 +145,12 @@ async function withPage(options, test, videoName) {
       const bytes = await readFile(original);
       assert.ok(bytes.length > 0, "Missing recording of visitor-visible frames");
       await rename(original, join(dir, videoName));
-      const recording = videoName === "craft-opening.webm" ? report.capture.craft : report.capture.heroInteraction;
+      const recordings = {
+        "craft-opening.webm": report.capture.craft,
+        "craft-interaction.webm": report.capture.heroInteraction,
+        "approved-interaction.webm": report.capture.approvedHero,
+      };
+      const recording = recordings[videoName];
       if (recording) recording.videoSha256 = hash(bytes);
     }
   }
@@ -270,6 +275,53 @@ try {
     await toggle(); await toggle(); await toggle(); await toggle();
     await phase(page, "running");
   }));
+
+  if (series === "m07") await check("approved-hero", async () => {
+    const { testApprovedHero } = await authorTools();
+    assert.equal(typeof testApprovedHero, "function", "Provide the M07 reference-art interaction");
+    const states = {
+      V008: ["intact", "press", "first-bite", "second-bite", "reset"],
+      V009: ["blue", "overprinting", "composite", "red"],
+      V010: ["packed", "releasing", "extending", "raising", "afloat"],
+    }[work];
+    const input = mobile ? "touch" : "mouse";
+    const evidence = report.capture.approvedHero = { input, frames: [], video: "approved-interaction.webm" };
+    await withPage({}, async page => {
+      await open(page);
+      await phase(page, "running");
+      await observeHeroInputs(page);
+      evidence.observations = await testApprovedHero(page, input, async state => {
+        assert.equal(state, states[evidence.frames.length], "Unexpected reference-art checkpoint");
+        evidence.frames.push({ state, inputs: await takeInputs(page), composite: await stageImage(page, "approved-" + state) });
+      });
+    });
+    assert.deepEqual(evidence.frames.map(frame => frame.state), states);
+    const distinct = evidence.frames.filter(frame => frame.state !== "reset");
+    assert.equal(new Set(distinct.map(frame => frame.composite.sha256)).size, distinct.length,
+      "Every reference-art checkpoint should show a distinct visible state");
+    const pointers = evidence.frames.flatMap(frame => frame.inputs).filter(event =>
+      event.type === "pointerdown" && event.pointerType === input);
+    assert.ok(pointers.length, "No trusted pointer input while observing the requested sequence");
+    if (work === "V008") {
+      const positions = evidence.observations.positions;
+      assert.ok(Array.isArray(positions) && positions.length >= 2, "Provide both normalized scoop positions");
+      for (const { x, y } of positions) {
+        assert.ok(Number.isFinite(x) && x >= 0 && x <= 1 && Number.isFinite(y) && y >= 0 && y <= 1);
+      }
+      assert.ok(Math.hypot(positions[0].x - positions[1].x, positions[0].y - positions[1].y) > 0.08,
+        "Choose visibly different areas for consecutive bites");
+      const scoops = pointers.filter(event => event.target === "data-scoop-hit");
+      assert.ok(scoops.some((a, i) => scoops.slice(i + 1).some(b => Math.hypot(a.x - b.x, a.y - b.y) > 8)),
+        "Independent input trace must locate two separate real presses");
+    }
+    await withPage({}, async page => {
+      await open(page);
+      await phase(page, "running");
+      // Record another visit without screenshot clipping or pixel readbacks.
+      await testApprovedHero(page, input, async () => {});
+      await page.waitForTimeout(600);
+    }, evidence.video);
+  });
 
   if (series !== "m04" && work === "V008") await check("hero-interaction", inPage({}, async page => {
     await instrument(page);
