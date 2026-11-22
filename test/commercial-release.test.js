@@ -95,7 +95,29 @@ test("a revised work can replace its private media while carried and shared asse
   const cross = { "fonts/studio-tc.css": "url(../media/selvedge/cloth.svg)",
     "media/selvedge/cloth.svg": '<image href="../sorbet-hour/berry.webp"/>' };
   const linkedPaths = [...paths, "media/selvedge/cloth.svg"];
-  assert.deepEqual(carriedPublicAssets(linkedPaths, replacing, [], path => cross[path] ?? "").sort(), linkedPaths.sort());
+  const carriedPage = { path: "en/works/tide-table/index.html", text: '<link href="../../../fonts/studio-tc.css">' };
+  assert.deepEqual(carriedPublicAssets(linkedPaths, replacing, [carriedPage], path => cross[path] ?? "").sort(), linkedPaths.sort());
+});
+
+test("globally retained but unreachable styles and font names alone do not retain a replaced product", () => {
+  const files = ["fonts/m05-foldline-tc.css", "fonts/m05-sorbet-hour-tc.css", "fonts/m05-sorbet-hour-text.woff2",
+    "fonts/site.css", "media/foldline/foldline-tc.woff2", "media/foldline/carry.webp", "media/sorbet-hour/jelly.webp"];
+  const styles = {
+    "fonts/m05-foldline-tc.css": "src:url(../media/foldline/foldline-tc.woff2)",
+    "fonts/m05-sorbet-hour-tc.css": 'src:url("./m05-sorbet-hour-text.woff2")',
+    "fonts/site.css": '@import "./m05-sorbet-hour-tc.css";',
+  };
+  const replacing = new Set(["foldline", "sorbet-hour"]);
+  const page = { path: "works/tide-table/index.html", text: '<link href="../../fonts/site.css">' };
+  const remote = { path: "assets/module.js", text: 'const url="https://other.invalid/glossquote-visuals/media/foldline/carry.webp";' };
+  const dependencies = () => carriedPublicAssets(files,replacing,[page,remote],path => styles[path] ?? "");
+  assert.deepEqual(dependencies(),files.filter(f => f.startsWith("fonts/")));
+  const dynamic = { path: "assets/lazy.js", text: 'new URL(base + "media/foldline/" + finish)' };
+  assert.deepEqual(carriedPublicAssets(files, replacing, [dynamic]).sort(),
+    files.filter(f => !f.startsWith("media/sorbet-hour/")).sort());
+  // A nested import from the carried page now makes the relative media URL reachable.
+  styles["fonts/m05-sorbet-hour-tc.css"] += ' @import "./m05-foldline-tc.css";';
+  assert.deepEqual(dependencies().sort(),files.filter(f => !f.startsWith("media/sorbet-hour/")).sort());
 });
 
 test("an aggregate must cover this work, both locales and both viewports in the same successful attempt", () => {

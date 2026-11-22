@@ -438,8 +438,8 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
   // the entire referenced work directory, including computed sibling filenames.
   const readDependencyText = path => /\.(?:css|m?js|svg|json|html)$/i.test(path)
     ? readFileSync(resolve(dist, path), "utf8") : "";
-  const runtimeText = [...files].map(readDependencyText);
-  for (const path of carriedPublicAssets(previousPublic, replacing, runtimeText, readDependencyText)) files.add(path);
+  const runtimeSources = [...files].map(path => ({ path, text: readDependencyText(path) }));
+  for (const path of carriedPublicAssets(previousPublic, replacing, runtimeSources, readDependencyText)) files.add(path);
   for (const file of files) {
     const output = readFileSync(resolve(dist, file));
     const url = file.endsWith("/index.html") ? file.slice(0, -"index.html".length) : file;
@@ -450,21 +450,58 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
   return carried;
 }
 
-export function carriedPublicAssets(paths, replacing, runtimeText, readDependencyText = () => "") {
+export function carriedPublicAssets(paths, replacing, runtimeSources, readDependencyText = () => "") {
+  const known = new Set(paths);
   const pending = new Map([...replacing].map(slug => [slug, []]));
   const retained = [];
-  for (const path of paths) {
+  for (const path of known) {
     const [directory, slug, ...file] = path.split("/");
     if (directory === "media" && file.length && pending.has(slug)) pending.get(slug).push(path);
     else retained.push(path);
   }
-  const queue = [...runtimeText, ...retained.map(readDependencyText)];
-  for (const text of queue) {
-    for (const [slug, media] of pending) {
-      if (!text.includes(slug)) continue;
-      pending.delete(slug);
-      retained.push(...media);
-      queue.push(...media.map(readDependencyText));
+  // Global files still need exact byte comparisons. Their references matter
+  // only when a carried page or one of its dependencies actually loads them.
+  const queue = runtimeSources.map(source => typeof source === "string" ? { path: "assets/entry.js", text: source } : source);
+  const visited = new Set(queue.map(source => source.path));
+  function enqueue(path) {
+    if (visited.has(path) || !known.has(path) || !/\.(css|m?js|html|svg|json)$/i.test(path)) return;
+    visited.add(path);
+    queue.push({ path, text: readDependencyText(path) });
+  }
+  function protectMedia(slug) {
+    const files = pending.get(slug);
+    if (!files) return;
+    pending.delete(slug);
+    retained.push(...files);
+    for (const file of files) enqueue(file);
+  }
+  function follow(target) {
+    if (target.startsWith("media/")) protectMedia(target.split("/")[1]);
+    enqueue(target);
+  }
+  for (const { path, text } of queue) {
+    const refs = new Set();
+    for (const match of text.matchAll(/\burl\(\s*(?:"([^"]*)"|'([^']*)'|([^)'"]+?))\s*\)/gi)) refs.add(match[1] ?? match[2] ?? match[3]);
+    for (const match of text.matchAll(/\bsrcset\s*=\s*["']([^"']*)["']/gi)) {
+      for (const entry of match[1].split(",")) refs.add(entry.trim().split(/\s+/)[0]);
+    }
+    for (const match of text.matchAll(/"([^"\n]*)"|'([^'\n]*)'|\x60([^\x60\n]*)\x60|\b(?:src|href)\s*=\s*([^"'\s>]+)/gi)) {
+      refs.add(match[1] ?? match[2] ?? match[3] ?? match[4]);
+    }
+    for (const ref of refs) {
+      // A module can construct media filenames from an exact quoted slug.
+      if (/\.m?js$/i.test(path)) {
+        if (pending.has(ref)) protectMedia(ref);
+        // A module may append a project-relative literal to its base URL.
+        if (/^(?:media|fonts|licenses)\//.test(ref)) follow(ref.split(/[?#]/)[0]);
+      }
+      if (!ref || ref.startsWith("#") || /[<>\r\n]/.test(ref) || !URL.canParse(ref, origin + base + path)) continue;
+      const url = new URL(ref, origin + base + path);
+      if (url.origin !== origin || !url.pathname.startsWith(base)) continue;
+      let target;
+      try { target = decodeURIComponent(url.pathname.slice(base.length)); }
+      catch { continue; }
+      follow(target);
     }
   }
   return retained;
