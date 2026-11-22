@@ -3,7 +3,6 @@ struct Frame {
   tide: vec4f,
   contact: vec4f,
   crop: vec4f,
-  edge: vec4f,
 }
 @group(0) @binding(0) var<uniform> frame: Frame;
 @group(0) @binding(1) var resolvedHull: texture_2d<f32>;
@@ -78,41 +77,14 @@ fn rippleNoise(p: vec2f) -> f32 {
   return vec4f(lit*(1.0-rock.a*shelf)+rock.rgb*shelf*(.96-.52*pressure),1);
 }
 
-fn hullPixel(at: vec2i, size: vec2i) -> vec4f {
-  if (any(at < vec2i(0)) || any(at >= size)) { return vec4f(0); }
-  return textureLoad(resolvedHull,at,0);
-}
-
-fn edgeAA(at: vec2i, size: vec2i, centre: vec4f) -> vec4f {
-  let n = hullPixel(at-vec2i(0,1),size);
-  let s = hullPixel(at+vec2i(0,1),size);
-  let w = hullPixel(at-vec2i(1,0),size);
-  let e = hullPixel(at+vec2i(1,0),size);
-  let avg = (n+s+w+e)*.25;
-  let mask = abs(centre.a-avg.a);
-  if (mask > 0.0) {
-    return mix(centre,avg,.48);
-  }
-  if (centre.a == 0.0) { return centre; }
-  let weights = vec3f(.30,.57,.13);
-  let luma = dot(centre.rgb,weights);
-  let ns = max(abs(luma-dot(n.rgb,weights)),abs(luma-dot(s.rgb,weights)));
-  let ew = max(abs(luma-dot(w.rgb,weights)),abs(luma-dot(e.rgb,weights)));
-  // Smooth discontinuities such as a dark strap crossing a copper sheet.
-  // The small atlas variations do not reach this contrast threshold.
-  let edge = smoothstep(.23,.46,max(ns,ew));
-  let across = select((w+e)*.5,(n+s)*.5,ns>ew);
-  return mix(centre,across,edge*.21);
-}
-
 @fragment fn composeFragment(surface: Surface) -> @location(0) vec4f {
   let at = vec2i(surface.position.xy)-vec2i(frame.crop.xy);
   let size = vec2i(frame.crop.zw);
   var water = textureSample(waterLayer, linearClamp, imageUV(surface.uv)).rgb;
+  if (any(at < vec2i(0)) || any(at >= size)) { return vec4f(water,1); }
+
+  var hull = textureLoad(resolvedHull,at,0);
   let p = surface.uv;
-  if (abs(p.x) > frame.edge.y || p.y < frame.edge.z || p.y > frame.edge.w) { return vec4f(water,1); }
-  var hull = hullPixel(at,size);
-  if (frame.edge.x > 0.0) { hull = edgeAA(at,size,hull); }
   let contact = p.y-frame.shadow.z-frame.contact.x*(p.x-frame.shadow.w);
   // Follow the real lower silhouette. The wet strip spans only a few
   // native pixels and its broken crests sit just outside the hull coverage.
@@ -128,6 +100,20 @@ fn edgeAA(at: vec2i, size: vec2i, centre: vec4f) -> vec4f {
     water += crest*vec3f(.185,.32,.29);
   }
   return vec4f(hull.rgb + water * (1.0 - hull.a), 1);
+}
+
+@fragment fn composeMotionFragment(surface: Surface) -> @location(0) vec4f {
+  let at = surface.position.xy-frame.crop.xy;
+  let water = textureSample(waterLayer,linearClamp,imageUV(surface.uv)).rgb;
+  if (any(at < vec2f(0)) || any(at >= frame.crop.zw)) { return vec4f(water,1); }
+  let pixels = vec2f(textureDimensions(resolvedHull));
+  let source = at/frame.crop.zw*pixels-.5;
+  // Remap the blend weight around texel centres to keep the thin creases
+  // crisp without stepping the resolved coverage at the silhouette.
+  let blendWeight = smoothstep(vec2f(.10),vec2f(.90),fract(source));
+  let coord = (floor(source)+blendWeight+.5)/pixels;
+  let hull = textureSampleLevel(resolvedHull,linearClamp,coord,0);
+  return vec4f(hull.rgb+water*(1.0-hull.a),1);
 }
 
 struct Panel {

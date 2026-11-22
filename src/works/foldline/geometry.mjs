@@ -473,8 +473,6 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     buffers.slope = slope;
     buffers.reflects = seconds > 4.05;
     buffers.yOffset = yOffset;
-    buffers.halfWidth = .5*(frame[1]-frame[0])*scale;
-    buffers.halfHeight = .5*(frame[3]-frame[2])*scaleY;
     return;
   }
   return { triangles: tessellate(false), shadow, reflection: plate ? [] : tessellate(true), slope };
