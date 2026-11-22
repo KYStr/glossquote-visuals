@@ -1,5 +1,11 @@
 # Evidence status
 
+<!-- M07 release -->
+## M07 已發布並完成正式站驗證
+
+[果時](https://kystr.github.io/glossquote-visuals/works/sorbet-hour/)可在不同位置壓下湯匙，挖起果凍並留下缺口。[疊印](https://kystr.github.io/glossquote-visuals/works/afterimage-press/)讓朱紅墨覆上鈷藍底版，套印成一張海報。[摺徑](https://kystr.github.io/glossquote-visuals/works/foldline/)讓手提包逐段展開成能乘坐的艇。每件均通過 14 條驗收規則及六項美術檢查。正式站的中英文商品流程已逐一操作並下載。[發布證據與限制](../evidence/M07/86e6da3d596c64c5cc3886a20807ffd4ba3a906c/RELEASE.md)。
+<!-- /M07 release -->
+
 <!-- M06 release -->
 ## M06 已發布並完成正式站驗證
 
