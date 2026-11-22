@@ -13,12 +13,17 @@ const mix = (a, b, t) => a + (b - a) * t;
 // Include the neighboring subpixel taps before rounding out to tile boundaries.
 export function poseRegions(width, height, time, cutX, cutZ, retained = 0, baked = 0) {
   const boxes = [];
-  function cover(left, bottom, right, top) {
+  let shadow;
+  function tileBounds(left, bottom, right, top) {
     const x0 = clamp(Math.floor((((left + 0.25) / 1.77 + 0.5) * width - 2) / tile) * tile, width);
     const x1 = clamp(Math.ceil((((right + 0.25) / 1.77 + 0.5) * width + 2) / tile) * tile, width);
     const y0 = clamp(Math.floor(((0.56 - (top - 0.192) / 1.18) * height - 2) / tile) * tile, height);
     const y1 = clamp(Math.ceil(((0.56 - (bottom - 0.192) / 1.18) * height + 2) / tile) * tile, height);
-    if (x0 < x1 && y0 < y1) boxes.push([x0, y0, x1, y1]);
+    if (x0 < x1 && y0 < y1) return [x0, y0, x1, y1];
+  }
+  function cover(left, bottom, right, top) {
+    const box = tileBounds(left, bottom, right, top);
+    if (box) boxes.push(box);
   }
 
   const contactX = -0.142 + cutX;
@@ -60,7 +65,7 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0, baked
     const press = ramp(1.23, 1.66, time) * (1 - ramp(1.82, 2.42, time));
     const bowlY = projectY(contactY - 0.145 + mix(0.33, 0.152, arrive) - 0.152 * insert + dy - 0.035 * press, bowlZ);
     const shadowY = projectY(0.018, bowlZ + 0.09);
-    cover(bowlX + 0.045 - 0.303, shadowY - 0.125,
+    shadow = tileBounds(bowlX + 0.045 - 0.303, shadowY - 0.125,
       bowlX + 0.045 + 0.303, shadowY + 0.125);
     const tilt = mix(0.26, 0.06, insert) + 0.10 * travel;
     const heading = Math.hypot(0.794, 0.608);
@@ -99,5 +104,5 @@ export function poseRegions(width, height, time, cutX, cutZ, retained = 0, baked
       }
     }
   }
-  return regions;
+  return { regions, shadow };
 }

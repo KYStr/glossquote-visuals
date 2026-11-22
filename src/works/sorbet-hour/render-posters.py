@@ -50,10 +50,6 @@ fn photoRGBA(origin: vec2f, extent: vec2f, uv: vec2f) -> vec4f {{
 fn photo(origin: vec2f, extent: vec2f, uv: vec2f) -> vec3f {{
     return photoRGBA(origin, extent, uv).rgb;
 }}
-fn cacheColor(color: vec4f, kind: f32) -> vec4f {{
-    let code = select(1.0 + round(color.a * 126.0), 128.0 + round(color.a * 127.0), kind == 2.0);
-    return vec4f(color.rgb, select(code / 255.0, 0.0, kind == 0.0));
-}}
 {MOTION}
 @vertex fn vertex(@builtin(vertex_index) i: u32) -> @builtin(position) vec4f {{
     let box = array<vec2f, 3>(vec2f(-1, -1), vec2f(3, -1), vec2f(-1, 3));
@@ -70,6 +66,7 @@ fn cacheColor(color: vec4f, kind: f32) -> vec4f {{
     let cutZ = params[2].x;
     let retained = u32(params[2].y);
     let frame = jellyFrame(biteTime, cutX, cutZ);
+    let markSteel = false;
 {PAINT}
 }}
 """)
@@ -81,7 +78,7 @@ params = device.create_buffer(size=48, usage=wgpu.BufferUsage.UNIFORM | wgpu.Buf
 bind = device.create_bind_group(
     layout=pipeline.get_bind_group_layout(0),
     entries=[{"binding": 0, "resource": {"buffer": params, "offset": 0, "size": 48}},
-        {"binding": 1, "resource": atlas.create_view()}, {"binding": 2, "resource": atlas.create_view()}],
+        {"binding": 1, "resource": atlas.create_view()}],
 )
 texture = device.create_texture(size=(WIDTH, HEIGHT, 1), format=FORMAT,
     usage=wgpu.TextureUsage.RENDER_ATTACHMENT | wgpu.TextureUsage.COPY_SRC)

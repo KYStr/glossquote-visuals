@@ -118,7 +118,11 @@ try {
     }
   }
   await writeFile(join(dir, "results.json"), JSON.stringify({ input, lang, gpu, hero, flow, reduced: true, performance }, null, 2));
-  if (performance) checkPerformance(performance);
+  if (performance) {
+    const { medianMs, p95Ms, longestMs, canvasSize } = performance;
+    console.log(JSON.stringify({ input, lang, medianMs, p95Ms, longestMs, canvasSize }));
+    checkPerformance(performance);
+  }
 } finally {
   await browser?.close();
   await site.close();
