@@ -48,9 +48,10 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
       }],
       depthStencil: { format: depthFormat, depthWriteEnabled: true, depthCompare: "less" },
     };
-    const [water, panels, mirror, compose] = await Promise.all([
+    const [water, panels, movingPanels, mirror, compose] = await Promise.all([
       pipeline("waterVertex", "waterFragment", layerFormat),
       pipeline("panelVertex", "panelFragment", layerFormat, { ...hullPipeline, multisample: { count: samples } }),
+      pipeline("panelVertex", "panelFragment", layerFormat, hullPipeline),
       pipeline("mirrorVertex", "mirrorFragment", layerFormat, {
         depthStencil: hullPipeline.depthStencil,
         buffers: [{ arrayStride: mirrorStride * 4, attributes: hullPipeline.buffers[0].attributes.slice(0,2) }],
@@ -71,7 +72,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
     const indices = device.createBuffer({
       size: maxVertices * 2, usage: GPUBufferUsage.INDEX | GPUBufferUsage.COPY_DST,
     });
-    const frame = device.createBuffer({ size: 64, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+    const frame = device.createBuffer({ size: 80, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
     const photoTexture = (source, premultipliedAlpha) => {
       const size = [source.naturalWidth, source.naturalHeight];
       const texture = device.createTexture({
@@ -85,19 +86,22 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
     const rock = photoTexture(shore, true);
     const material = photoTexture(atlas, false);
     const sampler = device.createSampler({ magFilter: "linear", minFilter: "linear" });
-    const materials = device.createBindGroup({
-      layout: panels.getBindGroupLayout(0), entries: [
+    const materials = pipeline => device.createBindGroup({
+      layout: pipeline.getBindGroupLayout(0), entries: [
         { binding: 0, resource: { buffer: frame } },
         { binding: 3, resource: sampler },
         { binding: 7, resource: material.createView() },
       ],
     });
+    const stillMaterials = materials(panels);
+    const motionMaterials = materials(movingPanels);
     context = canvas.getContext("webgpu");
     if (!context) throw new Error("Unable to acquire canvas context");
     context.configure({ device, format, alphaMode: "opaque", usage: usage() });
     let targets = [];
-    let coverage, depth, resolve, waterView, mirrored, mirrorDepth, layers, surface;
+    let coverage, depth, motionDepth, resolve, waterView, mirrored, mirrorDepth, layers, surface;
     let geometryDirty = true;
+    let lastMotionMode;
     let topologyReady = false;
     let cropWidth, cropHeight;
     function colorPass(encoder, view) {
@@ -128,6 +132,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
         const waterSize = [Math.round(width * waterScale), Math.max(1, Math.round(height * waterScale))];
         coverage = create(hullSize, layerFormat, samples, attachment);
         depth = create(hullSize, depthFormat, samples, attachment);
+        motionDepth = create(hullSize, depthFormat,1,attachment);
         resolve = create(hullSize, layerFormat, 1, sampled);
         waterView = create(waterSize, layerFormat, 1, sampled);
         mirrored = create(waterSize, layerFormat, 1, sampled);
@@ -152,8 +157,8 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
         });
         geometryDirty = true;
       },
-      draw(mesh, uniforms, geometryChanged) {
-        const { hull: data, mirror: reflected, topology, indexCount, vertexCount, reflects, yOffset } = mesh;
+      draw(mesh, uniforms, geometryChanged, moving) {
+        const { hull: data, mirror: reflected, topology, indexCount, vertexCount, reflects, yOffset, halfWidth, halfHeight } = mesh;
         uniforms[10] = canvas.width;
         uniforms[11] = canvas.height;
         uniforms[12] = Math.floor((canvas.width-cropWidth)/2);
@@ -161,20 +166,29 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
           Math.round(((1-yOffset)*canvas.height-cropHeight)/2)));
         uniforms[14] = cropWidth;
         uniforms[15] = cropHeight;
+        uniforms[16] = Number(moving);
+        uniforms[17] = halfWidth + 4/canvas.width;
+        uniforms[18] = yOffset-halfHeight-4/canvas.height;
+        uniforms[19] = yOffset+halfHeight+4/canvas.height;
         device.queue.writeBuffer(frame, 0, uniforms);
         const encoder = device.createCommandEncoder();
-        if (geometryChanged || geometryDirty) {
+        if (geometryChanged || geometryDirty || moving !== lastMotionMode) {
           if (!topologyReady) {
             device.queue.writeBuffer(indices,0,topology,0,indexCount+(indexCount%2));
             topologyReady = true;
           }
           device.queue.writeBuffer(vertices,0,data,0,vertexCount*hullStride);
+          // While the hull moves, its single-sample surface is also the
+          // compositing input. Set poses get the original 4x coverage resolve.
+          const output = moving
+            ? { view: resolve, storeOp: "store" }
+            : { view: coverage, resolveTarget: resolve, storeOp: "discard" };
           const hull = encoder.beginRenderPass({
-            colorAttachments: [{ view: coverage, resolveTarget: resolve, loadOp: "clear", storeOp: "discard", clearValue: transparent }],
-            depthStencilAttachment: { view: depth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
+            colorAttachments: [{ ...output, loadOp: "clear", clearValue: transparent }],
+            depthStencilAttachment: { view: moving ? motionDepth : depth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
           });
-          hull.setPipeline(panels);
-          hull.setBindGroup(0, materials);
+          hull.setPipeline(moving ? movingPanels : panels);
+          hull.setBindGroup(0,moving ? motionMaterials : stillMaterials);
           hull.setVertexBuffer(0, vertices);
           hull.setIndexBuffer(indices,"uint16");
           hull.drawIndexed(indexCount);
@@ -192,6 +206,7 @@ async function makeDevice(canvas, obsolete, lake, shore, atlas) {
             reflection.end();
           }
           geometryDirty = false;
+          lastMotionMode = moving;
         }
         const tide = colorPass(encoder, waterView);
         tide.setPipeline(water);
@@ -250,7 +265,7 @@ export async function initializeFoldline(canvas, options) {
     topology: new Uint16Array(maxVertices), indexCount: 0,
     shadow: new Float32Array(4),
   };
-  const uniforms = new Float32Array(16);
+  const uniforms = new Float32Array(20);
   uniforms[7] = lake.naturalWidth / lake.naturalHeight;
   let cachedAspect, cachedTime;
   let reportedStage, reportedSettings, reportedCheckpoint;
@@ -328,7 +343,7 @@ export async function initializeFoldline(canvas, options) {
       uniforms[5] = aspect;
       uniforms[6] = Math.max(0, (seconds - 4.05) / (duration - 4.05));
       uniforms[9] = seconds;
-      target.draw(meshes, uniforms, geometryChanged);
+      target.draw(meshes, uniforms, geometryChanged,settings.mode === null && seconds < duration);
       const phase = settings.mode === 1 ? "half" : assemblyStage(seconds);
       const checkpoint = phase === "releasing" && seconds >= .62 ||
         phase === "extending" && seconds >= 1.87 ||
