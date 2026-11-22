@@ -1,0 +1,329 @@
+{
+  "repository": "KYStr/glossquote-visuals",
+  "commit": "df6ba61887571c76af1d2d65122db9905ba089bb",
+  "runId": 45002487345,
+  "attempt": 1,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345",
+  "jobId": 137148579087,
+  "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137148579087",
+  "conclusion": "success",
+  "sources": [
+    {
+      "lane": "V008-zh-Hant-desktop",
+      "jobId": 137146839348,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839348",
+      "artifactId": 14745948262,
+      "artifactDigest": "sha256:173f9bbe6f2f63bb809da81778511cd4a142887359847986c8114cdb87ed4840",
+      "approvedInteraction": {
+        "input": "mouse",
+        "frames": [
+          {
+            "state": "intact",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-desktop/approved-intact.png",
+            "sha256": "57371967cd9af2c371477e171ed774489fc23487fabf01485762b1876211f132"
+          },
+          {
+            "state": "press",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-desktop/approved-press.png",
+            "sha256": "56a48f775d7b73fcb9952c2591ab29ee44e3905798cc610da06117475f44ddc6"
+          },
+          {
+            "state": "first-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-desktop/approved-first-bite.png",
+            "sha256": "89cf795f6a070abc7a79c7c1a74f1fa7505d81790dc99e8ed6d3e2688e6894a3"
+          },
+          {
+            "state": "second-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-desktop/approved-second-bite.png",
+            "sha256": "d474dd222f246088a524fc38577dbcf6b543408d6a5448744764d17faaca879d"
+          },
+          {
+            "state": "reset",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-desktop/approved-reset.png",
+            "sha256": "59bc0007fcbda898225c8cf4c7274f1ab6ec96ab193ccb2446b88f3177391ba3"
+          }
+        ],
+        "video": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-desktop/approved-interaction.webm",
+          "sha256": "7274e05b52a8c1ab3a085488c8775b295f54667d173f1c998f6208f6ebaf4686"
+        },
+        "report": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-desktop/results.json",
+          "sha256": "9e800910992b1ba0911f071b5220a96bf931b33e88795490c54bbce4aa0a0f4f"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 8808,
+          "originalTiles": 11
+        },
+        "defaultEdge": {
+          "version": "157.0.4341.60",
+          "runtime": "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
+          "requestedGraphicsFlags": [],
+          "phase": "unavailable",
+          "gpu": {
+            "api": true,
+            "devices": 0,
+            "textures": 0,
+            "adapter": null
+          },
+          "presentation": "static fallback",
+          "flowDownload": {
+            "filename": "jelly-hour-recipe-zh-Hant.txt",
+            "bytes": 710
+          }
+        }
+      },
+      "measurements": {
+        "measuredMs": 10000.300000000017,
+        "medianMs": 28.800000000017462,
+        "p95Ms": 42.29999999998836,
+        "longestMs": 62.09999999997672
+      }
+    },
+    {
+      "lane": "V008-zh-Hant-mobile",
+      "jobId": 137146839187,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839187",
+      "artifactId": 14746487784,
+      "artifactDigest": "sha256:c538eb4a95a0c5fc37f7eaf0bc7cd8499fb9d2ef67092e350cd6c96a297e9b9e",
+      "approvedInteraction": {
+        "input": "touch",
+        "frames": [
+          {
+            "state": "intact",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-mobile/approved-intact.png",
+            "sha256": "75a7155e19ec3e86417a26ebb3678bf4eb900854ab82db0f879b0b5a84ed4cf3"
+          },
+          {
+            "state": "press",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-mobile/approved-press.png",
+            "sha256": "9409302d9574251289a72c116d8988c1a30eed501b3d2b77f7f125a03b4f39be"
+          },
+          {
+            "state": "first-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-mobile/approved-first-bite.png",
+            "sha256": "4dff87c5f38fccca717cbe110f5c0c596eedcc5696ea9f25b1a27d6539ca0cb7"
+          },
+          {
+            "state": "second-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-mobile/approved-second-bite.png",
+            "sha256": "031cec6f46e3e3385a0e67ee7c84c38b65ee78b6a83124c9e2d821c3b17a847a"
+          },
+          {
+            "state": "reset",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-mobile/approved-reset.png",
+            "sha256": "72df04d48918fb574740e02e4693bd0dfeea1853302ebd5421f7b39d58e981ee"
+          }
+        ],
+        "video": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-mobile/approved-interaction.webm",
+          "sha256": "81aeee3ca70c4a7be1db029d263353d63eaebb73a6061a9baaf36b260e202f5b"
+        },
+        "report": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-zh-Hant-mobile/results.json",
+          "sha256": "951eb736f88652ffd1dd7917b3f62421f7a74c803d72fb4787dca9f947f455fa"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10000.5,
+        "medianMs": 22.400000000023283,
+        "p95Ms": 24.899999999906868,
+        "longestMs": 52
+      }
+    },
+    {
+      "lane": "V008-en-desktop",
+      "jobId": 137146839345,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839345",
+      "artifactId": 14746288509,
+      "artifactDigest": "sha256:e42912670224d71437f77a873123ef6319e8e0f71520aa7ee13ebdd360fec682",
+      "approvedInteraction": {
+        "input": "mouse",
+        "frames": [
+          {
+            "state": "intact",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-desktop/approved-intact.png",
+            "sha256": "2bc1136b1b5a99ad08843b8330dd7e1de3f73d49857002f9ff9ea835b318ee96"
+          },
+          {
+            "state": "press",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-desktop/approved-press.png",
+            "sha256": "1afa85f300ecbbab571a1134c9ee40f7a62501b928c35d08e6fe949b2e6fb765"
+          },
+          {
+            "state": "first-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-desktop/approved-first-bite.png",
+            "sha256": "f395c6a424e00645c912512fab06f352a03acb0d3124372192da02ea3a7d0cb8"
+          },
+          {
+            "state": "second-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-desktop/approved-second-bite.png",
+            "sha256": "0113c395a96c1f12ebf8c77f72d7f923038e012680a8ae976f481457cb5d5e08"
+          },
+          {
+            "state": "reset",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-desktop/approved-reset.png",
+            "sha256": "c787c08934be5f49fd663bd4033ddeea5fca5135f232d6d50c3d94ecd400aecd"
+          }
+        ],
+        "video": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-desktop/approved-interaction.webm",
+          "sha256": "971e5a18af512872cb6a7970dfab4aaa401ce1eb080e0865dc369b386889d142"
+        },
+        "report": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-desktop/results.json",
+          "sha256": "c87c01f3bc5a6b6f4b16ca143c2b920c640859ced0ff3a5c0559158baeb371fc"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 9093,
+          "originalTiles": 11
+        }
+      },
+      "measurements": {
+        "measuredMs": 10001.799999999988,
+        "medianMs": 29.199999999953434,
+        "p95Ms": 41.59999999997672,
+        "longestMs": 68.90000000002328
+      }
+    },
+    {
+      "lane": "V008-en-mobile",
+      "jobId": 137146839341,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839341",
+      "artifactId": 14746786702,
+      "artifactDigest": "sha256:29a16ec01a0e6b80d375b7b12effdf2a970c99c7abcdc36d9b9d0d0ea9f6c236",
+      "approvedInteraction": {
+        "input": "touch",
+        "frames": [
+          {
+            "state": "intact",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-mobile/approved-intact.png",
+            "sha256": "d96138b4e92dac0e4ad8792bbb9359d7a944add91757217429280ab090e3a48b"
+          },
+          {
+            "state": "press",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-mobile/approved-press.png",
+            "sha256": "9b7084ae4cfa6a0ceb5583c7393cb34ae01ee1714ceb064203fb493183712326"
+          },
+          {
+            "state": "first-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-mobile/approved-first-bite.png",
+            "sha256": "f7fb12f58e2081cc1a85a5324329ddc96b791207cf43810b3614612b24ede6a1"
+          },
+          {
+            "state": "second-bite",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-mobile/approved-second-bite.png",
+            "sha256": "53eeea6af03cfc931807dbd8deb5607987dff7929a5b9f05942a79d297b1c6be"
+          },
+          {
+            "state": "reset",
+            "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-mobile/approved-reset.png",
+            "sha256": "9bcb0347af626b76723bda29981bf4dd1eb1190544db8001b55fb24bc0672cb8"
+          }
+        ],
+        "video": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-mobile/approved-interaction.webm",
+          "sha256": "647b1f94326721238c3d621f2f1f5004b0176e346de3155142563696f64d5dc9"
+        },
+        "report": {
+          "path": "evidence/V008/df6ba61887571c76af1d2d65122db9905ba089bb/V008-en-mobile/results.json",
+          "sha256": "852727a0e937e21dc797ff024e3914cb9074fcdd353028dd9a19f42a5e61bcdc"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10004.200000000012,
+        "medianMs": 21.89999999999418,
+        "p95Ms": 29.10000000000582,
+        "longestMs": 71.69999999998254
+      }
+    }
+  ],
+  "comparisonInputs": {
+    "desktop": [
+      {
+        "lane": "V008-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "57e41073c1d27c750a656bead29822501fd252463291e622d7b59e2b6882b83e"
+      },
+      {
+        "lane": "V009-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "3e79ef3024afc40938f8dfadbea86dcac5ddd38b8e35aca02b4b266645b8b67c"
+      },
+      {
+        "lane": "V010-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "21457a13602dfd7068aed1d6c577b736a21e00c944c1ad81963651675945e44e"
+      }
+    ],
+    "mobile": [
+      {
+        "lane": "V008-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "f65d2b1bdb91eb8315ee950544efa138312f2e64d73e68f1cbd1a92fd2896c37"
+      },
+      {
+        "lane": "V009-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "1ebfe76b734ea287cd01d6aa778cfd662d54ab46ef2d60ab2ada9c953f5f346e"
+      },
+      {
+        "lane": "V010-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "8128ca7ec9ab329ed46d756daba1233541eaef3cb03572c652320ba64ca79c15"
+      }
+    ]
+  }
+}

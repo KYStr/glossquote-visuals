@@ -1,0 +1,309 @@
+{
+  "repository": "KYStr/glossquote-visuals",
+  "commit": "df6ba61887571c76af1d2d65122db9905ba089bb",
+  "runId": 45002487345,
+  "attempt": 1,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345",
+  "jobId": 137148579087,
+  "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137148579087",
+  "conclusion": "success",
+  "sources": [
+    {
+      "lane": "V009-zh-Hant-desktop",
+      "jobId": 137146839445,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839445",
+      "artifactId": 14746717593,
+      "artifactDigest": "sha256:1bc6d9bf2ecaa2d7edfaacd4e3cfe1806d13505bc7d2f58a4ecc9938ec0cc6bb",
+      "approvedInteraction": {
+        "input": "mouse",
+        "frames": [
+          {
+            "state": "blue",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-blue.png",
+            "sha256": "922a64e409f25fa2a5d3806561fa9107177c0c6ebb77bd0fb4ba9ac24584e033"
+          },
+          {
+            "state": "overprinting",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-overprinting.png",
+            "sha256": "a7203196c1bbcbbd23df4dc97a869af4aeb99a952daaf9e1c9924f8ff6fda094"
+          },
+          {
+            "state": "composite",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-composite.png",
+            "sha256": "a77c78e51f8044de54649e224184c0da7572a7ce8962d2cbd7a1a885501ad5c6"
+          },
+          {
+            "state": "red",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-red.png",
+            "sha256": "bbb0fcd4e41b10c9e6c7f9f0475c6bc201645d25dfd9c201eb33b8965e5bf7c5"
+          }
+        ],
+        "video": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/approved-interaction.webm",
+          "sha256": "ee16b07c168bf17db511fd16b7ee1c06dc47f0234dc2686b3e0da73c08801c77"
+        },
+        "report": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-desktop/results.json",
+          "sha256": "a33a2b303918dcd1ad76943ad41059141974911a5d71a5e20ea433d1ff92322e"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 4977,
+          "originalTiles": 6
+        },
+        "defaultEdge": {
+          "version": "157.0.4341.60",
+          "runtime": "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
+          "requestedGraphicsFlags": [],
+          "phase": "unavailable",
+          "gpu": {
+            "api": true,
+            "devices": 0,
+            "textures": 0,
+            "adapter": null
+          },
+          "presentation": "static fallback",
+          "flowDownload": {
+            "filename": "afterimage-print-sheet-zh-Hant.txt",
+            "bytes": 332
+          }
+        }
+      },
+      "measurements": {
+        "measuredMs": 10010.5,
+        "medianMs": 19.900000000023283,
+        "p95Ms": 26,
+        "longestMs": 28.29999999998836
+      }
+    },
+    {
+      "lane": "V009-zh-Hant-mobile",
+      "jobId": 137146839475,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839475",
+      "artifactId": 14746441698,
+      "artifactDigest": "sha256:8305f3e022e7218f06945321dc015693f93782ea94683b70b1d7c0a8e25389d7",
+      "approvedInteraction": {
+        "input": "touch",
+        "frames": [
+          {
+            "state": "blue",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-blue.png",
+            "sha256": "2db24bd5e904779baa19b971dde69670b3dd685af3f5a6ef377d4424c6d892ac"
+          },
+          {
+            "state": "overprinting",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-overprinting.png",
+            "sha256": "68be79d2c38eebd2f014e33976b03ead02b26bc12119932e729107e0aa2b3dcc"
+          },
+          {
+            "state": "composite",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-composite.png",
+            "sha256": "510817fb5761f863ce6ab842f7660890e230f13fdc814f9a725502ed8157d6d7"
+          },
+          {
+            "state": "red",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-red.png",
+            "sha256": "06db22e29280c4127e96f2d489f5ba2ab9c73cecb81fa15ebd137471e588e6ba"
+          }
+        ],
+        "video": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/approved-interaction.webm",
+          "sha256": "306a140a8987c2b4d256e82f7049813ce4d884473619501d9aec05d4e41e9804"
+        },
+        "report": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-zh-Hant-mobile/results.json",
+          "sha256": "6697919f9d7580e1d169f0c61cb0353e64979a9a67b422133b0458937da20790"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10002.400000000023,
+        "medianMs": 21.5,
+        "p95Ms": 22.199999999953434,
+        "longestMs": 23
+      }
+    },
+    {
+      "lane": "V009-en-desktop",
+      "jobId": 137146839357,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839357",
+      "artifactId": 14746372938,
+      "artifactDigest": "sha256:3c9f7640288db95fa6743287dbe0ec94377f8a1c3da9c1934129513290b87a28",
+      "approvedInteraction": {
+        "input": "mouse",
+        "frames": [
+          {
+            "state": "blue",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-blue.png",
+            "sha256": "691d6cc7435d878dd67325301908bd9ddf306f3719fc729d4903222a2bb38a65"
+          },
+          {
+            "state": "overprinting",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-overprinting.png",
+            "sha256": "3a9ab018a086db88ee539a82b95970ed54d2271d4d04ae070e53092c99ebda3d"
+          },
+          {
+            "state": "composite",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-composite.png",
+            "sha256": "212f3efdb3c2e7fdbbb7600977d4a6c2a39dc78d6e29ea7bb20e4564ac7d87ae"
+          },
+          {
+            "state": "red",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-red.png",
+            "sha256": "3e78391444b56f3051684690e828a97360d30ddcc8bd8e274de87ec1eb0e3fb7"
+          }
+        ],
+        "video": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/approved-interaction.webm",
+          "sha256": "304e1ac15839d4ebb64c43ee0d1301803632b756c6bba20776de4b82bd1389a6"
+        },
+        "report": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-desktop/results.json",
+          "sha256": "908f54fae2a271526d166e518087c091fff792ef35aa57d2de75a8e7c99703bd"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 5419,
+          "originalTiles": 7
+        }
+      },
+      "measurements": {
+        "measuredMs": 10000.20000000007,
+        "medianMs": 27.400000000023283,
+        "p95Ms": 28.599999999976717,
+        "longestMs": 29.400000000023283
+      }
+    },
+    {
+      "lane": "V009-en-mobile",
+      "jobId": 137146839523,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/45002487345/job/137146839523",
+      "artifactId": 14746037645,
+      "artifactDigest": "sha256:6629f895a342c7eb8597b6d4c9fb60c09661b7fbe50b2cdb542c12f4f331afa9",
+      "approvedInteraction": {
+        "input": "touch",
+        "frames": [
+          {
+            "state": "blue",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-blue.png",
+            "sha256": "9d3b356ec8cab1ce03756e158d72ece1e9351fb27ab10c13940df2b9e696dcb4"
+          },
+          {
+            "state": "overprinting",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-overprinting.png",
+            "sha256": "24b50ea7b2d722ced628959263c61ee987e3cfc1fb586797ea84237dfcd98649"
+          },
+          {
+            "state": "composite",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-composite.png",
+            "sha256": "f2ba373f8b05af03710f1ad99ef7c94041af336e4877524c94c7c701e5d7cbb7"
+          },
+          {
+            "state": "red",
+            "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-red.png",
+            "sha256": "8b6744a5abdb9cc81931af471339cb9026ada35d4e187a50887786504ee647cb"
+          }
+        ],
+        "video": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/approved-interaction.webm",
+          "sha256": "9723c29fa0915c8ce1fed4a731b93088f0e26ab4152312fe35707ebc39dab914"
+        },
+        "report": {
+          "path": "evidence/V009/df6ba61887571c76af1d2d65122db9905ba089bb/V009-en-mobile/results.json",
+          "sha256": "ab375e43da0edac6d6c79f78e68e31ad38145d0bf3063c0bee5e1d8217206fab"
+        }
+      },
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10000.700000000012,
+        "medianMs": 19.900000000023283,
+        "p95Ms": 21,
+        "longestMs": 21.300000000046566
+      }
+    }
+  ],
+  "comparisonInputs": {
+    "desktop": [
+      {
+        "lane": "V008-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "57e41073c1d27c750a656bead29822501fd252463291e622d7b59e2b6882b83e"
+      },
+      {
+        "lane": "V009-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "3e79ef3024afc40938f8dfadbea86dcac5ddd38b8e35aca02b4b266645b8b67c"
+      },
+      {
+        "lane": "V010-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "21457a13602dfd7068aed1d6c577b736a21e00c944c1ad81963651675945e44e"
+      }
+    ],
+    "mobile": [
+      {
+        "lane": "V008-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "f65d2b1bdb91eb8315ee950544efa138312f2e64d73e68f1cbd1a92fd2896c37"
+      },
+      {
+        "lane": "V009-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "1ebfe76b734ea287cd01d6aa778cfd662d54ab46ef2d60ab2ada9c953f5f346e"
+      },
+      {
+        "lane": "V010-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "8128ca7ec9ab329ed46d756daba1233541eaef3cb03572c652320ba64ca79c15"
+      }
+    ]
+  }
+}
