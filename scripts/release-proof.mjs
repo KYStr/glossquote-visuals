@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, lstatSync, readFileSync, realpathSync } from "node:fs";
 import { relative, resolve } from "node:path";
 import { base, isPublished, origin, registry, releaseWorkIds, root, worksFor } from "./site-map.mjs";
@@ -8,6 +9,23 @@ const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8"
 const sha = /^[a-f0-9]{40}$/;
 const gates = ["visual", "interaction", "shader", "lifecycle", "accessibility", "performance", "privacy", "seo", "reproducibility"];
 const approvedMetadata = new Set(["coordination/work-registry.json", "README.md"]);
+// Historical reviews may be replayed against commits already in the last
+// released M05 tree. Removing version fields on a new branch cannot opt out.
+const lastLegacyHead = "8206c4a55e8be0faee2ff4b265878d4da75445f7";
+export const craftVersion = "hero-craft-v1";
+export const craftCriteria = ["silhouette", "finish", "material", "narrative", "continuity", "fidelity"];
+const m06Works = new Set(["V008", "V009", "V010"]);
+
+// Pin the workflow to the batch declared by this specific source candidate.
+// M06 predates the explicit milestone field and owns exactly these three works.
+export function craftMilestone(work) {
+  assert.equal(work.acceptanceVersion, craftVersion);
+  const milestone = work.acceptanceMilestone ?? (m06Works.has(work.id) ? "M06" : undefined);
+  assert.ok(typeof milestone === "string" && /^M(?:0[6-9]|[1-9]\d+)$/.test(milestone),
+    "Declare an M06-or-later acceptanceMilestone on the candidate");
+  if (milestone === "M06") assert.ok(m06Works.has(work.id), "Work not in the fixed M06 cohort");
+  return milestone;
+}
 
 export async function releaseProof() {
   const head = git("rev-parse", "HEAD");
@@ -58,6 +76,14 @@ async function verifyWork(work, head, actionReports) {
   assert.equal(proof.author, work.owner);
   assert.ok(proof.reviewer && proof.reviewer !== proof.author);
   for (const gate of gates) assert.equal(proof.gates[gate], "PASS", gate);
+  const newCandidate = git("merge-base", work.candidateCommit, lastLegacyHead) !== work.candidateCommit;
+  if (newCandidate) {
+    const candidateRegistry = JSON.parse(git("show", work.candidateCommit + ":coordination/work-registry.json"));
+    const sourceWork = candidateRegistry.works.find(entry => entry.id === work.id);
+    assert.ok(sourceWork, "Work absent from the fixed candidate");
+    assert.equal(craftMilestone(work), craftMilestone(sourceWork),
+      "The release registry must retain the fixed candidate's acceptance milestone");
+  }
   verifyCommercialReview(work, proof);
   verifyTemporalReview(proof.temporalReview, proof);
   for (const evidence of temporalEvidence(proof.temporalReview)) {
@@ -77,9 +103,17 @@ async function verifyWork(work, head, actionReports) {
   assert.equal(job.run_id, proof.runId);
   const rules = usesRules(work, proof);
   if (rules) {
-    const workflow = job.workflow_name?.match(/^Verify (M04|M05) candidate$/)?.[1];
-    assert.ok(workflow, "Unrecognized rule-based candidate workflow");
-    assert.equal(job.name, `All ${workflow} candidate checks`);
+    if (newCandidate || work.acceptanceVersion) {
+      const run = await readAction(`runs/${job.run_id}`, actionReports);
+      const file = "verify-" + craftMilestone(work).toLowerCase() + ".yml";
+      const workflow = await readAction(`workflows/${file}`, actionReports);
+      verifyCraftWorkflow(job, run, work, workflow);
+      assert.equal(git("ls-tree", "--name-only", work.candidateCommit, "--", run.path), run.path);
+    } else {
+      const workflow = job.workflow_name?.match(/^Verify (M04|M05) candidate$/)?.[1];
+      assert.ok(workflow, "Unrecognized rule-based candidate workflow");
+      assert.equal(job.name, `All ${workflow} candidate checks`);
+    }
     const report = await readAction(`runs/${job.run_id}/attempts/${job.run_attempt}/jobs?per_page=100`, actionReports);
     verifyCandidateLanes(work, job, report.jobs);
   } else {
@@ -87,6 +121,21 @@ async function verifyWork(work, head, actionReports) {
     assert.equal(job.name, "All candidate checks");
   }
   assert.ok(job.labels.includes("windows-2025"), "Acceptance requires the verified Windows renderer");
+}
+
+export function verifyCraftWorkflow(job, run, work, workflow) {
+  const milestone = craftMilestone(work);
+  const name = `Verify ${milestone} candidate`;
+  const path = `.github/workflows/verify-${milestone.toLowerCase()}.yml`;
+  assert.equal(workflow.name, name);
+  assert.equal(workflow.path, path);
+  assert.ok(Number.isSafeInteger(workflow.id) && workflow.id > 0);
+  assert.equal(run.workflow_id, workflow.id);
+  assert.equal(job.workflow_name, name);
+  assert.equal(job.name, `All ${milestone} candidate checks`);
+  assert.equal(run.path, path);
+  assert.equal(run.id, job.run_id);
+  assert.equal(run.head_sha, work.candidateCommit);
 }
 
 export function verifyCandidateLanes(work, aggregate, jobs) {
@@ -111,7 +160,7 @@ export const commercialRules = [
 ];
 
 function usesRules(work, proof) {
-  return Number(work.id.slice(1)) >= 6 || proof.ruleReview !== undefined;
+  return Number(work.id.slice(1)) >= 6 || proof.ruleReview !== undefined || work.acceptanceVersion !== undefined;
 }
 
 function verifyEvidenceFile(work, path, repoRoot = root) {
@@ -126,12 +175,95 @@ function verifyEvidenceFile(work, path, repoRoot = root) {
   assert.notEqual(path, prefix + "acceptance.json", "Acceptance cannot serve as its own evidence");
 }
 
+function imageKind(bytes) {
+  if (bytes.subarray(0, 8).toString("hex") === "89504e470d0a1a0a") return "png";
+  if (bytes.subarray(0, 3).toString("hex") === "ffd8ff") return "jpeg";
+  if (bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP") return "webp";
+  if (bytes.subarray(0, 4).toString("hex") === "1a45dfa3") return "webm";
+  return null;
+}
+
+export function verifyCraftReview(work, proof, repoRoot = root) {
+  const review = proof.craftReview;
+  assert.equal(work.acceptanceVersion, craftVersion);
+  assert.equal(review?.version, craftVersion);
+  assert.equal(review.status, "PASS");
+  assert.equal(review.commit, work.candidateCommit);
+  assert.equal(review.commit, proof.commit);
+  assert.equal(review.reviewer, proof.reviewer);
+  assert.ok(review.reviewer && review.reviewer !== work.owner && review.reviewer !== proof.author);
+  assert.deepEqual(review.criteria.map(c => c.id).sort(), [...craftCriteria].sort(),
+    "All six craft criteria must appear exactly once");
+  const references = new Set();
+  const images = new Map();
+  function inspectImage(path) {
+    if (!images.has(path)) {
+      const bytes = readFileSync(resolve(repoRoot, path));
+      images.set(path, { kind: imageKind(bytes), hash: createHash("sha256").update(bytes).digest("hex") });
+    }
+    return images.get(path);
+  }
+  for (const criterion of review.criteria) {
+    assert.equal(criterion.status, "PASS", criterion.id);
+    assert.ok(typeof criterion.reason === "string" && criterion.reason.trim(), "Missing craft observation: " + criterion.id);
+    assert.ok(Array.isArray(criterion.evidence) && criterion.evidence.length, "Missing craft evidence: " + criterion.id);
+    for (const path of criterion.evidence) {
+      verifyEvidenceFile(work, path, repoRoot);
+      references.add(path);
+    }
+    assert.ok(criterion.evidence.some(path => /\.(png|jpe?g|webp|webm)$/i.test(path) && inspectImage(path).kind),
+      "Craft review requires original visual evidence: " + criterion.id);
+  }
+  const prefix = `evidence/${work.id}/${work.candidateCommit}/`;
+  function requireCapture(dir, file, hash, kind) {
+    assert.ok(typeof file === "string" && /^[\w.-]+$/.test(file));
+    const path = dir + file;
+    assert.ok(references.has(path), "Cite the reviewed craft capture: " + path);
+    const capture = inspectImage(path);
+    assert.equal(capture.kind, kind, path);
+    assert.equal(capture.hash, hash, "Original capture digest mismatch: " + path);
+  }
+  for (const viewport of ["desktop", "mobile"]) {
+    const lanes = ["zh-Hant", "en"].map(lang => ({ lang, dir: prefix + [work.id, lang, viewport].join("-") + "/" }));
+    const cited = lanes.filter(({ dir }) => references.has(dir + "craft-opening.webm"));
+    assert.ok(cited.length, "Review the uncut cold-opening video on " + viewport);
+    for (const { dir, lang } of cited) {
+      const path = dir + "results.json";
+      verifyEvidenceFile(work, path, repoRoot);
+      const results = JSON.parse(readFileSync(resolve(repoRoot, path), "utf8"));
+      assert.deepEqual([results.work, results.commit, results.lang, results.viewport], [work.id, work.candidateCommit, lang, viewport]);
+      assert.equal(results.checks["craft-storyboard"]?.status, "PASS");
+      const craft = results.capture.craft;
+      assert.equal(craft.version, craftVersion);
+      assert.equal(craft.video, "craft-opening.webm");
+      requireCapture(dir, craft.video, craft.videoSha256, "webm");
+      // Review at least one corresponding native / 160 px pair per size. The
+      // video covers the complete process, including intermediate contact and hold.
+      const matched = craft.frames.filter(f => references.has(dir + f.native.file) && references.has(dir + f.thumb.file));
+      assert.ok(matched.length, "Cite matching native and 160px frames on " + viewport);
+      for (const { native, thumb } of matched) {
+        assert.equal(thumb.width, 160);
+        requireCapture(dir, native.file, native.sha256, "png");
+        requireCapture(dir, thumb.file, thumb.sha256, "png");
+      }
+      if (work.id === "V008") {
+        assert.equal(results.checks["hero-interaction"]?.status, "PASS");
+        const interaction = results.capture.heroInteraction;
+        assert.equal(interaction.input, viewport === "desktop" ? "keyboard" : "touch");
+        assert.equal(interaction.video, "craft-interaction.webm");
+        requireCapture(dir, interaction.video, interaction.videoSha256, "webm");
+      }
+    }
+  }
+}
+
 export function verifyCommercialReview(work, proof, repoRoot = root) {
   assert.match(work.id, /^V\d{3}$/);
   assert.match(work.candidateCommit, sha);
   assert.equal(proof.commit, work.candidateCommit);
   assert.equal(proof.author, work.owner);
   assert.ok(proof.author && proof.reviewer && proof.reviewer !== proof.author);
+  if (work.acceptanceVersion !== undefined || proof.craftReview !== undefined) verifyCraftReview(work, proof, repoRoot);
   if (!usesRules(work, proof)) {
     verifyDesignScores(proof.scores, proof.designReview);
     for (const criterion of Object.values(proof.designReview.categories).flat()) {
@@ -262,7 +394,15 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
   const previous = await (await readLive("release.json")).json();
   const carried = [];
   const files = new Set();
-  const previousPublic = new Set();
+  // Product attestations can span releases. Only the currently served release
+  // owns the public asset tree, including product variants resolved at runtime.
+  assert.match(previous.commit, sha);
+  git("merge-base", "--is-ancestor", previous.commit, head);
+  const previousPublic = git("ls-tree", "-r", "-z", "--name-only", previous.commit, "--", "public/")
+    .split("\0").filter(Boolean).map(path => {
+      assert.ok(path.startsWith("public/"));
+      return path.slice("public/".length);
+    });
   const replacing = new Set(registry.works.filter(work => selected.includes(work.id)).map(work => work.slug));
   const deployments = new Map();
   for (const work of works) {
@@ -279,11 +419,6 @@ export async function verifyCarriedWorks(works, head, dist = resolve(root, "dist
     if (!deployments.has(deployment)) {
       git("merge-base", "--is-ancestor", deployment, head);
       deployments.set(deployment, JSON.parse(git("show", deployment + ":coordination/work-registry.json")));
-      // public/ permits computed URLs, e.g. switching a product finish after load.
-      for (const path of git("ls-tree", "-r", "--name-only", deployment, "--", "public/").split("\n")) {
-        assert.ok(path.startsWith("public/"));
-        previousPublic.add(path.slice("public/".length));
-      }
     }
     const original = deployments.get(deployment).works.find((entry) => entry.id === work.id);
     assert.equal(original?.status, "reviewed");

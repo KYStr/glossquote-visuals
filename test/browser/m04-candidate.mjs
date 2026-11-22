@@ -1,13 +1,15 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { chromium } from "playwright";
+import { craftMilestone } from "../../scripts/release-proof.mjs";
 import { base, registry, root } from "../../scripts/site-map.mjs";
 import { observe } from "./probe.mjs";
 import { serveDist } from "./server.mjs";
 import { captureOpening } from "./m04-opening.mjs";
+import { captureCraft } from "./m06-craft.mjs";
 import { captureBrowserZoom, checkPerformance, installPresentationMeter, layoutInventory, measureSubmissions } from "./m04-measure.mjs";
 
 if (process.platform !== "win32" || process.env.RUNNER_OS !== "Windows" ||
@@ -16,9 +18,10 @@ if (process.platform !== "win32" || process.env.RUNNER_OS !== "Windows" ||
   throw Error("NOT_RUN_USER_FOCUS_BOUNDARY: browser capture is restricted to the project's GitHub-hosted Windows VM");
 }
 const [work, lang, viewport, series = "m04"] = process.argv.slice(2);
-assert.ok(["m04", "m05"].includes(series));
 const entry = registry.works.find(candidate => candidate.id === work);
 assert.ok(entry && ["zh-Hant", "en"].includes(lang) && ["desktop", "mobile"].includes(viewport));
+const craftCandidate = !["m04", "m05"].includes(series);
+if (craftCandidate) assert.equal(series, craftMilestone(entry).toLowerCase());
 const commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
 assert.equal(commit, process.env.GITHUB_SHA);
 const dir = join(root, ".runs", series + "-evidence", [work, lang, viewport].join("-"));
@@ -106,12 +109,23 @@ async function quiet(page) {
   return before;
 }
 let browser;
-async function withPage(options, test) {
-  const context = await browser.newContext({ viewport: size, deviceScaleFactor: 1, hasTouch: mobile, ...options });
+async function withPage(options, test, videoName) {
+  const recordVideo = videoName ? { dir, size } : undefined;
+  const context = await browser.newContext({ viewport: size, deviceScaleFactor: 1, hasTouch: mobile, ...options, recordVideo });
   const page = await context.newPage();
   page.setDefaultTimeout(10_000);
   try { return await test(page); }
-  finally { await context.close(); }
+  finally {
+    await context.close();
+    if (videoName) {
+      const original = await page.video().path();
+      const bytes = await readFile(original);
+      assert.ok(bytes.length > 0, "Missing recording of visitor-visible frames");
+      await rename(original, join(dir, videoName));
+      const recording = videoName === "craft-opening.webm" ? report.capture.craft : report.capture.heroInteraction;
+      if (recording) recording.videoSha256 = hash(bytes);
+    }
+  }
 }
 async function instrument(page) {
   const probe = await observe(page, { readPixels: true });
@@ -139,7 +153,7 @@ function collectDiagnostics(page) {
   page.on("pageerror", error => problems.push({ kind: "script", message: error.message }));
   return problems;
 }
-const inPage = (options, fn) => () => withPage(options, fn);
+const inPage = (options, fn, videoName) => () => withPage(options, fn, videoName);
 try {
   browser = await chromium.launch(launch);
   report.browser = browser.version();
@@ -149,8 +163,11 @@ try {
   await system.detach();
 
   await check("first-three-seconds", inPage({}, async page => {
-    await captureOpening({ browser, page, url, dir, report, inspectRunningMotion: series === "m05" });
+    await captureOpening({ browser, page, url, dir, report, inspectRunningMotion: series !== "m04" });
   }));
+
+  if (craftCandidate) await check("craft-storyboard", inPage({}, page =>
+    captureCraft({ page, open, phase, stageImage, dir, report }), "craft-opening.webm"));
 
   await check("initial-and-material-sequence", inPage({}, async page => {
     await instrument(page);
@@ -223,13 +240,14 @@ try {
     await phase(page, "running");
   }));
 
-  if (series === "m05" && work === "V008") await check("hero-interaction", inPage({}, async page => {
+  if (series !== "m04" && work === "V008") await check("hero-interaction", inPage({}, async page => {
     await instrument(page);
     await open(page);
     await phase(page, "running");
     const { testHeroInteraction } = await authorTools();
     const input = mobile ? "touch" : "keyboard";
     const evidence = report.capture.heroInteraction = { input, samples: [] };
+    if (craftCandidate) evidence.video = "craft-interaction.webm";
     await page.evaluate(() => {
       window.__m05HeroInputs = [];
       for (const type of ["keydown", "pointerdown"]) {
@@ -257,7 +275,7 @@ try {
     }
     assert.notEqual(evidence.samples[0].composite.sha256, evidence.samples[1].composite.sha256, "Scoop did not change the visible hero");
     assert.notEqual(evidence.samples[1].composite.sha256, evidence.samples[2].composite.sha256, "Reset did not change the visible hero");
-  }));
+  }, craftCandidate ? "craft-interaction.webm" : undefined));
 
   await check("BIZ-2-and-privacy", inPage({}, async page => {
     report.pageProblems = collectDiagnostics(page);
@@ -268,7 +286,7 @@ try {
     report.capture.flow = result;
     report.requests = await privacy(page, probe);
     await page.screenshot({ path: join(dir, "flow-complete.png"), fullPage: true });
-    if (series === "m05") assert.deepEqual(report.pageProblems, []);
+    if (series !== "m04") assert.deepEqual(report.pageProblems, []);
     return result;
   }));
   for (const mode of ["no-js", "gpu-init-fail", "reduced"]) {

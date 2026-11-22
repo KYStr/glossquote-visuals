@@ -3,13 +3,16 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
-import { carriedPublicAssets, carriedRuntimeAssets, commercialRules, verifyCandidateLanes, verifyCommercialReview, verifyReleaseSelection } from "../scripts/release-proof.mjs";
+import { carriedPublicAssets, carriedRuntimeAssets, commercialRules, craftCriteria, verifyCandidateLanes, verifyCommercialReview, verifyReleaseSelection } from "../scripts/release-proof.mjs";
 import { base } from "../scripts/site-map.mjs";
 
 test("published rule IDs match the written acceptance contract", () => {
   const document = readFileSync(new URL("../docs/M04-ACCEPTANCE.md", import.meta.url), "utf8");
-  const documented = [...document.matchAll(/^\| ([A-Z]+-\d+) \|/gm)].map((match) => match[1]);
+  const [general, craft] = document.split(/^## 自 M06 起適用的美術細則\r?$/m);
+  const documented = [...general.matchAll(/^\| ([A-Z]+-\d+) \|/gm)].map((match) => match[1]);
   assert.deepEqual(commercialRules, documented);
+  const requiredCraft = [...craft.matchAll(/^\| ART-\d \| [^|]*（([a-z]+)） \|/gm)].map(match => match[1]);
+  assert.deepEqual([...craftCriteria].sort(), requiredCraft.sort());
 });
 
 test("a new work requires independent observations and original evidence for every rule", (t) => {
