@@ -32,6 +32,7 @@ jobs:
           node-version-file: .node-version
           package-manager-cache: false
       - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm test
       - run: npm run build
       - run: node node_modules/playwright/cli.js install chromium --no-shell
       - run: node evidence/V008/verify-m07.mjs ${{ matrix.input }} ${{ matrix.lang }}
