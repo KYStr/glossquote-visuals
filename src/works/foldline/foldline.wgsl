@@ -10,6 +10,7 @@ struct Frame {
 @group(0) @binding(4) var lakePhoto: texture_2d<f32>;
 @group(0) @binding(5) var mirroredHull: texture_2d<f32>;
 @group(0) @binding(6) var shorePhoto: texture_2d<f32>;
+@group(0) @binding(7) var materialAtlas: texture_2d<f32>;
 
 struct Surface {
   @builtin(position) position: vec4f,
@@ -83,11 +84,12 @@ struct Panel {
   @location(0) colour: vec3f,
   @location(1) surface: vec2f,
   @location(2) screen: vec2f,
+  @location(3) @interpolate(flat) material: u32,
 }
 @vertex fn panelVertex(
-  @location(0) p: vec3f, @location(1) colour: vec3f, @location(2) surface: vec2f
+  @location(0) p: vec3f, @location(1) colour: vec3f, @location(2) surface: vec2f, @location(3) material: f32
 ) -> Panel {
-  return Panel(vec4f(p, 1), colour, surface, p.xy);
+  return Panel(vec4f(p, 1), colour, surface, p.xy, u32(material));
 }
 @fragment fn panelFragment(panel: Panel) -> @location(0) vec4f {
   let texel = panel.surface * 352.0;
@@ -104,7 +106,36 @@ struct Panel {
   let lighting = .78+.34*key+.11*reflectedTrees;
   let bounce = vec3f(.029,.066,.058)*(1.0-key)*(1.0-.63*copper);
   let sheen = vec3f(.125,.077,.038)*copper*key*(.26+.74*reflectedTrees);
-  let colour = panel.colour * (lighting+detail*.72) + detail + bounce + sheen;
+  var colour = panel.colour * (lighting+detail*.72) + detail + bounce + sheen;
+  let mat = panel.material;
+  let uv = clamp(panel.surface,vec2f(0),vec2f(1));
+  if (mat > 0u) {
+    let seating = mat == 3u || mat == 4u;
+    let deck = mat == 2u || mat == 6u;
+    // Insets keep linear filtering in its own swatch at the atlas boundaries.
+    let shellUV = mix(vec2f(.006,.010),vec2f(.994,.489),uv);
+    let deckUV = mix(vec2f(.006,.510),vec2f(.495,.990),uv);
+    let seatPos = select(vec2f(uv.x,.55+uv.y*.20),uv,mat == 4u);
+    let seatUV = mix(vec2f(.506,.510),vec2f(.994,.990),seatPos);
+    let lookup = select(select(shellUV,deckUV,deck),seatUV,seating);
+    let photograph = textureSampleLevel(materialAtlas,linearClamp,lookup,0).rgb;
+    if (seating) {
+      let textile = photograph * (1.13+.35*key) - vec3f(.005);
+      colour = mix(colour,textile,.86);
+    } else {
+      let exposure = .53+.65*clamp((colour.r-.18)/.62,0.0,1.0);
+      let polymer = photograph*vec3f(1.18,1.10,1.04)*exposure + .24*bounce + .26*sheen;
+      colour = mix(colour,polymer,.76);
+    }
+    if (mat == 5u || mat == 6u) {
+      // The two belts straddle x=.20 and .68 on the same packed leaf.
+      let lift = smoothstep(.14,1.12,frame.contact.y);
+      let x = uv.x-.012-.055*lift;
+      let strip = min(abs(x-.176),abs(x-.758));
+      let shadow = 1.0-smoothstep(.019,.060+.028*lift,strip);
+      colour *= 1.0-.38*(1.0-lift)*shadow;
+    }
+  }
   return vec4f(clamp(colour,vec3f(0),vec3f(1)),1);
 }
 @fragment fn mirrorFragment(panel: Panel) -> @location(0) vec4f {

@@ -1,7 +1,7 @@
 import { assemblyStage, boatScene, duration, modeTimes } from "./geometry.mjs";
 import program from "./foldline.wgsl?raw";
 
-const stride = 8;
+const stride = 9;
 const maxVertices = 8192;
 const layerFormat = "rgba8unorm";
 const depthFormat = "depth24plus";
@@ -16,7 +16,7 @@ async function loadPhoto(url) {
   return image;
 }
 
-async function makeDevice(canvas, obsolete, lake, shore) {
+async function makeDevice(canvas, obsolete, lake, shore, atlas) {
   const adapter = await navigator.gpu.requestAdapter();
   if (!adapter || obsolete()) return null;
   const device = await adapter.requestDevice();
@@ -44,6 +44,7 @@ async function makeDevice(canvas, obsolete, lake, shore) {
           { shaderLocation: 0, offset: 0, format: "float32x3" },
           { shaderLocation: 1, offset: 12, format: "float32x3" },
           { shaderLocation: 2, offset: 24, format: "float32x2" },
+          { shaderLocation: 3, offset: 32, format: "float32" },
         ],
       }],
       depthStencil: { format: depthFormat, depthWriteEnabled: true, depthCompare: "less" },
@@ -74,7 +75,15 @@ async function makeDevice(canvas, obsolete, lake, shore) {
     };
     const photo = photoTexture(lake, false);
     const rock = photoTexture(shore, true);
+    const material = photoTexture(atlas, false);
     const sampler = device.createSampler({ magFilter: "linear", minFilter: "linear" });
+    const materials = device.createBindGroup({
+      layout: panels.getBindGroupLayout(0), entries: [
+        { binding: 0, resource: { buffer: frame } },
+        { binding: 3, resource: sampler },
+        { binding: 7, resource: material.createView() },
+      ],
+    });
     context = canvas.getContext("webgpu");
     if (!context) throw new Error("Unable to acquire canvas context");
     context.configure({ device, format, alphaMode: "opaque", usage: usage() });
@@ -138,6 +147,7 @@ async function makeDevice(canvas, obsolete, lake, shore) {
             depthStencilAttachment: { view: depth, depthLoadOp: "clear", depthStoreOp: "discard", depthClearValue: 1 },
           });
           hull.setPipeline(panels);
+          hull.setBindGroup(0, materials);
           hull.setVertexBuffer(0, vertices);
           hull.draw(count);
           hull.end();
@@ -169,6 +179,7 @@ async function makeDevice(canvas, obsolete, lake, shore) {
         frame.destroy();
         photo.destroy();
         rock.destroy();
+        material.destroy();
         context.unconfigure();
         device.destroy();
       },
@@ -183,9 +194,9 @@ async function makeDevice(canvas, obsolete, lake, shore) {
 export async function initializeFoldline(canvas, options) {
   let closed = false;
   const obsolete = () => closed || options.signal.aborted;
-  const [lake, shore] = await Promise.all([loadPhoto(options.lake), loadPhoto(options.shore)]);
+  const [lake, shore, atlas] = await Promise.all([loadPhoto(options.lake), loadPhoto(options.shore), loadPhoto(options.atlas)]);
   if (obsolete()) return null;
-  let target = await makeDevice(canvas, obsolete, lake, shore);
+  let target = await makeDevice(canvas, obsolete, lake, shore, atlas);
   if (!target || obsolete()) {
     target?.close();
     return null;
@@ -232,7 +243,7 @@ export async function initializeFoldline(canvas, options) {
     options.onError();
     if (obsolete()) return;
     try {
-      const replacement = await makeDevice(canvas, obsolete, lake, shore);
+      const replacement = await makeDevice(canvas, obsolete, lake, shore, atlas);
       if (obsolete()) {
         replacement?.close();
         return;
@@ -272,11 +283,12 @@ export async function initializeFoldline(canvas, options) {
         if (vertexCount > maxVertices || reflection.length !== triangles.length) throw new RangeError("Hull vertex count");
         let index = 0;
         for (const mesh of [triangles, reflection]) {
-          for (const { points, tint, uv } of mesh) {
+          for (const { points, tint, uv, material } of mesh) {
             for (let i = 0; i < points.length; i++) {
               data.set(points[i], index);
               data.set(tint, index + 3);
               data.set(uv[i], index + 6);
+              data[index + 8] = material;
               index += stride;
             }
           }

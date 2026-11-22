@@ -80,18 +80,26 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
   // The entire animation uses these same four floor leaves, eight cheeks,
   // deck caps, belt lengths and seat. Only hinge angles and webbing flex change.
   function face(hex, ...verts) {
+    surface(hex, verts, 0);
+  }
+  function photoFace(hex, material, uv, ...verts) {
+    surface(hex, verts, material, uv);
+  }
+  function surface(hex, verts, material, uv) {
     const base = minus(verts[1],verts[0]);
     const normal = unit(cross(base, minus(verts[2],verts[0])));
     const illumination = .63 + .41*Math.max(0,dot(normal, light)*orientation) + .10*Math.max(0,dot(normal,bounce)*orientation);
     const glint = .092*Math.pow(Math.max(0,dot(normal,specular)*orientation),12);
     const tint = colour(hex).map((v,i) => Math.min(1, v*illumination + glint*[1,.77,.64][i]));
-    const across = unit(base);
-    const along = cross(normal,across);
-    const uv = verts.map(p => {
-      const q=minus(p,verts[0]);
-      return [dot(q,across),dot(q,along)];
-    });
-    surfaces.push({ tint, verts, uv });
+    if (!uv) {
+      const across = unit(base);
+      const along = cross(normal,across);
+      uv = verts.map(p => {
+        const q=minus(p,verts[0]);
+        return [dot(q,across),dot(q,along)];
+      });
+    }
+    surfaces.push({ tint, verts, uv, material });
   }
   function block(move, x, y, z, length, height, width, paints, bevel = .006) {
     const [top, sides, end] = paints;
@@ -127,7 +135,7 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
       }
     }
   }
-  function cushion(move, x, y, length, width, height, paint) {
+  function cushion(move, x, y, length, width, height, paint, material) {
     // Four rounded corners and three height rings form a padded shell.
     const outline = [];
     const radius = .040;
@@ -140,18 +148,25 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
         outline.push([xc+radius*Math.cos(angle),zc+radius*Math.sin(angle)]);
       }
     }
+    const uv = new Map();
     const rings = [[.90,0],[1,.36],[.973,.77],[.85,.97]].map(([s,h]) =>
-      outline.map(([u,v])=>move(x+u*s,y+h*height,v*s)));
+      outline.map(([u,v]) => {
+        const p = move(x+u*s,y+h*height,v*s);
+        uv.set(p,[.5+v*s/width,.5-u*s/length]);
+        return p;
+      }));
+    const paddedFace = (hex, ...points) => photoFace(hex,material,points.map(p=>uv.get(p)),...points);
     for (let level=1;level<rings.length;level++) {
       const lower=rings[level-1], upper=rings[level];
       for (let i=0;i<outline.length;i++) {
         const j=(i+1)%outline.length;
-        face(paint[level-1],lower[i],upper[i],upper[j],lower[j]);
+        paddedFace(paint[level-1],lower[i],upper[i],upper[j],lower[j]);
       }
     }
     const rim=rings.at(-1);
     const dome=move(x,y+height,0);
-    for (let i=0;i<outline.length;i++) face(paint[3],dome,rim[(i+1)%rim.length],rim[i]);
+    uv.set(dome,[.5,.5]);
+    for (let i=0;i<outline.length;i++) paddedFace(paint[3],dome,rim[(i+1)%rim.length],rim[i]);
     return rings[2];
   }
   const rail = "#ffc294", black = "#262724";
@@ -177,18 +192,24 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
         const angle = mix(mix(3.106, .38, free),side === 1 ? 1.10 : 1.14,settle);
         const wing = ([x,w,panel],u,bias=0) => move(x, .005 + panel*u*Math.sin(angle) + bias, side*(w + panel*u*Math.cos(angle)));
         const shade = side === 1 ? "#562c1d" : "#48261b";
-        const edge = (u,v,h,hex) => face(hex, wing(a,u,h),wing(a,v,h),wing(b,v,h),wing(b,u,h));
+        const wingUV = (station,t) => [station[0]/span,1-t];
+        const shellMaterial = index === 1 ? 5 : 1;
+        const edge = (u,v,h,hex) => photoFace(hex,shellMaterial,
+          [wingUV(a,u),wingUV(a,v),wingUV(b,v),wingUV(b,u)],wing(a,u,h),wing(a,v,h),wing(b,v,h),wing(b,u,h));
         edge(0,.61,0,shade);
         edge(.61,.96,0,side===1 ? "#925032" : "#7f4027");
         edge(.96,1,.001,rail);
         edge(0,.045,.003,"#76362d");
         face(band,wing(a,1),wing(a,1,-.011),wing(b,1,-.011),wing(b,1));
-        face("#4c2c1c",wing(a,0,-.011),wing(b,0,-.011),wing(b,.25,-.011),wing(a,.25,-.011));
-        face("#a44822",wing(a,.25,-.011),wing(b,.25,-.011),wing(b,.63,-.011),wing(a,.63,-.011));
+        const outside = (lo,hi,hex) => photoFace(hex,shellMaterial,
+          [wingUV(a,lo),wingUV(b,lo),wingUV(b,hi),wingUV(a,hi)],
+          wing(a,lo,-.011),wing(b,lo,-.011),wing(b,hi,-.011),wing(a,hi,-.011));
+        outside(0,.25,"#4c2c1c");
+        outside(.25,.63,"#a44822");
         const c=wing(a,.63,-.011), d=wing(b,.63,-.011);
         const e=wing(b,.966,-.011), f=wing(a,.966,-.011);
-        face("#c3693b",c,d,e);
-        face("#c87648",c,e,f);
+        photoFace("#c3693b",shellMaterial,[wingUV(a,.63),wingUV(b,.63),wingUV(b,.966)],c,d,e);
+        photoFace("#c87648",shellMaterial,[wingUV(a,.63),wingUV(b,.966),wingUV(a,.966)],c,e,f);
         const lifted = ([x,y,z]) => [x,y+(phase.settle*.0007+.0011),z];
         face("#da9060",lifted(c),lifted(point(c,d,.023)),lifted(point(e,d,.018)),lifted(e));
         face("#f3a477",f,e,wing(b,1,-.011),wing(a,1,-.011));
@@ -210,7 +231,7 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
           const deckSteps = [...edgeSteps, (1+apertureEnd)*.5, 1];
           for (let i=1;i<deckSteps.length;i++) {
             const a=deckSteps[i-1], b=deckSteps[i];
-            face(side === 1 ? "#bd6538" : "#cf7848",
+            photoFace(side === 1 ? "#bd6538" : "#cf7848",2,[[a,.30],[a,.74],[b,.74],[b,.30]],
               shoulder(a,0),shoulder(a,1),shoulder(b,1),shoulder(b,0));
           }
           cord(edgeSteps.map(u=>shoulder(u,1,.010)),.016,"#222728");
@@ -252,8 +273,11 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
         const a=sections[i], b=sections[i+1];
         for (const side of [-1,1]) {
           const u=cap(a,0), v=cap(b,0), w=cap(b,side), q=cap(a,side);
-          face(side === 1 ? "#e4925f" : "#b76537",u,q,w);
-          face(side === 1 ? "#d38351" : "#c17040",u,w,v);
+          const textureID = index === 1 ? 6 : 2;
+          const across = side === 1 ? .81 : .19;
+          const au=a[0]/span, bu=b[0]/span;
+          photoFace(side === 1 ? "#e4925f" : "#b76537",textureID,[[au,.5],[au,across],[bu,across]],u,q,w);
+          photoFace(side === 1 ? "#d38351" : "#c17040",textureID,[[au,.5],[bu,across],[bu,.5]],u,w,v);
           face("#8f4527",q,cap(a,side,-.013),cap(b,side,-.013),w);
           face(band,cap(a,0,-.013),cap(b,0,-.013),cap(b,side,-.013),cap(a,side,-.013));
         }
@@ -277,15 +301,12 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     if (sign === 1 || tandem) {
       const atSeat = tandem ? .48 : .247;
       const padded = ["#171b1a","#242a2a","#2a3030","#272d2d"];
-      cushion(move,atSeat,.018,.37,.36,.063,padded);
+      cushion(move,atSeat,.018,.37,.36,.063,padded,3);
       const angle = mix(.10,.95,phase.seat);
       const pivot = atSeat+sign*.158;
       const back = (x,y,z) => move(pivot+sign*(x*Math.cos(angle)-y*Math.sin(angle)),.065+x*Math.sin(angle)+y*Math.cos(angle),z);
-      const piping = cushion(back,.141,0,.286,.382,.067,padded);
+      const piping = cushion(back,.141,0,.286,.382,.067,padded,4);
       cord([...piping,piping[0]],.0033,"#646761",[.7,.3,.6]);
-      for (const seam of [.098,.188]) {
-        cord([back(seam,.062,-.158),back(seam+.006,.067,0),back(seam,.062,.158)],.0027,"#4d5150",[.7,.3,.6]);
-      }
     }
   }
 
@@ -357,14 +378,14 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
   const waterLevel = mix(-.31,.024,phase.settle);
   function tessellate(mirrored) {
     const triangles=[];
-    for (const [index, { tint, verts, uv }] of surfaces.entries()) {
+    for (const [index, { tint, verts, uv, material }] of surfaces.entries()) {
       const points = mirrored ? verts.map(([x,y,z])=>projectWorld([x,2*waterLevel-y,z])) : projected[index].points;
       for (const p of points) {
         p[0]=(p[0]-xCenter)*scale;
         p[1]=(p[1]-yCenter)*scale*aspect+yOffset;
       }
       for (let i=1;i<points.length-1;i++) {
-        triangles.push({ tint, points:[points[0],points[i],points[i+1]], uv:[uv[0],uv[i],uv[i+1]] });
+        triangles.push({ tint, material, points:[points[0],points[i],points[i+1]], uv:[uv[0],uv[i],uv[i+1]] });
       }
     }
     return triangles;
