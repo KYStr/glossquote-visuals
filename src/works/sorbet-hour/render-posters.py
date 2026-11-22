@@ -11,17 +11,26 @@ SOURCE = Path(__file__).resolve().parent
 MEDIA = SOURCE.parents[2] / "public/media/sorbet-hour"
 PAINT = (SOURCE / "jelly.wgsl").read_text(encoding="utf-8")
 POSITIONS = loads((SOURCE / "scoop-positions.json").read_text(encoding="utf-8"))
-WIDTH, HEIGHT = 1200, 800
-STRIDE = (WIDTH * 4 + 255) // 256 * 256
 FORMAT = "rgba8unorm-srgb"
 
 parser = ArgumentParser(description=__doc__)
 parser.add_argument("--samples", type=Path, help="Write original frames for the drop, the scoop and the reset")
 parser.add_argument("--software", action="store_true", help="Use a native fallback GPU adapter")
 parser.add_argument("--assets", action="store_true", help="Write the shipping WebP files")
+parser.add_argument("--backing", type=int, nargs=2, metavar=("WIDTH", "HEIGHT"), help="Render samples at the actual GPU backing size")
+parser.add_argument("--display", type=int, nargs=2, metavar=("WIDTH", "HEIGHT"), help="Save additional samples resampled to the CSS stage size")
 args = parser.parse_args()
 if not args.assets and not args.samples:
     parser.error("Specify --assets or --samples")
+if args.assets and args.backing:
+    parser.error("Shipping images always use 1200×800")
+if args.display and not args.samples:
+    parser.error("--display requires --samples")
+if any(d <= 0 for d in (args.backing or []) + (args.display or [])):
+    parser.error("Dimensions must be positive")
+WIDTH, HEIGHT = args.backing or (1200, 800)
+STRIDE = (WIDTH * 4 + 255) // 256 * 256
+
 adapter = wgpu.gpu.request_adapter_sync(force_fallback_adapter=args.software)
 device = adapter.request_device_sync()
 shader = device.create_shader_module(code=f"""
@@ -31,7 +40,8 @@ shader = device.create_shader_module(code=f"""
     return vec4f(box[i], 0, 1);
 }}
 @fragment fn fragment(@builtin(position) at: vec4f) -> @location(0) vec4f {{
-    let uv = at.xy / params[0].xy;
+    let viewport = params[0].xy;
+    let uv = at.xy / viewport;
     let flavor = params[0].z;
     let time = params[0].w;
     let biteTime = params[1].x;
@@ -78,11 +88,16 @@ if args.assets:
         for position in POSITIONS:
             render(flavor, cut=position, bite=3.65).save(MEDIA / f"{name}-{position['name']}.webp", quality=86, method=6)
 
+def save_sample(image, name):
+    image.save(args.samples / f"{name}.png")
+    if args.display:
+        image.resize(args.display, Image.Resampling.BILINEAR).save(args.samples / f"{name}-display.png")
+
 if args.samples:
     args.samples.mkdir(parents=True, exist_ok=True)
     for time in (0, 0.48, 0.90, 1.26, 1.55, 1.78, 1.92, 2.09, 2.35, 2.72, 3.04, 3.65):
-        render(0, cut=POSITIONS[1], bite=time).save(args.samples / f"bite-{time:04.2f}.png")
+        save_sample(render(0, cut=POSITIONS[1], bite=time), f"bite-{time:04.2f}")
     for position in POSITIONS:
-        render(0, cut=position, bite=3.65).save(args.samples / f"scoop-{position['name']}.png")
-    render(0).save(args.samples / "reset.png")
+        save_sample(render(0, cut=position, bite=3.65), f"scoop-{position['name']}")
+    save_sample(render(0), "reset")
 print(dict(adapter.info))

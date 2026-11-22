@@ -9,6 +9,19 @@
 - `flow.mjs` 保留 `setMaterial`、`testFlow`、`testHeroInteraction(page, input, capture)`。後者以 `data-bite-run`、`data-bite-phase`、`data-bite-elapsed` 鎖定新序列，保留 `before`、`after`、`reset`。中段凍結在 `cut` 取證，支援選用的 `capture.mid("cut", observation)` 或宣告 `capture.checkpoints` 包含 `mid` 的主程式。回傳值另含 `mid.pngBase64` 及另一切點尾幀 `alternate.pngBase64`，可與現有三點 runner 共用。
 - 以 Python 3.12、wgpu 0.31.0、Pillow 12.0.0 執行 `python src/works/sorbet-hour/render-posters.py --samples .runs/v008-m06-frames`，可重現 1200×800 關鍵影格。加 `--assets` 會更新本作三張海報及九張靜態尾幀。未用外部影像或材質。繁中字型以工作室既有的 Noto Sans TC 原檔製作本版私有 WOFF2，保留上版字符並補入新介面所需的「匙、對、應、托、查、滋、起、銀」。沿用倉庫的 `public/fonts/studio-text-tc-OFL.txt` 授權。
 
+## M06 原尺寸收邊
+
+a9b6ee5 的桌面舞台約 768 px 寬，實際緩衝只有 288×192，匙沿、切口及盤紋放大後出現明顯階梯。新候選在 DPR 1 的桌機使用 576×384、390 px 版面使用 403×269。中心光線先判斷輪廓、切削交界與遮擋邊緣，附近才補三條次像素光線。匙柄維持連續覆蓋值，盤紋按像素足跡整合。實際 GPU 在整段演出和停住後持續使用相同幾何與著色。中央切點向前移 0.039 場景單位，露出較寬的琥珀色內壁，匙上的一口由同一體積截出。
+
+在原工作目錄用同一 WGSL 產生實際緩衝影格與桌面／手機顯示尺寸的副本。切入中段見 `bite-1.78-display.png`，抬升見 `bite-2.35-display.png`，停住見 `bite-3.65-display.png`。
+
+```powershell
+python src/works/sorbet-hour/render-posters.py --samples .runs/v008-m06-finish-desktop --backing 576 384 --display 768 512
+python src/works/sorbet-hour/render-posters.py --samples .runs/v008-m06-finish-mobile --backing 403 269 --display 351 234
+```
+
+作者在兩個顯示尺寸逐一裁切檢視匙碗暗緣、中央缺口、盤沿與切入時的遮擋。Microsoft Basic Render Driver 原生 D3D12 驗證各取 100 筆繪製提交至完成，使用實際緩衝尺寸。桌面 p95 為 2.81–4.96 ms，手機 2.93–4.15 ms。這些數值供估算本地負載，瀏覽器呈現間隔與 ART-1 收邊仍待獨立驗收。
+
 ## 作者核對
 
 原生 RTX 3060 Vulkan 影格檢視了 160 px 無字輪廓，以及原尺寸的匙碗和果膠接縫。銀匙頂面與下方厚度分開著色，匙柄有連續冷灰暗緣，尾幀仍可辨認承載關係。上緣受壓及切口使用同一切入點，抽出的果凍與匙碗共用抬升位移，瓷盤與畫面座標固定。鎖版安裝、來源檢查、26 項單元測試、雙語建置，以及無 GPU 的 DOM、配方 Blob、時間線凍結與重設測試已通過。未使用本機瀏覽器，實際瀏覽器 M04 十四條及 M06 六項美術觀察待主責判定。

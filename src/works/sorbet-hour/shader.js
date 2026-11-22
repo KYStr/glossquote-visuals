@@ -4,7 +4,8 @@ import paint from "./jelly.wgsl?raw";
 
 const id = "jelly-surface";
 const duration = 3650;
-const maxBackingWidth = 288;
+const maxBackingWidth = 576;
+const targetBackingRatio = 1.15;
 const surface = registerShader(defineShader({
   name: "JellyHourMold",
   animatedTime: { speed: "speed" },
@@ -26,12 +27,10 @@ function backingRatio() {
   return Math.min(devicePixelRatio || 1, mobile ? 1.5 : 2);
 }
 
-function renderSize(width, height, ratio) {
-  const scale = Math.min(1, maxBackingWidth / width) / ratio;
-  return {
-    width: Math.max(1, Math.floor(width * scale)),
-    height: Math.max(1, Math.floor(height * scale)),
-  };
+function renderSize(width, ratio) {
+  const logicalWidth = Math.max(1, Math.floor(Math.min(width * targetBackingRatio, maxBackingWidth) / ratio));
+  // The photographed stage keeps a 3:2 aspect ratio at every breakpoint.
+  return { width: logicalWidth, height: Math.max(1, Math.round(logicalWidth * 2 / 3)) };
 }
 
 function phaseAt(elapsed) {
@@ -51,7 +50,7 @@ export async function initializeJelly(canvas, options) {
   let playing = true;
   let drawable = false;
   let ratio = backingRatio();
-  let { width, height } = options;
+  let { width } = options;
   let raw;
   delete canvas.dataset.displaySize;
 
@@ -88,7 +87,7 @@ export async function initializeJelly(canvas, options) {
 
   raw = await initializeStandalone(canvas, [{ id, type: surface.name, props: props() }], {
     ...options,
-    ...renderSize(width, height, ratio),
+    ...renderSize(width, ratio),
     onReady() {
       drawable = true;
       canvas.dataset.displaySize = "";
@@ -101,7 +100,7 @@ export async function initializeJelly(canvas, options) {
       stop();
       delete canvas.dataset.displaySize;
       ratio = backingRatio();
-      const size = renderSize(width, height, ratio);
+      const size = renderSize(width, ratio);
       canvas.style.width = `${size.width}px`;
       canvas.style.height = `${size.height}px`;
       options.onError(reason);
@@ -112,10 +111,9 @@ export async function initializeJelly(canvas, options) {
 
   return {
     getFailureReason: raw.getFailureReason,
-    resize(nextWidth, nextHeight) {
+    resize(nextWidth) {
       width = nextWidth;
-      height = nextHeight;
-      const size = renderSize(width, height, ratio);
+      const size = renderSize(width, ratio);
       raw.resize(size.width, size.height);
     },
     select(next) {
