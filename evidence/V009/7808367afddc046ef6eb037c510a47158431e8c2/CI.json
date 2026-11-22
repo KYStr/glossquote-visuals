@@ -1,0 +1,177 @@
+{
+  "repository": "KYStr/glossquote-visuals",
+  "commit": "7808367afddc046ef6eb037c510a47158431e8c2",
+  "runId": 44983018073,
+  "attempt": 1,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073",
+  "jobId": 137088455313,
+  "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137088455313",
+  "conclusion": "success",
+  "sources": [
+    {
+      "lane": "V009-zh-Hant-desktop",
+      "jobId": 137087467018,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467018",
+      "artifactId": 14738736145,
+      "artifactDigest": "sha256:5177bacf80682c9650b4612a97c25742e9cfb211062a1eb179e1845a39633a75",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 4828,
+          "originalTiles": 6
+        },
+        "defaultEdge": {
+          "version": "157.0.4341.60",
+          "runtime": "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
+          "requestedGraphicsFlags": [],
+          "phase": "unavailable",
+          "gpu": {
+            "api": true,
+            "devices": 0,
+            "textures": 0,
+            "adapter": null
+          },
+          "presentation": "static fallback",
+          "flowDownload": {
+            "filename": "afterimage-print-sheet-zh-Hant.txt",
+            "bytes": 332
+          }
+        }
+      },
+      "measurements": {
+        "measuredMs": 10001.20000000007,
+        "medianMs": 25.099999999976717,
+        "p95Ms": 26.599999999976717,
+        "longestMs": 29.199999999953434
+      }
+    },
+    {
+      "lane": "V009-zh-Hant-mobile",
+      "jobId": 137087467118,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467118",
+      "artifactId": 14738517765,
+      "artifactDigest": "sha256:9f208e7f0a3b3765d0dd9f432aa03a330c5cc816571e85057f668c4d98861cd9",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10002.100000000006,
+        "medianMs": 21.699999999982538,
+        "p95Ms": 22.5,
+        "longestMs": 23.29999999998836
+      }
+    },
+    {
+      "lane": "V009-en-desktop",
+      "jobId": 137087467036,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467036",
+      "artifactId": 14739045581,
+      "artifactDigest": "sha256:c9f3024ea373cd2701dd5a1c03e57f4ad90c344a6932439b490d1d790177ccc5",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 5270,
+          "originalTiles": 7
+        }
+      },
+      "measurements": {
+        "measuredMs": 10001.199999999953,
+        "medianMs": 16.099999999976717,
+        "p95Ms": 31.599999999976717,
+        "longestMs": 31.800000000046566
+      }
+    },
+    {
+      "lane": "V009-en-mobile",
+      "jobId": 137087467121,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44983018073/job/137087467121",
+      "artifactId": 14738911265,
+      "artifactDigest": "sha256:1b93e6e2cc6ba4417268afd7e390fdd1da60501d361a58beb1a06ba3d3e0d39d",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10001.099999999977,
+        "medianMs": 20.399999999906868,
+        "p95Ms": 21.300000000046566,
+        "longestMs": 21.699999999953434
+      }
+    }
+  ],
+  "comparisonInputs": {
+    "desktop": [
+      {
+        "lane": "V008-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "2916b5f2652fa17229266695e9c77b14157f622239b02f78d3eb1d7ee02c2abb"
+      },
+      {
+        "lane": "V009-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "9ac19c03294888e2cba7c41c04ef668e1b7115279f31eb6a3400397aec67e632"
+      },
+      {
+        "lane": "V010-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "6e8c1650c872bffb1fd1a1b89f477167173b33cb454193ce9a3c4a0384255d42"
+      }
+    ],
+    "mobile": [
+      {
+        "lane": "V008-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "91972c49ea3a8478b4223c0877b3385f59bfad3a25ed644652a9777131aafea0"
+      },
+      {
+        "lane": "V009-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "df1f945d453820092ed2783b31bd489c4f836a677400aa4a2506af90e928298f"
+      },
+      {
+        "lane": "V010-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "055d541fa4fe147d9c470d744ba20698ec50b3c7cc3b9316456918c963fe3239"
+      }
+    ]
+  }
+}
