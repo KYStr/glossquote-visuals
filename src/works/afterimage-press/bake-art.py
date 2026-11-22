@@ -1,7 +1,7 @@
 """Bake the still ink proofs and the three original specimen posters.
 
 Run from the repository root with Pillow and NumPy. The live artwork uses the
-same normalized registration and stencil distances in press.wgsl.
+same fixed stencil distances in press.wgsl.
 """
 from pathlib import Path
 
@@ -23,11 +23,12 @@ def smooth(low, high, value):
     return amount * amount * (3 - 2 * amount)
 
 
-def stencil(width, height, offset, mode=0):
+def stencil(width, height, mode=0, ink_edge=1):
     u = (np.arange(width) + .5)[None, :] / width
     v = (np.arange(height) + .5)[:, None] / height
-    bx, by = u - (.493 - .173 * offset), v - (.503 + .064 * offset)
-    ox, oy = u - (.510 + .173 * offset), v - (.500 - .027 * offset)
+    image_v = (v - .5) / .92 + .5
+    bx, by = u - .493, image_v - .503
+    ox, oy = u - .510, image_v - .500
     face = bx - by * .14
     cabinet = np.maximum(np.maximum(-face - .238, face - .238), np.abs(by) - .413)
     driver = np.hypot((bx + .057) * 1.94, by - .035)
@@ -65,6 +66,8 @@ def stencil(width, height, offset, mode=0):
 
     a = screened(blue, bx, by, .5, .11)[:, :, None] if mode != 2 else 0
     b = screened(orange, ox, oy, -.5, .08)[:, :, None] if mode != 1 else 0
+    if mode == 0:
+        b *= (1 - smooth(ink_edge - .5 / height, ink_edge + .5 / height, v))[:, :, None]
     rgb = PAPER * (1 - a) * (1 - b) + COBALT * a * (1 - b) + ORANGE * b * (1 - a) + OVERPRINT * a * b
     return Image.fromarray(np.rint(rgb).astype(np.uint8))
 
@@ -138,7 +141,7 @@ def specimen(file, code, title, date, venue, art):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for index, name in enumerate(("both", "cobalt", "orange")):
-        stencil(1200, 600, 1, index).save(OUT / f"plate-{name}.webp", quality=93, method=6)
+        stencil(1200, 600, mode=index).save(OUT / f"plate-{name}.webp", quality=93, method=6)
     specimen("feedback.webp", "01", ["FEEDBACK", "ASSEMBLY"], "14 NOV / 20:00", "LIVE SET  /  LOADING BAY B", stencil(1160, 878, 0))
     specimen("orbital.webp", "02", ["ORBITAL", "RELAY"], "21 NOV / 19:30", "ELECTRONIC SETS  /  ROOM 04", second_art())
     specimen("side-b.webp", "03", ["SIDE B", "SOCIAL"], "28 NOV / 17:00", "RECORD SWAP  /  SOUTH ARCADE", third_art())
@@ -158,7 +161,7 @@ def main():
     draw.line((379, 80, 1128, 80), fill=DARK, width=2)
     text(draw, (379, 54), "AP–01     /     LIVE SET     /     LOADING BAY B", 16, MONO)
     text(draw, (379, 100), "FEEDBACK ASSEMBLY", 97)
-    image.paste(stencil(748, 369, .18), (379, 233))
+    image.paste(stencil(748, 369), (379, 233))
     draw.line((379, 632, 1128, 632), fill=DARK, width=2)
     text(draw, (379, 654), "14 NOV 2026", 74)
     text(draw, (1128, 722), "20:00   /   TAIPEI", 17, MONO, anchor="rt")

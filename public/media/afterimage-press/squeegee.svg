@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="120" viewBox="0 0 1000 120">
+  <defs>
+    <linearGradient id="wood" x2="0" y2="1">
+      <stop stop-color="#f1c294"/>
+      <stop offset=".19" stop-color="#dca372"/>
+      <stop offset=".58" stop-color="#bd7850"/>
+      <stop offset="1" stop-color="#75442e"/>
+    </linearGradient>
+    <linearGradient id="metal" x2="0" y2="1">
+      <stop stop-color="#e4ded0"/>
+      <stop offset=".17" stop-color="#a5a29a"/>
+      <stop offset=".79" stop-color="#777778"/>
+      <stop offset="1" stop-color="#41434d"/>
+    </linearGradient>
+    <linearGradient id="rubber" x2="0" y2="1">
+      <stop stop-color="#1a1b22"/>
+      <stop offset=".72" stop-color="#303039"/>
+      <stop offset=".86" stop-color="#46424a"/>
+      <stop offset="1" stop-color="#171720"/>
+    </linearGradient>
+  </defs>
+  <!-- The narrow bottom edge is the contact line. The grip and blade share the
+       same silhouette throughout the stroke, with the blade leading. -->
+  <path fill="#22202a" d="M8 91h984l-10 27H18z"/>
+  <path fill="url(#rubber)" d="M13 94h974l-9 24H22z"/>
+  <path fill="#e86838" d="M22 113h956l-1.5 4h-953z"/>
+  <path fill="#4d4140" d="M10 57h980l6 21-10 22H14L4 78z"/>
+  <path fill="url(#metal)" d="M14 61h972l9 16-10 19H15L5 77z"/>
+  <path fill="#e3d9c4" opacity=".75" d="M15 63h970l3 4H12z"/>
+  <path fill="#2a2b33" opacity=".45" d="M12 88h976l-3 7H15z"/>
+  <path fill="#4b332b" d="M98 60 130 25 231 22 292 10Q300 7 323 7h354q23 0 31 3l61 12 101 3 32 35-22 15H120z"/>
+  <path fill="url(#wood)" d="m103 59 29-30 105-4 62-13q8-2 27-2h348q19 0 27 2l62 13 105 4 29 30-19 12H122z"/>
+  <path fill="none" stroke="#f5cb9c" stroke-width="3" opacity=".7" d="m139 33 103-3 57-12q13-3 32-3h338q19 0 32 3l57 12 103 3"/>
+  <path fill="none" stroke="#895235" stroke-width="2" opacity=".55" d="M131 53c120 3 169-16 246-12s111 10 197 3 146 10 295 9M150 62c114-5 176-3 272-5s122 2 174-1 115 4 254 6"/>
+  <path fill="#211c22" d="M350 25h300q17 0 17 13t-17 13H350q-17 0-17-13t17-13z"/>
+  <path fill="#171820" d="M351 29h298q13 0 13 9t-13 9H351q-13 0-13-9t13-9z"/>
+  <path fill="#ebad7d" opacity=".8" d="M350 49h300l-9 3H359z"/>
+  <g fill="#42434b" stroke="#c7c2b5" stroke-width="1.8">
+    <circle cx="63" cy="79" r="7"/><circle cx="280" cy="81" r="6"/>
+    <circle cx="720" cy="81" r="6"/><circle cx="937" cy="79" r="7"/>
+  </g>
+  <path d="M59 79h8m209 2h8m432 0h8m209-2h8" stroke="#212128" stroke-width="2"/>
+</svg>
