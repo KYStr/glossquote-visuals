@@ -15,7 +15,8 @@ defaults:
 jobs:
   evidence:
     runs-on: windows-2025
-    timeout-minutes: 30
+    # Leave time to upload the last complete observations if the browser stalls.
+    timeout-minutes: 36
     strategy:
       fail-fast: false
       matrix:
@@ -40,6 +41,7 @@ jobs:
           npm run build | tee .runs/m06-evidence/build.txt
       - run: node node_modules/playwright/cli.js install chromium --no-shell
       - name: Capture page, WebGPU submissions and customer flow
+        timeout-minutes: 30
         run: node test/browser/m04-candidate.mjs "${{ matrix.work }}" "${{ matrix.lang }}" "${{ matrix.viewport }}" m06
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()

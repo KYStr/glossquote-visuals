@@ -40,6 +40,8 @@ const report = { work, lang, viewport, commit, cssSize: size, runner: "GitHub-ho
 const save = () => writeFile(join(dir, "results.json"), JSON.stringify(report, null, 2) + "\n");
 const hash = buffer => createHash("sha256").update(buffer).digest("hex");
 async function check(name, operation) {
+  const started = Date.now();
+  if (craftCandidate) console.log(`START ${work}/${lang}/${viewport} ${name}`);
   try {
     const details = await operation();
     report.checks[name] = { status: "PASS", details };
@@ -48,6 +50,7 @@ async function check(name, operation) {
     console.error(name, error.message);
   }
   await save();
+  if (craftCandidate) console.log(`${report.checks[name].status} ${name} (${Date.now() - started} ms)`);
 }
 
 const launch = { headless: true, channel: "chromium", ignoreDefaultArgs: ["--disable-back-forward-cache"],
