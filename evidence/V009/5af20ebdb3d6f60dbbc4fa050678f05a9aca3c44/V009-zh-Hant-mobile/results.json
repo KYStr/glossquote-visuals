@@ -1,0 +1,6329 @@
+{
+  "work": "V009",
+  "lang": "zh-Hant",
+  "viewport": "mobile",
+  "commit": "5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44",
+  "cssSize": {
+    "width": 390,
+    "height": 844
+  },
+  "runner": "GitHub-hosted windows-2025",
+  "adapterMode": "D3D11 WARP (software)",
+  "emulatedMobileViewport": true,
+  "checks": {
+    "first-three-seconds": {
+      "status": "PASS"
+    },
+    "craft-storyboard": {
+      "status": "PASS"
+    },
+    "initial-and-material-sequence": {
+      "status": "PASS",
+      "details": {
+        "adapter": {
+          "vendor": "google",
+          "architecture": "swiftshader",
+          "device": "",
+          "description": "",
+          "isFallbackAdapter": true
+        },
+        "devices": 1
+      }
+    },
+    "PERF-1": {
+      "status": "PASS"
+    },
+    "GPU-2-controls-and-pause": {
+      "status": "PASS"
+    },
+    "craft-replay": {
+      "status": "PASS"
+    },
+    "BIZ-2-and-privacy": {
+      "status": "PASS",
+      "details": {
+        "lang": "zh-Hant",
+        "observations": [
+          {
+            "name": "initial estimate",
+            "count": 50,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "50 張",
+              "暖白",
+              "NT$2,050",
+              "5–7 個工作天"
+            ]
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "24",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "25.5",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "251",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "minimum",
+            "count": 25,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "25 張",
+              "暖白",
+              "NT$1,500",
+              "5–7 個工作天"
+            ]
+          },
+          {
+            "name": "standard lead threshold",
+            "count": 150,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "150 張",
+              "燕麥",
+              "NT$6,900",
+              "7–9 個工作天"
+            ]
+          },
+          {
+            "name": "extra lead threshold",
+            "count": 151,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "151 張",
+              "燕麥",
+              "NT$6,937",
+              "9–11 個工作天"
+            ]
+          },
+          {
+            "name": "maximum",
+            "count": 250,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "250 張",
+              "燕麥",
+              "NT$10,600",
+              "9–11 個工作天"
+            ]
+          },
+          {
+            "name": "revised",
+            "count": 72,
+            "rows": [
+              "AP–03 Side B Social",
+              "A3 · 297 × 420 mm",
+              "72 張",
+              "暖白",
+              "NT$2,534",
+              "5–7 個工作天"
+            ]
+          }
+        ],
+        "download": {
+          "filename": "afterimage-print-sheet-zh-Hant.txt",
+          "bytes": 332,
+          "text": "疊印 AFTERIMAGE PRESS｜印件製作單\n\n圖案 AP–03 Side B Social\n成品尺寸 A3 · 297 × 420 mm\n印量 72 張\n紙色 暖白\n預估金額 NT$2,534\n預估工期 5–7 個工作天\n170 g/m² 未塗佈紙，鈷藍與螢橘雙色\n\n概念印務。案例為虛構活動，金額與工期為示意，製作單僅供離線規劃。\n"
+        }
+      }
+    },
+    "FALL-1-no-js": {
+      "status": "PASS"
+    },
+    "FALL-1-gpu-init-fail": {
+      "status": "PASS",
+      "details": {
+        "lang": "zh-Hant",
+        "observations": [
+          {
+            "name": "initial estimate",
+            "count": 50,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "50 張",
+              "暖白",
+              "NT$2,050",
+              "5–7 個工作天"
+            ]
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "24",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "25.5",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "invalid count rejected",
+            "input": "251",
+            "error": "請輸入 25 至 250 之間的整數。"
+          },
+          {
+            "name": "minimum",
+            "count": 25,
+            "rows": [
+              "AP–01 Feedback Assembly",
+              "A3 · 297 × 420 mm",
+              "25 張",
+              "暖白",
+              "NT$1,500",
+              "5–7 個工作天"
+            ]
+          },
+          {
+            "name": "standard lead threshold",
+            "count": 150,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "150 張",
+              "燕麥",
+              "NT$6,900",
+              "7–9 個工作天"
+            ]
+          },
+          {
+            "name": "extra lead threshold",
+            "count": 151,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "151 張",
+              "燕麥",
+              "NT$6,937",
+              "9–11 個工作天"
+            ]
+          },
+          {
+            "name": "maximum",
+            "count": 250,
+            "rows": [
+              "AP–02 Orbital Relay",
+              "A2 · 420 × 594 mm",
+              "250 張",
+              "燕麥",
+              "NT$10,600",
+              "9–11 個工作天"
+            ]
+          },
+          {
+            "name": "revised",
+            "count": 72,
+            "rows": [
+              "AP–03 Side B Social",
+              "A3 · 297 × 420 mm",
+              "72 張",
+              "暖白",
+              "NT$2,534",
+              "5–7 個工作天"
+            ]
+          }
+        ],
+        "download": {
+          "filename": "afterimage-print-sheet-zh-Hant.txt",
+          "bytes": 332,
+          "text": "疊印 AFTERIMAGE PRESS｜印件製作單\n\n圖案 AP–03 Side B Social\n成品尺寸 A3 · 297 × 420 mm\n印量 72 張\n紙色 暖白\n預估金額 NT$2,534\n預估工期 5–7 個工作天\n170 g/m² 未塗佈紙，鈷藍與螢橘雙色\n\n概念印務。案例為虛構活動，金額與工期為示意，製作單僅供離線規劃。\n"
+        }
+      }
+    },
+    "FALL-1-reduced": {
+      "status": "PASS"
+    },
+    "FALL-2-and-PERF-2": {
+      "status": "PASS",
+      "details": {
+        "afterLoss": "running",
+        "hiddenMode": "synthetic visibilitychange",
+        "navigation": "actual away/back"
+      }
+    },
+    "responsive-and-focus": {
+      "status": "PASS"
+    }
+  },
+  "capture": {
+    "opening": {
+      "origin": 1795318788659,
+      "anchorMs": 3543.6999999999825,
+      "view": {
+        "at": 747.5,
+        "stage": {
+          "x": 20.796875,
+          "y": 298.796875,
+          "right": 369.203125,
+          "bottom": 473
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      "firstRunningObservedMs": 2003.5,
+      "firstContentfulPaint": 1160,
+      "documentAtAnchor": {
+        "readyState": "complete",
+        "visibility": "visible",
+        "hidden": false,
+        "lang": "zh-Hant",
+        "title": "疊印 AFTERIMAGE PRESS｜獨立演出海報印務",
+        "hasH1": true,
+        "stage": "running",
+        "fontStatus": "loaded",
+        "fontFaces": [
+          {
+            "family": "Press TC",
+            "status": "loaded",
+            "weight": "100 900",
+            "style": "normal"
+          },
+          {
+            "family": "Press Condensed",
+            "status": "loaded",
+            "weight": "800",
+            "style": "normal"
+          },
+          {
+            "family": "Press Mono",
+            "status": "loaded",
+            "weight": "normal",
+            "style": "normal"
+          }
+        ],
+        "stylesheets": [
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/type.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-tDpWpdC2.css",
+            "sheetAttached": true
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "sheetAttached": true
+          }
+        ],
+        "navigation": {
+          "startTime": 0,
+          "fetchStart": 0.8999999999941792,
+          "requestStart": 2.5,
+          "responseStart": 11.699999999982538,
+          "responseEnd": 12.299999999988358,
+          "duration": 749.5,
+          "domInteractive": 45.59999999997672,
+          "domContentLoadedEventStart": 730.2999999999884,
+          "domContentLoadedEventEnd": 730.5999999999767,
+          "domComplete": 749.5,
+          "loadEventStart": 749.5,
+          "loadEventEnd": 749.5,
+          "transferSize": 12588,
+          "encodedBodySize": 12288,
+          "decodedBodySize": 12288
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "start": 1160
+          },
+          {
+            "name": "first-contentful-paint",
+            "start": 1160
+          }
+        ],
+        "resources": [
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/plate-cobalt.webp",
+            "initiator": "link",
+            "startTime": 24.39999999999418,
+            "fetchStart": 24.39999999999418,
+            "requestStart": 32.19999999998254,
+            "responseStart": 34.39999999999418,
+            "responseEnd": 34.79999999998836,
+            "duration": 10.39999999999418,
+            "transferSize": 57550,
+            "encodedBodySize": 57250,
+            "decodedBodySize": 57250
+          },
+          {
+            "path": "/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+            "initiator": "link",
+            "startTime": 24.699999999982538,
+            "fetchStart": 24.699999999982538,
+            "requestStart": 32.59999999997672,
+            "responseStart": 35.89999999999418,
+            "responseEnd": 37,
+            "duration": 12.300000000017462,
+            "transferSize": 110596,
+            "encodedBodySize": 110296,
+            "decodedBodySize": 110296
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/press-tc.woff2",
+            "initiator": "link",
+            "startTime": 24.79999999998836,
+            "fetchStart": 24.79999999998836,
+            "requestStart": 33.19999999998254,
+            "responseStart": 35.59999999997672,
+            "responseEnd": 36.89999999999418,
+            "duration": 12.10000000000582,
+            "transferSize": 83180,
+            "encodedBodySize": 82880,
+            "decodedBodySize": 82880
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/type.css",
+            "initiator": "link",
+            "startTime": 24.89999999999418,
+            "fetchStart": 24.89999999999418,
+            "requestStart": 32.39999999999418,
+            "responseStart": 36.09999999997672,
+            "responseEnd": 36.19999999998254,
+            "duration": 11.299999999988358,
+            "transferSize": 896,
+            "encodedBodySize": 596,
+            "decodedBodySize": 596
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/first-layout.js",
+            "initiator": "script",
+            "startTime": 25,
+            "fetchStart": 25,
+            "requestStart": 33.5,
+            "responseStart": 36.59999999997672,
+            "responseEnd": 36.79999999998836,
+            "duration": 11.799999999988358,
+            "transferSize": 747,
+            "encodedBodySize": 447,
+            "decodedBodySize": 447
+          },
+          {
+            "path": "/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+            "initiator": "script",
+            "startTime": 43.5,
+            "fetchStart": 43.5,
+            "requestStart": 46.59999999997672,
+            "responseStart": 62.79999999998836,
+            "responseEnd": 63.29999999998836,
+            "duration": 19.79999999998836,
+            "transferSize": 4639,
+            "encodedBodySize": 4339,
+            "decodedBodySize": 4339
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-BFmTOD75.js",
+            "initiator": "script",
+            "startTime": 43.59999999997672,
+            "fetchStart": 43.59999999997672,
+            "requestStart": 47.59999999997672,
+            "responseStart": 64.79999999998836,
+            "responseEnd": 65.59999999997672,
+            "duration": 22,
+            "transferSize": 7039,
+            "encodedBodySize": 6739,
+            "decodedBodySize": 6739
+          },
+          {
+            "path": "/glossquote-visuals/assets/page-tDpWpdC2.css",
+            "initiator": "link",
+            "startTime": 43.69999999998254,
+            "fetchStart": 43.69999999998254,
+            "requestStart": 47.59999999997672,
+            "responseStart": 67,
+            "responseEnd": 67.19999999998254,
+            "duration": 23.5,
+            "transferSize": 9879,
+            "encodedBodySize": 9579,
+            "decodedBodySize": 9579
+          },
+          {
+            "path": "/glossquote-visuals/assets/site-cAYjLdmz.css",
+            "initiator": "link",
+            "startTime": 43.79999999998836,
+            "fetchStart": 43.79999999998836,
+            "requestStart": 47.59999999997672,
+            "responseStart": 64.89999999999418,
+            "responseEnd": 65.19999999998254,
+            "duration": 21.39999999999418,
+            "transferSize": 1917,
+            "encodedBodySize": 1617,
+            "decodedBodySize": 1617
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/mark.svg",
+            "initiator": "img",
+            "startTime": 45.09999999997672,
+            "fetchStart": 45.09999999997672,
+            "requestStart": 47.89999999999418,
+            "responseStart": 65.5,
+            "responseEnd": 65.69999999998254,
+            "duration": 20.60000000000582,
+            "transferSize": 509,
+            "encodedBodySize": 209,
+            "decodedBodySize": 209
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/press-bed.svg",
+            "initiator": "img",
+            "startTime": 45.19999999998254,
+            "fetchStart": 45.19999999998254,
+            "requestStart": 59.79999999998836,
+            "responseStart": 65.29999999998836,
+            "responseEnd": 65.69999999998254,
+            "duration": 20.5,
+            "transferSize": 1853,
+            "encodedBodySize": 1553,
+            "decodedBodySize": 1553
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/squeegee.svg",
+            "initiator": "img",
+            "startTime": 45.29999999998836,
+            "fetchStart": 45.29999999998836,
+            "requestStart": 63.5,
+            "responseStart": 67.69999999998254,
+            "responseEnd": 67.89999999999418,
+            "duration": 22.60000000000582,
+            "transferSize": 2747,
+            "encodedBodySize": 2447,
+            "decodedBodySize": 2447
+          },
+          {
+            "path": "/glossquote-visuals/fonts/prism-plex-mono.ttf",
+            "initiator": "css",
+            "startTime": 89.19999999998254,
+            "fetchStart": 89.19999999998254,
+            "requestStart": 718.0999999999767,
+            "responseStart": 720.5,
+            "responseEnd": 721,
+            "duration": 631.8000000000175,
+            "transferSize": 135880,
+            "encodedBodySize": 135580,
+            "decodedBodySize": 135580
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/feedback.webp",
+            "initiator": "img",
+            "startTime": 713.5,
+            "fetchStart": 713.5,
+            "requestStart": 717.5,
+            "responseStart": 719.0999999999767,
+            "responseEnd": 719.5,
+            "duration": 6,
+            "transferSize": 49588,
+            "encodedBodySize": 49288,
+            "decodedBodySize": 49288
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/orbital.webp",
+            "initiator": "img",
+            "startTime": 713.5999999999767,
+            "fetchStart": 713.5999999999767,
+            "requestStart": 718.1999999999825,
+            "responseStart": 721.0999999999767,
+            "responseEnd": 721.2999999999884,
+            "duration": 7.7000000000116415,
+            "transferSize": 70274,
+            "encodedBodySize": 69974,
+            "decodedBodySize": 69974
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/side-b.webp",
+            "initiator": "img",
+            "startTime": 713.5999999999767,
+            "fetchStart": 713.5999999999767,
+            "requestStart": 718.1999999999825,
+            "responseStart": 722.3999999999942,
+            "responseEnd": 722.7999999999884,
+            "duration": 9.200000000011642,
+            "transferSize": 36520,
+            "encodedBodySize": 36220,
+            "decodedBodySize": 36220
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/plate-orange.webp",
+            "initiator": "img",
+            "startTime": 730.1999999999825,
+            "fetchStart": 730.1999999999825,
+            "requestStart": 731.1999999999825,
+            "responseStart": 733.8999999999942,
+            "responseEnd": 734.1999999999825,
+            "duration": 4,
+            "transferSize": 41134,
+            "encodedBodySize": 40834,
+            "decodedBodySize": 40834
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/plate-both.webp",
+            "initiator": "img",
+            "startTime": 730.1999999999825,
+            "fetchStart": 730.1999999999825,
+            "requestStart": 730.8999999999942,
+            "responseStart": 732.5,
+            "responseEnd": 745.1999999999825,
+            "duration": 15,
+            "transferSize": 166112,
+            "encodedBodySize": 165812,
+            "decodedBodySize": 165812
+          },
+          {
+            "path": "/glossquote-visuals/assets/shader-CvSO64jm.js",
+            "initiator": "script",
+            "startTime": 749.1999999999825,
+            "fetchStart": 749.1999999999825,
+            "requestStart": 750.8999999999942,
+            "responseStart": 757.5999999999767,
+            "responseEnd": 758,
+            "duration": 8.800000000017462,
+            "transferSize": 6047,
+            "encodedBodySize": 5747,
+            "decodedBodySize": 5747
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/bed-texture.webp",
+            "initiator": "img",
+            "startTime": 769.2999999999884,
+            "fetchStart": 769.2999999999884,
+            "requestStart": 770.5999999999767,
+            "responseStart": 776.0999999999767,
+            "responseEnd": 776.3999999999942,
+            "duration": 7.100000000005821,
+            "transferSize": 9680,
+            "encodedBodySize": 9380,
+            "decodedBodySize": 9380
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/tool-texture.webp",
+            "initiator": "img",
+            "startTime": 769.5,
+            "fetchStart": 769.5,
+            "requestStart": 773.5,
+            "responseStart": 776.5,
+            "responseEnd": 776.6999999999825,
+            "duration": 7.199999999982538,
+            "transferSize": 23044,
+            "encodedBodySize": 22744,
+            "decodedBodySize": 22744
+          },
+          {
+            "path": "/glossquote-visuals/media/afterimage-press/mark.svg",
+            "initiator": "other",
+            "startTime": 785.2999999999884,
+            "fetchStart": 785.2999999999884,
+            "requestStart": 785.8999999999942,
+            "responseStart": 787.5,
+            "responseEnd": 787.7999999999884,
+            "duration": 2.5,
+            "transferSize": 509,
+            "encodedBodySize": 209,
+            "decodedBodySize": 209
+          }
+        ],
+        "longTasks": []
+      },
+      "fromCommitReturnToTimingReadMs": 3523.8084,
+      "navigationStartMetricMs": 209504.76,
+      "platformFontsAfterWindow": [
+        {
+          "selector": "body > div:nth-of-type(1) > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > h1:nth-of-type(1)",
+          "text": "限量雙色海報",
+          "cssFamily": "\"Press TC\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin-ExtraBold",
+              "isCustomFont": true,
+              "glyphCount": 6
+            }
+          ]
+        },
+        {
+          "selector": "body > div:nth-of-type(1) > header:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1)",
+          "text": "海報案例",
+          "cssFamily": "\"Press TC\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin",
+              "isCustomFont": true,
+              "glyphCount": 4
+            }
+          ]
+        },
+        {
+          "selector": "body > div:nth-of-type(1) > main:nth-of-type(1) > section:nth-of-type(1) > header:nth-of-type(1) > p:nth-of-type(1)",
+          "text": "獨立演出印務",
+          "cssFamily": "\"Press TC\", sans-serif",
+          "fonts": [
+            {
+              "familyName": "Noto Sans TC Thin",
+              "postScriptName": "Noto-Sans-TC-Thin",
+              "isCustomFont": true,
+              "glyphCount": 6
+            }
+          ]
+        }
+      ],
+      "mainLoaderMilestones": [
+        {
+          "name": "init",
+          "traceMs": 209523.96,
+          "ms": 19.199999999982538
+        },
+        {
+          "name": "DOMContentLoaded",
+          "traceMs": 210235.324,
+          "ms": 730.5639999999839
+        },
+        {
+          "name": "load",
+          "traceMs": 210254.18099999998,
+          "ms": 749.420999999973
+        },
+        {
+          "name": "firstMeaningfulPaintCandidate",
+          "traceMs": 210661.70500000002,
+          "ms": 1156.945000000007
+        },
+        {
+          "name": "firstContentfulPaint",
+          "traceMs": 210661.70500000002,
+          "ms": 1156.945000000007
+        },
+        {
+          "name": "firstPaint",
+          "traceMs": 210661.70500000002,
+          "ms": 1156.945000000007
+        },
+        {
+          "name": "firstImagePaint",
+          "traceMs": 210661.70500000002,
+          "ms": 1156.945000000007
+        },
+        {
+          "name": "networkAlmostIdle",
+          "traceMs": 210246.308,
+          "ms": 741.5479999999807
+        },
+        {
+          "name": "firstMeaningfulPaint",
+          "traceMs": 210661.70500000002,
+          "ms": 1156.945000000007
+        },
+        {
+          "name": "networkIdle",
+          "traceMs": 210294.31600000002,
+          "ms": 789.5560000000114
+        }
+      ],
+      "fromLoaderInitToTimingAnchorMs": 3524.5,
+      "navigationStartTraceMs": 209504.76,
+      "navigationStartEventUs": 209504760,
+      "anchorTraceUs": 213048492,
+      "fcpTraceClockUs": 210664760,
+      "screenshotEvents": 75,
+      "traceImageTimesMs": [
+        8.668999999994412,
+        1161.774000000005,
+        1266.7580000000016,
+        1367.6879999999946,
+        2056.6959999999963,
+        2062.7759999999835,
+        2098.4279999999853,
+        2118.887999999977,
+        2139.713999999978,
+        2160.3189999999886,
+        2180.816999999981,
+        2201.1959999999963,
+        2221.3889999999956,
+        2227.5959999999905,
+        2248.304999999993,
+        2269.4219999999914,
+        2290.4069999999774,
+        2311.399999999994,
+        2348.085999999981,
+        2369.161999999982,
+        2389.6330000000016,
+        2410.0929999999935,
+        2430.7339999999967,
+        2451.6689999999944,
+        2472.2360000000044,
+        2492.715999999986,
+        2498.1659999999974,
+        2534.402999999991,
+        2539.4499999999825,
+        2576.3249999999825,
+        2596.951000000001,
+        2617.6569999999774,
+        2638.270999999979,
+        2658.6169999999984,
+        2679.0939999999828,
+        2684.4169999999867,
+        2721.4229999999807,
+        2741.9290000000037,
+        2762.4809999999998,
+        2783.103999999992,
+        2803.7609999999986,
+        2824.3739999999816,
+        2829.337999999989,
+        2868.5509999999776,
+        2886.5380000000005,
+        2907.685999999987,
+        2928.497000000003,
+        2974.536999999982,
+        2995.728000000003,
+        3016.7369999999937,
+        3037.963999999978,
+        3059.1779999999853,
+        3080.2969999999914,
+        3101.118999999977,
+        3121.9009999999835,
+        3142.6089999999967,
+        3163.286999999982,
+        3184.0169999999925,
+        3204.9499999999825,
+        3225.88499999998,
+        3246.5540000000037,
+        3267.329999999987,
+        3287.856999999989,
+        3308.3769999999786,
+        3329.3150000000023,
+        3349.899999999994,
+        3370.709999999992,
+        3391.4229999999807,
+        3412.1639999999898,
+        3432.7880000000005,
+        3438.463999999978,
+        3475.0109999999986,
+        3495.5570000000007,
+        3516.0319999999774,
+        3536.5929999999935
+      ],
+      "filmstripFramesInWindow": 48,
+      "basis": "Original Chromium filmstrip JPEG and compositor trace timestamp on navigation and FCP clock",
+      "frames": [
+        {
+          "ms": 1161.774000000005,
+          "traceUs": 210666534,
+          "file": "opening-0.png",
+          "sha256": "e15ec342db89a78cbaa16c471725cd717a0959f42920e7f162d3131875e5b158",
+          "source": "opening-0.jpg",
+          "originalSha256": "b0ea7d3474e55f5b528c8aaa10d489c6a962252990b3fa9a30fd4ba18ef7abd3",
+          "stageHash": "772a54e16671dfe916d6ce3a3ae16a585314ff9a2d6e10fd00c2f7bb7e141667",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2062.7759999999835,
+          "traceUs": 211567536,
+          "file": "opening-1.png",
+          "sha256": "9c856610b1369703e66a42b93d02cf123a47604815fc8f0eb4b6ce56438d5bdf",
+          "source": "opening-1.jpg",
+          "originalSha256": "0634003f1e93101fc53be0f6ca8e8098f38fcfc51707d3978cfe11d2d864a21d",
+          "stageHash": "1db0196f3ac9614837b13fb35a7a594dd1f858f5a0852d44b4adcd2b81987704",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2180.816999999981,
+          "traceUs": 211685577,
+          "file": "opening-2.png",
+          "sha256": "aef918e86d8f9288c1d16afa6e701aa43587d75ae5b88acd0cd48ce345e2bd0b",
+          "source": "opening-2.jpg",
+          "originalSha256": "2cb9733a35308b60d0937de1fb7d794b4be050a37972ca4bde60b3e5fcd5ca1e",
+          "stageHash": "23bfaa2906a383e574a3f1264ecf61eaa2d7b1c94f13ee1a961116f7a95279f0",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2248.304999999993,
+          "traceUs": 211753065,
+          "file": "opening-3.png",
+          "sha256": "464fcd9336c01521b13f38733243ebf52077f4c51e5c2d59e588c9cd3e70e208",
+          "source": "opening-3.jpg",
+          "originalSha256": "b7c94b8049b4f97eb6e1a45082a205fba754d9b1d93bd7f1d0a4061553893629",
+          "stageHash": "b21b982746e403c900c6095a08e6a573f5989af3e9f53a5dbcc09f1cf8f68dd5",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2348.085999999981,
+          "traceUs": 211852846,
+          "file": "opening-4.png",
+          "sha256": "c7b9ff92aff761134bd9f6109fefa34464f4deff8728ffefdedf7c60de79254a",
+          "source": "opening-4.jpg",
+          "originalSha256": "4fb68c2b350645869d2429f5a77f695f4d9128ab674a68182012d6f80b47e33a",
+          "stageHash": "25392e3f5c2c10e0c4f1a520a874cdd2a65584d260fb0a0ad099865738dc7dbf",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2430.7339999999967,
+          "traceUs": 211935494,
+          "file": "opening-5.png",
+          "sha256": "41d5aa706e1cf5f45b27683c7bb065c893fee1624ad733aad82eaa4701c74946",
+          "source": "opening-5.jpg",
+          "originalSha256": "ab5a4bac2e0fa6f9c3a56675b5215ff666ba8c904d0c9d62ca3ea07a8ea9a110",
+          "stageHash": "b83b282dedfc67b6901e313e923072d25ab7d7ff83bc12df1a7cb4f43edd9623",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2534.402999999991,
+          "traceUs": 212039163,
+          "file": "opening-6.png",
+          "sha256": "d6654d54add63de96dccb2bb47e8a9d6b8ec582413147b7bb075ea9f7e21ad25",
+          "source": "opening-6.jpg",
+          "originalSha256": "158070f71bb59a46cb088afbff0ae0f979395ea0bdc683cd3eee7e5ca0740859",
+          "stageHash": "6e23fea29892b298f80643547edc831b056432e7209e78ef8a9d781d08579a3d",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2617.6569999999774,
+          "traceUs": 212122417,
+          "file": "opening-7.png",
+          "sha256": "f4158904721d917449b4d20f0f66f9d765e99b6226c0dd5f4ede09e5e7c2709c",
+          "source": "opening-7.jpg",
+          "originalSha256": "53f89179a11cdaf9b6bd38c1297d4550499e1731ca86247cff5d5c8a16b45e84",
+          "stageHash": "830038f33a189c4268630f56234f81c43af0500e75f3a8bb56b54a742dc88b04",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2684.4169999999867,
+          "traceUs": 212189177,
+          "file": "opening-8.png",
+          "sha256": "92a43410c9ddf072680d1373b7baca24eb52f2e51a349c0c5a74ae96096a82e5",
+          "source": "opening-8.jpg",
+          "originalSha256": "812368f54e8863892c8ae5c25fe97dba67f0730c79756a84f2661f31c65ce526",
+          "stageHash": "3e6229272b173516fcb5ff6821ebb3fd5ca151a645bc3397cf9e40c15d2404a7",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2783.103999999992,
+          "traceUs": 212287864,
+          "file": "opening-9.png",
+          "sha256": "b5b89a4236ce64a225341aa7c896adbd87b06e24d9d1fcbb0d61885200aca546",
+          "source": "opening-9.jpg",
+          "originalSha256": "0aa1815773df67b3a4664f87001863f8da3b74004ce7f40a2607dc1481c46f6e",
+          "stageHash": "45a771288dfaa57cabc9a7c897ff3f1ffde0e65fb014e9b40b8a9a0b95e7a0ee",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2886.5380000000005,
+          "traceUs": 212391298,
+          "file": "opening-10.png",
+          "sha256": "07dd0b75c5077e2dd6d8cf07e99186e86207c4031ff575cb030c57c265a1070f",
+          "source": "opening-10.jpg",
+          "originalSha256": "6fc9c8681aa6a8503497bbe95c1aa37bb2111092203418ff42825a422aa6a4e3",
+          "stageHash": "3e930d5e0fe297e63f8c9d61dda9b8ddd17493401be57d7114ef64343e3167b9",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        },
+        {
+          "ms": 2995.728000000003,
+          "traceUs": 212500488,
+          "file": "opening-11.png",
+          "sha256": "bf8fe3e7ab637e1f52d98cba1b2dcf1fff15697dbd0e037b783ba850432ae76f",
+          "source": "opening-11.jpg",
+          "originalSha256": "1d34f45a1a72e71f1931cfd877dd6dcbc87a5246630f1f81c00c78336c967a27",
+          "stageHash": "d3cf7b4540d4bde80b4cb26d8b6c90fb6ef675ff080ab8f3ddbe0aba4ee08562",
+          "crop": [
+            12,
+            176,
+            206,
+            104
+          ],
+          "jpegSize": [
+            230,
+            498
+          ]
+        }
+      ],
+      "scenario": "Already-open neutral tab, fresh context, first visit to work origin, no GPU prewarm or user input",
+      "runningMotion": {
+        "sampledStageFrames": 11,
+        "thumbnailSize": [
+          64,
+          48
+        ],
+        "strongest": {
+          "before": "opening-1.jpg",
+          "beforeMs": 2062.7759999999835,
+          "after": "opening-11.jpg",
+          "afterMs": 2995.728000000003,
+          "meanAbsoluteRgb": 20.43326822916671,
+          "fractionWithMeanRgbDeltaAtLeast16": 0.2353515625
+        },
+        "basis": "Stage crop only, after the page reports running. Inspect original JPEGs for visible movement of the named material."
+      }
+    },
+    "craft": {
+      "version": "hero-craft-v1",
+      "video": "craft-opening.webm",
+      "frames": [
+        {
+          "targetMs": null,
+          "native": {
+            "file": "craft-00-native.png",
+            "sha256": "70aa73579a0c5b7f39439a7b44ee62480b1cf1d2b3f0c7277be26fe75dd2e463",
+            "start": 312.0999999999767,
+            "end": 640.3999999999942,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-00-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "6690b96ebc1c9b32d3429287be722813a2a9a34cfb36c498bf2849603920befe"
+          }
+        },
+        {
+          "targetMs": 500,
+          "native": {
+            "file": "craft-01-native.png",
+            "sha256": "7c3d3e28e8a4bdfd23d33e953513439da8ef893911dacfe8d16440bb3354d6bb",
+            "start": 1469.2999999999884,
+            "end": 1517.8999999999942,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-01-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "b8239580ee5ff71e76c80984ac3b4421fda89f552c25f413ba4342b74c3b3a0f"
+          }
+        },
+        {
+          "targetMs": 1000,
+          "native": {
+            "file": "craft-02-native.png",
+            "sha256": "9d3146e11cf580e78640a7b2934a09d26decd94d56dfa6c1fb2e8fb22f0b9560",
+            "start": 1968.2999999999884,
+            "end": 2007.1999999999825,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-02-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "fac168dcb7ef5b3792392fe0877c99dad9791116224014b18cadbc93af2f7906"
+          }
+        },
+        {
+          "targetMs": 1600,
+          "native": {
+            "file": "craft-03-native.png",
+            "sha256": "4e0c833dc07932394ca352b5dd2e0fd36fd76c3c4e04968624e23ce4ef4b62d1",
+            "start": 2580,
+            "end": 2620.0999999999767,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-03-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "32faf6f84b9e714f1333c3296885eb0b1b90c16c04c7736258ead345ec9b95c4"
+          }
+        },
+        {
+          "targetMs": 2200,
+          "native": {
+            "file": "craft-04-native.png",
+            "sha256": "d166d43c7930ea36e9ed1c4b3085564b5ae0a8ea82867739ed7273cab88add46",
+            "start": 3166.399999999994,
+            "end": 3204,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-04-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "2fbc555772e0d54bfca832ea04eb754feca9d44758e7e05bf41bf1e5b1be5ee7"
+          }
+        },
+        {
+          "targetMs": 3000,
+          "native": {
+            "file": "craft-05-native.png",
+            "sha256": "a9c27abd62c1b876abc5eae43d9440ae76bd743b1e9e88b03d1a2caab5cdcae9",
+            "start": 3968.0999999999767,
+            "end": 4007.6999999999825,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-05-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "a15ecc484fb4dcd96c20db71365f62bc84bfa6e10b6583b763c709915c32773d"
+          }
+        },
+        {
+          "targetMs": 4000,
+          "native": {
+            "file": "craft-06-native.png",
+            "sha256": "dd5dc89ffe370bab88a24db29b4afc3b26d0edc36f3f2ddd5f6079b3f827b4fa",
+            "start": 4967.099999999977,
+            "end": 5005.799999999988,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-06-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "99f376f630657980773d7132305df150ef4916ba6e5b68875d7e0bbff5ff776c"
+          }
+        },
+        {
+          "targetMs": 5000,
+          "native": {
+            "file": "craft-07-native.png",
+            "sha256": "bf1a799f48a728d3d273f11d4e589b1462bb8383af8d51289c66d05677c4cc75",
+            "start": 5972.1999999999825,
+            "end": 6013.6999999999825,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-07-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "bfbc1073fb77c05c011a2eff9d24121a8829561c72b6bc3886442de1424da8ea"
+          }
+        },
+        {
+          "targetMs": 6500,
+          "native": {
+            "file": "craft-08-native.png",
+            "sha256": "661433e2e8ee4847532ab34d9d4aa79a9c02976d2e7efd37ab5bbff277f1b54b",
+            "start": 7468.6999999999825,
+            "end": 7511.799999999988,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-08-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "b69abbf4f1248a316248016a0e5a1dd7875f3d486b18993c488b6dd6f1e915f6"
+          }
+        },
+        {
+          "targetMs": 8500,
+          "native": {
+            "file": "craft-09-native.png",
+            "sha256": "8df16c2ef6edc6ea53d6111c6add788fb5786789d4018db8900c8e913829fc1a",
+            "start": 9473.299999999988,
+            "end": 9513.099999999977,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          },
+          "thumb": {
+            "file": "craft-09-160.png",
+            "width": 160,
+            "height": 80,
+            "sha256": "119bba8282e8b00acbb6971fdd7faa293bdef71f5f93eca43d27113213a7a565"
+          }
+        }
+      ],
+      "runningAt": 960.2999999999884,
+      "videoSha256": "78d770127a145aa6f88f6315a98107b098b93e6538091aaecfca0201dd791a4d"
+    },
+    "firstFold": "first-fold.png",
+    "firstFoldStart": 231.89999999999418,
+    "firstFoldEnd": 321.1000000000058,
+    "cycle": "evolving",
+    "sequence": [
+      {
+        "texture": {
+          "file": "frame-0-texture.png",
+          "sha256": "4e0cf78dd54b20999d4ae35babaccf8c5a426c5fb277d0b5e1db326c72a16d97",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 934.3000000000175,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 113,
+          "average": [
+            133,
+            132,
+            149,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-0-composite.png",
+          "sha256": "ecfa70671b2c678886dc4296effce6131337205b898c71065c08e15c51650623",
+          "start": 970.3000000000175,
+          "end": 1007.3999999999942,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 0
+      },
+      {
+        "texture": {
+          "file": "frame-1-texture.png",
+          "sha256": "78a918f41899843ee3c2cadf0d604209df78c10363bf871947758a749acacaf8",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1855,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 123,
+          "average": [
+            120,
+            119,
+            138,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-1-composite.png",
+          "sha256": "d512f7f0a178aa3086f603de1ad4096ea1106c5e622e0dbedcdfcd61ae219e1a",
+          "start": 1886.7000000000116,
+          "end": 1925,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 0.9206999999999825
+      },
+      {
+        "texture": {
+          "file": "frame-2-texture.png",
+          "sha256": "e329582de3fe7c162124d68b6048eb12fd63ad560255ea296d630f3d973f98dd",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 3143,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 132,
+          "average": [
+            116,
+            107,
+            114,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-2-composite.png",
+          "sha256": "aed09eb7e9aabf3bad5d45d9ec876625a4c5005472817e84ee0753a996d8e503",
+          "start": 3174.899999999994,
+          "end": 3213.399999999994,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 2.2086999999999826
+      },
+      {
+        "texture": {
+          "file": "frame-3-texture.png",
+          "sha256": "2d6a37b92d87099ef5774b6c1a926812576cd058227c40aabc63dc4adf608cb1",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 4955.100000000006,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-3-composite.png",
+          "sha256": "10c7dae84ff14a2733b5c745fd964a186978c12a1eeafb48eaff4e7ea5686a30",
+          "start": 4986.600000000006,
+          "end": 5025.600000000006,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 4.020799999999988
+      },
+      {
+        "texture": {
+          "file": "frame-4-texture.png",
+          "sha256": "c6d70d79b33e05e1c5a2d6ddc9501619d60fd1afe6b4693704ec2bb96ca9d3db",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 6936.8000000000175,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-4-composite.png",
+          "sha256": "783b5497608d97d68f80782018cc76a9521a270c999361ada296ccc09d5c1e22",
+          "start": 6966.5,
+          "end": 7004.899999999994,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 6.0025
+      },
+      {
+        "texture": {
+          "file": "frame-5-texture.png",
+          "sha256": "50f037026fd42f1f6ac81504aa50bc865480fb1894fd21d102bf0049e5d1b3e8",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 8985.100000000006,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        },
+        "composite": {
+          "file": "frame-5-composite.png",
+          "sha256": "9063ec359d21fecaedb3df7b9e51218dd7a960650fc37fbdc9038ba6196874f7",
+          "start": 9015.600000000006,
+          "end": 9054.200000000012,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "seconds": 8.050799999999988
+      }
+    ],
+    "controls": [
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-0.png",
+          "sha256": "6addb4e91bc5d832a6ba7e19512f35bfb91885fd7fb63504cf192655c82ec7f0",
+          "start": 972.3999999999942,
+          "end": 1007.1000000000058,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-0-texture.png",
+          "sha256": "1c315e080d25f6a9ec92c8decd4b24d2a2cbce76b430ebbe3e8716fac3dd5b60",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1010.1000000000058,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 113,
+          "average": [
+            133,
+            132,
+            150,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 1,
+        "composite": {
+          "file": "control-1.png",
+          "sha256": "8dff8c02f900545fa04b0c86f83319627a67e657d61529e49976568d968a9873",
+          "start": 1149.8999999999942,
+          "end": 1183.8999999999942,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-1-texture.png",
+          "sha256": "0d9c7fefc881909843f6ad77520158afbdb4529d12a691131621cb8e32bd2c09",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1194.6000000000058,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 111,
+          "average": [
+            124,
+            126,
+            147,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 2,
+        "composite": {
+          "file": "control-2.png",
+          "sha256": "9a19ef3d7e10946a8d8aef76e6bf5354629fbc06cc74d054396008f94f957a24",
+          "start": 1352.2999999999884,
+          "end": 1387.3999999999942,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-2-texture.png",
+          "sha256": "890c5a7ecccc11c04e0948e7d1ae890eb96fb500ba6a77a8e5c8abaae4fd8f00",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1398.2999999999884,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 115,
+          "average": [
+            160,
+            132,
+            121,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      },
+      {
+        "state": 0,
+        "composite": {
+          "file": "control-3.png",
+          "sha256": "795e516ee15bf1e7cc6d6fd57fa7e9f623bcd20448917c90a94dcdf404194f04",
+          "start": 1553.7000000000116,
+          "end": 1590.7999999999884,
+          "clip": {
+            "x": 20,
+            "y": 298,
+            "width": 350,
+            "height": 175
+          }
+        },
+        "texture": {
+          "file": "control-3-texture.png",
+          "sha256": "8ce1e89eccdeb8b7eb729d8a3707d41fa3684161c69ab749d60189583f82e539",
+          "width": 350,
+          "height": 175,
+          "format": "bgra8unorm",
+          "submittedAt": 1600.7000000000116,
+          "alphaMode": "opaque",
+          "readbackEncoding": "RGBA8 original GPU bytes, channel-swizzled only",
+          "colors": 120,
+          "average": [
+            127,
+            115,
+            124,
+            255
+          ],
+          "pngAlphaEncoding": "straight alpha; display RGB unpremultiplied and clamped to RGBA8"
+        }
+      }
+    ],
+    "freeze": {
+      "before": {
+        "file": "pause-before.png",
+        "sha256": "4207b45417afeea0f9bb9e537456cb0acdc211f309f3293b4a38ce49ecff1ab0",
+        "start": 1686.6000000000058,
+        "end": 1728.8999999999942,
+        "clip": {
+          "x": 20,
+          "y": 298,
+          "width": 350,
+          "height": 175
+        }
+      },
+      "immediate": {
+        "file": "pause-immediate.png",
+        "sha256": "a4f2b19918f94a6510e90f5723ef965d9baaa49025d90044c8383dbeec44e736",
+        "start": 1790.8999999999942,
+        "end": 1820.7000000000116,
+        "clip": {
+          "x": 20,
+          "y": 298,
+          "width": 350,
+          "height": 175
+        }
+      },
+      "after1s": {
+        "file": "pause-after-1s.png",
+        "sha256": "a4f2b19918f94a6510e90f5723ef965d9baaa49025d90044c8383dbeec44e736",
+        "start": 3180.5,
+        "end": 3227.2999999999884,
+        "clip": {
+          "x": 20,
+          "y": 298,
+          "width": 350,
+          "height": 175
+        }
+      },
+      "resumed": {
+        "file": "pause-resumed.png",
+        "sha256": "77bb66f7044abbf57bc94956ed14af108f9313bad37dddf6cf8dac5f214c5d15",
+        "start": 3312.7000000000116,
+        "end": 3353.399999999994,
+        "clip": {
+          "x": 20,
+          "y": 298,
+          "width": 350,
+          "height": 175
+        }
+      }
+    },
+    "craftReplay": {
+      "input": "touch",
+      "samples": [
+        {
+          "state": "before",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-reprint",
+              "x": 335.3999938964844,
+              "y": 592.9000244140625,
+              "at": 1001.8999999999942
+            }
+          ],
+          "before": "ready",
+          "after": "ready",
+          "composite": {
+            "file": "replay-before.png",
+            "sha256": "82701f655080e1e3b7c5d604d90ec7a44bc2d88eb4d145c71b521a69bc90aa29",
+            "start": 1099.7000000000116,
+            "end": 1163.5,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          }
+        },
+        {
+          "state": "passing",
+          "inputs": [],
+          "before": "passing",
+          "after": "passing",
+          "composite": {
+            "file": "replay-passing.png",
+            "sha256": "b2b226b3c49fbe65d28ce607e32a62bea43220c8ceb8c33c29b125c366ba740c",
+            "start": 2751.500000000029,
+            "end": 2815.000000000029,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          }
+        },
+        {
+          "state": "after",
+          "inputs": [],
+          "before": "complete",
+          "after": "complete",
+          "composite": {
+            "file": "replay-after.png",
+            "sha256": "be4ff08d4654d7e95a951558d7bf1a4d0ed118e37738d2e8f08c5630fe4e2164",
+            "start": 6199.3000000000175,
+            "end": 6241.500000000029,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          }
+        },
+        {
+          "state": "reset",
+          "inputs": [
+            {
+              "type": "pointerdown",
+              "pointerType": "touch",
+              "target": "data-reprint",
+              "x": 335.3999938964844,
+              "y": 592.9000244140625,
+              "at": 6567.3000000000175
+            }
+          ],
+          "before": "ready",
+          "after": "ready",
+          "composite": {
+            "file": "replay-reset.png",
+            "sha256": "62110460f6f6755a2c7803a97fede94a740b0e90a6722d4448bd20ddb943efb0",
+            "start": 6669.3000000000175,
+            "end": 6721.3000000000175,
+            "clip": {
+              "x": 20,
+              "y": 298,
+              "width": 350,
+              "height": 175
+            }
+          }
+        }
+      ],
+      "observations": {
+        "before": {
+          "step": "ready",
+          "material": 0,
+          "run": 1,
+          "blade": 0.205,
+          "toolVisible": true,
+          "motion": "paused",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ]
+        },
+        "mid": {
+          "step": "passing",
+          "material": 0,
+          "run": 1,
+          "blade": 0.4858101987510832,
+          "toolVisible": true,
+          "motion": "paused",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ],
+          "submissions": 81
+        },
+        "after": {
+          "step": "complete",
+          "material": 0,
+          "run": 1,
+          "blade": 1.255,
+          "toolVisible": false,
+          "motion": "running",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ]
+        },
+        "reset": {
+          "step": "ready",
+          "material": 0,
+          "run": 2,
+          "blade": 0.205,
+          "toolVisible": true,
+          "motion": "paused",
+          "canvasCount": 1,
+          "sheet": [
+            22.640625,
+            35.703125,
+            303.125,
+            118.46875
+          ],
+          "registration": [
+            0,
+            0,
+            348.40625,
+            174.203125
+          ]
+        }
+      }
+    },
+    "flow": {
+      "lang": "zh-Hant",
+      "observations": [
+        {
+          "name": "initial estimate",
+          "count": 50,
+          "rows": [
+            "AP–01 Feedback Assembly",
+            "A3 · 297 × 420 mm",
+            "50 張",
+            "暖白",
+            "NT$2,050",
+            "5–7 個工作天"
+          ]
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "",
+          "error": "請輸入 25 至 250 之間的整數。"
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "24",
+          "error": "請輸入 25 至 250 之間的整數。"
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "25.5",
+          "error": "請輸入 25 至 250 之間的整數。"
+        },
+        {
+          "name": "invalid count rejected",
+          "input": "251",
+          "error": "請輸入 25 至 250 之間的整數。"
+        },
+        {
+          "name": "minimum",
+          "count": 25,
+          "rows": [
+            "AP–01 Feedback Assembly",
+            "A3 · 297 × 420 mm",
+            "25 張",
+            "暖白",
+            "NT$1,500",
+            "5–7 個工作天"
+          ]
+        },
+        {
+          "name": "standard lead threshold",
+          "count": 150,
+          "rows": [
+            "AP–02 Orbital Relay",
+            "A2 · 420 × 594 mm",
+            "150 張",
+            "燕麥",
+            "NT$6,900",
+            "7–9 個工作天"
+          ]
+        },
+        {
+          "name": "extra lead threshold",
+          "count": 151,
+          "rows": [
+            "AP–02 Orbital Relay",
+            "A2 · 420 × 594 mm",
+            "151 張",
+            "燕麥",
+            "NT$6,937",
+            "9–11 個工作天"
+          ]
+        },
+        {
+          "name": "maximum",
+          "count": 250,
+          "rows": [
+            "AP–02 Orbital Relay",
+            "A2 · 420 × 594 mm",
+            "250 張",
+            "燕麥",
+            "NT$10,600",
+            "9–11 個工作天"
+          ]
+        },
+        {
+          "name": "revised",
+          "count": 72,
+          "rows": [
+            "AP–03 Side B Social",
+            "A3 · 297 × 420 mm",
+            "72 張",
+            "暖白",
+            "NT$2,534",
+            "5–7 個工作天"
+          ]
+        }
+      ],
+      "download": {
+        "filename": "afterimage-print-sheet-zh-Hant.txt",
+        "bytes": 332,
+        "text": "疊印 AFTERIMAGE PRESS｜印件製作單\n\n圖案 AP–03 Side B Social\n成品尺寸 A3 · 297 × 420 mm\n印量 72 張\n紙色 暖白\n預估金額 NT$2,534\n預估工期 5–7 個工作天\n170 g/m² 未塗佈紙，鈷藍與螢橘雙色\n\n概念印務。案例為虛構活動，金額與工期為示意，製作單僅供離線規劃。\n"
+      }
+    },
+    "layouts": [
+      {
+        "viewport": [
+          320,
+          844
+        ],
+        "scrollWidth": 320,
+        "controls": [
+          {
+            "label": "試算印件\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 201.1875,
+              "y": 467.90625,
+              "width": 98.015625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "看印刷起點",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 230.8125,
+              "y": 527.890625,
+              "width": 77.1875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1284.84375,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1869.28125,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2453.71875,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "海報圖案",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 2763.171875,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "海報圖案",
+                "rect": {
+                  "x": 12,
+                  "y": 2734.390625,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "成品尺寸",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 2847.140625,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "成品尺寸",
+                "rect": {
+                  "x": 12,
+                  "y": 2818.359375,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "紙色",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 2931.109375,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "紙色",
+                "rect": {
+                  "x": 12,
+                  "y": 2902.328125,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "印量",
+            "tag": "INPUT",
+            "rect": {
+              "x": 12,
+              "y": 3015.078125,
+              "width": 296,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "印量",
+                "rect": {
+                  "x": 12,
+                  "y": 2986.296875,
+                  "width": 296,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "下載印件製作單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3493.484375,
+              "width": 167.75,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "跳到主要內容",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 128,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS\n疊印",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 6.296875,
+              "width": 171.4375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "海報案例",
+            "tag": "A",
+            "rect": {
+              "x": 203.71875,
+              "y": 6.296875,
+              "width": 51.203125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "English",
+            "tag": "A",
+            "rect": {
+              "x": 264.515625,
+              "y": 6.296875,
+              "width": 43.484375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "獨立演出印務",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 77.59375,
+              "width": 296,
+              "height": 16
+            },
+            "color": "rgb(255, 134, 94)",
+            "size": "12.32px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "限量雙色海報",
+            "tag": "H1",
+            "rect": {
+              "x": 12,
+              "y": 102.21875,
+              "width": 296,
+              "height": 47.515625
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "43.2px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "印給獨立樂團、展演空間與唱片行。兩層油墨在紙上套出第三色。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 159.65625,
+              "width": 296,
+              "height": 46
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.56px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H2",
+            "rect": {
+              "x": 20.796875,
+              "y": 262.421875,
+              "width": 278.40625,
+              "height": 26.046875
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.9543px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Loading Bay B・台北\n20:00 開演",
+            "tag": "P",
+            "rect": {
+              "x": 20.796875,
+              "y": 480.84375,
+              "width": 110.515625,
+              "height": 31.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "11.52px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "試算印件\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 201.1875,
+              "y": 467.90625,
+              "width": 98.015625,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "雙版",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 527.890625,
+              "width": 55.734375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "鈷藍版",
+            "tag": "LABEL",
+            "rect": {
+              "x": 72.53125,
+              "y": 527.890625,
+              "width": 68.21875,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "螢橘版",
+            "tag": "LABEL",
+            "rect": {
+              "x": 145.546875,
+              "y": 527.890625,
+              "width": 68.21875,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "看印刷起點",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 230.8125,
+              "y": 527.890625,
+              "width": 77.1875,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "12.48px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 134, 94)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "三張演出海報",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 635.28125,
+              "width": 240,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "三款示意活動海報，皆採鈷藍與螢橘雙色套印。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 688.875,
+              "width": 296,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–01\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1157.546875,
+              "width": 258.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 1192.75,
+              "width": 258.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "樂團專場｜喇叭音箱與號角的實色疊印。",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1227.921875,
+              "width": 258.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1284.84375,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–02\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1741.984375,
+              "width": 258.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "ORBITAL RELAY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 1777.1875,
+              "width": 258.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "電子樂拼盤｜兩組偏心軌道交錯的雙色線印。",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1812.359375,
+              "width": 258.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1869.28125,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–03\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2326.421875,
+              "width": 258.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "SIDE B SOCIAL",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 2361.625,
+              "width": 258.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "唱片交換市集｜以唱片溝紋與音譜節奏組成雙色柵影。",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2396.796875,
+              "width": 258.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2453.71875,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "開一張印件單",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 2584.296875,
+              "width": 240,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選擇圖案、尺寸、印量與紙色。可隨時回改並下載更新後的製作單。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 2637.890625,
+              "width": 296,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "海報圖案",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 2734.390625,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "成品尺寸",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 2818.359375,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "紙色",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 2902.328125,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "印量",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 2986.296875,
+              "width": 296,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "25–250 張，請輸入整數。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 3076.828125,
+              "width": 296,
+              "height": 21.734375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.76px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "製作單預覽",
+            "tag": "H3",
+            "rect": {
+              "x": 26.796875,
+              "y": 3153.90625,
+              "width": 266.40625,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載印件製作單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3493.484375,
+              "width": 167.75,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "印件規格與計價",
+            "tag": "H3",
+            "rect": {
+              "x": 12,
+              "y": 3605.28125,
+              "width": 296,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "概念印務。案例為虛構活動，金額與工期為示意，製作單僅供離線規劃。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 3866.671875,
+              "width": 296,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 3966,
+              "width": 119.03125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "返回視覺作品集 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 176.40625,
+              "y": 3966,
+              "width": 131.59375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "作品原始碼 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4014,
+              "width": 99.59375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/press-bed.svg",
+            "width": 1000,
+            "height": 500
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/plate-both.webp",
+            "width": 2000,
+            "height": 1000
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/squeegee.svg",
+            "width": 1000,
+            "height": 120
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/feedback.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/orbital.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/side-b.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          }
+        ]
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "scrollWidth": 390,
+        "controls": [
+          {
+            "label": "試算印件\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 271.1875,
+              "y": 510.921875,
+              "width": 98.015625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "看印刷起點",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 292.8125,
+              "y": 570.90625,
+              "width": 85.1875,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1392.28125,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2041.140625,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2715.265625,
+              "width": 106.390625,
+              "height": 44
+            },
+            "labels": []
+          },
+          {
+            "label": "海報圖案",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3024.71875,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "海報圖案",
+                "rect": {
+                  "x": 12,
+                  "y": 2995.9375,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "成品尺寸",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3108.6875,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "成品尺寸",
+                "rect": {
+                  "x": 12,
+                  "y": 3079.90625,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "紙色",
+            "tag": "SELECT",
+            "rect": {
+              "x": 12,
+              "y": 3192.65625,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "紙色",
+                "rect": {
+                  "x": 12,
+                  "y": 3163.875,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "印量",
+            "tag": "INPUT",
+            "rect": {
+              "x": 12,
+              "y": 3276.625,
+              "width": 366,
+              "height": 48
+            },
+            "labels": [
+              {
+                "text": "印量",
+                "rect": {
+                  "x": 12,
+                  "y": 3247.84375,
+                  "width": 366,
+                  "height": 25.265625
+                }
+              }
+            ],
+            "disabled": false
+          },
+          {
+            "label": "下載印件製作單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3729.765625,
+              "width": 167.75,
+              "height": 44
+            },
+            "labels": [],
+            "disabled": false
+          }
+        ],
+        "text": [
+          {
+            "label": "跳到主要內容",
+            "tag": "A",
+            "rect": {
+              "x": 10.390625,
+              "y": 10.390625,
+              "width": 128,
+              "height": 46.046875
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgb(39, 36, 31)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS\n疊印",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 6.296875,
+              "width": 182.9375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "海報案例",
+            "tag": "A",
+            "rect": {
+              "x": 264.234375,
+              "y": 6.296875,
+              "width": 56.328125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "English",
+            "tag": "A",
+            "rect": {
+              "x": 330.15625,
+              "y": 6.296875,
+              "width": 47.84375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.08px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "獨立演出印務",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 77.59375,
+              "width": 366,
+              "height": 16
+            },
+            "color": "rgb(255, 134, 94)",
+            "size": "12.32px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "限量雙色海報",
+            "tag": "H1",
+            "rect": {
+              "x": 12,
+              "y": 102.21875,
+              "width": 366,
+              "height": 47.515625
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "43.2px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "印給獨立樂團、展演空間與唱片行。兩層油墨在紙上套出第三色。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 159.65625,
+              "width": 339.390625,
+              "height": 46
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "14.56px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H2",
+            "rect": {
+              "x": 20.796875,
+              "y": 263.296875,
+              "width": 348.40625,
+              "height": 32.609375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "36.2342px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "Loading Bay B・台北\n20:00 開演",
+            "tag": "P",
+            "rect": {
+              "x": 20.796875,
+              "y": 523.859375,
+              "width": 110.515625,
+              "height": 31.0625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "11.52px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "試算印件\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 271.1875,
+              "y": 510.921875,
+              "width": 98.015625,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "雙版",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 570.90625,
+              "width": 63.734375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "鈷藍版",
+            "tag": "LABEL",
+            "rect": {
+              "x": 80.53125,
+              "y": 570.90625,
+              "width": 76.21875,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "螢橘版",
+            "tag": "LABEL",
+            "rect": {
+              "x": 161.546875,
+              "y": 570.90625,
+              "width": 76.21875,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "看印刷起點",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 292.8125,
+              "y": 570.90625,
+              "width": 85.1875,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "12.48px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 134, 94)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "三張演出海報",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 678.296875,
+              "width": 240,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "三款示意活動海報，皆採鈷藍與螢橘雙色套印。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 731.890625,
+              "width": 319.671875,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–01\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1290.25,
+              "width": 328.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "FEEDBACK ASSEMBLY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 1325.453125,
+              "width": 328.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "樂團專場｜喇叭音箱與號角的實色疊印。",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1360.625,
+              "width": 328.8125,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 1392.28125,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–02\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 1939.109375,
+              "width": 328.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "ORBITAL RELAY",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 1974.3125,
+              "width": 328.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "電子樂拼盤｜兩組偏心軌道交錯的雙色線印。",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2009.484375,
+              "width": 328.8125,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2041.140625,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AP–03\nA3 / A2",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2587.96875,
+              "width": 328.8125,
+              "height": 25.9375
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "12.8px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "SIDE B SOCIAL",
+            "tag": "H3",
+            "rect": {
+              "x": 30.59375,
+              "y": 2623.171875,
+              "width": 328.8125,
+              "height": 25.90625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "28.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "唱片交換市集｜以唱片溝紋與音譜節奏組成雙色柵影。",
+            "tag": "P",
+            "rect": {
+              "x": 30.59375,
+              "y": 2658.34375,
+              "width": 328.8125,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選用此圖案\n↘",
+            "tag": "A",
+            "rect": {
+              "x": 30.59375,
+              "y": 2715.265625,
+              "width": 106.390625,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(236, 229, 212)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "開一張印件單",
+            "tag": "H2",
+            "rect": {
+              "x": 12,
+              "y": 2845.84375,
+              "width": 240,
+              "height": 44
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "40px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "選擇圖案、尺寸、印量與紙色。可隨時回改並下載更新後的製作單。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 2899.4375,
+              "width": 319.671875,
+              "height": 50.53125
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "海報圖案",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 2995.9375,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "成品尺寸",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3079.90625,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "紙色",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3163.875,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "印量",
+            "tag": "LABEL",
+            "rect": {
+              "x": 12,
+              "y": 3247.84375,
+              "width": 366,
+              "height": 25.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "16px",
+            "weight": "700",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "25–250 張，請輸入整數。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 3338.375,
+              "width": 366,
+              "height": 21.734375
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "13.76px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "製作單預覽",
+            "tag": "H3",
+            "rect": {
+              "x": 26.796875,
+              "y": 3415.453125,
+              "width": 336.40625,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(248, 245, 237)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "下載印件製作單\n↓",
+            "tag": "BUTTON",
+            "rect": {
+              "x": 26.796875,
+              "y": 3729.765625,
+              "width": 167.75,
+              "height": 44
+            },
+            "color": "rgb(23, 24, 34)",
+            "size": "14.72px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgb(255, 81, 29)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "印件規格與計價",
+            "tag": "H3",
+            "rect": {
+              "x": 12,
+              "y": 3841.5625,
+              "width": 366,
+              "height": 27.265625
+            },
+            "color": "rgb(39, 36, 31)",
+            "size": "24.8px",
+            "weight": "800",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "概念印務。案例為虛構活動，金額與工期為示意，製作單僅供離線規劃。",
+            "tag": "P",
+            "rect": {
+              "x": 12,
+              "y": 4102.953125,
+              "width": 366,
+              "height": 50.53125
+            },
+            "color": "rgb(92, 82, 69)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(251, 247, 235)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "AFTERIMAGE\nPRESS",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4202.28125,
+              "width": 130.53125,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "返回視覺作品集 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 246.40625,
+              "y": 4202.28125,
+              "width": 131.59375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          },
+          {
+            "label": "作品原始碼 ↗",
+            "tag": "A",
+            "rect": {
+              "x": 12,
+              "y": 4250.28125,
+              "width": 99.59375,
+              "height": 44
+            },
+            "color": "rgb(248, 245, 237)",
+            "size": "16px",
+            "weight": "400",
+            "backgroundLayers": [
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgba(0, 0, 0, 0)",
+                "image": false,
+                "opacity": "1"
+              },
+              {
+                "color": "rgb(23, 24, 34)",
+                "image": false,
+                "opacity": "1"
+              }
+            ]
+          }
+        ],
+        "decodedImages": [
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/press-bed.svg",
+            "width": 1000,
+            "height": 500
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/plate-both.webp",
+            "width": 2000,
+            "height": 1000
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/squeegee.svg",
+            "width": 1000,
+            "height": 120
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/feedback.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/orbital.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/side-b.webp",
+            "width": 640,
+            "height": 820
+          },
+          {
+            "src": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/mark.svg",
+            "width": 150,
+            "height": 150
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "tag": "A",
+        "id": "",
+        "text": "跳到主要內容",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 10.390625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "AFTERIMAGE\nPRESS\n疊印",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.296875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "海報案例",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.296875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "English",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 6.296875
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "試算印件\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(20, 58, 214)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 510.921875
+      },
+      {
+        "tag": "INPUT",
+        "id": "",
+        "text": "雙版",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 570.90625
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "看印刷起點",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 570.90625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "選用此圖案\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 1392.28125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "選用此圖案\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2041.140625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "選用此圖案\n↘",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 2715.265625
+      },
+      {
+        "tag": "SELECT",
+        "id": "art",
+        "text": "海報圖案",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3024.71875
+      },
+      {
+        "tag": "SELECT",
+        "id": "size",
+        "text": "成品尺寸",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3108.6875
+      },
+      {
+        "tag": "SELECT",
+        "id": "paper",
+        "text": "紙色",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3192.65625
+      },
+      {
+        "tag": "INPUT",
+        "id": "copies",
+        "text": "印量",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3276.625
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "text": "下載印件製作單\n↓",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(150, 52, 42)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 3729.765625
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "AFTERIMAGE\nPRESS",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4202.28125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "返回視覺作品集 ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4202.28125
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "text": "作品原始碼 ↗",
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(255, 134, 94)"
+        ],
+        "boxShadow": "none",
+        "visibleFocus": true,
+        "top": 4250.28125
+      }
+    ]
+  },
+  "manual": {
+    "ART-1": "NOT_RUN: director must identify brand, offer, CTA and hero subject in initial captures.",
+    "ART-2": "NOT_RUN: director must inspect motion sequence, three material states and return against the brief.",
+    "ART-3": "NOT_RUN: director compares the batch and two inner sections per work.",
+    "UI-1": "NOT_RUN: geometry checks supplement manual inspection for clipping/overlap.",
+    "UI-2": "NOT_RUN: inspect focus order, control hit areas and actual composited text contrast.",
+    "BIZ-1": "NOT_RUN: compare both languages, values and labels to brief."
+  },
+  "browser": "158.0.8127.18",
+  "renderer": [
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    },
+    {
+      "vendorString": "",
+      "deviceString": "Microsoft Basic Render Driver"
+    }
+  ],
+  "performance": {
+    "start": 2905.600000000006,
+    "end": 12906.400000000023,
+    "timestamps": [
+      2922.4000000000233,
+      2943,
+      2963.600000000006,
+      2984,
+      3003.9000000000233,
+      3024.4000000000233,
+      3045.100000000006,
+      3065.8000000000175,
+      3086.3000000000175,
+      3106.7000000000116,
+      3128.100000000006,
+      3148.5,
+      3168.9000000000233,
+      3189.3000000000175,
+      3209.600000000006,
+      3231,
+      3251.4000000000233,
+      3271.8000000000175,
+      3292.4000000000233,
+      3312.9000000000233,
+      3333.4000000000233,
+      3353.7000000000116,
+      3374.100000000006,
+      3394.600000000006,
+      3415,
+      3435.4000000000233,
+      3455.7000000000116,
+      3476.100000000006,
+      3496.600000000006,
+      3517.100000000006,
+      3537.7000000000116,
+      3558.2000000000116,
+      3578.600000000006,
+      3598.9000000000233,
+      3620.3000000000175,
+      3641.100000000006,
+      3661.7000000000116,
+      3682.4000000000233,
+      3703.100000000006,
+      3723.7000000000116,
+      3744.4000000000233,
+      3765.9000000000233,
+      3786.4000000000233,
+      3806.7000000000116,
+      3826.9000000000233,
+      3848.5,
+      3869.2000000000116,
+      3890.100000000006,
+      3912.8000000000175,
+      3934.2000000000116,
+      3954.9000000000233,
+      3975.8000000000175,
+      3996.8000000000175,
+      4017.7000000000116,
+      4038.9000000000233,
+      4059.5,
+      4080.4000000000233,
+      4101.100000000006,
+      4121.5,
+      4141.900000000023,
+      4162.5,
+      4183.3000000000175,
+      4204.400000000023,
+      4225.200000000012,
+      4245.900000000023,
+      4266.8000000000175,
+      4286.900000000023,
+      4307.5,
+      4328.100000000006,
+      4348.8000000000175,
+      4369.5,
+      4390.100000000006,
+      4410.400000000023,
+      4431,
+      4451.5,
+      4472.3000000000175,
+      4493,
+      4514,
+      4534.700000000012,
+      4555.200000000012,
+      4575.900000000023,
+      4596.400000000023,
+      4617.100000000006,
+      4637.600000000006,
+      4658.100000000006,
+      4679.8000000000175,
+      4701,
+      4722.600000000006,
+      4743,
+      4763.5,
+      4783.8000000000175,
+      4804.200000000012,
+      4824.700000000012,
+      4845.400000000023,
+      4866.3000000000175,
+      4887.100000000006,
+      4907.900000000023,
+      4928.5,
+      4949.200000000012,
+      4969.5,
+      4989.8000000000175,
+      5010.3000000000175,
+      5031,
+      5051.600000000006,
+      5072.200000000012,
+      5093,
+      5113.600000000006,
+      5134.100000000006,
+      5154.8000000000175,
+      5175.3000000000175,
+      5195.600000000006,
+      5215.900000000023,
+      5236.200000000012,
+      5256.3000000000175,
+      5277.900000000023,
+      5298.900000000023,
+      5319.700000000012,
+      5340.100000000006,
+      5360.700000000012,
+      5381.100000000006,
+      5401.5,
+      5421.8000000000175,
+      5442.900000000023,
+      5464.200000000012,
+      5484.5,
+      5505,
+      5525.5,
+      5546.100000000006,
+      5566.600000000006,
+      5587.3000000000175,
+      5608.200000000012,
+      5628.700000000012,
+      5649.5,
+      5670,
+      5690.700000000012,
+      5711,
+      5731.700000000012,
+      5752.600000000006,
+      5773.200000000012,
+      5794.100000000006,
+      5814.700000000012,
+      5835.3000000000175,
+      5856,
+      5876.600000000006,
+      5897.3000000000175,
+      5917.900000000023,
+      5938.600000000006,
+      5959.200000000012,
+      5979.900000000023,
+      6000.600000000006,
+      6020.900000000023,
+      6041.400000000023,
+      6061.700000000012,
+      6082,
+      6102.200000000012,
+      6122.5,
+      6143,
+      6163.600000000006,
+      6184.5,
+      6205.3000000000175,
+      6226.200000000012,
+      6246.3000000000175,
+      6267.600000000006,
+      6289.400000000023,
+      6310.200000000012,
+      6331,
+      6351.900000000023,
+      6372.600000000006,
+      6393.3000000000175,
+      6413.900000000023,
+      6434.3000000000175,
+      6454.8000000000175,
+      6475.3000000000175,
+      6496,
+      6516.600000000006,
+      6537.200000000012,
+      6557.600000000006,
+      6579.100000000006,
+      6598.900000000023,
+      6619.200000000012,
+      6639.5,
+      6660.700000000012,
+      6681,
+      6701.3000000000175,
+      6721.700000000012,
+      6742.100000000006,
+      6763,
+      6784.700000000012,
+      6805.5,
+      6826.200000000012,
+      6847.600000000006,
+      6868.3000000000175,
+      6889.100000000006,
+      6909.5,
+      6929.8000000000175,
+      6950.400000000023,
+      6971.100000000006,
+      6991.700000000012,
+      7012.200000000012,
+      7032.700000000012,
+      7053.100000000006,
+      7073.700000000012,
+      7094.400000000023,
+      7114.900000000023,
+      7135.400000000023,
+      7155.8000000000175,
+      7176.400000000023,
+      7196.8000000000175,
+      7217,
+      7237.3000000000175,
+      7257.700000000012,
+      7278.100000000006,
+      7298.3000000000175,
+      7318.600000000006,
+      7339.200000000012,
+      7359.8000000000175,
+      7380.400000000023,
+      7401.100000000006,
+      7421.8000000000175,
+      7442.3000000000175,
+      7462.8000000000175,
+      7483.100000000006,
+      7503.600000000006,
+      7524.100000000006,
+      7544.700000000012,
+      7565.200000000012,
+      7585.5,
+      7605.900000000023,
+      7626.100000000006,
+      7646.100000000006,
+      7667.400000000023,
+      7687.600000000006,
+      7708.100000000006,
+      7729.3000000000175,
+      7749.700000000012,
+      7770.200000000012,
+      7790.700000000012,
+      7811.400000000023,
+      7832.3000000000175,
+      7852.900000000023,
+      7873.400000000023,
+      7894.200000000012,
+      7915.200000000012,
+      7936,
+      7956.5,
+      7976.600000000006,
+      7997.5,
+      8018.900000000023,
+      8041.5,
+      8061.900000000023,
+      8083.200000000012,
+      8103.600000000006,
+      8124,
+      8144.400000000023,
+      8164.700000000012,
+      8185.3000000000175,
+      8205.700000000012,
+      8226.300000000017,
+      8246.900000000023,
+      8267.600000000006,
+      8288.300000000017,
+      8308.900000000023,
+      8329.5,
+      8350.200000000012,
+      8370.900000000023,
+      8391.5,
+      8412,
+      8432.700000000012,
+      8453,
+      8474,
+      8494.200000000012,
+      8514.600000000006,
+      8534,
+      8554.300000000017,
+      8575.600000000006,
+      8595.900000000023,
+      8615.900000000023,
+      8636.200000000012,
+      8657.200000000012,
+      8677.700000000012,
+      8698.300000000017,
+      8718.900000000023,
+      8739.400000000023,
+      8760.200000000012,
+      8780.800000000017,
+      8801.400000000023,
+      8822,
+      8842.700000000012,
+      8863.300000000017,
+      8883.900000000023,
+      8904.5,
+      8925.300000000017,
+      8946.100000000006,
+      8966.5,
+      8986.900000000023,
+      9007.200000000012,
+      9027.400000000023,
+      9047.600000000006,
+      9068.600000000006,
+      9088.900000000023,
+      9109.100000000006,
+      9129.400000000023,
+      9150,
+      9170.700000000012,
+      9191.600000000006,
+      9212.300000000017,
+      9233.300000000017,
+      9254.200000000012,
+      9275.100000000006,
+      9296,
+      9316.600000000006,
+      9337.200000000012,
+      9357.800000000017,
+      9378.5,
+      9398.900000000023,
+      9419.400000000023,
+      9439.900000000023,
+      9460.600000000006,
+      9481.100000000006,
+      9501.900000000023,
+      9522.400000000023,
+      9543.100000000006,
+      9563.600000000006,
+      9585,
+      9605.400000000023,
+      9625.700000000012,
+      9645.900000000023,
+      9666.300000000017,
+      9685.700000000012,
+      9706.100000000006,
+      9726.5,
+      9747,
+      9767.300000000017,
+      9788.600000000006,
+      9808.800000000017,
+      9829.100000000006,
+      9850.400000000023,
+      9870.700000000012,
+      9891.100000000006,
+      9911.300000000017,
+      9932.700000000012,
+      9953.300000000017,
+      9974,
+      9994.600000000006,
+      10015.100000000006,
+      10035.600000000006,
+      10055.900000000023,
+      10076.300000000017,
+      10097.600000000006,
+      10119,
+      10139.5,
+      10159.900000000023,
+      10180.100000000006,
+      10200.400000000023,
+      10221.100000000006,
+      10241.600000000006,
+      10262.400000000023,
+      10283.100000000006,
+      10303.5,
+      10324.200000000012,
+      10345,
+      10365.700000000012,
+      10386.100000000006,
+      10406.600000000006,
+      10427.300000000017,
+      10447.900000000023,
+      10468.300000000017,
+      10489.100000000006,
+      10509.600000000006,
+      10530.200000000012,
+      10550.5,
+      10571,
+      10591.600000000006,
+      10611.900000000023,
+      10632.100000000006,
+      10652.300000000017,
+      10672.700000000012,
+      10693.5,
+      10714.100000000006,
+      10734.600000000006,
+      10755.100000000006,
+      10775.600000000006,
+      10796,
+      10816.700000000012,
+      10837.200000000012,
+      10857.800000000017,
+      10878.400000000023,
+      10899.100000000006,
+      10919.900000000023,
+      10940.300000000017,
+      10961.100000000006,
+      10981.700000000012,
+      11002.400000000023,
+      11023.200000000012,
+      11043.900000000023,
+      11064.600000000006,
+      11085.300000000017,
+      11105.900000000023,
+      11126.600000000006,
+      11147.200000000012,
+      11167.900000000023,
+      11188.600000000006,
+      11209.400000000023,
+      11230.200000000012,
+      11251,
+      11271.700000000012,
+      11292.100000000006,
+      11312.600000000006,
+      11333.200000000012,
+      11353.5,
+      11374.900000000023,
+      11396.100000000006,
+      11416.5,
+      11436.900000000023,
+      11457.600000000006,
+      11478.400000000023,
+      11499.300000000017,
+      11520.200000000012,
+      11541.400000000023,
+      11562.200000000012,
+      11583.700000000012,
+      11604.5,
+      11625.300000000017,
+      11646.100000000006,
+      11667.100000000006,
+      11687.800000000017,
+      11708.600000000006,
+      11729.300000000017,
+      11750,
+      11770.700000000012,
+      11791.5,
+      11812.200000000012,
+      11832.300000000017,
+      11853.200000000012,
+      11873.5,
+      11894,
+      11914.800000000017,
+      11935.700000000012,
+      11956.600000000006,
+      11977.300000000017,
+      11998,
+      12018.800000000017,
+      12039.600000000006,
+      12060.5,
+      12081.300000000017,
+      12102.200000000012,
+      12122.800000000017,
+      12143.5,
+      12164.100000000006,
+      12184.800000000017,
+      12205.5,
+      12226.300000000017,
+      12247.200000000012,
+      12268.300000000017,
+      12289,
+      12309.900000000023,
+      12330.5,
+      12351.200000000012,
+      12371.700000000012,
+      12392.100000000006,
+      12413.300000000017,
+      12433.700000000012,
+      12454.100000000006,
+      12474.200000000012,
+      12495.400000000023,
+      12516.100000000006,
+      12536.700000000012,
+      12557.5,
+      12578.300000000017,
+      12598.800000000017,
+      12619.600000000006,
+      12640.300000000017,
+      12661.200000000012,
+      12681.800000000017,
+      12702.200000000012,
+      12722.600000000006,
+      12743.200000000012,
+      12763.700000000012,
+      12784.5,
+      12805.300000000017,
+      12826,
+      12846.200000000012,
+      12867,
+      12887.400000000023
+    ],
+    "adapter": {
+      "vendor": "google",
+      "architecture": "swiftshader",
+      "device": "",
+      "description": "",
+      "isFallbackAdapter": true
+    },
+    "dpr": 1,
+    "cssSize": [
+      390,
+      844
+    ],
+    "canvasSize": [
+      [
+        350,
+        175
+      ]
+    ],
+    "measuredMs": 10000.800000000017,
+    "medianMs": 20.60000000000582,
+    "p95Ms": 21.29999999998836,
+    "longestMs": 22.70000000001164,
+    "method": "Window-bounded presentation-texture queue submissions; CPU timestamps, not display scan-out."
+  },
+  "pageProblems": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/works/afterimage-press/",
+      "type": "document",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/plate-cobalt.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/fonts/night-barlow-condensed-extrabold.ttf",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/press-tc.woff2",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/type.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/first-layout.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/assets/preload-helper-Bg9y1oln.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/assets/page-BFmTOD75.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/assets/page-tDpWpdC2.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/assets/site-cAYjLdmz.css",
+      "type": "stylesheet",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/mark.svg",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/press-bed.svg",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/squeegee.svg",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/fonts/prism-plex-mono.ttf",
+      "type": "font",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/feedback.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/orbital.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/side-b.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/plate-both.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/plate-orange.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/assets/shader-CvSO64jm.js",
+      "type": "script",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/bed-texture.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/tool-texture.webp",
+      "type": "image",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/mark.svg",
+      "type": "other",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:64907/glossquote-visuals/media/afterimage-press/mark.svg",
+      "type": "other",
+      "method": "GET"
+    }
+  ]
+}

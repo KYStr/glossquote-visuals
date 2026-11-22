@@ -1,0 +1,177 @@
+{
+  "repository": "KYStr/glossquote-visuals",
+  "commit": "5af20ebdb3d6f60dbbc4fa050678f05a9aca3c44",
+  "runId": 44981579584,
+  "attempt": 1,
+  "url": "https://github.com/KYStr/glossquote-visuals/actions/runs/44981579584",
+  "jobId": 137083958832,
+  "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44981579584/job/137083958832",
+  "conclusion": "success",
+  "sources": [
+    {
+      "lane": "V010-zh-Hant-desktop",
+      "jobId": 137083012106,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44981579584/job/137083012106",
+      "artifactId": 14738320605,
+      "artifactDigest": "sha256:e56b64b45e716a6b05cd6290a1aae81651b0c3494c5196d397dbe0253c5691a3",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 9125,
+          "originalTiles": 11
+        },
+        "defaultEdge": {
+          "version": "157.0.4341.60",
+          "runtime": "GitHub-hosted Windows Server 2025, headless Edge, default GPU selection",
+          "requestedGraphicsFlags": [],
+          "phase": "unavailable",
+          "gpu": {
+            "api": true,
+            "devices": 0,
+            "textures": 0,
+            "adapter": null
+          },
+          "presentation": "static fallback",
+          "flowDownload": {
+            "filename": "foldline-kit-zh-Hant.txt",
+            "bytes": 475
+          }
+        }
+      },
+      "measurements": {
+        "measuredMs": 10001.400000000023,
+        "medianMs": 19.79999999998836,
+        "p95Ms": 31.599999999976717,
+        "longestMs": 52.699999999953434
+      }
+    },
+    {
+      "lane": "V010-zh-Hant-mobile",
+      "jobId": 137083012074,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44981579584/job/137083012074",
+      "artifactId": 14737349134,
+      "artifactDigest": "sha256:5196eaa561d6e589f6fe52796859245b31de28ec43be9fe05df48e207e2ca257",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10000.700000000012,
+        "medianMs": 23.70000000001164,
+        "p95Ms": 27.60000000000582,
+        "longestMs": 29.5
+      }
+    },
+    {
+      "lane": "V010-en-desktop",
+      "jobId": 137083012064,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44981579584/job/137083012064",
+      "artifactId": 14738400871,
+      "artifactDigest": "sha256:034ea0f6be0a4ffd577ac285016c5a5c5e672fb7d429fcef8f3c1a7288baa8d6",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)",
+        "zoom": {
+          "factor": 2,
+          "cssViewport": [
+            720,
+            450
+          ],
+          "viewportPng": [
+            1440,
+            900
+          ],
+          "devicePixelRatio": 2,
+          "height": 9324,
+          "originalTiles": 11
+        }
+      },
+      "measurements": {
+        "measuredMs": 10004.200000000012,
+        "medianMs": 19.79999999998836,
+        "p95Ms": 32.20000000001164,
+        "longestMs": 46.79999999998836
+      }
+    },
+    {
+      "lane": "V010-en-mobile",
+      "jobId": 137083012167,
+      "jobUrl": "https://github.com/KYStr/glossquote-visuals/actions/runs/44981579584/job/137083012167",
+      "artifactId": 14738370680,
+      "artifactDigest": "sha256:37f80bb4425fed3420c345405a1f9b3160736a5d7602102d2ccb6537fd34d0d4",
+      "renderer": {
+        "runner": "GitHub-hosted windows-2025",
+        "browser": "Chromium 158.0.8127.18",
+        "vendor": "google",
+        "architecture": "swiftshader",
+        "isFallbackAdapter": true,
+        "requestedAdapterMode": "D3D11 WARP (software)"
+      },
+      "measurements": {
+        "measuredMs": 10000.5,
+        "medianMs": 24.100000000034925,
+        "p95Ms": 28.79999999998836,
+        "longestMs": 31.800000000046566
+      }
+    }
+  ],
+  "comparisonInputs": {
+    "desktop": [
+      {
+        "lane": "V008-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "2916b5f2652fa17229266695e9c77b14157f622239b02f78d3eb1d7ee02c2abb"
+      },
+      {
+        "lane": "V009-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "9ac19c03294888e2cba7c41c04ef668e1b7115279f31eb6a3400397aec67e632"
+      },
+      {
+        "lane": "V010-zh-Hant-desktop",
+        "file": "first-fold.png",
+        "sha256": "6e8c1650c872bffb1fd1a1b89f477167173b33cb454193ce9a3c4a0384255d42"
+      }
+    ],
+    "mobile": [
+      {
+        "lane": "V008-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "91972c49ea3a8478b4223c0877b3385f59bfad3a25ed644652a9777131aafea0"
+      },
+      {
+        "lane": "V009-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "df1f945d453820092ed2783b31bd489c4f836a677400aa4a2506af90e928298f"
+      },
+      {
+        "lane": "V010-zh-Hant-mobile",
+        "file": "first-fold.png",
+        "sha256": "055d541fa4fe147d9c470d744ba20698ec50b3c7cc3b9316456918c963fe3239"
+      }
+    ]
+  }
+}
