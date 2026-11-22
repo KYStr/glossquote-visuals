@@ -2,6 +2,7 @@ struct Frame {
   shadow: vec4f,
   tide: vec4f,
   contact: vec4f,
+  crop: vec4f,
 }
 @group(0) @binding(0) var<uniform> frame: Frame;
 @group(0) @binding(1) var resolvedHull: texture_2d<f32>;
@@ -48,25 +49,28 @@ fn rippleNoise(p: vec2f) -> f32 {
   let q = vec2f(p.x-frame.shadow.w,p.y-frame.shadow.z-frame.contact.x*(p.x-frame.shadow.w));
   let pocket = q / frame.shadow.xy;
   let depth = 1.0 - .59*exp(-2.4*dot(pocket,pocket));
-  let eddies = rippleNoise(p*vec2f(28,65)+vec2f(phase*.8,-phase*2.0));
-  let warped = uv + vec2f(.018*rill*facets+.016*eddies,.008*facets+.011*eddies);
-  let mirrored = textureSample(mirroredHull,linearClamp,warped);
-  let fracture = sin(47.0*p.x + 2.7*rill + sin(23.0*p.x - 48.0*p.y));
-  let broken = .09+.91*smoothstep(-.08,.74,.33*facets+.38*fracture+.24*rill+1.20*eddies);
-  let fade = 1.0-smoothstep(.043,.33,-q.y);
-  let reflection = (.14+.68*frame.tide.z)*fade*broken;
-  let photo = lake * mix(.91,1.12,depth) + vec3f(.003,.012,.013);
-  let luma = dot(mirrored.rgb,vec3f(.30,.57,.13));
-  let reflected = mix(mirrored.rgb,vec3f(luma),.36)*vec3f(.68,.61,.54)*reflection;
-  let water = photo * (1.0 - mirrored.a*reflection*.86) + reflected;
+  var water = lake * mix(.91,1.12,depth) + vec3f(.003,.012,.013);
+  if (frame.tide.z > 0.0) {
+    let eddies = rippleNoise(p*vec2f(28,65)+vec2f(phase*.8,-phase*2.0));
+    let warped = uv + vec2f(.018*rill*facets+.016*eddies,.008*facets+.011*eddies);
+    let mirrored = textureSampleLevel(mirroredHull,linearClamp,warped,0);
+    let fracture = sin(47.0*p.x + 2.7*rill + sin(23.0*p.x - 48.0*p.y));
+    let broken = .09+.91*smoothstep(-.08,.74,.33*facets+.38*fracture+.24*rill+1.20*eddies);
+    let fade = 1.0-smoothstep(.043,.33,-q.y);
+    let reflection = .82*frame.tide.z*fade*broken;
+    let luma = dot(mirrored.rgb,vec3f(.30,.57,.13));
+    let reflected = mix(mirrored.rgb,vec3f(luma),.36)*vec3f(.68,.61,.54)*reflection;
+    water = water * (1.0 - mirrored.a*reflection*.86) + reflected;
+  }
 
   let cut = exp(-abs(q.y + .012)*73.0) * (1.0-smoothstep(.44,1.02,abs(pocket.x)));
   let scatter = smoothstep(.22,.81,.66*facets+.34*rill);
   let meniscus = cut*scatter*frame.tide.z;
   let lit = water + meniscus*vec3f(.16,.25,.23);
+  if (frame.contact.y >= 2.60) { return vec4f(lit,1); }
   let travel = smoothstep(.68,2.60,frame.contact.y);
   let rockUV = vec2f((p.x+1.17+2.11*travel)/1.89,.48+(-.575-p.y-.31*travel)/.99);
-  let rock = textureSample(shorePhoto,linearClamp,rockUV);
+  let rock = textureSampleLevel(shorePhoto,linearClamp,rockUV,0);
   let shelf = (1.0-smoothstep(.985,1.0,rockUV.x)) * select(0.0,1.0,rockUV.y > 0.0);
   let foot = vec2f((p.x-.013)/.367,(p.y+.641+.08*p.x)/.098);
   let pressure = exp(-dot(foot,foot))*(1.0-travel);
@@ -74,8 +78,27 @@ fn rippleNoise(p: vec2f) -> f32 {
 }
 
 @fragment fn composeFragment(surface: Surface) -> @location(0) vec4f {
-  let hull = textureLoad(resolvedHull, vec2i(surface.position.xy), 0);
-  let water = textureSample(waterLayer, linearClamp, imageUV(surface.uv)).rgb;
+  let at = vec2i(surface.position.xy)-vec2i(frame.crop.xy);
+  let size = vec2i(frame.crop.zw);
+  var water = textureSample(waterLayer, linearClamp, imageUV(surface.uv)).rgb;
+  if (any(at < vec2i(0)) || any(at >= size)) { return vec4f(water,1); }
+
+  var hull = textureLoad(resolvedHull,at,0);
+  let p = surface.uv;
+  let contact = p.y-frame.shadow.z-frame.contact.x*(p.x-frame.shadow.w);
+  // Follow the real lower silhouette. The wet strip spans only a few
+  // native pixels and its broken crests sit just outside the hull coverage.
+  if (frame.tide.z > 0.0 && abs(contact) < .19 && at.y >= 2 && at.y+3 < size.y) {
+    let above = textureLoad(resolvedHull,at-vec2i(0,2),0).a;
+    let below = textureLoad(resolvedHull,at+vec2i(0,3),0).a;
+    let range = 1.0-smoothstep(.62,1.0,abs(p.x-frame.shadow.w)/frame.shadow.x);
+    let contactStrength = frame.tide.z*range;
+    let immersed = hull.a*(1.0-below)*contactStrength;
+    hull = vec4f(mix(hull.rgb,hull.rgb*vec3f(.46,.63,.64)+water*hull.a*.16,immersed*.8),hull.a);
+    let ripple = .54*sin(p.x*137.0+frame.tide.x*2.0)+.46*sin(p.x*289.0+1.9*sin(17.0*p.x));
+    let crest = smoothstep(.05,.68,ripple)*above*(1.0-hull.a)*contactStrength;
+    water += crest*vec3f(.185,.32,.29);
+  }
   return vec4f(hull.rgb + water * (1.0 - hull.a), 1);
 }
 
@@ -83,31 +106,35 @@ struct Panel {
   @builtin(position) position: vec4f,
   @location(0) colour: vec3f,
   @location(1) surface: vec2f,
-  @location(2) screen: vec2f,
+  @location(2) lighting: vec2f,
   @location(3) @interpolate(flat) material: u32,
 }
 @vertex fn panelVertex(
   @location(0) p: vec3f, @location(1) colour: vec3f, @location(2) surface: vec2f, @location(3) material: f32
 ) -> Panel {
-  return Panel(vec4f(p, 1), colour, surface, p.xy, u32(material));
+  let local = (imageUV(p.xy)*frame.contact.zw-frame.crop.xy)/frame.crop.zw;
+  let sky = (p.xy-vec2f(-.43,.49))*vec2f(1.20,1.46);
+  let trees = smoothstep(-.55,.46,p.y-.35*p.x + .11*sin(9.0*p.x));
+  return Panel(vec4f(local*vec2f(2,-2)+vec2f(-1,1),p.z,1), colour, surface,
+    vec2f(exp(-dot(sky,sky)),trees),u32(material));
 }
 @fragment fn panelFragment(panel: Panel) -> @location(0) vec4f {
-  let texel = panel.surface * 352.0;
-  let particulate = grain(floor(texel))*.050 + grain(floor(texel*.36))*.027;
-  let micro = grain(panel.position.xy)*.014;
+  let mat = panel.material;
+  let micro = grain(panel.position.xy+frame.crop.xy)*.014;
   let copper = smoothstep(.16,.49,panel.colour.r - panel.colour.b);
-  let weave = (cos(texel.x*2.8)*cos(texel.y*3.1))*.019;
-  let broad = sin(panel.surface.y*23.5+ .27*sin(panel.surface.x*13.1))*.009;
-  let detail = micro + broad + mix(weave,particulate,copper);
-  let p = panel.screen;
-  let sky = dot((p-vec2f(-.43,.49))*vec2f(1.20,1.46),(p-vec2f(-.43,.49))*vec2f(1.20,1.46));
-  let key = exp(-sky);
-  let reflectedTrees = smoothstep(-.55,.46,p.y-.35*p.x + .11*sin(9.0*p.x));
+  var detail = micro;
+  if (mat == 0u) {
+    let texel = panel.surface * 352.0;
+    let particulate = grain(floor(texel))*.050 + grain(floor(texel*.36))*.027;
+    let weave = (cos(texel.x*2.8)*cos(texel.y*3.1))*.019;
+    detail += mix(weave,particulate,copper);
+  }
+  let key = panel.lighting.x;
+  let reflectedTrees = panel.lighting.y;
   let lighting = .78+.34*key+.11*reflectedTrees;
   let bounce = vec3f(.029,.066,.058)*(1.0-key)*(1.0-.63*copper);
   let sheen = vec3f(.125,.077,.038)*copper*key*(.26+.74*reflectedTrees);
   var colour = panel.colour * (lighting+detail*.72) + detail + bounce + sheen;
-  let mat = panel.material;
   let uv = clamp(panel.surface,vec2f(0),vec2f(1));
   if (mat > 0u) {
     let seating = mat == 3u || mat == 4u;
@@ -138,6 +165,13 @@ struct Panel {
   }
   return vec4f(clamp(colour,vec3f(0),vec3f(1)),1);
 }
-@fragment fn mirrorFragment(panel: Panel) -> @location(0) vec4f {
+struct Mirror {
+  @builtin(position) position: vec4f,
+  @location(0) colour: vec3f,
+}
+@vertex fn mirrorVertex(@location(0) p: vec3f, @location(1) colour: vec3f) -> Mirror {
+  return Mirror(vec4f(p,1),colour);
+}
+@fragment fn mirrorFragment(panel: Mirror) -> @location(0) vec4f {
   return vec4f(panel.colour,1);
 }

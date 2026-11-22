@@ -2,6 +2,8 @@ const span = .825;
 const tau = Math.PI * 2;
 export const duration = 4.8;
 export const modeTimes = [0, 2.65, duration];
+export const hullStride = 9;
+export const mirrorStride = 6;
 const mix = (a,b,t) => a + (b-a)*t;
 const point = (a,b,t) => [mix(a[0],b[0],t),mix(a[1],b[1],t),mix(a[2],b[2],t)];
 const cross = (a,b) => [a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0]];
@@ -72,7 +74,7 @@ const look = [
   { top:"#f1935f", band:"#c96030", base:"#552818" },
 ];
 
-export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false, plate = false }) {
+export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false, plate = false, buffers }) {
   const phase = assembly(seconds);
   const surfaces = [];
   const chain = rigidChain(phase);
@@ -90,7 +92,8 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     const normal = unit(cross(base, minus(verts[2],verts[0])));
     const illumination = .63 + .41*Math.max(0,dot(normal, light)*orientation) + .10*Math.max(0,dot(normal,bounce)*orientation);
     const glint = .092*Math.pow(Math.max(0,dot(normal,specular)*orientation),12);
-    const tint = colour(hex).map((v,i) => Math.min(1, v*illumination + glint*[1,.77,.64][i]));
+    const [r,g,b] = colour(hex);
+    const tint = [Math.min(1,r*illumination+glint),Math.min(1,g*illumination+glint*.77),Math.min(1,b*illumination+glint*.64)];
     if (!uv) {
       const across = unit(base);
       const along = cross(normal,across);
@@ -356,30 +359,92 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
   const c=Math.cos(viewYaw), s=Math.sin(viewYaw), elevation=Math.sqrt(1-tilt*tilt);
   const diagonal = carryDetail ? .08 : mix(.075,.23,ease(seconds,.64,3.68));
   const dc=Math.sqrt(1-diagonal*diagonal);
-  const projectWorld = ([x,y,z]) => {
+  function project(x,y,z, target, offset) {
     if (tandem) { x *= 1.12; z *= 1.07; }
     const u=x*c+z*s, v=z*c-x*s, yv=y*elevation-v*tilt;
     const distance = v*elevation+y*tilt-.23*u;
     const near = 1 + .125*distance;
-    return [near*(dc*u-diagonal*yv), near*(diagonal*u+dc*yv), .5-distance*.12];
+    target[offset] = near*(dc*u-diagonal*yv);
+    target[offset+1] = near*(diagonal*u+dc*yv);
+    target[offset+2] = .5-distance*.12;
+  }
+  const projectWorld = ([x,y,z]) => {
+    const p = [];
+    project(x,y,z,p,0);
+    return p;
   };
-  const projected = surfaces.map(({ tint, verts }) => ({ tint, points:verts.map(projectWorld) }));
   const frame = [Infinity,-Infinity,Infinity,-Infinity];
-  for (const { points } of projected) {
-    for (const [x,y] of points) {
-      frame[0]=Math.min(frame[0],x); frame[1]=Math.max(frame[1],x);
-      frame[2]=Math.min(frame[2],y); frame[3]=Math.max(frame[3],y);
+  function include(x,y) {
+    frame[0]=Math.min(frame[0],x); frame[1]=Math.max(frame[1],x);
+    frame[2]=Math.min(frame[2],y); frame[3]=Math.max(frame[3],y);
+  }
+  let vertices = 0, indices = 0, projected;
+  const waterLevel = mix(-.31,.024,phase.settle);
+  if (buffers) {
+    const { hull, mirror, attributes, topology } = buffers;
+    const updateUV = buffers.indexCount === 0;
+    const reflects = seconds > 4.05;
+    for (const { tint, verts, uv, material } of surfaces) {
+      const first = vertices;
+      for (let i=0;i<verts.length;i++,vertices++) {
+        const [x,y,z] = verts[i];
+        const offset = vertices*hullStride;
+        project(x,y,z,hull,offset);
+        include(hull[offset],hull[offset+1]);
+        hull.set(tint,offset+3);
+        // Photo UVs are fixed to the leaf. Procedural UVs can bend with webbing.
+        if (updateUV || !material) {
+          attributes[vertices*3] = uv[i][0];
+          attributes[vertices*3+1] = uv[i][1];
+          attributes[vertices*3+2] = material;
+        }
+        if (reflects) {
+          const reflected = vertices*mirrorStride;
+          project(x,2*waterLevel-y,z,mirror,reflected);
+          mirror.set(tint,reflected+3);
+        }
+      }
+      if (updateUV) {
+        for (let i=1;i<verts.length-1;i++) {
+          topology[indices++] = first;
+          topology[indices++] = first+i;
+          topology[indices++] = first+i+1;
+        }
+      }
     }
+    if (vertices*hullStride > hull.length || indices > topology.length) throw new RangeError("Hull vertex count");
+    if (updateUV) buffers.indexCount = indices;
+  } else {
+    projected = surfaces.map(({ verts }) => verts.map(projectWorld));
+    for (const points of projected) for (const [x,y] of points) include(x,y);
   }
   const xCenter=(frame[0]+frame[1])*.5, yCenter=(frame[2]+frame[3])*.5;
   const nominal=carryDetail ? 1.04 : mix(1.25,.513,ease(seconds, .88, 3.48));
   const scale = Math.min(nominal, 1.81/(frame[1]-frame[0]), 1.51/((frame[3]-frame[2])*aspect));
   const yOffset=carryDetail ? .17 : mix(.063,.155,phase.settle);
-  const waterLevel = mix(-.31,.024,phase.settle);
+  const scaleY = scale*aspect;
+  if (buffers) {
+    const { hull, mirror } = buffers;
+    for (let i=0;i<vertices;i++) {
+      const offset = i*hullStride;
+      // Interleave the attributes only at the upload boundary. Projection and
+      // material lookup share one vertex per face corner instead of per triangle.
+      hull[offset] = (hull[offset]-xCenter)*scale;
+      hull[offset+1] = (hull[offset+1]-yCenter)*scaleY+yOffset;
+      hull[offset+6] = buffers.attributes[i*3];
+      hull[offset+7] = buffers.attributes[i*3+1];
+      hull[offset+8] = buffers.attributes[i*3+2];
+      if (seconds > 4.05) {
+        const reflected = i*mirrorStride;
+        mirror[reflected] = (mirror[reflected]-xCenter)*scale;
+        mirror[reflected+1] = (mirror[reflected+1]-yCenter)*scaleY+yOffset;
+      }
+    }
+  }
   function tessellate(mirrored) {
     const triangles=[];
     for (const [index, { tint, verts, uv, material }] of surfaces.entries()) {
-      const points = mirrored ? verts.map(([x,y,z])=>projectWorld([x,2*waterLevel-y,z])) : projected[index].points;
+      const points = mirrored ? verts.map(([x,y,z])=>projectWorld([x,2*waterLevel-y,z])) : projected[index];
       for (const p of points) {
         p[0]=(p[0]-xCenter)*scale;
         p[1]=(p[1]-yCenter)*scale*aspect+yOffset;
@@ -390,8 +455,6 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     }
     return triangles;
   }
-  const triangles = tessellate(false);
-  const reflection = plate ? [] : tessellate(true);
   const contact = .232*phase.settle;
   const [groundX,groundY] = projectWorld([0,waterLevel,contact]);
   const [leftX,leftY] = projectWorld([-1,waterLevel,contact]);
@@ -404,5 +467,13 @@ export function boatScene({ aspect, seconds = duration, yaw = 0, tandem = false,
     Math.max(.065,mix(.179,.087,phase.settle)*aspect*scale),
     Math.max(-.64,shadowCenter), shadowX,
   ];
-  return { triangles, shadow, reflection, slope };
+  if (buffers) {
+    buffers.vertexCount = vertices;
+    buffers.shadow.set(shadow);
+    buffers.slope = slope;
+    buffers.reflects = seconds > 4.05;
+    buffers.yOffset = yOffset;
+    return;
+  }
+  return { triangles: tessellate(false), shadow, reflection: plate ? [] : tessellate(true), slope };
 }

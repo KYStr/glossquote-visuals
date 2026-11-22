@@ -77,17 +77,19 @@ def raster(mesh, width, height, atlas=None, seconds=0):
             copper=smoothstep(.16,.49,colour[0]-colour[2])
             pixel_x = np.broadcast_to(xx+.5,z.shape)[visible]
             pixel_y = np.broadcast_to(yy+.5,z.shape)[visible]
+            material = triangle["material"]
             detail=.014*grain(pixel_x,pixel_y)
-            detail+= .009*np.sin(vs*23.5+.27*np.sin(us*13.1))+(1-copper)*weave+copper*particulate
-            sx, sy = 2*pixel_x/width-1, 1-2*pixel_y/height
-            key = np.exp(-((sx+.43)*1.20)**2-((sy-.49)*1.46)**2)
-            trees = smoothstep(-.55,.46,sy-.35*sx+.11*np.sin(9*sx))
+            if not material:
+                detail+= (1-copper)*weave+copper*particulate
+            sx, sy = np.asarray(triangle["points"])[:,:2].T
+            weights = np.stack([f[visible],g[visible],h[visible]],axis=-1)
+            key = weights @ np.exp(-((sx+.43)*1.20)**2-((sy-.49)*1.46)**2)
+            trees = weights @ smoothstep(-.55,.46,sy-.35*sx+.11*np.sin(9*sx))
             lighting = (.78+.34*key+.11*trees)[:,None]
             bounce = np.array([.029,.066,.058])*((1-key)*(1-.63*copper))[:,None]
             sheen = np.array([.125,.077,.038])*(copper*key*(.26+.74*trees))[:,None]
             detail = detail[:,None]
             colour = colour*(lighting+.72*detail)+detail+bounce+sheen
-            material = triangle["material"]
             if material:
                 u, v = np.clip(us,0,1), np.clip(vs,0,1)
                 if material in (3,4):
@@ -137,8 +139,6 @@ def render(spec, model, folder, lake, shore, atlas):
     pocket = (dx/sx)**2+(dy/sy)**2
     shade = .59*np.exp(-2.4*pocket)
     if water:
-        raster_width = min(680, width)
-        mirror = raster(model["reflection"], raster_width, round(height*raster_width/width))
         ripple = v*28+u*7.5+2.4*np.sin(u*4+v*2.6)
         facets = np.sin(v*121+2.6*np.sin(7*u+3*v))
         rill = np.sin(ripple+.51*facets)
@@ -147,16 +147,20 @@ def render(spec, model, folder, lake, shore, atlas):
         lake_u = (ux-.5+(.0042*rill+.0016*facets)*.37)*min(1,ratio)+.5
         lake_v = (vy-.5+(.0018*np.sin(.69*ripple))*.37)*min(1,1/ratio)+.5
         lake_rgb = sample(lake,lake_u,lake_v)*(.91+.21*(1-shade[...,None]))+[.003,.012,.013]
-        eddies = ripple_noise(u*28,v*65)
-        reflection = sample(mirror,ux+.018*rill*facets+.016*eddies,vy+.008*facets+.011*eddies)
         settled = max(0,(seconds-4.05)/.75)
-        fracture = np.sin(47*u+2.7*rill+np.sin(23*u-48*v))
-        broken = .09+.91*smoothstep(-.08,.74,.33*facets+.38*fracture+.24*rill+1.20*eddies)
-        fade = 1-smoothstep(.043,.33,-dy)
-        intensity = ((.14+.68*settled)*fade*broken)[...,None]
-        color = lake_rgb*(1-reflection[...,3:4]*intensity*.86)
-        luma = np.sum(reflection[...,:3]*[.30,.57,.13],axis=-1,keepdims=True)
-        color += (.64*reflection[...,:3]+.36*luma)*[.68,.61,.54]*intensity
+        color = lake_rgb
+        if settled:
+            raster_width = min(680,width)
+            mirror = raster(model["reflection"],raster_width,round(height*raster_width/width))
+            eddies = ripple_noise(u*28,v*65)
+            reflection = sample(mirror,ux+.018*rill*facets+.016*eddies,vy+.008*facets+.011*eddies)
+            fracture = np.sin(47*u+2.7*rill+np.sin(23*u-48*v))
+            broken = .09+.91*smoothstep(-.08,.74,.33*facets+.38*fracture+.24*rill+1.20*eddies)
+            fade = 1-smoothstep(.043,.33,-dy)
+            intensity = (.82*settled*fade*broken)[...,None]
+            color = color*(1-reflection[...,3:4]*intensity*.86)
+            luma = np.sum(reflection[...,:3]*[.30,.57,.13],axis=-1,keepdims=True)
+            color += (.64*reflection[...,:3]+.36*luma)*[.68,.61,.54]*intensity
         light = np.exp(-abs(dy+.012)*73)*(1-smoothstep(.44,1.02,abs(dx/sx)))
         light *= smoothstep(.22,.81,.66*facets+.34*rill)*settled
         color += light[...,None]*[.16,.25,.23]
@@ -173,6 +177,16 @@ def render(spec, model, folder, lake, shore, atlas):
         color -= .07*grid[...,None]+.42*shade[...,None]
 
     hull = raster(model["triangles"],width,height,atlas,seconds)
+    if water and settled:
+        contact = (settled*(1-smoothstep(.62,1,abs(dx)/sx))*(abs(dy)<.19))[...,None]
+        alpha = hull[...,3:4]
+        above = np.pad(alpha[:-2],((2,0),(0,0),(0,0)))
+        below = np.pad(alpha[3:],((0,3),(0,0),(0,0)))
+        immersed = alpha*(1-below)*contact*.8
+        hull[...,:3] = hull[...,:3]*(1-immersed)+immersed*(hull[...,:3]*[.46,.63,.64]+color*alpha*.16)
+        ripple = .54*np.sin(u*137)+.46*np.sin(u*289+1.9*np.sin(u*17))
+        crests = smoothstep(.05,.68,ripple)[...,None]*above*(1-alpha)*contact
+        color += crests*[.185,.32,.29]
     pixels = hull[...,:3]+color*(1-hull[...,3:4])
     result = Image.fromarray(np.uint8(np.clip(pixels,0,1)*255))
     result.save(folder/f"{name}.webp",quality=88,method=6)
