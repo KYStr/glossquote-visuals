@@ -276,7 +276,7 @@
         edge = true;
       }
       if (silverAt < visibleAt && metalCoverage >= 0.999) {
-        shaded = vec4f(silver, 1.0);
+        shaded = vec4f(silver, 0.0);
         break;
       }
       let path = clamp(endAt - visibleAt, 0.06, 0.88);
@@ -292,7 +292,7 @@
       let toPlateShadow = xz - vec2f(0.052, 0.065);
       // Outside the plate, all contact shadows and the caustic, only the table is visible.
       if (!hitsGel && metalCoverage == 0.0 && any(abs(toPlateShadow) >= vec2f(0.91, 0.92))) {
-        shaded = vec4f(table, 1.0);
+        shaded = vec4f(table, 0.0);
         break;
       }
       let shadowDist = length(toPlateShadow / vec2f(0.797, 0.806));
@@ -327,12 +327,11 @@
         }
         color = mix(color, silver, metalCoverage);
 
-        shaded = vec4f(color, 1.0);
+        shaded = vec4f(color, 0.0);
         break;
       }
 
       let foregroundMetal = select(0.0, metalCoverage, silverAt < visibleAt);
-      let shift = 0.055 * sin(time * 0.45);
       let absorption = array<vec3f, 3>(vec3f(0.21, 1.43, 5.25), vec3f(0.31, 4.70, 2.55), vec3f(1.63, 0.45, 2.69))[j];
       let juice = array<vec3f, 3>(vec3f(1.0, 0.54, 0.076), vec3f(0.84, 0.115, 0.229), vec3f(0.58, 0.71, 0.224))[j];
       let plateSample = color;
@@ -353,7 +352,7 @@
         let edgeGlint = (1.0 - smoothstep(0.001, 0.018, abs(localPosition.y - 0.397)))
           * max(0.0, dot(normal, light));
         shaded = vec4f(mix(base * wallShade + juice * (0.047 + 0.064 * depth) + sky * edgeGlint * 0.23,
-          silver, foregroundMetal), 1.0);
+          silver, foregroundMetal), 0.0);
         break;
       }
       let reflected = reflect(ray, normal);
@@ -361,12 +360,13 @@
       let softbox = smoothstep(-0.78, -0.53, reflected.x) * (1.0 - smoothstep(-0.31, -0.03, reflected.x))
         * smoothstep(0.34, 0.55, reflected.y) * (1.0 - smoothstep(0.82, 0.98, reflected.y)) * step(-0.4, reflected.z);
       let rimLight = pow(max(dot(reflected, normalize(vec3f(0.54, 0.54, -0.73))), 0.0), 52.0);
-      let topGlint = exp(-24.0 * abs(localPosition.x + 0.17 + shift + localPosition.z * 0.28))
-        * smoothstep(-0.19, -0.10, localPosition.z) * (1.0 - smoothstep(0.07, 0.18, localPosition.z))
-        * smoothstep(0.89, 0.995, normal.y) * 0.065;
+      let glossy = smoothstep(-0.19, -0.10, localPosition.z)
+        * (1.0 - smoothstep(0.07, 0.18, localPosition.z)) * smoothstep(0.89, 0.995, normal.y);
+      let topGlint = exp(-24.0 * abs(localPosition.x + 0.17 + localPosition.z * 0.28))
+        * glossy * 0.065;
       let fill = select(0.0, 0.024, cavity);
       shaded = vec4f(mix(base + sky * (0.49 * softbox + 0.31 * rimLight + topGlint + fill),
-        silver, foregroundMetal), 1.0);
+        silver, foregroundMetal), glossy * (1.0 - foregroundMetal));
       break;
     }
     if (tap == 0u) {
