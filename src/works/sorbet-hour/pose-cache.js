@@ -2,11 +2,13 @@ import { asLocal, expr, math } from "shaders/std";
 import geometry from "./jelly.wgsl?raw";
 import motion from "./jelly-motion.wgsl?raw";
 import { poseRegions } from "./pose-regions.js";
+import positions from "./scoop-positions.json" with { type: "json" };
 
 const format = "rgba8unorm-srgb";
 const regionStride = 4 * Float32Array.BYTES_PER_ELEMENT;
 // Up to eleven projected boxes yield at most 21 rows of eleven spans.
 const regionCapacity = 231;
+const settledOffset = regionStride * (1 + regionCapacity);
 let material;
 
 export async function prepareJellyMaterial() {
@@ -85,9 +87,10 @@ export function paintCachedPose(params) {
     return { buffer, bind };
   }
   const intact = poseUniform();
+  const settled = poseUniform();
   const moving = poseUniform();
   const vertices = device.createBuffer({
-    size: regionStride * (1 + regionCapacity),
+    size: settledOffset + regionStride * regionCapacity,
     usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
   });
   const bounds = new Float32Array(4 * regionCapacity);
@@ -99,18 +102,25 @@ export function paintCachedPose(params) {
       size: [width, height], format,
       usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
     });
-    return { cached, target, targetView: target.createView(), base, baseView: base.createView() };
+    const sculpted = device.createTexture({
+      size: [width, height], format,
+      usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC | GPUTextureUsage.COPY_DST,
+    });
+    return { cached, target, targetView: target.createView(), base, baseView: base.createView(),
+      sculpted, sculptedView: sculpted.createView() };
   }
 
   let width = Math.max(1, canvas.width);
   let height = Math.max(1, canvas.height);
   let surfaces = allocate();
   let baseDirty = true;
+  let baked = 0;
   const cacheTexture = params.registerMediaTexture(() => surfaces.cached.texture);
 
   function releaseSurfaces() {
     surfaces.cached.destroy();
     surfaces.base.destroy();
+    surfaces.sculpted.destroy();
   }
 
   function draw(encoder, view, bind, loadOp, count, offset = 0) {
@@ -122,6 +132,11 @@ export function paintCachedPose(params) {
     pass.setVertexBuffer(0, vertices, offset, count * regionStride);
     pass.draw(4, count);
     pass.end();
+  }
+
+  function writeRegions(regions, offset) {
+    for (const [index, region] of regions.entries()) bounds.set(region, index * 4);
+    device.queue.writeBuffer(vertices, offset, bounds.subarray(0, regions.length * 4));
   }
 
   params.onBeforeRender(() => {
@@ -164,16 +179,31 @@ export function paintCachedPose(params) {
       device.queue.writeBuffer(vertices, 0, new Float32Array([0, 0, width, height]));
       draw(encoder, surfaces.baseView, intact.bind, "clear", 1);
       baseDirty = false;
+      baked = 0;
     }
-    // Restoring the intact image also erases the previous spoon and cut.
-    // Only pixels in the current pose's affected regions run the geometry.
-    encoder.copyTextureToTexture({ texture: surfaces.base }, { texture: surfaces.target }, [width, height]);
-    if (spoonInScene || pose[7]) {
-      const regions = poseRegions(width, height, pose[3], pose[5], pose[6], pose[7]);
+    let stableCuts = pose[7];
+    if (spoonInScene && pose[3] >= 2.77) {
+      const index = positions.findIndex(cut => Math.fround(cut.x) === pose[5] && Math.fround(cut.z) === pose[6]);
+      if (index >= 0) stableCuts |= 1 << index;
+    }
+    // The cut stops deforming after recoil. Save it once; the raised spoon
+    // and moving shadow continue to use live depth, even over a saved cut.
+    if (stableCuts && baked !== stableCuts) {
+      encoder.copyTextureToTexture({ texture: surfaces.base }, { texture: surfaces.sculpted }, [width, height]);
+      const regions = poseRegions(width, height, 0, 0, 0, stableCuts);
       if (regions.length > 0) {
-        for (const [index, region] of regions.entries()) bounds.set(region, index * 4);
+        device.queue.writeBuffer(settled.buffer, 0, new Float32Array([width, height, pose[2], 0, 0, 0, 0, stableCuts]));
+        writeRegions(regions, settledOffset);
+        draw(encoder, surfaces.sculptedView, settled.bind, "load", regions.length, settledOffset);
+      }
+    }
+    baked = stableCuts;
+    encoder.copyTextureToTexture({ texture: baked ? surfaces.sculpted : surfaces.base }, { texture: surfaces.target }, [width, height]);
+    if (spoonInScene) {
+      const regions = poseRegions(width, height, pose[3], pose[5], pose[6], pose[7], baked);
+      if (regions.length > 0) {
         device.queue.writeBuffer(moving.buffer, 0, pose);
-        device.queue.writeBuffer(vertices, regionStride, bounds.subarray(0, regions.length * 4));
+        writeRegions(regions, regionStride);
         draw(encoder, surfaces.targetView, moving.bind, "load", regions.length, regionStride);
       }
     }
@@ -183,6 +213,7 @@ export function paintCachedPose(params) {
   params.onCleanup(() => {
     releaseSurfaces();
     intact.buffer.destroy();
+    settled.buffer.destroy();
     moving.buffer.destroy();
     vertices.destroy();
     atlas.destroy();

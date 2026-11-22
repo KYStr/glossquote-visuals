@@ -10,6 +10,7 @@
   let cut = vec3f(cutX, 0.392, cutZ);
   let anchor = gelOrigin + vec3f(0.0, 0.018, 0.0);
   let contact = gelOrigin + cut;
+  let shoulderHeight = contact.y * 0.83516465 - contact.z * 0.55;
   let arrive = frame.timing.x;
   let travel = frame.timing.y;
   let press = frame.timing.z;
@@ -42,8 +43,9 @@
       let origin = vec3f(screen.x, screen.y * 0.83516465, -screen.y * 0.55) - ray * 3.0;
       let floorPos = (origin + ray * ((0.018 - origin.y) / ray.y)).xz;
       let distanceToContact = abs(screen.x - contact.x);
-      let dent = select(0.0, press * (1.0 - smoothstep(0.050, 0.235, distanceToContact)), hasBite);
-      let recoil = select(0.0, rebound * (1.0 - smoothstep(0.05, 0.245, distanceToContact)), hasBite);
+      let shoulder = smoothstep(shoulderHeight - 0.20, shoulderHeight - 0.095, screen.y);
+      let dent = select(0.0, press * shoulder * (1.0 - smoothstep(0.050, 0.235, distanceToContact)), hasBite);
+      let recoil = select(0.0, rebound * shoulder * (1.0 - smoothstep(0.05, 0.245, distanceToContact)), hasBite);
       let squash = -0.310 * dent + recoil;
       let scale = vec3f(1.0, 1.0 + squash, 1.0 + 0.10 * dent);
       var gelRay = ray;
