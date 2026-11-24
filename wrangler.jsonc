@@ -1,0 +1,16 @@
+{
+  "name": "glossquote-visuals",
+  "compatibility_date": "2026-11-24",
+  "workers_dev": false,
+  "preview_urls": false,
+  "send_metrics": false,
+  "observability": { "enabled": false },
+  "routes": [
+    { "pattern": "visuals.glossquote.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./.runs/visuals-domain/site",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

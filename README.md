@@ -1,5 +1,11 @@
 # GlossQuote Visuals
 
+## 作品集網址
+
+`visuals.glossquote.com` 的兩個版本使用相同結構。繁中首頁為 `/zh-hant/`，英文首頁為 `/en/`。作品一律使用 `/{語言}/works/{作品代稱}/`，例如 `/zh-hant/works/foldline/` 與 `/en/works/foldline/`。直接進入網域首頁會前往繁中版。
+
+更新此網域時，取用已驗收的完整 GitHub Pages 發行檔（含沿用作品的動態模組），執行 `node scripts/build-visuals-domain.mjs <發行檔目錄> <全新輸出目錄>`。確認 `wrangler.jsonc` 的 `assets.directory` 指向該目錄，發布後執行 `node scripts/verify-visuals-domain.mjs <輸出目錄>` 比對線上頁面和資產。下方歷史紀錄的連結指向各次驗收使用的 GitHub Pages 網址。
+
 <!-- M07 release -->
 ## M07 互動版頭
 
