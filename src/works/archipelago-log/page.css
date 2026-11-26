@@ -1,0 +1,300 @@
+@font-face {
+  font-family: "Bricolage";
+  src: url("/fonts/aero-bricolage.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plex Mono";
+  src: url("/fonts/prism-plex-mono.ttf") format("truetype");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  --sand: #f9f7f2;
+  --sand-deep: #efeae0;
+  --lagoon: #0d6e7a;
+  --lagoon-deep: #094f59;
+  --navy: #102c42;
+  --coral: #b84a2a;
+  --ink: #102536;
+  --ink-muted: #435c6e;
+  --line: #d4dfe4;
+  --display: "Bricolage", system-ui, sans-serif;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Plex Mono", ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--sand);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--navy); color: #ffffff; padding: 0.75rem 1rem; z-index: 50;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+.frame { width: min(1240px, calc(100% - 2rem)); margin-inline: auto; }
+
+.mast {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--navy);
+  min-height: 44px;
+}
+
+.compass-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #58c2c2, #0d6e7a 70%, #102c42 100%);
+  border: 2px solid var(--navy);
+  flex-shrink: 0;
+}
+
+.mast nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 1.25rem; }
+.mast nav a {
+  text-decoration: none; font-size: 0.94rem; font-weight: 500; color: var(--ink-muted);
+  min-height: 44px; display: inline-flex; align-items: center; padding: 0.4rem 0.25rem;
+}
+.mast nav a:hover { color: var(--lagoon); }
+.mast nav a[hreflang] {
+  font-family: var(--mono); font-size: 0.84rem;
+  border: 1.5px solid var(--lagoon); border-radius: 999px;
+  padding: 0.3rem 0.85rem; color: var(--lagoon-deep);
+}
+
+/* Hero: Bright Resort Aerial Sea-Chart */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.92fr);
+  gap: clamp(1.5rem, 3.5vw, 3.25rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3.5vw, 3.25rem) 0 clamp(2.5rem, 5vw, 4.25rem);
+}
+
+.chart-figure {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.85rem;
+  box-shadow: 0 20px 48px rgba(16, 44, 66, 0.10);
+}
+
+.chart-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--lagoon-deep);
+  margin-bottom: 0.6rem;
+}
+
+.stage-wrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  overflow: hidden;
+  background: #135a68;
+}
+.stage img, .stage canvas {
+  position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover;
+}
+.stage canvas { opacity: 0; transition: opacity 260ms ease; }
+.stage[data-rendered] canvas { opacity: 1; }
+.stage[data-rendered] img { opacity: 0; }
+
+.pause {
+  position: absolute; right: 0.75rem; bottom: 0.75rem;
+  min-height: 44px; min-width: 44px; padding: 0.5rem 0.95rem;
+  border-radius: 999px; border: 1.5px solid var(--navy);
+  background: rgba(249, 247, 242, 0.94); color: var(--navy);
+  font: 600 0.84rem/1 var(--sans); cursor: pointer;
+}
+.pause:hover { background: #ffffff; }
+.pause[hidden] { display: none; }
+
+.chart-controls { margin-top: 0.75rem; }
+
+.sea-switch {
+  border: 0; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem;
+}
+
+.sea-pill {
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: 50px; padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--sand); cursor: pointer;
+}
+.sea-pill strong { font-size: 0.9rem; color: var(--navy); }
+.sea-pill span { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-muted); }
+.sea-pill:has(input:checked) { border-color: var(--lagoon); background: #dff1f2; }
+.sea-pill input { position: absolute; opacity: 0; pointer-events: none; }
+
+.kicker {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--lagoon-deep); background: #dff1f2; padding: 0.3rem 0.7rem; border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-family: var(--display);
+  font-size: clamp(2.25rem, 4.3vw, 3.5rem);
+  line-height: 1.08;
+  color: var(--navy);
+}
+
+.intro { margin: 0 0 1.6rem; color: var(--ink-muted); max-width: 44ch; font-size: 1.04rem; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+.button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+  min-height: 46px; padding: 0.7rem 1.4rem; border-radius: 999px;
+  text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  border: 1.5px solid transparent; cursor: pointer;
+}
+.button.primary { background: var(--lagoon); color: #ffffff; }
+.button.primary:hover { background: var(--lagoon-deep); }
+.button.secondary { border-color: var(--navy); color: var(--navy); background: transparent; }
+.button.secondary:hover { background: var(--sand-deep); }
+
+.voyage-stats {
+  margin: 1.65rem 0 0; padding: 1rem 1.15rem;
+  border-radius: 10px; background: var(--sand-deep);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem;
+}
+.voyage-stats dt { font-family: var(--mono); font-size: 0.74rem; color: var(--lagoon-deep); }
+.voyage-stats dd { margin: 0.15rem 0 0; font-size: 0.88rem; font-weight: 600; }
+
+.static-caption { margin: 0.55rem 0 0; font-size: 0.86rem; color: var(--ink-muted); }
+
+/* Sections */
+.section { padding: clamp(2.5rem, 5vw, 4.25rem) 0; border-top: 1px solid var(--line); }
+
+.section-head {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+  gap: 1rem; margin-bottom: 1.85rem;
+}
+.section-head h2 { margin: 0; font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--navy); }
+.section-head p { margin: 0; color: var(--ink-muted); max-width: 48ch; }
+
+.voyage-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.35rem; }
+
+.voyage-card {
+  display: flex; flex-direction: column;
+  background: #ffffff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+}
+
+.voyage-art { position: relative; aspect-ratio: 3 / 2; border-bottom: 1px solid var(--line); }
+.voyage-art img { width: 100%; height: 100%; object-fit: cover; }
+.sea-badge {
+  position: absolute; left: 0.75rem; top: 0.75rem;
+  background: rgba(16, 44, 66, 0.90); color: #ffffff;
+  font-family: var(--mono); font-size: 0.74rem; padding: 0.2rem 0.55rem; border-radius: 999px;
+}
+
+.voyage-body { padding: 1.25rem; flex: 1; }
+.voyage-body h3 { margin: 0 0 0.4rem; font-family: var(--display); font-size: 1.22rem; color: var(--navy); }
+.v-meta { margin: 0 0 0.6rem; font-family: var(--mono); font-size: 0.78rem; color: var(--lagoon-deep); }
+.voyage-body p { margin: 0; color: var(--ink-muted); font-size: 0.93rem; }
+
+.voyage-foot {
+  display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.25rem; border-top: 1px solid var(--line); background: var(--sand);
+}
+.price { font-family: var(--mono); font-weight: 700; color: var(--navy); }
+
+/* Planner */
+.planner-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 1.65rem; align-items: start; }
+
+.voyage-form {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-inline-size: 0;
+  background: #ffffff; border: 1px solid var(--line); border-radius: 12px;
+  padding: 1.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem;
+}
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+.field select, .field input {
+  min-height: 44px; padding: 0.55rem 0.75rem;
+  border: 1px solid #9db4c0; border-radius: 8px; background: var(--sand); color: var(--ink); font: inherit;
+}
+
+.dossier-box {
+  background: var(--navy); color: #f4f8fa; border-radius: 12px; padding: 1.6rem;
+}
+.dossier-box h3 { margin: 0 0 0.75rem; font-family: var(--display); font-size: 1.3rem; }
+.dossier-line { margin: 0 0 1.25rem; color: #cde0eb; font-size: 0.95rem; }
+.dossier-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22); margin-bottom: 1.25rem;
+}
+.dossier-total strong { font-family: var(--mono); font-size: 1.45rem; color: #7ee3e3; }
+.dossier-box .button.primary { width: 100%; background: #58c2c2; color: #08232d; }
+.dossier-box .button.primary:hover { background: #7ee3e3; }
+.feedback { margin: 0.75rem 0 0; font-size: 0.86rem; color: #9cebeb; min-height: 1.4em; }
+.notice { margin: 0.85rem 0 0; font-size: 0.82rem; color: #b6cedc; }
+
+.site-footer {
+  border-top: 1px solid var(--line); padding: 2rem 0 3rem;
+  font-size: 0.88rem; color: var(--ink-muted);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .hero, .planner-grid { grid-template-columns: 1fr; }
+  .voyage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .voyage-grid, .voyage-form, .sea-switch, .voyage-stats { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-Hant" class="archipelago-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <meta name="theme-color" content="#f9f7f2">
+  <title>群島航誌 ARCHIPELAGO LOG｜跳島帆船與海島慢旅策劃社</title>
+  <meta name="description" content="俯瞰宮古藍珊瑚礁、愛琴海白崖與帛琉牛奶湖的透亮水光與帆船航跡。比較三條跳島航程並匯出專屬海島航行企劃書。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/archipelago-log/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/archipelago-log/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/archipelago-log/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/archipelago-log/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="群島航誌 ARCHIPELAGO LOG｜跳島帆船與海島慢旅策劃社">
+  <meta property="og:description" content="俯瞰宮古藍珊瑚礁、愛琴海白崖與帛琉牛奶湖的透亮水光與帆船航跡。比較三條跳島航程並匯出專屬海島航行企劃書。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/archipelago-log/">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/archipelago-log/cover.webp">
+  <meta property="og:image:alt" content="高空俯視白沙月牙島礁與漸層藍綠珊瑚潟湖，一艘白色雙體帆船沿虛線航道拖曳尾浪前行。">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <link rel="icon" href="/media/archipelago-log/icon.png" type="image/png" sizes="64x64">
+  <link rel="preload" href="%BASE_URL%media/archipelago-log/miyako.webp" as="image">
+  <link rel="stylesheet" href="/src/works/archipelago-log/page.css">
+  <link rel="stylesheet" href="%BASE_URL%fonts/studio-tc.css">
+  <script vite-ignore src="%BASE_URL%fonts/studio-tc-first-layout.js" data-serif></script>
+  <script type="module" src="/src/works/archipelago-log/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳至主要內容</a>
+  <header class="mast frame">
+    <a class="wordmark" href="#top" aria-label="群島航誌 ARCHIPELAGO LOG"><i class="compass-dot" aria-hidden="true"></i><span>群島航誌</span> <b lang="en">ARCHIPELAGO LOG</b></a>
+    <nav aria-label="主選單">
+      <a href="#voyages">跳島航程</a>
+      <a href="#planner">航行企劃書</a>
+      <a href="%BASE_URL%">返回畫廊</a>
+      <a href="%BASE_URL%en/works/archipelago-log/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero frame" aria-labelledby="hero-title">
+      <figure class="chart-figure">
+        <div class="chart-head">
+          <span>AERIAL REEF CHART // CATAMARAN TRACK</span>
+          <span data-nautical-coord>24°48'N 125°17'E</span>
+        </div>
+        <div class="stage-wrap">
+          <div class="stage" data-stage data-cycle-seconds="10" data-material="0" data-motion="still">
+            <img data-poster src="%BASE_URL%media/archipelago-log/miyako.webp" width="1200" height="800" fetchpriority="high" alt="宮古藍珊瑚礁潟湖空拍海圖，白色雙體帆船沿虛線航道緩步滑過淺海。">
+            <canvas aria-hidden="true" data-canvas></canvas>
+          </div>
+          <button class="pause" type="button" data-pause data-play="繼續航行" aria-pressed="false" hidden>暫停航行</button>
+        </div>
+        <figcaption class="chart-controls">
+          <fieldset class="sea-switch" data-instrument hidden>
+            <legend class="sr">切換跳島海域</legend>
+            <label class="sea-pill">
+              <input type="radio" name="archipelago-sea" value="0" checked>
+              <strong>宮古藍珊瑚礁</strong>
+              <span>Okinawa · 4D</span>
+            </label>
+            <label class="sea-pill">
+              <input type="radio" name="archipelago-sea" value="1">
+              <strong>愛琴海白崖</strong>
+              <span>Cyclades · 5D</span>
+            </label>
+            <label class="sea-pill">
+              <input type="radio" name="archipelago-sea" value="2">
+              <strong>帛琉牛奶湖</strong>
+              <span>Palau · 6D</span>
+            </label>
+          </fieldset>
+          <p data-motion-status class="sr" role="status">顯示珊瑚礁潟湖空拍靜態畫面。</p>
+          <noscript><p class="static-caption">宮古藍珊瑚礁｜雙體帆船沿白沙月牙礁外側淺海航道前行。</p></noscript>
+        </figcaption>
+      </figure>
+
+      <div class="hero-copy">
+        <span class="kicker">ISLAND-HOPPING YACHT &amp; RETREAT AGENCY</span>
+        <h1 id="hero-title">把假期交給<br>潮汐與風向。</h1>
+        <p class="intro">專為親友包船與海島慢旅設計的跳島帆船旅行社。避開觀光渡輪人潮，在無人白沙洲拋錨浮潛，傍晚停靠靜謐漁港享用島嶼料理。</p>
+        <div class="actions">
+          <a class="button primary" href="#planner">試算跳島航程 <span aria-hidden="true">↘</span></a>
+          <a class="button secondary" href="#voyages">比較三片海域</a>
+        </div>
+        <dl class="voyage-stats">
+          <div><dt>船隊配置</dt><dd>45 呎雙體帆船</dd></div>
+          <div><dt>隨船團隊</dt><dd>認證船長＋水域嚮導</dd></div>
+          <div><dt>出團人數</dt><dd>2–12 位彈性成行</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="voyages" aria-labelledby="voyages-title">
+      <div class="frame">
+        <header class="section-head">
+          <div>
+            <span class="kicker">CURATED ISLAND VOYAGES</span>
+            <h2 id="voyages-title">三條人氣跳島航程</h2>
+          </div>
+          <p>費用均含船隻使用、專業船長、浮潛面鏡與島上精品旅宿。以下為概念旅行社每人示意費用。</p>
+        </header>
+        <div class="voyage-grid">
+          <article class="voyage-card">
+            <div class="voyage-art">
+              <img src="%BASE_URL%media/archipelago-log/miyako.webp" width="1200" height="800" loading="lazy" decoding="async" alt="宮古藍珊瑚礁跳島 4 日空拍海圖">
+              <span class="sea-badge">AL–01 · 4 DAYS</span>
+            </div>
+            <div class="voyage-body">
+              <h3>宮古藍珊瑚礁 4 日</h3>
+              <p class="v-meta">沖繩宮古群島 · 適合家族出遊與初學浮潛</p>
+              <p>串聯八重干瀨珊瑚礁與伊良部白沙淺灘，航程平穩短距，適合首次體驗帆船跳島的旅人。</p>
+            </div>
+            <footer class="voyage-foot">
+              <span class="price">NT$ 54,000／人</span>
+              <a class="button secondary" href="#planner" data-choose-voyage="miyako">選擇海域</a>
+            </footer>
+          </article>
+
+          <article class="voyage-card">
+            <div class="voyage-art">
+              <img src="%BASE_URL%media/archipelago-log/cyclades.webp" width="1200" height="800" loading="lazy" decoding="async" alt="愛琴海白崖包船 5 日空拍海圖">
+              <span class="sea-badge">AL–02 · 5 DAYS</span>
+            </div>
+            <div class="voyage-body">
+              <h3>愛琴海白崖包船 5 日</h3>
+              <p class="v-meta">米洛斯—錫夫諾斯—帕羅斯 · 適合好友慶生與蜜月</p>
+              <p>停泊白色火山岩海蝕洞與藍頂漁村小港，含船上地中海私廚午宴與夕陽香檳巡航。</p>
+            </div>
+            <footer class="voyage-foot">
+              <span class="price">NT$ 118,000／人</span>
+              <a class="button secondary" href="#planner" data-choose-voyage="cyclades">選擇海域</a>
+            </footer>
+          </article>
+
+          <article class="voyage-card">
+            <div class="voyage-art">
+              <img src="%BASE_URL%media/archipelago-log/palau.webp" width="1200" height="800" loading="lazy" decoding="async" alt="帛琉牛奶湖慢旅 6 日空拍海圖">
+              <span class="sea-badge">AL–03 · 6 DAYS</span>
+            </div>
+            <div class="voyage-body">
+              <h3>帛琉牛奶湖慢旅 6 日</h3>
+              <p class="v-meta">洛克群島 · 適合自由潛水與生態攝影</p>
+              <p>深入翡翠蕈狀島群與無浪牛奶潟湖，搭配透明獨木舟與大斷層生態導覽。</p>
+            </div>
+            <footer class="voyage-foot">
+              <span class="price">NT$ 79,000／人</span>
+              <a class="button secondary" href="#planner" data-choose-voyage="palau">選擇海域</a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="planner" aria-labelledby="planner-title">
+      <div class="frame">
+        <header class="section-head">
+          <div>
+            <span class="kicker">OFFLINE VOYAGE PLANNER</span>
+            <h2 id="planner-title">整理你的跳島航行企劃書</h2>
+          </div>
+          <p>設定海域、船型、同行人數與水上加選，於本機下載企劃書供同行親友討論，不傳送個資。</p>
+        </header>
+        <div class="planner-grid">
+          <fieldset aria-labelledby="planner-title" class="voyage-form" data-voyage-form>
+            <div class="field full">
+              <label for="al-sea">跳島海域</label>
+              <select id="al-sea" name="sea">
+                <option value="miyako">宮古藍珊瑚礁 4 日（NT$ 54,000／人）</option>
+                <option value="cyclades">愛琴海白崖包船 5 日（NT$ 118,000／人）</option>
+                <option value="palau">帛琉牛奶湖慢旅 6 日（NT$ 79,000／人）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="al-vessel">船型配置</label>
+              <select id="al-vessel" name="vessel">
+                <option value="shared">精緻小團共乘帆船（標準）</option>
+                <option value="private">私人雙體帆船包船（+28%）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="al-guests">同行人數（2–12 位）</label>
+              <input id="al-guests" name="guests" type="number" required step="1" min="2" max="12" value="4">
+            </div>
+            <div class="field">
+              <label for="al-month">示意出發月份</label>
+              <select id="al-month" name="month">
+                <option value="2027 年 5 月（初夏海況佳）">2027 年 5 月（初夏海況佳）</option>
+                <option value="2027 年 7 月（盛夏跳島季）">2027 年 7 月（盛夏跳島季）</option>
+                <option value="2027 年 10 月（暖秋微風季）">2027 年 10 月（暖秋微風季）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="al-addon">水上活動加選</label>
+              <select id="al-addon" name="addon">
+                <option value="none">標準浮潛與立槳（含於航程）</option>
+                <option value="dive">隨船潛水導潛與氣瓶（+NT$ 6,800／人）</option>
+                <option value="sunset">無人沙洲夕陽私廚晚宴（+NT$ 4,200／人）</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <aside class="dossier-box" aria-live="polite">
+            <h3>航行企劃摘要</h3>
+            <p class="dossier-line" data-voyage-summary>4 位同行 × 宮古藍珊瑚礁跳島 4 日｜精緻小團共乘帆船</p>
+            <div class="dossier-total">
+              <span>示意團體總計</span>
+              <strong data-voyage-total>NT$ 216,000</strong>
+            </div>
+            <button class="button primary" type="button" data-download-voyage>下載離線航行企劃書 (.txt)</button>
+            <p class="feedback" data-voyage-feedback role="status"></p>
+            <p class="notice">概念旅行社聲明：群島航誌 ARCHIPELAGO LOG 為旅遊商業網站示範作品，估算與企劃書皆於本機離線產出，無線上訂船或付款。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer frame">
+    <span>群島航誌 ARCHIPELAGO LOG · V016 旅遊商業示範作品</span>
+    <span>
+      <a href="%BASE_URL%">返回繁中畫廊</a> ·
+      <a href="%BASE_URL%en/works/archipelago-log/" hreflang="en" lang="en">English</a> ·
+      <a href="<!-- work-source -->">原始碼</a>
+    </span>
+  </footer>
+</body>
+</html>
