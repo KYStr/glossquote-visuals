@@ -470,30 +470,33 @@ h1, h2, h3, p, dd, dt { overflow-wrap: break-word; }
   .system-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .mast { gap: 0.2rem 0.75rem; padding: 0.45rem 0; }
-  .mast nav { gap: 0.1rem 0.85rem; }
-  .mast nav a { font-size: 0.8rem; padding: 0.25rem 0.15rem; }
-  .mast nav a[hreflang] { padding: 0.2rem 0.65rem; }
-  .hero { padding: 0.65rem 0 1.75rem; gap: 0.75rem; }
-  .telemetry-bar { padding: 0.45rem 0.75rem; font-size: 0.7rem; }
-  .stage { aspect-ratio: 16 / 10; }
-  .console-controls { padding: 0.55rem 0.65rem; }
-  .freq-switch { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.35rem; }
-  .freq-btn { min-height: 44px; min-width: 0; padding: 0.35rem 0.35rem; font-size: 0.74rem; }
-  .freq-btn strong { font-size: 0.78rem; line-height: 1.2; }
-  .freq-btn span { font-size: 0.64rem; line-height: 1.2; }
-  .hero-copy { padding: 0.9rem 1rem; }
-  .kicker { font-size: 0.7rem; margin-bottom: 0.3rem; }
-  .hero h1 { font-size: clamp(1.65rem, 6.8vw, 2.05rem); margin-bottom: 0.4rem; }
-  .intro { font-size: 0.88rem; line-height: 1.42; margin-bottom: 0.65rem; }
-  .actions { gap: 0.5rem; }
-  .hero .button { min-height: 44px; padding: 0.5rem 0.85rem; font-size: 0.8rem; }
-  .spec-strip { margin-top: 0.85rem; padding-top: 0.65rem; gap: 0.5rem; }
+  .frame { width: calc(100% - 1.5rem); }
+  .mast { gap: 0.1rem 0.65rem; padding: 0.25rem 0; }
+  .wordmark { font-size: 0.9rem; }
+  .mast nav { gap: 0.05rem 0.75rem; }
+  .mast nav a { font-size: 0.76rem; padding: 0.2rem 0.1rem; }
+  .mast nav a[hreflang] { padding: 0.18rem 0.55rem; font-size: 0.72rem; }
+  .hero { padding: 0.45rem 0 1.5rem; gap: 0.5rem; }
+  .telemetry-bar { padding: 0.3rem 0.65rem; font-size: 0.64rem; }
+  .stage { aspect-ratio: 16 / 9; }
+  .console-controls { padding: 0.4rem 0.5rem; }
+  .freq-switch { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; }
+  .freq-btn { min-height: 44px; min-width: 0; padding: 0.28rem 0.3rem; font-size: 0.7rem; }
+  .freq-btn strong { font-size: 0.74rem; line-height: 1.15; }
+  .freq-btn span { font-size: 0.6rem; line-height: 1.15; }
+  .hero-copy { padding: 0.6rem 0.75rem; }
+  .kicker { font-size: 0.62rem; margin-bottom: 0.2rem; }
+  .hero h1 { font-size: clamp(1.38rem, 6.2vw, 1.85rem); line-height: 1.02; margin-bottom: 0.25rem; }
+  .intro { font-size: 0.78rem; line-height: 1.3; margin-bottom: 0.45rem; }
+  .actions { gap: 0.45rem; }
+  .hero .button { min-height: 44px; padding: 0.38rem 0.75rem; font-size: 0.74rem; }
+  .spec-strip { margin-top: 0.65rem; padding-top: 0.55rem; gap: 0.45rem; }
   .system-grid, .lab-form { grid-template-columns: minmax(0, 1fr); }
   .lab-form, .brief-box { padding: 1.1rem; }
 }
 @media (max-width: 360px) {
   .frame { width: calc(100% - 1.25rem); }
-  .freq-btn { padding: 0.3rem 0.2rem; }
+  .hero .button { padding: 0.36rem 0.62rem; font-size: 0.72rem; }
+  .freq-btn { padding: 0.24rem 0.2rem; }
   .lab-form, .brief-box { padding: 0.9rem; }
 }

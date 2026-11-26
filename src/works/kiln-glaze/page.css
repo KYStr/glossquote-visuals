@@ -515,30 +515,35 @@ h1, h2, h3, p, dd, dt { overflow-wrap: break-word; }
 }
 
 @media (max-width: 640px) {
-  .mast { gap: 0.2rem 0.75rem; padding: 0.45rem 0; }
-  .mast nav { gap: 0.1rem 0.85rem; }
-  .mast nav a { font-size: 0.84rem; padding: 0.25rem 0.15rem; }
-  .mast nav a[hreflang] { padding: 0.2rem 0.65rem; }
-  .hero { padding: 0.7rem 0 1.75rem; gap: 0.75rem; }
-  .kicker { font-size: 0.7rem; margin-bottom: 0.3rem; }
-  .hero h1 { font-size: clamp(1.65rem, 6.4vw, 2.1rem); margin-bottom: 0.45rem; }
-  .intro { font-size: 0.88rem; line-height: 1.42; margin-bottom: 0.7rem; }
-  .hero-actions { gap: 0.5rem; }
-  .hero .button { min-height: 44px; padding: 0.5rem 0.9rem; font-size: 0.84rem; }
-  .kiln-meta { margin-top: 0.75rem; padding-top: 0.6rem; gap: 0.45rem; grid-template-columns: repeat(3, minmax(0, 1fr)); font-size: 0.76rem; }
-  .kiln-meta dt { font-size: 0.66rem; }
-  .kiln-meta dd { font-size: 0.74rem; line-height: 1.25; }
-  .stage { aspect-ratio: 16 / 10; }
-  .instrument-bar { margin-top: 0.55rem; }
-  .glaze-switch { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.35rem; }
-  .glaze-chip { min-height: 44px; min-width: 0; padding: 0.35rem 0.4rem; gap: 0.3rem; font-size: 0.74rem; }
-  .swatch { width: 14px; height: 14px; }
+  .frame { width: calc(100% - 1.5rem); }
+  .mast { gap: 0.1rem 0.65rem; padding: 0.25rem 0; }
+  .wordmark { font-size: 0.96rem; }
+  .mast nav { gap: 0.05rem 0.75rem; }
+  .mast nav a { font-size: 0.78rem; padding: 0.2rem 0.1rem; }
+  .mast nav a[hreflang] { padding: 0.18rem 0.55rem; font-size: 0.72rem; }
+  .hero { padding: 0.5rem 0 1.5rem; gap: 0.5rem; }
+  .hero-copy { display: contents; }
+  .kicker { font-size: 0.64rem; margin: 0; }
+  .hero h1 { font-size: clamp(1.42rem, 6.2vw, 1.9rem); line-height: 1.08; margin: 0; }
+  .intro { font-size: 0.8rem; line-height: 1.34; margin: 0; }
+  .hero-actions { gap: 0.45rem; }
+  .hero .button { min-height: 44px; padding: 0.4rem 0.82rem; font-size: 0.78rem; }
+  .vessel-figure { order: 5; }
+  .kiln-meta { order: 10; margin-top: 0.35rem; padding-top: 0.55rem; gap: 0.45rem; grid-template-columns: repeat(3, minmax(0, 1fr)); font-size: 0.74rem; }
+  .kiln-meta dt { font-size: 0.62rem; }
+  .kiln-meta dd { font-size: 0.72rem; line-height: 1.25; }
+  .stage { aspect-ratio: 16 / 9; }
+  .instrument-bar { margin-top: 0.4rem; }
+  .glaze-switch { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; }
+  .glaze-chip { min-height: 44px; min-width: 0; padding: 0.3rem 0.32rem; gap: 0.25rem; font-size: 0.72rem; }
+  .swatch { width: 13px; height: 13px; }
   .vessel-grid, .commission-form { grid-template-columns: minmax(0, 1fr); }
   .commission-form, .summary-card { padding: 1.1rem; }
 }
 @media (max-width: 360px) {
   .frame { width: calc(100% - 1.25rem); }
+  .hero .button { padding: 0.38rem 0.68rem; font-size: 0.74rem; }
   .kiln-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .glaze-chip { padding: 0.3rem 0.25rem; font-size: 0.7rem; }
+  .glaze-chip { padding: 0.25rem 0.22rem; font-size: 0.68rem; }
   .commission-form, .summary-card { padding: 0.9rem; }
 }
