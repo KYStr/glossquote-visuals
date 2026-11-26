@@ -162,7 +162,7 @@
           <p>Select your sea, vessel tier, group size and water add-ons to save a local plain-text dossier. Nothing is sent online.</p>
         </header>
         <div class="planner-grid">
-          <form class="voyage-form" data-voyage-form>
+          <fieldset aria-labelledby="planner-title" class="voyage-form" data-voyage-form>
             <div class="field full">
               <label for="al-sea">Archipelago route</label>
               <select id="al-sea" name="sea">
@@ -180,7 +180,7 @@
             </div>
             <div class="field">
               <label for="al-guests">Guests (2–12)</label>
-              <input id="al-guests" name="guests" type="number" min="2" max="12" value="4">
+              <input id="al-guests" name="guests" type="number" required step="1" min="2" max="12" value="4">
             </div>
             <div class="field">
               <label for="al-month">Indicative departure</label>
@@ -198,7 +198,7 @@
                 <option value="sunset">Sandbar sunset private chef (+NT$ 4,200 / guest)</option>
               </select>
             </div>
-          </form>
+          </fieldset>
 
           <aside class="dossier-box" aria-live="polite">
             <h3>Voyage Summary</h3>

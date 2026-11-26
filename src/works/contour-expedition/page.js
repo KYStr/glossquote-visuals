@@ -122,7 +122,8 @@ const gearCost = { own: 0, pack: 4800 };
 
 function getPlan() {
   const trekKey = form.elements.trek.value;
-  const hikers = Math.max(1, Math.min(8, Number(form.elements.hikers.value) || 2));
+  const hikers = form.elements.hikers.valueAsNumber;
+  if (!form.elements.hikers.validity.valid || !Number.isInteger(hikers)) return null;
   const stay = form.elements.stay.value;
   const gear = form.elements.gear.value;
   const item = treks[trekKey] ?? treks.montblanc;
@@ -134,6 +135,12 @@ function getPlan() {
 function updatePlan() {
   if (!form) return;
   const s = getPlan();
+  if (downloadBtn) downloadBtn.disabled = !s;
+  if (!s) {
+    totalEl.textContent = "—";
+    summaryEl.textContent = en ? "Enter a whole number from 1 to 8." : "請輸入 1 到 8 的整數人數。";
+    return;
+  }
   totalEl.textContent = `NT$ ${s.total.toLocaleString("en-US")}`;
   const stayLabel = s.stay === "lodge"
     ? (en ? "Valley Boutique Lodge (+NT$ 16,500/person)" : "山谷雙人旅宿升級（+NT$ 16,500／人）")
@@ -161,6 +168,7 @@ if (form) {
 if (downloadBtn) {
   downloadBtn.addEventListener("click", () => {
     const s = getPlan();
+    if (!s) return;
     const lines = en ? [
       "CONTOUR EXPEDITION — Offline Trekking Plan & Gear Checklist (Concept Agency)",
       "============================================================================",

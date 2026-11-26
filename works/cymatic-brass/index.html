@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-Hant" class="cymatic-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <meta name="theme-color" content="#0c0f12">
+  <title>銅頻 CYMATIC BRASS｜聲學共振銅板與空間音景工坊</title>
+  <meta name="description" content="在拉絲黃銅共振盤上看石英細砂隨 288 Hz 至 768 Hz 駐波收斂成克拉尼節線。比較三款聲學銅板並匯出空間配置提案單。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/cymatic-brass/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/cymatic-brass/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/cymatic-brass/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/cymatic-brass/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="銅頻 CYMATIC BRASS｜聲學共振銅板與空間音景工坊">
+  <meta property="og:description" content="在拉絲黃銅共振盤上看石英細砂隨 288 Hz 至 768 Hz 駐波收斂成克拉尼節線。比較三款聲學銅板並匯出空間配置提案單。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/cymatic-brass/">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/cymatic-brass/cover.webp">
+  <meta property="og:image:alt" content="黑色消音工作台上的圓形拉絲黃銅共振盤，石英細砂形成清晰的六星克拉尼節線。">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <link rel="icon" href="/media/cymatic-brass/icon.png" type="image/png" sizes="64x64">
+  <link rel="preload" href="%BASE_URL%media/cymatic-brass/quad.webp" as="image">
+  <link rel="stylesheet" href="/src/works/cymatic-brass/page.css">
+  <link rel="stylesheet" href="%BASE_URL%fonts/studio-tc.css">
+  <script vite-ignore src="%BASE_URL%fonts/studio-tc-first-layout.js"></script>
+  <script type="module" src="/src/works/cymatic-brass/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳至主要內容</a>
+  <header class="mast frame">
+    <a class="wordmark" href="#top" aria-label="銅頻 CYMATIC BRASS"><i class="osc-mark" aria-hidden="true"></i><span>銅頻</span> <b lang="en">CYMATIC BRASS</b></a>
+    <nav aria-label="主選單">
+      <a href="#systems">聲學系統</a>
+      <a href="#specifier">空間配置單</a>
+      <a href="%BASE_URL%">返回畫廊</a>
+      <a href="%BASE_URL%en/works/cymatic-brass/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero frame" aria-labelledby="hero-title">
+      <figure class="console-stage">
+        <div class="telemetry-bar">
+          <span>CHLADNI PLATE // C260 BRASS</span>
+          <span data-freq-readout>288 Hz · (2, 1)</span>
+        </div>
+        <div class="stage-wrap">
+          <div class="stage" data-stage data-cycle-seconds="12" data-material="0" data-motion="still">
+            <img data-poster src="%BASE_URL%media/cymatic-brass/quad.webp" width="1200" height="800" fetchpriority="high" alt="圓形拉絲黃銅共振盤上的石英細砂在 288 Hz 頻率下匯聚成四瓣克拉尼節線。">
+            <canvas aria-hidden="true" data-canvas></canvas>
+          </div>
+          <button class="pause" type="button" data-pause data-play="繼續掃頻" aria-pressed="false" hidden>暫停掃頻</button>
+        </div>
+        <figcaption class="console-controls">
+          <fieldset class="freq-switch" data-instrument hidden>
+            <legend class="sr">切換共振頻率模式</legend>
+            <label class="freq-btn">
+              <input type="radio" name="harmonic-mode" value="0" checked>
+              <strong>288 Hz</strong>
+              <span>四瓣共振 (2,1)</span>
+            </label>
+            <label class="freq-btn">
+              <input type="radio" name="harmonic-mode" value="1">
+              <strong>512 Hz</strong>
+              <span>六星節線 (3,2)</span>
+            </label>
+            <label class="freq-btn">
+              <input type="radio" name="harmonic-mode" value="2">
+              <strong>768 Hz</strong>
+              <span>蓮瓣高頻 (4,3)</span>
+            </label>
+          </fieldset>
+          <p data-motion-status class="sr" role="status">顯示銅板共振節線靜態畫面。</p>
+          <noscript><p class="static-caption">288 Hz 四瓣共振｜石英細砂離開反節點並沿駐波節線排列。</p></noscript>
+        </figcaption>
+      </figure>
+
+      <div class="hero-copy">
+        <p class="kicker">建築聲學與金屬共振工坊</p>
+        <h1 id="hero-title">讓空間裡的聲波<br>被看見。</h1>
+        <p class="intro">以精密切削 C260 黃銅板結合低失真激振器，為聆聽室、藝廊與建築空間打造可視化駐波與自然金屬擴散聲場。</p>
+        <div class="actions">
+          <a class="button primary" href="#specifier">估算空間配置 <span aria-hidden="true">↘</span></a>
+          <a class="button secondary" href="#systems">檢視銅板規格</a>
+        </div>
+        <dl class="spec-strip">
+          <div><dt>銅材規格</dt><dd>C260 黃銅 · 2.5–3.0 mm</dd></div>
+          <div><dt>共振範圍</dt><dd>180 Hz – 1,200 Hz</dd></div>
+          <div><dt>表面工藝</dt><dd>同心拉絲 / 氧化古銅</dd></div>
+          <div><dt>適用場域</dt><dd>10 – 250 m² 室內空間</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="systems" aria-labelledby="systems-title">
+      <div class="frame">
+        <header class="section-head">
+          <div>
+            <p class="kicker">銅板聲學方案</p>
+            <h2 id="systems-title">三款共振與擴散系統</h2>
+          </div>
+          <p>每組出廠前均以雷射測振校準基頻節線。以下價格為概念品牌示意定價。</p>
+        </header>
+        <div class="system-grid">
+          <article class="system-card">
+            <div class="system-art">
+              <img src="%BASE_URL%media/cymatic-brass/product-desk.webp" width="1200" height="800" loading="lazy" decoding="async" alt="桌面共振盤單一圓形黃銅盤與 288 Hz 節線示意">
+              <span class="sys-tag">CB–01</span>
+            </div>
+            <div class="system-body">
+              <h3>桌面共振盤 Desk Resonator</h3>
+              <p class="sys-meta">Ø280 mm · 2.5 mm C260 · 適用個人工作室與教學示範</p>
+              <p>內建靜音底座與數位正弦波驅動器，隨附篩選 120 目石英砂，可即時呈現完整克拉尼節線。</p>
+            </div>
+            <footer class="system-foot">
+              <span class="price">NT$ 14,800</span>
+              <a class="button secondary" href="#specifier" data-choose-system="desk">選用此方案</a>
+            </footer>
+          </article>
+
+          <article class="system-card">
+            <div class="system-art">
+              <img src="%BASE_URL%media/cymatic-brass/product-wall.webp" width="1200" height="800" loading="lazy" decoding="async" alt="600×600 mm 方形壁面擴散黃銅板與四角鎖件示意">
+              <span class="sys-tag">CB–02</span>
+            </div>
+            <div class="system-body">
+              <h3>壁面擴散銅板 Wall Diffuser</h3>
+              <p class="sys-meta">600×600 mm · 3.0 mm C260 · 適用聆聽室與錄音空間</p>
+              <p>背掛浮動減震支撐，於中高頻段提供溫潤金屬反射擴散，兼作建築立面視覺焦點。</p>
+            </div>
+            <footer class="system-foot">
+              <span class="price">NT$ 32,000</span>
+              <a class="button secondary" href="#specifier" data-choose-system="wall">選用此方案</a>
+            </footer>
+          </article>
+
+          <article class="system-card">
+            <div class="system-art">
+              <img src="%BASE_URL%media/cymatic-brass/product-array.webp" width="1200" height="800" loading="lazy" decoding="async" alt="2×2 四盤連動黃銅共振聲學矩陣俯視示意">
+              <span class="sys-tag">CB–03</span>
+            </div>
+            <div class="system-body">
+              <h3>展演場域聲學矩陣 Spatial Array</h3>
+              <p class="sys-meta">四盤連動 · 同步相位控制 · 適用美術館與聲音展覽</p>
+              <p>四面大尺寸黃銅共振盤同步接收多聲道訊號，讓空間殘響與駐波幾何成為展覽主體。</p>
+            </div>
+            <footer class="system-foot">
+              <span class="price">NT$ 78,000</span>
+              <a class="button secondary" href="#specifier" data-choose-system="array">選用此方案</a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="specifier" aria-labelledby="specifier-title">
+      <div class="frame">
+        <header class="section-head">
+          <div>
+            <p class="kicker">離線場域試算</p>
+            <h2 id="specifier-title">聲學配置提案單</h2>
+          </div>
+          <p>輸入空間條件與表面工藝，即時生成離線提案單供專案討論使用，不傳輸任何資料。</p>
+        </header>
+        <div class="specifier-grid">
+          <div class="lab-form" role="group" aria-labelledby="specifier-title" data-acoustic-form>
+            <div class="field full">
+              <label for="cb-system">聲學系統</label>
+              <select id="cb-system" name="system">
+                <option value="desk">桌面共振盤 Ø280 mm（NT$ 14,800）</option>
+                <option value="wall">壁面擴散銅板 600×600 mm（NT$ 32,000）</option>
+                <option value="array">展演場域聲學矩陣・四盤連動（NT$ 78,000）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cb-area">空間面積（8–400 m²）</label>
+              <input id="cb-area" name="area" type="number" min="8" max="400" step="1" inputmode="numeric" value="36" aria-describedby="cb-area-error">
+              <p class="field-error" id="cb-area-error" data-area-error role="alert" hidden></p>
+            </div>
+            <div class="field">
+              <label for="cb-qty">配置組數（1–12）</label>
+              <input id="cb-qty" name="quantity" type="number" min="1" max="12" step="1" inputmode="numeric" value="1" aria-describedby="cb-qty-error">
+              <p class="field-error" id="cb-qty-error" data-qty-error role="alert" hidden></p>
+            </div>
+            <div class="field">
+              <label for="cb-reverb">殘響取向（目標 RT60）</label>
+              <select id="cb-reverb" name="reverb">
+                <option value="0.45s 精準乾聲（錄音室）">0.45s 精準乾聲（錄音室）</option>
+                <option value="0.75s 溫潤聆聽（起居／茶室）">0.75s 溫潤聆聽（起居／茶室）</option>
+                <option value="1.20s 展演廳堂（藝廊／展覽）">1.20s 展演廳堂（藝廊／展覽）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cb-finish">黃銅表面處理</label>
+              <select id="cb-finish" name="finish">
+                <option value="brushed">同心拉絲原銅（標準）</option>
+                <option value="oxidized">手工氧化古銅（+NT$ 2,400／組）</option>
+              </select>
+            </div>
+          </div>
+
+          <aside class="brief-box" aria-live="polite">
+            <h3>ACOUSTIC BRIEF // 提案摘要</h3>
+            <p class="brief-line" data-acoustic-summary>1 組 × 桌面共振盤 Ø280 mm｜同心拉絲原銅｜空間 36 m²</p>
+            <div class="brief-total">
+              <span>示意估算費用</span>
+              <strong data-acoustic-total>NT$ 14,800</strong>
+            </div>
+            <button class="button primary" type="button" data-download-brief>下載離線提案單 (.txt)</button>
+            <p class="feedback" data-acoustic-feedback role="status"></p>
+            <p class="notice">概念品牌聲明：銅頻 CYMATIC BRASS 為概念聲學工坊展示，所有報價與提案單皆於本機離線產出，無任何線上送出或付款行為。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer frame">
+    <span>銅頻 CYMATIC BRASS · V013 概念商業作品</span>
+    <span>
+      <a href="%BASE_URL%">返回繁中畫廊</a> ·
+      <a href="%BASE_URL%en/works/cymatic-brass/" hreflang="en" lang="en">English</a> ·
+      <a href="<!-- work-source -->">原始碼</a>
+    </span>
+  </footer>
+</body>
+</html>

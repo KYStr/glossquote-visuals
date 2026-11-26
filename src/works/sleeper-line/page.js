@@ -116,7 +116,8 @@ const cabinMultipliers = { deluxe: 1.0, suite: 1.38 };
 function getProposal() {
   const routeKey = form.elements.route.value;
   const cabin = form.elements.cabin.value;
-  const guests = Math.max(1, Math.min(8, Number(form.elements.guests.value) || 2));
+  const guests = form.elements.guests.valueAsNumber;
+  if (!form.elements.guests.validity.valid || !Number.isInteger(guests)) return null;
   const season = form.elements.season.value;
   const note = form.elements.note.value.trim();
   const item = routes[routeKey] ?? routes.alpine;
@@ -128,6 +129,12 @@ function getProposal() {
 function updateProposal() {
   if (!form) return;
   const s = getProposal();
+  if (downloadBtn) downloadBtn.disabled = !s;
+  if (!s) {
+    totalEl.textContent = "—";
+    summaryEl.textContent = en ? "Enter a whole number from 1 to 8." : "請輸入 1 到 8 的整數人數。";
+    return;
+  }
   totalEl.textContent = `NT$ ${s.total.toLocaleString("en-US")}`;
   const cabinLabel = s.cabin === "suite"
     ? (en ? "Grand En-Suite Cabin (+38%)" : "全景套房艙（含獨立衛浴 +38%）")
@@ -155,6 +162,7 @@ if (form) {
 if (downloadBtn) {
   downloadBtn.addEventListener("click", () => {
     const s = getProposal();
+    if (!s) return;
     const lines = en ? [
       "SLEEPER LINE — Offline Luxury Rail Proposal (Concept Travel Agency)",
       "===================================================================",

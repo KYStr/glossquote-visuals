@@ -163,7 +163,7 @@
           <p>Select your route, lodge tier and technical gear rental to download a local plain-text plan with packing checklist. No data leaves your browser.</p>
         </header>
         <div class="plan-grid">
-          <form class="trek-form" data-trek-form>
+          <fieldset aria-labelledby="planner-title" class="trek-form" data-trek-form>
             <div class="field full">
               <label for="ce-trek">Expedition route</label>
               <select id="ce-trek" name="trek">
@@ -174,7 +174,7 @@
             </div>
             <div class="field">
               <label for="ce-hikers">Hikers (1–8)</label>
-              <input id="ce-hikers" name="hikers" type="number" min="1" max="8" value="2">
+              <input id="ce-hikers" name="hikers" type="number" required step="1" min="1" max="8" value="2">
             </div>
             <div class="field">
               <label for="ce-stay">Accommodation tier</label>
@@ -190,7 +190,7 @@
                 <option value="pack">Rental Kit: Poles + 3-Layer Shell + Crampons (+NT$ 4,800 / hiker)</option>
               </select>
             </div>
-          </form>
+          </fieldset>
 
           <aside class="plan-box" aria-live="polite">
             <h3>EXPEDITION PLAN // SUMMARY</h3>

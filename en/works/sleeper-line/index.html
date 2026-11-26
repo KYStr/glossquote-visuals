@@ -158,7 +158,7 @@
           <p>Choose your route, cabin class and departure season to export a local plain-text itinerary proposal. No booking is transmitted.</p>
         </header>
         <div class="concierge-grid">
-          <form class="rail-form" data-rail-form>
+          <fieldset aria-labelledby="concierge-title" class="rail-form" data-rail-form>
             <div class="field full">
               <label for="sl-route">Rail itinerary</label>
               <select id="sl-route" name="route">
@@ -176,7 +176,7 @@
             </div>
             <div class="field">
               <label for="sl-guests">Passengers (1–8)</label>
-              <input id="sl-guests" name="guests" type="number" min="1" max="8" value="2">
+              <input id="sl-guests" name="guests" type="number" required step="1" min="1" max="8" value="2">
             </div>
             <div class="field full">
               <label for="sl-season">Indicative season</label>
@@ -190,7 +190,7 @@
               <label for="sl-note">Dietary, anniversary or transfer notes (optional)</label>
               <textarea id="sl-note" name="note" rows="3" placeholder="e.g., Anniversary dining table, vegetarian menu"></textarea>
             </div>
-          </form>
+          </fieldset>
 
           <aside class="proposal-box" aria-live="polite">
             <h3>Proposal Summary</h3>

@@ -122,7 +122,8 @@ const addonCost = { none: 0, dive: 6800, sunset: 4200 };
 function getVoyage() {
   const seaKey = form.elements.sea.value;
   const vessel = form.elements.vessel.value;
-  const guests = Math.max(2, Math.min(12, Number(form.elements.guests.value) || 4));
+  const guests = form.elements.guests.valueAsNumber;
+  if (!form.elements.guests.validity.valid || !Number.isInteger(guests)) return null;
   const month = form.elements.month.value;
   const addon = form.elements.addon.value;
   const item = voyages[seaKey] ?? voyages.miyako;
@@ -135,6 +136,12 @@ function getVoyage() {
 function updateVoyage() {
   if (!form) return;
   const s = getVoyage();
+  if (downloadBtn) downloadBtn.disabled = !s;
+  if (!s) {
+    totalEl.textContent = "—";
+    summaryEl.textContent = en ? "Enter a whole number from 2 to 12." : "請輸入 2 到 12 的整數人數。";
+    return;
+  }
   totalEl.textContent = `NT$ ${s.total.toLocaleString("en-US")}`;
   const vLabel = s.vessel === "private"
     ? (en ? "Private Catamaran Charter (+28%)" : "私人雙體帆船包船（+28%）")
@@ -162,6 +169,7 @@ if (form) {
 if (downloadBtn) {
   downloadBtn.addEventListener("click", () => {
     const s = getVoyage();
+    if (!s) return;
     const lines = en ? [
       "ARCHIPELAGO LOG — Offline Island Voyage Dossier (Concept Travel Agency)",
       "=======================================================================",

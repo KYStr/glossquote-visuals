@@ -160,7 +160,7 @@
           <p>選擇路線、艙等、人數與季別，即時試算旅費並於本機匯出提案單，不進行線上訂位或資料上傳。</p>
         </header>
         <div class="concierge-grid">
-          <form class="rail-form" data-rail-form>
+          <fieldset aria-labelledby="concierge-title" class="rail-form" data-rail-form>
             <div class="field full">
               <label for="sl-route">鐵道行程路線</label>
               <select id="sl-route" name="route">
@@ -178,7 +178,7 @@
             </div>
             <div class="field">
               <label for="sl-guests">同行人數（1–8 位）</label>
-              <input id="sl-guests" name="guests" type="number" min="1" max="8" value="2">
+              <input id="sl-guests" name="guests" type="number" required step="1" min="1" max="8" value="2">
             </div>
             <div class="field full">
               <label for="sl-season">示意出發季別</label>
@@ -192,7 +192,7 @@
               <label for="sl-note">餐飲忌口、紀念日安排或機場接駁備註（選填）</label>
               <textarea id="sl-note" name="note" rows="3" placeholder="例如：結婚週年餐車安排、需要素食晚宴"></textarea>
             </div>
-          </form>
+          </fieldset>
 
           <aside class="proposal-box" aria-live="polite">
             <h3>行程提案摘要</h3>

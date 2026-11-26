@@ -165,7 +165,7 @@
           <p>挑選路線、住宿等級與技術裝備租借，一鍵於本機匯出含裝備檢核表的行程單，不進行線上送出。</p>
         </header>
         <div class="plan-grid">
-          <form class="trek-form" data-trek-form>
+          <fieldset aria-labelledby="planner-title" class="trek-form" data-trek-form>
             <div class="field full">
               <label for="ce-trek">遠征路線</label>
               <select id="ce-trek" name="trek">
@@ -176,7 +176,7 @@
             </div>
             <div class="field">
               <label for="ce-hikers">報名人數（1–8 位）</label>
-              <input id="ce-hikers" name="hikers" type="number" min="1" max="8" value="2">
+              <input id="ce-hikers" name="hikers" type="number" required step="1" min="1" max="8" value="2">
             </div>
             <div class="field">
               <label for="ce-stay">住宿等級</label>
@@ -192,7 +192,7 @@
                 <option value="pack">租借輕量化裝備包：登山杖＋防水殼＋簡易冰爪（+NT$ 4,800／人）</option>
               </select>
             </div>
-          </form>
+          </fieldset>
 
           <aside class="plan-box" aria-live="polite">
             <h3>EXPEDITION PLAN // 行程摘要</h3>

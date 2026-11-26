@@ -164,7 +164,7 @@
           <p>設定海域、船型、同行人數與水上加選，於本機下載企劃書供同行親友討論，不傳送個資。</p>
         </header>
         <div class="planner-grid">
-          <form class="voyage-form" data-voyage-form>
+          <fieldset aria-labelledby="planner-title" class="voyage-form" data-voyage-form>
             <div class="field full">
               <label for="al-sea">跳島海域</label>
               <select id="al-sea" name="sea">
@@ -182,7 +182,7 @@
             </div>
             <div class="field">
               <label for="al-guests">同行人數（2–12 位）</label>
-              <input id="al-guests" name="guests" type="number" min="2" max="12" value="4">
+              <input id="al-guests" name="guests" type="number" required step="1" min="2" max="12" value="4">
             </div>
             <div class="field">
               <label for="al-month">示意出發月份</label>
@@ -200,7 +200,7 @@
                 <option value="sunset">無人沙洲夕陽私廚晚宴（+NT$ 4,200／人）</option>
               </select>
             </div>
-          </form>
+          </fieldset>
 
           <aside class="dossier-box" aria-live="polite">
             <h3>航行企劃摘要</h3>
