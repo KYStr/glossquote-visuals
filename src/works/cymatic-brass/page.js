@@ -45,19 +45,24 @@ let lastSweepTick = 0;
 let currentPhase = "still";
 let paused = false;
 let rendered = false;
+let pageHiding = false;
 let shader;
 
-function syncModeUI(index) {
+function showStill(index) {
+  if (pageHiding) return;
+  const safeIndex = ((index % RESONANCE_MODES.length) + RESONANCE_MODES.length) % RESONANCE_MODES.length;
+  const source = posters[safeIndex];
+  if (poster.src !== source) poster.src = source;
+}
+
+function syncModeUI(index, { updatePoster = !rendered } = {}) {
   const safeIndex = ((index % RESONANCE_MODES.length) + RESONANCE_MODES.length) % RESONANCE_MODES.length;
   stage.dataset.material = String(safeIndex);
   if (readout) readout.textContent = RESONANCE_MODES[safeIndex].freq;
   if (radios[safeIndex] && !radios[safeIndex].checked) {
     radios[safeIndex].checked = true;
   }
-  if (!rendered) {
-    const source = posters[safeIndex];
-    if (poster.src !== source) poster.src = source;
-  }
+  if (updatePoster) showStill(safeIndex);
 }
 
 function stopSweepLoop() {
@@ -125,7 +130,7 @@ for (const radio of radios) {
     const index = Number(radio.value);
     sweepElapsed = index * SLOT_SECONDS;
     settings = { index, modePos: index };
-    syncModeUI(index);
+    syncModeUI(index, { updatePoster: true });
     motion.setSettings(settings);
   });
 }
@@ -138,9 +143,14 @@ pause.addEventListener("click", () => {
 });
 
 window.addEventListener("pagehide", () => {
+  pageHiding = true;
   stopSweepLoop();
   rendered = false;
   stage.removeAttribute("data-rendered");
+});
+
+window.addEventListener("pageshow", () => {
+  pageHiding = false;
 });
 
 dial.hidden = false;

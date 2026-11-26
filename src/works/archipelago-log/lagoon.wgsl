@@ -11,15 +11,34 @@
     sea = i32(floor(fract(time / 12.0) * 3.0));
   }
 
-  // Bathymetry height field: > 0 is dry island sand/foliage, < 0 is water depth.
-  // Curved crescent cay on the left-upper quadrant + small outer reef shoal.
-  let c1 = p - vec2f(-0.22, -0.04);
-  let arcDist = length(c1 * vec2f(0.88, 1.18)) - 0.25;
-  let bite = length(p - vec2f(-0.04, 0.06)) - 0.21;
-  let mainIsland = max(arcDist, -bite);
-  let shoal = length((p - vec2f(0.38, -0.22)) * vec2f(0.82, 1.25)) - 0.14;
-  let coastWobble = 0.022 * sin(p.x * 14.0 + p.y * 9.0) + 0.011 * cos(p.y * 23.0 - p.x * 16.0);
-  let landSigned = min(mainIsland, shoal) + coastWobble;
+  // Bathymetry height field & sailing route per archipelago (0=Miyako, 1=Cyclades, 2=Palau).
+  let coastWobble = 0.020 * sin(p.x * 14.0 + p.y * 9.0) + 0.010 * cos(p.y * 23.0 - p.x * 16.0);
+  var landSigned = 1.0;
+  if (sea == 0) {
+    // Miyako Reef: curved crescent coral cay on upper-left + outer reef shoal on upper-right.
+    let c1 = p - vec2f(-0.24, -0.04);
+    let arcDist = length(c1 * vec2f(0.88, 1.18)) - 0.25;
+    let bite = length(p - vec2f(-0.06, 0.06)) - 0.21;
+    let mainIsland = max(arcDist, -bite);
+    let shoal = length((p - vec2f(0.38, -0.22)) * vec2f(0.82, 1.25)) - 0.14;
+    landSigned = min(mainIsland, shoal) + coastWobble;
+  } else if (sea == 1) {
+    // Aegean Cyclades: right-side volcanic caldera horseshoe cliff + two rocky northern islets.
+    let calOuter = length((p - vec2f(0.28, 0.08)) * vec2f(0.95, 1.05)) - 0.27;
+    let calBay = length(p - vec2f(0.11, 0.05)) - 0.19;
+    let caldera = max(calOuter, -calBay);
+    let isletA = length((p - vec2f(-0.42, -0.24)) * vec2f(1.05, 1.25)) - 0.11;
+    let isletB = length((p - vec2f(-0.14, -0.32)) * vec2f(1.20, 1.10)) - 0.08;
+    landSigned = min(caldera, min(isletA, isletB)) + coastWobble * 0.85;
+  } else {
+    // Palau Milky Lagoon: ring of 5 emerald mushroom Rock Islands around a central lagoon.
+    let r1 = length((p - vec2f(-0.38, 0.20)) * vec2f(1.05, 1.15)) - 0.125;
+    let r2 = length((p - vec2f(-0.16, -0.24)) * vec2f(1.10, 1.20)) - 0.115;
+    let r3 = length((p - vec2f(0.16, -0.25)) * vec2f(1.15, 1.05)) - 0.12;
+    let r4 = length((p - vec2f(0.42, 0.04)) * vec2f(1.00, 1.25)) - 0.12;
+    let r5 = length((p - vec2f(0.12, 0.28)) * vec2f(1.05, 1.25)) - 0.11;
+    landSigned = min(min(min(r1, r2), min(r3, r4)), r5) + coastWobble * 0.7;
+  }
   let depth = max(landSigned, 0.0); // 0 at shoreline, larger in deep sea
 
   // Palette by archipelago (0=Miyako, 1=Cyclades, 2=Palau).
@@ -68,8 +87,15 @@
   );
   water += chartGrid * vec3f(0.10, 0.16, 0.18) * 0.38;
 
-  // Curved sailing route passing through the turquoise channel.
-  let routeY = 0.24 - 0.18 * sin((p.x + 0.45) * 2.1);
+  // Destination-specific curved sailing route passing through open turquoise water.
+  var routeY = 0.24 - 0.18 * sin((p.x + 0.45) * 2.1);
+  if (sea == 1) {
+    // Cyclades: northern curving approach around the caldera into the western bay.
+    routeY = -0.06 + 0.22 * sin((p.x - 0.14) * 2.2) + 0.12 * p.x;
+  } else if (sea == 2) {
+    // Palau: central S-slalom weaving between the five Rock Islands.
+    routeY = 0.02 + 0.12 * sin((p.x + 0.14) * 3.8);
+  }
   let routeDist = abs(p.y - routeY);
   let routeDash = smoothstep(0.35, 0.55, sin(p.x * 46.0));
   let routeLine = (1.0 - smoothstep(0.002, 0.0045, routeDist)) * routeDash * smoothstep(0.02, 0.06, depth);
@@ -81,15 +107,31 @@
   let wetSand = mix(sandCol * 0.84, sandCol, smoothstep(0.0, 0.022, inland));
   let floraMask = smoothstep(0.032, 0.068, inland + 0.012 * sin(p.x * 34.0) * cos(p.y * 34.0));
   let canopy = 0.84 + 0.18 * sin(p.x * 65.0) * cos(p.y * 65.0);
-  let land = mix(wetSand, floraCol * canopy, floraMask);
+  var land = mix(wetSand, floraCol * canopy, floraMask);
+  if (sea == 1) {
+    // Sunlit whitewashed Cycladic cliff-top houses clustered along the caldera rim.
+    let villageRim = smoothstep(0.020, 0.045, inland) * (1.0 - smoothstep(0.055, 0.088, inland)) * step(0.05, p.x);
+    land = mix(land, vec3f(0.97, 0.97, 0.95), villageRim * 0.72);
+  }
 
   var color = mix(water, land, landMask);
 
-  // Overhead white sailing catamaran gliding along the dotted channel + V-wake.
-  let boatX = mix(-0.48, 0.48, cyc);
-  let boatY = 0.24 - 0.18 * sin((boatX + 0.45) * 2.1);
-  let slope = -0.18 * 2.1 * cos((boatX + 0.45) * 2.1);
-  let heading = atan2(slope, 1.0);
+  // Overhead white sailing catamaran gliding along the destination's dotted channel + V-wake.
+  var boatX = mix(-0.48, 0.48, cyc);
+  var boatY = 0.24 - 0.18 * sin((boatX + 0.45) * 2.1);
+  var slope = -0.18 * 2.1 * cos((boatX + 0.45) * 2.1);
+  var dir = 1.0;
+  if (sea == 1) {
+    boatX = mix(0.42, -0.46, cyc);
+    boatY = -0.06 + 0.22 * sin((boatX - 0.14) * 2.2) + 0.12 * boatX;
+    slope = -(0.22 * 2.2 * cos((boatX - 0.14) * 2.2) + 0.12);
+    dir = -1.0;
+  } else if (sea == 2) {
+    boatX = mix(-0.50, 0.50, cyc);
+    boatY = 0.02 + 0.12 * sin((boatX + 0.14) * 3.8);
+    slope = 0.12 * 3.8 * cos((boatX + 0.14) * 3.8);
+  }
+  let heading = atan2(slope, dir);
   let ch = cos(heading);
   let sh = sin(heading);
   let rel = p - vec2f(boatX, boatY);

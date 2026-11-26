@@ -225,7 +225,7 @@ a { color: inherit; }
 .trek-body p { margin: 0; color: var(--ink-muted); font-size: 0.93rem; }
 
 .trek-foot {
-  display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem 0.75rem;
   padding: 1rem 1.25rem; border-top: 1px solid var(--line); background: var(--surface-tint);
 }
 .price { font-family: var(--mono); font-weight: 700; color: var(--pine); }
@@ -241,21 +241,22 @@ a { color: inherit; }
   background: var(--surface); border: 1px solid var(--line);
   padding: 1.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem;
 }
-.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
 .field.full { grid-column: 1 / -1; }
 .field label { font-family: var(--mono); font-size: 0.84rem; font-weight: 700; color: var(--pine); }
 .field select, .field input {
+  width: 100%; max-width: 100%; min-width: 0;
   min-height: 44px; padding: 0.55rem 0.75rem;
   border: 1px solid #9ea8a0; background: var(--bg); color: var(--ink); font: inherit;
 }
 
 .plan-box {
-  background: var(--pine); color: #f2f3ef; padding: 1.6rem;
+  background: var(--pine); color: #f2f3ef; padding: 1.6rem; min-width: 0;
 }
 .plan-box h3 { margin: 0 0 0.75rem; font-family: var(--mono); color: #f6b092; font-size: 1rem; }
-.plan-line { margin: 0 0 1.25rem; color: #dbe2dc; font-size: 0.94rem; }
+.plan-line { margin: 0 0 1.25rem; color: #dbe2dc; font-size: 0.94rem; overflow-wrap: break-word; }
 .plan-total {
-  display: flex; justify-content: space-between; align-items: baseline;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem 0.75rem;
   padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.22);
   border-bottom: 1px solid rgba(255, 255, 255, 0.22); margin-bottom: 1.25rem;
 }
@@ -270,10 +271,42 @@ a { color: inherit; }
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
 }
 
+.hero > *, .plan-grid > *, .route-switch { min-width: 0; min-inline-size: 0; max-width: 100%; }
+.button { max-width: 100%; }
+h1, h2, h3, p, dd, dt { overflow-wrap: break-word; }
+
 @media (max-width: 960px) {
-  .hero, .plan-grid { grid-template-columns: 1fr; }
+  .hero, .plan-grid { grid-template-columns: minmax(0, 1fr); }
   .trek-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .trek-grid, .trek-form, .route-switch { grid-template-columns: 1fr; }
+  .mast { gap: 0.2rem 0.75rem; padding: 0.4rem 0; }
+  .mast nav { gap: 0.1rem 0.85rem; }
+  .mast nav a { font-size: 0.8rem; padding: 0.25rem 0.15rem; }
+  .mast nav a[hreflang] { padding: 0.2rem 0.65rem; }
+  .hero { padding: 0.65rem 0 1.75rem; gap: 0.75rem; }
+  .hero-copy { padding: 0.85rem 0.95rem; }
+  .kicker { font-size: 0.7rem; margin-bottom: 0.3rem; }
+  .hero h1 { font-size: clamp(1.65rem, 6.8vw, 2.05rem); margin-bottom: 0.4rem; }
+  .intro { font-size: 0.88rem; line-height: 1.42; margin-bottom: 0.65rem; }
+  .actions { gap: 0.5rem; }
+  .hero .button { min-height: 44px; padding: 0.5rem 0.85rem; font-size: 0.8rem; }
+  .safety-grid { margin-top: 0.7rem; padding-top: 0.55rem; gap: 0.4rem 0.65rem; }
+  .safety-grid dt { font-size: 0.66rem; }
+  .safety-grid dd { font-size: 0.76rem; }
+  .topo-header { padding: 0.45rem 0.75rem; font-size: 0.7rem; }
+  .stage { aspect-ratio: 16 / 10; }
+  .topo-controls { padding: 0.55rem 0.65rem; }
+  .route-switch { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.35rem; }
+  .route-btn { min-height: 44px; min-width: 0; padding: 0.35rem 0.4rem; }
+  .route-btn strong { font-size: 0.74rem; line-height: 1.2; }
+  .route-btn span { font-size: 0.64rem; line-height: 1.2; }
+  .trek-grid, .trek-form { grid-template-columns: minmax(0, 1fr); }
+  .trek-form, .plan-box { padding: 1.1rem; }
+}
+@media (max-width: 360px) {
+  .frame { width: calc(100% - 1.25rem); }
+  .hero .button { padding: 0.45rem 0.7rem; font-size: 0.76rem; }
+  .route-btn { padding: 0.3rem 0.25rem; }
+  .trek-form, .plan-box { padding: 0.9rem; }
 }

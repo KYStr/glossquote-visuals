@@ -24,12 +24,27 @@ def render_plate(width, height, sea=0, t=5.4):
     feather = 1.6 / max(180.0, height)
     cyc = (t * 0.1) % 1.0
 
-    arc_dist = np.sqrt(((px + 0.22) * 0.88) ** 2 + ((py + 0.04) * 1.18) ** 2) - 0.25
-    bite = np.sqrt((px + 0.04) ** 2 + (py - 0.06) ** 2) - 0.21
-    main_island = np.maximum(arc_dist, -bite)
-    shoal = np.sqrt(((px - 0.38) * 0.82) ** 2 + ((py + 0.22) * 1.25) ** 2) - 0.14
-    wobble = 0.022 * np.sin(px * 14.0 + py * 9.0) + 0.011 * np.cos(py * 23.0 - px * 16.0)
-    land_signed = np.minimum(main_island, shoal) + wobble
+    wobble = 0.020 * np.sin(px * 14.0 + py * 9.0) + 0.010 * np.cos(py * 23.0 - px * 16.0)
+    if sea == 0:
+        arc_dist = np.sqrt(((px + 0.24) * 0.88) ** 2 + ((py + 0.04) * 1.18) ** 2) - 0.25
+        bite = np.sqrt((px + 0.06) ** 2 + (py - 0.06) ** 2) - 0.21
+        main_island = np.maximum(arc_dist, -bite)
+        shoal = np.sqrt(((px - 0.38) * 0.82) ** 2 + ((py + 0.22) * 1.25) ** 2) - 0.14
+        land_signed = np.minimum(main_island, shoal) + wobble
+    elif sea == 1:
+        cal_outer = np.sqrt(((px - 0.28) * 0.95) ** 2 + ((py - 0.08) * 1.05) ** 2) - 0.27
+        cal_bay = np.sqrt((px - 0.11) ** 2 + (py - 0.05) ** 2) - 0.19
+        caldera = np.maximum(cal_outer, -cal_bay)
+        islet_a = np.sqrt(((px + 0.42) * 1.05) ** 2 + ((py + 0.24) * 1.25) ** 2) - 0.11
+        islet_b = np.sqrt(((px + 0.14) * 1.20) ** 2 + ((py + 0.32) * 1.10) ** 2) - 0.08
+        land_signed = np.minimum(caldera, np.minimum(islet_a, islet_b)) + wobble * 0.85
+    else:
+        r1 = np.sqrt(((px + 0.38) * 1.05) ** 2 + ((py - 0.20) * 1.15) ** 2) - 0.125
+        r2 = np.sqrt(((px + 0.16) * 1.10) ** 2 + ((py + 0.24) * 1.20) ** 2) - 0.115
+        r3 = np.sqrt(((px - 0.16) * 1.15) ** 2 + ((py + 0.25) * 1.05) ** 2) - 0.12
+        r4 = np.sqrt(((px - 0.42) * 1.00) ** 2 + ((py - 0.04) * 1.25) ** 2) - 0.12
+        r5 = np.sqrt(((px - 0.12) * 1.05) ** 2 + ((py - 0.28) * 1.25) ** 2) - 0.11
+        land_signed = np.minimum(np.minimum(np.minimum(r1, r2), np.minimum(r3, r4)), r5) + wobble * 0.7
     depth = np.maximum(land_signed, 0.0)
 
     if sea == 0:
@@ -71,7 +86,12 @@ def render_plate(width, height, sea=0, t=5.4):
     gy = 1.0 - smoothstep(0.0, 0.0028, np.abs(np.mod(py * 3.0 + 0.5, 1.0) - 0.5))
     water += np.maximum(gx, gy)[..., None] * np.array([0.10, 0.16, 0.18], dtype=np.float32) * 0.38
 
-    route_y = 0.24 - 0.18 * np.sin((px + 0.45) * 2.1)
+    if sea == 0:
+        route_y = 0.24 - 0.18 * np.sin((px + 0.45) * 2.1)
+    elif sea == 1:
+        route_y = -0.06 + 0.22 * np.sin((px - 0.14) * 2.2) + 0.12 * px
+    else:
+        route_y = 0.02 + 0.12 * np.sin((px + 0.14) * 3.8)
     route_dash = smoothstep(0.35, 0.55, np.sin(px * 46.0))
     route_line = (1.0 - smoothstep(0.002, 0.0045, np.abs(py - route_y))) * route_dash * smoothstep(0.02, 0.06, depth)
     water = water * (1.0 - (route_line * 0.58)[..., None]) + np.array([0.98, 0.96, 0.90], dtype=np.float32) * (route_line * 0.58)[..., None]
@@ -83,13 +103,27 @@ def render_plate(width, height, sea=0, t=5.4):
     flora_mask = smoothstep(0.032, 0.068, inland + 0.012 * np.sin(px * 34.0) * np.cos(py * 34.0))[..., None]
     canopy = (0.84 + 0.18 * np.sin(px * 65.0) * np.cos(py * 65.0))[..., None]
     land = wet_sand * (1.0 - flora_mask) + (flora_col * canopy) * flora_mask
+    if sea == 1:
+        village_rim = (smoothstep(0.020, 0.045, inland) * (1.0 - smoothstep(0.055, 0.088, inland)) * (px >= 0.05))[..., None] * 0.72
+        land = land * (1.0 - village_rim) + np.array([0.97, 0.97, 0.95], dtype=np.float32) * village_rim
 
     out = water * (1.0 - land_mask[..., None]) + land * land_mask[..., None]
 
-    boat_x = -0.48 + 0.96 * cyc
-    boat_y = 0.24 - 0.18 * np.sin((boat_x + 0.45) * 2.1)
-    slope = -0.18 * 2.1 * np.cos((boat_x + 0.45) * 2.1)
-    heading = np.arctan2(slope, 1.0)
+    if sea == 0:
+        boat_x = -0.48 + 0.96 * cyc
+        boat_y = 0.24 - 0.18 * np.sin((boat_x + 0.45) * 2.1)
+        slope = -0.18 * 2.1 * np.cos((boat_x + 0.45) * 2.1)
+        heading = np.arctan2(slope, 1.0)
+    elif sea == 1:
+        boat_x = 0.42 - 0.88 * cyc
+        boat_y = -0.06 + 0.22 * np.sin((boat_x - 0.14) * 2.2) + 0.12 * boat_x
+        slope = -(0.22 * 2.2 * np.cos((boat_x - 0.14) * 2.2) + 0.12)
+        heading = np.arctan2(slope, -1.0)
+    else:
+        boat_x = -0.50 + 1.00 * cyc
+        boat_y = 0.02 + 0.12 * np.sin((boat_x + 0.14) * 3.8)
+        slope = 0.12 * 3.8 * np.cos((boat_x + 0.14) * 3.8)
+        heading = np.arctan2(slope, 1.0)
     ch, sh = np.cos(heading), np.sin(heading)
     rx, ry = px - boat_x, py - boat_y
     bx = rx * ch + ry * sh
