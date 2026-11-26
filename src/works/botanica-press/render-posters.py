@@ -14,71 +14,95 @@ def smoothstep(e0, e1, x):
 
 
 def make_desk(px, py):
-    grain = 0.5 + 0.5 * np.sin(px * 16.0 + 2.0 * np.sin(py * 5.0)) * np.cos(py * 52.0)
-    plen = np.sqrt(px * px + py * py)
-    return np.array([0.84, 0.77, 0.67], dtype=np.float32) * (0.94 + 0.05 * grain - 0.08 * plen)[..., None]
+    wood_grain = 0.5 + 0.5 * np.sin(py * 110.0 + 2.4 * np.sin(px * 9.0) + 0.8 * np.cos(py * 28.0))
+    bench_light = np.clip(1.08 - 0.34 * np.sqrt((px + 0.22) ** 2 + (py + 0.18) ** 2), 0.58, 1.15)
+    return np.array([0.145, 0.125, 0.112], dtype=np.float32) * ((0.86 + 0.12 * wood_grain) * bench_light)[..., None]
 
 
 def specimen_masks(px, py, specimen, feather):
     if specimen == 0:
-        gx, gy = px, py - 0.14
+        gx, gy = px, py - 0.15
         gr = np.sqrt(gx * gx + gy * gy)
         ga = np.arctan2(-gy, gx) - np.pi * 0.5
-        side_dist = (np.abs(ga) - 0.96) * np.maximum(gr, 0.02)
+        fan_span = 0.98 - 0.06 * smoothstep(0.0, 0.35, gr)
+        side_dist = (np.abs(ga) - fan_span) * np.maximum(gr, 0.02)
         in_angle = 1.0 - smoothstep(-feather, feather, side_dist)
-        cleft = 0.14 * np.exp(-ga * ga * 42.0)
-        scallop = 0.014 * np.sin(ga * 14.0) + 0.007 * np.cos(ga * 27.0)
-        outer = 0.44 - cleft + scallop
+        cleft = 0.145 * np.exp(-ga * ga * 44.0)
+        wave = 0.012 * np.sin(ga * 13.0 + 0.3) + 0.006 * np.cos(ga * 29.0 - 0.5)
+        outer = 0.445 - cleft + wave
         blade = in_angle * (1.0 - smoothstep(-feather, feather, gr - outer)) * smoothstep(0.0, 0.012, -gy + 0.008)
-        stem_curve = 0.04 * np.sin((py - 0.14) * 7.0)
-        stem = (1.0 - smoothstep(0.007, 0.011, np.abs(px - stem_curve))) * smoothstep(0.11, 0.135, py) * (1.0 - smoothstep(0.32, 0.34, py))
+        stem_curve = 0.036 * np.sin((py - 0.15) * 6.5)
+        stem_w = 0.007 + 0.002 * smoothstep(0.14, 0.32, py)
+        stem = (1.0 - smoothstep(stem_w - 0.002, stem_w + 0.002, np.abs(px - stem_curve))) * smoothstep(0.11, 0.14, py) * (1.0 - smoothstep(0.325, 0.34, py))
         leaf_mask = np.maximum(blade, stem)
-        vein_mask = blade * np.power(0.5 + 0.5 * np.cos(ga * 46.0), 8.0) * smoothstep(0.05, 0.36, gr)
+        p_veins = np.power(0.5 + 0.5 * np.cos(ga * 44.0), 10.0) * smoothstep(0.04, 0.38, gr)
+        f_veins = np.power(0.5 + 0.5 * np.cos(ga * 88.0 + 0.4), 12.0) * smoothstep(0.18, 0.41, gr)
+        vein_mask = blade * np.clip(p_veins * 0.85 + f_veins * 0.5, 0.0, 1.0)
     elif specimen == 1:
-        curve_x = 0.08 * np.sin(py * 4.5 + 0.4)
+        curve_x = 0.075 * np.sin(py * 4.2 + 0.45)
         fx, fy = px - curve_x, py
-        stem = (1.0 - smoothstep(0.0045, 0.008, np.abs(fx))) * smoothstep(-0.31, -0.29, fy) * (1.0 - smoothstep(0.31, 0.33, fy))
-        taper = np.clip(1.0 - (fy + 0.30) * 1.15, 0.18, 1.0) * smoothstep(0.30, 0.18, fy)
-        y_off = fy * 15.0 + np.where(fx >= 0.0, 0.5, 0.0)
-        cell_y = np.mod(y_off, 1.0) - 0.5
-        leaf_len = 0.25 * taper
-        local_x = (np.abs(fx) - 0.015) / np.maximum(leaf_len, 0.02)
-        local_y = (cell_y + local_x * 0.22) * 2.1
-        pinna_dist = np.sqrt(((local_x - 0.5) * 1.9) ** 2 + local_y ** 2) - 0.82
-        pinnae = (1.0 - smoothstep(-0.08, 0.08, pinna_dist)) * smoothstep(0.0, 0.05, local_x) * smoothstep(-0.31, -0.26, fy) * (1.0 - smoothstep(0.27, 0.31, fy))
-        leaf_mask = np.maximum(stem, pinnae)
-        vein_mask = pinnae * (1.0 - smoothstep(0.0, 0.14, np.abs(local_y)))
+        stem = (1.0 - smoothstep(0.0032, 0.0062, np.abs(fx))) * smoothstep(-0.315, -0.295, fy) * (1.0 - smoothstep(0.31, 0.33, fy))
+        env = np.clip(1.0 - np.abs(fy + 0.03) * 2.2, 0.24, 1.0) * smoothstep(-0.31, -0.22, fy) * (1.0 - smoothstep(0.24, 0.31, fy))
+        row = fy * 13.5 + np.where(fx >= 0.0, 0.45, 0.0)
+        cell_y = np.mod(row, 1.0) - 0.5
+        arm_len = 0.24 * env
+        lx = (np.abs(fx) - 0.012) / np.maximum(arm_len, 0.02)
+        ly = (cell_y + lx * 0.28) * 1.95
+        fan_r = np.sqrt(((lx - 0.44) * 1.65) ** 2 + (ly * 0.92) ** 2)
+        fan_ang = np.arctan2(ly, np.maximum(lx, 0.001))
+        pinna_dist = fan_r - (0.76 + 0.065 * np.sin(fan_ang * 9.0))
+        pinnae = (1.0 - smoothstep(-0.07, 0.07, pinna_dist)) * smoothstep(0.0, 0.06, lx) * smoothstep(-0.30, -0.26, fy) * (1.0 - smoothstep(0.27, 0.305, fy))
+        twig = (1.0 - smoothstep(0.0025, 0.005, np.abs(cell_y + lx * 0.28) / 13.5)) * smoothstep(0.0, 0.02, np.abs(fx)) * (1.0 - smoothstep(0.18, 0.35, lx)) * smoothstep(-0.29, -0.25, fy) * (1.0 - smoothstep(0.26, 0.29, fy))
+        leaf_mask = np.maximum(np.maximum(stem, pinnae), twig)
+        vein_mask = pinnae * (np.power(0.5 + 0.5 * np.cos(fan_ang * 18.0), 8.0) * 0.7 + (1.0 - smoothstep(0.0, 0.14, np.abs(ly))) * 0.5)
     else:
-        curve_x = 0.055 * np.sin(py * 5.2 - 0.3)
+        curve_x = 0.048 * np.sin(py * 5.0 - 0.25)
         ex, ey = px - curve_x, py
-        stem = (1.0 - smoothstep(0.0055, 0.009, np.abs(ex))) * smoothstep(-0.32, -0.30, ey) * (1.0 - smoothstep(0.31, 0.33, ey))
+        stem = (1.0 - smoothstep(0.0042, 0.0074, np.abs(ex))) * smoothstep(-0.31, -0.29, ey) * (1.0 - smoothstep(0.31, 0.33, ey))
         leaves = np.zeros_like(px)
         midribs = np.zeros_like(px)
-        for cy_l, rad in ((-0.20, 0.058), (-0.07, 0.076), (0.07, 0.084), (0.20, 0.072)):
-            dl = np.sqrt(((ex + rad * 1.15) * 0.95) ** 2 + ((ey - (cy_l - 0.015)) * 1.12) ** 2) - rad
-            dr = np.sqrt(((ex - rad * 1.15) * 0.95) ** 2 + ((ey - (cy_l + 0.015)) * 1.12) ** 2) - rad
-            ml = 1.0 - smoothstep(-feather, feather, dl)
-            mr = 1.0 - smoothstep(-feather, feather, dr)
-            leaves = np.maximum(leaves, np.maximum(ml, mr))
-            midribs = np.maximum(midribs, (ml + mr) * (1.0 - smoothstep(0.0, 0.008, np.abs(ey - cy_l))))
-        leaf_mask = np.maximum(stem, leaves)
+        nodes = (
+            (-0.23, -1.0, 0.115), (-0.15, 1.0, 0.138), (-0.07, -1.0, 0.155),
+            (0.01, 1.0, 0.162), (0.09, -1.0, 0.152), (0.17, 1.0, 0.136), (0.24, -1.0, 0.110),
+        )
+        for cy_l, s, length in nodes:
+            ang = s * 0.62
+            ca, sa = np.cos(ang), np.sin(ang)
+            dx, dy = ex - s * 0.008, ey - cy_l
+            u = (dx * s) * ca - dy * sa
+            v = (dx * s) * sa + dy * ca
+            un = u / length
+            half_w = 0.36 * length * np.sin(np.clip(un, 0.0, 1.0) * np.pi) * (1.0 - 0.22 * un)
+            in_u = smoothstep(0.0, 0.06, un) * (1.0 - smoothstep(0.94, 1.02, un))
+            blade_m = (1.0 - smoothstep(-feather, feather, np.abs(v) - half_w)) * in_u
+            rib_m = blade_m * (1.0 - smoothstep(0.002, 0.006, np.abs(v)))
+            lateral = blade_m * np.power(0.5 + 0.5 * np.cos(u * 48.0 - np.abs(v) * 65.0), 10.0) * 0.55
+            leaves = np.maximum(leaves, blade_m)
+            midribs = np.maximum(midribs, np.maximum(rib_m, lateral))
+        tip_u = -(ey + 0.235) / 0.072
+        tip_w = 0.025 * np.sin(np.clip(tip_u, 0.0, 1.0) * np.pi)
+        tip_leaf = (1.0 - smoothstep(-feather, feather, np.abs(ex) - tip_w)) * smoothstep(0.0, 0.08, tip_u) * (1.0 - smoothstep(0.92, 1.02, tip_u))
+        leaf_mask = np.maximum(np.maximum(stem, leaves), tip_leaf)
         vein_mask = midribs
     return leaf_mask, vein_mask
 
 
-def cyanotype_sheet_color(lx, ly, hw, hh, specimen, feather, exposure=0.96, sun_pos=0.18, brush_pad=0.065):
-    fiber = np.mod(np.sin(np.floor(lx * 260.0) * 127.1 + np.floor(ly * 260.0) * 311.7) * 43758.5453, 1.0)
-    paper_base = np.array([0.965, 0.952, 0.922], dtype=np.float32) - np.array([0.022, 0.020, 0.018], dtype=np.float32) * fiber[..., None]
+def cyanotype_sheet_color(lx, ly, hw, hh, specimen, feather, exposure=0.96, sun_pos=0.18, brush_pad=0.085):
+    fiber_fine = np.mod(np.sin(np.floor(lx * 240.0) * 127.1 + np.floor(ly * 240.0) * 311.7) * 43758.5453, 1.0)
+    fiber_tooth = np.mod(np.sin(np.floor(lx * 95.0) * 269.5 + np.floor(ly * 95.0) * 183.3) * 43758.5453, 1.0)
+    paper_base = np.array([0.962, 0.948, 0.916], dtype=np.float32) \
+        - np.array([0.020, 0.018, 0.016], dtype=np.float32) * fiber_fine[..., None] \
+        - np.array([0.014, 0.013, 0.011], dtype=np.float32) * fiber_tooth[..., None]
 
-    bristle_x = 0.006 * np.sin(ly * 95.0) + 0.004 * np.cos(ly * 210.0 + 1.1)
-    bristle_y = 0.005 * np.cos(lx * 85.0 + 0.5) + 0.003 * np.sin(lx * 175.0)
-    coat_dist = np.maximum(np.abs(lx) - (hw - brush_pad + bristle_x), np.abs(ly) - (hh - brush_pad + bristle_y))
-    coat_mask = 1.0 - smoothstep(-0.005, 0.006, coat_dist)
+    stroke_x = 0.014 * np.sin(ly * 19.0 + 0.4) + 0.006 * np.sin(ly * 68.0) + 0.003 * np.cos(ly * 145.0)
+    stroke_y = 0.009 * np.cos(lx * 16.0 - 0.5) + 0.004 * np.sin(lx * 54.0)
+    coat_dist = np.maximum(np.abs(lx) - (hw - brush_pad + stroke_x), np.abs(ly) - (hh - brush_pad + stroke_y))
+    brush_hair = 0.5 + 0.5 * np.sin(ly * 190.0 + 1.8 * np.sin(lx * 14.0))
+    coat_mask = (1.0 - smoothstep(-0.014, 0.016, coat_dist)) * (1.0 - 0.16 * brush_hair * smoothstep(-0.045, 0.012, coat_dist))
 
-    # Scale specimen to fit sheet cleanly
     fit_scale = min(hw / 0.38, hh / 0.42)
     if specimen == 1:
-        sx = lx / max(fit_scale * 1.18, 1e-4)
+        sx = lx / max(fit_scale * 1.14, 1e-4)
         sy = ly / max(fit_scale * 1.02, 1e-4)
     else:
         sx = lx / max(fit_scale, 1e-4)
@@ -86,20 +110,21 @@ def cyanotype_sheet_color(lx, ly, hw, hh, specimen, feather, exposure=0.96, sun_
     leaf_mask, vein_mask = specimen_masks(sx, sy, specimen, feather / max(fit_scale, 1e-4))
 
     diag = lx * 0.72 + ly * 0.52
-    local_uv = np.clip(exposure * 1.25 - (diag - sun_pos) * 0.38, 0.0, 1.0)
-    unexposed = np.array([0.84, 0.85, 0.62], dtype=np.float32)
-    mid_tone = np.array([0.18, 0.44, 0.50], dtype=np.float32)
-    prussian = np.array([0.068, 0.195, 0.365], dtype=np.float32) * (0.94 + 0.08 * np.sin(lx * 22.0 + ly * 17.0))[..., None]
+    local_uv = np.clip(exposure * 1.28 - (diag - sun_pos) * 0.42, 0.0, 1.0)
+    gran = (0.92 + 0.10 * np.sin(lx * 24.0 + ly * 19.0) * np.cos(lx * 13.0 - ly * 27.0) + 0.04 * fiber_tooth)[..., None]
+    unexposed = np.array([0.83, 0.84, 0.61], dtype=np.float32)
+    mid_tone = np.array([0.14, 0.41, 0.49], dtype=np.float32)
+    prussian = np.array([0.045, 0.155, 0.315], dtype=np.float32) * gran
 
-    t1 = smoothstep(0.0, 0.48, local_uv)[..., None]
-    t2 = smoothstep(0.35, 1.0, local_uv)[..., None]
+    t1 = smoothstep(0.0, 0.46, local_uv)[..., None]
+    t2 = smoothstep(0.32, 1.0, local_uv)[..., None]
     emulsion = unexposed * (1.0 - t1) + mid_tone * t1
     emulsion = emulsion * (1.0 - t2) + prussian * t2
 
-    lm = (leaf_mask * 0.92)[..., None]
-    print_tone = emulsion * (1.0 - lm) + (paper_base + np.array([0.01, 0.01, 0.015], dtype=np.float32)) * lm
-    vm = (vein_mask * 0.48)[..., None]
-    veined = print_tone * (1.0 - vm) + (paper_base * 0.66 + mid_tone * 0.34) * vm
+    lm = (leaf_mask * 0.94)[..., None]
+    print_tone = emulsion * (1.0 - lm) + (paper_base + np.array([0.012, 0.012, 0.014], dtype=np.float32)) * lm
+    vm = (vein_mask * 0.52)[..., None]
+    veined = print_tone * (1.0 - vm) + (paper_base * 0.64 + mid_tone * 0.36) * vm
 
     return paper_base * (1.0 - coat_mask[..., None]) + veined * coat_mask[..., None]
 
