@@ -1,5 +1,7 @@
 # GlossQuote Visuals
 
+第一次用 AI 參與這個專案，請從[外部 AI 協作說明](CONTRIBUTING.md)開始。
+
 ## 作品集網址
 
 `visuals.glossquote.com` 的兩個版本使用相同結構。繁中首頁為 `/zh-hant/`，英文首頁為 `/en/`。作品一律使用 `/{語言}/works/{作品代稱}/`，例如 `/zh-hant/works/foldline/` 與 `/en/works/foldline/`。直接進入網域首頁會前往繁中版。
