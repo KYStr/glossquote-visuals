@@ -43,11 +43,11 @@ def render_plate(width, height, route=0, travel=1.2):
     wx = px
 
     if route == 0:
-        sky_top = np.array([0.035, 0.055, 0.12], dtype=np.float32)
-        sky_horiz = np.array([0.14, 0.20, 0.33], dtype=np.float32)
+        sky_top = np.array([0.032, 0.052, 0.13], dtype=np.float32)
+        sky_horiz = np.array([0.14, 0.21, 0.36], dtype=np.float32)
     elif route == 1:
-        sky_top = np.array([0.04, 0.075, 0.13], dtype=np.float32)
-        sky_horiz = np.array([0.20, 0.25, 0.31], dtype=np.float32)
+        sky_top = np.array([0.055, 0.075, 0.16], dtype=np.float32)
+        sky_horiz = np.array([0.32, 0.23, 0.25], dtype=np.float32)
     else:
         sky_top = np.array([0.025, 0.055, 0.09], dtype=np.float32)
         sky_horiz = np.array([0.07, 0.19, 0.22], dtype=np.float32)
@@ -63,36 +63,68 @@ def render_plate(width, height, route=0, travel=1.2):
     star = smoothstep(0.955, 0.996, sseed) * (1.0 - smoothstep(0.06, 0.22, np.sqrt(slx ** 2 + sly ** 2))) * smoothstep(0.05, 0.24, wy)
     ext += star[..., None] * np.array([0.95, 0.93, 0.85], dtype=np.float32)
 
+    moon_x = 0.26
     if route == 2:
         ribbon = np.sin(wx * 5.2 + travel * 0.9 + 1.4 * np.sin(wy * 7.0 - travel * 0.5))
         aband = np.exp(-((wy - 0.20 - 0.05 * ribbon) ** 2) * 52.0) * (0.55 + 0.45 * np.sin(wx * 11.0 + travel * 1.4))
         at = smoothstep(0.16, 0.30, wy)[..., None]
         acol = np.array([0.18, 0.82, 0.56], dtype=np.float32) * (1.0 - at) + np.array([0.45, 0.32, 0.82], dtype=np.float32) * at
         ext += aband[..., None] * acol * 0.72
+    elif route == 1:
+        moon_x = -0.28
+        md = np.sqrt((wx - moon_x) ** 2 + (wy - 0.22) ** 2)
+        cut_d = np.sqrt((wx - (moon_x + 0.015)) ** 2 + (wy - 0.228) ** 2)
+        crescent = ((1.0 - smoothstep(0.028, 0.032, md)) * smoothstep(0.023, 0.027, cut_d))[..., None]
+        mglow = np.exp(-md * 9.0) * 0.26
+        ext += mglow[..., None] * np.array([0.96, 0.76, 0.52], dtype=np.float32)
+        ext = ext * (1.0 - crescent) + np.array([1.0, 0.91, 0.74], dtype=np.float32) * crescent
     else:
-        md = np.sqrt((wx - 0.24) ** 2 + (wy - 0.24) ** 2)
-        mdisc = (1.0 - smoothstep(0.030, 0.034, md))[..., None]
-        mglow = np.exp(-md * 9.5) * 0.28
-        ext += mglow[..., None] * np.array([0.88, 0.84, 0.72], dtype=np.float32)
-        ext = ext * (1.0 - mdisc) + np.array([0.98, 0.95, 0.86], dtype=np.float32) * mdisc
+        md = np.sqrt((wx - moon_x) ** 2 + (wy - 0.25) ** 2)
+        mdisc = (1.0 - smoothstep(0.031, 0.035, md))[..., None]
+        mglow = np.exp(-md * 9.5) * 0.30
+        ext += mglow[..., None] * np.array([0.86, 0.88, 0.96], dtype=np.float32)
+        ext = ext * (1.0 - mdisc) + np.array([0.98, 0.98, 0.95], dtype=np.float32) * mdisc
 
     far_x = wx * 2.4 + travel * 0.35
-    far_h = 0.095 + 0.075 * np.sin(far_x * 1.7 + 0.8) + 0.045 * np.cos(far_x * 3.9 - 0.4) + 0.02 * np.sin(far_x * 8.5)
-    far_mask = (1.0 - smoothstep(-feather, feather, wy - far_h)) * (wy >= 0.0)
     if route == 0:
-        snow = smoothstep(far_h - 0.045, far_h - 0.005, wy)[..., None]
-        far_col = np.array([0.10, 0.14, 0.23], dtype=np.float32) * (1.0 - snow * 0.68) + np.array([0.62, 0.68, 0.78], dtype=np.float32) * (snow * 0.68)
+        pa = 1.0 - np.abs(np.sin(far_x * 1.35 + 0.4))
+        pb = 1.0 - np.abs(np.sin(far_x * 2.95 - 0.9))
+        far_h = 0.095 + 0.115 * pa * pa + 0.048 * pb + 0.016 * np.sin(far_x * 9.0)
+        snow = smoothstep(far_h - 0.068, far_h - 0.006, wy)[..., None]
+        far_col = np.array([0.09, 0.13, 0.23], dtype=np.float32) * (1.0 - snow * 0.78) + np.array([0.72, 0.78, 0.88], dtype=np.float32) * (snow * 0.78)
     elif route == 1:
-        far_col = np.array([0.11, 0.15, 0.21], dtype=np.float32)
+        far_h = 0.006 + np.maximum(0.0, np.sin(far_x * 1.15 + 0.5)) * 0.052 + np.maximum(0.0, np.cos(far_x * 2.35 - 0.7)) * 0.024
+        far_col = np.array([0.10, 0.12, 0.20], dtype=np.float32)
     else:
-        snow = smoothstep(far_h - 0.055, far_h - 0.005, wy)[..., None]
-        far_col = np.array([0.07, 0.13, 0.18], dtype=np.float32) * (1.0 - snow * 0.58) + np.array([0.48, 0.68, 0.70], dtype=np.float32) * (snow * 0.58)
+        far_h = 0.072 + 0.036 * np.sin(far_x * 1.2 + 0.3) + 0.018 * np.cos(far_x * 2.6 - 0.5)
+        snow = smoothstep(far_h - 0.042, far_h - 0.005, wy)[..., None]
+        far_col = np.array([0.06, 0.12, 0.17], dtype=np.float32) * (1.0 - snow * 0.62) + np.array([0.46, 0.72, 0.70], dtype=np.float32) * (snow * 0.62)
+    far_mask = (1.0 - smoothstep(-feather, feather, wy - far_h)) * (wy >= 0.0)
     ext = ext * (1.0 - far_mask[..., None]) + far_col * far_mask[..., None]
 
-    near_x = wx * 3.6 + travel * 0.95
-    near_h = 0.038 + 0.034 * np.sin(near_x * 1.4 - 0.5) + 0.018 * np.cos(near_x * 4.3 + 1.2)
-    near_mask = (1.0 - smoothstep(-feather, feather, wy - near_h)) * (wy >= 0.0)
-    ext = ext * (1.0 - near_mask[..., None]) + np.array([0.045, 0.058, 0.095], dtype=np.float32) * near_mask[..., None]
+    if route == 1:
+        bx = np.mod((wx + travel * 0.16) * 0.68 + 0.5, 1.0) - 0.5
+        tower_a = (1.0 - smoothstep(0.006, 0.011, np.abs(bx + 0.22))) * (wy >= 0.0) * (1.0 - smoothstep(0.145, 0.152, wy))
+        tower_b = (1.0 - smoothstep(0.006, 0.011, np.abs(bx - 0.22))) * (wy >= 0.0) * (1.0 - smoothstep(0.145, 0.152, wy))
+        cross_beam = (1.0 - smoothstep(0.004, 0.007, np.abs(wy - 0.105))) * ((np.abs(bx + 0.22) <= 0.016).astype(np.float32) + (np.abs(bx - 0.22) <= 0.016).astype(np.float32))
+        span_t = np.clip(bx / 0.22, -1.0, 1.0)
+        main_cable_y = 0.056 + 0.088 * span_t * span_t
+        side_cable_y = 0.056 + 0.088 * np.maximum(0.0, 1.0 - np.abs(np.abs(bx) - 0.22) / 0.28) ** 2
+        cable_y = np.where(np.abs(bx) <= 0.22, main_cable_y, side_cable_y)
+        cable = 1.0 - smoothstep(0.0025, 0.0055, np.abs(wy - cable_y))
+        deck = 1.0 - smoothstep(0.004, 0.008, np.abs(wy - 0.044))
+        bstruct = np.clip(tower_a + tower_b + cross_beam + cable * 0.7 + deck, 0.0, 1.0)[..., None] * 0.88
+        ext = ext * (1.0 - bstruct) + np.array([0.12, 0.14, 0.20], dtype=np.float32) * bstruct
+        lamp_local = np.mod((wx + travel * 0.16) * 34.0, 1.0) - 0.5
+        blamps = np.exp(-((lamp_local * 5.0) ** 2)) * np.exp(-(((wy - 0.048) * 90.0) ** 2))
+        tbeacon = np.exp(-np.sqrt((bx + 0.22) ** 2 + (wy - 0.152) ** 2) * 55.0) + np.exp(-np.sqrt((bx - 0.22) ** 2 + (wy - 0.152) ** 2) * 55.0)
+        ext += blamps[..., None] * np.array([1.0, 0.78, 0.40], dtype=np.float32) * 1.15 + tbeacon[..., None] * np.array([1.0, 0.42, 0.28], dtype=np.float32) * 0.9
+    else:
+        near_x = wx * 3.6 + travel * 0.95
+        near_base = 0.048 if route == 0 else 0.036
+        near_h = near_base + 0.032 * np.sin(near_x * 1.4 - 0.5) + 0.018 * np.cos(near_x * 4.3 + 1.2)
+        near_mask = (1.0 - smoothstep(-feather, feather, wy - near_h)) * (wy >= 0.0)
+        ext = ext * (1.0 - near_mask[..., None]) + np.array([0.045, 0.058, 0.095], dtype=np.float32) * near_mask[..., None]
 
     lit_cell = np.floor((wx + travel * 0.264) * 28.0)
     lit_seed = np.mod(np.sin(lit_cell * 91.7) * 43758.5453, 1.0)
@@ -104,9 +136,12 @@ def render_plate(width, height, route=0, travel=1.2):
     ripple = np.sin(-wy * 110.0 + wx * 12.0 + travel * 3.2) * 0.5 + 0.5
     wt = smoothstep(0.0, -0.26, wy)[..., None]
     water_col = (sky_horiz * 0.42) * (1.0 - wt) + np.array([0.025, 0.04, 0.075], dtype=np.float32) * wt
-    moon_track = np.exp(-(((wx - 0.24) * 6.5) ** 2)) * (0.28 + 0.72 * ripple) * smoothstep(-0.28, -0.01, wy)
-    wl_col = np.array([0.24, 0.76, 0.58], dtype=np.float32) if route == 2 else np.array([0.88, 0.82, 0.65], dtype=np.float32)
-    water_col += moon_track[..., None] * wl_col * 0.52
+    moon_track = np.exp(-(((wx - moon_x) * 6.5) ** 2)) * (0.28 + 0.72 * ripple) * smoothstep(-0.28, -0.01, wy)
+    wl_col = np.array([0.24, 0.76, 0.58], dtype=np.float32) if route == 2 else (np.array([0.98, 0.78, 0.50], dtype=np.float32) if route == 1 else np.array([0.86, 0.88, 0.94], dtype=np.float32))
+    water_col += moon_track[..., None] * wl_col * 0.54
+    if route == 1:
+        bref = np.exp(-(((wy + 0.05) * 14.0) ** 2)) * (0.45 + 0.55 * ripple) * 0.26
+        water_col += bref[..., None] * np.array([0.98, 0.72, 0.34], dtype=np.float32)
     vref = smoothstep(0.62, 0.95, lit_seed) * np.exp(-((lit_local * 4.5) ** 2)) * np.exp(np.minimum(wy, 0.0) * 9.5) * (0.45 + 0.55 * ripple)
     water_col += vref[..., None] * np.array([0.95, 0.68, 0.30], dtype=np.float32) * 0.55
     ext = ext * (1.0 - water_mask) + water_col * water_mask

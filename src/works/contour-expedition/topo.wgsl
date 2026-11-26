@@ -38,20 +38,20 @@
       + 0.10 * sin(py.x * 7.5 + py.y * 4.2) * cos(py.y * 6.5 - py.x * 3.1)
       + 0.04 * sin(py.x * 16.0 - py.y * 14.0);
   } else if (region == 1) {
-    // Japan Northern Alps: sharp diagonal Yari-Hotaka spine.
-    let s0 = p0.y + 0.42 * p0.x;
-    let sx = px.y + 0.42 * px.x;
-    let sy = py.y + 0.42 * py.x;
-    h0 = 0.88 * exp(-s0 * s0 * 14.0) * exp(-p0.x * p0.x * 2.2)
-      + 0.35 * exp(-length(p0 - vec2f(0.24, -0.10)) * 4.8)
+    // Japan Northern Alps: sharp NW-to-SE Yari-Hotaka spine.
+    let s0 = p0.y - 0.42 * p0.x;
+    let sx = px.y - 0.42 * px.x;
+    let sy = py.y - 0.42 * py.x;
+    h0 = 0.88 * exp(-s0 * s0 * 14.0) * exp(-p0.x * p0.x * 2.0)
+      + 0.36 * exp(-length(p0 - vec2f(0.28, 0.12)) * 4.6)
       + 0.09 * sin(p0.x * 10.0 - p0.y * 8.0) * cos(p0.y * 9.0)
       + 0.045 * cos(p0.x * 18.0 + p0.y * 15.0);
-    hx = 0.88 * exp(-sx * sx * 14.0) * exp(-px.x * px.x * 2.2)
-      + 0.35 * exp(-length(px - vec2f(0.24, -0.10)) * 4.8)
+    hx = 0.88 * exp(-sx * sx * 14.0) * exp(-px.x * px.x * 2.0)
+      + 0.36 * exp(-length(px - vec2f(0.28, 0.12)) * 4.6)
       + 0.09 * sin(px.x * 10.0 - px.y * 8.0) * cos(px.y * 9.0)
       + 0.045 * cos(px.x * 18.0 + px.y * 15.0);
-    hy = 0.88 * exp(-sy * sy * 14.0) * exp(-py.x * py.x * 2.2)
-      + 0.35 * exp(-length(py - vec2f(0.24, -0.10)) * 4.8)
+    hy = 0.88 * exp(-sy * sy * 14.0) * exp(-py.x * py.x * 2.0)
+      + 0.36 * exp(-length(py - vec2f(0.28, 0.12)) * 4.6)
       + 0.09 * sin(py.x * 10.0 - py.y * 8.0) * cos(py.y * 9.0)
       + 0.045 * cos(py.x * 18.0 + py.y * 15.0);
   } else {
@@ -99,11 +99,37 @@
   );
   color = mix(color, vec3f(0.22, 0.28, 0.25), utm * 0.14);
 
-  // Progressive signal-orange expedition route from basecamp (-0.42, 0.22) to summit (0.10, -0.06).
-  let tParam = clamp((p.x + 0.42) / 0.52, 0.0, 1.0);
-  let pathY = mix(0.22, -0.06, tParam) - 0.075 * sin(tParam * 3.14159265) + 0.025 * sin(tParam * 9.42);
+  // Region-specific expedition route, basecamp, and summit markers.
+  var startPt = vec2f(-0.44, 0.24);
+  var endPt = vec2f(0.08, -0.06);
+  var arcAmp = -0.085;
+  var wiggleAmp = 0.024;
+  var wiggleFreq = 9.42;
+  if (region == 1) {
+    // Japan Northern Alps: NW-to-SE high ridge traverse along the Yari-Hotaka spine.
+    startPt = vec2f(-0.46, -0.20);
+    endPt = vec2f(0.36, 0.15);
+    arcAmp = 0.055;
+    wiggleAmp = 0.028;
+    wiggleFreq = 12.56;
+  } else if (region == 2) {
+    // Patagonia Fitz Roy: eastern glacial cirque approach from lower-right up to the granite spire.
+    startPt = vec2f(0.48, 0.26);
+    endPt = vec2f(0.12, -0.05);
+    arcAmp = 0.11;
+    wiggleAmp = 0.020;
+    wiggleFreq = 6.28;
+  }
+
+  let spanX = endPt.x - startPt.x;
+  let tParam = clamp((p.x - startPt.x) / spanX, 0.0, 1.0);
+  let pathY = mix(startPt.y, endPt.y, tParam)
+    + arcAmp * sin(tParam * 3.14159265)
+    + wiggleAmp * sin(tParam * wiggleFreq);
   let pathDist = abs(p.y - pathY);
-  let inSpan = step(-0.42, p.x) * step(p.x, 0.10);
+  let minX = min(startPt.x, endPt.x);
+  let maxX = max(startPt.x, endPt.x);
+  let inSpan = step(minX, p.x) * step(p.x, maxX);
   let revealed = 1.0 - smoothstep(routeProgress - 0.02, routeProgress + 0.02, tParam);
   let plannedDash = smoothstep(0.2, 0.5, sin(tParam * 52.0));
 
@@ -116,18 +142,20 @@
   color = mix(color, orange, activeLine);
 
   // Basecamp circle & summit triangle cairn markers.
-  let baseD = length(p - vec2f(-0.42, 0.22));
+  let baseD = length(p - startPt);
   let baseRing = (1.0 - smoothstep(0.015, 0.019, baseD)) * smoothstep(0.007, 0.010, baseD);
   color = mix(color, vec3f(0.11, 0.17, 0.15), baseRing);
 
-  let sumP = p - vec2f(0.10, -0.06);
+  let sumP = p - endPt;
   let triD = max(abs(sumP.x) * 0.866 + sumP.y * 0.5, -sumP.y) - 0.016;
   let summitMark = 1.0 - smoothstep(-feather, feather, triD);
   color = mix(color, orange, summitMark);
 
   // Pulsing live expedition waypoint dot at the leading tip of the route.
-  let tipX = mix(-0.42, 0.10, routeProgress);
-  let tipY = mix(0.22, -0.06, routeProgress) - 0.075 * sin(routeProgress * 3.14159265) + 0.025 * sin(routeProgress * 9.42);
+  let tipX = mix(startPt.x, endPt.x, routeProgress);
+  let tipY = mix(startPt.y, endPt.y, routeProgress)
+    + arcAmp * sin(routeProgress * 3.14159265)
+    + wiggleAmp * sin(routeProgress * wiggleFreq);
   let tipD = length(p - vec2f(tipX, tipY));
   let tipHalo = exp(-tipD * 34.0) * 0.45;
   let tipDot = 1.0 - smoothstep(0.010, 0.014, tipD);

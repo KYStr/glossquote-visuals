@@ -118,7 +118,9 @@ a { color: inherit; }
 
 .chart-head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 0.25rem 0.6rem;
   font-family: var(--mono);
   font-size: 0.76rem;
   color: var(--lagoon-deep);
@@ -245,7 +247,7 @@ a { color: inherit; }
 .voyage-body p { margin: 0; color: var(--ink-muted); font-size: 0.93rem; }
 
 .voyage-foot {
-  display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem 0.75rem;
   padding: 1rem 1.25rem; border-top: 1px solid var(--line); background: var(--sand);
 }
 .price { font-family: var(--mono); font-weight: 700; color: var(--navy); }
@@ -261,21 +263,22 @@ a { color: inherit; }
   background: #ffffff; border: 1px solid var(--line); border-radius: 12px;
   padding: 1.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem;
 }
-.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field { display: flex; flex-direction: column; gap: 0.35rem; min-width: 0; }
 .field.full { grid-column: 1 / -1; }
 .field label { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
 .field select, .field input {
+  width: 100%; max-width: 100%; min-width: 0;
   min-height: 44px; padding: 0.55rem 0.75rem;
   border: 1px solid #9db4c0; border-radius: 8px; background: var(--sand); color: var(--ink); font: inherit;
 }
 
 .dossier-box {
-  background: var(--navy); color: #f4f8fa; border-radius: 12px; padding: 1.6rem;
+  background: var(--navy); color: #f4f8fa; border-radius: 12px; padding: 1.6rem; min-width: 0;
 }
 .dossier-box h3 { margin: 0 0 0.75rem; font-family: var(--display); font-size: 1.3rem; }
-.dossier-line { margin: 0 0 1.25rem; color: #cde0eb; font-size: 0.95rem; }
+.dossier-line { margin: 0 0 1.25rem; color: #cde0eb; font-size: 0.95rem; overflow-wrap: break-word; }
 .dossier-total {
-  display: flex; justify-content: space-between; align-items: baseline;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem 0.75rem;
   padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.22);
   border-bottom: 1px solid rgba(255, 255, 255, 0.22); margin-bottom: 1.25rem;
 }
@@ -291,10 +294,42 @@ a { color: inherit; }
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
 }
 
+.hero > *, .planner-grid > *, .sea-switch { min-width: 0; min-inline-size: 0; max-width: 100%; }
+.button { max-width: 100%; }
+h1, h2, h3, p, dd, dt { overflow-wrap: break-word; }
+
 @media (max-width: 960px) {
-  .hero, .planner-grid { grid-template-columns: 1fr; }
+  .hero, .planner-grid { grid-template-columns: minmax(0, 1fr); }
   .voyage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .voyage-grid, .voyage-form, .sea-switch, .voyage-stats { grid-template-columns: 1fr; }
+  .mast { gap: 0.2rem 0.75rem; padding: 0.45rem 0; }
+  .mast nav { gap: 0.1rem 0.85rem; }
+  .mast nav a { font-size: 0.84rem; padding: 0.25rem 0.15rem; }
+  .mast nav a[hreflang] { padding: 0.2rem 0.65rem; }
+  .hero { padding: 0.65rem 0 1.75rem; gap: 0.75rem; }
+  .chart-figure { padding: 0.6rem; }
+  .chart-head { font-size: 0.68rem; margin-bottom: 0.4rem; }
+  .stage { aspect-ratio: 16 / 10; }
+  .chart-controls { margin-top: 0.5rem; }
+  .sea-switch { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.35rem; }
+  .sea-pill { min-height: 44px; min-width: 0; padding: 0.35rem 0.4rem; }
+  .sea-pill strong { font-size: 0.76rem; line-height: 1.2; }
+  .sea-pill span { font-size: 0.64rem; line-height: 1.2; }
+  .kicker { font-size: 0.68rem; padding: 0.2rem 0.55rem; margin-bottom: 0.4rem; }
+  .hero h1 { font-size: clamp(1.65rem, 6.4vw, 2.05rem); margin-bottom: 0.45rem; }
+  .intro { font-size: 0.88rem; line-height: 1.42; margin-bottom: 0.7rem; }
+  .actions { gap: 0.5rem; }
+  .hero .button { min-height: 44px; padding: 0.5rem 0.95rem; font-size: 0.84rem; }
+  .voyage-stats { margin-top: 0.85rem; padding: 0.65rem 0.75rem; gap: 0.5rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .voyage-stats dt { font-size: 0.66rem; }
+  .voyage-stats dd { font-size: 0.76rem; }
+  .voyage-grid, .voyage-form { grid-template-columns: minmax(0, 1fr); }
+  .voyage-form, .dossier-box { padding: 1.1rem; }
+}
+@media (max-width: 360px) {
+  .frame { width: calc(100% - 1.25rem); }
+  .sea-pill { padding: 0.3rem 0.25rem; }
+  .voyage-stats { grid-template-columns: minmax(0, 1fr); }
+  .voyage-form, .dossier-box { padding: 0.9rem; }
 }
