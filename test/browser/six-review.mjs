@@ -11,7 +11,7 @@ const browser = await chromium.launch({ channel: "chromium", args: ["--enable-un
 const results = [];
 const hash = bytes => createHash("sha256").update(bytes).digest("hex");
 try {
-  for (const [mode, width, height] of [["desktop",1440,900],["zh390",390,844],["en390",390,844],["zh320",320,568],["en320",320,568]]) {
+  for (const [mode, width, height] of [["desktop",1440,900],["enDesktop",1440,900],["zh390",390,844],["en390",390,844],["zh320",320,568],["en320",320,568]]) {
     const page = await browser.newPage({ viewport: { width,height }, hasTouch: width < 500 });
     page.setDefaultTimeout(10000);
     const r = { mode, slug, errors: [], offsite: [], downloads: [] };
@@ -28,7 +28,7 @@ try {
           if (!rect) return null;
           return { top: Math.round(rect.top), bottom: Math.round(rect.bottom), visibleFraction: Math.round(100*Math.max(0,Math.min(innerHeight,rect.bottom)-Math.max(0,rect.top))/rect.height)/100 };
         };
-        return { cta: bounds("main a.button.primary"), stage: bounds("[data-stage]"), overflowPixels: document.documentElement.scrollWidth-innerWidth,
+        return { cta: bounds(".hero-cta-row a.gold, main a.button.primary"), stage: bounds("[data-stage]"), overflowPixels: document.documentElement.scrollWidth-innerWidth,
           protruding: [...document.querySelectorAll("main *,header *")].filter(el => el.getBoundingClientRect().right > innerWidth+1).slice(0,12).map(el=>el.tagName+"."+el.className) };
       });
       await page.screenshot({path:"review/" + mode + "-first.jpg"});
@@ -37,6 +37,14 @@ try {
       await page.waitForFunction(() => ["running","unavailable","reduced"].includes(document.querySelector("[data-stage]").dataset.motion), null,{timeout:30000}).catch(()=>{});
       r.phase = await stage.getAttribute("data-motion");
       r.adapter = await page.evaluate(async () => (await navigator.gpu?.requestAdapter())?.info?.description || null);
+      if (slug === "solstice-voyage" && mode === "desktop") {
+        r.autoScenes = [];
+        for (const delay of [0,6500,6500]) {
+          await page.waitForTimeout(delay);
+          r.autoScenes.push(await page.evaluate(()=>({ coordinate:document.querySelector("[data-scene-coord]").textContent,hour:document.querySelector("[data-scene-hour]").textContent,selected:document.querySelector("[data-instrument] input:checked").value,alt:document.querySelector("[data-poster]").alt })));
+          await page.screenshot({path:"review/auto-" + r.autoScenes.length + ".jpg"});
+        }
+      }
       for (const n of [0,1,2]) {
         await page.waitForTimeout(1000);
         await stage.screenshot({path:"review/" + mode + "-stage-" + n + ".jpg"});
@@ -59,7 +67,16 @@ try {
       }
       const qty = page.locator('input[name="guests"],input[name="hikers"],input[name="quantity"]').first();
       const download = page.locator('button').filter({hasText: /下載|download/i}).last();
-      for (const value of ["2.5","3"]) {
+      if (slug === "solstice-voyage") {
+        const select = async (name, value) => page.locator("label").filter({has: page.locator('input[name="'+name+'"][value="'+value+'"]')}).click();
+        await select("dest","fjord"); await select("pace","collector"); await select("guests","8"); await select("extra","chef");
+        await page.locator('textarea[name="note"]').fill("QA itinerary");
+        const filePromise = page.waitForEvent("download",{timeout:5000});
+        await page.locator("[data-download-dossier]").click();
+        const file = await filePromise;
+        const body = await readFile(await file.path(),"utf8");
+        r.downloads.push({value:"8",file:file.suggestedFilename(),content:body, correct: body.includes("2,074,640") && body.includes("QA itinerary")});
+      } else for (const value of ["2.5","3"]) {
         await qty.fill(value);
         await qty.press("Tab");
         const received = page.waitForEvent("download",{timeout:2500}).catch(()=>null);
