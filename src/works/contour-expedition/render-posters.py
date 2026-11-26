@@ -22,9 +22,9 @@ def height_field(px, py, region):
             + 0.10 * np.sin(px * 7.5 + py * 4.2) * np.cos(py * 6.5 - px * 3.1) \
             + 0.04 * np.sin(px * 16.0 - py * 14.0)
     if region == 1:
-        s = py + 0.42 * px
-        return 0.88 * np.exp(-s * s * 14.0) * np.exp(-px * px * 2.2) \
-            + 0.35 * np.exp(-np.sqrt((px - 0.24) ** 2 + (py + 0.10) ** 2) * 4.8) \
+        s = py - 0.42 * px
+        return 0.88 * np.exp(-s * s * 14.0) * np.exp(-px * px * 2.0) \
+            + 0.36 * np.exp(-np.sqrt((px - 0.28) ** 2 + (py - 0.12) ** 2) * 4.6) \
             + 0.09 * np.sin(px * 10.0 - py * 8.0) * np.cos(py * 9.0) \
             + 0.045 * np.cos(px * 18.0 + py * 15.0)
     return 0.98 * np.exp(-np.sqrt((px - 0.12) ** 2 + (py + 0.05) ** 2) * 3.4) \
@@ -84,10 +84,20 @@ def render_plate(width, height, region=0, progress=0.82):
     utm = np.maximum(ux, uy)[..., None] * 0.14
     col = col * (1.0 - utm) + np.array([0.22, 0.28, 0.25], dtype=np.float32) * utm
 
-    tp = np.clip((px + 0.42) / 0.52, 0.0, 1.0)
-    path_y = (0.22 * (1.0 - tp) - 0.06 * tp) - 0.075 * np.sin(tp * np.pi) + 0.025 * np.sin(tp * 9.42)
+    if region == 0:
+        start_x, start_y, end_x, end_y = -0.44, 0.24, 0.08, -0.06
+        arc_amp, wiggle_amp, wiggle_freq = -0.085, 0.024, 9.42
+    elif region == 1:
+        start_x, start_y, end_x, end_y = -0.46, -0.20, 0.36, 0.15
+        arc_amp, wiggle_amp, wiggle_freq = 0.055, 0.028, 12.56
+    else:
+        start_x, start_y, end_x, end_y = 0.48, 0.26, 0.12, -0.05
+        arc_amp, wiggle_amp, wiggle_freq = 0.11, 0.020, 6.28
+
+    tp = np.clip((px - start_x) / (end_x - start_x), 0.0, 1.0)
+    path_y = (start_y * (1.0 - tp) + end_y * tp) + arc_amp * np.sin(tp * np.pi) + wiggle_amp * np.sin(tp * wiggle_freq)
     path_dist = np.abs(py - path_y)
-    in_span = ((px >= -0.42) & (px <= 0.10)).astype(np.float32)
+    in_span = ((px >= min(start_x, end_x)) & (px <= max(start_x, end_x))).astype(np.float32)
     revealed = 1.0 - smoothstep(progress - 0.02, progress + 0.02, tp)
     dash = smoothstep(0.2, 0.5, np.sin(tp * 52.0))
 
@@ -98,17 +108,17 @@ def render_plate(width, height, region=0, progress=0.82):
     al = ((1.0 - smoothstep(0.0045, 0.0085, path_dist)) * in_span * revealed)[..., None]
     col = col * (1.0 - al) + orange * al
 
-    base_d = np.sqrt((px + 0.42) ** 2 + (py - 0.22) ** 2)
+    base_d = np.sqrt((px - start_x) ** 2 + (py - start_y) ** 2)
     base_ring = ((1.0 - smoothstep(0.015, 0.019, base_d)) * smoothstep(0.007, 0.010, base_d))[..., None]
     col = col * (1.0 - base_ring) + np.array([0.11, 0.17, 0.15], dtype=np.float32) * base_ring
 
-    sx, sy = px - 0.10, py + 0.06
+    sx, sy = px - end_x, py - end_y
     tri_d = np.maximum(np.abs(sx) * 0.866 + sy * 0.5, -sy) - 0.016
     smark = (1.0 - smoothstep(-feather, feather, tri_d))[..., None]
     col = col * (1.0 - smark) + orange * smark
 
-    tip_x = -0.42 + 0.52 * progress
-    tip_y = (0.22 * (1.0 - progress) - 0.06 * progress) - 0.075 * np.sin(progress * np.pi) + 0.025 * np.sin(progress * 9.42)
+    tip_x = start_x + (end_x - start_x) * progress
+    tip_y = (start_y * (1.0 - progress) + end_y * progress) + arc_amp * np.sin(progress * np.pi) + wiggle_amp * np.sin(progress * wiggle_freq)
     tip_d = np.sqrt((px - tip_x) ** 2 + (py - tip_y) ** 2)
     col += orange * (np.exp(-tip_d * 34.0) * 0.45)[..., None]
     tdot = (1.0 - smoothstep(0.010, 0.014, tip_d))[..., None]
