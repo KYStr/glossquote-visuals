@@ -11,8 +11,8 @@ const browser = await chromium.launch({ channel: "chromium", args: ["--enable-un
 const results = [];
 const hash = bytes => createHash("sha256").update(bytes).digest("hex");
 try {
-  for (const [mode, width, height] of [["desktop",1440,900],["mobile",390,844]]) {
-    const page = await browser.newPage({ viewport: { width,height }, hasTouch: mode === "mobile" });
+  for (const [mode, width, height] of [["desktop",1440,900],["zh390",390,844],["en390",390,844],["zh320",320,568],["en320",320,568]]) {
+    const page = await browser.newPage({ viewport: { width,height }, hasTouch: width < 500 });
     page.setDefaultTimeout(10000);
     const r = { mode, slug, errors: [], offsite: [], downloads: [] };
     results.push(r);
@@ -20,7 +20,17 @@ try {
     page.on("pageerror", e => r.errors.push(e.message));
     page.on("request", req => { if (req.url().startsWith("http") && !req.url().startsWith(server.origin + "/")) r.offsite.push(req.url()); });
     try {
-      await page.goto(server.origin + "/glossquote-visuals/" + (mode === "desktop" ? "" : "en/") + "works/" + slug + "/");
+      await page.goto(server.origin + "/glossquote-visuals/" + (mode.startsWith("en") ? "en/" : "") + "works/" + slug + "/");
+      await page.evaluate(()=> document.fonts.ready);
+      r.firstView = await page.evaluate(()=>{
+        const bounds = selector => {
+          const rect = document.querySelector(selector)?.getBoundingClientRect();
+          if (!rect) return null;
+          return { top: Math.round(rect.top), bottom: Math.round(rect.bottom), visibleFraction: Math.round(100*Math.max(0,Math.min(innerHeight,rect.bottom)-Math.max(0,rect.top))/rect.height)/100 };
+        };
+        return { cta: bounds("main a.button.primary"), stage: bounds("[data-stage]"), overflowPixels: document.documentElement.scrollWidth-innerWidth,
+          protruding: [...document.querySelectorAll("main *,header *")].filter(el => el.getBoundingClientRect().right > innerWidth+1).slice(0,12).map(el=>el.tagName+"."+el.className) };
+      });
       await page.screenshot({path:"review/" + mode + "-first.jpg"});
       const stage = page.locator("[data-stage]");
       await stage.scrollIntoViewIfNeeded();
