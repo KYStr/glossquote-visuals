@@ -103,7 +103,7 @@
         <div class="edition-grid">
           <article class="edition-card">
             <div class="edition-art">
-              <img src="%BASE_URL%media/botanica-press/ginkgo.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Single Specimen Frame with Ginkgo cyanotype">
+              <img src="%BASE_URL%media/botanica-press/product-single.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Single ash-framed Ginkgo Biloba cyanotype print">
               <span class="plate-no">BP–01</span>
             </div>
             <div class="edition-body">
@@ -119,7 +119,7 @@
 
           <article class="edition-card">
             <div class="edition-art">
-              <img src="%BASE_URL%media/botanica-press/fern.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Diptych Botanical Study with Maidenhair Fern cyanotype">
+              <img src="%BASE_URL%media/botanica-press/product-diptych.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Two side-by-side framed cyanotype prints forming a diptych study with taxonomy index card">
               <span class="plate-no">BP–02</span>
             </div>
             <div class="edition-body">
@@ -135,7 +135,7 @@
 
           <article class="edition-card">
             <div class="edition-art">
-              <img src="%BASE_URL%media/botanica-press/eucalyptus.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Home Cyanotype Kit with Eucalyptus print example">
+              <img src="%BASE_URL%media/botanica-press/product-kit.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Home Cyanotype Kit flat-lay showing light-tight sleeve with fanned pre-coated cotton sheets, clipped contact glass frame and guide card">
               <span class="plate-no">BP–03</span>
             </div>
             <div class="edition-body">
@@ -162,7 +162,7 @@
           <p>Select an edition, botanical specimen, paper tone and frame to export a local plain-text sheet. Nothing is sent online.</p>
         </header>
         <div class="config-grid">
-          <form class="edition-form" data-edition-form>
+          <div class="edition-form" role="group" aria-labelledby="order-title" data-edition-form>
             <div class="field full">
               <label for="bp-edition">Edition</label>
               <select id="bp-edition" name="edition">
@@ -196,9 +196,10 @@
             </div>
             <div class="field">
               <label for="bp-qty">Quantity (1–20)</label>
-              <input id="bp-qty" name="quantity" type="number" min="1" max="20" value="1">
+              <input id="bp-qty" name="quantity" type="number" min="1" max="20" step="1" inputmode="numeric" value="1" aria-describedby="bp-qty-error">
+              <p class="field-error" id="bp-qty-error" data-qty-error role="alert" hidden></p>
             </div>
-          </form>
+          </div>
 
           <aside class="sheet-box" aria-live="polite">
             <h3>Edition Summary</h3>

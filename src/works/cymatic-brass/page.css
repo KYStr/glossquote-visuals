@@ -405,6 +405,20 @@ a { color: inherit; }
   color: var(--ink);
   font: inherit;
 }
+.field input[aria-invalid="true"] {
+  border-color: #ff8a7a;
+  background: #1b1213;
+}
+.field-error {
+  margin: 0.15rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: #ff8a7a;
+}
+.brief-box .button.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 .brief-box {
   background: var(--panel-alt);

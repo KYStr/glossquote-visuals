@@ -428,6 +428,20 @@ a { color: inherit; }
   color: var(--ink);
   font: inherit;
 }
+.field input[aria-invalid="true"] {
+  border-color: #a62b1f;
+  background: #fff7f6;
+}
+.field-error {
+  margin: 0.15rem 0 0;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #9e2a1f;
+}
+.summary-card .button.primary:disabled {
+  opacity: 0.52;
+  cursor: not-allowed;
+}
 
 .summary-card {
   background: var(--ink);

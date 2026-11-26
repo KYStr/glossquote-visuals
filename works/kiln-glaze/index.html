@@ -101,7 +101,7 @@
         <div class="vessel-grid">
           <article class="vessel-card">
             <div class="vessel-media">
-              <img src="%BASE_URL%media/kiln-glaze/celadon.webp" width="1200" height="800" loading="lazy" decoding="async" alt="青瓷冰裂茶碗俯視示意">
+              <img src="%BASE_URL%media/kiln-glaze/product-chawan.webp" width="1200" height="800" loading="lazy" decoding="async" alt="青瓷冰裂深腹茶碗俯視示意">
               <span class="vessel-code">KG–01</span>
             </div>
             <div class="vessel-body">
@@ -117,7 +117,7 @@
 
           <article class="vessel-card">
             <div class="vessel-media">
-              <img src="%BASE_URL%media/kiln-glaze/tenmoku.webp" width="1200" height="800" loading="lazy" decoding="async" alt="天目油滴平皿俯視示意">
+              <img src="%BASE_URL%media/kiln-glaze/product-plate.webp" width="1200" height="800" loading="lazy" decoding="async" alt="天目油滴寬面淺唇平皿俯視示意">
               <span class="vessel-code">KG–02</span>
             </div>
             <div class="vessel-body">
@@ -133,7 +133,7 @@
 
           <article class="vessel-card">
             <div class="vessel-media">
-              <img src="%BASE_URL%media/kiln-glaze/ash.webp" width="1200" height="800" loading="lazy" decoding="async" alt="草木灰流片口俯視示意">
+              <img src="%BASE_URL%media/kiln-glaze/product-pitcher.webp" width="1200" height="800" loading="lazy" decoding="async" alt="草木灰流手捏尖嘴片口俯視示意，右側可見清晰注口">
               <span class="vessel-code">KG–03</span>
             </div>
             <div class="vessel-body">
@@ -160,7 +160,7 @@
           <p>挑選器形、釉色與預計窯期，直接下載文字規格單留存；本頁面不進行線上收款或資料上傳。</p>
         </header>
         <div class="builder-grid">
-          <form class="commission-form" data-commission-form>
+          <div class="commission-form" role="group" aria-labelledby="commission-title" data-commission-form>
             <div class="field">
               <label for="kiln-vessel-select">器皿款式</label>
               <select id="kiln-vessel-select" name="vessel">
@@ -179,7 +179,8 @@
             </div>
             <div class="field">
               <label for="kiln-qty">訂製數量（1–24 件）</label>
-              <input id="kiln-qty" name="quantity" type="number" min="1" max="24" value="2">
+              <input id="kiln-qty" name="quantity" type="number" min="1" max="24" step="1" inputmode="numeric" value="2" aria-describedby="kiln-qty-error">
+              <p class="field-error" id="kiln-qty-error" data-qty-error role="alert" hidden></p>
             </div>
             <div class="field">
               <label for="kiln-batch">示意開窯批次</label>
@@ -200,7 +201,7 @@
               <label for="kiln-note">底足落款或使用情境備註（選填）</label>
               <textarea id="kiln-note" name="note" rows="3" placeholder="例如：茶室開幕禮、偏好較厚青瓷釉池"></textarea>
             </div>
-          </form>
+          </div>
 
           <aside class="summary-card" aria-live="polite">
             <h3>訂製規格摘要</h3>

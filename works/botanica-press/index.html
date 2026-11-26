@@ -105,7 +105,7 @@
         <div class="edition-grid">
           <article class="edition-card">
             <div class="edition-art">
-              <img src="%BASE_URL%media/botanica-press/ginkgo.webp" width="1200" height="800" loading="lazy" decoding="async" alt="單幅銀杏葉脈藍曬標本框">
+              <img src="%BASE_URL%media/botanica-press/product-single.webp" width="1200" height="800" loading="lazy" decoding="async" alt="單幅白蠟木框銀杏葉脈藍曬標本框">
               <span class="plate-no">BP–01</span>
             </div>
             <div class="edition-body">
@@ -121,7 +121,7 @@
 
           <article class="edition-card">
             <div class="edition-art">
-              <img src="%BASE_URL%media/botanica-press/fern.webp" width="1200" height="800" loading="lazy" decoding="async" alt="雙聯對照組鐵線蕨藍曬標本">
+              <img src="%BASE_URL%media/botanica-press/product-diptych.webp" width="1200" height="800" loading="lazy" decoding="async" alt="兩幅並排成對的藍曬標本框雙聯對照組與植物索引小卡">
               <span class="plate-no">BP–02</span>
             </div>
             <div class="edition-body">
@@ -137,7 +137,7 @@
 
           <article class="edition-card">
             <div class="edition-art">
-              <img src="%BASE_URL%media/botanica-press/eucalyptus.webp" width="1200" height="800" loading="lazy" decoding="async" alt="工作坊藍曬組尤加利拓印範例">
+              <img src="%BASE_URL%media/botanica-press/product-kit.webp" width="1200" height="800" loading="lazy" decoding="async" alt="工作坊藍曬組平拍：避光紙袋與多張預塗感光棉紙、壓花玻璃框、金屬夾與說明卡">
               <span class="plate-no">BP–03</span>
             </div>
             <div class="edition-body">
@@ -164,7 +164,7 @@
           <p>挑選品項、植物標本、紙色與木框，於本機下載收藏清單留存；不會進行任何線上送出或付款。</p>
         </header>
         <div class="config-grid">
-          <form class="edition-form" data-edition-form>
+          <div class="edition-form" role="group" aria-labelledby="order-title" data-edition-form>
             <div class="field full">
               <label for="bp-edition">收藏品項</label>
               <select id="bp-edition" name="edition">
@@ -198,9 +198,10 @@
             </div>
             <div class="field">
               <label for="bp-qty">數量（1–20）</label>
-              <input id="bp-qty" name="quantity" type="number" min="1" max="20" value="1">
+              <input id="bp-qty" name="quantity" type="number" min="1" max="20" step="1" inputmode="numeric" value="1" aria-describedby="bp-qty-error">
+              <p class="field-error" id="bp-qty-error" data-qty-error role="alert" hidden></p>
             </div>
-          </form>
+          </div>
 
           <aside class="sheet-box" aria-live="polite">
             <h3>收藏明細摘要</h3>

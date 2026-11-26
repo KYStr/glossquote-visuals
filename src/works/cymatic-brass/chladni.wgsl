@@ -4,31 +4,29 @@
   let r = length(p);
   let a = atan2(p.y, p.x);
 
-  // 12-second harmonic sweep through 3 Chladni resonance modes when preset < 0.
-  let cyc = fract(time / 12.0) * 12.0;
-  var modeMix0 = 1.0;
+  // Single mode state (modePos in [0, 3)) drives both the nodal pattern and the frequency readout.
+  let wrapped = modePos - floor(modePos / 3.0) * 3.0;
+  let seg = i32(floor(wrapped));
+  let frac = wrapped - floor(wrapped);
+  let blend = smoothstep(0.0, 1.0, frac);
+  var modeMix0 = 0.0;
   var modeMix1 = 0.0;
   var modeMix2 = 0.0;
-  var settle = 1.0;
 
-  if (preset < 0.0) {
-    // 0-4s: Quad (288 Hz), 4-8s: Hex Star (512 Hz), 8-12s: Lotus (768 Hz)
-    let t1 = smoothstep(3.3, 4.3, cyc);
-    let t2 = smoothstep(7.3, 8.3, cyc);
-    let t3 = smoothstep(11.1, 12.0, cyc);
-    modeMix0 = (1.0 - t1) + t3;
-    modeMix1 = t1 * (1.0 - t2);
-    modeMix2 = t2 * (1.0 - t3);
-    // Quartz sand vibrates during transitions and locks crisp on resonant plateaus.
-    let trans = smoothstep(0.0, 0.7, abs(fract(cyc / 4.0) - 0.5) * 2.0);
-    settle = 0.58 + 0.42 * (1.0 - trans * 0.65);
+  if (seg == 0) {
+    modeMix0 = 1.0 - blend;
+    modeMix1 = blend;
+  } else if (seg == 1) {
+    modeMix1 = 1.0 - blend;
+    modeMix2 = blend;
   } else {
-    let idx = i32(clamp(floor(preset + 0.5), 0.0, 2.0));
-    modeMix0 = select(0.0, 1.0, idx == 0);
-    modeMix1 = select(0.0, 1.0, idx == 1);
-    modeMix2 = select(0.0, 1.0, idx == 2);
-    settle = 0.90 + 0.10 * sin(time * 1.0472);
+    modeMix2 = 1.0 - blend;
+    modeMix0 = blend;
   }
+
+  // Quartz sand vibrates during transitions and locks crisp on resonant plateaus.
+  let transActivity = sin(frac * 3.14159265);
+  let settle = mix(0.92 + 0.06 * sin(time * 1.0472), 0.56, transActivity);
 
   // Dark acoustic bench background with subtle precision millimeter calibration rings.
   let benchGrad = 1.0 - 0.25 * length(p);

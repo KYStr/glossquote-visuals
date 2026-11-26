@@ -104,7 +104,7 @@
         <div class="system-grid">
           <article class="system-card">
             <div class="system-art">
-              <img src="%BASE_URL%media/cymatic-brass/quad.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Desk Resonator 288 Hz nodal pattern">
+              <img src="%BASE_URL%media/cymatic-brass/product-desk.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Circular Desk Resonator brass plate showing 288 Hz nodal pattern">
               <span class="sys-tag">CB–01</span>
             </div>
             <div class="system-body">
@@ -120,7 +120,7 @@
 
           <article class="system-card">
             <div class="system-art">
-              <img src="%BASE_URL%media/cymatic-brass/hex.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Wall Diffuser Panel 512 Hz nodal pattern">
+              <img src="%BASE_URL%media/cymatic-brass/product-wall.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Square 600×600 mm brushed brass Wall Diffuser Panel with corner standoffs">
               <span class="sys-tag">CB–02</span>
             </div>
             <div class="system-body">
@@ -136,7 +136,7 @@
 
           <article class="system-card">
             <div class="system-art">
-              <img src="%BASE_URL%media/cymatic-brass/lotus.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Spatial Acoustic Array 768 Hz nodal pattern">
+              <img src="%BASE_URL%media/cymatic-brass/product-array.webp" width="1200" height="800" loading="lazy" decoding="async" alt="2×2 Spatial Acoustic Array of four synchronized circular brass resonator plates">
               <span class="sys-tag">CB–03</span>
             </div>
             <div class="system-body">
@@ -163,7 +163,7 @@
           <p>Enter room dimensions and target reverberation to generate a local plain-text installation brief. Nothing is uploaded.</p>
         </header>
         <div class="specifier-grid">
-          <form class="lab-form" data-acoustic-form>
+          <div class="lab-form" role="group" aria-labelledby="specifier-title" data-acoustic-form>
             <div class="field full">
               <label for="cb-system">Acoustic system</label>
               <select id="cb-system" name="system">
@@ -173,12 +173,14 @@
               </select>
             </div>
             <div class="field">
-              <label for="cb-area">Room floor area (m²)</label>
-              <input id="cb-area" name="area" type="number" min="8" max="400" value="36">
+              <label for="cb-area">Room floor area (8–400 m²)</label>
+              <input id="cb-area" name="area" type="number" min="8" max="400" step="1" inputmode="numeric" value="36" aria-describedby="cb-area-error">
+              <p class="field-error" id="cb-area-error" data-area-error role="alert" hidden></p>
             </div>
             <div class="field">
               <label for="cb-qty">Units (1–12)</label>
-              <input id="cb-qty" name="quantity" type="number" min="1" max="12" value="1">
+              <input id="cb-qty" name="quantity" type="number" min="1" max="12" step="1" inputmode="numeric" value="1" aria-describedby="cb-qty-error">
+              <p class="field-error" id="cb-qty-error" data-qty-error role="alert" hidden></p>
             </div>
             <div class="field">
               <label for="cb-reverb">Target RT60 profile</label>
@@ -195,7 +197,7 @@
                 <option value="oxidized">Hand-Oxidized Bronze (+NT$ 2,400 / unit)</option>
               </select>
             </div>
-          </form>
+          </div>
 
           <aside class="brief-box" aria-live="polite">
             <h3>ACOUSTIC BRIEF // SUMMARY</h3>

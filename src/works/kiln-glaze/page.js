@@ -100,6 +100,9 @@ const summaryEl = document.querySelector("[data-commission-summary]");
 const totalEl = document.querySelector("[data-commission-total]");
 const feedbackEl = document.querySelector("[data-commission-feedback]");
 const downloadBtn = document.querySelector("[data-download-spec]");
+const qtyErrorEl = document.querySelector("[data-qty-error]");
+
+const field = (name) => form?.querySelector(`[name="${name}"]`);
 
 const vessels = en ? {
   chawan: { name: "Chawan Tea Bowl (Ø12.5 × H7.8 cm)", price: 2400 },
@@ -117,22 +120,100 @@ const glazeLabels = en
 
 const packCosts = { kraft: 0, paulownia: 380 };
 
+function validateQuantity(input, min, max) {
+  const raw = String(input?.value ?? "").trim();
+  if (!raw || input?.validity?.badInput) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Enter a whole number between ${min} and ${max}.`
+        : `請輸入 ${min} 至 ${max} 的整數。`,
+    };
+  }
+  if (!/^[+-]?\d+$/.test(raw)) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Quantity must be a whole number (${min}–${max}); decimals are not supported.`
+        : `訂製數量須為 ${min} 至 ${max} 的整數，不接受小數。`,
+    };
+  }
+  const value = Number.parseInt(raw, 10);
+  if (value < min) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Minimum quantity is ${min} (enter ${min}–${max}).`
+        : `訂製數量不可小於 ${min} 件（範圍 ${min}–${max} 件）。`,
+    };
+  }
+  if (value > max) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Maximum quantity is ${max} (enter ${min}–${max}).`
+        : `訂製數量不可超過上限 ${max} 件（範圍 ${min}–${max} 件）。`,
+    };
+  }
+  return { valid: true, value, error: "" };
+}
+
 function getCommissionState() {
-  const vesselKey = form.elements.vessel.value;
-  const glazeIndex = Number(form.elements.glaze.value);
-  const qty = Math.max(1, Math.min(24, Number(form.elements.quantity.value) || 1));
-  const batch = form.elements.batch.value;
-  const packaging = form.elements.packaging.value;
-  const note = form.elements.note.value.trim();
+  const vesselKey = field("vessel").value;
+  const glazeIndex = Number(field("glaze").value);
+  const qtyInput = field("quantity");
+  const qtyCheck = validateQuantity(qtyInput, 1, 24);
+  const batch = field("batch").value;
+  const packaging = field("packaging").value;
+  const note = field("note").value.trim();
   const vessel = vessels[vesselKey] ?? vessels.chawan;
   const unit = vessel.price + (packCosts[packaging] ?? 0);
-  const total = unit * qty;
-  return { vesselKey, vessel, glazeIndex, glazeName: glazeLabels[glazeIndex] ?? glazeLabels[0], qty, batch, packaging, note, unit, total };
+  const total = qtyCheck.valid ? unit * qtyCheck.value : null;
+  return {
+    vesselKey,
+    vessel,
+    glazeIndex,
+    glazeName: glazeLabels[glazeIndex] ?? glazeLabels[0],
+    qtyInput,
+    qtyCheck,
+    qty: qtyCheck.value,
+    batch,
+    packaging,
+    note,
+    unit,
+    total,
+  };
 }
 
 function updateCommission() {
   if (!form) return;
   const s = getCommissionState();
+  if (!s.qtyCheck.valid) {
+    s.qtyInput.setAttribute("aria-invalid", "true");
+    if (qtyErrorEl) {
+      qtyErrorEl.textContent = s.qtyCheck.error;
+      qtyErrorEl.hidden = false;
+    }
+    totalEl.textContent = "—";
+    summaryEl.textContent = en
+      ? "Enter a valid quantity (whole number 1–24) to update the estimate and export."
+      : "請先輸入有效數量（1–24 的整數），再檢視估算總計與下載規格單。";
+    if (downloadBtn) downloadBtn.disabled = true;
+    if (feedbackEl) feedbackEl.textContent = "";
+    return;
+  }
+
+  s.qtyInput.removeAttribute("aria-invalid");
+  if (qtyErrorEl) {
+    qtyErrorEl.textContent = "";
+    qtyErrorEl.hidden = true;
+  }
+  if (downloadBtn) downloadBtn.disabled = false;
+
   const fmt = (n) => `NT$ ${n.toLocaleString("en-US")}`;
   totalEl.textContent = fmt(s.total);
   const packLabel = s.packaging === "paulownia"
@@ -147,8 +228,9 @@ function updateCommission() {
 for (const btn of document.querySelectorAll("[data-choose-vessel]")) {
   btn.addEventListener("click", () => {
     const key = btn.dataset.chooseVessel;
-    if (form && form.elements.vessel) {
-      form.elements.vessel.value = key;
+    const vesselSelect = field("vessel");
+    if (vesselSelect) {
+      vesselSelect.value = key;
       updateCommission();
     }
   });
@@ -163,6 +245,12 @@ if (form) {
 if (downloadBtn) {
   downloadBtn.addEventListener("click", () => {
     const s = getCommissionState();
+    if (!s.qtyCheck.valid) {
+      updateCommission();
+      s.qtyInput.focus();
+      if (feedbackEl) feedbackEl.textContent = s.qtyCheck.error;
+      return;
+    }
     const lines = en ? [
       "KILN GLAZE — Offline Commission Specification (Concept Brand)",
       "============================================================",

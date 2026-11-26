@@ -1,4 +1,11 @@
 import { createMotion, observeMotion } from "../../shared/motion.js";
+import {
+  CYCLE_SECONDS,
+  RESONANCE_MODES,
+  SLOT_SECONDS,
+  activeModeFromPos,
+  computeModePos,
+} from "./mode-state.js";
 
 const stage = document.querySelector("[data-stage]");
 const poster = stage.querySelector("[data-poster]");
@@ -29,21 +36,61 @@ const labels = en ? {
   pause: "暫停掃頻",
 };
 
-const modes = [
-  { file: "quad", freq: "288 Hz · (2, 1)" },
-  { file: "hex", freq: "512 Hz · (3, 2)" },
-  { file: "lotus", freq: "768 Hz · (4, 3)" },
-];
-const posters = modes.map((m) => new URL(`${m.file}.webp`, poster.src).href);
-let settings = { preset: -1, index: 0 };
+const posters = RESONANCE_MODES.map((m) => new URL(`${m.file}.webp`, poster.src).href);
+let settings = { index: 0, modePos: 0 };
+let autoSweep = true;
+let sweepElapsed = 0;
+let sweepFrame = 0;
+let lastSweepTick = 0;
+let currentPhase = "still";
 let paused = false;
 let rendered = false;
 let shader;
 
-function showStill(index) {
-  const source = posters[index];
-  if (poster.src !== source) poster.src = source;
-  if (readout) readout.textContent = modes[index].freq;
+function syncModeUI(index) {
+  const safeIndex = ((index % RESONANCE_MODES.length) + RESONANCE_MODES.length) % RESONANCE_MODES.length;
+  stage.dataset.material = String(safeIndex);
+  if (readout) readout.textContent = RESONANCE_MODES[safeIndex].freq;
+  if (radios[safeIndex] && !radios[safeIndex].checked) {
+    radios[safeIndex].checked = true;
+  }
+  if (!rendered) {
+    const source = posters[safeIndex];
+    if (poster.src !== source) poster.src = source;
+  }
+}
+
+function stopSweepLoop() {
+  if (sweepFrame) {
+    cancelAnimationFrame(sweepFrame);
+    sweepFrame = 0;
+  }
+  lastSweepTick = 0;
+}
+
+function startSweepLoop() {
+  if (sweepFrame || !autoSweep || currentPhase !== "running") return;
+  lastSweepTick = performance.now();
+  const tick = (now) => {
+    if (!autoSweep || currentPhase !== "running") {
+      stopSweepLoop();
+      return;
+    }
+    const dt = Math.min(Math.max((now - lastSweepTick) / 1000, 0), 0.1);
+    lastSweepTick = now;
+    sweepElapsed = (sweepElapsed + dt) % CYCLE_SECONDS;
+    const nextPos = computeModePos(sweepElapsed);
+    const nextIndex = activeModeFromPos(nextPos);
+    if (nextIndex !== settings.index) {
+      syncModeUI(nextIndex);
+    }
+    if (Math.abs(nextPos - settings.modePos) > 1e-4 || nextIndex !== settings.index) {
+      settings = { index: nextIndex, modePos: nextPos };
+      motion.setSettings(settings);
+    }
+    sweepFrame = requestAnimationFrame(tick);
+  };
+  sweepFrame = requestAnimationFrame(tick);
 }
 
 const motion = createMotion({
@@ -58,22 +105,27 @@ const motion = createMotion({
     shader.updateBrass(renderer, next);
   },
   renderState(phase) {
+    currentPhase = phase;
     stage.dataset.motion = phase;
     if (phase === "running") rendered = true;
     if (["starting", "unavailable", "reduced"].includes(phase)) rendered = false;
-    if (!rendered) showStill(settings.index);
+    syncModeUI(settings.index);
     stage.toggleAttribute("data-rendered", rendered);
     pause.disabled = phase === "reduced" || phase === "unavailable";
     status.textContent = labels[phase];
+    if (phase === "running" && autoSweep) startSweepLoop();
+    else stopSweepLoop();
   },
 });
 
 for (const radio of radios) {
   radio.addEventListener("change", () => {
+    autoSweep = false;
+    stopSweepLoop();
     const index = Number(radio.value);
-    settings = { index, preset: index };
-    stage.dataset.material = radio.value;
-    showStill(index);
+    sweepElapsed = index * SLOT_SECONDS;
+    settings = { index, modePos: index };
+    syncModeUI(index);
     motion.setSettings(settings);
   });
 }
@@ -86,6 +138,7 @@ pause.addEventListener("click", () => {
 });
 
 window.addEventListener("pagehide", () => {
+  stopSweepLoop();
   rendered = false;
   stage.removeAttribute("data-rendered");
 });
@@ -101,6 +154,10 @@ const summaryEl = document.querySelector("[data-acoustic-summary]");
 const totalEl = document.querySelector("[data-acoustic-total]");
 const feedbackEl = document.querySelector("[data-acoustic-feedback]");
 const downloadBtn = document.querySelector("[data-download-brief]");
+const areaErrorEl = document.querySelector("[data-area-error]");
+const qtyErrorEl = document.querySelector("[data-qty-error]");
+
+const field = (name) => form?.querySelector(`[name="${name}"]`);
 
 const systems = en ? {
   desk: { name: "Desk Resonator Ø280 mm (C260 2.5 mm)", price: 14800 },
@@ -114,20 +171,109 @@ const systems = en ? {
 
 const finishCosts = { brushed: 0, oxidized: 2400 };
 
+function validateInteger(input, min, max, label) {
+  const raw = String(input?.value ?? "").trim();
+  if (!raw || input?.validity?.badInput) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Enter a whole number between ${min} and ${max}.`
+        : `請輸入 ${min} 至 ${max} 的整數。`,
+    };
+  }
+  if (!/^[+-]?\d+$/.test(raw)) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `${label} must be a whole number (${min}–${max}); decimals are not supported.`
+        : `${label}須為 ${min} 至 ${max} 的整數，不接受小數。`,
+    };
+  }
+  const value = Number.parseInt(raw, 10);
+  if (value < min) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Minimum ${label.toLowerCase()} is ${min} (enter ${min}–${max}).`
+        : `${label}不可小於 ${min}（範圍 ${min}–${max}）。`,
+    };
+  }
+  if (value > max) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Maximum ${label.toLowerCase()} is ${max} (enter ${min}–${max}).`
+        : `${label}不可超過上限 ${max}（範圍 ${min}–${max}）。`,
+    };
+  }
+  return { valid: true, value, error: "" };
+}
+
+function setFieldError(input, errorEl, check) {
+  if (!input) return;
+  if (!check.valid) {
+    input.setAttribute("aria-invalid", "true");
+    if (errorEl) {
+      errorEl.textContent = check.error;
+      errorEl.hidden = false;
+    }
+  } else {
+    input.removeAttribute("aria-invalid");
+    if (errorEl) {
+      errorEl.textContent = "";
+      errorEl.hidden = true;
+    }
+  }
+}
+
 function getSpec() {
-  const sysKey = form.elements.system.value;
-  const area = Math.max(8, Math.min(400, Number(form.elements.area.value) || 24));
-  const reverb = form.elements.reverb.value;
-  const finish = form.elements.finish.value;
-  const qty = Math.max(1, Math.min(12, Number(form.elements.quantity.value) || 1));
+  const sysKey = field("system").value;
+  const areaInput = field("area");
+  const qtyInput = field("quantity");
+  const areaCheck = validateInteger(areaInput, 8, 400, en ? "Room area" : "空間面積");
+  const qtyCheck = validateInteger(qtyInput, 1, 12, en ? "Units" : "配置組數");
+  const reverb = field("reverb").value;
+  const finish = field("finish").value;
   const sys = systems[sysKey] ?? systems.desk;
-  const total = (sys.price + (finishCosts[finish] ?? 0)) * qty;
-  return { sysKey, sys, area, reverb, finish, qty, total };
+  const valid = areaCheck.valid && qtyCheck.valid;
+  const total = valid ? (sys.price + (finishCosts[finish] ?? 0)) * qtyCheck.value : null;
+  return {
+    sysKey,
+    sys,
+    areaInput,
+    qtyInput,
+    areaCheck,
+    qtyCheck,
+    valid,
+    area: areaCheck.value,
+    reverb,
+    finish,
+    qty: qtyCheck.value,
+    total,
+  };
 }
 
 function updateSpec() {
   if (!form) return;
   const s = getSpec();
+  setFieldError(s.areaInput, areaErrorEl, s.areaCheck);
+  setFieldError(s.qtyInput, qtyErrorEl, s.qtyCheck);
+
+  if (!s.valid) {
+    totalEl.textContent = "—";
+    summaryEl.textContent = en
+      ? "Fix the highlighted numeric field above to update the estimate and download."
+      : "請先修正上方無效數字欄位，再檢視估算費用與下載提案單。";
+    if (downloadBtn) downloadBtn.disabled = true;
+    if (feedbackEl) feedbackEl.textContent = "";
+    return;
+  }
+
+  if (downloadBtn) downloadBtn.disabled = false;
   totalEl.textContent = `NT$ ${s.total.toLocaleString("en-US")}`;
   const finishName = s.finish === "oxidized"
     ? (en ? "Hand-Oxidized Bronze (+NT$ 2,400/unit)" : "手工氧化古銅（每組 +NT$ 2,400）")
@@ -139,8 +285,9 @@ function updateSpec() {
 
 for (const btn of document.querySelectorAll("[data-choose-system]")) {
   btn.addEventListener("click", () => {
-    if (form && form.elements.system) {
-      form.elements.system.value = btn.dataset.chooseSystem;
+    const systemSelect = field("system");
+    if (systemSelect) {
+      systemSelect.value = btn.dataset.chooseSystem;
       updateSpec();
     }
   });
@@ -155,6 +302,13 @@ if (form) {
 if (downloadBtn) {
   downloadBtn.addEventListener("click", () => {
     const s = getSpec();
+    if (!s.valid) {
+      updateSpec();
+      const firstInvalid = !s.areaCheck.valid ? s.areaInput : s.qtyInput;
+      firstInvalid?.focus();
+      if (feedbackEl) feedbackEl.textContent = !s.areaCheck.valid ? s.areaCheck.error : s.qtyCheck.error;
+      return;
+    }
     const lines = en ? [
       "CYMATIC BRASS — Offline Acoustic Installation Brief (Concept Brand)",
       "===================================================================",

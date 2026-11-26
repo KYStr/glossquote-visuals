@@ -100,6 +100,9 @@ const summaryEl = document.querySelector("[data-edition-summary]");
 const totalEl = document.querySelector("[data-edition-total]");
 const feedbackEl = document.querySelector("[data-edition-feedback]");
 const downloadBtn = document.querySelector("[data-download-edition]");
+const qtyErrorEl = document.querySelector("[data-qty-error]");
+
+const field = (name) => form?.querySelector(`[name="${name}"]`);
 
 const editions = en ? {
   single: { name: "Single Specimen Frame (30 × 40 cm · 300 gsm Cotton)", price: 2800 },
@@ -117,21 +120,97 @@ const specimenNames = en
 
 const frameCosts = { ash: 0, oak: 420, unframed: -400 };
 
+function validateQuantity(input, min, max) {
+  const raw = String(input?.value ?? "").trim();
+  if (!raw || input?.validity?.badInput) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Enter a whole number between ${min} and ${max}.`
+        : `請輸入 ${min} 至 ${max} 的整數。`,
+    };
+  }
+  if (!/^[+-]?\d+$/.test(raw)) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Quantity must be a whole number (${min}–${max}); decimals are not supported.`
+        : `數量須為 ${min} 至 ${max} 的整數，不接受小數。`,
+    };
+  }
+  const value = Number.parseInt(raw, 10);
+  if (value < min) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Minimum quantity is ${min} (enter ${min}–${max}).`
+        : `數量不可小於 ${min} 組（範圍 ${min}–${max} 組）。`,
+    };
+  }
+  if (value > max) {
+    return {
+      valid: false,
+      value: null,
+      error: en
+        ? `Maximum quantity is ${max} (enter ${min}–${max}).`
+        : `數量不可超過上限 ${max} 組（範圍 ${min}–${max} 組）。`,
+    };
+  }
+  return { valid: true, value, error: "" };
+}
+
 function getEditionState() {
-  const edKey = form.elements.edition.value;
-  const specIdx = Number(form.elements.specimen.value);
-  const paper = form.elements.paper.value;
-  const frame = form.elements.frame.value;
-  const qty = Math.max(1, Math.min(20, Number(form.elements.quantity.value) || 1));
+  const edKey = field("edition").value;
+  const specIdx = Number(field("specimen").value);
+  const paper = field("paper").value;
+  const frame = field("frame").value;
+  const qtyInput = field("quantity");
+  const qtyCheck = validateQuantity(qtyInput, 1, 20);
   const ed = editions[edKey] ?? editions.single;
   const frameDelta = edKey === "kit" ? 0 : (frameCosts[frame] ?? 0);
-  const total = Math.max(500, ed.price + frameDelta) * qty;
-  return { edKey, ed, specIdx, specName: specimenNames[specIdx] ?? specimenNames[0], paper, frame, qty, total };
+  const total = qtyCheck.valid ? Math.max(500, ed.price + frameDelta) * qtyCheck.value : null;
+  return {
+    edKey,
+    ed,
+    specIdx,
+    specName: specimenNames[specIdx] ?? specimenNames[0],
+    paper,
+    frame,
+    qtyInput,
+    qtyCheck,
+    qty: qtyCheck.value,
+    total,
+  };
 }
 
 function updateEdition() {
   if (!form) return;
   const s = getEditionState();
+  if (!s.qtyCheck.valid) {
+    s.qtyInput.setAttribute("aria-invalid", "true");
+    if (qtyErrorEl) {
+      qtyErrorEl.textContent = s.qtyCheck.error;
+      qtyErrorEl.hidden = false;
+    }
+    totalEl.textContent = "—";
+    summaryEl.textContent = en
+      ? "Enter a valid quantity (whole number 1–20) to update the estimate and download."
+      : "請先輸入有效數量（1–20 的整數），再檢視估算總計與下載明細。";
+    if (downloadBtn) downloadBtn.disabled = true;
+    if (feedbackEl) feedbackEl.textContent = "";
+    return;
+  }
+
+  s.qtyInput.removeAttribute("aria-invalid");
+  if (qtyErrorEl) {
+    qtyErrorEl.textContent = "";
+    qtyErrorEl.hidden = true;
+  }
+  if (downloadBtn) downloadBtn.disabled = false;
+
   totalEl.textContent = `NT$ ${s.total.toLocaleString("en-US")}`;
   const frameLabel = s.edKey === "kit"
     ? (en ? "Includes contact printing glass" : "內含日光壓花玻璃框")
@@ -147,8 +226,9 @@ function updateEdition() {
 
 for (const btn of document.querySelectorAll("[data-choose-edition]")) {
   btn.addEventListener("click", () => {
-    if (form && form.elements.edition) {
-      form.elements.edition.value = btn.dataset.chooseEdition;
+    const editionSelect = field("edition");
+    if (editionSelect) {
+      editionSelect.value = btn.dataset.chooseEdition;
       updateEdition();
     }
   });
@@ -163,6 +243,12 @@ if (form) {
 if (downloadBtn) {
   downloadBtn.addEventListener("click", () => {
     const s = getEditionState();
+    if (!s.qtyCheck.valid) {
+      updateEdition();
+      s.qtyInput.focus();
+      if (feedbackEl) feedbackEl.textContent = s.qtyCheck.error;
+      return;
+    }
     const lines = en ? [
       "BOTANICA PRESS — Offline Archival Edition Sheet (Concept Brand)",
       "===============================================================",

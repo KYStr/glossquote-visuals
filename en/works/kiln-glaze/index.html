@@ -99,7 +99,7 @@
         <div class="vessel-grid">
           <article class="vessel-card">
             <div class="vessel-media">
-              <img src="%BASE_URL%media/kiln-glaze/celadon.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Celadon crackle Chawan tea bowl">
+              <img src="%BASE_URL%media/kiln-glaze/product-chawan.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Deep celadon crackle Chawan tea bowl">
               <span class="vessel-code">KG–01</span>
             </div>
             <div class="vessel-body">
@@ -115,7 +115,7 @@
 
           <article class="vessel-card">
             <div class="vessel-media">
-              <img src="%BASE_URL%media/kiln-glaze/tenmoku.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Iron oil-spot rim plate">
+              <img src="%BASE_URL%media/kiln-glaze/product-plate.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Broad shallow iron oil-spot rim dining plate">
               <span class="vessel-code">KG–02</span>
             </div>
             <div class="vessel-body">
@@ -131,7 +131,7 @@
 
           <article class="vessel-card">
             <div class="vessel-media">
-              <img src="%BASE_URL%media/kiln-glaze/ash.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Wood-ash melt pouring pitcher">
+              <img src="%BASE_URL%media/kiln-glaze/product-pitcher.webp" width="1200" height="800" loading="lazy" decoding="async" alt="Wood-ash melt Katakuchi pouring pitcher with pinched side spout">
               <span class="vessel-code">KG–03</span>
             </div>
             <div class="vessel-body">
@@ -158,7 +158,7 @@
           <p>Pair a vessel, glaze and indicative firing window, then download a plain-text spec sheet locally. Nothing is submitted online.</p>
         </header>
         <div class="builder-grid">
-          <form class="commission-form" data-commission-form>
+          <div class="commission-form" role="group" aria-labelledby="commission-title" data-commission-form>
             <div class="field">
               <label for="kiln-vessel-select">Vessel form</label>
               <select id="kiln-vessel-select" name="vessel">
@@ -177,7 +177,8 @@
             </div>
             <div class="field">
               <label for="kiln-qty">Quantity (1–24)</label>
-              <input id="kiln-qty" name="quantity" type="number" min="1" max="24" value="2">
+              <input id="kiln-qty" name="quantity" type="number" min="1" max="24" step="1" inputmode="numeric" value="2" aria-describedby="kiln-qty-error">
+              <p class="field-error" id="kiln-qty-error" data-qty-error role="alert" hidden></p>
             </div>
             <div class="field">
               <label for="kiln-batch">Indicative firing batch</label>
@@ -198,7 +199,7 @@
               <label for="kiln-note">Foot-ring stamp or context notes (optional)</label>
               <textarea id="kiln-note" name="note" rows="3" placeholder="e.g., Tea house opening set, prefer deeper celadon pool"></textarea>
             </div>
-          </form>
+          </div>
 
           <aside class="summary-card" aria-live="polite">
             <h3>Commission Summary</h3>

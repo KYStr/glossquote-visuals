@@ -106,7 +106,7 @@
         <div class="system-grid">
           <article class="system-card">
             <div class="system-art">
-              <img src="%BASE_URL%media/cymatic-brass/quad.webp" width="1200" height="800" loading="lazy" decoding="async" alt="桌面共振盤 288 Hz 節線示意">
+              <img src="%BASE_URL%media/cymatic-brass/product-desk.webp" width="1200" height="800" loading="lazy" decoding="async" alt="桌面共振盤單一圓形黃銅盤與 288 Hz 節線示意">
               <span class="sys-tag">CB–01</span>
             </div>
             <div class="system-body">
@@ -122,7 +122,7 @@
 
           <article class="system-card">
             <div class="system-art">
-              <img src="%BASE_URL%media/cymatic-brass/hex.webp" width="1200" height="800" loading="lazy" decoding="async" alt="壁面擴散銅板 512 Hz 節線示意">
+              <img src="%BASE_URL%media/cymatic-brass/product-wall.webp" width="1200" height="800" loading="lazy" decoding="async" alt="600×600 mm 方形壁面擴散黃銅板與四角鎖件示意">
               <span class="sys-tag">CB–02</span>
             </div>
             <div class="system-body">
@@ -138,7 +138,7 @@
 
           <article class="system-card">
             <div class="system-art">
-              <img src="%BASE_URL%media/cymatic-brass/lotus.webp" width="1200" height="800" loading="lazy" decoding="async" alt="展演場域聲學矩陣 768 Hz 節線示意">
+              <img src="%BASE_URL%media/cymatic-brass/product-array.webp" width="1200" height="800" loading="lazy" decoding="async" alt="2×2 四盤連動黃銅共振聲學矩陣俯視示意">
               <span class="sys-tag">CB–03</span>
             </div>
             <div class="system-body">
@@ -165,7 +165,7 @@
           <p>輸入空間條件與表面工藝，即時生成離線提案單供專案討論使用，不傳輸任何資料。</p>
         </header>
         <div class="specifier-grid">
-          <form class="lab-form" data-acoustic-form>
+          <div class="lab-form" role="group" aria-labelledby="specifier-title" data-acoustic-form>
             <div class="field full">
               <label for="cb-system">聲學系統</label>
               <select id="cb-system" name="system">
@@ -175,12 +175,14 @@
               </select>
             </div>
             <div class="field">
-              <label for="cb-area">空間面積（m²）</label>
-              <input id="cb-area" name="area" type="number" min="8" max="400" value="36">
+              <label for="cb-area">空間面積（8–400 m²）</label>
+              <input id="cb-area" name="area" type="number" min="8" max="400" step="1" inputmode="numeric" value="36" aria-describedby="cb-area-error">
+              <p class="field-error" id="cb-area-error" data-area-error role="alert" hidden></p>
             </div>
             <div class="field">
               <label for="cb-qty">配置組數（1–12）</label>
-              <input id="cb-qty" name="quantity" type="number" min="1" max="12" value="1">
+              <input id="cb-qty" name="quantity" type="number" min="1" max="12" step="1" inputmode="numeric" value="1" aria-describedby="cb-qty-error">
+              <p class="field-error" id="cb-qty-error" data-qty-error role="alert" hidden></p>
             </div>
             <div class="field">
               <label for="cb-reverb">殘響取向（目標 RT60）</label>
@@ -197,7 +199,7 @@
                 <option value="oxidized">手工氧化古銅（+NT$ 2,400／組）</option>
               </select>
             </div>
-          </form>
+          </div>
 
           <aside class="brief-box" aria-live="polite">
             <h3>ACOUSTIC BRIEF // 提案摘要</h3>
