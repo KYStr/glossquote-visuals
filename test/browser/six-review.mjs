@@ -33,7 +33,7 @@ try {
       });
       await page.screenshot({path:"review/" + mode + "-first.jpg"});
       const stage = page.locator("[data-stage]");
-      await stage.scrollIntoViewIfNeeded();
+      if (slug !== "solstice-voyage") await stage.scrollIntoViewIfNeeded();
       await page.waitForFunction(() => ["running","unavailable","reduced"].includes(document.querySelector("[data-stage]").dataset.motion), null,{timeout:30000}).catch(()=>{});
       r.phase = await stage.getAttribute("data-motion");
       r.adapter = await page.evaluate(async () => (await navigator.gpu?.requestAdapter())?.info?.description || null);

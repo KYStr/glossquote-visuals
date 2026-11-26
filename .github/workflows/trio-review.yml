@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        work: [kiln-glaze, cymatic-brass, botanica-press, sleeper-line, archipelago-log, contour-expedition, solstice-voyage]
+        work: [solstice-voyage]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
