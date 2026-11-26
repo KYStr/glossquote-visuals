@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-Hant" class="contour-page">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- discoverability -->
+  <meta name="theme-color" content="#f2f3ef">
+  <title>等高線行旅 CONTOUR EXPEDITION｜山岳健行與極地探險規劃社</title>
+  <meta name="description" content="透過立體陰影等高線地形圖與即時稜線路徑，比較白朗峰環線、日本北阿爾卑斯與巴塔哥尼亞冰原三條健行遠征，匯出行程與裝備清單。">
+  <link rel="canonical" href="https://kystr.github.io/glossquote-visuals/works/contour-expedition/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://kystr.github.io/glossquote-visuals/works/contour-expedition/">
+  <link rel="alternate" hreflang="en" href="https://kystr.github.io/glossquote-visuals/en/works/contour-expedition/">
+  <link rel="alternate" hreflang="x-default" href="https://kystr.github.io/glossquote-visuals/works/contour-expedition/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="等高線行旅 CONTOUR EXPEDITION｜山岳健行與極地探險規劃社">
+  <meta property="og:description" content="透過立體陰影等高線地形圖與即時稜線路徑，比較白朗峰環線、日本北阿爾卑斯與巴塔哥尼亞冰原三條健行遠征，匯出行程與裝備清單。">
+  <meta property="og:url" content="https://kystr.github.io/glossquote-visuals/works/contour-expedition/">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:image" content="https://kystr.github.io/glossquote-visuals/media/contour-expedition/cover.webp">
+  <meta property="og:image:alt" content="瑞士風格立體山影等高線地形圖，一條訊號橘健行路線自營地沿稜線延伸至山頂三角點。">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <link rel="icon" href="/media/contour-expedition/icon.png" type="image/png" sizes="64x64">
+  <link rel="preload" href="%BASE_URL%media/contour-expedition/montblanc.webp" as="image">
+  <link rel="stylesheet" href="/src/works/contour-expedition/page.css">
+  <link rel="stylesheet" href="%BASE_URL%fonts/studio-tc.css">
+  <script vite-ignore src="%BASE_URL%fonts/studio-tc-first-layout.js"></script>
+  <script type="module" src="/src/works/contour-expedition/page.js"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳至主要內容</a>
+  <header class="mast frame">
+    <a class="wordmark" href="#top" aria-label="等高線行旅 CONTOUR EXPEDITION"><i class="peak-mark" aria-hidden="true"></i><span>等高線行旅</span> <b lang="en">CONTOUR EXPEDITION</b></a>
+    <nav aria-label="主選單">
+      <a href="#expeditions">遠征路線</a>
+      <a href="#planner">行程與裝備表</a>
+      <a href="%BASE_URL%">返回畫廊</a>
+      <a href="%BASE_URL%en/works/contour-expedition/" hreflang="en" lang="en">EN</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero frame" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker">ALPINE TREKKING &amp; EXPEDITION AGENCY</p>
+        <h1 id="hero-title">走進地圖上<br>每一條等高線。</h1>
+        <p class="intro">以國際認證山岳嚮導 1:4 編制與衛星氣象支援，規劃白朗峰、北阿爾卑斯與巴塔哥尼亞小團深度健行，讓每一趟攀登兼具安全與節奏。</p>
+        <div class="actions">
+          <a class="button primary" href="#planner">試算遠征與裝備 <span aria-hidden="true">↘</span></a>
+          <a class="button secondary" href="#expeditions">比較三條路線</a>
+        </div>
+        <dl class="safety-grid">
+          <div><dt>嚮導比例</dt><dd>1:4 認證領隊</dd></div>
+          <div><dt>安全通訊</dt><dd>雙向衛星定位追踪</dd></div>
+          <div><dt>行李後勤</dt><dd>山谷段專車接駁</dd></div>
+          <div><dt>出團人數</dt><dd>4–8 位精緻小隊</dd></div>
+        </dl>
+      </div>
+
+      <figure class="topo-figure">
+        <div class="topo-header">
+          <span>TOPOGRAPHIC RELIEF // 1:25,000</span>
+          <span data-elev-readout>MAX 2,665 m · 170 km</span>
+        </div>
+        <div class="stage-wrap">
+          <div class="stage" data-stage data-cycle-seconds="10" data-material="0" data-motion="still">
+            <img data-poster src="%BASE_URL%media/contour-expedition/montblanc.webp" width="1200" height="800" fetchpriority="high" alt="白朗峰環線立體陰影等高線地形圖，橘色健行路線沿主脊推進至山頂三角點。">
+            <canvas aria-hidden="true" data-canvas></canvas>
+          </div>
+          <button class="pause" type="button" data-pause data-play="繼續路徑" aria-pressed="false" hidden>暫停路徑</button>
+        </div>
+        <figcaption class="topo-controls">
+          <fieldset class="route-switch" data-instrument hidden>
+            <legend class="sr">切換遠征地形圖</legend>
+            <label class="route-btn">
+              <input type="radio" name="expedition-region" value="0" checked>
+              <strong>白朗峰環線</strong>
+              <span>2,665 m · 8D</span>
+            </label>
+            <label class="route-btn">
+              <input type="radio" name="expedition-region" value="1">
+              <strong>日本北阿爾卑斯</strong>
+              <span>3,180 m · 6D</span>
+            </label>
+            <label class="route-btn">
+              <input type="radio" name="expedition-region" value="2">
+              <strong>巴塔哥尼亞冰原</strong>
+              <span>1,920 m · 10D</span>
+            </label>
+          </fieldset>
+          <p data-motion-status class="sr" role="status">顯示立體等高線地形圖靜態畫面。</p>
+          <noscript><p class="static-caption">白朗峰環線｜等高線地形與訊號橘稜線健行軌跡。</p></noscript>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section" id="expeditions" aria-labelledby="expeditions-title">
+      <div class="frame">
+        <header class="section-head">
+          <div>
+            <p class="kicker">GUIDED ALPINE ROUTES</p>
+            <h2 id="expeditions-title">三條經典山岳遠征</h2>
+          </div>
+          <p>費用含國際山岳領隊、山屋食宿、緊急衛星通訊與登山保險規劃。以下為概念旅行社每人示意費用。</p>
+        </header>
+        <div class="trek-grid">
+          <article class="trek-card">
+            <div class="trek-art">
+              <img src="%BASE_URL%media/contour-expedition/montblanc.webp" width="1200" height="800" loading="lazy" decoding="async" alt="瑞士白朗峰環線等高線地形圖">
+              <span class="grade-tag">GRADE B · 8 DAYS</span>
+            </div>
+            <div class="trek-body">
+              <h3>瑞士白朗峰環線 8 日</h3>
+              <p class="trek-meta">最高 2,665 m · 每日 5–6 小時 · 適合中階百岳旅人</p>
+              <p>橫跨法、義、瑞三國高山埡口與冰河谷地，搭配山谷段大件行李專車轉運，輕裝享受阿爾卑斯稜線。</p>
+            </div>
+            <footer class="trek-foot">
+              <span class="price">NT$ 112,000／人</span>
+              <a class="button secondary" href="#planner" data-choose-trek="montblanc">選擇路線</a>
+            </footer>
+          </article>
+
+          <article class="trek-card">
+            <div class="trek-art">
+              <img src="%BASE_URL%media/contour-expedition/alps.webp" width="1200" height="800" loading="lazy" decoding="async" alt="日本北阿爾卑斯縱走地形圖">
+              <span class="grade-tag">GRADE B+ · 6 DAYS</span>
+            </div>
+            <div class="trek-body">
+              <h3>日本北阿爾卑斯縱走 6 日</h3>
+              <p class="trek-meta">最高 3,180 m · 每日 6–7 小時 · 適合進階健行者</p>
+              <p>從上高地直上槍岳與穗高連峰刀刃稜線，入住日本百年高山山屋，下山後於平湯溫泉休整。</p>
+            </div>
+            <footer class="trek-foot">
+              <span class="price">NT$ 68,000／人</span>
+              <a class="button secondary" href="#planner" data-choose-trek="alps">選擇路線</a>
+            </footer>
+          </article>
+
+          <article class="trek-card">
+            <div class="trek-art">
+              <img src="%BASE_URL%media/contour-expedition/patagonia.webp" width="1200" height="800" loading="lazy" decoding="async" alt="巴塔哥尼亞冰原遠征地形圖">
+              <span class="grade-tag">GRADE A · 10 DAYS</span>
+            </div>
+            <div class="trek-body">
+              <h3>巴塔哥尼亞冰原 10 日</h3>
+              <p class="trek-meta">最高 1,920 m · 強風與冰川路段 · 適合資深探險者</p>
+              <p>深入菲茨羅伊花崗岩尖峰與南美冰原邊緣，由在地極地嚮導帶領完成冰河健行與多日營地縱走。</p>
+            </div>
+            <footer class="trek-foot">
+              <span class="price">NT$ 168,000／人</span>
+              <a class="button secondary" href="#planner" data-choose-trek="patagonia">選擇路線</a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="planner" aria-labelledby="planner-title">
+      <div class="frame">
+        <header class="section-head">
+          <div>
+            <p class="kicker">OFFLINE EXPEDITION BRIEF</p>
+            <h2 id="planner-title">遠征報價與行前裝備清單</h2>
+          </div>
+          <p>挑選路線、住宿等級與技術裝備租借，一鍵於本機匯出含裝備檢核表的行程單，不進行線上送出。</p>
+        </header>
+        <div class="plan-grid">
+          <form class="trek-form" data-trek-form>
+            <div class="field full">
+              <label for="ce-trek">遠征路線</label>
+              <select id="ce-trek" name="trek">
+                <option value="montblanc">瑞士白朗峰環線 8 日（NT$ 112,000／人）</option>
+                <option value="alps">日本北阿爾卑斯縱走 6 日（NT$ 68,000／人）</option>
+                <option value="patagonia">巴塔哥尼亞冰原 10 日（NT$ 168,000／人）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ce-hikers">報名人數（1–8 位）</label>
+              <input id="ce-hikers" name="hikers" type="number" min="1" max="8" value="2">
+            </div>
+            <div class="field">
+              <label for="ce-stay">住宿等級</label>
+              <select id="ce-stay" name="stay">
+                <option value="hut">經典高山山屋（標準配置）</option>
+                <option value="lodge">山谷雙人旅宿升級（+NT$ 16,500／人）</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="ce-gear">技術裝備租借方案</label>
+              <select id="ce-gear" name="gear">
+                <option value="own">自備全套個人健行裝備</option>
+                <option value="pack">租借輕量化裝備包：登山杖＋防水殼＋簡易冰爪（+NT$ 4,800／人）</option>
+              </select>
+            </div>
+          </form>
+
+          <aside class="plan-box" aria-live="polite">
+            <h3>EXPEDITION PLAN // 行程摘要</h3>
+            <p class="plan-line" data-trek-summary>2 位隊員 × 瑞士白朗峰環線 8 日｜經典高山山屋</p>
+            <div class="plan-total">
+              <span>示意團體總計</span>
+              <strong data-trek-total>NT$ 224,000</strong>
+            </div>
+            <button class="button primary" type="button" data-download-plan>下載行程與裝備清單 (.txt)</button>
+            <p class="feedback" data-trek-feedback role="status"></p>
+            <p class="notice">概念旅行社聲明：等高線行旅 CONTOUR EXPEDITION 為旅行社商業網站示範作品，所有報價與裝備清單皆於本機離線產出，無線上報名或扣款。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer frame">
+    <span>等高線行旅 CONTOUR EXPEDITION · V017 旅遊商業示範作品</span>
+    <span>
+      <a href="%BASE_URL%">返回繁中畫廊</a> ·
+      <a href="%BASE_URL%en/works/contour-expedition/" hreflang="en" lang="en">English</a> ·
+      <a href="<!-- work-source -->">原始碼</a>
+    </span>
+  </footer>
+</body>
+</html>
