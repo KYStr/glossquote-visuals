@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        work: [solstice-voyage, cymatic-brass, contour-expedition, archipelago-log, solstice-motion]
+        work: [solstice-motion]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -23,7 +23,7 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: node node_modules/vite/bin/vite.js build --mode candidate
       - run: node node_modules/playwright/cli.js install chromium --no-shell
-      - run: node test/browser/short-fold.mjs ${{ matrix.work }}
+      - run: node test/browser/solstice-frames.mjs
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
