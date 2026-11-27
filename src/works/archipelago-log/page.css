@@ -338,8 +338,18 @@ h1, h2, h3, p, dd, dt { overflow-wrap: break-word; }
 }
 @media (max-width: 360px) {
   .frame { width: calc(100% - 1.25rem); }
-  .hero .button { padding: 0.38rem 0.68rem; font-size: 0.74rem; }
-  .sea-pill { padding: 0.25rem 0.22rem; }
+  .mast { padding: 0.18rem 0; gap: 0 0.45rem; }
+  .mast nav { gap: 0 0.5rem; }
+  .mast nav a { font-size: 0.74rem; }
+  .hero { padding: 0.32rem 0 1.4rem; gap: 0.36rem; }
+  .chart-head { font-size: 0.58rem; padding-bottom: 0.2rem; margin-bottom: 0.25rem; }
+  .stage { aspect-ratio: 16 / 8.5; max-height: 148px; }
+  .chart-controls { margin-top: 0.3rem; }
+  .sea-pill { padding: 0.22rem 0.2rem; }
+  .kicker { font-size: 0.58rem; margin-bottom: 0.14rem; }
+  .hero h1 { font-size: 1.32rem; margin-bottom: 0.18rem; }
+  .intro { font-size: 0.74rem; line-height: 1.26; margin-bottom: 0.32rem; }
+  .hero .button { padding: 0.36rem 0.64rem; font-size: 0.72rem; min-height: 44px; }
   .voyage-stats { grid-template-columns: minmax(0, 1fr); }
   .voyage-form, .dossier-box { padding: 0.9rem; }
 }
