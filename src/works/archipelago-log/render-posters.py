@@ -1,4 +1,4 @@
-"""Bake mathematically matched luxury hydrographic lagoon plates & icon for V016 archipelago-log."""
+"""Bake O(1) analytic perspective Mediterranean & Okinawa ocean stills for V016 archipelago-log."""
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -13,156 +13,158 @@ def smoothstep(e0, e1, x):
     return t * t * (3.0 - 2.0 * t)
 
 
-def render_plate(width, height, sea=0, t=5.4):
+def render_still(width, height, sea=0, t_sec=2.4):
     y, x = np.mgrid[0:height, 0:width].astype(np.float32)
     uv_x = (x + 0.5) / width
     uv_y = (y + 0.5) / height
     aspect = width / height
 
-    px = (uv_x - 0.50) * aspect
-    py = (uv_y - 0.50)
-    feather = 1.6 / max(180.0, height)
-    cyc = (t * 0.1) % 1.0
-
-    wobble = 0.018 * np.sin(px * 13.0 + py * 8.5) + 0.009 * np.cos(py * 21.0 - px * 15.0 + 0.7) + 0.004 * np.sin(px * 37.0 + py * 29.0)
-    if sea == 0:
-        arc_dist = np.sqrt(((px + 0.24) * 0.88) ** 2 + ((py + 0.04) * 1.18) ** 2) - 0.25
-        bite = np.sqrt((px + 0.06) ** 2 + (py - 0.06) ** 2) - 0.21
-        main_island = np.maximum(arc_dist, -bite)
-        shoal = np.sqrt(((px - 0.38) * 0.82) ** 2 + ((py + 0.22) * 1.25) ** 2) - 0.14
-        land_signed = np.minimum(main_island, shoal) + wobble
-    elif sea == 1:
-        cal_outer = np.sqrt(((px - 0.28) * 0.95) ** 2 + ((py - 0.08) * 1.05) ** 2) - 0.27
-        cal_bay = np.sqrt((px - 0.11) ** 2 + (py - 0.05) ** 2) - 0.19
-        caldera = np.maximum(cal_outer, -cal_bay)
-        islet_a = np.sqrt(((px + 0.42) * 1.05) ** 2 + ((py + 0.24) * 1.25) ** 2) - 0.11
-        islet_b = np.sqrt(((px + 0.14) * 1.20) ** 2 + ((py + 0.32) * 1.10) ** 2) - 0.08
-        land_signed = np.minimum(caldera, np.minimum(islet_a, islet_b)) + wobble * 0.85
-    else:
-        r1 = np.sqrt(((px + 0.38) * 1.05) ** 2 + ((py - 0.20) * 1.15) ** 2) - 0.125
-        r2 = np.sqrt(((px + 0.16) * 1.10) ** 2 + ((py + 0.24) * 1.20) ** 2) - 0.115
-        r3 = np.sqrt(((px - 0.16) * 1.15) ** 2 + ((py + 0.25) * 1.05) ** 2) - 0.12
-        r4 = np.sqrt(((px - 0.42) * 1.00) ** 2 + ((py - 0.04) * 1.25) ** 2) - 0.12
-        r5 = np.sqrt(((px - 0.12) * 1.05) ** 2 + ((py - 0.28) * 1.25) ** 2) - 0.11
-        land_signed = np.minimum(np.minimum(np.minimum(r1, r2), np.minimum(r3, r4)), r5) + wobble * 0.7
-    depth = np.maximum(land_signed, 0.0)
+    wx = (uv_x - 0.5) * aspect
+    wy = -(uv_y - 0.5) - (-0.04)
 
     if sea == 0:
-        deep_col = np.array([0.038, 0.135, 0.225], dtype=np.float32)
-        mid_col = np.array([0.075, 0.335, 0.405], dtype=np.float32)
-        shallow_col = np.array([0.285, 0.615, 0.625], dtype=np.float32)
-        sand_col = np.array([0.925, 0.892, 0.825], dtype=np.float32)
-        flora_col = np.array([0.205, 0.345, 0.235], dtype=np.float32)
+        sun_pos = (-0.22, 0.145)
+        sky_z = np.array([0.06, 0.14, 0.30], dtype=np.float32)
+        sky_m = np.array([0.28, 0.36, 0.48], dtype=np.float32)
+        sky_h = np.array([1.02, 0.62, 0.34], dtype=np.float32)
+        sun_col = np.array([2.1, 1.25, 0.62], dtype=np.float32)
+        deep_w = np.array([0.015, 0.08, 0.18], dtype=np.float32)
+        scat_w = np.array([0.05, 0.32, 0.42], dtype=np.float32)
+        haze = np.array([0.76, 0.55, 0.42], dtype=np.float32)
     elif sea == 1:
-        deep_col = np.array([0.035, 0.095, 0.215], dtype=np.float32)
-        mid_col = np.array([0.085, 0.245, 0.435], dtype=np.float32)
-        shallow_col = np.array([0.285, 0.545, 0.655], dtype=np.float32)
-        sand_col = np.array([0.915, 0.885, 0.825], dtype=np.float32)
-        flora_col = np.array([0.435, 0.445, 0.345], dtype=np.float32)
+        sun_pos = (0.26, 0.28)
+        sky_z = np.array([0.07, 0.30, 0.64], dtype=np.float32)
+        sky_m = np.array([0.26, 0.56, 0.82], dtype=np.float32)
+        sky_h = np.array([0.76, 0.90, 0.94], dtype=np.float32)
+        sun_col = np.array([1.9, 1.82, 1.58], dtype=np.float32)
+        deep_w = np.array([0.015, 0.19, 0.32], dtype=np.float32)
+        scat_w = np.array([0.06, 0.66, 0.68], dtype=np.float32)
+        haze = np.array([0.68, 0.85, 0.90], dtype=np.float32)
     else:
-        deep_col = np.array([0.045, 0.185, 0.255], dtype=np.float32)
-        mid_col = np.array([0.165, 0.465, 0.485], dtype=np.float32)
-        shallow_col = np.array([0.455, 0.725, 0.705], dtype=np.float32)
-        sand_col = np.array([0.920, 0.905, 0.855], dtype=np.float32)
-        flora_col = np.array([0.135, 0.305, 0.185], dtype=np.float32)
+        sun_pos = (0.08, 0.095)
+        sky_z = np.array([0.07, 0.09, 0.22], dtype=np.float32)
+        sky_m = np.array([0.34, 0.23, 0.38], dtype=np.float32)
+        sky_h = np.array([1.04, 0.50, 0.42], dtype=np.float32)
+        sun_col = np.array([2.05, 0.95, 0.64], dtype=np.float32)
+        deep_w = np.array([0.025, 0.055, 0.14], dtype=np.float32)
+        scat_w = np.array([0.18, 0.18, 0.28], dtype=np.float32)
+        haze = np.array([0.72, 0.44, 0.44], dtype=np.float32)
 
-    m1 = smoothstep(0.0, 0.14, depth)[..., None]
-    m2 = smoothstep(0.12, 0.44, depth)[..., None]
-    water = shallow_col * (1.0 - m1) + mid_col * m1
-    water = water * (1.0 - m2) + deep_col * m2
+    sky_t = np.clip(np.maximum(wy, 0.0) / 0.56, 0.0, 1.0)
+    s1 = smoothstep(0.0, 0.38, sky_t)[..., None]
+    s2 = smoothstep(0.26, 1.0, sky_t)[..., None]
+    sky = sky_h * (1.0 - s1) + sky_m * s1
+    sky = sky * (1.0 - s2) + sky_z * s2
 
-    isobath = ((1.0 - smoothstep(0.0, 0.045, np.abs(np.mod(depth * 18.0, 1.0) - 0.5))) * (1.0 - smoothstep(0.06, 0.26, depth)) * smoothstep(0.012, 0.025, depth) * 0.22)[..., None]
-    water = water * (1.0 - isobath) + (shallow_col * 1.18) * isobath
+    sdist = np.sqrt((wx - sun_pos[0]) ** 2 + (np.maximum(wy, -0.05) - sun_pos[1]) ** 2)
+    sun_halo = np.exp(-sdist * 4.2) * 0.45 + np.exp(-sdist * 16.0) * 0.85
+    sun_disc = 1.0 - smoothstep(0.024, 0.030, sdist)
+    sky += sun_col * sun_halo[..., None] + np.array([1.2, 1.15, 1.0], dtype=np.float32) * (sun_disc * 1.6)[..., None]
 
-    ca = np.sin(px * 24.0 + py * 16.0 + t * 1.2 + 1.1 * np.sin(py * 11.0 - t * 0.8))
-    cb = np.sin(px * 17.0 - py * 25.0 - t * 0.95 + 1.0 * np.cos(px * 13.0 + t * 0.7))
-    caustic = np.power(np.clip(0.5 + 0.5 * ca * cb, 0.0, 1.0), 5.0) * (1.0 - smoothstep(0.04, 0.28, depth))
-    water += np.array([0.18, 0.26, 0.26], dtype=np.float32) * (caustic * 0.42)[..., None]
+    # Trade-wind clouds
+    above = wy > 0.004
+    cz = 1.0 / (np.maximum(wy, 0.004) + 0.11)
+    cux = wx * cz * 0.42 + t_sec * 0.018
+    cuy = cz * 0.36 - t_sec * 0.010
+    n1 = np.sin(cux * 1.8 + 0.9 * np.cos(cuy * 1.5)) * np.cos(cuy * 2.1 - cux * 0.8)
+    n2 = np.sin(cux * 4.1 - cuy * 3.7 + 0.8 * np.sin(cux * 1.9)) * 0.45
+    n3 = np.cos(cux * 8.5 + cuy * 7.2) * 0.20
+    cdens = smoothstep(0.15, 0.95, n1 + n2 + n3) * smoothstep(0.008, 0.14, wy) * (1.0 - smoothstep(0.32, 0.54, wy)) * above
+    rim = np.clip(0.35 + 0.65 * np.exp(-sdist * 2.8), 0.0, 1.0)[..., None]
+    ccol = (sky_m * 0.92 + 0.18) * (1.0 - rim) + (sun_col * 0.88) * rim
+    sky = sky * (1.0 - (cdens * 0.56)[..., None]) + ccol * (cdens * 0.56)[..., None]
 
-    surf_phase = np.mod(depth * 22.0 - t * 0.38, 1.0)
-    surf_line = np.exp(-(((surf_phase - 0.5) * 10.0) ** 2)) * (1.0 - smoothstep(0.0, 0.055, depth)) * smoothstep(0.0, 0.006, depth)
-    shore_foam = np.exp(-depth * 85.0) * 0.58
-    foam = np.clip(surf_line * 0.42 + shore_foam, 0.0, 0.76)[..., None]
-    water = water * (1.0 - foam) + np.array([0.95, 0.96, 0.95], dtype=np.float32) * foam
+    col = sky.copy()
 
-    gx = 1.0 - smoothstep(0.0, 0.0018, np.abs(np.mod(px * 3.0 + 0.5, 1.0) - 0.5))
-    gy = 1.0 - smoothstep(0.0, 0.0018, np.abs(np.mod(py * 3.0 + 0.5, 1.0) - 0.5))
-    water += np.maximum(gx, gy)[..., None] * np.array([0.08, 0.14, 0.16], dtype=np.float32) * 0.32
+    # Layered coastal islands above horizon
+    drift = np.sin(t_sec * 0.08) * 0.015
+    sea_off = 0.0 if sea == 0 else (1.4 if sea == 1 else 2.8)
+    fx = (wx + drift * 0.4) * 2.6 + sea_off
+    far_h = np.maximum(0.0, 0.042 * np.sin(fx * 1.3 + 0.4) + 0.028 * np.cos(fx * 3.1 - 0.8) + 0.012 * np.sin(fx * 6.8) - 0.008)
+    far_m = (1.0 - smoothstep(-0.002, 0.002, wy - far_h)) * (far_h > 0.001) * (wy >= -0.002)
+    far_c = haze * 0.72 * 0.55 + sky_h * 0.68 * 0.45
+    col = col * (1.0 - (far_m * 0.78)[..., None]) + far_c * (far_m * 0.78)[..., None]
 
-    if sea == 0:
-        route_y = 0.24 - 0.18 * np.sin((px + 0.45) * 2.1)
-    elif sea == 1:
-        route_y = -0.06 + 0.22 * np.sin((px - 0.14) * 2.2) + 0.12 * px
-    else:
-        route_y = 0.02 + 0.12 * np.sin((px + 0.14) * 3.8)
-    route_dash = smoothstep(0.35, 0.55, np.sin(px * 46.0))
-    route_line = (1.0 - smoothstep(0.0018, 0.0040, np.abs(py - route_y))) * route_dash * smoothstep(0.02, 0.06, depth)
-    water = water * (1.0 - (route_line * 0.55)[..., None]) + np.array([0.95, 0.92, 0.84], dtype=np.float32) * (route_line * 0.55)[..., None]
+    mx = wx - 0.36 + drift * 0.8
+    mid_h = np.exp(-mx * mx * 4.8) * (0.145 + 0.032 * np.sin(mx * 14.0 + 1.1) + 0.016 * np.cos(mx * 29.0) + 0.008 * np.sin(mx * 58.0))
+    mid_m = (1.0 - smoothstep(-0.0018, 0.0018, wy - mid_h)) * (mid_h > 0.002) * (wy >= -0.002)
+    strata = 0.5 + 0.5 * np.sin(wy * 165.0 + 1.6 * np.sin(mx * 18.0))
+    lit_f = ((1.0 - smoothstep(-0.18, 0.14, mx - sun_pos[0] * 0.35)) * 0.65)[..., None]
+    cliff_sh = (deep_w * 1.35 + np.array([0.06, 0.06, 0.09], dtype=np.float32)) * 0.58 + haze * 0.52 * 0.42
+    cliff_su = (np.array([0.74, 0.64, 0.52], dtype=np.float32) * 0.65 + sky_h * 0.85 * 0.35) * (0.88 + 0.14 * strata)[..., None]
+    mid_c = (cliff_sh * (1.0 - lit_f) + cliff_su * lit_f) * 0.76 + haze * 0.24
+    col = col * (1.0 - mid_m[..., None]) + mid_c * mid_m[..., None]
 
-    land_mask = 1.0 - smoothstep(-feather, feather, land_signed)
-    inland = np.maximum(-land_signed, 0.0)
-    wt = smoothstep(0.0, 0.024, inland)[..., None]
-    wet_sand = (sand_col * 0.82) * (1.0 - wt) + sand_col * wt
-    n1 = np.sin(px * 29.0 + py * 17.0) * np.cos(py * 23.0 - px * 13.0)
-    n2 = np.sin(px * 53.0 - py * 41.0 + 1.4) * np.cos(px * 31.0 + py * 47.0)
-    organic = 0.5 + 0.35 * n1 + 0.15 * n2
-    flora_mask = smoothstep(0.026, 0.060, inland + 0.010 * n1)[..., None]
-    island_shade = (0.84 + 0.26 * organic + 0.12 * smoothstep(-0.2, 0.2, -(px + py)))[..., None]
-    land = wet_sand * (1.0 - flora_mask) + (flora_col * island_shade) * flora_mask
-    if sea == 1:
-        village_rim = (smoothstep(0.018, 0.042, inland) * (1.0 - smoothstep(0.052, 0.082, inland)) * (px >= 0.06))[..., None] * 0.72
-        land = land * (1.0 - village_rim) + np.array([0.95, 0.94, 0.90], dtype=np.float32) * village_rim
+    nx_p = wx + 0.62 + drift
+    near_h = np.exp(-nx_p * nx_p * 6.5) * (0.11 + 0.025 * np.sin(nx_p * 18.0) + 0.011 * np.cos(nx_p * 37.0))
+    near_m = (1.0 - smoothstep(-0.0015, 0.0015, wy - near_h)) * (near_h > 0.002) * (wy >= -0.002)
+    near_c = deep_w * 0.9 + np.array([0.04, 0.04, 0.055], dtype=np.float32)
+    col = col * (1.0 - near_m[..., None]) + near_c * near_m[..., None]
 
-    out = water * (1.0 - land_mask[..., None]) + land * land_mask[..., None]
+    # Analytic 3D Perspective Ocean Plane (wy < 0)
+    is_sea = wy < 0.0
+    dz = 1.0 / np.maximum(-wy, 0.0035)
+    world_x = wx * dz * 0.85
+    world_z = dz * 0.95
+    atten = 1.0 / (1.0 + dz * 0.048)
+    warp_x = world_x * 0.55 + 0.65 * np.sin(world_z * 0.95 - t_sec * 0.55)
+    warp_z = world_z * 1.45 + 0.45 * np.cos(world_x * 0.48 + t_sec * 0.42)
+    w1 = np.sin(warp_z * 1.9 + warp_x * 0.42 - t_sec * 1.15)
+    w2 = np.sin(warp_z * 3.7 - warp_x * 0.85 - t_sec * 1.48 + 1.3 * w1)
+    w3 = np.sin(warp_z * 7.8 + warp_x * 1.65 - t_sec * 1.92 + 0.7 * w2)
+    w4 = np.cos(warp_z * 15.2 - warp_x * 3.1 + t_sec * 2.4)
+    w5 = np.sin(warp_z * 29.5 + warp_x * 5.8 - t_sec * 2.8)
+    wnx = (w1 * 0.018 + w2 * 0.022 + w3 * 0.019 + w4 * 0.013 + w5 * 0.008) * atten
+    wnz = (w1 * 0.046 + w2 * 0.042 + w3 * 0.032 + w4 * 0.020 + w5 * 0.012) * atten
+    wny = np.ones_like(wnx)
+    wlen = np.sqrt(wnx * wnx + wny * wny + wnz * wnz)
+    wnx, wny, wnz = wnx / wlen, wny / wlen, wnz / wlen
 
-    if sea == 0:
-        boat_x = -0.48 + 0.96 * cyc
-        boat_y = 0.24 - 0.18 * np.sin((boat_x + 0.45) * 2.1)
-        slope = -0.18 * 2.1 * np.cos((boat_x + 0.45) * 2.1)
-        heading = np.arctan2(slope, 1.0)
-    elif sea == 1:
-        boat_x = 0.42 - 0.88 * cyc
-        boat_y = -0.06 + 0.22 * np.sin((boat_x - 0.14) * 2.2) + 0.12 * boat_x
-        slope = -(0.22 * 2.2 * np.cos((boat_x - 0.14) * 2.2) + 0.12)
-        heading = np.arctan2(slope, -1.0)
-    else:
-        boat_x = -0.50 + 1.00 * cyc
-        boat_y = 0.02 + 0.12 * np.sin((boat_x + 0.14) * 3.8)
-        slope = 0.12 * 3.8 * np.cos((boat_x + 0.14) * 3.8)
-        heading = np.arctan2(slope, 1.0)
+    vx, vy, vz = wx * 0.85, wy, np.full_like(wx, -1.0)
+    vlen = np.sqrt(vx * vx + vy * vy + vz * vz)
+    vx, vy, vz = vx / vlen, vy / vlen, vz / vlen
 
-    ch, sh = np.cos(heading), np.sin(heading)
-    rx, ry = px - boat_x, py - boat_y
-    bx = rx * ch + ry * sh
-    by = -rx * sh + ry * ch
+    d_vn = vx * wnx + vy * wny + vz * wnz
+    rx, ry, rz = vx - 2.0 * d_vn * wnx, vy - 2.0 * d_vn * wny, vz - 2.0 * d_vn * wnz
+    fresnel = (0.04 + 0.96 * np.power(1.0 - np.maximum(-d_vn, 0.0), 4.2))[..., None]
 
-    behind = smoothstep(0.0, -0.02, bx) * smoothstep(-0.32, -0.02, bx)
-    wake_spread = -bx * 0.22 + 0.013
-    wake_edge = np.exp(-(((np.abs(by) - wake_spread) * 72.0) ** 2)) * behind * np.exp(np.minimum(bx, 0.0) * 6.5)
-    wk = (wake_edge * 0.46 * (1.0 - land_mask))[..., None]
-    out = out * (1.0 - wk) + np.array([0.94, 0.96, 0.96], dtype=np.float32) * wk
+    rt = np.clip(np.maximum(ry, 0.0) / 0.56, 0.0, 1.0)
+    rs1 = smoothstep(0.0, 0.42, rt)[..., None]
+    rs2 = smoothstep(0.32, 1.0, rt)[..., None]
+    rcol = (sky_h * 0.92) * (1.0 - rs1) + (sky_m * 0.88) * rs1
+    rcol = rcol * (1.0 - rs2) + (sky_z * 0.85) * rs2
 
-    sh_hull = 1.0 - smoothstep(0.020, 0.030, np.sqrt(((bx + 0.012) * 0.65) ** 2 + ((by + 0.015) * 1.4) ** 2))
-    out *= (1.0 - sh_hull * 0.20 * (1.0 - land_mask))[..., None]
+    sv = np.array([sun_pos[0] * 0.85, sun_pos[1], -1.0], dtype=np.float32)
+    sv /= np.linalg.norm(sv)
+    sdot = np.maximum(rx * sv[0] + ry * sv[1] + rz * sv[2], 0.0)
+    glitter = np.power(sdot, 24.0) * 0.72 + np.power(sdot, 220.0) * 2.8 + np.power(sdot, 900.0) * 5.2
+    rcol += sun_col * glitter[..., None]
 
-    hull_l = np.sqrt((bx * 0.48) ** 2 + ((by - 0.012) * 3.8) ** 2) - 0.022
-    hull_r = np.sqrt((bx * 0.48) ** 2 + ((by + 0.012) * 3.8) ** 2) - 0.022
-    deck = np.maximum(np.abs(bx + 0.005) - 0.022, np.abs(by) - 0.014)
-    boat_mask = (1.0 - smoothstep(-feather, feather, np.minimum(np.minimum(hull_l, hull_r), deck)))[..., None]
-    out = out * (1.0 - boat_mask) + np.array([0.98, 0.97, 0.94], dtype=np.float32) * boat_mask
+    crest = smoothstep(0.15, 0.95, 0.5 + 0.5 * w1) * (1.0 - smoothstep(0.0, 0.35, -wy * 0.8 + 0.05))
+    wt = np.clip(0.32 + 0.52 * crest + 0.18 * smoothstep(-0.48, -0.04, wy), 0.0, 1.0)[..., None]
+    wbody = deep_w * (1.0 - wt) + scat_w * wt
 
-    sail = (1.0 - smoothstep(-feather, feather, np.sqrt(((bx + 0.006) * 0.9) ** 2 + (by * 2.2) ** 2) - 0.011)) * 0.85
-    out = out * (1.0 - sail[..., None]) + np.array([0.76, 0.34, 0.20], dtype=np.float32) * sail[..., None]
+    cr_m = (np.exp(-mx * mx * 4.8) * smoothstep(-0.18, -0.005, wy + wnx * 0.3) * 0.55)[..., None]
+    rcol = rcol * (1.0 - cr_m) + (deep_w * 1.1 + np.array([0.04, 0.04, 0.06], dtype=np.float32)) * cr_m
 
-    vig = np.clip(1.0 - 0.14 * ((px * 0.85) ** 2 + (py * 1.05) ** 2), 0.78, 1.02)[..., None]
-    out *= vig
+    sea_c = wbody * (1.0 - fresnel) + rcol * fresnel
+    hmist = (np.exp(-np.maximum(-wy, 0.0) * 26.0) * 0.72)[..., None]
+    sea_c = sea_c * (1.0 - hmist) + (sky_h * 0.92) * hmist
+    col = np.where(is_sea[..., None], sea_c, col)
 
-    return Image.fromarray((np.clip(out, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8), mode="RGB")
+    # Subtle film grain
+    rng = np.random.default_rng(42 + sea)
+    col += rng.uniform(-0.007, 0.007, size=col.shape).astype(np.float32)
+
+    a, b, c, d, e2 = 2.51, 0.03, 2.43, 0.59, 0.14
+    mapped = np.clip((col * (a * col + b)) / (col * (c * col + d) + e2), 0.0, 1.0)
+    srgb = np.where(mapped <= 0.0031308, mapped * 12.92, 1.055 * np.power(np.maximum(mapped, 1e-6), 1.0 / 2.4) - 0.055)
+    return Image.fromarray((np.clip(srgb, 0.0, 1.0) * 255.0 + 0.5).astype(np.uint8), mode="RGB")
 
 
 if __name__ == "__main__":
-    for idx, name in enumerate(("miyako", "cyclades", "palau")):
-        render_plate(1200, 800, sea=idx, t=5.4).save(media / f"{name}.webp", quality=90, method=6)
-    render_plate(1200, 800, sea=0, t=5.4).save(media / "cover.webp", quality=90, method=6)
-    render_plate(128, 128, sea=0, t=5.4).resize((64, 64), Image.Resampling.LANCZOS).save(media / "icon.png")
-    print("Baked archipelago-log posters and icon.")
+    for idx, name in enumerate(("cyclades", "miyako", "amalfi")):
+        render_still(1440, 900, sea=idx, t_sec=2.4).save(media / f"{name}.webp", quality=91, method=6)
+    render_still(1200, 800, sea=0, t_sec=2.4).save(media / "cover.webp", quality=91, method=6)
+    render_still(128, 128, sea=0, t_sec=2.4).resize((64, 64), Image.Resampling.LANCZOS).save(media / "icon.png")
+    print("Baked upgraded archipelago-log luxury ocean stills and icon.")

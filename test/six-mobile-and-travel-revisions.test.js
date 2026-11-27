@@ -10,7 +10,6 @@ const sixWorks = [
   "cymatic-brass",
   "botanica-press",
   "sleeper-line",
-  "archipelago-log",
   "contour-expedition",
 ];
 const copyFirstWorks = [
@@ -69,7 +68,8 @@ test("cymatic-brass updates mode posters cleanly on selection and never triggers
 
 test("three travel websites have distinct per-destination shaders, aligned contour arrows, and distinct baked posters", () => {
   const travel = [
-    { slug: "archipelago-log", wgsl: "lagoon.wgsl", markers: [/if \(sea == 0\)/, /else if \(sea == 1\)/, /caldera/, /routeY = 0\.02 \+/], files: ["miyako.webp", "cyclades.webp", "palau.webp"] },
+    { slug: "archipelago-log", wgsl: "lagoon.wgsl", markers: [/if \(sea == 1\)/, /else if \(sea == 2\)/, /warpZ/, /fresnel/], files: ["cyclades.webp", "miyako.webp", "amalfi.webp"] },
+    { slug: "kuroyu-ryokan", wgsl: "onsen.wgsl", markers: [/if \(season == 1\)/, /else if \(season == 2\)/, /lampTrack/, /steamDensity/], files: ["winter.webp", "autumn.webp", "summer.webp"] },
     { slug: "contour-expedition", wgsl: "topo.wgsl", markers: [/startPt = vec2f\(-0\.46, -0\.20\)/, /startPt = vec2f\(0\.48, 0\.26\)/, /let fwd = normalize\(vec2f\(dtx, dty\)\)/, /let tipFade =/], files: ["montblanc.webp", "alps.webp", "patagonia.webp"] },
     { slug: "sleeper-line", wgsl: "window.wgsl", markers: [/towerA/, /mainCableY/, /crescent/, /pA = 1\.0 - abs\(sin/], files: ["alpine.webp", "seto.webp", "arctic.webp"] },
   ];
