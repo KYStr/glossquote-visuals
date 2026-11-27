@@ -91,7 +91,7 @@ a { color: inherit; }
   height: 100% !important;
   object-fit: cover;
 }
-.cinema-stage canvas { opacity: 0; transition: opacity 420ms ease; }
+.cinema-stage canvas { opacity: 0; transition: opacity 180ms ease; }
 .cinema-stage[data-rendered] canvas { opacity: 1; }
 .cinema-stage[data-rendered] img { opacity: 0; }
 
@@ -688,6 +688,10 @@ a { color: inherit; }
 }
 .site-footer a { text-underline-offset: 4px; }
 
+.hero-dock > *, .atelier-grid > *, .chapter-switch, .choice-group { min-width: 0; min-inline-size: 0; max-width: 100%; }
+.btn-luxury { max-width: 100%; }
+h1, h2, h3, p, dd, dt { overflow-wrap: break-word; }
+
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-dock,
@@ -695,15 +699,50 @@ a { color: inherit; }
   .editorial-chapter,
   .editorial-chapter.reverse,
   .atelier-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .editorial-chapter.reverse .chapter-media { order: 0; }
-  .pillars { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 640px) {
   .container { width: min(1320px, calc(100% - 1.5rem)); }
-  .pill-grid, .pill-grid.two, .pill-grid.four { grid-template-columns: 1fr; }
-  .chapter-switch { width: 100%; }
-  .chapter-pill { flex: 1 1 100%; }
+  .mast { padding: 0.35rem 0; gap: 0.1rem 0.6rem; }
+  .wordmark { font-size: 0.94rem; letter-spacing: 0.12em; }
+  .mast nav { gap: 0 0.65rem; }
+  .mast nav a { font-size: 0.72rem; letter-spacing: 0.05em; min-height: 44px; }
+  .mast nav a[hreflang] { padding: 0.18rem 0.55rem; font-size: 0.68rem; }
+  .hero-content { padding: 0.85rem 0 1rem; gap: 0.85rem; }
+  .hero-eyebrow { font-size: 0.66rem; letter-spacing: 0.1em; gap: 0.15rem 0.5rem; margin-bottom: 0.45rem; }
+  .hero-title { font-size: clamp(1.7rem, 7.2vw, 2.45rem); line-height: 1.06; max-width: 16ch; }
+  .hero-dock { padding-top: 0.75rem; gap: 0.75rem; }
+  .hero-manifesto { font-size: 0.82rem; line-height: 1.4; margin-bottom: 0.65rem; }
+  .hero-cta-row { gap: 0.45rem 0.6rem; }
+  .btn-luxury { min-height: 44px; padding: 0.48rem 0.95rem; font-size: 0.76rem; letter-spacing: 0.08em; }
+  .scene-dock { width: 100%; gap: 0.35rem; }
+  .chapter-switch { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; }
+  .chapter-pill { min-height: 44px; min-width: 0; padding: 0.3rem 0.35rem; }
+  .chapter-pill strong { font-size: 0.74rem; line-height: 1.15; }
+  .chapter-pill span { font-size: 0.6rem; line-height: 1.15; }
+  .pause-pill { min-height: 44px; padding: 0.35rem 0.75rem; font-size: 0.72rem; }
+  .pill-grid, .pill-grid.two, .pill-grid.four { grid-template-columns: minmax(0, 1fr); }
+  .folio-total { flex-wrap: wrap; gap: 0.4rem 0.75rem; }
+}
+
+@media (max-width: 360px) {
+  .container { width: calc(100% - 1.25rem); }
+  .mast { padding: 0.2rem 0; gap: 0 0.35rem; }
+  .wordmark { font-size: 0.86rem; letter-spacing: 0.1em; gap: 0.45rem; }
+  .mast nav { gap: 0 0.42rem; }
+  .mast nav a { font-size: 0.64rem; letter-spacing: 0.02em; }
+  .mast nav a[hreflang] { padding: 0.14rem 0.45rem; font-size: 0.62rem; }
+  .hero-content { padding: 0.5rem 0 0.7rem; gap: 0.55rem; }
+  .hero-eyebrow { font-size: 0.6rem; margin-bottom: 0.25rem; }
+  .hero-title { font-size: 1.48rem; line-height: 1.05; }
+  .hero-dock { padding-top: 0.5rem; gap: 0.5rem; }
+  .hero-manifesto { font-size: 0.74rem; line-height: 1.3; margin-bottom: 0.45rem; }
+  .btn-luxury { padding: 0.4rem 0.72rem; font-size: 0.7rem; letter-spacing: 0.05em; }
+  .chapter-pill { padding: 0.24rem 0.22rem; }
+  .chapter-pill strong { font-size: 0.68rem; }
+  .chapter-pill span { font-size: 0.56rem; }
 }

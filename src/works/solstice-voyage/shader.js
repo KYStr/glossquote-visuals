@@ -6,13 +6,13 @@ const id = "solstice-voyage-horizon";
 const cinemaWorld = registerShader(defineShader({
   name: "SolsticeHorizonCinema",
   animatedTime: { speed: "clockSpeed" },
-  props: { preset: { default: -1 }, clockSpeed: { default: 1 } },
+  props: { preset: { default: 0 }, clockSpeed: { default: 1 } },
   paint: wgsl(horizon),
 }));
 
 function renderSize(width, height) {
-  // Keep raymarch fragment cost silky smooth across 1440x900 and 390x844 viewports.
-  const scale = Math.min(0.62, 640 / Math.max(width, 1));
+  // Bound both axes so tall mobile viewports stay fast and pause cleanly on software GPUs.
+  const scale = Math.min(0.62, 600 / Math.max(width, height, 1));
   return {
     width: Math.max(2, Math.round(width * scale)),
     height: Math.max(2, Math.round(height * scale)),

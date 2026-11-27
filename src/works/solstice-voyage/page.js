@@ -1,4 +1,10 @@
 import { createMotion, observeMotion } from "../../shared/motion.js";
+import {
+  CHAPTERS,
+  CHAPTER_SECONDS,
+  CYCLE_SECONDS,
+  sceneIndexFromElapsed,
+} from "./scene-state.js";
 
 const stage = document.querySelector("[data-stage]");
 const poster = stage.querySelector("[data-poster]");
@@ -30,23 +36,67 @@ const labels = en ? {
   pause: "暫停",
 };
 
-const chapters = [
-  { file: "sahara", key: "sahara", coord: "31°09'N 03°59'W · ERG CHEBBI", hour: "18:42 UTC+1" },
-  { file: "fjord", key: "fjord", coord: "68°14'N 14°33'E · LOFOTEN", hour: "23:55 UTC+2" },
-  { file: "alpenglow", key: "alpenglow", coord: "46°29'N 09°50'E · ENGADIN", hour: "05:28 UTC+2" },
-];
-const posters = chapters.map((c) => new URL(`${c.file}.webp`, poster.src).href);
-let settings = { preset: -1, index: 0 };
+const posters = CHAPTERS.map((c) => new URL(`${c.file}.webp`, poster.src).href);
+let settings = { preset: 0, index: 0 };
+let autoCycle = true;
+let cycleElapsed = 0;
+let cycleFrame = 0;
+let lastCycleTick = 0;
+let currentPhase = "still";
 let paused = false;
 let rendered = false;
+let pageHiding = false;
 let shader;
 
 function showStill(index) {
-  const ch = chapters[index] ?? chapters[0];
-  const source = posters[index] ?? posters[0];
+  if (pageHiding) return;
+  const safeIndex = ((index % CHAPTERS.length) + CHAPTERS.length) % CHAPTERS.length;
+  const ch = CHAPTERS[safeIndex];
+  const source = posters[safeIndex];
   if (poster.src !== source) poster.src = source;
+  poster.alt = en ? ch.altEn : ch.altZh;
+}
+
+function syncSceneUI(index, { updatePoster = !rendered } = {}) {
+  const safeIndex = ((index % CHAPTERS.length) + CHAPTERS.length) % CHAPTERS.length;
+  const ch = CHAPTERS[safeIndex];
+  stage.dataset.material = String(safeIndex);
   if (metaCoord) metaCoord.textContent = ch.coord;
   if (metaHour) metaHour.textContent = ch.hour;
+  if (radios[safeIndex] && !radios[safeIndex].checked) {
+    radios[safeIndex].checked = true;
+  }
+  if (updatePoster) showStill(safeIndex);
+}
+
+function stopCycleLoop() {
+  if (cycleFrame) {
+    cancelAnimationFrame(cycleFrame);
+    cycleFrame = 0;
+  }
+  lastCycleTick = 0;
+}
+
+function startCycleLoop() {
+  if (cycleFrame || !autoCycle || paused || currentPhase !== "running") return;
+  lastCycleTick = performance.now();
+  const tick = (now) => {
+    if (!autoCycle || paused || currentPhase !== "running") {
+      stopCycleLoop();
+      return;
+    }
+    const dt = Math.min(Math.max((now - lastCycleTick) / 1000, 0), 0.25);
+    lastCycleTick = now;
+    cycleElapsed = (cycleElapsed + dt) % CYCLE_SECONDS;
+    const nextIndex = sceneIndexFromElapsed(cycleElapsed);
+    if (nextIndex !== settings.index) {
+      settings = { index: nextIndex, preset: nextIndex };
+      syncSceneUI(nextIndex, { updatePoster: false });
+      motion.setSettings(settings);
+    }
+    cycleFrame = requestAnimationFrame(tick);
+  };
+  cycleFrame = requestAnimationFrame(tick);
 }
 
 const motion = createMotion({
@@ -61,36 +111,48 @@ const motion = createMotion({
     shader.updateSolstice(renderer, next);
   },
   renderState(phase) {
+    currentPhase = phase;
     stage.dataset.motion = phase;
     if (phase === "running") rendered = true;
     if (["starting", "unavailable", "reduced"].includes(phase)) rendered = false;
-    if (!rendered) showStill(settings.index);
+    syncSceneUI(settings.index, { updatePoster: !rendered });
     stage.toggleAttribute("data-rendered", rendered);
     pause.disabled = phase === "reduced" || phase === "unavailable";
     status.textContent = labels[phase];
+    if (phase === "running" && autoCycle && !paused) startCycleLoop();
+    else stopCycleLoop();
   },
 });
 
 for (const radio of radios) {
   radio.addEventListener("change", () => {
+    autoCycle = false;
+    stopCycleLoop();
     const index = Number(radio.value);
+    cycleElapsed = index * CHAPTER_SECONDS;
     settings = { index, preset: index };
-    stage.dataset.material = radio.value;
-    showStill(index);
+    syncSceneUI(index, { updatePoster: true });
     motion.setSettings(settings);
   });
 }
 
 pause.addEventListener("click", () => {
   paused = !paused;
+  if (paused) stopCycleLoop();
   pause.textContent = paused ? pause.dataset.play : labels.pause;
   pause.setAttribute("aria-pressed", String(paused));
   motion.update({ paused });
 });
 
 window.addEventListener("pagehide", () => {
+  pageHiding = true;
+  stopCycleLoop();
   rendered = false;
   stage.removeAttribute("data-rendered");
+});
+
+window.addEventListener("pageshow", () => {
+  pageHiding = false;
 });
 
 dial.hidden = false;
