@@ -1,175 +1,168 @@
-  // Luxury editorial hydrographic sea-chart & aerial archipelago sailing catamaran.
-  let p = (uv - vec2f(0.50, 0.50)) * vec2f(aspect, 1.0);
-  let feather = 1.6 / max(180.0, viewport.y);
-
-  // 10-second smooth sailing & sun-glint ripple cycle.
-  let cyc = fract(time * 0.1);
+  // O(1) Analytic Perspective Mediterranean & Okinawa Ocean Horizon Cinema.
+  // Zero raymarching loops -> silky 60fps even on 5-year-old integrated-GPU office laptops.
+  // 0 = Cyclades Golden Hour, 1 = Miyako Noon Turquoise, 2 = Amalfi Rose Dusk.
+  let ndc = (uv - vec2f(0.5, 0.5)) * vec2f(aspect, -1.0);
   var sea = 0;
   if (preset >= 0.0) {
     sea = i32(clamp(floor(preset + 0.5), 0.0, 2.0));
   } else {
-    sea = i32(floor(fract(time / 12.0) * 3.0));
+    sea = i32(floor(fract(time / 18.0) * 3.0));
   }
 
-  // Natural multi-octave shoreline organic irregularity (no synthetic grid artifacts).
-  let coastWobble = 0.018 * sin(p.x * 13.0 + p.y * 8.5)
-    + 0.009 * cos(p.y * 21.0 - p.x * 15.0 + 0.7)
-    + 0.004 * sin(p.x * 37.0 + p.y * 29.0);
-  var landSigned = 1.0;
-  if (sea == 0) {
-    // Miyako Reef: curved crescent coral cay on upper-left + outer reef shoal on upper-right.
-    let c1 = p - vec2f(-0.24, -0.04);
-    let arcDist = length(c1 * vec2f(0.88, 1.18)) - 0.25;
-    let bite = length(p - vec2f(-0.06, 0.06)) - 0.21;
-    let mainIsland = max(arcDist, -bite);
-    let shoal = length((p - vec2f(0.38, -0.22)) * vec2f(0.82, 1.25)) - 0.14;
-    landSigned = min(mainIsland, shoal) + coastWobble;
-  } else if (sea == 1) {
-    // Aegean Cyclades: right-side volcanic caldera horseshoe cliff + two rocky northern islets.
-    let calOuter = length((p - vec2f(0.28, 0.08)) * vec2f(0.95, 1.05)) - 0.27;
-    let calBay = length(p - vec2f(0.11, 0.05)) - 0.19;
-    let caldera = max(calOuter, -calBay);
-    let isletA = length((p - vec2f(-0.42, -0.24)) * vec2f(1.05, 1.25)) - 0.11;
-    let isletB = length((p - vec2f(-0.14, -0.32)) * vec2f(1.20, 1.10)) - 0.08;
-    landSigned = min(caldera, min(isletA, isletB)) + coastWobble * 0.85;
-  } else {
-    // Palau Milky Lagoon: ring of 5 emerald mushroom Rock Islands around a central lagoon.
-    let r1 = length((p - vec2f(-0.38, 0.20)) * vec2f(1.05, 1.15)) - 0.125;
-    let r2 = length((p - vec2f(-0.16, -0.24)) * vec2f(1.10, 1.20)) - 0.115;
-    let r3 = length((p - vec2f(0.16, -0.25)) * vec2f(1.15, 1.05)) - 0.12;
-    let r4 = length((p - vec2f(0.42, 0.04)) * vec2f(1.00, 1.25)) - 0.12;
-    let r5 = length((p - vec2f(0.12, 0.28)) * vec2f(1.05, 1.25)) - 0.11;
-    landSigned = min(min(min(r1, r2), min(r3, r4)), r5) + coastWobble * 0.7;
-  }
-  let depth = max(landSigned, 0.0);
+  // Horizon sits slightly below vertical center for grand atmospheric sky + glittering sea foreground.
+  let horizonY = -0.04;
+  let wy = ndc.y - horizonY;
+  let wx = ndc.x;
 
-  // Refined Aman / hydrographic mineral palette (restrained, deep, sunlit — no neon glow).
-  var deepCol = vec3f(0.038, 0.135, 0.225);
-  var midCol = vec3f(0.075, 0.335, 0.405);
-  var shallowCol = vec3f(0.285, 0.615, 0.625);
-  var sandCol = vec3f(0.925, 0.892, 0.825);
-  var floraCol = vec3f(0.205, 0.345, 0.235);
+  // Palette & Sun geometry per sea horizon.
+  var sunPos = vec2f(-0.22, 0.145);
+  var skyZenith = vec3f(0.06, 0.14, 0.30);
+  var skyMid = vec3f(0.28, 0.36, 0.48);
+  var skyHoriz = vec3f(1.02, 0.62, 0.34);
+  var sunCol = vec3f(2.1, 1.25, 0.62);
+  var deepWater = vec3f(0.015, 0.08, 0.18);
+  var scatterWater = vec3f(0.05, 0.32, 0.42);
+  var hazeCol = vec3f(0.76, 0.55, 0.42);
 
   if (sea == 1) {
-    // Aegean Cyclades: deep Mediterranean ink-sapphire, cobalt cove, sun-bleached limestone.
-    deepCol = vec3f(0.035, 0.095, 0.215);
-    midCol = vec3f(0.085, 0.245, 0.435);
-    shallowCol = vec3f(0.285, 0.545, 0.655);
-    sandCol = vec3f(0.915, 0.885, 0.825);
-    floraCol = vec3f(0.435, 0.445, 0.345);
+    // Miyako Noon Turquoise: radiant Okinawa sky & luminous aquamarine shallow sea.
+    sunPos = vec2f(0.26, 0.28);
+    skyZenith = vec3f(0.07, 0.30, 0.64);
+    skyMid = vec3f(0.26, 0.56, 0.82);
+    skyHoriz = vec3f(0.76, 0.90, 0.94);
+    sunCol = vec3f(1.9, 1.82, 1.58);
+    deepWater = vec3f(0.015, 0.19, 0.32);
+    scatterWater = vec3f(0.06, 0.66, 0.68);
+    hazeCol = vec3f(0.68, 0.85, 0.90);
   } else if (sea == 2) {
-    // Palau Milky Lagoon: soft mineral celadon-aquamarine shallows & dense emerald rock islands.
-    deepCol = vec3f(0.045, 0.185, 0.255);
-    midCol = vec3f(0.165, 0.465, 0.485);
-    shallowCol = vec3f(0.455, 0.725, 0.705);
-    sandCol = vec3f(0.920, 0.905, 0.855);
-    floraCol = vec3f(0.135, 0.305, 0.185);
+    // Amalfi Rose Dusk: warm violet-cobalt twilight fading into rose-gold horizon.
+    sunPos = vec2f(0.08, 0.095);
+    skyZenith = vec3f(0.07, 0.09, 0.22);
+    skyMid = vec3f(0.34, 0.23, 0.38);
+    skyHoriz = vec3f(1.04, 0.50, 0.42);
+    sunCol = vec3f(2.05, 0.95, 0.64);
+    deepWater = vec3f(0.025, 0.055, 0.14);
+    scatterWater = vec3f(0.18, 0.18, 0.28);
+    hazeCol = vec3f(0.72, 0.44, 0.44);
   }
 
-  // Smooth terraced bathymetric water gradient with subtle shelf drop-off.
-  var water = mix(shallowCol, midCol, smoothstep(0.0, 0.14, depth));
-  water = mix(water, deepCol, smoothstep(0.12, 0.44, depth));
+  // Atmospheric sky gradient + Rayleigh/Mie sun glow.
+  let skyT = clamp(max(wy, 0.0) / 0.56, 0.0, 1.0);
+  var sky = mix(skyHoriz, skyMid, smoothstep(0.0, 0.38, skyT));
+  sky = mix(sky, skyZenith, smoothstep(0.26, 1.0, skyT));
 
-  // Delicate hydrographic bathymetry isobaths (depth contour rings) on shallow reef shelves.
-  let isobath = (1.0 - smoothstep(0.0, 0.045, abs(fract(depth * 18.0) - 0.5))) * (1.0 - smoothstep(0.06, 0.26, depth)) * smoothstep(0.012, 0.025, depth);
-  water = mix(water, shallowCol * 1.18, isobath * 0.22);
+  let sDist = length(vec2f(wx, max(wy, -0.05)) - sunPos);
+  let sunHalo = exp(-sDist * 4.2) * 0.45 + exp(-sDist * 16.0) * 0.85;
+  let sunDisc = 1.0 - smoothstep(0.024, 0.030, sDist);
+  sky += sunCol * sunHalo + vec3f(1.2, 1.15, 1.0) * sunDisc * 1.6;
 
-  // Subtle sunlit water caustics & wind-driven sea-surface glint.
-  let cA = sin(p.x * 24.0 + p.y * 16.0 + time * 1.2 + 1.1 * sin(p.y * 11.0 - time * 0.8));
-  let cB = sin(p.x * 17.0 - p.y * 25.0 - time * 0.95 + 1.0 * cos(p.x * 13.0 + time * 0.7));
-  let caustic = pow(clamp(0.5 + 0.5 * cA * cB, 0.0, 1.0), 5.0) * (1.0 - smoothstep(0.04, 0.28, depth));
-  water += vec3f(0.18, 0.26, 0.26) * caustic * 0.42;
-
-  // Fine rhythmic coastal surf edge lapping onto the sandbar.
-  let surfPhase = fract(depth * 22.0 - time * 0.38);
-  let surfLine = exp(-pow((surfPhase - 0.5) * 10.0, 2.0)) * (1.0 - smoothstep(0.0, 0.055, depth)) * smoothstep(0.0, 0.006, depth);
-  let shoreFoam = exp(-depth * 85.0) * 0.58;
-  water = mix(water, vec3f(0.95, 0.96, 0.95), clamp(surfLine * 0.42 + shoreFoam, 0.0, 0.76));
-
-  // Hairline engraved nautical chart graticule & perimeter neatline.
-  let chartGrid = max(
-    1.0 - smoothstep(0.0, 0.0018, abs(fract(p.x * 3.0 + 0.5) - 0.5)),
-    1.0 - smoothstep(0.0, 0.0018, abs(fract(p.y * 3.0 + 0.5) - 0.5))
-  );
-  water += chartGrid * vec3f(0.08, 0.14, 0.16) * 0.32;
-
-  // Destination-specific curved sailing route passing through open water.
-  var routeY = 0.24 - 0.18 * sin((p.x + 0.45) * 2.1);
-  if (sea == 1) {
-    routeY = -0.06 + 0.22 * sin((p.x - 0.14) * 2.2) + 0.12 * p.x;
-  } else if (sea == 2) {
-    routeY = 0.02 + 0.12 * sin((p.x + 0.14) * 3.8);
-  }
-  let routeDist = abs(p.y - routeY);
-  let routeDash = smoothstep(0.35, 0.55, sin(p.x * 46.0));
-  let routeLine = (1.0 - smoothstep(0.0018, 0.0040, routeDist)) * routeDash * smoothstep(0.02, 0.06, depth);
-  water = mix(water, vec3f(0.95, 0.92, 0.84), routeLine * 0.55);
-
-  // Island topography: warm wet sand -> sunlit coral/limestone beach -> organic mottled canopy (non-grid).
-  let landMask = 1.0 - smoothstep(-feather, feather, landSigned);
-  let inland = max(-landSigned, 0.0);
-  let wetSand = mix(sandCol * 0.82, sandCol, smoothstep(0.0, 0.024, inland));
-  let n1 = sin(p.x * 29.0 + p.y * 17.0) * cos(p.y * 23.0 - p.x * 13.0);
-  let n2 = sin(p.x * 53.0 - p.y * 41.0 + 1.4) * cos(p.x * 31.0 + p.y * 47.0);
-  let organicFoliage = 0.5 + 0.35 * n1 + 0.15 * n2;
-  let floraMask = smoothstep(0.026, 0.060, inland + 0.010 * n1);
-  // Subtle directional sun relief on the island canopy from upper-left.
-  let islandShade = 0.84 + 0.26 * organicFoliage + 0.12 * smoothstep(-0.2, 0.2, -(p.x + p.y));
-  var land = mix(wetSand, floraCol * islandShade, floraMask);
-  if (sea == 1) {
-    // Sunlit whitewashed Cycladic cliff-top houses clustered along the caldera rim.
-    let villageRim = smoothstep(0.018, 0.042, inland) * (1.0 - smoothstep(0.052, 0.082, inland)) * step(0.06, p.x);
-    land = mix(land, vec3f(0.95, 0.94, 0.90), villageRim * 0.72);
+  // Perspective high-altitude trade-wind clouds with bright sunlit undersides (O(1)).
+  if (wy > 0.004) {
+    let cz = 1.0 / (wy + 0.11);
+    let cu = vec2f(wx * cz * 0.42 + time * 0.018, cz * 0.36 - time * 0.010);
+    let n1 = sin(cu.x * 1.8 + 0.9 * cos(cu.y * 1.5)) * cos(cu.y * 2.1 - cu.x * 0.8);
+    let n2 = sin(cu.x * 4.1 - cu.y * 3.7 + 0.8 * sin(cu.x * 1.9)) * 0.45;
+    let n3 = cos(cu.x * 8.5 + cu.y * 7.2) * 0.20;
+    let cloudDensity = smoothstep(0.15, 0.95, n1 + n2 + n3)
+      * smoothstep(0.008, 0.14, wy) * (1.0 - smoothstep(0.32, 0.54, wy));
+    let rimLight = exp(-sDist * 2.8);
+    let cloudCol = mix(skyMid * 0.92 + vec3f(0.18), sunCol * 0.88, clamp(0.35 + 0.65 * rimLight, 0.0, 1.0));
+    sky = mix(sky, cloudCol, cloudDensity * 0.56);
   }
 
-  var color = mix(water, land, landMask);
+  var color = sky;
 
-  // Overhead white sailing catamaran gliding along the destination's dotted channel + V-wake.
-  var boatX = mix(-0.48, 0.48, cyc);
-  var boatY = 0.24 - 0.18 * sin((boatX + 0.45) * 2.1);
-  var slope = -0.18 * 2.1 * cos((boatX + 0.45) * 2.1);
-  var dir = 1.0;
-  if (sea == 1) {
-    boatX = mix(0.42, -0.46, cyc);
-    boatY = -0.06 + 0.22 * sin((boatX - 0.14) * 2.2) + 0.12 * boatX;
-    slope = -(0.22 * 2.2 * cos((boatX - 0.14) * 2.2) + 0.12);
-    dir = -1.0;
-  } else if (sea == 2) {
-    boatX = mix(-0.50, 0.50, cyc);
-    boatY = 0.02 + 0.12 * sin((boatX + 0.14) * 3.8);
-    slope = 0.12 * 3.8 * cos((boatX + 0.14) * 3.8);
+  // Multi-layer distant limestone islands & coastal headlands (aerial perspective, O(1)).
+  if (wy >= -0.002) {
+    let drift = sin(time * 0.08) * 0.015;
+    // Far hazy volcanic caldera ridge across horizon.
+    let fX = (wx + drift * 0.4) * 2.6 + select(0.0, select(1.4, 2.8, sea == 2), sea >= 1);
+    let farH = max(0.0, 0.042 * sin(fX * 1.3 + 0.4) + 0.028 * cos(fX * 3.1 - 0.8) + 0.012 * sin(fX * 6.8) - 0.008);
+    let farMask = (1.0 - smoothstep(-0.002, 0.002, wy - farH)) * step(0.001, farH);
+    let farCol = mix(hazeCol * 0.72, skyHoriz * 0.68, 0.45);
+    color = mix(color, farCol, farMask * 0.78);
+
+    // Mid-distance sunlit limestone headland on right-hand side.
+    let mX = (wx - 0.36 + drift * 0.8);
+    let headlandEnv = exp(-mX * mX * 4.8);
+    let midH = headlandEnv * (0.145 + 0.032 * sin(mX * 14.0 + 1.1) + 0.016 * cos(mX * 29.0) + 0.008 * sin(mX * 58.0));
+    let midMask = (1.0 - smoothstep(-0.0018, 0.0018, wy - midH)) * step(0.002, midH);
+    let strata = 0.5 + 0.5 * sin(wy * 165.0 + 1.6 * sin(mX * 18.0));
+    let litFace = smoothstep(-0.18, 0.14, mX - sunPos.x * 0.35);
+    let cliffShadow = mix(deepWater * 1.35 + vec3f(0.06, 0.06, 0.09), hazeCol * 0.52, 0.42);
+    let cliffSun = mix(vec3f(0.74, 0.64, 0.52), skyHoriz * 0.85, 0.35) * (0.88 + 0.14 * strata);
+    let midCol = mix(cliffShadow, cliffSun, (1.0 - litFace) * 0.65);
+    color = mix(color, mix(midCol, hazeCol, 0.24), midMask);
+
+    // Near dramatic dark-silhouette promontory framing the far left edge.
+    let nX = (wx + 0.62 + drift);
+    let nearEnv = exp(-nX * nX * 6.5);
+    let nearH = nearEnv * (0.11 + 0.025 * sin(nX * 18.0) + 0.011 * cos(nX * 37.0));
+    let nearMask = (1.0 - smoothstep(-0.0015, 0.0015, wy - nearH)) * step(0.002, nearH);
+    let nearCol = deepWater * 0.9 + vec3f(0.04, 0.04, 0.055);
+    color = mix(color, nearCol, nearMask);
   }
-  let heading = atan2(slope, dir);
-  let ch = cos(heading);
-  let sh = sin(heading);
-  let rel = p - vec2f(boatX, boatY);
-  let bx = rel.x * ch + rel.y * sh;
-  let by = -rel.x * sh + rel.y * ch;
 
-  // Translucent V-shaped foam wake trailing behind the catamaran.
-  let behind = smoothstep(0.0, -0.02, bx) * smoothstep(-0.32, -0.02, bx);
-  let wakeSpread = -bx * 0.22 + 0.013;
-  let wakeEdge = exp(-pow((abs(by) - wakeSpread) * 72.0, 2.0)) * behind * exp(bx * 6.5);
-  color = mix(color, vec3f(0.94, 0.96, 0.96), wakeEdge * 0.46 * (1.0 - landMask));
+  // Analytic 3D Perspective Ocean Plane below horizon (wy < 0) — O(1), razor sharp!
+  if (wy < 0.0) {
+    let depthZ = 1.0 / max(-wy, 0.0035);
+    let worldX = wx * depthZ * 0.85;
+    let worldZ = depthZ * 0.95;
 
-  // Faint shadow under the catamaran on the shallow seabed.
-  let shadowHull = 1.0 - smoothstep(0.020, 0.030, length(vec2f((bx + 0.012) * 0.65, (by + 0.015) * 1.4)));
-  color *= 1.0 - shadowHull * 0.20 * (1.0 - landMask);
+    // Domain-warped horizontal ocean swells (non-orthogonal irrational angles -> zero grid/waffle!).
+    let atten = 1.0 / (1.0 + depthZ * 0.048);
+    let warpX = worldX * 0.55 + 0.65 * sin(worldZ * 0.95 - time * 0.55);
+    let warpZ = worldZ * 1.45 + 0.45 * cos(worldX * 0.48 + time * 0.42);
+    let w1 = sin(warpZ * 1.9 + warpX * 0.42 - time * 1.15);
+    let w2 = sin(warpZ * 3.7 - warpX * 0.85 - time * 1.48 + 1.3 * w1);
+    let w3 = sin(warpZ * 7.8 + warpX * 1.65 - time * 1.92 + 0.7 * w2);
+    let w4 = cos(warpZ * 15.2 - warpX * 3.1 + time * 2.4);
+    let w5 = sin(warpZ * 29.5 + warpX * 5.8 - time * 2.8);
 
-  // Twin sleek catamaran hulls + central deck + sunlit terracotta-trimmed mainsail.
-  let hullL = length(vec2f(bx * 0.48, (by - 0.012) * 3.8)) - 0.022;
-  let hullR = length(vec2f(bx * 0.48, (by + 0.012) * 3.8)) - 0.022;
-  let deck = max(abs(bx + 0.005) - 0.022, abs(by) - 0.014);
-  let boatMask = 1.0 - smoothstep(-feather, feather, min(min(hullL, hullR), deck));
-  color = mix(color, vec3f(0.98, 0.97, 0.94), boatMask);
-  let sailStripe = 1.0 - smoothstep(-feather, feather, length(vec2f((bx + 0.006) * 0.9, by * 2.2)) - 0.011);
-  color = mix(color, vec3f(0.76, 0.34, 0.20), sailStripe * 0.85);
+    let nx = (w1 * 0.018 + w2 * 0.022 + w3 * 0.019 + w4 * 0.013 + w5 * 0.008) * atten;
+    let nz = (w1 * 0.046 + w2 * 0.042 + w3 * 0.032 + w4 * 0.020 + w5 * 0.012) * atten;
+    let wN = normalize(vec3f(nx, 1.0, nz));
 
-  // Subtle editorial vignette framing the hydrographic chart.
-  let vig = 1.0 - 0.14 * dot(p * vec2f(0.85, 1.05), p * vec2f(0.85, 1.05));
-  color *= clamp(vig, 0.78, 1.02);
+    // View vector & Fresnel sky reflection.
+    let V = normalize(vec3f(wx * 0.85, wy, -1.0));
+    let R = reflect(V, wN);
+    let fresnel = 0.04 + 0.96 * pow(1.0 - max(dot(-V, wN), 0.0), 4.2);
 
-  // Convert display sRGB to linear light for the compositor.
-  let rgb = clamp(color, vec3f(0.0), vec3f(1.0));
-  let linear = select(rgb / 12.92, pow((rgb + vec3f(0.055)) / 1.055, vec3f(2.4)), rgb > vec3f(0.04045));
-  return vec4f(linear, 1.0);
+    // Reflected sky color + shimmering molten sun-glitter path on micro-waves!
+    let rSkyT = clamp(max(R.y, 0.0) / 0.56, 0.0, 1.0);
+    var reflCol = mix(skyHoriz * 0.92, skyMid * 0.88, smoothstep(0.0, 0.42, rSkyT));
+    reflCol = mix(reflCol, skyZenith * 0.85, smoothstep(0.32, 1.0, rSkyT));
+
+    let sunVec = normalize(vec3f(sunPos.x * 0.85, sunPos.y, -1.0));
+    let specDot = max(dot(R, sunVec), 0.0);
+    // Broad warm path + crisp sparkling bokeh glints on wave facets.
+    let glitter = pow(specDot, 24.0) * 0.72 + pow(specDot, 220.0) * 2.8 + pow(specDot, 900.0) * 5.2;
+    reflCol += sunCol * glitter;
+
+    // Subsurface turquoise-emerald glow inside translucent wave crests.
+    let crestGlow = smoothstep(0.15, 0.95, 0.5 + 0.5 * w1) * (1.0 - smoothstep(0.0, 0.35, -wy * 0.8 + 0.05));
+    let waterBody = mix(deepWater, scatterWater, 0.32 + 0.52 * crestGlow + 0.18 * smoothstep(-0.48, -0.04, wy));
+
+    // Subtle dark reflection of the right-hand limestone headland on the water below it.
+    let mX = (wx - 0.36 + sin(time * 0.08) * 0.012);
+    let cliffReflMask = exp(-mX * mX * 4.8) * smoothstep(-0.18, -0.005, wy + nx * 0.3);
+    reflCol = mix(reflCol, deepWater * 1.1 + vec3f(0.04, 0.04, 0.06), cliffReflMask * 0.55);
+
+    var seaCol = mix(waterBody, reflCol, fresnel);
+    // Atmospheric horizon mist seamlessly blending ocean into sky.
+    let horizMist = exp(-(-wy) * 26.0);
+    color = mix(seaCol, skyHoriz * 0.92, horizMist * 0.72);
+  }
+
+  // Subtle medium-format photographic film grain (eliminates 8-bit sky banding).
+  let grain = fract(sin(dot(uv * viewport, vec2f(12.9898, 78.233)) + fract(time) * 17.0) * 43758.5453) - 0.5;
+  color += vec3f(grain * 0.014);
+
+  // ACES Filmic tone mapping -> linear light output for the compositor.
+  let a = 2.51;
+  let b = 0.03;
+  let c = 2.43;
+  let d = 0.59;
+  let e2 = 0.14;
+  let mapped = clamp((color * (a * color + b)) / (color * (c * color + d) + e2), vec3f(0.0), vec3f(1.0));
+  return vec4f(mapped, 1.0);

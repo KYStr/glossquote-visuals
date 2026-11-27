@@ -1,0 +1,295 @@
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/liquid-geist.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plex Mono";
+  src: url("/fonts/prism-plex-mono.ttf") format("truetype");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  --sumi: #141311;
+  --sumi-soft: #1d1b18;
+  --washi: #f4f1ea;
+  --washi-warm: #e9e4d9;
+  --ink: #1c1a17;
+  --ink-soft: #5c574e;
+  --cedar: #8c4a2b;
+  --gold-leaf: #c9a96e;
+  --gold-leaf-bright: #e0c48e;
+  --hairline-dark: rgba(244, 241, 234, 0.22);
+  --hairline-light: rgba(28, 26, 23, 0.14);
+  --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "Geist", system-ui, sans-serif;
+  --mono: "Plex Mono", ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--washi);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold-leaf-bright); outline-offset: 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--sumi); color: var(--washi); padding: 0.75rem 1.25rem; z-index: 90;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+.container { width: min(1300px, calc(100% - 2.5rem)); margin-inline: auto; }
+
+/* ACT I — FULL-BLEED 100SVH ONSEN SANCTUARY CINEMA */
+.onsen-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--washi);
+  background: var(--sumi);
+  overflow: hidden;
+}
+
+.onsen-stage { position: absolute; inset: 0; z-index: 0; }
+.onsen-stage img, .onsen-stage canvas {
+  position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover;
+}
+.onsen-stage canvas { opacity: 0; transition: opacity 420ms ease; }
+.onsen-stage[data-rendered] canvas { opacity: 1; }
+.onsen-stage[data-rendered] img { opacity: 0; }
+
+.onsen-scrim {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(20, 19, 17, 0.56) 0%, rgba(20, 19, 17, 0.10) 28%, rgba(20, 19, 17, 0.16) 56%, rgba(20, 19, 17, 0.86) 100%);
+}
+
+.mast {
+  position: relative; z-index: 10;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 1.35rem 0; border-bottom: 1px solid var(--hairline-dark);
+}
+
+.wordmark {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  text-decoration: none; font-family: var(--serif);
+  font-size: 1.15rem; letter-spacing: 0.18em; text-transform: uppercase; min-height: 44px;
+}
+
+.hanko {
+  width: 22px; height: 22px; border: 1.5px solid var(--gold-leaf);
+  display: inline-grid; place-items: center; flex-shrink: 0;
+}
+.hanko::after { content: ""; width: 8px; height: 8px; background: var(--cedar); }
+
+.mast nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.75rem; }
+.mast nav a {
+  text-decoration: none; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.86); min-height: 44px; display: inline-flex; align-items: center;
+}
+.mast nav a:hover { color: var(--gold-leaf-bright); }
+.mast nav a[hreflang] {
+  font-family: var(--mono); font-size: 0.78rem; padding: 0.25rem 0.75rem;
+  border: 1px solid var(--hairline-dark); border-radius: 999px;
+}
+
+.hero-content {
+  position: relative; z-index: 10;
+  padding: clamp(3rem, 8vh, 6rem) 0 clamp(2rem, 4.5vh, 3.25rem);
+  display: flex; flex-direction: column; gap: clamp(2rem, 5vh, 4rem);
+}
+
+.hero-eyebrow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem 1.35rem;
+  font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-leaf-bright); margin: 0 0 1.1rem;
+}
+
+.hero-title {
+  margin: 0; font-family: var(--serif);
+  font-size: clamp(2.85rem, 7.2vw, 6rem); font-weight: 400; line-height: 1.04;
+  letter-spacing: -0.01em; max-width: 15ch;
+  text-shadow: 0 12px 38px rgba(0, 0, 0, 0.45);
+}
+
+.hero-dock {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem 2.5rem; align-items: end;
+  padding-top: 1.5rem; border-top: 1px solid var(--hairline-dark);
+}
+
+.hero-manifesto { margin: 0 0 1.25rem; max-width: 46ch; color: rgba(244, 241, 234, 0.88); font-size: 1.02rem; }
+.hero-cta-row { display: flex; flex-wrap: wrap; gap: 0.85rem 1.25rem; }
+
+.btn-ryokan {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  min-height: 48px; padding: 0.75rem 1.75rem; text-decoration: none;
+  font-size: 0.86rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+  border: 1px solid transparent; cursor: pointer;
+}
+.btn-ryokan.gold { background: var(--gold-leaf); color: var(--sumi); }
+.btn-ryokan.gold:hover { background: var(--gold-leaf-bright); }
+.btn-ryokan.ghost {
+  background: rgba(20, 19, 17, 0.42); border-color: var(--hairline-dark);
+  color: var(--washi); backdrop-filter: blur(8px);
+}
+.btn-ryokan.ghost:hover { border-color: var(--gold-leaf); color: var(--gold-leaf-bright); }
+
+.scene-dock { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.55rem; }
+.season-switch { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.season-pill {
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: 52px; padding: 0.45rem 1rem;
+  background: rgba(20, 19, 17, 0.56); border: 1px solid var(--hairline-dark);
+  backdrop-filter: blur(12px); cursor: pointer;
+}
+.season-pill strong { font-family: var(--serif); font-weight: 500; font-size: 0.92rem; color: var(--washi); }
+.season-pill span { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--gold-leaf); }
+.season-pill:has(input:checked) { border-color: var(--gold-leaf-bright); background: rgba(201, 169, 110, 0.20); }
+.season-pill input { position: absolute; opacity: 0; pointer-events: none; }
+
+.pause-pill {
+  min-height: 52px; min-width: 68px; padding: 0.45rem 0.95rem;
+  background: rgba(20, 19, 17, 0.62); border: 1px solid var(--hairline-dark);
+  backdrop-filter: blur(12px); color: var(--washi);
+  font: 500 0.78rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
+}
+.pause-pill:hover { border-color: var(--gold-leaf); color: var(--gold-leaf-bright); }
+.pause-pill[hidden] { display: none; }
+.static-note { margin: 0.5rem 0 0; font-size: 0.85rem; color: rgba(244, 241, 234, 0.78); }
+
+/* ACT II — WASHI MANIFESTO */
+.manifesto-band { padding: clamp(4.5rem, 9vw, 8.5rem) 0; border-bottom: 1px solid var(--hairline-light); }
+.manifesto-inner { display: grid; grid-template-columns: minmax(0, 0.35fr) minmax(0, 1fr); gap: 1.5rem 3rem; align-items: start; }
+.section-label { margin: 0; font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cedar); }
+.manifesto-quote { margin: 0 0 2.5rem; font-family: var(--serif); font-size: clamp(1.75rem, 3.4vw, 2.8rem); line-height: 1.3; font-weight: 400; max-width: 28ch; }
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2.25rem; padding-top: 2rem; border-top: 1px solid var(--hairline-light); }
+.pillar h3 { margin: 0 0 0.45rem; font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+.pillar p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+
+/* ACT III — ASYMMETRIC 60/40 SANCTUARY CHAPTERS */
+.chapters-band { padding: clamp(4rem, 8vw, 7.5rem) 0; }
+.chapters-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.chapters-head h2 { margin: 0.5rem 0 0; font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3.2rem); font-weight: 400; line-height: 1.1; }
+.chapters-head p { margin: 0; color: var(--ink-soft); max-width: 44ch; }
+
+.editorial-chapter {
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+  gap: clamp(1.75rem, 4vw, 4rem); align-items: center;
+  padding: clamp(2.5rem, 5vw, 4.25rem) 0; border-top: 1px solid var(--hairline-light);
+}
+.editorial-chapter.reverse { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.35fr); }
+.editorial-chapter.reverse .chapter-media { order: 2; }
+
+.chapter-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--sumi); }
+.chapter-media img { width: 100%; height: 100%; object-fit: cover; }
+.chapter-coord {
+  position: absolute; left: 1rem; bottom: 1rem; padding: 0.3rem 0.7rem;
+  background: rgba(20, 19, 17, 0.78); backdrop-filter: blur(8px);
+  color: var(--gold-leaf-bright); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+}
+
+.chapter-num { display: block; font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1; color: var(--cedar); margin-bottom: 0.5rem; }
+.chapter-copy h3 { margin: 0 0 0.45rem; font-family: var(--serif); font-size: clamp(1.65rem, 2.8vw, 2.35rem); font-weight: 400; line-height: 1.15; }
+.chapter-sub { margin: 0 0 1rem; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+.chapter-copy p { margin: 0 0 1.25rem; color: var(--ink-soft); font-size: 0.96rem; }
+
+.rhythm-list { list-style: none; margin: 0 0 1.5rem; padding: 0; border-top: 1px solid var(--hairline-light); }
+.rhythm-list li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--hairline-light); font-size: 0.88rem; }
+.rhythm-list strong { font-family: var(--mono); font-size: 0.76rem; color: var(--ink); white-space: nowrap; }
+.rhythm-list span { color: var(--ink-soft); text-align: right; }
+
+.chapter-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.chapter-fare { font-family: var(--mono); font-size: 0.96rem; font-weight: 600; }
+.text-link {
+  display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px;
+  font-size: 0.86rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+  text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.15rem;
+}
+.text-link:hover { color: var(--cedar); border-color: var(--cedar); }
+
+/* ACT IV — SUMI PRIVATE SANCTUARY SALON */
+.salon-band { background: var(--sumi); color: var(--washi); padding: clamp(4.5rem, 9vw, 8rem) 0; }
+.salon-band .section-label { color: var(--gold-leaf); }
+.salon-head { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.salon-head h2 { margin: 0.6rem 0 0.75rem; font-family: var(--serif); font-size: clamp(2.1rem, 4vw, 3.4rem); font-weight: 400; line-height: 1.08; }
+.salon-head p { margin: 0; color: rgba(244, 241, 234, 0.72); max-width: 52ch; }
+
+.salon-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.sanctuary-builder { display: flex; flex-direction: column; gap: 1.85rem; }
+
+.choice-group { border: 0; margin: 0; padding: 0; }
+.choice-group legend { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-leaf); margin-bottom: 0.85rem; padding: 0; }
+
+.pill-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; }
+.pill-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pill-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.pill-option {
+  display: flex; flex-direction: column; justify-content: center; min-height: 54px; padding: 0.65rem 0.9rem;
+  border: 1px solid var(--hairline-dark); background: var(--sumi-soft); cursor: pointer;
+}
+.pill-option strong { font-size: 0.9rem; font-weight: 500; color: var(--washi); }
+.pill-option span { font-family: var(--mono); font-size: 0.72rem; color: rgba(244, 241, 234, 0.65); }
+.pill-option:has(input:checked) { border-color: var(--gold-leaf-bright); background: rgba(201, 169, 110, 0.18); }
+.pill-option input { position: absolute; opacity: 0; pointer-events: none; }
+
+.note-field label { display: block; font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-leaf); margin-bottom: 0.65rem; }
+.note-field textarea { width: 100%; max-width: 100%; min-width: 0; padding: 0.85rem 1rem; background: var(--sumi-soft); border: 1px solid var(--hairline-dark); color: var(--washi); font: inherit; resize: vertical; }
+
+.folio-card { border: 1px solid var(--gold-leaf); background: linear-gradient(165deg, #211e1a 0%, #141311 100%); padding: clamp(1.5rem, 3vw, 2.25rem); }
+.folio-kicker { margin: 0 0 0.5rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-leaf); }
+.folio-card h3 { margin: 0 0 0.75rem; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; }
+.folio-meta { margin: 0 0 1.25rem; font-size: 0.9rem; color: rgba(244, 241, 234, 0.78); }
+.folio-row { padding: 0.9rem 0; border-top: 1px solid var(--hairline-dark); font-size: 0.88rem; }
+.folio-row dt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-leaf); margin-bottom: 0.25rem; }
+.folio-row dd { margin: 0; color: var(--washi); }
+.folio-total {
+  display: flex; justify-content: space-between; align-items: baseline; padding: 1.15rem 0;
+  border-top: 1px solid rgba(201, 169, 110, 0.45); border-bottom: 1px solid rgba(201, 169, 110, 0.45); margin: 0.5rem 0 1.4rem;
+}
+.folio-total span { font-size: 0.86rem; color: rgba(244, 241, 234, 0.75); }
+.folio-total strong { font-family: var(--mono); font-size: 1.5rem; color: var(--gold-leaf-bright); }
+.folio-card .btn-ryokan.gold { width: 100%; }
+.salon-feedback { margin: 0.8rem 0 0; font-size: 0.84rem; color: var(--gold-leaf-bright); min-height: 1.4em; }
+.salon-notice { margin: 0.85rem 0 0; font-size: 0.78rem; color: rgba(244, 241, 234, 0.62); }
+
+.site-footer { background: var(--sumi); color: rgba(244, 241, 234, 0.68); border-top: 1px solid var(--hairline-dark); padding: 2rem 0 3rem; font-family: var(--mono); font-size: 0.78rem; }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+
+@media (max-width: 1024px) {
+  .hero-dock, .manifesto-inner, .editorial-chapter, .editorial-chapter.reverse, .salon-grid { grid-template-columns: minmax(0, 1fr); }
+  .editorial-chapter.reverse .chapter-media { order: 0; }
+  .pillars { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .container { width: min(1300px, calc(100% - 1.5rem)); }
+  .pill-grid, .pill-grid.two, .pill-grid.four { grid-template-columns: minmax(0, 1fr); }
+  .season-switch { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .season-pill { min-width: 0; padding: 0.45rem 0.5rem; }
+  .season-pill strong { font-size: 0.8rem; }
+}
+@media (max-width: 360px) {
+  .hero-title { font-size: clamp(2.1rem, 9.5vw, 2.75rem); }
+  .hero-content { padding: 1.5rem 0 1.5rem; gap: 1.25rem; }
+  .hero-manifesto { font-size: 0.9rem; margin-bottom: 0.85rem; }
+  .mast nav { gap: 0.35rem 0.85rem; }
+}

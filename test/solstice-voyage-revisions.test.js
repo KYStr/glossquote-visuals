@@ -53,8 +53,17 @@ test("solstice-voyage and short-screen targets enforce 320x568 first-screen comp
   assert.match(solsticeCss, /@media\s*\(max-width:\s*360px\)/);
   assert.match(solsticeCss, /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/);
 
-  for (const slug of ["cymatic-brass", "archipelago-log", "contour-expedition"]) {
+  for (const slug of ["cymatic-brass", "contour-expedition"]) {
     const css = readFileSync(resolve(root, "src/works", slug, "page.css"), "utf8");
     assert.match(css, /@media\s*\(max-width:\s*360px\)[\s\S]*max-height:\s*1(46|48|52)px/);
+  }
+  for (const slug of ["archipelago-log", "kuroyu-ryokan"]) {
+    const css = readFileSync(resolve(root, "src/works", slug, "page.css"), "utf8");
+    assert.doesNotMatch(css, /grid-template-columns:\s*1fr\s*;/);
+    assert.match(css, /@media\s*\(max-width:\s*360px\)/);
+    assert.match(css, /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/);
+    const wgslFile = slug === "archipelago-log" ? "lagoon.wgsl" : "onsen.wgsl";
+    const wgsl = readFileSync(resolve(root, "src/works", slug, wgslFile), "utf8");
+    assert.doesNotMatch(wgsl, /\bfor\s*\(/, `${slug}/${wgslFile} must stay O(1) with zero raymarching loops for 5-year-old laptops`);
   }
 });
